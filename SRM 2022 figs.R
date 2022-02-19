@@ -4,7 +4,7 @@ library(plotrix)
 library(agricolae)
 library(FSA)
 library(rcompanion)
-
+ 
 # Load data ---------------------------------------------------------------
 
 load("Cover by year and channel.RData")
