@@ -2,10 +2,10 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-load(".RData/C13 long all stations.RData")
-load(".RData/C21 long all stations.RData")
-load(".RData/C19 long all stations.RData")
-load(".RData/C12 long all stations.RData")
+all.c12 <- read.csv("data/cleaned/C12-cover.csv")
+all.c13 <- read.csv("data/cleaned/C13-cover.csv")
+all.c19 <- read.csv("data/cleaned/C19-cover.csv")
+all.c21 <- read.csv("data/cleaned/C21-cover.csv")
 
 
 # Summarise by plant species and ground cover class -----------------------
@@ -207,12 +207,6 @@ for(i in 1:nrow(ingfst.all)) {
 
 # Save dataframes ---------------------------------------------------------
 
-save(plant.all, ground.all, total.all, fungr.all, gfst.all, woody.all, 
-     inwood.all, ingfst.all, innat.all,
-     file = ".RData/Summarised plant and ground cover.RData")
-
-save(plant.all, file = ".RData/plant.all.RData")
-
 write.csv(plant.all,
           file = "data/cleaned/Summarised-all_plant-species-cover.csv",
           row.names = FALSE)
@@ -242,5 +236,5 @@ write.csv(innat.all,
           row.names = FALSE)
 
 
-save.image(".RData/Summarise all channels.RData")
+save.image("RData-RMarkdown/Summarise-all-channels.RData")
 

@@ -6,7 +6,32 @@ library(rcompanion)
 
 # Load data ---------------------------------------------------------------
 
-load("Summarised plant and ground cover.RData")
+plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
+plant.all$Year <- as.Date(plant.all$Year)
+
+ground.all <- read.csv("data/cleaned/Summarised-all_ground-cover.csv")
+ground.all$Year <- as.Date(ground.all$Year)
+
+total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+total.all$Year <- as.Date(total.all$Year)
+
+fungr.all <- read.csv("data/cleaned/Summarised-all_functional-group-cover.csv")
+fungr.all$Year <- as.Date(fungr.all$Year)
+
+gfst.all <- read.csv("data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv")
+gfst.all$Year <- as.Date(gfst.all$Year)
+
+woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
+woody.all$Year <- as.Date(woody.all$Year)
+
+inwood.all <- read.csv("data/cleaned/Summarised-all_invasive-woody-cover.csv")
+inwood.all$Year <- as.Date(inwood.all$Year)
+
+ingfst.all <- read.csv("data/cleaned/Summarised-all_invasive-grassforbshrubtree-cover.csv")
+ingfst.all$Year <- as.Date(ingfst.all$Year)
+
+innat.all <- read.csv("data/cleaned/Summarised-all_invasive-native-cover.csv")
+innat.all$Year <- as.Date(innat.all$Year)
 
 # Functions ---------------------------------------------------------------
 
@@ -62,8 +87,6 @@ sw <- function(dat) {
   return(dat.sum)
 }
 
-
-###### Entire channel averages ############################################
 
 # Total plant cover -------------------------------------------------------
 
@@ -1249,407 +1272,7 @@ ingf.known.plot.nov <- ggplot(ingfs.channel.known.nov, aes(x = Year, y = mean,
 ingf.known.plot.nov
 
 
-
-###### ORD only for Ch 13 and 21 ##########################################
-
-# Total plant cover -------------------------------------------------------
-
-# ORD only for Channels 13 and 21
-ord.13 <- total.all %>% 
-  filter(Channel == "Channel 13" & str_detect(Station, "ORD"))
-ord.21 <- total.all %>% 
-  filter(Channel == "Channel 21" & str_detect(Station, "ORD"))
-ch.12.19 <- total.all %>% 
-  filter(Channel %in% c("Channel 12", "Channel 19"))
-total.ord <- rbind(ch.12.19, ord.13, ord.21)
-
-# Plot
-total.ord.channel <- total.ord %>% 
-  group_by(Channel, Year) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-total.ord.plot <- ggplot(total.ord.channel, aes(x = Year, y = mean, 
-                                                group = Channel, color = Channel, shape = Channel)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Total plant cover (ORD only)") +
-  scale_color_brewer(palette = "Set1") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-total.ord.plot
-
-# Shapiro-Wilk
-total.ord.yearchar <- total.ord %>% 
-  filter(Year != "2012-03-01") %>% 
-  ungroup() %>% 
-  filter(Channel %in% c("Channel 13", "Channel 21"))
-total.ord.yearchar$Year <- as.character(total.ord.yearchar$Year)
-total.ord.yearchar.wide <- total.ord.yearchar %>% 
-  pivot_wider(names_from = Channel, values_from = Cover)
-
-total.ord.sw <- sw(total.ord.yearchar.wide)
-noquote(apply(total.ord.sw, 2, normality))
-
-# ANOVA
-summary(aov(Cover ~ Year, data = filter(total.ord.yearchar, Channel == "Channel 13"))) # NS
-summary(aov(Cover ~ Year, data = filter(total.ord.yearchar, Channel == "Channel 21"))) # NS
-
-
-
-# Ground cover ------------------------------------------------------------
-
-# ORD only for Channels 13 and 21
-ord.13 <- ground.all %>% 
-  filter(Channel == "Channel 13" & str_detect(Station, "ORD"))
-ord.21 <- ground.all %>% 
-  filter(Channel == "Channel 21" & str_detect(Station, "ORD"))
-ch.12.19 <- ground.all %>% 
-  filter(Channel %in% c("Channel 12", "Channel 19"))
-ground.ord <- rbind(ch.12.19, ord.13, ord.21)
-
-ground.ord.channel <- ground.ord %>% 
-  group_by(Channel, Year, Common) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-ground.ord.plot <- ggplot(ground.ord.channel, 
-                          aes(x = Year, y = mean, 
-                              group = Common, color = Common, shape = Common)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Ground cover (ORD only)") +
-  scale_color_brewer(palette = "Dark2") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-ground.ord.plot
-
-
-ground.ord.channel.grs <- ground.ord.channel %>% 
-  filter(Common %in% c("Gravel", "Rock", "Soil"))
-
-ground.ord.grs.plot <- ggplot(ground.ord.channel.grs, aes(x = Year, y = mean, 
-                                                          group = Common, color = Common, shape = Common)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Ground cover (ORD only)") +
-  scale_color_brewer(palette = "Dark2") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-ground.ord.grs.plot
-
-# Shapiro-Wilk for gravel, rock, soil
-ground.ord.yearchar <- ground.ord %>% 
-  filter(Year != "2012-03-01") %>% 
-  ungroup() %>% 
-  filter(Channel %in% c("Channel 13", "Channel 21"))
-ground.ord.yearchar$Year <- as.character(ground.ord.yearchar$Year)
-ground.ord.yearchar <- ground.ord.yearchar %>% 
-  filter(Common %in% c("Gravel", "Rock", "Soil"))
-ground.ord.yearchar.wide <- ground.ord.yearchar %>% 
-  pivot_wider(names_from = c(Channel, Common), values_from = Cover)
-
-ground.ord.sw <- sw(ground.ord.yearchar.wide)
-noquote(apply(ground.ord.sw, 2, normality))
-
-soil.ord <- ground.ord.yearchar %>% 
-  filter(Common == "Soil")
-
-# Soil: ANOVA
-summary(aov(Cover ~ Year, data = filter(soil.ord, Channel == "Channel 13"))) 
-soil.ord13 <- soil.ord %>% 
-  filter(Channel == "Channel 13")
-anova.soil.ord13 <- aov(soil.ord13$Cover ~ soil.ord13$Year)
-hsd.soil.ord13 <- HSD.test(anova.soil.ord13, trt = "soil.ord13$Year")
-hsd.soil.ord13
-
-summary(aov(Cover ~ Year, data = filter(soil.ord, Channel == "Channel 21")))
-soil.ord21 <- soil.ord %>% 
-  filter(Channel == "Channel 21")
-anova.soil.ord21 <- aov(soil.ord21$Cover ~ soil.ord21$Year)
-hsd.soil.ord21 <- HSD.test(anova.soil.ord21, trt = "soil.ord21$Year")
-hsd.soil.ord21
-
-
-
-# Functional group (as collected) -----------------------------------------
-
-# ORD only for Channels 13 and 21
-ord.13 <- fungr.all %>% 
-  filter(Channel == "Channel 13" & str_detect(Station, "ORD"))
-ord.21 <- fungr.all %>% 
-  filter(Channel == "Channel 21" & str_detect(Station, "ORD"))
-ch.12.19 <- fungr.all %>% 
-  filter(Channel %in% c("Channel 12", "Channel 19"))
-fungr.ord <- rbind(ch.12.19, ord.13, ord.21)
-
-# Plot
-fungr.ord.channel <- fungr.ord %>% 
-  group_by(Channel, Year, Functional) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-fungr.ord.plot <- ggplot(fungr.ord.channel, aes(x = Year, y = mean, 
-                                                group = Functional, color = Functional, shape = Functional)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Plant cover by functional group (ORD only)") +
-  scale_color_brewer(palette = "Dark2") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-fungr.ord.plot
-
-
-
-# Functional group (gfst) -------------------------------------------------
-
-# ORD only for Channels 13 and 21
-ord.13 <- gfst.all %>% 
-  filter(Channel == "Channel 13" & str_detect(Station, "ORD"))
-ord.21 <- gfst.all %>% 
-  filter(Channel == "Channel 21" & str_detect(Station, "ORD"))
-ch.12.19 <- gfst.all %>% 
-  filter(Channel %in% c("Channel 12", "Channel 19"))
-gfst.ord <- rbind(ch.12.19, ord.13, ord.21)
-
-# Plot
-gfst.ord.channel <- gfst.ord %>% 
-  group_by(Channel, Year, gfst) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-gfst.ord.plot <- ggplot(gfst.ord.channel, 
-                        aes(x = Year, y = mean,
-                            group = gfst, color = gfst, shape = gfst)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Plant cover by functional group (ORD only)") +
-  scale_color_brewer(palette = "Dark2") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-gfst.ord.plot
-
-
-# Woody/herbaceous --------------------------------------------------------
-
-# ORD only for Channels 13 and 21
-ord.13 <- woody.all %>% 
-  filter(Channel == "Channel 13" & str_detect(Station, "ORD"))
-ord.21 <- woody.all %>% 
-  filter(Channel == "Channel 21" & str_detect(Station, "ORD"))
-ch.12.19 <- woody.all %>% 
-  filter(Channel %in% c("Channel 12", "Channel 19"))
-woody.ord <- rbind(ch.12.19, ord.13, ord.21)
-
-# Plot
-woody.ord.channel <- woody.ord %>% 
-group_by(Channel, Year, woody) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-woody.ord.plot <- ggplot(woody.ord.channel, aes(x = Year, y = mean, 
-                                        group = woody, color = woody, shape = woody)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Plant cover by woody/herbaceous (ORD only)") +
-  scale_color_brewer(palette = "Dark2") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-woody.ord.plot
-
-# Shapiro-Wilk
-woody.ord.yearchar <- woody.ord %>% 
-  filter(Year != "2012-03-01") %>% 
-  ungroup() %>% 
-  filter(Channel %in% c("Channel 13", "Channel 21"))
-woody.ord.yearchar$Year <- as.character(woody.ord.yearchar$Year)
-woody.ord.yearchar.wide <- woody.ord.yearchar %>% 
-  pivot_wider(names_from = c(Channel, woody), values_from = Cover)
-
-woody.ord.sw <- sw(woody.ord.yearchar.wide)
-noquote(apply(woody.ord.sw, 2, normality))
-
-herb.ord <- woody.ord.yearchar %>% 
-  filter(woody == "Herbaceous")
-herb.ord$Year <- gsub("-.*", "", herb.ord$Year)
-wood.ord <- woody.ord.yearchar %>% 
-  filter(woody == "Woody")
-woody.ord$Year <- gsub("-.*", "", woody.ord$Year)
-
-# Herbaceous: ANOVA
-summary(aov(Cover ~ Year, data = filter(herb.ord, Channel == "Channel 21")))
-herb.ord21 <- herb.ord %>% 
-  filter(Channel == "Channel 21")
-anova.herb.ord21 <- aov(herb.ord21$Cover ~ herb.ord21$Year)
-hsd.herb.ord21 <- HSD.test(anova.herb.ord21, trt = "herb.ord21$Year")
-hsd.herb.ord21 # why are all the groups a?
-
-# Herbaceous: Kruskal-Wallis
-herb.ord13 <- herb.ord %>% 
-  filter(Channel == "Channel 13")
-kruskal.test(Cover ~ Year, data = herb.ord13)
-dt.herb.ord13 <- dunnTest(herb.ord13$Cover ~ herb.ord13$Year, method = "bh")
-dt.herb.ord13 <- dt.herb.ord13$res
-cldList(comparison = dt.herb.ord13$Comparison,
-        p.value    = dt.herb.ord13$P.adj,
-        threshold  = 0.05) # b is biggest
-herb.ord13.letters <- herb.ord13 %>% 
-  group_by(Channel, Year) %>% 
-  summarise(mean = mean(Cover),
-            .groups = "keep") %>% 
-  arrange(desc(mean))
-herb.ord13.letters$groups <- c("a", "a", "ab", "ab", "ab", "b")
-
-
-# Invasive/native ---------------------------------------------------------
-
-# ORD only for Channels 13 and 21
-ord.13 <- innat.all %>% 
-  filter(Channel == "Channel 13" & str_detect(Station, "ORD"))
-ord.21 <- innat.all %>% 
-  filter(Channel == "Channel 21" & str_detect(Station, "ORD"))
-ch.12.19 <- innat.all %>% 
-  filter(Channel %in% c("Channel 12", "Channel 19"))
-innat.ord <- rbind(ch.12.19, ord.13, ord.21)
-
-# Plot
-innat.ord.channel <- innat.ord %>% 
-  group_by(Channel, Year, Native) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-innat.ord.plot <- ggplot(innat.ord.channel, aes(x = Year, y = mean, 
-                                                group = Native, color = Native, shape = Native)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive/native (ORD only)") +
-  scale_color_brewer(palette = "Dark2") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-innat.ord.plot
-
-
-# Invasive/native and woody/herbaceous ------------------------------------
-
-# ORD only for Channels 13 and 21
-ord.13 <- inwood.all %>% 
-  filter(Channel == "Channel 13" & str_detect(Station, "ORD"))
-ord.21 <- inwood.all %>% 
-  filter(Channel == "Channel 21" & str_detect(Station, "ORD"))
-ch.12.19 <- inwood.all %>% 
-  filter(Channel %in% c("Channel 12", "Channel 19"))
-inwood.ord <- rbind(ch.12.19, ord.13, ord.21)
-
-# Plot
-inwood.ord.channel <- inwood.ord %>% 
-  group_by(Channel, Year, inwood) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-inwood.ord.plot <- ggplot(inwood.ord.channel, 
-                          aes(x = Year, y = mean, 
-                              group = inwood, color = inwood, shape = inwood)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and woody status (ORD only)") +
-  scale_color_brewer(palette = "Dark2") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-inwood.ord.plot
-
-
-inwood.ord.channel.known <- inwood.ord.channel %>% 
-  filter(inwood %in% c("Invasive herb", "Native herb", "Native woody"))
-
-inwood.ord.known.plot <- ggplot(inwood.ord.channel.known, 
-                                aes(x = Year, y = mean, 
-                                    group = inwood, color = inwood, shape = inwood)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and woody status (ORD only)") +
-  scale_color_brewer(palette = "Dark2") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-inwood.ord.known.plot
-
-
 # Save data ---------------------------------------------------------------
 
-save.image("Cover by year and channel.RData")
+save.image("RData-RMarkdown/Cover-by-year-and-channel.RData")
 

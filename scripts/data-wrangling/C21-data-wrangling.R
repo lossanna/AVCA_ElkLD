@@ -1946,7 +1946,7 @@ c21.11_73$Station <- rep("Channel 21_Station 11 + 73 BAF", nrow(c21.11_73))
 # Combine and check for name standardization and corrections --------------
 
 all.c21 <- rbind(c21.01_07.5, c21.01_49, c21.02_15, c21.03_80, c21.04_90,
-                 c21.06_36, c21.07_49.5, c21.08_62, c21.09_99, c21.10_13,
+                 c21.06_36, c21.07_49.5, c21.07_66, c21.08_62, c21.09_99, c21.10_13,
                  c21.11_12, c21.11_24, c21.11_63, c21.11_73)
 
 names.common <- all.c21 %>% 
@@ -1970,14 +1970,11 @@ unique(filter(all.c21, Native == "Unknown native status")$Common)
 
 # Save cleaned dataframes -------------------------------------------------
 
-save(all.c21,
-     file = ".RData/C21 long all stations.RData")
-
 write.csv(all.c21,
           file = "data/cleaned/C21-cover.csv",
           row.names = FALSE)
 
 
-save.image(".RData/C21 data wrangling.RData")
+save.image("RData-RMarkdown/C21-data-wrangling.RData")
 
 

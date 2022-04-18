@@ -2291,14 +2291,11 @@ unique(filter(all.c19, Native == "Unknown native status")$Common)
 
 # Save cleaned dataframes -------------------------------------------------
 
-save(all.c19,
-     file = ".RData/C19 long all stations.RData")
-
 write.csv(all.c19,
           file = "data/cleaned/C19-cover.csv",
           row.names = FALSE)
 
 
-save.image(".RData/C19 data wrangling.RData")
+save.image("RData-RMarkdown/C19-data-wrangling.RData")
 
 

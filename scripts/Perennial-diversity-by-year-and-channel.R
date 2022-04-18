@@ -7,7 +7,8 @@ library(rcompanion)
 
 # Load data ---------------------------------------------------------------
 
-load("plant.all.RData")
+plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
+plant.all$Year <- as.Date(plant.all$Year)
 
 # Exclude March sampling with missing data sheets, and annual plants
   # annuals were not always sampled by species every year
@@ -71,8 +72,6 @@ sw <- function(dat) {
   return(dat.sum)
 }
 
-
-###### Entire channel averages ############################################
 
 # Richness ----------------------------------------------------------------
 
@@ -312,152 +311,13 @@ kruskal.test(shan ~ Year, data = filter(shannon.yearchar, Channel == "Channel 19
 
 
 
-###### ORD only for Ch 13 and 21 ##########################################
+# Save data ---------------------------------------------------------------
 
+write.csv(richness,
+          file = "data/cleaned/All-Nov_perennial-richness.csv",
+          row.names = FALSE)
+write.csv(shannon,
+          file = "data/cleaned/All-Nov_perennial-shannon.csv",
+          row.names = FALSE)
 
-# Richness ----------------------------------------------------------------
-
-# ORD only for Channels 13 and 21
-ord.13 <- plant.all.nov %>% 
-  filter(Channel == "Channel 13" & str_detect(Station, "ORD"))
-ord.21 <- plant.all.nov %>% 
-  filter(Channel == "Channel 21" & str_detect(Station, "ORD"))
-ch.12.19 <- plant.all.nov %>% 
-  filter(Channel %in% c("Channel 12", "Channel 19"))
-richness.ord <- rbind(ch.12.19, ord.13, ord.21)
-
-# By channel and station
-richness.ord <- richness.ord %>%  
-  group_by(Year, Station, Channel) %>% 
-  summarise(rich = n_distinct(Common),
-            .groups = "keep")
-
-# Channel summarised (stations averaged)
-richness.ord.channel <- richness.ord %>% 
-  group_by(Year, Channel) %>% 
-  summarise(mean = mean(rich),
-            SD = sd(rich),
-            SE = std.error(rich),
-            .groups = "keep") 
-
-# Plot
-richness.ord.plot <- ggplot(richness.ord.channel, aes(x = Year, y = mean, 
-                                                      group = Channel, color = Channel, shape = Channel)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) + 
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
-  xlab(NULL) +
-  ylab("Species no.") +
-  ggtitle("Perennial species richness (ORD only)") +
-  scale_color_brewer(palette = "Set1") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-richness.ord.plot
-
-# Shapiro-Wilk
-richness.ord.yearchar <- richness.ord %>% 
-  ungroup()
-richness.ord.yearchar$Year <- as.character(richness.ord.yearchar$Year)
-richness.ord.yearchar.wide <- richness.ord.yearchar %>% 
-  pivot_wider(names_from = Channel, values_from = rich)
-
-richness.ord.sw <- sw(richness.ord.yearchar.wide)
-noquote(apply(richness.ord.sw, 2, normality))
-
-richness.ord.yearchar$Year <- gsub("-.*", "", richness.ord.yearchar$Year)
-
-# ANOVA
-summary(aov(rich ~ Year, data = filter(richness.ord.yearchar, Channel == "Channel 12")))
-richness.ord12.yearchar <- richness.ord.yearchar %>% 
-  filter(Channel == "Channel 12")
-anova.richness.ord12 <- aov(richness.ord12.yearchar$rich ~ richness.ord12.yearchar$Year)
-hsd.richness.ord12 <- HSD.test(anova.richness.ord12, trt = "richness.ord12.yearchar$Year")
-hsd.richness.ord12 # why are all the groups a?
-
-summary(aov(rich ~ Year, data = filter(richness.ord.yearchar, Channel == "Channel 13")))
-richness.ord13.yearchar <- richness.ord.yearchar %>% 
-  filter(Channel == "Channel 13")
-anova.richness.ord13 <- aov(richness.ord13.yearchar$rich ~ richness.ord13.yearchar$Year)
-hsd.richness.ord13 <- HSD.test(anova.richness.ord13, trt = "richness.ord13.yearchar$Year")
-hsd.richness.ord13
-
-
-# Kruskal-Wallis
-richness.ord19 <- richness.ord.yearchar %>% 
-  filter(Channel == "Channel 19")
-kruskal.test(rich ~ Year, data = richness.ord19)
-dt.richness.ord19 <- dunnTest(richness.ord19$rich ~ richness.ord19$Year, method = "bh")
-dt.richness.ord19 <- dt.richness.ord19$res
-cldList(comparison = dt.richness.ord19$Comparison,
-        p.value    = dt.richness.ord19$P.adj,
-        threshold  = 0.05)
-richness.ord19.letters <- richness.ord19 %>% 
-  group_by(Channel, Year) %>% 
-  summarise(mean = mean(rich),
-            .groups = "keep") %>% 
-  arrange(desc(mean))
-richness.ord19.letters$groups <- c("a", "ab", "ab", "ab", "b", "b")
-
-kruskal.test(rich ~ Year, data = filter(richness.ord.yearchar, Channel == "Channel 21"))
-
-
-
-# Shannon diversity -------------------------------------------------------
-
-# By channel and station
-shannon.ord <- plant.all.nov %>%  
-  group_by(Year, Station, Channel) %>% 
-  summarise(shan = diversity(Cover),
-            .groups = "keep")
-
-# Channel summarised (stations averaged)
-shannon.ord.channel <- shannon.ord %>% 
-  group_by(Year, Channel) %>% 
-  summarise(mean = mean(shan),
-            SD = sd(shan),
-            SE = std.error(shan),
-            .groups = "keep") 
-
-# Plot
-shannon.ord.plot <- ggplot(shannon.ord.channel, aes(x = Year, y = mean, 
-                                                    group = Channel, color = Channel, shape = Channel)) +
-  geom_line(size = 1) +
-  geom_point(size = 3) + 
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
-                position = position_dodge(0.05)) +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
-  xlab(NULL) +
-  ylab("Shannon diversity index") +
-  ggtitle("Perennial plant diversity (ORD only)") +
-  scale_color_brewer(palette = "Set1") +
-  theme_bw(base_size = 13) +
-  theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
-shannon.ord.plot
-
-# Shapiro-Wilk
-shannon.ord.yearchar <- shannon.ord %>% 
-  ungroup()
-shannon.ord.yearchar$Year <- as.character(shannon.ord.yearchar$Year)
-shannon.ord.yearchar.wide <- shannon.ord.yearchar %>% 
-  pivot_wider(names_from = Channel, values_from = shan)
-
-shannon.ord.sw <- sw(shannon.ord.yearchar.wide)
-noquote(apply(shannon.ord.sw, 2, normality))
-
-shannon.ord.yearchar$Year <- gsub("-.*", "", shannon.ord.yearchar$Year)
-
-# ANOVA
-summary(aov(shan ~ Year, data = filter(shannon.ord.yearchar, Channel == "Channel 12")))
-summary(aov(shan ~ Year, data = filter(shannon.ord.yearchar, Channel == "Channel 13")))
-summary(aov(shan ~ Year, data = filter(shannon.ord.yearchar, Channel == "Channel 21")))
-
-# Kruskal-Wallis
-kruskal.test(shan ~ Year, data = shannon.ord19)
-
-
-
-save.image(("Perennial diversity by year and channel.RData"))
+save.image("RData-RMarkdown/Perennial-diversity-by-year-and-channel.RData")
