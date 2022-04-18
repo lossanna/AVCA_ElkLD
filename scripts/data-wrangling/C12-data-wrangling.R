@@ -1915,10 +1915,14 @@ unique(filter(all.c12, Native == "Unknown native status")$Common)
 
 
 
-# Save cleaned dataframes as .RData ---------------------------------------
+# Save cleaned dataframes -------------------------------------------------
 
 save(all.c12,
      file = ".RData/C12 long all stations.RData")
+
+write.csv(all.c12,
+          file = "data/cleaned/C12-cover.csv",
+          row.names = FALSE)
 
 
 save.image(".RData/C12 data wrangling.RData")

@@ -205,13 +205,41 @@ for(i in 1:nrow(ingfst.all)) {
 
   
 
-# Save as .RData ----------------------------------------------------------
+# Save dataframes ---------------------------------------------------------
 
 save(plant.all, ground.all, total.all, fungr.all, gfst.all, woody.all, 
      inwood.all, ingfst.all, innat.all,
      file = ".RData/Summarised plant and ground cover.RData")
 
 save(plant.all, file = ".RData/plant.all.RData")
+
+write.csv(plant.all,
+          file = "data/cleaned/Summarised-all_plant-species-cover.csv",
+          row.names = FALSE)
+write.csv(ground.all,
+          file = "data/cleaned/Summarised-all_ground-cover.csv",
+          row.names = FALSE)
+write.csv(total.all,
+          file = "data/cleaned/Summarised-all_total-plant-cover.csv",
+          row.names = FALSE)
+write.csv(fungr.all,
+          file = "data/cleaned/Summarised-all_functional-group-cover.csv",
+          row.names = FALSE)
+write.csv(gfst.all,
+          file = "data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv",
+          row.names = FALSE)
+write.csv(woody.all,
+          file = "data/cleaned/Summarised-all_woody-herb-cover.csv",
+          row.names = FALSE)
+write.csv(inwood.all,
+          file = "data/cleaned/Summarised-all_invasive-woody-cover.csv",
+          row.names = FALSE)
+write.csv(ingfst.all,
+          file = "data/cleaned/Summarised-all_invasive-grassforbshrubtree-cover.csv",
+          row.names = FALSE)
+write.csv(innat.all,
+          file = "data/cleaned/Summarised-all_invasive-native-cover.csv",
+          row.names = FALSE)
 
 
 save.image(".RData/Summarise all channels.RData")
