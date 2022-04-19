@@ -93,7 +93,6 @@ ggqqplot(dat.2021$rich)
 ggqqplot(dat.2021$shan)
 
 
-
 # Log transformation ------------------------------------------------------
 
 dat.2021 <- dat.2021 %>% 
@@ -106,13 +105,13 @@ hist(dat.2021$TC_log, breaks = 10)
 ggqqplot(dat.2021$TN_log)
 ggqqplot(dat.2021$TC_log)
 
+
 # Bivariate scatterplot matrix --------------------------------------------
 
 pairs(~ Cover + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
 pairs(~ Herbaceous + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
 pairs(~ rich + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
 pairs(~ shan + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
-
 
 
 # Multiple linear regression ----------------------------------------------
