@@ -3,38 +3,38 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-plant <- read_xlsx("data_wrangling/Plant functional groups by common name.xlsx")
+plant <- read_xlsx("scripts/data-wrangling/Plant-functional-groups-by-common-name.xlsx")
 
 # Manual changes to Excel sheets:
   # Changed 4+65 because some rows needed to be deleted and inserted
   # Added "CH" to Nov 2013 columns to match raw data sheets
-raw.c12.1_04 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.1_04 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "1 + 4")
-raw.c12.1_52 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.1_52 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "1 + 52")
-raw.c12.1_83 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.1_83 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "1 + 83")
-raw.c12.2_63 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.2_63 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "2 + 63")
-raw.c12.2_98 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.2_98 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "2 + 98")
-raw.c12.3_93 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.3_93 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "3 + 93")
-raw.c12.4_00 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.4_00 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "4 + 00")
-raw.c12.4_09 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.4_09 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                           sheet = "4 + 09")
-raw.c12.4_56 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.4_56 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "4 + 56")
-raw.c12.4_65 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.4_65 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "4 + 65")
-raw.c12.5_13 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.5_13 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "5 +13")
-raw.c12.5_48 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.5_48 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "5 + 48")
-raw.c12.6_30 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.6_30 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "6 + 30")
-raw.c12.6_93 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c12.6_93 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "6 + 97")
 
 names.raw <- c("Common", "Scientific", "Nov21_2L", "Nov21_1L", "Nov21_1R", "Nov21_2R",
@@ -135,7 +135,7 @@ for(i in 1:nrow(c12.1_04)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.1_04 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -271,7 +271,7 @@ for(i in 1:nrow(c12.1_52)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.1_52 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -391,7 +391,7 @@ for(i in 1:nrow(c12.1_83)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.1_83 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -526,7 +526,7 @@ for(i in 1:nrow(c12.2_63)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.2_63 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -656,7 +656,7 @@ for(i in 1:nrow(c12.2_98)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.2_98 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -784,7 +784,7 @@ for(i in 1:nrow(c12.3_93)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.3_93 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -930,7 +930,7 @@ for(i in 1:nrow(c12.4_00)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.4_00 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1060,7 +1060,7 @@ for(i in 1:nrow(c12.4_09)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.4_09 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1196,7 +1196,7 @@ for(i in 1:nrow(c12.4_56)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.4_56 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover <- cover %>% 
@@ -1315,7 +1315,7 @@ for(i in 1:nrow(c12.4_65)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.4_65 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1446,7 +1446,7 @@ for(i in 1:nrow(c12.5_13)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.5_13 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1577,7 +1577,7 @@ for(i in 1:nrow(c12.5_48)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.5_48 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1709,7 +1709,7 @@ for(i in 1:nrow(c12.6_30)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.6_30 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1843,7 +1843,7 @@ for(i in 1:nrow(c12.6_93)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c12.6_93 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"

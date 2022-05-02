@@ -124,3 +124,11 @@ check_model(totcover.lm) # maximize plots window if get "Error in grid.call"
 totcover.lm <- lm(Cover ~ TN_log + OM_perc + Elev_Diff, data = dat.2021)
 
 check_model(totcover.lm)
+
+summary(totcover.lm)
+
+
+
+# Save --------------------------------------------------------------------
+
+save.image("RData-RMarkdown/Data-screening_2021.RData")

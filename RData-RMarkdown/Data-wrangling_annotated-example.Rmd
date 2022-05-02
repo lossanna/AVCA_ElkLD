@@ -1,0 +1,117 @@
+---
+title: "Data wrangling annotated example"
+author: "Lia Ossanna"
+date: "5/2/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+load("C12-data-wrangling.RData")
+library(tidyverse)
+```
+
+# Introduction
+- This document explains the data wrangling process for the Altar Valley Conservation Alliance Elkhorn-Las Delicias Demo project.
+- Data were originally collected on hard copy data sheets by hand in the field, and transcribed to Excel sheets, which were then given to me. Each channel has its own Excel spreadsheet, and each station has its own tab within each sheet.
+  - The original data sheets are located in `AVCA_ElkLD/data/Excel_raw/`.
+- I made minor changes to the Excel sheets and saved them as separate files under `AVCA_ElkLD/data/Excel_LO_edited/`. These sheets each have a README tab that explains the changes. I tried to keep as many changes as possible to be done in R, but some edits were necessary to add to the Excel sheets.
+  - In particular, cover of annual forbs and grasses were sometimes documented at the species level, but sometimes an overall value was made and check marks were written below to indicate the species present. These check marks were not always documented in the original Excel sheets, so I went through the original hard copy data sheets and noted where they existed in my version of the Excel spreadsheets. When there was more than one species present, I divided the total cover value evenly between the checked species.
+- Data sheets were formatted such that each functional group had a set list of common species already written into rows, but they were not always present at every site, so there were many empty cells. These are dealt with in the `Summarise-all-channels.R` script.
+- Data wrangling included:
+  - Converting to R-friendly format.
+  - Resolving the check mark issue (marked as CH in my Excel sheets) by manually assigning values as appropriate.
+  - Correcting common and scientific names (standardization and spelling).
+  - Assigning functional group, as defined during data collection.
+  - Assigning native status, which I determined using USDA Plants (some species were marked as unknown when I couldn't determine what species it actually was).
+  - Marking trace values as 0.5 and no cover as 0.
+- This annotated example goes through only one station, Channel 12 Station 1 + 4. See scripts for full analysis. Annotations refer to chunk of code above.
+
+
+# Setup
+```{r, eval=FALSE}
+library(readxl)
+library(tidyverse)
+
+# Load data ---------------------------------------------------------------
+
+plant <- read_xlsx("scripts/data-wrangling/Plant-functional-groups-by-common-name.xlsx")
+
+# Manual changes to Excel sheets:
+  # Changed 4+65 because some rows needed to be deleted and inserted
+  # Added "CH" to Nov 2013 columns to match raw data sheets
+raw.c12.1_04 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx", sheet = "1 + 4")
+
+names.raw <- c("Common", "Scientific", "Nov21_2L", "Nov21_1L", "Nov21_1R", "Nov21_2R",
+               "Nov18_2L", "Nov18_1L", "Nov18_1R", "Nov18_2R",
+               "Mar12_3L", "Mar12_2L", "Mar12_1L", "Mar12_1R", "Mar12_2R", "Mar12_3R",
+               "Nov12_3L", "Nov12_2L", "Nov12_1L", "Nov12_1R", "Nov12_2R", "Nov12_3R",
+               "Nov13_3L", "Nov13_2L", "Nov13_1L", "Nov13_1R", "Nov13_2R", "Nov13_3R",
+               "Nov14_2L", "Nov14_1L", "Nov14_1R", "Nov14_2R",
+               "Nov15_2L", "Nov15_1L", "Nov15_1R", "Nov15_2R") 
+```
+
+- The `data_wrangling/Plant-functional-groups-by-common-name.xlsx` is a spreadsheet with the species categorized by functional group and native status using the common name. Common names were used because there were multiple species with no scientific name, but having no common name was rare. This Excel sheet is essentially a lazy way of creating multiple vectors of names; it should not be treated as a dataframe. See below.
+```{r}
+head(plant)
+```
+
+# Channel 12 Station 1 + 4
+```{r}
+# C12 1 + 4 ---------------------------------------------------------------
+
+# Remove header, rename columns, and remove unnecessary rows
+c12.1_04 <- raw.c12.1_04[-c(1:7), -c(37:42)]
+colnames(c12.1_04) <- names.raw
+
+c12.1_04 <- c12.1_04 %>% 
+  filter(!is.na(Common)) %>% 
+  filter(!str_detect(Common, "Total")) %>% 
+  filter(!str_detect(Common, "Perennial")) %>% 
+  filter(!Common %in% c("Annual Forbs", "Shrubs", "Trees", "Ground Cover"))
+
+```
+- This is standard code to transform the Excel sheet into an R-friendly dataframe.
+
+```{r}
+# Reassign CHs with values for Nov 2013
+which(c12.1_04 == "CH", arr.ind = TRUE)
+
+c12.1_04[11, 23] <- "0"
+c12.1_04[12, 23] <- "1.25"
+c12.1_04[13, 23] <- "1.25"
+
+c12.1_04[11, 26] <- "0"
+c12.1_04[14, 26] <- "2.5"
+
+c12.1_04[11, 27] <- "0"
+c12.1_04[14, 27] <- "2.5"
+
+c12.1_04[11, 28] <- "0"
+c12.1_04[13, 28] <- "1.25"
+c12.1_04[14, 28] <- "1.25"
+```
+- These are corrections for the check mark problem discussed earlier. I manually input values into rows specific to species rather than having values in the "Annual grasses" or "Annual forbs" rows (how it was originally).
+
+```{r}
+# Standardize common names
+c12.1_04$Common[c12.1_04$Common == "Annual Grass"] <- "Annual grass (year summed)"
+c12.1_04$Common[c12.1_04$Common == "Cup grass"] <- "Cupgrass"
+c12.1_04$Common[c12.1_04$Common == "Panic grass"] <- "Annual panic"
+
+# Assign missing scientific names (when known) and correct spelling
+c12.1_04$Scientific[c12.1_04$Scientific == "Ambrosia confertifolia"] <- "Ambrosia confertiflora"
+c12.1_04$Scientific[c12.1_04$Scientific == "bouteloua barbata?"] <- "Bouteloua barbata"
+c12.1_04$Scientific[c12.1_04$Scientific == "panicum sp."] <- "Panicum"
+```
+- Common names had to be standardized to be recognized as a single species.
+- Scientific names were sometimes misspelled.
+- A complete list of corrections was compiled in `AVCA_ElkLD/scripts/data-wrangling/Fixes-for=common-and-scientific-names.R`. Corrections were not automated (i.e., writing a function) so there would be a clear record of the corrections made for each station.
+
+```{r}
+# Rename unknowns
+which(str_detect(c12.1_04$Common, "Unk") == TRUE)
+which(str_detect(c12.1_04$Common, "2021") == TRUE)
+c12.1_04[17, 1] <- "Unknown annual grass 1, C12"
+```
+- Unknowns were renamed by their functional group and channel, and given a further number if they differed from other unknowns, as indicated in the original Excel data sheets.

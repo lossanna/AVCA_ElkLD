@@ -3,41 +3,41 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-plant <- read_xlsx("data_wrangling/Plant functional groups by common name.xlsx")
+plant <- read_xlsx("scripts/data-wrangling/Plant-functional-groups-by-common-name.xlsx")
 
-raw.c19.01_04 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.01_04 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                              sheet = "1 + 04")
-raw.c19.02_04 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.02_04 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "2 + 04")
-raw.c19.02_52 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.02_52 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "2 +52")
-raw.c19.03_63 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.03_63 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "3 + 63")
-raw.c19.03_98 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.03_98 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "3 + 98")
-raw.c19.05_00 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.05_00 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "5 + 00")
-raw.c19.05_09 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.05_09 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                              sheet = "5 + 09")
-raw.c19.05_62 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.05_62 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "5 + 62")
-raw.c19.06_13 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.06_13 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "6 + 13")
-raw.c19.06_97 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.06_97 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "6 + 97")
-raw.c19.07_30 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.07_30 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "7 + 30")
-raw.c19.07_50 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.07_50 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "7 + 50")
-raw.c19.07_97 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.07_97 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "7 + 97")
-raw.c19.09_05 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.09_05 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "9 + 05")
-raw.c19.09_26 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.09_26 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "9 +26")
-raw.c19.09_68 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.09_68 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "9 + 68")
-raw.c19.10_98 <- read_xlsx("data_Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
+raw.c19.10_98 <- read_xlsx("data/Excel_LO_edited/AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx",
                            sheet = "10 + 80")
 
 names.raw <- c("Common", "Scientific", "Nov21_2L", "Nov21_1L", "Nov21_1R", "Nov21_2R",
@@ -119,7 +119,7 @@ for(i in 1:nrow(c19.01_04)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.01_04 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -245,7 +245,7 @@ for(i in 1:nrow(c19.02_04)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.02_04 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -393,7 +393,7 @@ for(i in 1:nrow(c19.02_52)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.02_52 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -527,7 +527,7 @@ for(i in 1:nrow(c19.03_63)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.03_63 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -654,7 +654,7 @@ for(i in 1:nrow(c19.03_98)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.03_98 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -794,7 +794,7 @@ for(i in 1:nrow(c19.05_00)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.05_00 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -915,7 +915,7 @@ for(i in 1:nrow(c19.05_09)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.05_09 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1052,7 +1052,7 @@ for(i in 1:nrow(c19.05_62)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.05_62 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1185,7 +1185,7 @@ for(i in 1:nrow(c19.06_13)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.06_13 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1309,7 +1309,7 @@ for(i in 1:nrow(c19.06_97)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.06_97 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1446,7 +1446,7 @@ for(i in 1:nrow(c19.07_30)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.07_30 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1587,7 +1587,7 @@ for(i in 1:nrow(c19.07_50)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.07_50 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1711,7 +1711,7 @@ for(i in 1:nrow(c19.07_97)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.07_97 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1838,7 +1838,7 @@ for(i in 1:nrow(c19.09_05)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.09_05 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -1965,7 +1965,7 @@ for(i in 1:nrow(c19.09_26)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.09_26 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -2086,7 +2086,7 @@ for(i in 1:nrow(c19.09_68)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.09_68 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
@@ -2216,7 +2216,7 @@ for(i in 1:nrow(c19.10_98)) {
   }
 }
 
-# Replace NAs with 0 and "t" with 0.05 for cover
+# Replace NAs with 0 and "t" with 0.5 for cover
 cover <- c19.10_98 %>% 
   select(!c("Common", "Scientific", "Functional", "Native"))
 cover[is.na(cover)] <- "0"
