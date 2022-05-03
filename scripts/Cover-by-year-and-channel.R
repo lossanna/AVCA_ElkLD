@@ -430,6 +430,56 @@ soil21.letters <- soil21 %>%
 soil21.letters$groups <- c("a", "ab", "ab", "ab", "b", "c")
 
 
+# Plot Nov and soil only with year aligned on x-axis and ANOVA/KW letters added
+letters <- data.frame(label = c(soil12.letters$possible.groups, 
+                                hsd.soil13$groups[ , "groups"],
+                                hsd.soil19$groups[ , "groups"],
+                                soil21.letters$groups),
+                      channel.trt = c(rep("Channel 12: No treatment", 6),
+                                      rep("Channel 13: In-channel treatment", 6),
+                                      rep("Channel 19: Upland treatment", 6),
+                                      rep("Channel 21: In-channel treatment", 6)),
+                      x = rep(ground.channel.soil.nov$year.xaxis[1:6], 4),
+                      y = c(40, 52, 42, 60, 40, 53,
+                            65, 61, 57, 40, 32, 35,
+                            50, 55, 40, 63, 50, 40,
+                            53, 59, 50, 47, 53, 25))
+
+anova.kw.lab <- data.frame(label = c("Kruskal-Wallis", "ANOVA", "ANOVA", "Kruskal-Wallis"),
+                           channel.trt = c("Channel 12: No treatment",
+                                           "Channel 13: In-channel treatment",
+                                           "Channel 19: Upland treatment",
+                                           "Channel 21: In-channel treatment"),
+                           x = c(rep(as.Date("2020-01-01"), 4)),
+                           y = c(65, 65, 65, 65))
+
+ground.soil.plot.nov.letters <- ggplot(ground.channel.soil.nov, 
+                                       aes(x = year.xaxis, y = mean, 
+                                           group = channel.trt, color = channel.trt)) +
+  geom_line(size = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~channel.trt) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Soil cover") +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  geom_text(data = anova.kw.lab,
+            mapping = aes(x = x, y = y, label = label),
+            size = 3, color = "black")
+ground.soil.plot.nov.letters
+
+pdf("output_figs/Soil-cover.pdf", width = 7, height = 5)
+ground.soil.plot.nov.letters
+dev.off()
+
+
 
 # Functional group (as collected) -----------------------------------------
 
@@ -720,6 +770,7 @@ woody19.letters <- woody19 %>%
 woody19.letters$groups <- c("a", "a", "a", "ab", "ab", "b")
 
 
+
 # Herbaceous (plots) ------------------------------------------------------
 
 # Find channel averages by year
@@ -747,6 +798,54 @@ herb.plot.nov <- ggplot(herb.channel.nov, aes(x = year.xaxis, y = mean,
   theme(legend.position = "none") +
   facet_wrap(~channel.trt)
 herb.plot.nov
+
+# Plot Nov only with year aligned on x-axis and ANOVA/KW letters added
+letters <- data.frame(label = c(herb12.letters$groups, herb13.letters$groups,
+                                herb19.letters$groups,
+                                hsd.herb21$groups[ , "groups"]),
+                      channel.trt = c(rep("Channel 12: No treatment", 6),
+                                      rep("Channel 13: In-channel treatment", 6),
+                                      rep("Channel 19: Upland treatment", 6),
+                                      rep("Channel 21: In-channel treatment", 6)),
+                      x = rep(ground.channel.soil.nov$year.xaxis[1:6], 4),
+                      y = c(20, 25, 15, 25, 30, 23,
+                            20, 15, 22, 20, 38, 33,
+                            20, 12, 25, 8, 13, 28,
+                            15, 13, 23, 18, 25, 25))
+
+anova.kw.lab <- data.frame(label = c("Kruskal-Wallis", "Kruskal-Wallis", 
+                                     "Kruskal-Wallis", "ANOVA"),
+                           channel.trt = c("Channel 12: No treatment",
+                                           "Channel 13: In-channel treatment",
+                                           "Channel 19: Upland treatment",
+                                           "Channel 21: In-channel treatment"),
+                           x = c(rep(as.Date("2020-01-01"), 4)),
+                           y = c(8, 8, 8, 8))
+
+herb.plot.nov.letters <- ggplot(herb.channel.nov, aes(x = year.xaxis, y = mean, 
+                                                      group = channel.trt, color = channel.trt)) +
+  geom_line(size = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  facet_wrap(~channel.trt) +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  geom_text(data = anova.kw.lab,
+            mapping = aes(x = x, y = y, label = label),
+            size = 3, color = "black")
+herb.plot.nov.letters
+
+pdf("output_figs/Herbaceous-cover.pdf", width = 7, height = 5)
+herb.plot.nov.letters
+dev.off()
 
 
 
