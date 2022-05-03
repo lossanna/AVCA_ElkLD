@@ -2,7 +2,10 @@
 title: "Data wrangling annotated example"
 author: "Lia Ossanna"
 date: "5/2/2022"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE, message=FALSE}
@@ -58,7 +61,7 @@ names.raw <- c("Common", "Scientific", "Nov21_2L", "Nov21_1L", "Nov21_1R", "Nov2
 head(plant)
 ```
 
-# Channel 12 Station 1 + 4
+# Channel 12 Station 1 + 4 example
 ```{r}
 # C12 1 + 4 ---------------------------------------------------------------
 
