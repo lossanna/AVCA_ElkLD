@@ -18,6 +18,7 @@ library(tidyverse)
 - I made minor changes to the Excel sheets and saved them as separate files under `AVCA_ElkLD/data/Excel_LO_edited/`. These sheets each have a README tab that explains the changes. I tried to keep as many changes as possible to be done in R, but some edits were necessary to add to the Excel sheets.
   - In particular, cover of annual forbs and grasses were sometimes documented at the species level, but sometimes an overall value was made and check marks were written below to indicate the species present. These check marks were not always documented in the original Excel sheets, so I went through the original hard copy data sheets and noted where they existed in my version of the Excel spreadsheets. When there was more than one species present, I divided the total cover value evenly between the checked species.
 - Data sheets were formatted such that each functional group had a set list of common species already written into rows, but they were not always present at every site, so there were many empty cells. These are dealt with in the `Summarise-all-channels.R` script.
+- Cover was measured in 4 (sometimes 6) quadrats at each station, labeled 1L (left and adjacent to transect tape when looking upstream), 2L (1-2 m left of transect tape), 1R (right and adjacent to transect tape), and 2R (1-2 m right of transect tape).
 - Data wrangling included:
   - Converting to R-friendly format.
   - Resolving the check mark issue (marked as CH in my Excel sheets) by manually assigning values as appropriate.
@@ -25,6 +26,7 @@ library(tidyverse)
   - Assigning functional group, as defined during data collection.
   - Assigning native status, which I determined using USDA Plants (some species were marked as unknown when I couldn't determine what species it actually was).
   - Marking trace values as 0.5 and no cover as 0.
+  - Formatting the data as tidy (pivoting wide to long).
 - This annotated example goes through only one station, Channel 12 Station 1 + 4. See scripts for full analysis. Annotations refer to chunk of code above.
 
 
@@ -115,3 +117,105 @@ which(str_detect(c12.1_04$Common, "2021") == TRUE)
 c12.1_04[17, 1] <- "Unknown annual grass 1, C12"
 ```
 - Unknowns were renamed by their functional group and channel, and given a further number if they differed from other unknowns, as indicated in the original Excel data sheets.
+
+```{r}
+# Assign functional groups
+c12.4_00 <- c12.4_00 %>% 
+  mutate(Functional = rep(NA, nrow(c12.4_00)))
+for(i in 1:nrow(c12.4_00)) {
+  if(c12.4_00$Common[i] %in% plant$per.grass == TRUE) {
+    c12.4_00$Functional[i] <- "Perennial grass"
+  } else if(c12.4_00$Common[i] %in% plant$an.grass == TRUE) {
+    c12.4_00$Functional[i] <- "Annual grass"
+  } else if(c12.4_00$Common[i] %in% plant$per.forb == TRUE) {
+    c12.4_00$Functional[i] <- "Perennial forb"
+  } else if(c12.4_00$Common[i] %in% plant$an.forb == TRUE) {
+    c12.4_00$Functional[i] <- "Annual forb"
+  } else if(c12.4_00$Common[i] %in% plant$shrub == TRUE) {
+    c12.4_00$Functional[i] <- "Shrub"
+  } else if(c12.4_00$Common[i] %in% plant$tree == TRUE) {
+    c12.4_00$Functional[i] <- "Tree"
+  } else if(c12.4_00$Common[i] %in% plant$ground == TRUE) {
+    c12.4_00$Functional[i] <- "Ground cover"
+  } else {
+    c12.4_00$Functional[i] <- "assign unknown"
+  }
+}
+
+c12.4_00[20, "Functional"] <- "Annual grass"
+count(c12.4_00, Functional)
+```
+- Assign functional group based on the `plant` lists. Ensure there are no "assign unknown".
+
+```{r}
+# Assign native status
+c12.4_00 <- c12.4_00 %>% 
+  mutate(Native = rep(NA, nrow(c12.4_00)))
+for(i in 1:nrow(c12.4_00)) {
+  if(c12.4_00$Common[i] %in% plant$invasive == TRUE) {
+    c12.4_00$Native[i] <- "Invasive"
+  } else if(c12.4_00$Common[i] %in% plant$native == TRUE) {
+    c12.4_00$Native[i] <- "Native"
+  } else if(c12.4_00$Common[i] %in% plant$ground == TRUE) {
+    c12.4_00$Native[i] <- "Ground cover"
+  } else {
+    c12.4_00$Native[i] <- "Unknown native status"
+  }
+}
+```
+- Assign native status. There will be unknowns.
+
+```{r, eval=FALSE}
+# Replace NAs with 0 and "t" with 0.5 for cover
+cover <- c12.4_00 %>% 
+  select(!c("Common", "Scientific", "Functional", "Native"))
+cover[is.na(cover)] <- "0"
+cover[cover == "t"] <- "0.5"
+cover <- cover %>% 
+  mutate_if(is.character, as.numeric)
+
+# Combine dataframes
+c12.4_00 <- c12.4_00 %>% 
+  select(c("Common", "Scientific", "Functional", "Native"))
+c12.4_00 <- cbind(c12.4_00, cover)
+
+wide.c12.4_00 <- c12.4_00
+```
+- Make a separate dataframe of just the cover columns to convert empty cells to 0 and trace values to 0.5. Convert to numeric.
+- Combine dataframes.
+
+```{r, eval=FALSE}
+# Pivot data from wide to long
+c12.4_00 <- wide.c12.4_00
+c12.4_00 <- c12.4_00 %>% 
+  pivot_longer(!c("Common", "Scientific", "Functional", "Native"), 
+               names_to = "Measurement", values_to = "Cover") 
+c12.4_00 <- c12.4_00 %>% 
+  separate(Measurement, c("Year", "Quadrat"), "_")
+
+for(i in 1:nrow(c12.4_00)) {
+  if(c12.4_00$Year[i] == "Mar12") {
+    c12.4_00$Year[i] <- "2012-03-1"
+  } else if(c12.4_00$Year[i] == "Nov12") {
+    c12.4_00$Year[i] <- "2012-11-01"
+  } else if(c12.4_00$Year[i] == "Nov13") {
+    c12.4_00$Year[i] <- "2013-11-01"
+  } else if(c12.4_00$Year[i] == "Nov14") {
+    c12.4_00$Year[i] <- "2014-11-01"
+  } else if(c12.4_00$Year[i] == "Nov15") {
+    c12.4_00$Year[i] <- "2015-11-01"
+  } else if(c12.4_00$Year[i] == "Nov18") {
+    c12.4_00$Year[i] <- "2018-11-01"
+  } else {
+    c12.4_00$Year[i] <- "2021-11-01"
+  }
+}
+c12.4_00$Year <- as.Date(c12.4_00$Year, format = "%Y-%m-%d")
+
+# Add channel and station
+c12.4_00$Station <- rep("Channel 12_Station 4 + 00", nrow(c12.4_00))
+```
+- Pivot data from wide to long (each column is currently a different year and quadrat).
+- Make a separate year column by splitting the column names.
+- Format the years as dates. 
+- Add channel and station number.

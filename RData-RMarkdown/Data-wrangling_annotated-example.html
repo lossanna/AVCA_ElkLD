@@ -188,6 +188,7 @@ pre code {
 <li>In particular, cover of annual forbs and grasses were sometimes documented at the species level, but sometimes an overall value was made and check marks were written below to indicate the species present. These check marks were not always documented in the original Excel sheets, so I went through the original hard copy data sheets and noted where they existed in my version of the Excel spreadsheets. When there was more than one species present, I divided the total cover value evenly between the checked species.</li>
 </ul></li>
 <li>Data sheets were formatted such that each functional group had a set list of common species already written into rows, but they were not always present at every site, so there were many empty cells. These are dealt with in the <code>Summarise-all-channels.R</code> script.</li>
+<li>Cover was measured in 4 (sometimes 6) quadrats at each station, labeled 1L (left and adjacent to transect tape when looking upstream), 2L (1-2 m left of transect tape), 1R (right and adjacent to transect tape), and 2R (1-2 m right of transect tape).</li>
 <li>Data wrangling included:
 <ul>
 <li>Converting to R-friendly format.</li>
@@ -196,6 +197,7 @@ pre code {
 <li>Assigning functional group, as defined during data collection.</li>
 <li>Assigning native status, which I determined using USDA Plants (some species were marked as unknown when I couldn’t determine what species it actually was).</li>
 <li>Marking trace values as 0.5 and no cover as 0.</li>
+<li>Formatting the data as tidy (pivoting wide to long).</li>
 </ul></li>
 <li>This annotated example goes through only one station, Channel 12 Station 1 + 4. See scripts for full analysis. Annotations refer to chunk of code above.</li>
 </ul>
@@ -299,6 +301,115 @@ which(str_detect(c12.1_04$Common, &quot;Unk&quot;) == TRUE)</code></pre>
 <pre class="r"><code>c12.1_04[17, 1] &lt;- &quot;Unknown annual grass 1, C12&quot;</code></pre>
 <ul>
 <li>Unknowns were renamed by their functional group and channel, and given a further number if they differed from other unknowns, as indicated in the original Excel data sheets.</li>
+</ul>
+<pre class="r"><code># Assign functional groups
+c12.4_00 &lt;- c12.4_00 %&gt;% 
+  mutate(Functional = rep(NA, nrow(c12.4_00)))
+for(i in 1:nrow(c12.4_00)) {
+  if(c12.4_00$Common[i] %in% plant$per.grass == TRUE) {
+    c12.4_00$Functional[i] &lt;- &quot;Perennial grass&quot;
+  } else if(c12.4_00$Common[i] %in% plant$an.grass == TRUE) {
+    c12.4_00$Functional[i] &lt;- &quot;Annual grass&quot;
+  } else if(c12.4_00$Common[i] %in% plant$per.forb == TRUE) {
+    c12.4_00$Functional[i] &lt;- &quot;Perennial forb&quot;
+  } else if(c12.4_00$Common[i] %in% plant$an.forb == TRUE) {
+    c12.4_00$Functional[i] &lt;- &quot;Annual forb&quot;
+  } else if(c12.4_00$Common[i] %in% plant$shrub == TRUE) {
+    c12.4_00$Functional[i] &lt;- &quot;Shrub&quot;
+  } else if(c12.4_00$Common[i] %in% plant$tree == TRUE) {
+    c12.4_00$Functional[i] &lt;- &quot;Tree&quot;
+  } else if(c12.4_00$Common[i] %in% plant$ground == TRUE) {
+    c12.4_00$Functional[i] &lt;- &quot;Ground cover&quot;
+  } else {
+    c12.4_00$Functional[i] &lt;- &quot;assign unknown&quot;
+  }
+}
+
+c12.4_00[20, &quot;Functional&quot;] &lt;- &quot;Annual grass&quot;
+count(c12.4_00, Functional)</code></pre>
+<pre><code>## # A tibble: 8 x 2
+##   Functional          n
+##   &lt;chr&gt;           &lt;int&gt;
+## 1 Annual forb        68
+## 2 Annual grass      341
+## 3 assign unknown     34
+## 4 Ground cover      170
+## 5 Perennial forb    170
+## 6 Perennial grass   339
+## 7 Shrub             204
+## 8 Tree               68</code></pre>
+<ul>
+<li>Assign functional group based on the <code>plant</code> lists. Ensure there are no “assign unknown”.</li>
+</ul>
+<pre class="r"><code># Assign native status
+c12.4_00 &lt;- c12.4_00 %&gt;% 
+  mutate(Native = rep(NA, nrow(c12.4_00)))
+for(i in 1:nrow(c12.4_00)) {
+  if(c12.4_00$Common[i] %in% plant$invasive == TRUE) {
+    c12.4_00$Native[i] &lt;- &quot;Invasive&quot;
+  } else if(c12.4_00$Common[i] %in% plant$native == TRUE) {
+    c12.4_00$Native[i] &lt;- &quot;Native&quot;
+  } else if(c12.4_00$Common[i] %in% plant$ground == TRUE) {
+    c12.4_00$Native[i] &lt;- &quot;Ground cover&quot;
+  } else {
+    c12.4_00$Native[i] &lt;- &quot;Unknown native status&quot;
+  }
+}</code></pre>
+<ul>
+<li>Assign native status. There will be unknowns.</li>
+</ul>
+<pre class="r"><code># Replace NAs with 0 and &quot;t&quot; with 0.5 for cover
+cover &lt;- c12.4_00 %&gt;% 
+  select(!c(&quot;Common&quot;, &quot;Scientific&quot;, &quot;Functional&quot;, &quot;Native&quot;))
+cover[is.na(cover)] &lt;- &quot;0&quot;
+cover[cover == &quot;t&quot;] &lt;- &quot;0.5&quot;
+cover &lt;- cover %&gt;% 
+  mutate_if(is.character, as.numeric)
+
+# Combine dataframes
+c12.4_00 &lt;- c12.4_00 %&gt;% 
+  select(c(&quot;Common&quot;, &quot;Scientific&quot;, &quot;Functional&quot;, &quot;Native&quot;))
+c12.4_00 &lt;- cbind(c12.4_00, cover)
+
+wide.c12.4_00 &lt;- c12.4_00</code></pre>
+<ul>
+<li>Make a separate dataframe of just the cover columns to convert empty cells to 0 and trace values to 0.5. Convert to numeric.</li>
+<li>Combine dataframes.</li>
+</ul>
+<pre class="r"><code># Pivot data from wide to long
+c12.4_00 &lt;- wide.c12.4_00
+c12.4_00 &lt;- c12.4_00 %&gt;% 
+  pivot_longer(!c(&quot;Common&quot;, &quot;Scientific&quot;, &quot;Functional&quot;, &quot;Native&quot;), 
+               names_to = &quot;Measurement&quot;, values_to = &quot;Cover&quot;) 
+c12.4_00 &lt;- c12.4_00 %&gt;% 
+  separate(Measurement, c(&quot;Year&quot;, &quot;Quadrat&quot;), &quot;_&quot;)
+
+for(i in 1:nrow(c12.4_00)) {
+  if(c12.4_00$Year[i] == &quot;Mar12&quot;) {
+    c12.4_00$Year[i] &lt;- &quot;2012-03-1&quot;
+  } else if(c12.4_00$Year[i] == &quot;Nov12&quot;) {
+    c12.4_00$Year[i] &lt;- &quot;2012-11-01&quot;
+  } else if(c12.4_00$Year[i] == &quot;Nov13&quot;) {
+    c12.4_00$Year[i] &lt;- &quot;2013-11-01&quot;
+  } else if(c12.4_00$Year[i] == &quot;Nov14&quot;) {
+    c12.4_00$Year[i] &lt;- &quot;2014-11-01&quot;
+  } else if(c12.4_00$Year[i] == &quot;Nov15&quot;) {
+    c12.4_00$Year[i] &lt;- &quot;2015-11-01&quot;
+  } else if(c12.4_00$Year[i] == &quot;Nov18&quot;) {
+    c12.4_00$Year[i] &lt;- &quot;2018-11-01&quot;
+  } else {
+    c12.4_00$Year[i] &lt;- &quot;2021-11-01&quot;
+  }
+}
+c12.4_00$Year &lt;- as.Date(c12.4_00$Year, format = &quot;%Y-%m-%d&quot;)
+
+# Add channel and station
+c12.4_00$Station &lt;- rep(&quot;Channel 12_Station 4 + 00&quot;, nrow(c12.4_00))</code></pre>
+<ul>
+<li>Pivot data from wide to long (each column is currently a different year and quadrat).</li>
+<li>Make a separate year column by splitting the column names.</li>
+<li>Format the years as dates.</li>
+<li>Add channel and station number.</li>
 </ul>
 </div>
 
