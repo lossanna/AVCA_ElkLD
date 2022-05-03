@@ -111,7 +111,7 @@ sw <- function(dat) {
 
 # Total plant cover -------------------------------------------------------
 
-# Plot by accurate date
+# Find channel averages by year
 total.channel <- total.all %>% 
   group_by(Channel, Year, year.date, year.xaxis, channel.trt) %>% 
   summarise(mean = mean(Cover),
@@ -119,6 +119,7 @@ total.channel <- total.all %>%
             SE = std.error(Cover),
             .groups = "keep")
 
+# Plot by accurate date
 total.plot <- ggplot(total.channel, aes(x = year.date, y = mean, 
                                         group = Channel, color = Channel, 
                                         shape = Channel)) +
@@ -155,6 +156,7 @@ total.plot.nov <- ggplot(total.channel.nov, aes(x = year.xaxis, y = mean,
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
 total.plot.nov
+
 
 # Shapiro-Wilk
 total.all.nov <- total.all %>% 
@@ -224,7 +226,7 @@ total19.letters$groups <- c("a", "a", "ab", "ab", "bc", "c")
 
 # Ground cover ------------------------------------------------------------
 
-# Plot by accurate date
+# Find channel averages by year
 ground.channel <- ground.all %>% 
   group_by(Channel, Year, year.date, year.xaxis, channel.trt, Common) %>% 
   summarise(mean = mean(Cover),
@@ -232,6 +234,7 @@ ground.channel <- ground.all %>%
             SE = std.error(Cover),
             .groups = "keep")
 
+# Plot by accurate date
 ground.plot <- ggplot(ground.channel, aes(x = year.date, y = mean, 
                                           group = Common, color = Common, 
                                           shape = Common)) +
@@ -385,14 +388,16 @@ soil21.letters$groups <- c("a", "ab", "ab", "ab", "b", "c")
 
 # Functional group (as collected) -----------------------------------------
 
+# Find channel averages by year
 fungr.channel <- fungr.all %>% 
-  group_by(Channel, Year, Functional) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, Functional) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep")
 
-fungr.all.plot <- ggplot(fungr.channel, aes(x = Year, y = mean, 
+# Plot by accurate date
+fungr.plot <- ggplot(fungr.channel, aes(x = year.date, y = mean, 
                                             group = Functional, color = Functional, shape = Functional)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -407,21 +412,23 @@ fungr.all.plot <- ggplot(fungr.channel, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-fungr.all.plot
+fungr.plot
 
 
 
 # Functional group (gfst) -------------------------------------------------
 
+# Find channel averages by year
 gfst.channel <- gfst.all %>% 
-  group_by(Channel, Year, gfst) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, gfst) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep")
 
-gfst.all.plot <- ggplot(gfst.channel, aes(x = Year, y = mean, 
-                                          group = gfst, color = gfst, shape = gfst)) +
+# Plot by accurate date
+gfst.plot <- ggplot(gfst.channel, aes(x = year.date, y = mean, 
+                                      group = gfst, color = gfst, shape = gfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -435,45 +442,16 @@ gfst.all.plot <- ggplot(gfst.channel, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-gfst.all.plot
+gfst.plot
 
-
+# Plot November only and align year on x-axis
 gfst.channel.nov <- gfst.channel %>% 
   filter(Year != "2012-03-01")
-
-for(i in 1:nrow(gfst.channel.nov)) {
-  if(gfst.channel.nov$Year[i] == "2012-11-01") {
-    gfst.channel.nov$Year[i] <- "2012-01-01"
-  } else if(gfst.channel.nov$Year[i] == "2013-11-01") {
-    gfst.channel.nov$Year[i] <- "2013-01-01"
-  } else if(gfst.channel.nov$Year[i] == "2014-11-01") {
-    gfst.channel.nov$Year[i] <- "2014-01-01"
-  } else if(gfst.channel.nov$Year[i] == "2015-11-01") {
-    gfst.channel.nov$Year[i] <- "2015-01-01"
-  } else if(gfst.channel.nov$Year[i] == "2018-11-01") {
-    gfst.channel.nov$Year[i] <- "2018-01-01"
-  } else {
-    gfst.channel.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-gfst.channel.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(gfst.channel.nov)) {
-  if(gfst.channel.nov$Channel[i] == "Channel 12") {
-    gfst.channel.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(gfst.channel.nov$Channel[i] == "Channel 13") {
-    gfst.channel.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(gfst.channel.nov$Channel[i] == "Channel 19") {
-    gfst.channel.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    gfst.channel.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
 
 gfst.channel.nov$gfst <- factor(gfst.channel.nov$gfst, 
                                 levels = c("Grass", "Forb", "Shrub", "Tree"))
 
-gfst.plot.nov <- ggplot(gfst.channel.nov, aes(x = Year, y = mean, 
+gfst.plot.nov <- ggplot(gfst.channel.nov, aes(x = year.xaxis, y = mean, 
                                               group = gfst, color = gfst, shape = gfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -494,15 +472,17 @@ gfst.plot.nov
 
 # Functional group (gfs) --------------------------------------------------
 
+# Find channel averages by year
 gfs.channel <- gfst.all %>% 
-  group_by(Channel, Year, gfst) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, gfst) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep") %>% 
   filter(gfst != "Tree")
 
-gfs.all.plot <- ggplot(gfs.channel, aes(x = Year, y = mean, 
+# Plot by accurate date
+gfs.plot <- ggplot(gfs.channel, aes(x = year.date, y = mean, 
                                         group = gfst, color = gfst, shape = gfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -517,45 +497,16 @@ gfs.all.plot <- ggplot(gfs.channel, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-gfs.all.plot
+gfs.plot
 
-
+# Plot November only and align year on x-axis
 gfs.channel.nov <- gfs.channel %>% 
   filter(Year != "2012-03-01")
-
-for(i in 1:nrow(gfs.channel.nov)) {
-  if(gfs.channel.nov$Year[i] == "2012-11-01") {
-    gfs.channel.nov$Year[i] <- "2012-01-01"
-  } else if(gfs.channel.nov$Year[i] == "2013-11-01") {
-    gfs.channel.nov$Year[i] <- "2013-01-01"
-  } else if(gfs.channel.nov$Year[i] == "2014-11-01") {
-    gfs.channel.nov$Year[i] <- "2014-01-01"
-  } else if(gfs.channel.nov$Year[i] == "2015-11-01") {
-    gfs.channel.nov$Year[i] <- "2015-01-01"
-  } else if(gfs.channel.nov$Year[i] == "2018-11-01") {
-    gfs.channel.nov$Year[i] <- "2018-01-01"
-  } else {
-    gfs.channel.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-gfs.channel.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(gfs.channel.nov)) {
-  if(gfs.channel.nov$Channel[i] == "Channel 12") {
-    gfs.channel.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(gfs.channel.nov$Channel[i] == "Channel 13") {
-    gfs.channel.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(gfs.channel.nov$Channel[i] == "Channel 19") {
-    gfs.channel.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    gfs.channel.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
 
 gfs.channel.nov$gfst <- factor(gfs.channel.nov$gfst, 
                                levels = c("Grass", "Forb", "Shrub"))
 
-gfs.plot.nov <- ggplot(gfs.channel.nov, aes(x = Year, y = mean, 
+gfs.plot.nov <- ggplot(gfs.channel.nov, aes(x = year.xaxis, y = mean, 
                                             group = gfst, color = gfst, shape = gfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -576,15 +527,17 @@ gfs.plot.nov
 
 # Woody/herbaceous --------------------------------------------------------
 
+# Find channel averages by year
 woody.channel <- woody.all %>% 
-  group_by(Channel, Year, woody) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, woody) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep")
 
-woody.all.plot <- ggplot(woody.channel, aes(x = Year, y = mean, 
-                                            group = woody, color = woody, shape = woody)) +
+# Plot by accurate date
+woody.plot <- ggplot(woody.channel, aes(x = year.date, y = mean, 
+                                        group = woody, color = woody, shape = woody)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -598,42 +551,13 @@ woody.all.plot <- ggplot(woody.channel, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-woody.all.plot
+woody.plot
 
-
+# Plot November only and align year on x-axis
 woody.channel.nov <- woody.channel %>% 
   filter(Year != "2012-03-01")
 
-for(i in 1:nrow(woody.channel.nov)) {
-  if(woody.channel.nov$Year[i] == "2012-11-01") {
-    woody.channel.nov$Year[i] <- "2012-01-01"
-  } else if(woody.channel.nov$Year[i] == "2013-11-01") {
-    woody.channel.nov$Year[i] <- "2013-01-01"
-  } else if(woody.channel.nov$Year[i] == "2014-11-01") {
-    woody.channel.nov$Year[i] <- "2014-01-01"
-  } else if(woody.channel.nov$Year[i] == "2015-11-01") {
-    woody.channel.nov$Year[i] <- "2015-01-01"
-  } else if(woody.channel.nov$Year[i] == "2018-11-01") {
-    woody.channel.nov$Year[i] <- "2018-01-01"
-  } else {
-    woody.channel.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-woody.channel.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(woody.channel.nov)) {
-  if(woody.channel.nov$Channel[i] == "Channel 12") {
-    woody.channel.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(woody.channel.nov$Channel[i] == "Channel 13") {
-    woody.channel.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(woody.channel.nov$Channel[i] == "Channel 19") {
-    woody.channel.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    woody.channel.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
-
-woody.plot.nov <- ggplot(woody.channel.nov, aes(x = Year, y = mean, 
+woody.plot.nov <- ggplot(woody.channel.nov, aes(x = year.xaxis, y = mean, 
                                                 group = woody, color = woody, shape = woody)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -652,22 +576,24 @@ woody.plot.nov
 
 
 # Shapiro-Wilk
-woody.yearchar <- woody.all %>% 
+woody.all.nov <- woody.all %>% 
   filter(Year != "2012-03-01") %>% 
   ungroup()
-woody.yearchar$Year <- as.character(woody.yearchar$Year)
-woody.yearchar.wide <- woody.yearchar %>% 
+
+woody.grs.wide <- woody.all.nov %>% 
   pivot_wider(names_from = c(Channel, woody), values_from = Cover)
 
-woody.sw <- sw(woody.yearchar.wide)
+woody.sw <- sw(woody.grs.wide)
 noquote(apply(woody.sw, 2, normality))
 
-herb <- woody.yearchar %>% 
+woody.all.nov$Year <- gsub("-.*", "", woody.all.nov$Year)
+woody.all.nov$Year <- as.factor(woody.all.nov$Year)
+
+herb <- woody.all.nov %>% 
   filter(woody == "Herbaceous")
-herb$Year <- gsub("-.*", "", herb$Year)
-woody <- woody.yearchar %>% 
+woody <- woody.all.nov %>% 
   filter(woody == "Woody")
-woody$Year <- gsub("-.*", "", woody$Year)
+
 
 # Herbaceous: ANOVA
 summary(aov(Cover ~ Year, data = filter(herb, Channel == "Channel 21")))
@@ -751,8 +677,9 @@ woody19.letters$groups <- c("a", "a", "a", "ab", "ab", "b")
 
 # Herbaceous (plots) ------------------------------------------------------
 
+# Find channel averages by year
 herb.channel.nov <- woody.all %>% 
-  group_by(Channel, Year, woody) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, woody) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
@@ -760,36 +687,8 @@ herb.channel.nov <- woody.all %>%
   filter(woody == "Herbaceous") %>% 
   filter(Year != "2012-03-01")
 
-for(i in 1:nrow(herb.channel.nov)) {
-  if(herb.channel.nov$Year[i] == "2012-11-01") {
-    herb.channel.nov$Year[i] <- "2012-01-01"
-  } else if(herb.channel.nov$Year[i] == "2013-11-01") {
-    herb.channel.nov$Year[i] <- "2013-01-01"
-  } else if(herb.channel.nov$Year[i] == "2014-11-01") {
-    herb.channel.nov$Year[i] <- "2014-01-01"
-  } else if(herb.channel.nov$Year[i] == "2015-11-01") {
-    herb.channel.nov$Year[i] <- "2015-01-01"
-  } else if(herb.channel.nov$Year[i] == "2018-11-01") {
-    herb.channel.nov$Year[i] <- "2018-01-01"
-  } else {
-    herb.channel.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-herb.channel.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(herb.channel.nov)) {
-  if(herb.channel.nov$Channel[i] == "Channel 12") {
-    herb.channel.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(herb.channel.nov$Channel[i] == "Channel 13") {
-    herb.channel.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(herb.channel.nov$Channel[i] == "Channel 19") {
-    herb.channel.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    herb.channel.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
-
-herb.plot.nov <- ggplot(herb.channel.nov, aes(x = Year, y = mean, 
+# Plot November only, soil only, and align year on x-axis
+herb.plot.nov <- ggplot(herb.channel.nov, aes(x = year.xaxis, y = mean, 
                                               group = channel.trt, color = channel.trt)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -808,15 +707,17 @@ herb.plot.nov
 
 # Invasive/native ---------------------------------------------------------
 
+# Find channel averages by year
 innat.channel <- innat.all %>% 
-  group_by(Channel, Year, Native) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, Native) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep")
 
-innat.all.plot <- ggplot(innat.channel, aes(x = Year, y = mean, 
-                                            group = Native, color = Native, shape = Native)) +
+# Plot by accurate date
+innat.plot <- ggplot(innat.channel, aes(x = year.date, y = mean, 
+                                        group = Native, color = Native, shape = Native)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -830,22 +731,23 @@ innat.all.plot <- ggplot(innat.channel, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-innat.all.plot
+innat.plot
 
 
 
 # Invasive/native and woody/herbaceous ------------------------------------
 
+# Find channel averages by year
 inwood.channel <- inwood.all %>%  
-  group_by(Channel, Year, inwood) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, inwood) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep")
 
-
-inwood.all.plot <- ggplot(inwood.channel, aes(x = Year, y = mean, 
-                                              group = inwood, color = inwood, shape = inwood)) +
+# Plot by accurate date
+inwood.plot <- ggplot(inwood.channel, aes(x = year.date, y = mean, 
+                                          group = inwood, color = inwood, shape = inwood)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -859,13 +761,13 @@ inwood.all.plot <- ggplot(inwood.channel, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-inwood.all.plot
+inwood.plot
 
-
+# Plot only known native status by accurate date
 inwood.channel.known <- inwood.channel %>% 
   filter(inwood %in% c("Invasive herb", "Native herb", "Native woody"))
 
-inwood.known.all.plot <- ggplot(inwood.channel.known, aes(x = Year, y = mean, 
+inwood.known.plot <- ggplot(inwood.channel.known, aes(x = year.date, y = mean, 
                                                           group = inwood, color = inwood, shape = inwood)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -880,45 +782,16 @@ inwood.known.all.plot <- ggplot(inwood.channel.known, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-inwood.known.all.plot
+inwood.known.plot
 
+# Plot November only, known native status only, and align year on x-axis
 inwood.channel.known.nov <- inwood.channel.known %>% 
   filter(Year != "2012-03-01")
-
-for(i in 1:nrow(inwood.channel.known.nov)) {
-  if(inwood.channel.known.nov$Year[i] == "2012-11-01") {
-    inwood.channel.known.nov$Year[i] <- "2012-01-01"
-  } else if(inwood.channel.known.nov$Year[i] == "2013-11-01") {
-    inwood.channel.known.nov$Year[i] <- "2013-01-01"
-  } else if(inwood.channel.known.nov$Year[i] == "2014-11-01") {
-    inwood.channel.known.nov$Year[i] <- "2014-01-01"
-  } else if(inwood.channel.known.nov$Year[i] == "2015-11-01") {
-    inwood.channel.known.nov$Year[i] <- "2015-01-01"
-  } else if(inwood.channel.known.nov$Year[i] == "2018-11-01") {
-    inwood.channel.known.nov$Year[i] <- "2018-01-01"
-  } else {
-    inwood.channel.known.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-inwood.channel.known.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(inwood.channel.known.nov)) {
-  if(inwood.channel.known.nov$Channel[i] == "Channel 12") {
-    inwood.channel.known.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(inwood.channel.known.nov$Channel[i] == "Channel 13") {
-    inwood.channel.known.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(inwood.channel.known.nov$Channel[i] == "Channel 19") {
-    inwood.channel.known.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    inwood.channel.known.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
-
 
 inwood.channel.known.nov$inwood <- factor(inwood.channel.known.nov$inwood,
                                           levels = c("Native herb", "Invasive herb", "Native woody"))
 
-inwood.known.plot.nov <- ggplot(inwood.channel.known.nov, aes(x = Year, y = mean, 
+inwood.known.plot.nov <- ggplot(inwood.channel.known.nov, aes(x = year.xaxis, y = mean, 
                                                           group = inwood, color = inwood, shape = inwood)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -937,23 +810,25 @@ inwood.known.plot.nov
 
 
 # Shapiro-Wilk for invasive herb, native herb, and native woody
-inwood.known.yearchar <- inwood.all %>% 
-  filter(Year != "2012-03-01") %>% 
+inwood.known.nov <- inwood.all %>% 
   filter(inwood %in% c("Invasive herb", "Native herb", "Native woody")) %>% 
+  filter(Year != "2012-03-01") %>% 
   ungroup()
-inwood.known.yearchar$Year <- as.character(inwood.known.yearchar$Year)
-inwood.known.yearchar.wide <- inwood.known.yearchar %>% 
+
+inwood.known.wide <- inwood.known.nov %>% 
   pivot_wider(names_from = c(Channel, inwood), values_from = Cover)
 
-inwood.known.sw <- sw(inwood.known.yearchar.wide)
-noquote(apply(inwood.known.sw, 2, normality))
+inwood.sw <- sw(inwood.known.wide)
+noquote(apply(inwood.sw, 2, normality))
 
-ivherb <- inwood.known.yearchar %>% 
+inwood.known.nov$Year <- gsub("-.*", "", inwood.known.nov$Year)
+inwood.known.nov$Year <- as.factor(inwood.known.nov$Year)
+
+ivherb <- inwood.known.nov %>% 
   filter(inwood == "Invasive herb")
-ivherb$Year <- gsub("-.*", "", ivherb$Year)
-ntherb <- inwood.known.yearchar %>% 
+ntherb <- inwood.known.nov %>% 
   filter(inwood == "Native herb")
-ntherb$Year <- gsub("-.*", "", ntherb$Year)
+
 
 # Invasive herb: Kruskal-Wallis
 kruskal.test(Cover ~ Year, data = filter(ivherb, Channel == "Channel 12"))
@@ -974,6 +849,7 @@ ivherb19.letters <- ivherb19 %>%
             .groups = "keep") %>% 
   arrange(desc(mean))
 ivherb19.letters$groups <- c("a", "b", "b", "b", "b", "b")
+
 
 # Native herb: ANOVA
 summary(aov(Cover ~ Year, data = filter(ntherb, Channel == "Channel 12")))
@@ -1015,23 +891,26 @@ ntherb19.letters <- ntherb19 %>%
 ntherb19.letters$groups.cldList <- c("b", "ab", "abc", "ac", "ac", "c")
 ntherb19.letters$groups <- c("a", "ab", "abc", "bc", "bc", "c")
 
-
 kruskal.test(Cover ~ Year, data = filter(ntherb, Channel == "Channel 21")) # NS
+
+
+# Native woody is the same as all woody (there are no invasive woody)
 
 
 
 # Invasive/native and gfst ------------------------------------------------
 
+# Find channel averages by year
 ingfst.channel <- ingfst.all %>%  
-  group_by(Channel, Year, ingfst) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, ingfst) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep")
 
-
-ingfst.all.plot <- ggplot(ingfst.channel, aes(x = Year, y = mean, 
-                                              group = ingfst, color = ingfst)) +
+# Plot by accurate date
+ingfst.plot <- ggplot(ingfst.channel, aes(x = year.date, y = mean, 
+                                          group = ingfst, color = ingfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -1044,15 +923,15 @@ ingfst.all.plot <- ggplot(ingfst.channel, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-ingfst.all.plot
+ingfst.plot
 
-
+# Plot by known native status and accurate date
 ingfst.channel.known <- ingfst.channel %>% 
   filter(ingfst %in% c("Native tree", "Invasive forb", "Invasive grass", "Native forb",
                        "Native grass", "Native shrub"))
 
-ingfst.known.all.plot <- ggplot(ingfst.channel.known, aes(x = Year, y = mean, 
-                                                          group = ingfst, color = ingfst, shape = ingfst)) +
+ingfst.known.plot <- ggplot(ingfst.channel.known, aes(x = year.date, y = mean, 
+                                                      group = ingfst, color = ingfst, shape = ingfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -1061,27 +940,29 @@ ingfst.known.all.plot <- ggplot(ingfst.channel.known, aes(x = Year, y = mean,
   facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and woody status") +
+  ggtitle("Plant cover by invasive and functional group") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-ingfst.known.all.plot
+ingfst.known.plot
+
 
 
 # Invasive/native and gfs -------------------------------------------------
 
+# Find channel averages by year
 ingfs.channel <- ingfst.all %>%  
-  group_by(Channel, Year, ingfst) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, ingfst) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep") %>% 
   filter(ingfst != "Native tree")
 
-
-ingfs.all.plot <- ggplot(ingfs.channel, aes(x = Year, y = mean, 
-                                            group = ingfst, color = ingfst)) +
+# Plot by accurate date
+ingfs.plot <- ggplot(ingfs.channel, aes(x = year.date, y = mean, 
+                                        group = ingfst, color = ingfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -1094,15 +975,15 @@ ingfs.all.plot <- ggplot(ingfs.channel, aes(x = Year, y = mean,
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-ingfst.all.plot
+ingfst.plot
 
-
+# Plot known native status by accurate date
 ingfs.channel.known <- ingfs.channel %>% 
   filter(ingfst %in% c("Invasive forb", "Invasive grass", "Native forb",
                        "Native grass", "Native shrub"))
 
-ingfs.known.all.plot <- ggplot(ingfs.channel.known, aes(x = Year, y = mean, 
-                                                        group = ingfst, color = ingfst, shape = ingfst)) +
+ingfs.known.plot <- ggplot(ingfs.channel.known, aes(x = year.date, y = mean, 
+                                                    group = ingfst, color = ingfst, shape = ingfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -1112,51 +993,23 @@ ingfs.known.all.plot <- ggplot(ingfs.channel.known, aes(x = Year, y = mean,
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Plant cover by invasive and woody status") +
-  scale_color_brewer(palette = "Paired") +
+  scale_color_manual(values = c("#1B9E77", "#66C2A5", "#D95F02", "#FC8D62", "#7570B3")) +
+  scale_shape_manual(values = c(16, 17, 16, 17, 16)) +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-ingfs.known.all.plot
+ingfs.known.plot
 
-
+# Plot November and known native status only, align year on x-axis
 ingfs.channel.known.nov <- ingfs.channel.known %>% 
   filter(Year != "2012-03-01")
-
-for(i in 1:nrow(ingfs.channel.known.nov)) {
-  if(ingfs.channel.known.nov$Year[i] == "2012-11-01") {
-    ingfs.channel.known.nov$Year[i] <- "2012-01-01"
-  } else if(ingfs.channel.known.nov$Year[i] == "2013-11-01") {
-    ingfs.channel.known.nov$Year[i] <- "2013-01-01"
-  } else if(ingfs.channel.known.nov$Year[i] == "2014-11-01") {
-    ingfs.channel.known.nov$Year[i] <- "2014-01-01"
-  } else if(ingfs.channel.known.nov$Year[i] == "2015-11-01") {
-    ingfs.channel.known.nov$Year[i] <- "2015-01-01"
-  } else if(ingfs.channel.known.nov$Year[i] == "2018-11-01") {
-    ingfs.channel.known.nov$Year[i] <- "2018-01-01"
-  } else {
-    ingfs.channel.known.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-ingfs.channel.known.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(ingfs.channel.known.nov)) {
-  if(ingfs.channel.known.nov$Channel[i] == "Channel 12") {
-    ingfs.channel.known.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(ingfs.channel.known.nov$Channel[i] == "Channel 13") {
-    ingfs.channel.known.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(ingfs.channel.known.nov$Channel[i] == "Channel 19") {
-    ingfs.channel.known.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    ingfs.channel.known.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
 
 ingfs.channel.known.nov$ingfst <- factor(ingfs.channel.known.nov$ingfst,
                                          levels = c("Native grass", "Invasive grass",
                                                     "Native forb", "Invasive forb",
                                                     "Native shrub"))
 
-ingfs.known.plot.nov <- ggplot(ingfs.channel.known.nov, aes(x = Year, y = mean, 
+ingfs.known.plot.nov <- ggplot(ingfs.channel.known.nov, aes(x = year.xaxis, y = mean, 
                                                             group = ingfst, color = ingfst, shape = ingfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
@@ -1175,10 +1028,12 @@ ingfs.known.plot.nov <- ggplot(ingfs.channel.known.nov, aes(x = Year, y = mean,
 ingfs.known.plot.nov
 
 
+
 # Invasive/native and grass/forb ------------------------------------------
 
+# Find channel averages by year, November only
 ingf.channel.nov <- ingfst.all %>%  
-  group_by(Channel, Year, ingfst) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, ingfst) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
@@ -1186,35 +1041,7 @@ ingf.channel.nov <- ingfst.all %>%
   filter(!ingfst %in% c("Native tree", "Native shrub")) %>% 
   filter(Year != "2012-03-01")
 
-for(i in 1:nrow(ingf.channel.nov)) {
-  if(ingf.channel.nov$Year[i] == "2012-11-01") {
-    ingf.channel.nov$Year[i] <- "2012-01-01"
-  } else if(ingf.channel.nov$Year[i] == "2013-11-01") {
-    ingf.channel.nov$Year[i] <- "2013-01-01"
-  } else if(ingf.channel.nov$Year[i] == "2014-11-01") {
-    ingf.channel.nov$Year[i] <- "2014-01-01"
-  } else if(ingf.channel.nov$Year[i] == "2015-11-01") {
-    ingf.channel.nov$Year[i] <- "2015-01-01"
-  } else if(ingf.channel.nov$Year[i] == "2018-11-01") {
-    ingf.channel.nov$Year[i] <- "2018-01-01"
-  } else {
-    ingf.channel.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-ingf.channel.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(ingf.channel.nov)) {
-  if(ingf.channel.nov$Channel[i] == "Channel 12") {
-    ingf.channel.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(ingf.channel.nov$Channel[i] == "Channel 13") {
-    ingf.channel.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(ingf.channel.nov$Channel[i] == "Channel 19") {
-    ingf.channel.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    ingf.channel.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
-
+# Plot November only, invasive/native herbs, align year on x-axis
 ingfs.channel.known.nov <- ingf.channel.nov %>% 
   filter(ingfst %in% c("Invasive forb", "Invasive grass", "Native forb",
                        "Native grass"))
@@ -1224,7 +1051,7 @@ ingfs.channel.known.nov$ingfst <- factor(ingfs.channel.known.nov$ingfst,
                                                     "Native forb", "Invasive forb",
                                                     "Native shrub"))
 
-ingf.known.plot.nov <- ggplot(ingfs.channel.known.nov, aes(x = Year, y = mean, 
+ingf.known.plot.nov <- ggplot(ingfs.channel.known.nov, aes(x = year.xaxis, y = mean, 
                                                            group = ingfst, color = ingfst, shape = ingfst)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
