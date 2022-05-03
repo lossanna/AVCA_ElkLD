@@ -7,31 +7,52 @@ library(rcompanion)
 # Load data ---------------------------------------------------------------
 
 plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
-plant.all$Year <- as.Date(plant.all$Year)
-
 ground.all <- read.csv("data/cleaned/Summarised-all_ground-cover.csv")
-ground.all$Year <- as.Date(ground.all$Year)
-
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-total.all$Year <- as.Date(total.all$Year)
-
 fungr.all <- read.csv("data/cleaned/Summarised-all_functional-group-cover.csv")
-fungr.all$Year <- as.Date(fungr.all$Year)
-
 gfst.all <- read.csv("data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv")
-gfst.all$Year <- as.Date(gfst.all$Year)
-
 woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
-woody.all$Year <- as.Date(woody.all$Year)
-
 inwood.all <- read.csv("data/cleaned/Summarised-all_invasive-woody-cover.csv")
-inwood.all$Year <- as.Date(inwood.all$Year)
-
 ingfst.all <- read.csv("data/cleaned/Summarised-all_invasive-grassforbshrubtree-cover.csv")
-ingfst.all$Year <- as.Date(ingfst.all$Year)
-
 innat.all <- read.csv("data/cleaned/Summarised-all_invasive-native-cover.csv")
-innat.all$Year <- as.Date(innat.all$Year)
+
+# Add year as date and character
+year <- function(x) {
+  x <- x %>% 
+    mutate(year.date = as.Date(x$Year))
+  
+  x[ , "year.xaxis"] <- NA
+  for(i in 1:nrow(x)) {
+    if(x$Year[i] == "2012-11-01") {
+      x$year.xaxis[i] <- "2012-01-01"
+    } else if(x$Year[i] == "2013-11-01") {
+      x$year.xaxis[i] <- "2013-01-01"
+    } else if(x$Year[i] == "2014-11-01") {
+      x$year.xaxis[i] <- "2014-01-01"
+    } else if(x$Year[i] == "2015-11-01") {
+      x$year.xaxis[i] <- "2015-01-01"
+    } else if(x$Year[i] == "2018-11-01") {
+      x$year.xaxis[i] <- "2018-01-01"
+    } else if(x$Year[i] == "2021-11-01") {
+      x$year.xaxis[i] <- "2021-01-01"
+    } else {
+      x$year.xaxis[i] <- "2012-03-01"
+    }
+  }
+  x$year.xaxis <- as.Date(x$year.xaxis)
+    
+  return(x)
+}
+
+plant.all <- year(plant.all)
+ground.all <- year(ground.all)
+total.all <- year(total.all)
+fungr.all <- year(fungr.all)
+gfst.all <- year(gfst.all)
+woody.all <- year(woody.all)
+inwood.all <- year(inwood.all)
+ingfst.all <- year(ingfst.all)
+innat.all <- year(innat.all)
 
 # Functions ---------------------------------------------------------------
 
@@ -42,42 +63,42 @@ normality <- function(x) {
 sw <- function(dat) {
   dat.2012 <- dat %>% 
     filter(Year == "2012-11-01") %>% 
-    select(-Station, -Year, -Treatment)
+    select(-Station, -Year, -station.trt, -channel.trt, -year.date, -year.xaxis)
   dat.2012 <- lapply(dat.2012, shapiro.test)
   dat.2012 <- sapply(dat.2012, `[`, "p.value")
   dat.2012 <- as.data.frame(dat.2012)
   
   dat.2013 <- dat %>% 
     filter(Year == "2013-11-01") %>% 
-    select(-Station, -Year, -Treatment)
+    select(-Station, -Year, -station.trt, -channel.trt, -year.date, -year.xaxis)
   dat.2013 <- lapply(dat.2013, shapiro.test)
   dat.2013 <- sapply(dat.2013, `[`, "p.value")
   dat.2013 <- as.data.frame(dat.2013)
   
   dat.2014 <- dat %>% 
     filter(Year == "2014-11-01") %>% 
-    select(-Station, -Year, -Treatment)
+    select(-Station, -Year, -station.trt, -channel.trt, -year.date, -year.xaxis)
   dat.2014 <- lapply(dat.2014, shapiro.test)
   dat.2014 <- sapply(dat.2014, `[`, "p.value")
   dat.2014 <- as.data.frame(dat.2014)
   
   dat.2015 <- dat %>% 
     filter(Year == "2015-11-01") %>% 
-    select(-Station, -Year, -Treatment)
+    select(-Station, -Year, -station.trt, -channel.trt, -year.date, -year.xaxis)
   dat.2015 <- lapply(dat.2015, shapiro.test)
   dat.2015 <- sapply(dat.2015, `[`, "p.value")
   dat.2015 <- as.data.frame(dat.2015)
   
   dat.2018 <- dat %>% 
     filter(Year == "2018-11-01") %>% 
-    select(-Station, -Year, -Treatment)
+    select(-Station, -Year, -station.trt, -channel.trt, -year.date, -year.xaxis)
   dat.2018 <- lapply(dat.2018, shapiro.test)
   dat.2018 <- sapply(dat.2018, `[`, "p.value")
   dat.2018 <- as.data.frame(dat.2018)
   
   dat.2021 <- dat %>% 
     filter(Year == "2021-11-01") %>% 
-    select(-Station, -Year, -Treatment)
+    select(-Station, -Year, -station.trt, -channel.trt, -year.date, -year.xaxis)
   dat.2021 <- lapply(dat.2021, shapiro.test)
   dat.2021 <- sapply(dat.2021, `[`, "p.value")
   dat.2021 <- as.data.frame(dat.2021)
@@ -90,16 +111,17 @@ sw <- function(dat) {
 
 # Total plant cover -------------------------------------------------------
 
-# Plot
+# Plot by accurate date
 total.channel <- total.all %>% 
-  group_by(Channel, Year) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep")
 
-total.all.plot <- ggplot(total.channel, aes(x = Year, y = mean, 
-                                            group = Channel, color = Channel, shape = Channel)) +
+total.plot <- ggplot(total.channel, aes(x = year.date, y = mean, 
+                                        group = Channel, color = Channel, 
+                                        shape = Channel)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -107,48 +129,20 @@ total.all.plot <- ggplot(total.channel, aes(x = Year, y = mean,
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Total plant cover (all)") +
+  ggtitle("Total plant cover") +
   scale_color_brewer(palette = "Set1") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-total.all.plot
+total.plot
 
-
+# Plot November only and align year on x-axis
 total.channel.nov <- total.channel %>% 
-  filter(Year != "2012-03-01")
+  filter(Year != "2012-03-01") 
 
-for(i in 1:nrow(total.channel.nov)) {
-  if(total.channel.nov$Year[i] == "2012-11-01") {
-    total.channel.nov$Year[i] <- "2012-01-01"
-  } else if(total.channel.nov$Year[i] == "2013-11-01") {
-    total.channel.nov$Year[i] <- "2013-01-01"
-  } else if(total.channel.nov$Year[i] == "2014-11-01") {
-    total.channel.nov$Year[i] <- "2014-01-01"
-  } else if(total.channel.nov$Year[i] == "2015-11-01") {
-    total.channel.nov$Year[i] <- "2015-01-01"
-  } else if(total.channel.nov$Year[i] == "2018-11-01") {
-    total.channel.nov$Year[i] <- "2018-01-01"
-  } else {
-    total.channel.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-total.channel.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(total.channel.nov)) {
-  if(total.channel.nov$Channel[i] == "Channel 12") {
-    total.channel.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(total.channel.nov$Channel[i] == "Channel 13") {
-    total.channel.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(total.channel.nov$Channel[i] == "Channel 19") {
-    total.channel.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    total.channel.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
-
-total.plot.nov <- ggplot(total.channel.nov, aes(x = Year, y = mean, 
-                                                group = channel.trt, color = channel.trt)) +
+total.plot.nov <- ggplot(total.channel.nov, aes(x = year.xaxis, y = mean, 
+                                                group = channel.trt, 
+                                                color = channel.trt)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -163,23 +157,25 @@ total.plot.nov <- ggplot(total.channel.nov, aes(x = Year, y = mean,
 total.plot.nov
 
 # Shapiro-Wilk
-total.yearchar <- total.all %>% 
+total.all.nov <- total.all %>% 
   filter(Year != "2012-03-01") %>% 
-  ungroup()
-total.yearchar$Year <- as.character(total.yearchar$Year)
-total.yearchar.wide <- total.yearchar %>% 
+  ungroup() 
+
+total.wide <- total.all.nov %>% 
   pivot_wider(names_from = Channel, values_from = Cover)
 
-total.sw <- sw(total.yearchar.wide)
+total.sw <- sw(total.wide)
 noquote(apply(total.sw, 2, normality))
 
-total.yearchar$Year <- gsub("-.*", "", total.yearchar$Year)
+total.all.nov$Year <- gsub("-.*", "", total.all.nov$Year)
+total.all.nov$Year <- as.factor(total.all.nov$Year)
+
 
 # ANOVA
-  # none
+summary(aov(Cover ~ Year, data = filter(total.all.nov, Channel == "Channel 21"))) # NS
 
 # Kruskal-Wallis
-total12 <- total.yearchar %>% 
+total12 <- total.all.nov %>% 
   filter(Channel == "Channel 12")
 kruskal.test(Cover ~ Year, data = total12)
 dt.total12 <- dunnTest(total12$Cover ~ total12$Year, method = "bh")
@@ -194,7 +190,7 @@ total12.letters <- total12 %>%
   arrange(desc(mean))
 total12.letters$groups <- c("a", "ab", "ab", "ab", "ab", "b")
 
-total13 <- total.yearchar %>% 
+total13 <- total.all.nov %>% 
   filter(Channel == "Channel 13")
 kruskal.test(Cover ~ Year, data = total13)
 dt.total13 <- dunnTest(total13$Cover ~ total13$Year, method = "bh")
@@ -209,7 +205,7 @@ total13.letters <- total13 %>%
   arrange(desc(mean))
 total13.letters$groups <- c("a", "ab", "ab", "ab", "b", "b")
 
-total19 <- total.yearchar %>% 
+total19 <- total.all.nov %>% 
   filter(Channel == "Channel 19")
 kruskal.test(Cover ~ Year, data = total19)
 dt.total19 <- dunnTest(total19$Cover ~ total19$Year, method = "bh")
@@ -224,92 +220,65 @@ total19.letters <- total19 %>%
   arrange(desc(mean))
 total19.letters$groups <- c("a", "a", "ab", "ab", "bc", "c")
 
-kruskal.test(Cover ~ Year, data = filter(total.yearchar, Channel == "Channel 21")) # NS
-
 
 
 # Ground cover ------------------------------------------------------------
 
+# Plot by accurate date
 ground.channel <- ground.all %>% 
-  group_by(Channel, Year, Common) %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt, Common) %>% 
   summarise(mean = mean(Cover),
             SD = sd(Cover),
             SE = std.error(Cover),
             .groups = "keep")
 
-ground.all.plot <- ggplot(ground.channel, aes(x = Year, y = mean, 
-                                              group = Common, color = Common, shape = Common)) +
+ground.plot <- ggplot(ground.channel, aes(x = year.date, y = mean, 
+                                          group = Common, color = Common, 
+                                          shape = Common)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Ground cover (all)") +
+  ggtitle("Ground cover") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
-ground.all.plot
+ground.plot
 
-
+# Plot just gravel, rock, and soil by accurate date 
 ground.channel.grs <- ground.channel %>% 
   filter(Common %in% c("Gravel", "Rock", "Soil"))
 
-ground.grs.plot <- ggplot(ground.channel.grs, aes(x = Year, y = mean, 
-                                                  group = Common, color = Common, shape = Common)) +
+ground.grs.plot <- ggplot(ground.channel.grs, 
+                          aes(x = year.date, y = mean, 
+                              group = Common, color = Common, shape = Common)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Ground cover (all)") +
+  ggtitle("Ground cover") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
 ground.grs.plot
 
-
+# Plot November only and only rock, gravel, and soil; align year on x-axis
 ground.channel.grs.nov <- ground.channel.grs %>% 
   filter(Year != "2012-03-01")
 
-for(i in 1:nrow(ground.channel.grs.nov)) {
-  if(ground.channel.grs.nov$Year[i] == "2012-11-01") {
-    ground.channel.grs.nov$Year[i] <- "2012-01-01"
-  } else if(ground.channel.grs.nov$Year[i] == "2013-11-01") {
-    ground.channel.grs.nov$Year[i] <- "2013-01-01"
-  } else if(ground.channel.grs.nov$Year[i] == "2014-11-01") {
-    ground.channel.grs.nov$Year[i] <- "2014-01-01"
-  } else if(ground.channel.grs.nov$Year[i] == "2015-11-01") {
-    ground.channel.grs.nov$Year[i] <- "2015-01-01"
-  } else if(ground.channel.grs.nov$Year[i] == "2018-11-01") {
-    ground.channel.grs.nov$Year[i] <- "2018-01-01"
-  } else {
-    ground.channel.grs.nov$Year[i] <- "2021-01-01"
-  }
-}
-
-ground.channel.grs.nov[ , "channel.trt"] <- NA
-for(i in 1:nrow(ground.channel.grs.nov)) {
-  if(ground.channel.grs.nov$Channel[i] == "Channel 12") {
-    ground.channel.grs.nov$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(ground.channel.grs.nov$Channel[i] == "Channel 13") {
-    ground.channel.grs.nov$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(ground.channel.grs.nov$Channel[i] == "Channel 19") {
-    ground.channel.grs.nov$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    ground.channel.grs.nov$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
-
-ground.grs.plot.nov <- ggplot(ground.channel.grs.nov, aes(x = Year, y = mean, 
-                                                          group = Common, color = Common, shape = Common)) +
+ground.grs.plot.nov <- ggplot(ground.channel.grs.nov, 
+                              aes(x = year.xaxis, y = mean,
+                                  group = Common, color = Common, shape = Common)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
@@ -325,12 +294,13 @@ ground.grs.plot.nov <- ggplot(ground.channel.grs.nov, aes(x = Year, y = mean,
   theme(legend.position = "bottom")
 ground.grs.plot.nov
 
-
-ground.channel.nov.soil <- ground.channel.grs.nov %>% 
+# Plot November only, soil only, and align year on x-axis
+ground.channel.soil.nov <- ground.channel.grs.nov %>% 
   filter(Common == "Soil")
 
-ground.soil.plot.nov <- ggplot(ground.channel.nov.soil, aes(x = Year, y = mean, 
-                                                       group = channel.trt, color = channel.trt)) +
+ground.soil.plot.nov <- ggplot(ground.channel.soil.nov, 
+                               aes(x = year.xaxis, y = mean, 
+                                   group = channel.trt, color = channel.trt)) +
   geom_line(size = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -346,21 +316,23 @@ ground.soil.plot.nov
 
 
 # Shapiro-Wilk for gravel, rock, soil
-ground.yearchar <- ground.all %>% 
+ground.all.nov <- ground.all %>% 
   filter(Year != "2012-03-01") %>% 
   ungroup()
-ground.yearchar$Year <- as.character(ground.yearchar$Year)
-ground.yearchar <- ground.yearchar %>% 
-  filter(Common %in% c("Gravel", "Rock", "Soil"))
-ground.yearchar.wide <- ground.yearchar %>% 
+
+ground.grs.wide <- ground.all.nov %>% 
+  filter(Common %in% c("Gravel", "Rock", "Soil")) %>% 
   pivot_wider(names_from = c(Channel, Common), values_from = Cover)
 
-ground.sw <- sw(ground.yearchar.wide)
+ground.sw <- sw(ground.grs.wide)
 noquote(apply(ground.sw, 2, normality))
 
-soil <- ground.yearchar %>% 
+ground.all.nov$Year <- gsub("-.*", "", ground.all.nov$Year)
+ground.all.nov$Year <- as.factor(ground.all.nov$Year)
+
+soil <- ground.all.nov %>% 
   filter(Common == "Soil")
-soil$Year <- gsub("-.*", "", soil$Year)
+
 
 # Soil: ANOVA
 summary(aov(Cover ~ Year, data = filter(soil, Channel == "Channel 13")))
@@ -392,7 +364,7 @@ soil12.letters <- soil12 %>%
             .groups = "keep") %>% 
   arrange(desc(mean))
 soil12.letters$groups.cldList <- c("a", "ac", "ac", "bc", "b", "b") # I don't know why they are so weird
-soil12.letters$possible.groups <- c("a", "ab", "ab", "bc", "c", "c") # groups that make sense to me
+soil12.letters$possible.groups <- c("a", "ab", "ab", "bc", "c", "c") # groups that make sense to me and also fit the p-values
 
 soil21 <- soil %>% 
   filter(Channel == "Channel 21")
@@ -407,8 +379,7 @@ soil21.letters <- soil21 %>%
   summarise(mean = mean(Cover),
             .groups = "keep") %>% 
   arrange(desc(mean))
-soil21.letters$groups <- c("a", "a", "a", "a", "a", "b")
-
+soil21.letters$groups <- c("a", "ab", "ab", "ab", "b", "c")
 
 
 
@@ -428,10 +399,10 @@ fungr.all.plot <- ggplot(fungr.channel, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by functional group (all)") +
+  ggtitle("Plant cover by functional group") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
@@ -456,10 +427,10 @@ gfst.all.plot <- ggplot(gfst.channel, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by functional group (all)") +
+  ggtitle("Plant cover by functional group") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
@@ -538,10 +509,10 @@ gfs.all.plot <- ggplot(gfs.channel, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by functional group (all)") +
+  ggtitle("Plant cover by functional group") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
@@ -619,10 +590,10 @@ woody.all.plot <- ggplot(woody.channel, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by woody/herbaceous (all)") +
+  ggtitle("Plant cover by woody/herbaceous") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
@@ -851,10 +822,10 @@ innat.all.plot <- ggplot(innat.channel, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive/native (all)") +
+  ggtitle("Plant cover by invasive/native") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
@@ -880,10 +851,10 @@ inwood.all.plot <- ggplot(inwood.channel, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and woody status (all)") +
+  ggtitle("Plant cover by invasive and woody status") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
@@ -901,10 +872,10 @@ inwood.known.all.plot <- ggplot(inwood.channel.known, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and woody status (all)") +
+  ggtitle("Plant cover by invasive and woody status") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
@@ -1066,10 +1037,10 @@ ingfst.all.plot <- ggplot(ingfst.channel, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and functional group (all)") +
+  ggtitle("Plant cover by invasive and functional group") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
@@ -1087,10 +1058,10 @@ ingfst.known.all.plot <- ggplot(ingfst.channel.known, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and woody status (all)") +
+  ggtitle("Plant cover by invasive and woody status") +
   scale_color_brewer(palette = "Dark2") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
@@ -1116,10 +1087,10 @@ ingfs.all.plot <- ggplot(ingfs.channel, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and functional group (all)") +
+  ggtitle("Plant cover by invasive and functional group") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
@@ -1137,10 +1108,10 @@ ingfs.known.all.plot <- ggplot(ingfs.channel.known, aes(x = Year, y = mean,
   geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
                 position = position_dodge(0.05)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Channel) +
+  facet_wrap(~channel.trt) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Plant cover by invasive and woody status (all)") +
+  ggtitle("Plant cover by invasive and woody status") +
   scale_color_brewer(palette = "Paired") +
   theme_bw(base_size = 13) +
   theme(legend.title = element_blank()) +

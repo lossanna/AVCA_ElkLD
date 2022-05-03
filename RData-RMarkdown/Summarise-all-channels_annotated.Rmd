@@ -110,26 +110,53 @@ ground.all <- ground.all %>%
   filter(Cover > 0) %>% 
   separate(Station, c("Channel", "Station"), "_")
 
-# Add treatment
-plant.all[ , "Treatment"] <- NA
+# Add station treatment
+plant.all[ , "station.trt"] <- NA
 for(i in 1:nrow(plant.all)) {
   if(str_detect(plant.all$Station, "ORD")[i] == TRUE) {
-    plant.all$Treatment[i] <- "One rock dam"
+    plant.all$station.trt[i] <- "One station dam"
   } else if(str_detect(plant.all$Station, "BAF")[i] == TRUE) {
-    plant.all$Treatment[i] <- "Baffle"
+    plant.all$station.trt[i] <- "Baffle"
   } else {
-    plant.all$Treatment[i] <- "No treatment"
+    plant.all$station.trt[i] <- "No treatment"
   }
 }
 
-ground.all[ , "Treatment"] <- NA
+ground.all[ , "station.trt"] <- NA
 for(i in 1:nrow(ground.all)) {
   if(str_detect(ground.all$Station, "ORD")[i] == TRUE) {
-    ground.all$Treatment[i] <- "One rock dam"
+    ground.all$station.trt[i] <- "One station dam"
   } else if(str_detect(ground.all$Station, "BAF")[i] == TRUE) {
-    ground.all$Treatment[i] <- "Baffle"
+    ground.all$station.trt[i] <- "Baffle"
   } else {
-    ground.all$Treatment[i] <- "No treatment"
+    ground.all$station.trt[i] <- "No treatment"
+  }
+}
+
+# Add channel treatment
+plant.all[ , "channel.trt"] <- NA
+for(i in 1:nrow(plant.all)) {
+  if(plant.all$Channel[i] == "Channel 12") {
+    plant.all$channel.trt[i] <- "Channel 12: No treatment"
+  } else if(plant.all$Channel[i] == "Channel 13") {
+    plant.all$channel.trt[i] <- "Channel 13: In-channel treatment"
+  }  else if(plant.all$Channel[i] == "Channel 19") {
+    plant.all$channel.trt[i] <- "Channel 19: Upland treatment"
+  } else {
+    plant.all$channel.trt[i] <- "Channel 21: In-channel treatment"
+  }
+}
+
+ground.all[ , "channel.trt"] <- NA
+for(i in 1:nrow(ground.all)) {
+  if(ground.all$Channel[i] == "Channel 12") {
+    ground.all$channel.trt[i] <- "Channel 12: No treatment"
+  } else if(ground.all$Channel[i] == "Channel 13") {
+    ground.all$channel.trt[i] <- "Channel 13: In-channel treatment"
+  }  else if(ground.all$Channel[i] == "Channel 19") {
+    ground.all$channel.trt[i] <- "Channel 19: Upland treatment"
+  } else {
+    ground.all$channel.trt[i] <- "Channel 21: In-channel treatment"
   }
 }
 
@@ -167,31 +194,31 @@ for(i in 1:nrow(plant.all)) {
 # Summarise by total, functional group, and native status -----------------
 
 total.all <- plant.all %>% 
-  group_by(Channel, Station, Year, Treatment) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 fungr.all <- plant.all %>% 
-  group_by(Channel, Station, Year, Treatment, Functional) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, Functional) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 gfst.all <- plant.all %>% 
-  group_by(Channel, Station, Year, Treatment, gfst) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, gfst) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 woody.all <- plant.all %>% 
-  group_by(Channel, Station, Year, Treatment, woody) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, woody) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 inwood.all <- plant.all %>% 
-  group_by(Channel, Station, Year, Treatment, Native, woody) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, Native, woody) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 ingfst.all <- plant.all %>% 
-  group_by(Channel, Station, Year, Treatment, gfst, Native) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, gfst, Native) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 innat.all <- plant.all %>% 
-  group_by(Channel, Station, Year, Treatment, Native) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, Native) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 ```
 - More specific groups are made by summing the appropriate species by category.

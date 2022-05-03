@@ -1,813 +1,813 @@
-"Channel","Station","Year","Treatment","woody","Cover"
-"Channel 12","Station 1 + 04","2012-11-01","No treatment","Herbaceous",15.75
-"Channel 12","Station 1 + 04","2012-11-01","No treatment","Woody",2.75
-"Channel 12","Station 1 + 04","2013-11-01","No treatment","Herbaceous",20.5833333333333
-"Channel 12","Station 1 + 04","2013-11-01","No treatment","Woody",27.1666666666667
-"Channel 12","Station 1 + 04","2014-11-01","No treatment","Herbaceous",13.375
-"Channel 12","Station 1 + 04","2014-11-01","No treatment","Woody",11.375
-"Channel 12","Station 1 + 04","2015-11-01","No treatment","Herbaceous",25.5
-"Channel 12","Station 1 + 04","2015-11-01","No treatment","Woody",0.125
-"Channel 12","Station 1 + 04","2018-11-01","No treatment","Herbaceous",16.875
-"Channel 12","Station 1 + 04","2018-11-01","No treatment","Woody",5.75
-"Channel 12","Station 1 + 04","2021-11-01","No treatment","Herbaceous",22.25
-"Channel 12","Station 1 + 04","2021-11-01","No treatment","Woody",12.5
-"Channel 12","Station 1 + 52","2012-11-01","No treatment","Herbaceous",26.75
-"Channel 12","Station 1 + 52","2012-11-01","No treatment","Woody",22.5833333333333
-"Channel 12","Station 1 + 52","2013-11-01","No treatment","Herbaceous",22.5
-"Channel 12","Station 1 + 52","2013-11-01","No treatment","Woody",30.8333333333333
-"Channel 12","Station 1 + 52","2014-11-01","No treatment","Herbaceous",13.5
-"Channel 12","Station 1 + 52","2014-11-01","No treatment","Woody",11.875
-"Channel 12","Station 1 + 52","2015-11-01","No treatment","Herbaceous",10.375
-"Channel 12","Station 1 + 52","2015-11-01","No treatment","Woody",4.5
-"Channel 12","Station 1 + 52","2018-11-01","No treatment","Herbaceous",38.25
-"Channel 12","Station 1 + 52","2018-11-01","No treatment","Woody",8.875
-"Channel 12","Station 1 + 52","2021-11-01","No treatment","Herbaceous",26.875
-"Channel 12","Station 1 + 52","2021-11-01","No treatment","Woody",10.75
-"Channel 12","Station 1 + 83","2012-11-01","No treatment","Herbaceous",12.8333333333333
-"Channel 12","Station 1 + 83","2012-11-01","No treatment","Woody",46.4166666666667
-"Channel 12","Station 1 + 83","2013-11-01","No treatment","Herbaceous",21.5
-"Channel 12","Station 1 + 83","2013-11-01","No treatment","Woody",59.25
-"Channel 12","Station 1 + 83","2014-11-01","No treatment","Herbaceous",17.875
-"Channel 12","Station 1 + 83","2014-11-01","No treatment","Woody",36.375
-"Channel 12","Station 1 + 83","2015-11-01","No treatment","Herbaceous",23.875
-"Channel 12","Station 1 + 83","2015-11-01","No treatment","Woody",51.875
-"Channel 12","Station 1 + 83","2018-11-01","No treatment","Herbaceous",29.125
-"Channel 12","Station 1 + 83","2018-11-01","No treatment","Woody",49.125
-"Channel 12","Station 1 + 83","2021-11-01","No treatment","Herbaceous",10.375
-"Channel 12","Station 1 + 83","2021-11-01","No treatment","Woody",53.25
-"Channel 12","Station 2 + 63","2012-11-01","No treatment","Herbaceous",6.66666666666667
-"Channel 12","Station 2 + 63","2012-11-01","No treatment","Woody",22
-"Channel 12","Station 2 + 63","2013-11-01","No treatment","Herbaceous",28.9166666666667
-"Channel 12","Station 2 + 63","2013-11-01","No treatment","Woody",45.5833333333333
-"Channel 12","Station 2 + 63","2014-11-01","No treatment","Herbaceous",15.5
-"Channel 12","Station 2 + 63","2014-11-01","No treatment","Woody",8.75
-"Channel 12","Station 2 + 63","2015-11-01","No treatment","Herbaceous",24.75
-"Channel 12","Station 2 + 63","2015-11-01","No treatment","Woody",50.875
-"Channel 12","Station 2 + 63","2018-11-01","No treatment","Herbaceous",19
-"Channel 12","Station 2 + 63","2018-11-01","No treatment","Woody",9.125
-"Channel 12","Station 2 + 63","2021-11-01","No treatment","Herbaceous",6.25
-"Channel 12","Station 2 + 63","2021-11-01","No treatment","Woody",28.875
-"Channel 12","Station 2 + 98","2012-11-01","No treatment","Herbaceous",9.91666666666667
-"Channel 12","Station 2 + 98","2012-11-01","No treatment","Woody",18.75
-"Channel 12","Station 2 + 98","2013-11-01","No treatment","Herbaceous",28.0833333333333
-"Channel 12","Station 2 + 98","2013-11-01","No treatment","Woody",67.3333333333333
-"Channel 12","Station 2 + 98","2014-11-01","No treatment","Herbaceous",10.625
-"Channel 12","Station 2 + 98","2014-11-01","No treatment","Woody",39
-"Channel 12","Station 2 + 98","2015-11-01","No treatment","Herbaceous",17.375
-"Channel 12","Station 2 + 98","2015-11-01","No treatment","Woody",67
-"Channel 12","Station 2 + 98","2018-11-01","No treatment","Herbaceous",19.25
-"Channel 12","Station 2 + 98","2018-11-01","No treatment","Woody",60.75
-"Channel 12","Station 2 + 98","2021-11-01","No treatment","Herbaceous",28.25
-"Channel 12","Station 2 + 98","2021-11-01","No treatment","Woody",38.875
-"Channel 12","Station 3 + 93","2012-11-01","No treatment","Herbaceous",20.8333333333333
-"Channel 12","Station 3 + 93","2012-11-01","No treatment","Woody",72.9166666666667
-"Channel 12","Station 3 + 93","2013-11-01","No treatment","Herbaceous",12
-"Channel 12","Station 3 + 93","2013-11-01","No treatment","Woody",62.1666666666667
-"Channel 12","Station 3 + 93","2014-11-01","No treatment","Herbaceous",6.125
-"Channel 12","Station 3 + 93","2014-11-01","No treatment","Woody",20.625
-"Channel 12","Station 3 + 93","2015-11-01","No treatment","Herbaceous",12.625
-"Channel 12","Station 3 + 93","2015-11-01","No treatment","Woody",26.5
-"Channel 12","Station 3 + 93","2018-11-01","No treatment","Herbaceous",13.75
-"Channel 12","Station 3 + 93","2018-11-01","No treatment","Woody",36.375
-"Channel 12","Station 3 + 93","2021-11-01","No treatment","Herbaceous",25.875
-"Channel 12","Station 3 + 93","2021-11-01","No treatment","Woody",62.75
-"Channel 12","Station 4 + 00","2012-03-01","No treatment","Woody",14.1666666666667
-"Channel 12","Station 4 + 00","2012-11-01","No treatment","Herbaceous",13.7916666666667
-"Channel 12","Station 4 + 00","2012-11-01","No treatment","Woody",28
-"Channel 12","Station 4 + 00","2013-11-01","No treatment","Herbaceous",19.375
-"Channel 12","Station 4 + 00","2013-11-01","No treatment","Woody",65.9166666666667
-"Channel 12","Station 4 + 00","2014-11-01","No treatment","Herbaceous",11
-"Channel 12","Station 4 + 00","2014-11-01","No treatment","Woody",51.25
-"Channel 12","Station 4 + 00","2015-11-01","No treatment","Herbaceous",10.125
-"Channel 12","Station 4 + 00","2015-11-01","No treatment","Woody",68.75
-"Channel 12","Station 4 + 00","2018-11-01","No treatment","Herbaceous",25.625
-"Channel 12","Station 4 + 00","2018-11-01","No treatment","Woody",43.75
-"Channel 12","Station 4 + 00","2021-11-01","No treatment","Herbaceous",19.1875
-"Channel 12","Station 4 + 00","2021-11-01","No treatment","Woody",77.5
-"Channel 12","Station 4 + 09","2012-11-01","No treatment","Herbaceous",8.83333333333333
-"Channel 12","Station 4 + 09","2012-11-01","No treatment","Woody",47.0833333333333
-"Channel 12","Station 4 + 09","2013-11-01","No treatment","Herbaceous",16
-"Channel 12","Station 4 + 09","2013-11-01","No treatment","Woody",47.1666666666667
-"Channel 12","Station 4 + 09","2014-11-01","No treatment","Herbaceous",4.25
-"Channel 12","Station 4 + 09","2014-11-01","No treatment","Woody",21.375
-"Channel 12","Station 4 + 09","2015-11-01","No treatment","Herbaceous",11.625
-"Channel 12","Station 4 + 09","2015-11-01","No treatment","Woody",25.125
-"Channel 12","Station 4 + 09","2018-11-01","No treatment","Herbaceous",32
-"Channel 12","Station 4 + 09","2018-11-01","No treatment","Woody",8.875
-"Channel 12","Station 4 + 09","2021-11-01","No treatment","Herbaceous",14.375
-"Channel 12","Station 4 + 09","2021-11-01","No treatment","Woody",8.875
-"Channel 12","Station 4 + 56","2012-11-01","No treatment","Herbaceous",13.5
-"Channel 12","Station 4 + 56","2012-11-01","No treatment","Woody",25.5
-"Channel 12","Station 4 + 56","2013-11-01","No treatment","Herbaceous",24.3333333333333
-"Channel 12","Station 4 + 56","2013-11-01","No treatment","Woody",22.5
-"Channel 12","Station 4 + 56","2014-11-01","No treatment","Herbaceous",10.875
-"Channel 12","Station 4 + 56","2014-11-01","No treatment","Woody",20.625
-"Channel 12","Station 4 + 56","2015-11-01","No treatment","Herbaceous",18.75
-"Channel 12","Station 4 + 56","2015-11-01","No treatment","Woody",12.5
-"Channel 12","Station 4 + 56","2018-11-01","No treatment","Herbaceous",23.375
-"Channel 12","Station 4 + 56","2018-11-01","No treatment","Woody",25.625
-"Channel 12","Station 4 + 56","2021-11-01","No treatment","Herbaceous",16.875
-"Channel 12","Station 4 + 56","2021-11-01","No treatment","Woody",32.5
-"Channel 12","Station 4 + 65","2012-11-01","No treatment","Herbaceous",15.5
-"Channel 12","Station 4 + 65","2012-11-01","No treatment","Woody",58.8333333333333
-"Channel 12","Station 4 + 65","2014-11-01","No treatment","Herbaceous",2.5
-"Channel 12","Station 4 + 65","2014-11-01","No treatment","Woody",20
-"Channel 12","Station 4 + 65","2015-11-01","No treatment","Herbaceous",15.375
-"Channel 12","Station 4 + 65","2015-11-01","No treatment","Woody",13.125
-"Channel 12","Station 4 + 65","2018-11-01","No treatment","Herbaceous",14.25
-"Channel 12","Station 4 + 65","2018-11-01","No treatment","Woody",26.875
-"Channel 12","Station 4 + 65","2021-11-01","No treatment","Herbaceous",14.375
-"Channel 12","Station 4 + 65","2021-11-01","No treatment","Woody",32
-"Channel 12","Station 5 + 13","2012-11-01","No treatment","Herbaceous",11.8333333333333
-"Channel 12","Station 5 + 13","2012-11-01","No treatment","Woody",17.5
-"Channel 12","Station 5 + 13","2013-11-01","No treatment","Herbaceous",20.25
-"Channel 12","Station 5 + 13","2013-11-01","No treatment","Woody",30.9166666666667
-"Channel 12","Station 5 + 13","2014-11-01","No treatment","Herbaceous",16.75
-"Channel 12","Station 5 + 13","2014-11-01","No treatment","Woody",18.125
-"Channel 12","Station 5 + 13","2015-11-01","No treatment","Herbaceous",11
-"Channel 12","Station 5 + 13","2015-11-01","No treatment","Woody",73.375
-"Channel 12","Station 5 + 13","2018-11-01","No treatment","Herbaceous",35.5
-"Channel 12","Station 5 + 13","2018-11-01","No treatment","Woody",10.125
-"Channel 12","Station 5 + 13","2021-11-01","No treatment","Herbaceous",15.625
-"Channel 12","Station 5 + 13","2021-11-01","No treatment","Woody",20.625
-"Channel 12","Station 5 + 48","2012-11-01","No treatment","Herbaceous",6.75
-"Channel 12","Station 5 + 48","2012-11-01","No treatment","Woody",33.3333333333333
-"Channel 12","Station 5 + 48","2013-11-01","No treatment","Herbaceous",6.66666666666667
-"Channel 12","Station 5 + 48","2013-11-01","No treatment","Woody",42.1666666666667
-"Channel 12","Station 5 + 48","2014-11-01","No treatment","Herbaceous",3.375
-"Channel 12","Station 5 + 48","2014-11-01","No treatment","Woody",30.875
-"Channel 12","Station 5 + 48","2015-11-01","No treatment","Herbaceous",24.75
-"Channel 12","Station 5 + 48","2015-11-01","No treatment","Woody",8.375
-"Channel 12","Station 5 + 48","2018-11-01","No treatment","Herbaceous",3.375
-"Channel 12","Station 5 + 48","2018-11-01","No treatment","Woody",15
-"Channel 12","Station 5 + 48","2021-11-01","No treatment","Herbaceous",7.875
-"Channel 12","Station 5 + 48","2021-11-01","No treatment","Woody",36.875
-"Channel 12","Station 6 + 30","2012-11-01","No treatment","Herbaceous",12.5833333333333
-"Channel 12","Station 6 + 30","2012-11-01","No treatment","Woody",53.8333333333333
-"Channel 12","Station 6 + 30","2013-11-01","No treatment","Herbaceous",17.3333333333333
-"Channel 12","Station 6 + 30","2013-11-01","No treatment","Woody",71.6666666666667
-"Channel 12","Station 6 + 30","2014-11-01","No treatment","Herbaceous",3.375
-"Channel 12","Station 6 + 30","2014-11-01","No treatment","Woody",73.25
-"Channel 12","Station 6 + 30","2015-11-01","No treatment","Herbaceous",15
-"Channel 12","Station 6 + 30","2015-11-01","No treatment","Woody",82
-"Channel 12","Station 6 + 30","2018-11-01","No treatment","Herbaceous",4.125
-"Channel 12","Station 6 + 30","2018-11-01","No treatment","Woody",54.75
-"Channel 12","Station 6 + 30","2021-11-01","No treatment","Herbaceous",8.375
-"Channel 12","Station 6 + 30","2021-11-01","No treatment","Woody",35
-"Channel 12","Station 6 + 93","2012-11-01","No treatment","Herbaceous",11.75
-"Channel 12","Station 6 + 93","2012-11-01","No treatment","Woody",85.5833333333333
-"Channel 12","Station 6 + 93","2013-11-01","No treatment","Herbaceous",12.75
-"Channel 12","Station 6 + 93","2013-11-01","No treatment","Woody",72.0833333333333
-"Channel 12","Station 6 + 93","2014-11-01","No treatment","Herbaceous",9.5
-"Channel 12","Station 6 + 93","2014-11-01","No treatment","Woody",75
-"Channel 12","Station 6 + 93","2015-11-01","No treatment","Herbaceous",25.5
-"Channel 12","Station 6 + 93","2015-11-01","No treatment","Woody",45
-"Channel 12","Station 6 + 93","2018-11-01","No treatment","Herbaceous",16.125
-"Channel 12","Station 6 + 93","2018-11-01","No treatment","Woody",50.4375
-"Channel 12","Station 6 + 93","2021-11-01","No treatment","Herbaceous",11.875
-"Channel 12","Station 6 + 93","2021-11-01","No treatment","Woody",71.875
-"Channel 13","Station 1 + 11.5 BAF","2012-03-01","Baffle","Herbaceous",0.166666666666667
-"Channel 13","Station 1 + 11.5 BAF","2012-03-01","Baffle","Woody",66.75
-"Channel 13","Station 1 + 11.5 BAF","2012-11-01","Baffle","Herbaceous",4.41666666666667
-"Channel 13","Station 1 + 11.5 BAF","2012-11-01","Baffle","Woody",65.5
-"Channel 13","Station 1 + 11.5 BAF","2013-11-01","Baffle","Herbaceous",0.916666666666667
-"Channel 13","Station 1 + 11.5 BAF","2013-11-01","Baffle","Woody",68.3333333333333
-"Channel 13","Station 1 + 11.5 BAF","2014-11-01","Baffle","Herbaceous",5.3125
-"Channel 13","Station 1 + 11.5 BAF","2014-11-01","Baffle","Woody",64.5
-"Channel 13","Station 1 + 11.5 BAF","2015-11-01","Baffle","Herbaceous",5.125
-"Channel 13","Station 1 + 11.5 BAF","2015-11-01","Baffle","Woody",35.875
-"Channel 13","Station 1 + 11.5 BAF","2018-11-01","Baffle","Herbaceous",7.5
-"Channel 13","Station 1 + 11.5 BAF","2018-11-01","Baffle","Woody",70.125
-"Channel 13","Station 1 + 11.5 BAF","2021-11-01","Baffle","Herbaceous",3.5
-"Channel 13","Station 1 + 11.5 BAF","2021-11-01","Baffle","Woody",82
-"Channel 13","Station 1 + 38.5 ORD","2012-03-01","One rock dam","Herbaceous",0.25
-"Channel 13","Station 1 + 38.5 ORD","2012-03-01","One rock dam","Woody",50.9166666666667
-"Channel 13","Station 1 + 38.5 ORD","2012-11-01","One rock dam","Herbaceous",0.75
-"Channel 13","Station 1 + 38.5 ORD","2012-11-01","One rock dam","Woody",54.3333333333333
-"Channel 13","Station 1 + 38.5 ORD","2013-11-01","One rock dam","Herbaceous",0.916666666666667
-"Channel 13","Station 1 + 38.5 ORD","2013-11-01","One rock dam","Woody",54.5833333333333
-"Channel 13","Station 1 + 38.5 ORD","2014-11-01","One rock dam","Herbaceous",2.25
-"Channel 13","Station 1 + 38.5 ORD","2014-11-01","One rock dam","Woody",77.5
-"Channel 13","Station 1 + 38.5 ORD","2015-11-01","One rock dam","Herbaceous",3.25
-"Channel 13","Station 1 + 38.5 ORD","2015-11-01","One rock dam","Woody",59.375
-"Channel 13","Station 1 + 38.5 ORD","2018-11-01","One rock dam","Herbaceous",15.375
-"Channel 13","Station 1 + 38.5 ORD","2018-11-01","One rock dam","Woody",74.375
-"Channel 13","Station 1 + 38.5 ORD","2021-11-01","One rock dam","Herbaceous",23.125
-"Channel 13","Station 1 + 38.5 ORD","2021-11-01","One rock dam","Woody",50.125
-"Channel 13","Station 1 + 71 BAF","2012-03-01","Baffle","Herbaceous",2
-"Channel 13","Station 1 + 71 BAF","2012-03-01","Baffle","Woody",42.5
-"Channel 13","Station 1 + 71 BAF","2012-11-01","Baffle","Herbaceous",1.5
-"Channel 13","Station 1 + 71 BAF","2012-11-01","Baffle","Woody",40.9166666666667
-"Channel 13","Station 1 + 71 BAF","2013-11-01","Baffle","Herbaceous",3
-"Channel 13","Station 1 + 71 BAF","2013-11-01","Baffle","Woody",32.5
-"Channel 13","Station 1 + 71 BAF","2014-11-01","Baffle","Herbaceous",6.375
-"Channel 13","Station 1 + 71 BAF","2014-11-01","Baffle","Woody",56.25
-"Channel 13","Station 1 + 71 BAF","2015-11-01","Baffle","Herbaceous",6.625
-"Channel 13","Station 1 + 71 BAF","2015-11-01","Baffle","Woody",66.875
-"Channel 13","Station 1 + 71 BAF","2018-11-01","Baffle","Herbaceous",29.875
-"Channel 13","Station 1 + 71 BAF","2018-11-01","Baffle","Woody",47.5
-"Channel 13","Station 1 + 71 BAF","2021-11-01","Baffle","Herbaceous",10
-"Channel 13","Station 1 + 71 BAF","2021-11-01","Baffle","Woody",58.75
-"Channel 13","Station 1 + 77 ORD","2012-03-01","One rock dam","Herbaceous",0.833333333333333
-"Channel 13","Station 1 + 77 ORD","2012-03-01","One rock dam","Woody",43
-"Channel 13","Station 1 + 77 ORD","2012-11-01","One rock dam","Herbaceous",5.08333333333333
-"Channel 13","Station 1 + 77 ORD","2012-11-01","One rock dam","Woody",41.3333333333333
-"Channel 13","Station 1 + 77 ORD","2014-11-01","One rock dam","Herbaceous",4.375
-"Channel 13","Station 1 + 77 ORD","2014-11-01","One rock dam","Woody",63.125
-"Channel 13","Station 1 + 77 ORD","2015-11-01","One rock dam","Herbaceous",7.75
-"Channel 13","Station 1 + 77 ORD","2015-11-01","One rock dam","Woody",63.125
-"Channel 13","Station 1 + 77 ORD","2018-11-01","One rock dam","Herbaceous",13.75
-"Channel 13","Station 1 + 77 ORD","2018-11-01","One rock dam","Woody",56.25
-"Channel 13","Station 1 + 77 ORD","2021-11-01","One rock dam","Herbaceous",9.1
-"Channel 13","Station 1 + 77 ORD","2021-11-01","One rock dam","Woody",18.5
-"Channel 13","Station 1 + 99 ORD","2012-03-01","One rock dam","Herbaceous",3.41666666666667
-"Channel 13","Station 1 + 99 ORD","2012-03-01","One rock dam","Woody",23.3333333333333
-"Channel 13","Station 1 + 99 ORD","2012-11-01","One rock dam","Herbaceous",12.875
-"Channel 13","Station 1 + 99 ORD","2012-11-01","One rock dam","Woody",30
-"Channel 13","Station 1 + 99 ORD","2013-11-01","One rock dam","Herbaceous",3.58333333333333
-"Channel 13","Station 1 + 99 ORD","2013-11-01","One rock dam","Woody",46.6666666666667
-"Channel 13","Station 1 + 99 ORD","2014-11-01","One rock dam","Herbaceous",11.3125
-"Channel 13","Station 1 + 99 ORD","2014-11-01","One rock dam","Woody",28.75
-"Channel 13","Station 1 + 99 ORD","2015-11-01","One rock dam","Herbaceous",10.6875
-"Channel 13","Station 1 + 99 ORD","2015-11-01","One rock dam","Woody",38.75
-"Channel 13","Station 1 + 99 ORD","2018-11-01","One rock dam","Herbaceous",23.3125
-"Channel 13","Station 1 + 99 ORD","2018-11-01","One rock dam","Woody",35.625
-"Channel 13","Station 1 + 99 ORD","2021-11-01","One rock dam","Herbaceous",30.75
-"Channel 13","Station 1 + 99 ORD","2021-11-01","One rock dam","Woody",10.125
-"Channel 13","Station 2 + 16 BAF","2012-03-01","Baffle","Herbaceous",1.08333333333333
-"Channel 13","Station 2 + 16 BAF","2012-03-01","Baffle","Woody",53.9166666666667
-"Channel 13","Station 2 + 16 BAF","2012-11-01","Baffle","Herbaceous",5.66666666666667
-"Channel 13","Station 2 + 16 BAF","2012-11-01","Baffle","Woody",75.8333333333333
-"Channel 13","Station 2 + 16 BAF","2013-11-01","Baffle","Herbaceous",4.58333333333333
-"Channel 13","Station 2 + 16 BAF","2013-11-01","Baffle","Woody",30.9166666666667
-"Channel 13","Station 2 + 16 BAF","2014-11-01","Baffle","Herbaceous",5.75
-"Channel 13","Station 2 + 16 BAF","2014-11-01","Baffle","Woody",84.5
-"Channel 13","Station 2 + 16 BAF","2015-11-01","Baffle","Herbaceous",8.625
-"Channel 13","Station 2 + 16 BAF","2015-11-01","Baffle","Woody",62.5
-"Channel 13","Station 2 + 16 BAF","2018-11-01","Baffle","Herbaceous",6.375
-"Channel 13","Station 2 + 16 BAF","2018-11-01","Baffle","Woody",66.375
-"Channel 13","Station 2 + 16 BAF","2021-11-01","Baffle","Herbaceous",8.375
-"Channel 13","Station 2 + 16 BAF","2021-11-01","Baffle","Woody",105.75
-"Channel 13","Station 2 + 57 ORD","2012-03-01","One rock dam","Herbaceous",4.33333333333333
-"Channel 13","Station 2 + 57 ORD","2012-03-01","One rock dam","Woody",3.08333333333333
-"Channel 13","Station 2 + 57 ORD","2012-11-01","One rock dam","Herbaceous",14
-"Channel 13","Station 2 + 57 ORD","2012-11-01","One rock dam","Woody",8.08333333333333
-"Channel 13","Station 2 + 57 ORD","2013-11-01","One rock dam","Herbaceous",8.83333333333333
-"Channel 13","Station 2 + 57 ORD","2013-11-01","One rock dam","Woody",68.4166666666667
-"Channel 13","Station 2 + 57 ORD","2014-11-01","One rock dam","Herbaceous",13.125
-"Channel 13","Station 2 + 57 ORD","2014-11-01","One rock dam","Woody",13.125
-"Channel 13","Station 2 + 57 ORD","2015-11-01","One rock dam","Herbaceous",13
-"Channel 13","Station 2 + 57 ORD","2015-11-01","One rock dam","Woody",19.625
-"Channel 13","Station 2 + 57 ORD","2018-11-01","One rock dam","Herbaceous",54.625
-"Channel 13","Station 2 + 57 ORD","2018-11-01","One rock dam","Woody",13.25
-"Channel 13","Station 2 + 57 ORD","2021-11-01","One rock dam","Herbaceous",30
-"Channel 13","Station 2 + 57 ORD","2021-11-01","One rock dam","Woody",10.125
-"Channel 13","Station 2 + 67 BAF","2012-03-01","Baffle","Herbaceous",3.25
-"Channel 13","Station 2 + 67 BAF","2012-03-01","Baffle","Woody",26.9166666666667
-"Channel 13","Station 2 + 67 BAF","2012-11-01","Baffle","Herbaceous",16.3333333333333
-"Channel 13","Station 2 + 67 BAF","2012-11-01","Baffle","Woody",55.1666666666667
-"Channel 13","Station 2 + 67 BAF","2013-11-01","Baffle","Herbaceous",9.91666666666667
-"Channel 13","Station 2 + 67 BAF","2013-11-01","Baffle","Woody",3
-"Channel 13","Station 2 + 67 BAF","2014-11-01","Baffle","Herbaceous",22.125
-"Channel 13","Station 2 + 67 BAF","2014-11-01","Baffle","Woody",50.625
-"Channel 13","Station 2 + 67 BAF","2015-11-01","Baffle","Herbaceous",7.375
-"Channel 13","Station 2 + 67 BAF","2015-11-01","Baffle","Woody",42
-"Channel 13","Station 2 + 67 BAF","2018-11-01","Baffle","Herbaceous",43.125
-"Channel 13","Station 2 + 67 BAF","2018-11-01","Baffle","Woody",32.625
-"Channel 13","Station 2 + 67 BAF","2021-11-01","Baffle","Herbaceous",7.375
-"Channel 13","Station 2 + 67 BAF","2021-11-01","Baffle","Woody",105.75
-"Channel 13","Station 3 + 09 ORD","2012-03-01","One rock dam","Herbaceous",7.83333333333333
-"Channel 13","Station 3 + 09 ORD","2012-03-01","One rock dam","Woody",83
-"Channel 13","Station 3 + 09 ORD","2012-11-01","One rock dam","Herbaceous",13.3333333333333
-"Channel 13","Station 3 + 09 ORD","2012-11-01","One rock dam","Woody",82
-"Channel 13","Station 3 + 09 ORD","2013-11-01","One rock dam","Herbaceous",5.58333333333333
-"Channel 13","Station 3 + 09 ORD","2013-11-01","One rock dam","Woody",46
-"Channel 13","Station 3 + 09 ORD","2014-11-01","One rock dam","Herbaceous",15
-"Channel 13","Station 3 + 09 ORD","2014-11-01","One rock dam","Woody",54.75
-"Channel 13","Station 3 + 09 ORD","2015-11-01","One rock dam","Herbaceous",10.125
-"Channel 13","Station 3 + 09 ORD","2015-11-01","One rock dam","Woody",60
-"Channel 13","Station 3 + 09 ORD","2018-11-01","One rock dam","Herbaceous",12.25
-"Channel 13","Station 3 + 09 ORD","2018-11-01","One rock dam","Woody",97.625
-"Channel 13","Station 3 + 09 ORD","2021-11-01","One rock dam","Herbaceous",5.875
-"Channel 13","Station 3 + 31 BAF","2012-03-01","Baffle","Herbaceous",1.75
-"Channel 13","Station 3 + 31 BAF","2012-03-01","Baffle","Woody",33
-"Channel 13","Station 3 + 31 BAF","2012-11-01","Baffle","Herbaceous",16
-"Channel 13","Station 3 + 31 BAF","2012-11-01","Baffle","Woody",36.25
-"Channel 13","Station 3 + 31 BAF","2013-11-01","Baffle","Herbaceous",2.58333333333333
-"Channel 13","Station 3 + 31 BAF","2013-11-01","Baffle","Woody",80.8333333333333
-"Channel 13","Station 3 + 31 BAF","2014-11-01","Baffle","Herbaceous",15
-"Channel 13","Station 3 + 31 BAF","2014-11-01","Baffle","Woody",28.75
-"Channel 13","Station 3 + 31 BAF","2015-11-01","Baffle","Herbaceous",9
-"Channel 13","Station 3 + 31 BAF","2015-11-01","Baffle","Woody",32
-"Channel 13","Station 3 + 31 BAF","2018-11-01","Baffle","Herbaceous",37
-"Channel 13","Station 3 + 31 BAF","2018-11-01","Baffle","Woody",29.375
-"Channel 13","Station 3 + 31 BAF","2021-11-01","Baffle","Herbaceous",32.5
-"Channel 13","Station 3 + 31 BAF","2021-11-01","Baffle","Woody",35
-"Channel 13","Station 3 + 65 ORD","2012-03-01","One rock dam","Herbaceous",1.83333333333333
-"Channel 13","Station 3 + 65 ORD","2012-03-01","One rock dam","Woody",48.9166666666667
-"Channel 13","Station 3 + 65 ORD","2012-11-01","One rock dam","Herbaceous",16.6666666666667
-"Channel 13","Station 3 + 65 ORD","2012-11-01","One rock dam","Woody",18.75
-"Channel 13","Station 3 + 65 ORD","2013-11-01","One rock dam","Herbaceous",8.25
-"Channel 13","Station 3 + 65 ORD","2013-11-01","One rock dam","Woody",42.5
-"Channel 13","Station 3 + 65 ORD","2014-11-01","One rock dam","Herbaceous",25.125
-"Channel 13","Station 3 + 65 ORD","2014-11-01","One rock dam","Woody",37
-"Channel 13","Station 3 + 65 ORD","2015-11-01","One rock dam","Herbaceous",4.75
-"Channel 13","Station 3 + 65 ORD","2015-11-01","One rock dam","Woody",39.625
-"Channel 13","Station 3 + 65 ORD","2018-11-01","One rock dam","Herbaceous",8.25
-"Channel 13","Station 3 + 65 ORD","2018-11-01","One rock dam","Woody",54.375
-"Channel 13","Station 3 + 65 ORD","2021-11-01","One rock dam","Herbaceous",43.875
-"Channel 13","Station 3 + 65 ORD","2021-11-01","One rock dam","Woody",54
-"Channel 13","Station 3 + 95.5 ORD","2012-03-01","One rock dam","Herbaceous",2.66666666666667
-"Channel 13","Station 3 + 95.5 ORD","2012-03-01","One rock dam","Woody",17.5
-"Channel 13","Station 3 + 95.5 ORD","2012-11-01","One rock dam","Herbaceous",14.25
-"Channel 13","Station 3 + 95.5 ORD","2012-11-01","One rock dam","Woody",24.5833333333333
-"Channel 13","Station 3 + 95.5 ORD","2013-11-01","One rock dam","Herbaceous",6.5
-"Channel 13","Station 3 + 95.5 ORD","2013-11-01","One rock dam","Woody",33.25
-"Channel 13","Station 3 + 95.5 ORD","2014-11-01","One rock dam","Herbaceous",16.75
-"Channel 13","Station 3 + 95.5 ORD","2014-11-01","One rock dam","Woody",23.875
-"Channel 13","Station 3 + 95.5 ORD","2015-11-01","One rock dam","Herbaceous",11.75
-"Channel 13","Station 3 + 95.5 ORD","2015-11-01","One rock dam","Woody",20.125
-"Channel 13","Station 3 + 95.5 ORD","2018-11-01","One rock dam","Herbaceous",31.875
-"Channel 13","Station 3 + 95.5 ORD","2018-11-01","One rock dam","Woody",23.75
-"Channel 13","Station 3 + 95.5 ORD","2021-11-01","One rock dam","Herbaceous",44.25
-"Channel 13","Station 3 + 95.5 ORD","2021-11-01","One rock dam","Woody",20.75
-"Channel 13","Station 4 + 14.5 BAF","2012-03-01","Baffle","Herbaceous",11.4166666666667
-"Channel 13","Station 4 + 14.5 BAF","2012-03-01","Baffle","Woody",18.8333333333333
-"Channel 13","Station 4 + 14.5 BAF","2012-11-01","Baffle","Herbaceous",23.1666666666667
-"Channel 13","Station 4 + 14.5 BAF","2012-11-01","Baffle","Woody",22.5
-"Channel 13","Station 4 + 14.5 BAF","2013-11-01","Baffle","Herbaceous",12.0833333333333
-"Channel 13","Station 4 + 14.5 BAF","2013-11-01","Baffle","Woody",32.9166666666667
-"Channel 13","Station 4 + 14.5 BAF","2014-11-01","Baffle","Herbaceous",18.75
-"Channel 13","Station 4 + 14.5 BAF","2014-11-01","Baffle","Woody",11.375
-"Channel 13","Station 4 + 14.5 BAF","2015-11-01","Baffle","Herbaceous",24.125
-"Channel 13","Station 4 + 14.5 BAF","2015-11-01","Baffle","Woody",17.625
-"Channel 13","Station 4 + 14.5 BAF","2018-11-01","Baffle","Herbaceous",42.625
-"Channel 13","Station 4 + 14.5 BAF","2018-11-01","Baffle","Woody",13.75
-"Channel 13","Station 4 + 14.5 BAF","2021-11-01","Baffle","Herbaceous",44.625
-"Channel 13","Station 4 + 14.5 BAF","2021-11-01","Baffle","Woody",27.5
-"Channel 13","Station 4 + 36 ORD","2012-03-01","One rock dam","Herbaceous",5.33333333333333
-"Channel 13","Station 4 + 36 ORD","2012-03-01","One rock dam","Woody",43.3333333333333
-"Channel 13","Station 4 + 36 ORD","2012-11-01","One rock dam","Herbaceous",22.1666666666667
-"Channel 13","Station 4 + 36 ORD","2012-11-01","One rock dam","Woody",37.5833333333333
-"Channel 13","Station 4 + 36 ORD","2013-11-01","One rock dam","Herbaceous",16.25
-"Channel 13","Station 4 + 36 ORD","2013-11-01","One rock dam","Woody",21.6666666666667
-"Channel 13","Station 4 + 36 ORD","2014-11-01","One rock dam","Herbaceous",13.375
-"Channel 13","Station 4 + 36 ORD","2014-11-01","One rock dam","Woody",19.375
-"Channel 13","Station 4 + 36 ORD","2015-11-01","One rock dam","Herbaceous",28.625
-"Channel 13","Station 4 + 36 ORD","2015-11-01","One rock dam","Woody",13.375
-"Channel 13","Station 4 + 36 ORD","2018-11-01","One rock dam","Herbaceous",60.75
-"Channel 13","Station 4 + 36 ORD","2018-11-01","One rock dam","Woody",21.5
-"Channel 13","Station 4 + 36 ORD","2021-11-01","One rock dam","Herbaceous",52.875
-"Channel 13","Station 4 + 36 ORD","2021-11-01","One rock dam","Woody",12.875
-"Channel 13","Station 4 + 50 BAF","2012-03-01","Baffle","Herbaceous",2.83333333333333
-"Channel 13","Station 4 + 50 BAF","2012-03-01","Baffle","Woody",66
-"Channel 13","Station 4 + 50 BAF","2012-11-01","Baffle","Herbaceous",22.25
-"Channel 13","Station 4 + 50 BAF","2012-11-01","Baffle","Woody",61.6666666666667
-"Channel 13","Station 4 + 50 BAF","2013-11-01","Baffle","Herbaceous",16.6666666666667
-"Channel 13","Station 4 + 50 BAF","2013-11-01","Baffle","Woody",45.4166666666667
-"Channel 13","Station 4 + 50 BAF","2014-11-01","Baffle","Herbaceous",32.25
-"Channel 13","Station 4 + 50 BAF","2014-11-01","Baffle","Woody",65.125
-"Channel 13","Station 4 + 50 BAF","2015-11-01","Baffle","Herbaceous",28.5
-"Channel 13","Station 4 + 50 BAF","2015-11-01","Baffle","Woody",23.875
-"Channel 13","Station 4 + 50 BAF","2018-11-01","Baffle","Herbaceous",46
-"Channel 13","Station 4 + 50 BAF","2018-11-01","Baffle","Woody",77.5
-"Channel 13","Station 4 + 50 BAF","2021-11-01","Baffle","Herbaceous",39.125
-"Channel 13","Station 4 + 50 BAF","2021-11-01","Baffle","Woody",43.125
-"Channel 13","Station 4 + 78 ORD","2012-03-01","One rock dam","Herbaceous",7.75
-"Channel 13","Station 4 + 78 ORD","2012-03-01","One rock dam","Woody",26.75
-"Channel 13","Station 4 + 78 ORD","2012-11-01","One rock dam","Herbaceous",31.25
-"Channel 13","Station 4 + 78 ORD","2012-11-01","One rock dam","Woody",42.9166666666667
-"Channel 13","Station 4 + 78 ORD","2014-11-01","One rock dam","Herbaceous",24.25
-"Channel 13","Station 4 + 78 ORD","2014-11-01","One rock dam","Woody",27.5
-"Channel 13","Station 4 + 78 ORD","2015-11-01","One rock dam","Herbaceous",33.5
-"Channel 13","Station 4 + 78 ORD","2015-11-01","One rock dam","Woody",42.5
-"Channel 13","Station 4 + 78 ORD","2018-11-01","One rock dam","Herbaceous",54.375
-"Channel 13","Station 4 + 78 ORD","2018-11-01","One rock dam","Woody",13.125
-"Channel 13","Station 4 + 78 ORD","2021-11-01","One rock dam","Herbaceous",22.75
-"Channel 13","Station 4 + 78 ORD","2021-11-01","One rock dam","Woody",28.75
-"Channel 19","Station 01 + 04","2012-03-01","No treatment","Herbaceous",5.5
-"Channel 19","Station 01 + 04","2012-03-01","No treatment","Woody",13.5
-"Channel 19","Station 01 + 04","2012-11-01","No treatment","Herbaceous",16.1666666666667
-"Channel 19","Station 01 + 04","2012-11-01","No treatment","Woody",76.75
-"Channel 19","Station 01 + 04","2013-11-01","No treatment","Herbaceous",8
-"Channel 19","Station 01 + 04","2013-11-01","No treatment","Woody",75.0833333333333
-"Channel 19","Station 01 + 04","2015-11-01","No treatment","Herbaceous",18.875
-"Channel 19","Station 01 + 04","2015-11-01","No treatment","Woody",35.875
-"Channel 19","Station 01 + 04","2018-11-01","No treatment","Herbaceous",6.125
-"Channel 19","Station 01 + 04","2018-11-01","No treatment","Woody",98.25
-"Channel 19","Station 01 + 04","2021-11-01","No treatment","Herbaceous",10.875
-"Channel 19","Station 01 + 04","2021-11-01","No treatment","Woody",37
-"Channel 19","Station 02 + 04","2013-11-01","No treatment","Herbaceous",23.6666666666667
-"Channel 19","Station 02 + 04","2013-11-01","No treatment","Woody",20.4166666666667
-"Channel 19","Station 02 + 04","2014-11-01","No treatment","Herbaceous",22.5
-"Channel 19","Station 02 + 04","2014-11-01","No treatment","Woody",62.125
-"Channel 19","Station 02 + 04","2015-11-01","No treatment","Herbaceous",8.375
-"Channel 19","Station 02 + 04","2015-11-01","No treatment","Woody",9.5
-"Channel 19","Station 02 + 04","2018-11-01","No treatment","Herbaceous",8.0625
-"Channel 19","Station 02 + 04","2018-11-01","No treatment","Woody",0.625
-"Channel 19","Station 02 + 04","2021-11-01","No treatment","Herbaceous",8.6875
-"Channel 19","Station 02 + 04","2021-11-01","No treatment","Woody",27.75
-"Channel 19","Station 02 + 52","2012-03-01","No treatment","Herbaceous",10.9166666666667
-"Channel 19","Station 02 + 52","2012-03-01","No treatment","Woody",49.1666666666667
-"Channel 19","Station 02 + 52","2012-11-01","No treatment","Herbaceous",45.5833333333333
-"Channel 19","Station 02 + 52","2012-11-01","No treatment","Woody",55.5
-"Channel 19","Station 02 + 52","2013-11-01","No treatment","Herbaceous",28.75
-"Channel 19","Station 02 + 52","2013-11-01","No treatment","Woody",49.1666666666667
-"Channel 19","Station 02 + 52","2014-11-01","No treatment","Herbaceous",63.875
-"Channel 19","Station 02 + 52","2014-11-01","No treatment","Woody",40.625
-"Channel 19","Station 02 + 52","2015-11-01","No treatment","Herbaceous",27.875
-"Channel 19","Station 02 + 52","2015-11-01","No treatment","Woody",28.375
-"Channel 19","Station 02 + 52","2018-11-01","No treatment","Herbaceous",44.5625
-"Channel 19","Station 02 + 52","2018-11-01","No treatment","Woody",16.875
-"Channel 19","Station 02 + 52","2021-11-01","No treatment","Herbaceous",67
-"Channel 19","Station 02 + 52","2021-11-01","No treatment","Woody",62.5
-"Channel 19","Station 03 + 63","2012-03-01","No treatment","Herbaceous",7.5
-"Channel 19","Station 03 + 63","2012-03-01","No treatment","Woody",62.5
-"Channel 19","Station 03 + 63","2012-11-01","No treatment","Herbaceous",26.8333333333333
-"Channel 19","Station 03 + 63","2012-11-01","No treatment","Woody",83.4166666666667
-"Channel 19","Station 03 + 63","2013-11-01","No treatment","Herbaceous",20.1666666666667
-"Channel 19","Station 03 + 63","2013-11-01","No treatment","Woody",91.6666666666667
-"Channel 19","Station 03 + 63","2014-11-01","No treatment","Herbaceous",13.75
-"Channel 19","Station 03 + 63","2014-11-01","No treatment","Woody",43.875
-"Channel 19","Station 03 + 63","2015-11-01","No treatment","Herbaceous",11
-"Channel 19","Station 03 + 63","2015-11-01","No treatment","Woody",45.25
-"Channel 19","Station 03 + 63","2018-11-01","No treatment","Herbaceous",19.25
-"Channel 19","Station 03 + 63","2018-11-01","No treatment","Woody",18.25
-"Channel 19","Station 03 + 63","2021-11-01","No treatment","Herbaceous",17.375
-"Channel 19","Station 03 + 63","2021-11-01","No treatment","Woody",96.375
-"Channel 19","Station 03 + 98","2012-03-01","No treatment","Herbaceous",7.91666666666667
-"Channel 19","Station 03 + 98","2012-03-01","No treatment","Woody",13.75
-"Channel 19","Station 03 + 98","2012-11-01","No treatment","Herbaceous",33
-"Channel 19","Station 03 + 98","2012-11-01","No treatment","Woody",18
-"Channel 19","Station 03 + 98","2013-11-01","No treatment","Herbaceous",38.25
-"Channel 19","Station 03 + 98","2013-11-01","No treatment","Woody",22.9166666666667
-"Channel 19","Station 03 + 98","2014-11-01","No treatment","Herbaceous",68.125
-"Channel 19","Station 03 + 98","2014-11-01","No treatment","Woody",15.75
-"Channel 19","Station 03 + 98","2015-11-01","No treatment","Herbaceous",13.5
-"Channel 19","Station 03 + 98","2015-11-01","No treatment","Woody",11.25
-"Channel 19","Station 03 + 98","2018-11-01","No treatment","Herbaceous",33.25
-"Channel 19","Station 03 + 98","2018-11-01","No treatment","Woody",27
-"Channel 19","Station 03 + 98","2021-11-01","No treatment","Herbaceous",28.75
-"Channel 19","Station 03 + 98","2021-11-01","No treatment","Woody",8.125
-"Channel 19","Station 05 + 00","2012-03-01","No treatment","Herbaceous",10.5833333333333
-"Channel 19","Station 05 + 00","2012-03-01","No treatment","Woody",7.08333333333333
-"Channel 19","Station 05 + 00","2012-11-01","No treatment","Herbaceous",52
-"Channel 19","Station 05 + 00","2012-11-01","No treatment","Woody",9.66666666666667
-"Channel 19","Station 05 + 00","2013-11-01","No treatment","Herbaceous",14.3333333333333
-"Channel 19","Station 05 + 00","2014-11-01","No treatment","Herbaceous",51.125
-"Channel 19","Station 05 + 00","2014-11-01","No treatment","Woody",4.5
-"Channel 19","Station 05 + 00","2015-11-01","No treatment","Herbaceous",13.875
-"Channel 19","Station 05 + 00","2015-11-01","No treatment","Woody",0.25
-"Channel 19","Station 05 + 00","2018-11-01","No treatment","Herbaceous",34.25
-"Channel 19","Station 05 + 00","2018-11-01","No treatment","Woody",1.5
-"Channel 19","Station 05 + 00","2021-11-01","No treatment","Herbaceous",62.25
-"Channel 19","Station 05 + 00","2021-11-01","No treatment","Woody",17
-"Channel 19","Station 05 + 09","2012-03-01","No treatment","Herbaceous",1.5
-"Channel 19","Station 05 + 09","2012-03-01","No treatment","Woody",23.75
-"Channel 19","Station 05 + 09","2012-11-01","No treatment","Herbaceous",9.66666666666667
-"Channel 19","Station 05 + 09","2012-11-01","No treatment","Woody",61.75
-"Channel 19","Station 05 + 09","2013-11-01","No treatment","Herbaceous",8.16666666666667
-"Channel 19","Station 05 + 09","2013-11-01","No treatment","Woody",80.8333333333333
-"Channel 19","Station 05 + 09","2014-11-01","No treatment","Herbaceous",27.375
-"Channel 19","Station 05 + 09","2014-11-01","No treatment","Woody",77.5
-"Channel 19","Station 05 + 09","2015-11-01","No treatment","Herbaceous",7.375
-"Channel 19","Station 05 + 09","2015-11-01","No treatment","Woody",33.25
-"Channel 19","Station 05 + 09","2018-11-01","No treatment","Herbaceous",14
-"Channel 19","Station 05 + 09","2018-11-01","No treatment","Woody",74.375
-"Channel 19","Station 05 + 09","2021-11-01","No treatment","Herbaceous",10.125
-"Channel 19","Station 05 + 09","2021-11-01","No treatment","Woody",86.25
-"Channel 19","Station 05 + 62","2012-03-01","No treatment","Herbaceous",3.16666666666667
-"Channel 19","Station 05 + 62","2012-03-01","No treatment","Woody",0.5
-"Channel 19","Station 05 + 62","2012-11-01","No treatment","Herbaceous",13.75
-"Channel 19","Station 05 + 62","2012-11-01","No treatment","Woody",2.91666666666667
-"Channel 19","Station 05 + 62","2013-11-01","No treatment","Herbaceous",15.8333333333333
-"Channel 19","Station 05 + 62","2013-11-01","No treatment","Woody",0.833333333333333
-"Channel 19","Station 05 + 62","2014-11-01","No treatment","Herbaceous",32.75
-"Channel 19","Station 05 + 62","2014-11-01","No treatment","Woody",0.875
-"Channel 19","Station 05 + 62","2015-11-01","No treatment","Herbaceous",7.6875
-"Channel 19","Station 05 + 62","2015-11-01","No treatment","Woody",1.375
-"Channel 19","Station 05 + 62","2018-11-01","No treatment","Herbaceous",22.3125
-"Channel 19","Station 05 + 62","2021-11-01","No treatment","Herbaceous",29.25
-"Channel 19","Station 05 + 62","2021-11-01","No treatment","Woody",3.75
-"Channel 19","Station 06 + 13","2012-03-01","No treatment","Herbaceous",2.66666666666667
-"Channel 19","Station 06 + 13","2012-03-01","No treatment","Woody",24.1666666666667
-"Channel 19","Station 06 + 13","2012-11-01","No treatment","Herbaceous",13.4166666666667
-"Channel 19","Station 06 + 13","2012-11-01","No treatment","Woody",35
-"Channel 19","Station 06 + 13","2013-11-01","No treatment","Herbaceous",16.0833333333333
-"Channel 19","Station 06 + 13","2013-11-01","No treatment","Woody",27.1666666666667
-"Channel 19","Station 06 + 13","2014-11-01","No treatment","Herbaceous",30.125
-"Channel 19","Station 06 + 13","2014-11-01","No treatment","Woody",0.625
-"Channel 19","Station 06 + 13","2015-11-01","No treatment","Herbaceous",16.75
-"Channel 19","Station 06 + 13","2015-11-01","No treatment","Woody",0.625
-"Channel 19","Station 06 + 13","2018-11-01","No treatment","Herbaceous",19.75
-"Channel 19","Station 06 + 13","2018-11-01","No treatment","Woody",3.875
-"Channel 19","Station 06 + 13","2021-11-01","No treatment","Herbaceous",20.25
-"Channel 19","Station 06 + 97","2012-03-01","No treatment","Herbaceous",1.83333333333333
-"Channel 19","Station 06 + 97","2012-03-01","No treatment","Woody",41.8333333333333
-"Channel 19","Station 06 + 97","2012-11-01","No treatment","Herbaceous",18.25
-"Channel 19","Station 06 + 97","2012-11-01","No treatment","Woody",57.9166666666667
-"Channel 19","Station 06 + 97","2013-11-01","No treatment","Herbaceous",1.91666666666667
-"Channel 19","Station 06 + 97","2013-11-01","No treatment","Woody",59.1666666666667
-"Channel 19","Station 06 + 97","2014-11-01","No treatment","Herbaceous",22
-"Channel 19","Station 06 + 97","2014-11-01","No treatment","Woody",33.75
-"Channel 19","Station 06 + 97","2015-11-01","No treatment","Herbaceous",12.25
-"Channel 19","Station 06 + 97","2015-11-01","No treatment","Woody",3.75
-"Channel 19","Station 06 + 97","2018-11-01","No treatment","Herbaceous",1.625
-"Channel 19","Station 06 + 97","2018-11-01","No treatment","Woody",46.25
-"Channel 19","Station 06 + 97","2021-11-01","No treatment","Herbaceous",38.125
-"Channel 19","Station 06 + 97","2021-11-01","No treatment","Woody",34.375
-"Channel 19","Station 07 + 30","2012-03-01","No treatment","Herbaceous",2.25
-"Channel 19","Station 07 + 30","2012-03-01","No treatment","Woody",17.0833333333333
-"Channel 19","Station 07 + 30","2012-11-01","No treatment","Herbaceous",45
-"Channel 19","Station 07 + 30","2012-11-01","No treatment","Woody",53.8333333333333
-"Channel 19","Station 07 + 30","2013-11-01","No treatment","Herbaceous",9.41666666666667
-"Channel 19","Station 07 + 30","2013-11-01","No treatment","Woody",27.0833333333333
-"Channel 19","Station 07 + 30","2014-11-01","No treatment","Herbaceous",23.625
-"Channel 19","Station 07 + 30","2014-11-01","No treatment","Woody",28.125
-"Channel 19","Station 07 + 30","2015-11-01","No treatment","Herbaceous",1.875
-"Channel 19","Station 07 + 30","2015-11-01","No treatment","Woody",4.375
-"Channel 19","Station 07 + 30","2018-11-01","No treatment","Herbaceous",12.375
-"Channel 19","Station 07 + 30","2018-11-01","No treatment","Woody",21.875
-"Channel 19","Station 07 + 30","2021-11-01","No treatment","Herbaceous",41.875
-"Channel 19","Station 07 + 30","2021-11-01","No treatment","Woody",13.125
-"Channel 19","Station 07 + 50","2012-03-01","No treatment","Herbaceous",2.5
-"Channel 19","Station 07 + 50","2012-03-01","No treatment","Woody",38.75
-"Channel 19","Station 07 + 50","2012-11-01","No treatment","Herbaceous",26.9166666666667
-"Channel 19","Station 07 + 50","2012-11-01","No treatment","Woody",40.9166666666667
-"Channel 19","Station 07 + 50","2013-11-01","No treatment","Herbaceous",3.83333333333333
-"Channel 19","Station 07 + 50","2013-11-01","No treatment","Woody",46.6666666666667
-"Channel 19","Station 07 + 50","2014-11-01","No treatment","Herbaceous",18.875
-"Channel 19","Station 07 + 50","2014-11-01","No treatment","Woody",33.75
-"Channel 19","Station 07 + 50","2015-11-01","No treatment","Herbaceous",11.25
-"Channel 19","Station 07 + 50","2015-11-01","No treatment","Woody",25.625
-"Channel 19","Station 07 + 50","2018-11-01","No treatment","Herbaceous",15.375
-"Channel 19","Station 07 + 50","2018-11-01","No treatment","Woody",9.375
-"Channel 19","Station 07 + 50","2021-11-01","No treatment","Herbaceous",28.5
-"Channel 19","Station 07 + 50","2021-11-01","No treatment","Woody",58.75
-"Channel 19","Station 07 + 97","2012-03-01","No treatment","Herbaceous",5
-"Channel 19","Station 07 + 97","2012-03-01","No treatment","Woody",9.16666666666667
-"Channel 19","Station 07 + 97","2012-11-01","No treatment","Herbaceous",22
-"Channel 19","Station 07 + 97","2012-11-01","No treatment","Woody",7.5
-"Channel 19","Station 07 + 97","2013-11-01","No treatment","Herbaceous",16.9166666666667
-"Channel 19","Station 07 + 97","2013-11-01","No treatment","Woody",58.3333333333333
-"Channel 19","Station 07 + 97","2014-11-01","No treatment","Herbaceous",29.875
-"Channel 19","Station 07 + 97","2014-11-01","No treatment","Woody",34.375
-"Channel 19","Station 07 + 97","2015-11-01","No treatment","Herbaceous",13
-"Channel 19","Station 07 + 97","2015-11-01","No treatment","Woody",3.75
-"Channel 19","Station 07 + 97","2018-11-01","No treatment","Herbaceous",20.25
-"Channel 19","Station 07 + 97","2018-11-01","No treatment","Woody",4.5
-"Channel 19","Station 07 + 97","2021-11-01","No treatment","Herbaceous",51.5
-"Channel 19","Station 07 + 97","2021-11-01","No treatment","Woody",4
-"Channel 19","Station 09 + 05","2012-03-01","No treatment","Herbaceous",4.91666666666667
-"Channel 19","Station 09 + 05","2012-03-01","No treatment","Woody",15.9166666666667
-"Channel 19","Station 09 + 05","2012-11-01","No treatment","Herbaceous",36.8333333333333
-"Channel 19","Station 09 + 05","2012-11-01","No treatment","Woody",22.5833333333333
-"Channel 19","Station 09 + 05","2013-11-01","No treatment","Herbaceous",16.8333333333333
-"Channel 19","Station 09 + 05","2013-11-01","No treatment","Woody",17.5833333333333
-"Channel 19","Station 09 + 05","2014-11-01","No treatment","Herbaceous",34.25
-"Channel 19","Station 09 + 05","2014-11-01","No treatment","Woody",4.5
-"Channel 19","Station 09 + 05","2015-11-01","No treatment","Herbaceous",7.5
-"Channel 19","Station 09 + 05","2015-11-01","No treatment","Woody",5
-"Channel 19","Station 09 + 05","2018-11-01","No treatment","Herbaceous",22.375
-"Channel 19","Station 09 + 05","2018-11-01","No treatment","Woody",18.875
-"Channel 19","Station 09 + 05","2021-11-01","No treatment","Herbaceous",46.875
-"Channel 19","Station 09 + 05","2021-11-01","No treatment","Woody",28.125
-"Channel 19","Station 09 + 26","2012-03-01","No treatment","Herbaceous",2.33333333333333
-"Channel 19","Station 09 + 26","2012-03-01","No treatment","Woody",6.66666666666667
-"Channel 19","Station 09 + 26","2012-11-01","No treatment","Herbaceous",30.3333333333333
-"Channel 19","Station 09 + 26","2012-11-01","No treatment","Woody",3.75
-"Channel 19","Station 09 + 26","2013-11-01","No treatment","Herbaceous",23.3333333333333
-"Channel 19","Station 09 + 26","2013-11-01","No treatment","Woody",41.25
-"Channel 19","Station 09 + 26","2014-11-01","No treatment","Herbaceous",44
-"Channel 19","Station 09 + 26","2014-11-01","No treatment","Woody",15.625
-"Channel 19","Station 09 + 26","2015-11-01","No treatment","Herbaceous",11.25
-"Channel 19","Station 09 + 26","2015-11-01","No treatment","Woody",4.875
-"Channel 19","Station 09 + 26","2018-11-01","No treatment","Herbaceous",13.25
-"Channel 19","Station 09 + 26","2018-11-01","No treatment","Woody",14.375
-"Channel 19","Station 09 + 26","2021-11-01","No treatment","Herbaceous",37.375
-"Channel 19","Station 09 + 26","2021-11-01","No treatment","Woody",39.375
-"Channel 19","Station 09 + 68","2012-03-01","No treatment","Herbaceous",0.666666666666667
-"Channel 19","Station 09 + 68","2012-03-01","No treatment","Woody",54.6666666666667
-"Channel 19","Station 09 + 68","2012-11-01","No treatment","Herbaceous",3.75
-"Channel 19","Station 09 + 68","2012-11-01","No treatment","Woody",69.1666666666667
-"Channel 19","Station 09 + 68","2013-11-01","No treatment","Herbaceous",13.5833333333333
-"Channel 19","Station 09 + 68","2013-11-01","No treatment","Woody",27.9166666666667
-"Channel 19","Station 09 + 68","2014-11-01","No treatment","Herbaceous",26.625
-"Channel 19","Station 09 + 68","2014-11-01","No treatment","Woody",13.125
-"Channel 19","Station 09 + 68","2015-11-01","No treatment","Herbaceous",7.25
-"Channel 19","Station 09 + 68","2015-11-01","No treatment","Woody",20.75
-"Channel 19","Station 09 + 68","2018-11-01","No treatment","Herbaceous",28.375
-"Channel 19","Station 09 + 68","2018-11-01","No treatment","Woody",25.625
-"Channel 19","Station 09 + 68","2021-11-01","No treatment","Herbaceous",54
-"Channel 19","Station 09 + 68","2021-11-01","No treatment","Woody",48.875
-"Channel 19","Station 10 + 98","2012-03-01","No treatment","Herbaceous",4.75
-"Channel 19","Station 10 + 98","2012-03-01","No treatment","Woody",24.3333333333333
-"Channel 19","Station 10 + 98","2012-11-01","No treatment","Herbaceous",20.25
-"Channel 19","Station 10 + 98","2012-11-01","No treatment","Woody",42.9166666666667
-"Channel 19","Station 10 + 98","2013-11-01","No treatment","Herbaceous",13.0833333333333
-"Channel 19","Station 10 + 98","2013-11-01","No treatment","Woody",21.6666666666667
-"Channel 19","Station 10 + 98","2014-11-01","No treatment","Herbaceous",21
-"Channel 19","Station 10 + 98","2014-11-01","No treatment","Woody",34.375
-"Channel 19","Station 10 + 98","2015-11-01","No treatment","Herbaceous",4.25
-"Channel 19","Station 10 + 98","2015-11-01","No treatment","Woody",16.375
-"Channel 19","Station 10 + 98","2018-11-01","No treatment","Herbaceous",11
-"Channel 19","Station 10 + 98","2018-11-01","No treatment","Woody",25
-"Channel 19","Station 10 + 98","2021-11-01","No treatment","Herbaceous",49.125
-"Channel 19","Station 10 + 98","2021-11-01","No treatment","Woody",31.25
-"Channel 21","Station 01 + 07.5 BAF","2012-03-01","Baffle","Herbaceous",9.75
-"Channel 21","Station 01 + 07.5 BAF","2012-03-01","Baffle","Woody",22.5
-"Channel 21","Station 01 + 07.5 BAF","2012-11-01","Baffle","Herbaceous",20.3333333333333
-"Channel 21","Station 01 + 07.5 BAF","2012-11-01","Baffle","Woody",16.6666666666667
-"Channel 21","Station 01 + 07.5 BAF","2013-11-01","Baffle","Herbaceous",6.33333333333333
-"Channel 21","Station 01 + 07.5 BAF","2013-11-01","Baffle","Woody",16.6666666666667
-"Channel 21","Station 01 + 07.5 BAF","2014-11-01","Baffle","Herbaceous",22.375
-"Channel 21","Station 01 + 07.5 BAF","2014-11-01","Baffle","Woody",3.75
-"Channel 21","Station 01 + 07.5 BAF","2015-11-01","Baffle","Herbaceous",14.75
-"Channel 21","Station 01 + 07.5 BAF","2015-11-01","Baffle","Woody",4.375
-"Channel 21","Station 01 + 07.5 BAF","2018-11-01","Baffle","Herbaceous",36
-"Channel 21","Station 01 + 07.5 BAF","2018-11-01","Baffle","Woody",3.75
-"Channel 21","Station 01 + 07.5 BAF","2021-11-01","Baffle","Herbaceous",27.375
-"Channel 21","Station 01 + 07.5 BAF","2021-11-01","Baffle","Woody",3.75
-"Channel 21","Station 01 + 49 ORD","2012-03-01","One rock dam","Herbaceous",0.75
-"Channel 21","Station 01 + 49 ORD","2012-03-01","One rock dam","Woody",15.4166666666667
-"Channel 21","Station 01 + 49 ORD","2012-11-01","One rock dam","Herbaceous",7.75
-"Channel 21","Station 01 + 49 ORD","2012-11-01","One rock dam","Woody",19.25
-"Channel 21","Station 01 + 49 ORD","2013-11-01","One rock dam","Herbaceous",8.41666666666667
-"Channel 21","Station 01 + 49 ORD","2013-11-01","One rock dam","Woody",12.0833333333333
-"Channel 21","Station 01 + 49 ORD","2014-11-01","One rock dam","Herbaceous",25
-"Channel 21","Station 01 + 49 ORD","2014-11-01","One rock dam","Woody",13.375
-"Channel 21","Station 01 + 49 ORD","2015-11-01","One rock dam","Herbaceous",16.875
-"Channel 21","Station 01 + 49 ORD","2015-11-01","One rock dam","Woody",0.125
-"Channel 21","Station 01 + 49 ORD","2018-11-01","One rock dam","Herbaceous",20.25
-"Channel 21","Station 01 + 49 ORD","2018-11-01","One rock dam","Woody",17
-"Channel 21","Station 01 + 49 ORD","2021-11-01","One rock dam","Herbaceous",14.5
-"Channel 21","Station 01 + 49 ORD","2021-11-01","One rock dam","Woody",68.125
-"Channel 21","Station 02 + 15 BAF","2012-03-01","Baffle","Herbaceous",6.41666666666667
-"Channel 21","Station 02 + 15 BAF","2012-03-01","Baffle","Woody",2.5
-"Channel 21","Station 02 + 15 BAF","2012-11-01","Baffle","Herbaceous",20
-"Channel 21","Station 02 + 15 BAF","2012-11-01","Baffle","Woody",6.66666666666667
-"Channel 21","Station 02 + 15 BAF","2013-11-01","Baffle","Herbaceous",12.6666666666667
-"Channel 21","Station 02 + 15 BAF","2013-11-01","Baffle","Woody",6.25
-"Channel 21","Station 02 + 15 BAF","2014-11-01","Baffle","Herbaceous",15.625
-"Channel 21","Station 02 + 15 BAF","2014-11-01","Baffle","Woody",0.125
-"Channel 21","Station 02 + 15 BAF","2015-11-01","Baffle","Herbaceous",10.125
-"Channel 21","Station 02 + 15 BAF","2018-11-01","Baffle","Herbaceous",9.5
-"Channel 21","Station 02 + 15 BAF","2021-11-01","Baffle","Herbaceous",2.125
-"Channel 21","Station 02 + 15 BAF","2021-11-01","Baffle","Woody",0.125
-"Channel 21","Station 03 + 80 BAF","2012-03-01","Baffle","Herbaceous",0.75
-"Channel 21","Station 03 + 80 BAF","2012-03-01","Baffle","Woody",16.6666666666667
-"Channel 21","Station 03 + 80 BAF","2012-11-01","Baffle","Herbaceous",2.83333333333333
-"Channel 21","Station 03 + 80 BAF","2012-11-01","Baffle","Woody",24.5833333333333
-"Channel 21","Station 03 + 80 BAF","2013-11-01","Baffle","Herbaceous",4.25
-"Channel 21","Station 03 + 80 BAF","2013-11-01","Baffle","Woody",19.1666666666667
-"Channel 21","Station 03 + 80 BAF","2014-11-01","Baffle","Herbaceous",6.375
-"Channel 21","Station 03 + 80 BAF","2015-11-01","Baffle","Herbaceous",8.875
-"Channel 21","Station 03 + 80 BAF","2018-11-01","Baffle","Herbaceous",31.875
-"Channel 21","Station 03 + 80 BAF","2018-11-01","Baffle","Woody",0.125
-"Channel 21","Station 03 + 80 BAF","2021-11-01","Baffle","Herbaceous",23.375
-"Channel 21","Station 03 + 80 BAF","2021-11-01","Baffle","Woody",0.625
-"Channel 21","Station 04 + 90 ORD","2012-03-01","One rock dam","Herbaceous",3.58333333333333
-"Channel 21","Station 04 + 90 ORD","2012-03-01","One rock dam","Woody",2.5
-"Channel 21","Station 04 + 90 ORD","2012-11-01","One rock dam","Herbaceous",6.33333333333333
-"Channel 21","Station 04 + 90 ORD","2012-11-01","One rock dam","Woody",2.5
-"Channel 21","Station 04 + 90 ORD","2013-11-01","One rock dam","Herbaceous",1.75
-"Channel 21","Station 04 + 90 ORD","2013-11-01","One rock dam","Woody",2.5
-"Channel 21","Station 04 + 90 ORD","2014-11-01","One rock dam","Herbaceous",12.875
-"Channel 21","Station 04 + 90 ORD","2015-11-01","One rock dam","Herbaceous",11.25
-"Channel 21","Station 04 + 90 ORD","2015-11-01","One rock dam","Woody",0.125
-"Channel 21","Station 04 + 90 ORD","2018-11-01","One rock dam","Herbaceous",13.625
-"Channel 21","Station 04 + 90 ORD","2021-11-01","One rock dam","Herbaceous",7.375
-"Channel 21","Station 06 + 36 BAF","2012-03-01","Baffle","Herbaceous",4.41666666666667
-"Channel 21","Station 06 + 36 BAF","2012-03-01","Baffle","Woody",10.0833333333333
-"Channel 21","Station 06 + 36 BAF","2012-11-01","Baffle","Herbaceous",5.08333333333333
-"Channel 21","Station 06 + 36 BAF","2012-11-01","Baffle","Woody",15.9166666666667
-"Channel 21","Station 06 + 36 BAF","2013-11-01","Baffle","Herbaceous",7
-"Channel 21","Station 06 + 36 BAF","2013-11-01","Baffle","Woody",16.75
-"Channel 21","Station 06 + 36 BAF","2014-11-01","Baffle","Herbaceous",26.875
-"Channel 21","Station 06 + 36 BAF","2014-11-01","Baffle","Woody",10.625
-"Channel 21","Station 06 + 36 BAF","2015-11-01","Baffle","Herbaceous",14.25
-"Channel 21","Station 06 + 36 BAF","2015-11-01","Baffle","Woody",13.125
-"Channel 21","Station 06 + 36 BAF","2018-11-01","Baffle","Herbaceous",9.125
-"Channel 21","Station 06 + 36 BAF","2018-11-01","Baffle","Woody",10
-"Channel 21","Station 06 + 36 BAF","2021-11-01","Baffle","Herbaceous",13.875
-"Channel 21","Station 06 + 36 BAF","2021-11-01","Baffle","Woody",0.875
-"Channel 21","Station 07 + 49.5 ORD","2012-03-01","One rock dam","Herbaceous",1.16666666666667
-"Channel 21","Station 07 + 49.5 ORD","2012-03-01","One rock dam","Woody",32.5833333333333
-"Channel 21","Station 07 + 49.5 ORD","2012-11-01","One rock dam","Herbaceous",3.83333333333333
-"Channel 21","Station 07 + 49.5 ORD","2012-11-01","One rock dam","Woody",30.5833333333333
-"Channel 21","Station 07 + 49.5 ORD","2013-11-01","One rock dam","Herbaceous",5.33333333333333
-"Channel 21","Station 07 + 49.5 ORD","2013-11-01","One rock dam","Woody",16.75
-"Channel 21","Station 07 + 49.5 ORD","2014-11-01","One rock dam","Herbaceous",11.25
-"Channel 21","Station 07 + 49.5 ORD","2014-11-01","One rock dam","Woody",21.375
-"Channel 21","Station 07 + 49.5 ORD","2015-11-01","One rock dam","Herbaceous",3.625
-"Channel 21","Station 07 + 49.5 ORD","2015-11-01","One rock dam","Woody",24.625
-"Channel 21","Station 07 + 49.5 ORD","2018-11-01","One rock dam","Herbaceous",13.75
-"Channel 21","Station 07 + 49.5 ORD","2018-11-01","One rock dam","Woody",28.875
-"Channel 21","Station 07 + 49.5 ORD","2021-11-01","One rock dam","Herbaceous",17.125
-"Channel 21","Station 07 + 49.5 ORD","2021-11-01","One rock dam","Woody",13.125
-"Channel 21","Station 07 + 66 BAF","2012-03-01","Baffle","Herbaceous",0.25
-"Channel 21","Station 07 + 66 BAF","2012-03-01","Baffle","Woody",0.5
-"Channel 21","Station 07 + 66 BAF","2012-11-01","Baffle","Herbaceous",3.16666666666667
-"Channel 21","Station 07 + 66 BAF","2012-11-01","Baffle","Woody",0.0833333333333333
-"Channel 21","Station 07 + 66 BAF","2013-11-01","Baffle","Herbaceous",0.833333333333333
-"Channel 21","Station 07 + 66 BAF","2014-11-01","Baffle","Herbaceous",3.625
-"Channel 21","Station 07 + 66 BAF","2018-11-01","Baffle","Herbaceous",2.375
-"Channel 21","Station 07 + 66 BAF","2021-11-01","Baffle","Herbaceous",6.25
-"Channel 21","Station 08 + 62 BAF","2012-03-01","Baffle","Herbaceous",3.08333333333333
-"Channel 21","Station 08 + 62 BAF","2012-03-01","Baffle","Woody",14.6666666666667
-"Channel 21","Station 08 + 62 BAF","2012-11-01","Baffle","Herbaceous",13.5
-"Channel 21","Station 08 + 62 BAF","2012-11-01","Baffle","Woody",15.9166666666667
-"Channel 21","Station 08 + 62 BAF","2013-11-01","Baffle","Herbaceous",3.58333333333333
-"Channel 21","Station 08 + 62 BAF","2013-11-01","Baffle","Woody",12.6666666666667
-"Channel 21","Station 08 + 62 BAF","2014-11-01","Baffle","Herbaceous",13
-"Channel 21","Station 08 + 62 BAF","2014-11-01","Baffle","Woody",15.25
-"Channel 21","Station 08 + 62 BAF","2015-11-01","Baffle","Herbaceous",15.625
-"Channel 21","Station 08 + 62 BAF","2015-11-01","Baffle","Woody",15.25
-"Channel 21","Station 08 + 62 BAF","2018-11-01","Baffle","Herbaceous",20.375
-"Channel 21","Station 08 + 62 BAF","2018-11-01","Baffle","Woody",18.375
-"Channel 21","Station 08 + 62 BAF","2021-11-01","Baffle","Herbaceous",19
-"Channel 21","Station 08 + 62 BAF","2021-11-01","Baffle","Woody",10.125
-"Channel 21","Station 09 + 99 ORD","2012-03-01","One rock dam","Herbaceous",1.25
-"Channel 21","Station 09 + 99 ORD","2012-03-01","One rock dam","Woody",11
-"Channel 21","Station 09 + 99 ORD","2012-11-01","One rock dam","Herbaceous",1.5
-"Channel 21","Station 09 + 99 ORD","2012-11-01","One rock dam","Woody",6.91666666666667
-"Channel 21","Station 09 + 99 ORD","2013-11-01","One rock dam","Herbaceous",2.91666666666667
-"Channel 21","Station 09 + 99 ORD","2013-11-01","One rock dam","Woody",12.9166666666667
-"Channel 21","Station 09 + 99 ORD","2014-11-01","One rock dam","Herbaceous",8.25
-"Channel 21","Station 09 + 99 ORD","2014-11-01","One rock dam","Woody",0.75
-"Channel 21","Station 09 + 99 ORD","2015-11-01","One rock dam","Herbaceous",5.75
-"Channel 21","Station 09 + 99 ORD","2015-11-01","One rock dam","Woody",0.75
-"Channel 21","Station 09 + 99 ORD","2018-11-01","One rock dam","Herbaceous",7
-"Channel 21","Station 09 + 99 ORD","2018-11-01","One rock dam","Woody",0.75
-"Channel 21","Station 09 + 99 ORD","2021-11-01","One rock dam","Herbaceous",18.125
-"Channel 21","Station 09 + 99 ORD","2021-11-01","One rock dam","Woody",1.375
-"Channel 21","Station 10 + 13 BAF","2012-03-01","Baffle","Herbaceous",2.5
-"Channel 21","Station 10 + 13 BAF","2012-03-01","Baffle","Woody",47.0833333333333
-"Channel 21","Station 10 + 13 BAF","2012-11-01","Baffle","Herbaceous",2.5
-"Channel 21","Station 10 + 13 BAF","2012-11-01","Baffle","Woody",53.75
-"Channel 21","Station 10 + 13 BAF","2013-11-01","Baffle","Herbaceous",3.25
-"Channel 21","Station 10 + 13 BAF","2013-11-01","Baffle","Woody",49.5833333333333
-"Channel 21","Station 10 + 13 BAF","2014-11-01","Baffle","Herbaceous",20
-"Channel 21","Station 10 + 13 BAF","2014-11-01","Baffle","Woody",61.5
-"Channel 21","Station 10 + 13 BAF","2015-11-01","Baffle","Herbaceous",7.5
-"Channel 21","Station 10 + 13 BAF","2015-11-01","Baffle","Woody",40.625
-"Channel 21","Station 10 + 13 BAF","2018-11-01","Baffle","Herbaceous",12.375
-"Channel 21","Station 10 + 13 BAF","2018-11-01","Baffle","Woody",25.25
-"Channel 21","Station 10 + 13 BAF","2021-11-01","Baffle","Herbaceous",8.5
-"Channel 21","Station 10 + 13 BAF","2021-11-01","Baffle","Woody",10.875
-"Channel 21","Station 11 + 12 ORD","2012-03-01","One rock dam","Herbaceous",4.66666666666667
-"Channel 21","Station 11 + 12 ORD","2012-03-01","One rock dam","Woody",26
-"Channel 21","Station 11 + 12 ORD","2012-11-01","One rock dam","Herbaceous",12.4166666666667
-"Channel 21","Station 11 + 12 ORD","2012-11-01","One rock dam","Woody",32.75
-"Channel 21","Station 11 + 12 ORD","2013-11-01","One rock dam","Herbaceous",12.5833333333333
-"Channel 21","Station 11 + 12 ORD","2013-11-01","One rock dam","Woody",31
-"Channel 21","Station 11 + 12 ORD","2014-11-01","One rock dam","Herbaceous",18.25
-"Channel 21","Station 11 + 12 ORD","2014-11-01","One rock dam","Woody",17.5
-"Channel 21","Station 11 + 12 ORD","2015-11-01","One rock dam","Herbaceous",19.375
-"Channel 21","Station 11 + 12 ORD","2015-11-01","One rock dam","Woody",7.625
-"Channel 21","Station 11 + 12 ORD","2018-11-01","One rock dam","Herbaceous",30
-"Channel 21","Station 11 + 12 ORD","2018-11-01","One rock dam","Woody",18.125
-"Channel 21","Station 11 + 12 ORD","2021-11-01","One rock dam","Herbaceous",19.75
-"Channel 21","Station 11 + 12 ORD","2021-11-01","One rock dam","Woody",13.25
-"Channel 21","Station 11 + 24 BAF","2012-03-01","Baffle","Herbaceous",5.58333333333333
-"Channel 21","Station 11 + 24 BAF","2012-03-01","Baffle","Woody",8.75
-"Channel 21","Station 11 + 24 BAF","2012-11-01","Baffle","Herbaceous",14.1666666666667
-"Channel 21","Station 11 + 24 BAF","2012-11-01","Baffle","Woody",21.25
-"Channel 21","Station 11 + 24 BAF","2013-11-01","Baffle","Herbaceous",13.4166666666667
-"Channel 21","Station 11 + 24 BAF","2013-11-01","Baffle","Woody",12.5833333333333
-"Channel 21","Station 11 + 24 BAF","2014-11-01","Baffle","Herbaceous",10.5
-"Channel 21","Station 11 + 24 BAF","2014-11-01","Baffle","Woody",17
-"Channel 21","Station 11 + 24 BAF","2015-11-01","Baffle","Herbaceous",9
-"Channel 21","Station 11 + 24 BAF","2015-11-01","Baffle","Woody",8.25
-"Channel 21","Station 11 + 24 BAF","2018-11-01","Baffle","Herbaceous",18.625
-"Channel 21","Station 11 + 24 BAF","2018-11-01","Baffle","Woody",7.625
-"Channel 21","Station 11 + 24 BAF","2021-11-01","Baffle","Herbaceous",16.875
-"Channel 21","Station 11 + 24 BAF","2021-11-01","Baffle","Woody",5
-"Channel 21","Station 11 + 63 ORD","2012-03-01","One rock dam","Herbaceous",10.9166666666667
-"Channel 21","Station 11 + 63 ORD","2012-03-01","One rock dam","Woody",27.5833333333333
-"Channel 21","Station 11 + 63 ORD","2012-11-01","One rock dam","Herbaceous",12.5833333333333
-"Channel 21","Station 11 + 63 ORD","2012-11-01","One rock dam","Woody",17.6666666666667
-"Channel 21","Station 11 + 63 ORD","2013-11-01","One rock dam","Herbaceous",12.7083333333333
-"Channel 21","Station 11 + 63 ORD","2013-11-01","One rock dam","Woody",22.5833333333333
-"Channel 21","Station 11 + 63 ORD","2014-11-01","One rock dam","Herbaceous",25.9375
-"Channel 21","Station 11 + 63 ORD","2014-11-01","One rock dam","Woody",42.875
-"Channel 21","Station 11 + 63 ORD","2015-11-01","One rock dam","Herbaceous",23.625
-"Channel 21","Station 11 + 63 ORD","2015-11-01","One rock dam","Woody",24.5
-"Channel 21","Station 11 + 63 ORD","2018-11-01","One rock dam","Herbaceous",29.875
-"Channel 21","Station 11 + 63 ORD","2018-11-01","One rock dam","Woody",9.625
-"Channel 21","Station 11 + 63 ORD","2021-11-01","One rock dam","Herbaceous",24.75
-"Channel 21","Station 11 + 63 ORD","2021-11-01","One rock dam","Woody",40.625
-"Channel 21","Station 11 + 73 BAF","2012-03-01","Baffle","Herbaceous",4.25
-"Channel 21","Station 11 + 73 BAF","2012-03-01","Baffle","Woody",2.66666666666667
-"Channel 21","Station 11 + 73 BAF","2012-11-01","Baffle","Herbaceous",8.83333333333333
-"Channel 21","Station 11 + 73 BAF","2012-11-01","Baffle","Woody",6.33333333333333
-"Channel 21","Station 11 + 73 BAF","2013-11-01","Baffle","Herbaceous",6.25
-"Channel 21","Station 11 + 73 BAF","2013-11-01","Baffle","Woody",19.6666666666667
-"Channel 21","Station 11 + 73 BAF","2014-11-01","Baffle","Herbaceous",18.25
-"Channel 21","Station 11 + 73 BAF","2014-11-01","Baffle","Woody",0.875
-"Channel 21","Station 11 + 73 BAF","2015-11-01","Baffle","Herbaceous",10
-"Channel 21","Station 11 + 73 BAF","2015-11-01","Baffle","Woody",0.375
-"Channel 21","Station 11 + 73 BAF","2018-11-01","Baffle","Herbaceous",17.375
-"Channel 21","Station 11 + 73 BAF","2018-11-01","Baffle","Woody",0.5
-"Channel 21","Station 11 + 73 BAF","2021-11-01","Baffle","Herbaceous",47.5
-"Channel 21","Station 11 + 73 BAF","2021-11-01","Baffle","Woody",5
+"Channel","Station","Year","station.trt","channel.trt","woody","Cover"
+"Channel 12","Station 1 + 04","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",15.75
+"Channel 12","Station 1 + 04","2012-11-01","No treatment","Channel 12: No treatment","Woody",2.75
+"Channel 12","Station 1 + 04","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",20.5833333333333
+"Channel 12","Station 1 + 04","2013-11-01","No treatment","Channel 12: No treatment","Woody",27.1666666666667
+"Channel 12","Station 1 + 04","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",13.375
+"Channel 12","Station 1 + 04","2014-11-01","No treatment","Channel 12: No treatment","Woody",11.375
+"Channel 12","Station 1 + 04","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",25.5
+"Channel 12","Station 1 + 04","2015-11-01","No treatment","Channel 12: No treatment","Woody",0.125
+"Channel 12","Station 1 + 04","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",16.875
+"Channel 12","Station 1 + 04","2018-11-01","No treatment","Channel 12: No treatment","Woody",5.75
+"Channel 12","Station 1 + 04","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",22.25
+"Channel 12","Station 1 + 04","2021-11-01","No treatment","Channel 12: No treatment","Woody",12.5
+"Channel 12","Station 1 + 52","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",26.75
+"Channel 12","Station 1 + 52","2012-11-01","No treatment","Channel 12: No treatment","Woody",22.5833333333333
+"Channel 12","Station 1 + 52","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",22.5
+"Channel 12","Station 1 + 52","2013-11-01","No treatment","Channel 12: No treatment","Woody",30.8333333333333
+"Channel 12","Station 1 + 52","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",13.5
+"Channel 12","Station 1 + 52","2014-11-01","No treatment","Channel 12: No treatment","Woody",11.875
+"Channel 12","Station 1 + 52","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",10.375
+"Channel 12","Station 1 + 52","2015-11-01","No treatment","Channel 12: No treatment","Woody",4.5
+"Channel 12","Station 1 + 52","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",38.25
+"Channel 12","Station 1 + 52","2018-11-01","No treatment","Channel 12: No treatment","Woody",8.875
+"Channel 12","Station 1 + 52","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",26.875
+"Channel 12","Station 1 + 52","2021-11-01","No treatment","Channel 12: No treatment","Woody",10.75
+"Channel 12","Station 1 + 83","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",12.8333333333333
+"Channel 12","Station 1 + 83","2012-11-01","No treatment","Channel 12: No treatment","Woody",46.4166666666667
+"Channel 12","Station 1 + 83","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",21.5
+"Channel 12","Station 1 + 83","2013-11-01","No treatment","Channel 12: No treatment","Woody",59.25
+"Channel 12","Station 1 + 83","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",17.875
+"Channel 12","Station 1 + 83","2014-11-01","No treatment","Channel 12: No treatment","Woody",36.375
+"Channel 12","Station 1 + 83","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",23.875
+"Channel 12","Station 1 + 83","2015-11-01","No treatment","Channel 12: No treatment","Woody",51.875
+"Channel 12","Station 1 + 83","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",29.125
+"Channel 12","Station 1 + 83","2018-11-01","No treatment","Channel 12: No treatment","Woody",49.125
+"Channel 12","Station 1 + 83","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",10.375
+"Channel 12","Station 1 + 83","2021-11-01","No treatment","Channel 12: No treatment","Woody",53.25
+"Channel 12","Station 2 + 63","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",6.66666666666667
+"Channel 12","Station 2 + 63","2012-11-01","No treatment","Channel 12: No treatment","Woody",22
+"Channel 12","Station 2 + 63","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",28.9166666666667
+"Channel 12","Station 2 + 63","2013-11-01","No treatment","Channel 12: No treatment","Woody",45.5833333333333
+"Channel 12","Station 2 + 63","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",15.5
+"Channel 12","Station 2 + 63","2014-11-01","No treatment","Channel 12: No treatment","Woody",8.75
+"Channel 12","Station 2 + 63","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",24.75
+"Channel 12","Station 2 + 63","2015-11-01","No treatment","Channel 12: No treatment","Woody",50.875
+"Channel 12","Station 2 + 63","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",19
+"Channel 12","Station 2 + 63","2018-11-01","No treatment","Channel 12: No treatment","Woody",9.125
+"Channel 12","Station 2 + 63","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",6.25
+"Channel 12","Station 2 + 63","2021-11-01","No treatment","Channel 12: No treatment","Woody",28.875
+"Channel 12","Station 2 + 98","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",9.91666666666667
+"Channel 12","Station 2 + 98","2012-11-01","No treatment","Channel 12: No treatment","Woody",18.75
+"Channel 12","Station 2 + 98","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",28.0833333333333
+"Channel 12","Station 2 + 98","2013-11-01","No treatment","Channel 12: No treatment","Woody",67.3333333333333
+"Channel 12","Station 2 + 98","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",10.625
+"Channel 12","Station 2 + 98","2014-11-01","No treatment","Channel 12: No treatment","Woody",39
+"Channel 12","Station 2 + 98","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",17.375
+"Channel 12","Station 2 + 98","2015-11-01","No treatment","Channel 12: No treatment","Woody",67
+"Channel 12","Station 2 + 98","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",19.25
+"Channel 12","Station 2 + 98","2018-11-01","No treatment","Channel 12: No treatment","Woody",60.75
+"Channel 12","Station 2 + 98","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",28.25
+"Channel 12","Station 2 + 98","2021-11-01","No treatment","Channel 12: No treatment","Woody",38.875
+"Channel 12","Station 3 + 93","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",20.8333333333333
+"Channel 12","Station 3 + 93","2012-11-01","No treatment","Channel 12: No treatment","Woody",72.9166666666667
+"Channel 12","Station 3 + 93","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",12
+"Channel 12","Station 3 + 93","2013-11-01","No treatment","Channel 12: No treatment","Woody",62.1666666666667
+"Channel 12","Station 3 + 93","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",6.125
+"Channel 12","Station 3 + 93","2014-11-01","No treatment","Channel 12: No treatment","Woody",20.625
+"Channel 12","Station 3 + 93","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",12.625
+"Channel 12","Station 3 + 93","2015-11-01","No treatment","Channel 12: No treatment","Woody",26.5
+"Channel 12","Station 3 + 93","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",13.75
+"Channel 12","Station 3 + 93","2018-11-01","No treatment","Channel 12: No treatment","Woody",36.375
+"Channel 12","Station 3 + 93","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",25.875
+"Channel 12","Station 3 + 93","2021-11-01","No treatment","Channel 12: No treatment","Woody",62.75
+"Channel 12","Station 4 + 00","2012-03-01","No treatment","Channel 12: No treatment","Woody",14.1666666666667
+"Channel 12","Station 4 + 00","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",13.7916666666667
+"Channel 12","Station 4 + 00","2012-11-01","No treatment","Channel 12: No treatment","Woody",28
+"Channel 12","Station 4 + 00","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",19.375
+"Channel 12","Station 4 + 00","2013-11-01","No treatment","Channel 12: No treatment","Woody",65.9166666666667
+"Channel 12","Station 4 + 00","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",11
+"Channel 12","Station 4 + 00","2014-11-01","No treatment","Channel 12: No treatment","Woody",51.25
+"Channel 12","Station 4 + 00","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",10.125
+"Channel 12","Station 4 + 00","2015-11-01","No treatment","Channel 12: No treatment","Woody",68.75
+"Channel 12","Station 4 + 00","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",25.625
+"Channel 12","Station 4 + 00","2018-11-01","No treatment","Channel 12: No treatment","Woody",43.75
+"Channel 12","Station 4 + 00","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",19.1875
+"Channel 12","Station 4 + 00","2021-11-01","No treatment","Channel 12: No treatment","Woody",77.5
+"Channel 12","Station 4 + 09","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",8.83333333333333
+"Channel 12","Station 4 + 09","2012-11-01","No treatment","Channel 12: No treatment","Woody",47.0833333333333
+"Channel 12","Station 4 + 09","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",16
+"Channel 12","Station 4 + 09","2013-11-01","No treatment","Channel 12: No treatment","Woody",47.1666666666667
+"Channel 12","Station 4 + 09","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",4.25
+"Channel 12","Station 4 + 09","2014-11-01","No treatment","Channel 12: No treatment","Woody",21.375
+"Channel 12","Station 4 + 09","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",11.625
+"Channel 12","Station 4 + 09","2015-11-01","No treatment","Channel 12: No treatment","Woody",25.125
+"Channel 12","Station 4 + 09","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",32
+"Channel 12","Station 4 + 09","2018-11-01","No treatment","Channel 12: No treatment","Woody",8.875
+"Channel 12","Station 4 + 09","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",14.375
+"Channel 12","Station 4 + 09","2021-11-01","No treatment","Channel 12: No treatment","Woody",8.875
+"Channel 12","Station 4 + 56","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",13.5
+"Channel 12","Station 4 + 56","2012-11-01","No treatment","Channel 12: No treatment","Woody",25.5
+"Channel 12","Station 4 + 56","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",24.3333333333333
+"Channel 12","Station 4 + 56","2013-11-01","No treatment","Channel 12: No treatment","Woody",22.5
+"Channel 12","Station 4 + 56","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",10.875
+"Channel 12","Station 4 + 56","2014-11-01","No treatment","Channel 12: No treatment","Woody",20.625
+"Channel 12","Station 4 + 56","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",18.75
+"Channel 12","Station 4 + 56","2015-11-01","No treatment","Channel 12: No treatment","Woody",12.5
+"Channel 12","Station 4 + 56","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",23.375
+"Channel 12","Station 4 + 56","2018-11-01","No treatment","Channel 12: No treatment","Woody",25.625
+"Channel 12","Station 4 + 56","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",16.875
+"Channel 12","Station 4 + 56","2021-11-01","No treatment","Channel 12: No treatment","Woody",32.5
+"Channel 12","Station 4 + 65","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",15.5
+"Channel 12","Station 4 + 65","2012-11-01","No treatment","Channel 12: No treatment","Woody",58.8333333333333
+"Channel 12","Station 4 + 65","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",2.5
+"Channel 12","Station 4 + 65","2014-11-01","No treatment","Channel 12: No treatment","Woody",20
+"Channel 12","Station 4 + 65","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",15.375
+"Channel 12","Station 4 + 65","2015-11-01","No treatment","Channel 12: No treatment","Woody",13.125
+"Channel 12","Station 4 + 65","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",14.25
+"Channel 12","Station 4 + 65","2018-11-01","No treatment","Channel 12: No treatment","Woody",26.875
+"Channel 12","Station 4 + 65","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",14.375
+"Channel 12","Station 4 + 65","2021-11-01","No treatment","Channel 12: No treatment","Woody",32
+"Channel 12","Station 5 + 13","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",11.8333333333333
+"Channel 12","Station 5 + 13","2012-11-01","No treatment","Channel 12: No treatment","Woody",17.5
+"Channel 12","Station 5 + 13","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",20.25
+"Channel 12","Station 5 + 13","2013-11-01","No treatment","Channel 12: No treatment","Woody",30.9166666666667
+"Channel 12","Station 5 + 13","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",16.75
+"Channel 12","Station 5 + 13","2014-11-01","No treatment","Channel 12: No treatment","Woody",18.125
+"Channel 12","Station 5 + 13","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",11
+"Channel 12","Station 5 + 13","2015-11-01","No treatment","Channel 12: No treatment","Woody",73.375
+"Channel 12","Station 5 + 13","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",35.5
+"Channel 12","Station 5 + 13","2018-11-01","No treatment","Channel 12: No treatment","Woody",10.125
+"Channel 12","Station 5 + 13","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",15.625
+"Channel 12","Station 5 + 13","2021-11-01","No treatment","Channel 12: No treatment","Woody",20.625
+"Channel 12","Station 5 + 48","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",6.75
+"Channel 12","Station 5 + 48","2012-11-01","No treatment","Channel 12: No treatment","Woody",33.3333333333333
+"Channel 12","Station 5 + 48","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",6.66666666666667
+"Channel 12","Station 5 + 48","2013-11-01","No treatment","Channel 12: No treatment","Woody",42.1666666666667
+"Channel 12","Station 5 + 48","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",3.375
+"Channel 12","Station 5 + 48","2014-11-01","No treatment","Channel 12: No treatment","Woody",30.875
+"Channel 12","Station 5 + 48","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",24.75
+"Channel 12","Station 5 + 48","2015-11-01","No treatment","Channel 12: No treatment","Woody",8.375
+"Channel 12","Station 5 + 48","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",3.375
+"Channel 12","Station 5 + 48","2018-11-01","No treatment","Channel 12: No treatment","Woody",15
+"Channel 12","Station 5 + 48","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",7.875
+"Channel 12","Station 5 + 48","2021-11-01","No treatment","Channel 12: No treatment","Woody",36.875
+"Channel 12","Station 6 + 30","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",12.5833333333333
+"Channel 12","Station 6 + 30","2012-11-01","No treatment","Channel 12: No treatment","Woody",53.8333333333333
+"Channel 12","Station 6 + 30","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",17.3333333333333
+"Channel 12","Station 6 + 30","2013-11-01","No treatment","Channel 12: No treatment","Woody",71.6666666666667
+"Channel 12","Station 6 + 30","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",3.375
+"Channel 12","Station 6 + 30","2014-11-01","No treatment","Channel 12: No treatment","Woody",73.25
+"Channel 12","Station 6 + 30","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",15
+"Channel 12","Station 6 + 30","2015-11-01","No treatment","Channel 12: No treatment","Woody",82
+"Channel 12","Station 6 + 30","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",4.125
+"Channel 12","Station 6 + 30","2018-11-01","No treatment","Channel 12: No treatment","Woody",54.75
+"Channel 12","Station 6 + 30","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",8.375
+"Channel 12","Station 6 + 30","2021-11-01","No treatment","Channel 12: No treatment","Woody",35
+"Channel 12","Station 6 + 93","2012-11-01","No treatment","Channel 12: No treatment","Herbaceous",11.75
+"Channel 12","Station 6 + 93","2012-11-01","No treatment","Channel 12: No treatment","Woody",85.5833333333333
+"Channel 12","Station 6 + 93","2013-11-01","No treatment","Channel 12: No treatment","Herbaceous",12.75
+"Channel 12","Station 6 + 93","2013-11-01","No treatment","Channel 12: No treatment","Woody",72.0833333333333
+"Channel 12","Station 6 + 93","2014-11-01","No treatment","Channel 12: No treatment","Herbaceous",9.5
+"Channel 12","Station 6 + 93","2014-11-01","No treatment","Channel 12: No treatment","Woody",75
+"Channel 12","Station 6 + 93","2015-11-01","No treatment","Channel 12: No treatment","Herbaceous",25.5
+"Channel 12","Station 6 + 93","2015-11-01","No treatment","Channel 12: No treatment","Woody",45
+"Channel 12","Station 6 + 93","2018-11-01","No treatment","Channel 12: No treatment","Herbaceous",16.125
+"Channel 12","Station 6 + 93","2018-11-01","No treatment","Channel 12: No treatment","Woody",50.4375
+"Channel 12","Station 6 + 93","2021-11-01","No treatment","Channel 12: No treatment","Herbaceous",11.875
+"Channel 12","Station 6 + 93","2021-11-01","No treatment","Channel 12: No treatment","Woody",71.875
+"Channel 13","Station 1 + 11.5 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Herbaceous",0.166666666666667
+"Channel 13","Station 1 + 11.5 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Woody",66.75
+"Channel 13","Station 1 + 11.5 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",4.41666666666667
+"Channel 13","Station 1 + 11.5 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Woody",65.5
+"Channel 13","Station 1 + 11.5 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",0.916666666666667
+"Channel 13","Station 1 + 11.5 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Woody",68.3333333333333
+"Channel 13","Station 1 + 11.5 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",5.3125
+"Channel 13","Station 1 + 11.5 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Woody",64.5
+"Channel 13","Station 1 + 11.5 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",5.125
+"Channel 13","Station 1 + 11.5 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Woody",35.875
+"Channel 13","Station 1 + 11.5 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",7.5
+"Channel 13","Station 1 + 11.5 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Woody",70.125
+"Channel 13","Station 1 + 11.5 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",3.5
+"Channel 13","Station 1 + 11.5 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Woody",82
+"Channel 13","Station 1 + 38.5 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",0.25
+"Channel 13","Station 1 + 38.5 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",50.9166666666667
+"Channel 13","Station 1 + 38.5 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",0.75
+"Channel 13","Station 1 + 38.5 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",54.3333333333333
+"Channel 13","Station 1 + 38.5 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",0.916666666666667
+"Channel 13","Station 1 + 38.5 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Woody",54.5833333333333
+"Channel 13","Station 1 + 38.5 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",2.25
+"Channel 13","Station 1 + 38.5 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",77.5
+"Channel 13","Station 1 + 38.5 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",3.25
+"Channel 13","Station 1 + 38.5 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",59.375
+"Channel 13","Station 1 + 38.5 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",15.375
+"Channel 13","Station 1 + 38.5 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",74.375
+"Channel 13","Station 1 + 38.5 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",23.125
+"Channel 13","Station 1 + 38.5 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Woody",50.125
+"Channel 13","Station 1 + 71 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Herbaceous",2
+"Channel 13","Station 1 + 71 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Woody",42.5
+"Channel 13","Station 1 + 71 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",1.5
+"Channel 13","Station 1 + 71 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Woody",40.9166666666667
+"Channel 13","Station 1 + 71 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",3
+"Channel 13","Station 1 + 71 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Woody",32.5
+"Channel 13","Station 1 + 71 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",6.375
+"Channel 13","Station 1 + 71 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Woody",56.25
+"Channel 13","Station 1 + 71 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",6.625
+"Channel 13","Station 1 + 71 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Woody",66.875
+"Channel 13","Station 1 + 71 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",29.875
+"Channel 13","Station 1 + 71 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Woody",47.5
+"Channel 13","Station 1 + 71 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",10
+"Channel 13","Station 1 + 71 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Woody",58.75
+"Channel 13","Station 1 + 77 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",0.833333333333333
+"Channel 13","Station 1 + 77 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",43
+"Channel 13","Station 1 + 77 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",5.08333333333333
+"Channel 13","Station 1 + 77 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",41.3333333333333
+"Channel 13","Station 1 + 77 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",4.375
+"Channel 13","Station 1 + 77 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",63.125
+"Channel 13","Station 1 + 77 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",7.75
+"Channel 13","Station 1 + 77 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",63.125
+"Channel 13","Station 1 + 77 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",13.75
+"Channel 13","Station 1 + 77 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",56.25
+"Channel 13","Station 1 + 77 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",9.1
+"Channel 13","Station 1 + 77 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Woody",18.5
+"Channel 13","Station 1 + 99 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",3.41666666666667
+"Channel 13","Station 1 + 99 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",23.3333333333333
+"Channel 13","Station 1 + 99 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",12.875
+"Channel 13","Station 1 + 99 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",30
+"Channel 13","Station 1 + 99 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",3.58333333333333
+"Channel 13","Station 1 + 99 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Woody",46.6666666666667
+"Channel 13","Station 1 + 99 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",11.3125
+"Channel 13","Station 1 + 99 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",28.75
+"Channel 13","Station 1 + 99 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",10.6875
+"Channel 13","Station 1 + 99 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",38.75
+"Channel 13","Station 1 + 99 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",23.3125
+"Channel 13","Station 1 + 99 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",35.625
+"Channel 13","Station 1 + 99 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",30.75
+"Channel 13","Station 1 + 99 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Woody",10.125
+"Channel 13","Station 2 + 16 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Herbaceous",1.08333333333333
+"Channel 13","Station 2 + 16 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Woody",53.9166666666667
+"Channel 13","Station 2 + 16 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",5.66666666666667
+"Channel 13","Station 2 + 16 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Woody",75.8333333333333
+"Channel 13","Station 2 + 16 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",4.58333333333333
+"Channel 13","Station 2 + 16 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Woody",30.9166666666667
+"Channel 13","Station 2 + 16 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",5.75
+"Channel 13","Station 2 + 16 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Woody",84.5
+"Channel 13","Station 2 + 16 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",8.625
+"Channel 13","Station 2 + 16 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Woody",62.5
+"Channel 13","Station 2 + 16 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",6.375
+"Channel 13","Station 2 + 16 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Woody",66.375
+"Channel 13","Station 2 + 16 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",8.375
+"Channel 13","Station 2 + 16 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Woody",105.75
+"Channel 13","Station 2 + 57 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",4.33333333333333
+"Channel 13","Station 2 + 57 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",3.08333333333333
+"Channel 13","Station 2 + 57 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",14
+"Channel 13","Station 2 + 57 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",8.08333333333333
+"Channel 13","Station 2 + 57 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",8.83333333333333
+"Channel 13","Station 2 + 57 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Woody",68.4166666666667
+"Channel 13","Station 2 + 57 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",13.125
+"Channel 13","Station 2 + 57 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",13.125
+"Channel 13","Station 2 + 57 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",13
+"Channel 13","Station 2 + 57 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",19.625
+"Channel 13","Station 2 + 57 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",54.625
+"Channel 13","Station 2 + 57 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",13.25
+"Channel 13","Station 2 + 57 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",30
+"Channel 13","Station 2 + 57 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Woody",10.125
+"Channel 13","Station 2 + 67 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Herbaceous",3.25
+"Channel 13","Station 2 + 67 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Woody",26.9166666666667
+"Channel 13","Station 2 + 67 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",16.3333333333333
+"Channel 13","Station 2 + 67 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Woody",55.1666666666667
+"Channel 13","Station 2 + 67 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",9.91666666666667
+"Channel 13","Station 2 + 67 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Woody",3
+"Channel 13","Station 2 + 67 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",22.125
+"Channel 13","Station 2 + 67 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Woody",50.625
+"Channel 13","Station 2 + 67 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",7.375
+"Channel 13","Station 2 + 67 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Woody",42
+"Channel 13","Station 2 + 67 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",43.125
+"Channel 13","Station 2 + 67 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Woody",32.625
+"Channel 13","Station 2 + 67 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",7.375
+"Channel 13","Station 2 + 67 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Woody",105.75
+"Channel 13","Station 3 + 09 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",7.83333333333333
+"Channel 13","Station 3 + 09 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",83
+"Channel 13","Station 3 + 09 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",13.3333333333333
+"Channel 13","Station 3 + 09 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",82
+"Channel 13","Station 3 + 09 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",5.58333333333333
+"Channel 13","Station 3 + 09 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Woody",46
+"Channel 13","Station 3 + 09 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",15
+"Channel 13","Station 3 + 09 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",54.75
+"Channel 13","Station 3 + 09 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",10.125
+"Channel 13","Station 3 + 09 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",60
+"Channel 13","Station 3 + 09 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",12.25
+"Channel 13","Station 3 + 09 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",97.625
+"Channel 13","Station 3 + 09 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",5.875
+"Channel 13","Station 3 + 31 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Herbaceous",1.75
+"Channel 13","Station 3 + 31 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Woody",33
+"Channel 13","Station 3 + 31 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",16
+"Channel 13","Station 3 + 31 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Woody",36.25
+"Channel 13","Station 3 + 31 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",2.58333333333333
+"Channel 13","Station 3 + 31 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Woody",80.8333333333333
+"Channel 13","Station 3 + 31 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",15
+"Channel 13","Station 3 + 31 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Woody",28.75
+"Channel 13","Station 3 + 31 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",9
+"Channel 13","Station 3 + 31 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Woody",32
+"Channel 13","Station 3 + 31 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",37
+"Channel 13","Station 3 + 31 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Woody",29.375
+"Channel 13","Station 3 + 31 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",32.5
+"Channel 13","Station 3 + 31 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Woody",35
+"Channel 13","Station 3 + 65 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",1.83333333333333
+"Channel 13","Station 3 + 65 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",48.9166666666667
+"Channel 13","Station 3 + 65 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",16.6666666666667
+"Channel 13","Station 3 + 65 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",18.75
+"Channel 13","Station 3 + 65 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",8.25
+"Channel 13","Station 3 + 65 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Woody",42.5
+"Channel 13","Station 3 + 65 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",25.125
+"Channel 13","Station 3 + 65 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",37
+"Channel 13","Station 3 + 65 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",4.75
+"Channel 13","Station 3 + 65 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",39.625
+"Channel 13","Station 3 + 65 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",8.25
+"Channel 13","Station 3 + 65 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",54.375
+"Channel 13","Station 3 + 65 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",43.875
+"Channel 13","Station 3 + 65 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Woody",54
+"Channel 13","Station 3 + 95.5 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",2.66666666666667
+"Channel 13","Station 3 + 95.5 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",17.5
+"Channel 13","Station 3 + 95.5 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",14.25
+"Channel 13","Station 3 + 95.5 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",24.5833333333333
+"Channel 13","Station 3 + 95.5 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",6.5
+"Channel 13","Station 3 + 95.5 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Woody",33.25
+"Channel 13","Station 3 + 95.5 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",16.75
+"Channel 13","Station 3 + 95.5 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",23.875
+"Channel 13","Station 3 + 95.5 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",11.75
+"Channel 13","Station 3 + 95.5 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",20.125
+"Channel 13","Station 3 + 95.5 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",31.875
+"Channel 13","Station 3 + 95.5 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",23.75
+"Channel 13","Station 3 + 95.5 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",44.25
+"Channel 13","Station 3 + 95.5 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Woody",20.75
+"Channel 13","Station 4 + 14.5 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Herbaceous",11.4166666666667
+"Channel 13","Station 4 + 14.5 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Woody",18.8333333333333
+"Channel 13","Station 4 + 14.5 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",23.1666666666667
+"Channel 13","Station 4 + 14.5 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Woody",22.5
+"Channel 13","Station 4 + 14.5 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",12.0833333333333
+"Channel 13","Station 4 + 14.5 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Woody",32.9166666666667
+"Channel 13","Station 4 + 14.5 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",18.75
+"Channel 13","Station 4 + 14.5 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Woody",11.375
+"Channel 13","Station 4 + 14.5 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",24.125
+"Channel 13","Station 4 + 14.5 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Woody",17.625
+"Channel 13","Station 4 + 14.5 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",42.625
+"Channel 13","Station 4 + 14.5 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Woody",13.75
+"Channel 13","Station 4 + 14.5 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",44.625
+"Channel 13","Station 4 + 14.5 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Woody",27.5
+"Channel 13","Station 4 + 36 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",5.33333333333333
+"Channel 13","Station 4 + 36 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",43.3333333333333
+"Channel 13","Station 4 + 36 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",22.1666666666667
+"Channel 13","Station 4 + 36 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",37.5833333333333
+"Channel 13","Station 4 + 36 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",16.25
+"Channel 13","Station 4 + 36 ORD","2013-11-01","One station dam","Channel 13: In-channel treatment","Woody",21.6666666666667
+"Channel 13","Station 4 + 36 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",13.375
+"Channel 13","Station 4 + 36 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",19.375
+"Channel 13","Station 4 + 36 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",28.625
+"Channel 13","Station 4 + 36 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",13.375
+"Channel 13","Station 4 + 36 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",60.75
+"Channel 13","Station 4 + 36 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",21.5
+"Channel 13","Station 4 + 36 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",52.875
+"Channel 13","Station 4 + 36 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Woody",12.875
+"Channel 13","Station 4 + 50 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Herbaceous",2.83333333333333
+"Channel 13","Station 4 + 50 BAF","2012-03-01","Baffle","Channel 13: In-channel treatment","Woody",66
+"Channel 13","Station 4 + 50 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",22.25
+"Channel 13","Station 4 + 50 BAF","2012-11-01","Baffle","Channel 13: In-channel treatment","Woody",61.6666666666667
+"Channel 13","Station 4 + 50 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",16.6666666666667
+"Channel 13","Station 4 + 50 BAF","2013-11-01","Baffle","Channel 13: In-channel treatment","Woody",45.4166666666667
+"Channel 13","Station 4 + 50 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",32.25
+"Channel 13","Station 4 + 50 BAF","2014-11-01","Baffle","Channel 13: In-channel treatment","Woody",65.125
+"Channel 13","Station 4 + 50 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",28.5
+"Channel 13","Station 4 + 50 BAF","2015-11-01","Baffle","Channel 13: In-channel treatment","Woody",23.875
+"Channel 13","Station 4 + 50 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",46
+"Channel 13","Station 4 + 50 BAF","2018-11-01","Baffle","Channel 13: In-channel treatment","Woody",77.5
+"Channel 13","Station 4 + 50 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Herbaceous",39.125
+"Channel 13","Station 4 + 50 BAF","2021-11-01","Baffle","Channel 13: In-channel treatment","Woody",43.125
+"Channel 13","Station 4 + 78 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Herbaceous",7.75
+"Channel 13","Station 4 + 78 ORD","2012-03-01","One station dam","Channel 13: In-channel treatment","Woody",26.75
+"Channel 13","Station 4 + 78 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",31.25
+"Channel 13","Station 4 + 78 ORD","2012-11-01","One station dam","Channel 13: In-channel treatment","Woody",42.9166666666667
+"Channel 13","Station 4 + 78 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",24.25
+"Channel 13","Station 4 + 78 ORD","2014-11-01","One station dam","Channel 13: In-channel treatment","Woody",27.5
+"Channel 13","Station 4 + 78 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",33.5
+"Channel 13","Station 4 + 78 ORD","2015-11-01","One station dam","Channel 13: In-channel treatment","Woody",42.5
+"Channel 13","Station 4 + 78 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",54.375
+"Channel 13","Station 4 + 78 ORD","2018-11-01","One station dam","Channel 13: In-channel treatment","Woody",13.125
+"Channel 13","Station 4 + 78 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Herbaceous",22.75
+"Channel 13","Station 4 + 78 ORD","2021-11-01","One station dam","Channel 13: In-channel treatment","Woody",28.75
+"Channel 19","Station 01 + 04","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",5.5
+"Channel 19","Station 01 + 04","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",13.5
+"Channel 19","Station 01 + 04","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",16.1666666666667
+"Channel 19","Station 01 + 04","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",76.75
+"Channel 19","Station 01 + 04","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",8
+"Channel 19","Station 01 + 04","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",75.0833333333333
+"Channel 19","Station 01 + 04","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",18.875
+"Channel 19","Station 01 + 04","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",35.875
+"Channel 19","Station 01 + 04","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",6.125
+"Channel 19","Station 01 + 04","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",98.25
+"Channel 19","Station 01 + 04","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",10.875
+"Channel 19","Station 01 + 04","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",37
+"Channel 19","Station 02 + 04","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",23.6666666666667
+"Channel 19","Station 02 + 04","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",20.4166666666667
+"Channel 19","Station 02 + 04","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",22.5
+"Channel 19","Station 02 + 04","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",62.125
+"Channel 19","Station 02 + 04","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",8.375
+"Channel 19","Station 02 + 04","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",9.5
+"Channel 19","Station 02 + 04","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",8.0625
+"Channel 19","Station 02 + 04","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",0.625
+"Channel 19","Station 02 + 04","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",8.6875
+"Channel 19","Station 02 + 04","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",27.75
+"Channel 19","Station 02 + 52","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",10.9166666666667
+"Channel 19","Station 02 + 52","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",49.1666666666667
+"Channel 19","Station 02 + 52","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",45.5833333333333
+"Channel 19","Station 02 + 52","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",55.5
+"Channel 19","Station 02 + 52","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",28.75
+"Channel 19","Station 02 + 52","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",49.1666666666667
+"Channel 19","Station 02 + 52","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",63.875
+"Channel 19","Station 02 + 52","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",40.625
+"Channel 19","Station 02 + 52","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",27.875
+"Channel 19","Station 02 + 52","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",28.375
+"Channel 19","Station 02 + 52","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",44.5625
+"Channel 19","Station 02 + 52","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",16.875
+"Channel 19","Station 02 + 52","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",67
+"Channel 19","Station 02 + 52","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",62.5
+"Channel 19","Station 03 + 63","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",7.5
+"Channel 19","Station 03 + 63","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",62.5
+"Channel 19","Station 03 + 63","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",26.8333333333333
+"Channel 19","Station 03 + 63","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",83.4166666666667
+"Channel 19","Station 03 + 63","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",20.1666666666667
+"Channel 19","Station 03 + 63","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",91.6666666666667
+"Channel 19","Station 03 + 63","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13.75
+"Channel 19","Station 03 + 63","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",43.875
+"Channel 19","Station 03 + 63","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",11
+"Channel 19","Station 03 + 63","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",45.25
+"Channel 19","Station 03 + 63","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",19.25
+"Channel 19","Station 03 + 63","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",18.25
+"Channel 19","Station 03 + 63","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",17.375
+"Channel 19","Station 03 + 63","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",96.375
+"Channel 19","Station 03 + 98","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",7.91666666666667
+"Channel 19","Station 03 + 98","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",13.75
+"Channel 19","Station 03 + 98","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",33
+"Channel 19","Station 03 + 98","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",18
+"Channel 19","Station 03 + 98","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",38.25
+"Channel 19","Station 03 + 98","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",22.9166666666667
+"Channel 19","Station 03 + 98","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",68.125
+"Channel 19","Station 03 + 98","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",15.75
+"Channel 19","Station 03 + 98","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13.5
+"Channel 19","Station 03 + 98","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",11.25
+"Channel 19","Station 03 + 98","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",33.25
+"Channel 19","Station 03 + 98","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",27
+"Channel 19","Station 03 + 98","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",28.75
+"Channel 19","Station 03 + 98","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",8.125
+"Channel 19","Station 05 + 00","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",10.5833333333333
+"Channel 19","Station 05 + 00","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",7.08333333333333
+"Channel 19","Station 05 + 00","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",52
+"Channel 19","Station 05 + 00","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",9.66666666666667
+"Channel 19","Station 05 + 00","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",14.3333333333333
+"Channel 19","Station 05 + 00","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",51.125
+"Channel 19","Station 05 + 00","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",4.5
+"Channel 19","Station 05 + 00","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13.875
+"Channel 19","Station 05 + 00","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",0.25
+"Channel 19","Station 05 + 00","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",34.25
+"Channel 19","Station 05 + 00","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",1.5
+"Channel 19","Station 05 + 00","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",62.25
+"Channel 19","Station 05 + 00","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",17
+"Channel 19","Station 05 + 09","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",1.5
+"Channel 19","Station 05 + 09","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",23.75
+"Channel 19","Station 05 + 09","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",9.66666666666667
+"Channel 19","Station 05 + 09","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",61.75
+"Channel 19","Station 05 + 09","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",8.16666666666667
+"Channel 19","Station 05 + 09","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",80.8333333333333
+"Channel 19","Station 05 + 09","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",27.375
+"Channel 19","Station 05 + 09","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",77.5
+"Channel 19","Station 05 + 09","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",7.375
+"Channel 19","Station 05 + 09","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",33.25
+"Channel 19","Station 05 + 09","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",14
+"Channel 19","Station 05 + 09","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",74.375
+"Channel 19","Station 05 + 09","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",10.125
+"Channel 19","Station 05 + 09","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",86.25
+"Channel 19","Station 05 + 62","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",3.16666666666667
+"Channel 19","Station 05 + 62","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",0.5
+"Channel 19","Station 05 + 62","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13.75
+"Channel 19","Station 05 + 62","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",2.91666666666667
+"Channel 19","Station 05 + 62","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",15.8333333333333
+"Channel 19","Station 05 + 62","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",0.833333333333333
+"Channel 19","Station 05 + 62","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",32.75
+"Channel 19","Station 05 + 62","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",0.875
+"Channel 19","Station 05 + 62","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",7.6875
+"Channel 19","Station 05 + 62","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",1.375
+"Channel 19","Station 05 + 62","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",22.3125
+"Channel 19","Station 05 + 62","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",29.25
+"Channel 19","Station 05 + 62","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",3.75
+"Channel 19","Station 06 + 13","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",2.66666666666667
+"Channel 19","Station 06 + 13","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",24.1666666666667
+"Channel 19","Station 06 + 13","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13.4166666666667
+"Channel 19","Station 06 + 13","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",35
+"Channel 19","Station 06 + 13","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",16.0833333333333
+"Channel 19","Station 06 + 13","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",27.1666666666667
+"Channel 19","Station 06 + 13","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",30.125
+"Channel 19","Station 06 + 13","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",0.625
+"Channel 19","Station 06 + 13","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",16.75
+"Channel 19","Station 06 + 13","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",0.625
+"Channel 19","Station 06 + 13","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",19.75
+"Channel 19","Station 06 + 13","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",3.875
+"Channel 19","Station 06 + 13","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",20.25
+"Channel 19","Station 06 + 97","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",1.83333333333333
+"Channel 19","Station 06 + 97","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",41.8333333333333
+"Channel 19","Station 06 + 97","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",18.25
+"Channel 19","Station 06 + 97","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",57.9166666666667
+"Channel 19","Station 06 + 97","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",1.91666666666667
+"Channel 19","Station 06 + 97","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",59.1666666666667
+"Channel 19","Station 06 + 97","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",22
+"Channel 19","Station 06 + 97","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",33.75
+"Channel 19","Station 06 + 97","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",12.25
+"Channel 19","Station 06 + 97","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",3.75
+"Channel 19","Station 06 + 97","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",1.625
+"Channel 19","Station 06 + 97","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",46.25
+"Channel 19","Station 06 + 97","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",38.125
+"Channel 19","Station 06 + 97","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",34.375
+"Channel 19","Station 07 + 30","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",2.25
+"Channel 19","Station 07 + 30","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",17.0833333333333
+"Channel 19","Station 07 + 30","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",45
+"Channel 19","Station 07 + 30","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",53.8333333333333
+"Channel 19","Station 07 + 30","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",9.41666666666667
+"Channel 19","Station 07 + 30","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",27.0833333333333
+"Channel 19","Station 07 + 30","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",23.625
+"Channel 19","Station 07 + 30","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",28.125
+"Channel 19","Station 07 + 30","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",1.875
+"Channel 19","Station 07 + 30","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",4.375
+"Channel 19","Station 07 + 30","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",12.375
+"Channel 19","Station 07 + 30","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",21.875
+"Channel 19","Station 07 + 30","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",41.875
+"Channel 19","Station 07 + 30","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",13.125
+"Channel 19","Station 07 + 50","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",2.5
+"Channel 19","Station 07 + 50","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",38.75
+"Channel 19","Station 07 + 50","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",26.9166666666667
+"Channel 19","Station 07 + 50","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",40.9166666666667
+"Channel 19","Station 07 + 50","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",3.83333333333333
+"Channel 19","Station 07 + 50","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",46.6666666666667
+"Channel 19","Station 07 + 50","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",18.875
+"Channel 19","Station 07 + 50","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",33.75
+"Channel 19","Station 07 + 50","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",11.25
+"Channel 19","Station 07 + 50","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",25.625
+"Channel 19","Station 07 + 50","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",15.375
+"Channel 19","Station 07 + 50","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",9.375
+"Channel 19","Station 07 + 50","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",28.5
+"Channel 19","Station 07 + 50","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",58.75
+"Channel 19","Station 07 + 97","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",5
+"Channel 19","Station 07 + 97","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",9.16666666666667
+"Channel 19","Station 07 + 97","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",22
+"Channel 19","Station 07 + 97","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",7.5
+"Channel 19","Station 07 + 97","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",16.9166666666667
+"Channel 19","Station 07 + 97","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",58.3333333333333
+"Channel 19","Station 07 + 97","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",29.875
+"Channel 19","Station 07 + 97","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",34.375
+"Channel 19","Station 07 + 97","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13
+"Channel 19","Station 07 + 97","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",3.75
+"Channel 19","Station 07 + 97","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",20.25
+"Channel 19","Station 07 + 97","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",4.5
+"Channel 19","Station 07 + 97","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",51.5
+"Channel 19","Station 07 + 97","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",4
+"Channel 19","Station 09 + 05","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",4.91666666666667
+"Channel 19","Station 09 + 05","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",15.9166666666667
+"Channel 19","Station 09 + 05","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",36.8333333333333
+"Channel 19","Station 09 + 05","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",22.5833333333333
+"Channel 19","Station 09 + 05","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",16.8333333333333
+"Channel 19","Station 09 + 05","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",17.5833333333333
+"Channel 19","Station 09 + 05","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",34.25
+"Channel 19","Station 09 + 05","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",4.5
+"Channel 19","Station 09 + 05","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",7.5
+"Channel 19","Station 09 + 05","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",5
+"Channel 19","Station 09 + 05","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",22.375
+"Channel 19","Station 09 + 05","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",18.875
+"Channel 19","Station 09 + 05","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",46.875
+"Channel 19","Station 09 + 05","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",28.125
+"Channel 19","Station 09 + 26","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",2.33333333333333
+"Channel 19","Station 09 + 26","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",6.66666666666667
+"Channel 19","Station 09 + 26","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",30.3333333333333
+"Channel 19","Station 09 + 26","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",3.75
+"Channel 19","Station 09 + 26","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",23.3333333333333
+"Channel 19","Station 09 + 26","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",41.25
+"Channel 19","Station 09 + 26","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",44
+"Channel 19","Station 09 + 26","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",15.625
+"Channel 19","Station 09 + 26","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",11.25
+"Channel 19","Station 09 + 26","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",4.875
+"Channel 19","Station 09 + 26","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13.25
+"Channel 19","Station 09 + 26","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",14.375
+"Channel 19","Station 09 + 26","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",37.375
+"Channel 19","Station 09 + 26","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",39.375
+"Channel 19","Station 09 + 68","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",0.666666666666667
+"Channel 19","Station 09 + 68","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",54.6666666666667
+"Channel 19","Station 09 + 68","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",3.75
+"Channel 19","Station 09 + 68","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",69.1666666666667
+"Channel 19","Station 09 + 68","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13.5833333333333
+"Channel 19","Station 09 + 68","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",27.9166666666667
+"Channel 19","Station 09 + 68","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",26.625
+"Channel 19","Station 09 + 68","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",13.125
+"Channel 19","Station 09 + 68","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",7.25
+"Channel 19","Station 09 + 68","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",20.75
+"Channel 19","Station 09 + 68","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",28.375
+"Channel 19","Station 09 + 68","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",25.625
+"Channel 19","Station 09 + 68","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",54
+"Channel 19","Station 09 + 68","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",48.875
+"Channel 19","Station 10 + 98","2012-03-01","No treatment","Channel 19: Upland treatment","Herbaceous",4.75
+"Channel 19","Station 10 + 98","2012-03-01","No treatment","Channel 19: Upland treatment","Woody",24.3333333333333
+"Channel 19","Station 10 + 98","2012-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",20.25
+"Channel 19","Station 10 + 98","2012-11-01","No treatment","Channel 19: Upland treatment","Woody",42.9166666666667
+"Channel 19","Station 10 + 98","2013-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",13.0833333333333
+"Channel 19","Station 10 + 98","2013-11-01","No treatment","Channel 19: Upland treatment","Woody",21.6666666666667
+"Channel 19","Station 10 + 98","2014-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",21
+"Channel 19","Station 10 + 98","2014-11-01","No treatment","Channel 19: Upland treatment","Woody",34.375
+"Channel 19","Station 10 + 98","2015-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",4.25
+"Channel 19","Station 10 + 98","2015-11-01","No treatment","Channel 19: Upland treatment","Woody",16.375
+"Channel 19","Station 10 + 98","2018-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",11
+"Channel 19","Station 10 + 98","2018-11-01","No treatment","Channel 19: Upland treatment","Woody",25
+"Channel 19","Station 10 + 98","2021-11-01","No treatment","Channel 19: Upland treatment","Herbaceous",49.125
+"Channel 19","Station 10 + 98","2021-11-01","No treatment","Channel 19: Upland treatment","Woody",31.25
+"Channel 21","Station 01 + 07.5 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",9.75
+"Channel 21","Station 01 + 07.5 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",22.5
+"Channel 21","Station 01 + 07.5 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",20.3333333333333
+"Channel 21","Station 01 + 07.5 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",16.6666666666667
+"Channel 21","Station 01 + 07.5 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",6.33333333333333
+"Channel 21","Station 01 + 07.5 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Woody",16.6666666666667
+"Channel 21","Station 01 + 07.5 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",22.375
+"Channel 21","Station 01 + 07.5 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Woody",3.75
+"Channel 21","Station 01 + 07.5 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",14.75
+"Channel 21","Station 01 + 07.5 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Woody",4.375
+"Channel 21","Station 01 + 07.5 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",36
+"Channel 21","Station 01 + 07.5 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Woody",3.75
+"Channel 21","Station 01 + 07.5 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",27.375
+"Channel 21","Station 01 + 07.5 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Woody",3.75
+"Channel 21","Station 01 + 49 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Herbaceous",0.75
+"Channel 21","Station 01 + 49 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Woody",15.4166666666667
+"Channel 21","Station 01 + 49 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",7.75
+"Channel 21","Station 01 + 49 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Woody",19.25
+"Channel 21","Station 01 + 49 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",8.41666666666667
+"Channel 21","Station 01 + 49 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Woody",12.0833333333333
+"Channel 21","Station 01 + 49 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",25
+"Channel 21","Station 01 + 49 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Woody",13.375
+"Channel 21","Station 01 + 49 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",16.875
+"Channel 21","Station 01 + 49 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Woody",0.125
+"Channel 21","Station 01 + 49 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",20.25
+"Channel 21","Station 01 + 49 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Woody",17
+"Channel 21","Station 01 + 49 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",14.5
+"Channel 21","Station 01 + 49 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Woody",68.125
+"Channel 21","Station 02 + 15 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",6.41666666666667
+"Channel 21","Station 02 + 15 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",2.5
+"Channel 21","Station 02 + 15 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",20
+"Channel 21","Station 02 + 15 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",6.66666666666667
+"Channel 21","Station 02 + 15 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",12.6666666666667
+"Channel 21","Station 02 + 15 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Woody",6.25
+"Channel 21","Station 02 + 15 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",15.625
+"Channel 21","Station 02 + 15 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.125
+"Channel 21","Station 02 + 15 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",10.125
+"Channel 21","Station 02 + 15 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",9.5
+"Channel 21","Station 02 + 15 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",2.125
+"Channel 21","Station 02 + 15 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.125
+"Channel 21","Station 03 + 80 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",0.75
+"Channel 21","Station 03 + 80 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",16.6666666666667
+"Channel 21","Station 03 + 80 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",2.83333333333333
+"Channel 21","Station 03 + 80 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",24.5833333333333
+"Channel 21","Station 03 + 80 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",4.25
+"Channel 21","Station 03 + 80 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Woody",19.1666666666667
+"Channel 21","Station 03 + 80 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",6.375
+"Channel 21","Station 03 + 80 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",8.875
+"Channel 21","Station 03 + 80 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",31.875
+"Channel 21","Station 03 + 80 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.125
+"Channel 21","Station 03 + 80 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",23.375
+"Channel 21","Station 03 + 80 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.625
+"Channel 21","Station 04 + 90 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Herbaceous",3.58333333333333
+"Channel 21","Station 04 + 90 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Woody",2.5
+"Channel 21","Station 04 + 90 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",6.33333333333333
+"Channel 21","Station 04 + 90 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Woody",2.5
+"Channel 21","Station 04 + 90 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",1.75
+"Channel 21","Station 04 + 90 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Woody",2.5
+"Channel 21","Station 04 + 90 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",12.875
+"Channel 21","Station 04 + 90 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",11.25
+"Channel 21","Station 04 + 90 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Woody",0.125
+"Channel 21","Station 04 + 90 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",13.625
+"Channel 21","Station 04 + 90 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",7.375
+"Channel 21","Station 06 + 36 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",4.41666666666667
+"Channel 21","Station 06 + 36 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",10.0833333333333
+"Channel 21","Station 06 + 36 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",5.08333333333333
+"Channel 21","Station 06 + 36 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",15.9166666666667
+"Channel 21","Station 06 + 36 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",7
+"Channel 21","Station 06 + 36 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Woody",16.75
+"Channel 21","Station 06 + 36 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",26.875
+"Channel 21","Station 06 + 36 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Woody",10.625
+"Channel 21","Station 06 + 36 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",14.25
+"Channel 21","Station 06 + 36 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Woody",13.125
+"Channel 21","Station 06 + 36 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",9.125
+"Channel 21","Station 06 + 36 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Woody",10
+"Channel 21","Station 06 + 36 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",13.875
+"Channel 21","Station 06 + 36 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.875
+"Channel 21","Station 07 + 49.5 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Herbaceous",1.16666666666667
+"Channel 21","Station 07 + 49.5 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Woody",32.5833333333333
+"Channel 21","Station 07 + 49.5 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",3.83333333333333
+"Channel 21","Station 07 + 49.5 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Woody",30.5833333333333
+"Channel 21","Station 07 + 49.5 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",5.33333333333333
+"Channel 21","Station 07 + 49.5 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Woody",16.75
+"Channel 21","Station 07 + 49.5 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",11.25
+"Channel 21","Station 07 + 49.5 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Woody",21.375
+"Channel 21","Station 07 + 49.5 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",3.625
+"Channel 21","Station 07 + 49.5 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Woody",24.625
+"Channel 21","Station 07 + 49.5 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",13.75
+"Channel 21","Station 07 + 49.5 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Woody",28.875
+"Channel 21","Station 07 + 49.5 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",17.125
+"Channel 21","Station 07 + 49.5 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Woody",13.125
+"Channel 21","Station 07 + 66 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",0.25
+"Channel 21","Station 07 + 66 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",0.5
+"Channel 21","Station 07 + 66 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",3.16666666666667
+"Channel 21","Station 07 + 66 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.0833333333333333
+"Channel 21","Station 07 + 66 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",0.833333333333333
+"Channel 21","Station 07 + 66 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",3.625
+"Channel 21","Station 07 + 66 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",2.375
+"Channel 21","Station 07 + 66 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",6.25
+"Channel 21","Station 08 + 62 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",3.08333333333333
+"Channel 21","Station 08 + 62 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",14.6666666666667
+"Channel 21","Station 08 + 62 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",13.5
+"Channel 21","Station 08 + 62 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",15.9166666666667
+"Channel 21","Station 08 + 62 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",3.58333333333333
+"Channel 21","Station 08 + 62 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Woody",12.6666666666667
+"Channel 21","Station 08 + 62 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",13
+"Channel 21","Station 08 + 62 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Woody",15.25
+"Channel 21","Station 08 + 62 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",15.625
+"Channel 21","Station 08 + 62 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Woody",15.25
+"Channel 21","Station 08 + 62 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",20.375
+"Channel 21","Station 08 + 62 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Woody",18.375
+"Channel 21","Station 08 + 62 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",19
+"Channel 21","Station 08 + 62 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Woody",10.125
+"Channel 21","Station 09 + 99 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Herbaceous",1.25
+"Channel 21","Station 09 + 99 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Woody",11
+"Channel 21","Station 09 + 99 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",1.5
+"Channel 21","Station 09 + 99 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Woody",6.91666666666667
+"Channel 21","Station 09 + 99 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",2.91666666666667
+"Channel 21","Station 09 + 99 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Woody",12.9166666666667
+"Channel 21","Station 09 + 99 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",8.25
+"Channel 21","Station 09 + 99 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Woody",0.75
+"Channel 21","Station 09 + 99 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",5.75
+"Channel 21","Station 09 + 99 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Woody",0.75
+"Channel 21","Station 09 + 99 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",7
+"Channel 21","Station 09 + 99 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Woody",0.75
+"Channel 21","Station 09 + 99 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",18.125
+"Channel 21","Station 09 + 99 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Woody",1.375
+"Channel 21","Station 10 + 13 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",2.5
+"Channel 21","Station 10 + 13 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",47.0833333333333
+"Channel 21","Station 10 + 13 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",2.5
+"Channel 21","Station 10 + 13 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",53.75
+"Channel 21","Station 10 + 13 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",3.25
+"Channel 21","Station 10 + 13 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Woody",49.5833333333333
+"Channel 21","Station 10 + 13 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",20
+"Channel 21","Station 10 + 13 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Woody",61.5
+"Channel 21","Station 10 + 13 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",7.5
+"Channel 21","Station 10 + 13 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Woody",40.625
+"Channel 21","Station 10 + 13 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",12.375
+"Channel 21","Station 10 + 13 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Woody",25.25
+"Channel 21","Station 10 + 13 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",8.5
+"Channel 21","Station 10 + 13 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Woody",10.875
+"Channel 21","Station 11 + 12 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Herbaceous",4.66666666666667
+"Channel 21","Station 11 + 12 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Woody",26
+"Channel 21","Station 11 + 12 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",12.4166666666667
+"Channel 21","Station 11 + 12 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Woody",32.75
+"Channel 21","Station 11 + 12 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",12.5833333333333
+"Channel 21","Station 11 + 12 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Woody",31
+"Channel 21","Station 11 + 12 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",18.25
+"Channel 21","Station 11 + 12 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Woody",17.5
+"Channel 21","Station 11 + 12 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",19.375
+"Channel 21","Station 11 + 12 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Woody",7.625
+"Channel 21","Station 11 + 12 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",30
+"Channel 21","Station 11 + 12 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Woody",18.125
+"Channel 21","Station 11 + 12 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",19.75
+"Channel 21","Station 11 + 12 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Woody",13.25
+"Channel 21","Station 11 + 24 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",5.58333333333333
+"Channel 21","Station 11 + 24 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",8.75
+"Channel 21","Station 11 + 24 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",14.1666666666667
+"Channel 21","Station 11 + 24 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",21.25
+"Channel 21","Station 11 + 24 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",13.4166666666667
+"Channel 21","Station 11 + 24 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Woody",12.5833333333333
+"Channel 21","Station 11 + 24 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",10.5
+"Channel 21","Station 11 + 24 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Woody",17
+"Channel 21","Station 11 + 24 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",9
+"Channel 21","Station 11 + 24 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Woody",8.25
+"Channel 21","Station 11 + 24 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",18.625
+"Channel 21","Station 11 + 24 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Woody",7.625
+"Channel 21","Station 11 + 24 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",16.875
+"Channel 21","Station 11 + 24 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Woody",5
+"Channel 21","Station 11 + 63 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Herbaceous",10.9166666666667
+"Channel 21","Station 11 + 63 ORD","2012-03-01","One station dam","Channel 21: In-channel treatment","Woody",27.5833333333333
+"Channel 21","Station 11 + 63 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",12.5833333333333
+"Channel 21","Station 11 + 63 ORD","2012-11-01","One station dam","Channel 21: In-channel treatment","Woody",17.6666666666667
+"Channel 21","Station 11 + 63 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",12.7083333333333
+"Channel 21","Station 11 + 63 ORD","2013-11-01","One station dam","Channel 21: In-channel treatment","Woody",22.5833333333333
+"Channel 21","Station 11 + 63 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",25.9375
+"Channel 21","Station 11 + 63 ORD","2014-11-01","One station dam","Channel 21: In-channel treatment","Woody",42.875
+"Channel 21","Station 11 + 63 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",23.625
+"Channel 21","Station 11 + 63 ORD","2015-11-01","One station dam","Channel 21: In-channel treatment","Woody",24.5
+"Channel 21","Station 11 + 63 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",29.875
+"Channel 21","Station 11 + 63 ORD","2018-11-01","One station dam","Channel 21: In-channel treatment","Woody",9.625
+"Channel 21","Station 11 + 63 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Herbaceous",24.75
+"Channel 21","Station 11 + 63 ORD","2021-11-01","One station dam","Channel 21: In-channel treatment","Woody",40.625
+"Channel 21","Station 11 + 73 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Herbaceous",4.25
+"Channel 21","Station 11 + 73 BAF","2012-03-01","Baffle","Channel 21: In-channel treatment","Woody",2.66666666666667
+"Channel 21","Station 11 + 73 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",8.83333333333333
+"Channel 21","Station 11 + 73 BAF","2012-11-01","Baffle","Channel 21: In-channel treatment","Woody",6.33333333333333
+"Channel 21","Station 11 + 73 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",6.25
+"Channel 21","Station 11 + 73 BAF","2013-11-01","Baffle","Channel 21: In-channel treatment","Woody",19.6666666666667
+"Channel 21","Station 11 + 73 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",18.25
+"Channel 21","Station 11 + 73 BAF","2014-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.875
+"Channel 21","Station 11 + 73 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",10
+"Channel 21","Station 11 + 73 BAF","2015-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.375
+"Channel 21","Station 11 + 73 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",17.375
+"Channel 21","Station 11 + 73 BAF","2018-11-01","Baffle","Channel 21: In-channel treatment","Woody",0.5
+"Channel 21","Station 11 + 73 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Herbaceous",47.5
+"Channel 21","Station 11 + 73 BAF","2021-11-01","Baffle","Channel 21: In-channel treatment","Woody",5

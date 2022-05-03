@@ -350,26 +350,53 @@ ground.all &lt;- ground.all %&gt;%
   filter(Cover &gt; 0) %&gt;% 
   separate(Station, c(&quot;Channel&quot;, &quot;Station&quot;), &quot;_&quot;)
 
-# Add treatment
-plant.all[ , &quot;Treatment&quot;] &lt;- NA
+# Add station treatment
+plant.all[ , &quot;station.trt&quot;] &lt;- NA
 for(i in 1:nrow(plant.all)) {
   if(str_detect(plant.all$Station, &quot;ORD&quot;)[i] == TRUE) {
-    plant.all$Treatment[i] &lt;- &quot;One rock dam&quot;
+    plant.all$station.trt[i] &lt;- &quot;One station dam&quot;
   } else if(str_detect(plant.all$Station, &quot;BAF&quot;)[i] == TRUE) {
-    plant.all$Treatment[i] &lt;- &quot;Baffle&quot;
+    plant.all$station.trt[i] &lt;- &quot;Baffle&quot;
   } else {
-    plant.all$Treatment[i] &lt;- &quot;No treatment&quot;
+    plant.all$station.trt[i] &lt;- &quot;No treatment&quot;
   }
 }
 
-ground.all[ , &quot;Treatment&quot;] &lt;- NA
+ground.all[ , &quot;station.trt&quot;] &lt;- NA
 for(i in 1:nrow(ground.all)) {
   if(str_detect(ground.all$Station, &quot;ORD&quot;)[i] == TRUE) {
-    ground.all$Treatment[i] &lt;- &quot;One rock dam&quot;
+    ground.all$station.trt[i] &lt;- &quot;One station dam&quot;
   } else if(str_detect(ground.all$Station, &quot;BAF&quot;)[i] == TRUE) {
-    ground.all$Treatment[i] &lt;- &quot;Baffle&quot;
+    ground.all$station.trt[i] &lt;- &quot;Baffle&quot;
   } else {
-    ground.all$Treatment[i] &lt;- &quot;No treatment&quot;
+    ground.all$station.trt[i] &lt;- &quot;No treatment&quot;
+  }
+}
+
+# Add channel treatment
+plant.all[ , &quot;channel.trt&quot;] &lt;- NA
+for(i in 1:nrow(plant.all)) {
+  if(plant.all$Channel[i] == &quot;Channel 12&quot;) {
+    plant.all$channel.trt[i] &lt;- &quot;Channel 12: No treatment&quot;
+  } else if(plant.all$Channel[i] == &quot;Channel 13&quot;) {
+    plant.all$channel.trt[i] &lt;- &quot;Channel 13: In-channel treatment&quot;
+  }  else if(plant.all$Channel[i] == &quot;Channel 19&quot;) {
+    plant.all$channel.trt[i] &lt;- &quot;Channel 19: Upland treatment&quot;
+  } else {
+    plant.all$channel.trt[i] &lt;- &quot;Channel 21: In-channel treatment&quot;
+  }
+}
+
+ground.all[ , &quot;channel.trt&quot;] &lt;- NA
+for(i in 1:nrow(ground.all)) {
+  if(ground.all$Channel[i] == &quot;Channel 12&quot;) {
+    ground.all$channel.trt[i] &lt;- &quot;Channel 12: No treatment&quot;
+  } else if(ground.all$Channel[i] == &quot;Channel 13&quot;) {
+    ground.all$channel.trt[i] &lt;- &quot;Channel 13: In-channel treatment&quot;
+  }  else if(ground.all$Channel[i] == &quot;Channel 19&quot;) {
+    ground.all$channel.trt[i] &lt;- &quot;Channel 19: Upland treatment&quot;
+  } else {
+    ground.all$channel.trt[i] &lt;- &quot;Channel 21: In-channel treatment&quot;
   }
 }
 
@@ -406,31 +433,31 @@ for(i in 1:nrow(plant.all)) {
 <pre class="r"><code># Summarise by total, functional group, and native status -----------------
 
 total.all &lt;- plant.all %&gt;% 
-  group_by(Channel, Station, Year, Treatment) %&gt;% 
+  group_by(Channel, Station, Year, station.trt, channel.trt) %&gt;% 
   summarise(Cover = sum(Cover), .groups = &quot;keep&quot;)
 
 fungr.all &lt;- plant.all %&gt;% 
-  group_by(Channel, Station, Year, Treatment, Functional) %&gt;% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, Functional) %&gt;% 
   summarise(Cover = sum(Cover), .groups = &quot;keep&quot;)
 
 gfst.all &lt;- plant.all %&gt;% 
-  group_by(Channel, Station, Year, Treatment, gfst) %&gt;% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, gfst) %&gt;% 
   summarise(Cover = sum(Cover), .groups = &quot;keep&quot;)
 
 woody.all &lt;- plant.all %&gt;% 
-  group_by(Channel, Station, Year, Treatment, woody) %&gt;% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, woody) %&gt;% 
   summarise(Cover = sum(Cover), .groups = &quot;keep&quot;)
 
 inwood.all &lt;- plant.all %&gt;% 
-  group_by(Channel, Station, Year, Treatment, Native, woody) %&gt;% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, Native, woody) %&gt;% 
   summarise(Cover = sum(Cover), .groups = &quot;keep&quot;)
 
 ingfst.all &lt;- plant.all %&gt;% 
-  group_by(Channel, Station, Year, Treatment, gfst, Native) %&gt;% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, gfst, Native) %&gt;% 
   summarise(Cover = sum(Cover), .groups = &quot;keep&quot;)
 
 innat.all &lt;- plant.all %&gt;% 
-  group_by(Channel, Station, Year, Treatment, Native) %&gt;% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, Native) %&gt;% 
   summarise(Cover = sum(Cover), .groups = &quot;keep&quot;)</code></pre>
 <ul>
 <li>More specific groups are made by summing the appropriate species by category.</li>
