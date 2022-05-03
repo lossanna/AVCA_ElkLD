@@ -223,6 +223,51 @@ total19.letters <- total19 %>%
 total19.letters$groups <- c("a", "a", "ab", "ab", "bc", "c")
 
 
+# Plot Nov only with year aligned on x-axis and ANOVA/KW letters added
+letters <- data.frame(label = c(total12.letters$groups, total13.letters$groups,
+                                total19.letters$groups),
+                      channel.trt = c(rep("Channel 12: No treatment", 6),
+                                      rep("Channel 13: In-channel treatment", 6),
+                                      rep("Channel 19: Upland treatment", 6)),
+                      x = rep(total.channel.nov$year.xaxis[1:6], 3),
+                      y = c(40, 45, 30, 40, 40, 40,
+                            70, 60, 70, 65, 60, 55,
+                            50, 45, 48, 43, 55, 60))
+
+anova.kw.lab <- data.frame(label = rep("Kruskal-Wallis", 3),
+                           channel.trt = c("Channel 12: No treatment",
+                                           "Channel 13: In-channel treatment",
+                                           "Channel 19: Upland treatment"),
+                           x = c(rep(as.Date("2020-01-01"), 3)),
+                           y = c(23, 23, 23))
+
+total.plot.nov.letters <- ggplot(total.channel.nov, aes(x = year.xaxis, y = mean, 
+                                                        group = channel.trt, 
+                                                        color = channel.trt)) +
+  geom_line(size = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~channel.trt) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Total plant cover") +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  geom_text(data = anova.kw.lab,
+            mapping = aes(x = x, y = y, label = label),
+            size = 3, color = "black")
+total.plot.nov.letters
+
+pdf("output_figs/Total-cover.pdf", width = 7, height = 5)
+total.plot.nov.letters
+dev.off()
+
+
 
 # Ground cover ------------------------------------------------------------
 
