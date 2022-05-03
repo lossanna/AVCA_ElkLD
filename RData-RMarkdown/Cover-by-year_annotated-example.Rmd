@@ -1,0 +1,27 @@
+---
+title: "Cover by year and channel annotated example"
+author: "Lia Ossanna"
+date: "5/3/2022"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+load("Covery-by-year-and-channel.RData")
+library(tidyverse)
+library(agricolae)
+library(plotrix)
+library(FSA)
+library(rcompanion)
+```
+
+
+# Introduction
+- The `AVCA_ElkLD/scripts/Cover-by-year-and-channel.R` script graphs plant and ground cover over time for each channel, and does comparison of means (ANOVA or Kruskal-Wallis) for select groups.
+- This follows data wrangling (`AVCA_ElkLD/scripts/data-wrangling/`), summarising by channel (`AVCA_ElkLD/scripts/data-wrangling/Summarise-all-channels.R`). See the annotated examples for those scripts in the `AVCA_ElkLD/RData-RMarkdown/` folder.
+
+
+# Setup
