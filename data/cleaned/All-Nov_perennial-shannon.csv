@@ -1,366 +1,366 @@
-"Year","Station","Channel","shan"
-2012-11-01,"Station 01 + 04","Channel 19",1.51291806829498
-2012-11-01,"Station 01 + 07.5 BAF","Channel 21",1.20067601099674
-2012-11-01,"Station 01 + 49 ORD","Channel 21",1.24021696554121
-2012-11-01,"Station 02 + 15 BAF","Channel 21",1.43954343672771
-2012-11-01,"Station 02 + 52","Channel 19",1.39826090540909
-2012-11-01,"Station 03 + 63","Channel 19",1.37359298744843
-2012-11-01,"Station 03 + 80 BAF","Channel 21",0.386654554503635
-2012-11-01,"Station 03 + 98","Channel 19",1.84159238795695
-2012-11-01,"Station 04 + 90 ORD","Channel 21",1.09014064434507
-2012-11-01,"Station 05 + 00","Channel 19",1.48208355200784
-2012-11-01,"Station 05 + 09","Channel 19",0.992781225645323
-2012-11-01,"Station 05 + 62","Channel 19",1.53468458568875
-2012-11-01,"Station 06 + 13","Channel 19",1.39986850250916
-2012-11-01,"Station 06 + 36 BAF","Channel 21",1.27984313502328
-2012-11-01,"Station 06 + 97","Channel 19",1.25507700407645
-2012-11-01,"Station 07 + 30","Channel 19",0.895268407757062
-2012-11-01,"Station 07 + 49.5 ORD","Channel 21",0.365073259125504
-2012-11-01,"Station 07 + 50","Channel 19",1.1011129879922
-2012-11-01,"Station 07 + 66 BAF","Channel 21",0.404509941773612
-2012-11-01,"Station 07 + 97","Channel 19",1.78850303469189
-2012-11-01,"Station 08 + 62 BAF","Channel 21",1.16317204596377
-2012-11-01,"Station 09 + 05","Channel 19",1.54927985710219
-2012-11-01,"Station 09 + 26","Channel 19",1.31130346977156
-2012-11-01,"Station 09 + 68","Channel 19",0.455279016373587
-2012-11-01,"Station 09 + 99 ORD","Channel 21",0.943626573958522
-2012-11-01,"Station 1 + 04","Channel 12",1.5414713663635
-2012-11-01,"Station 1 + 11.5 BAF","Channel 13",0.938687668440487
-2012-11-01,"Station 1 + 38.5 ORD","Channel 13",0.530211318198538
-2012-11-01,"Station 1 + 52","Channel 12",1.7180591787588
-2012-11-01,"Station 1 + 71 BAF","Channel 13",0.40404501056216
-2012-11-01,"Station 1 + 77 ORD","Channel 13",0.531877173814613
-2012-11-01,"Station 1 + 83","Channel 12",0.801792720407733
-2012-11-01,"Station 1 + 99 ORD","Channel 13",1.62212250664874
-2012-11-01,"Station 10 + 13 BAF","Channel 21",0.181820282304918
-2012-11-01,"Station 10 + 98","Channel 19",1.58722861205087
-2012-11-01,"Station 11 + 12 ORD","Channel 21",1.38335712763323
-2012-11-01,"Station 11 + 24 BAF","Channel 21",1.59825223742886
-2012-11-01,"Station 11 + 63 ORD","Channel 21",1.96554359259447
-2012-11-01,"Station 11 + 73 BAF","Channel 21",1.34367018053545
-2012-11-01,"Station 2 + 16 BAF","Channel 13",0.819745032385005
-2012-11-01,"Station 2 + 57 ORD","Channel 13",1.51778910053798
-2012-11-01,"Station 2 + 63","Channel 12",1.0387099392832
-2012-11-01,"Station 2 + 67 BAF","Channel 13",1.70784650332993
-2012-11-01,"Station 2 + 98","Channel 12",1.20640498131097
-2012-11-01,"Station 3 + 09 ORD","Channel 13",1.23382636247314
-2012-11-01,"Station 3 + 31 BAF","Channel 13",0.623351776409872
-2012-11-01,"Station 3 + 65 ORD","Channel 13",1.22452298898839
-2012-11-01,"Station 3 + 93","Channel 12",1.34473613644369
-2012-11-01,"Station 3 + 95.5 ORD","Channel 13",1.19838115978729
-2012-11-01,"Station 4 + 00","Channel 12",1.31595330619536
-2012-11-01,"Station 4 + 09","Channel 12",1.49931262966908
-2012-11-01,"Station 4 + 14.5 BAF","Channel 13",1.53310253406705
-2012-11-01,"Station 4 + 36 ORD","Channel 13",1.13925868038684
-2012-11-01,"Station 4 + 50 BAF","Channel 13",1.15704409450081
-2012-11-01,"Station 4 + 56","Channel 12",1.0934591796547
-2012-11-01,"Station 4 + 65","Channel 12",1.31007346159741
-2012-11-01,"Station 4 + 78 ORD","Channel 13",1.93709352292395
-2012-11-01,"Station 5 + 13","Channel 12",1.13729719999257
-2012-11-01,"Station 5 + 48","Channel 12",1.33057225938524
-2012-11-01,"Station 6 + 30","Channel 12",0.930171660211468
-2012-11-01,"Station 6 + 93","Channel 12",0.7221063497967
-2013-11-01,"Station 01 + 04","Channel 19",1.14140085174175
-2013-11-01,"Station 01 + 07.5 BAF","Channel 21",0.76388299203104
-2013-11-01,"Station 01 + 49 ORD","Channel 21",1.61555082016875
-2013-11-01,"Station 02 + 04","Channel 19",1.78222253398608
-2013-11-01,"Station 02 + 15 BAF","Channel 21",1.4909804269615
-2013-11-01,"Station 02 + 52","Channel 19",1.10676534635869
-2013-11-01,"Station 03 + 63","Channel 19",1.1810588188159
-2013-11-01,"Station 03 + 80 BAF","Channel 21",0.919271431098868
-2013-11-01,"Station 03 + 98","Channel 19",1.79921416460599
-2013-11-01,"Station 04 + 90 ORD","Channel 21",1.10927669178165
-2013-11-01,"Station 05 + 00","Channel 19",1.1691821422793
-2013-11-01,"Station 05 + 09","Channel 19",0.519957588035119
-2013-11-01,"Station 05 + 62","Channel 19",1.2884094283585
-2013-11-01,"Station 06 + 13","Channel 19",1.04541806585257
-2013-11-01,"Station 06 + 36 BAF","Channel 21",1.26811785948974
-2013-11-01,"Station 06 + 97","Channel 19",0.129831338210192
-2013-11-01,"Station 07 + 30","Channel 19",0.717265633456969
-2013-11-01,"Station 07 + 49.5 ORD","Channel 21",0.804870993565915
-2013-11-01,"Station 07 + 50","Channel 19",0.315943299649481
-2013-11-01,"Station 07 + 66 BAF","Channel 21",0.376770161256437
-2013-11-01,"Station 07 + 97","Channel 19",1.43332371941839
-2013-11-01,"Station 08 + 62 BAF","Channel 21",1.1461185601312
-2013-11-01,"Station 09 + 05","Channel 19",1.33503300815969
-2013-11-01,"Station 09 + 26","Channel 19",1.39086061159963
-2013-11-01,"Station 09 + 68","Channel 19",1.62237811833743
-2013-11-01,"Station 09 + 99 ORD","Channel 21",1.02161766995703
-2013-11-01,"Station 1 + 04","Channel 12",1.70056481330265
-2013-11-01,"Station 1 + 11.5 BAF","Channel 13",0.202080078694975
-2013-11-01,"Station 1 + 38.5 ORD","Channel 13",0.63772474308719
-2013-11-01,"Station 1 + 52","Channel 12",1.94007575803872
-2013-11-01,"Station 1 + 71 BAF","Channel 13",0.568894036914716
-2013-11-01,"Station 1 + 83","Channel 12",1.10717793280426
-2013-11-01,"Station 1 + 99 ORD","Channel 13",0.674048808252115
-2013-11-01,"Station 10 + 13 BAF","Channel 21",0.204158745302152
-2013-11-01,"Station 10 + 98","Channel 19",1.7641275509523
-2013-11-01,"Station 11 + 12 ORD","Channel 21",1.78195245311872
-2013-11-01,"Station 11 + 24 BAF","Channel 21",1.34479105299582
-2013-11-01,"Station 11 + 63 ORD","Channel 21",2.02029723451598
-2013-11-01,"Station 11 + 73 BAF","Channel 21",1.49176132257002
-2013-11-01,"Station 2 + 16 BAF","Channel 13",1.23399812996944
-2013-11-01,"Station 2 + 57 ORD","Channel 13",0.650794059626186
-2013-11-01,"Station 2 + 63","Channel 12",1.64553463399961
-2013-11-01,"Station 2 + 67 BAF","Channel 13",1.46451803526976
-2013-11-01,"Station 2 + 98","Channel 12",1.31228330855701
-2013-11-01,"Station 3 + 09 ORD","Channel 13",1.5126942745706
-2013-11-01,"Station 3 + 31 BAF","Channel 13",0.850610183780465
-2013-11-01,"Station 3 + 65 ORD","Channel 13",1.09409070351643
-2013-11-01,"Station 3 + 93","Channel 12",1.2445010254415
-2013-11-01,"Station 3 + 95.5 ORD","Channel 13",0.938073682038703
-2013-11-01,"Station 4 + 00","Channel 12",1.31823229494411
-2013-11-01,"Station 4 + 09","Channel 12",1.84292824130743
-2013-11-01,"Station 4 + 14.5 BAF","Channel 13",0.987485930953259
-2013-11-01,"Station 4 + 36 ORD","Channel 13",1.52842717358454
-2013-11-01,"Station 4 + 50 BAF","Channel 13",1.14024696542839
-2013-11-01,"Station 4 + 56","Channel 12",1.52061471070329
-2013-11-01,"Station 5 + 13","Channel 12",1.91029641814545
-2013-11-01,"Station 5 + 48","Channel 12",1.43507509765543
-2013-11-01,"Station 6 + 30","Channel 12",0.974229916314775
-2013-11-01,"Station 6 + 93","Channel 12",0.712864890782891
-2014-11-01,"Station 01 + 07.5 BAF","Channel 21",1.07134307662238
-2014-11-01,"Station 01 + 49 ORD","Channel 21",0.972948577429558
-2014-11-01,"Station 02 + 04","Channel 19",1.4266972549721
-2014-11-01,"Station 02 + 15 BAF","Channel 21",1.57523547692675
-2014-11-01,"Station 02 + 52","Channel 19",1.46589206941016
-2014-11-01,"Station 03 + 63","Channel 19",1.13422465433872
-2014-11-01,"Station 03 + 80 BAF","Channel 21",0.658859104659058
-2014-11-01,"Station 03 + 98","Channel 19",1.91021906890653
-2014-11-01,"Station 04 + 90 ORD","Channel 21",1.22067040266239
-2014-11-01,"Station 05 + 00","Channel 19",1.19498285487451
-2014-11-01,"Station 05 + 09","Channel 19",1.15599017805723
-2014-11-01,"Station 05 + 62","Channel 19",1.45570285740444
-2014-11-01,"Station 06 + 13","Channel 19",1.32654702831812
-2014-11-01,"Station 06 + 36 BAF","Channel 21",1.10180239726504
-2014-11-01,"Station 06 + 97","Channel 19",0.519580807272501
-2014-11-01,"Station 07 + 30","Channel 19",1.00922879193575
-2014-11-01,"Station 07 + 49.5 ORD","Channel 21",0.875289093369531
-2014-11-01,"Station 07 + 50","Channel 19",0.840115440210303
-2014-11-01,"Station 07 + 66 BAF","Channel 21",1.45858475280701
-2014-11-01,"Station 07 + 97","Channel 19",1.22532975348059
-2014-11-01,"Station 08 + 62 BAF","Channel 21",1.33253460588321
-2014-11-01,"Station 09 + 05","Channel 19",1.18595123471516
-2014-11-01,"Station 09 + 26","Channel 19",1.98662423928469
-2014-11-01,"Station 09 + 68","Channel 19",1.69198615089008
-2014-11-01,"Station 09 + 99 ORD","Channel 21",1.63143725613214
-2014-11-01,"Station 1 + 04","Channel 12",0.938073771811968
-2014-11-01,"Station 1 + 11.5 BAF","Channel 13",0.73274718391642
-2014-11-01,"Station 1 + 38.5 ORD","Channel 13",0.351980099310882
-2014-11-01,"Station 1 + 52","Channel 12",1.31242692599055
-2014-11-01,"Station 1 + 71 BAF","Channel 13",0.831993353887328
-2014-11-01,"Station 1 + 77 ORD","Channel 13",0.475534452863528
-2014-11-01,"Station 1 + 83","Channel 12",1.21372008259041
-2014-11-01,"Station 1 + 99 ORD","Channel 13",1.4436325396229
-2014-11-01,"Station 10 + 13 BAF","Channel 21",0.660074654807292
-2014-11-01,"Station 10 + 98","Channel 19",1.07944130581047
-2014-11-01,"Station 11 + 12 ORD","Channel 21",1.46132182027925
-2014-11-01,"Station 11 + 24 BAF","Channel 21",0.88276207064869
-2014-11-01,"Station 11 + 63 ORD","Channel 21",1.92229337728948
-2014-11-01,"Station 11 + 73 BAF","Channel 21",1.64778579488428
-2014-11-01,"Station 2 + 16 BAF","Channel 13",0.516571915210404
-2014-11-01,"Station 2 + 57 ORD","Channel 13",1.29556121942049
-2014-11-01,"Station 2 + 63","Channel 12",1.2844264323753
-2014-11-01,"Station 2 + 67 BAF","Channel 13",1.63267922091521
-2014-11-01,"Station 2 + 98","Channel 12",1.55068953883342
-2014-11-01,"Station 3 + 09 ORD","Channel 13",1.21656814384571
-2014-11-01,"Station 3 + 31 BAF","Channel 13",0.302704540976598
-2014-11-01,"Station 3 + 65 ORD","Channel 13",0.998383121674852
-2014-11-01,"Station 3 + 93","Channel 12",1.35184033450331
-2014-11-01,"Station 3 + 95.5 ORD","Channel 13",1.20434806279692
-2014-11-01,"Station 4 + 00","Channel 12",0.863300095936082
-2014-11-01,"Station 4 + 09","Channel 12",1.69961242953177
-2014-11-01,"Station 4 + 14.5 BAF","Channel 13",1.39484562291473
-2014-11-01,"Station 4 + 36 ORD","Channel 13",1.23612682846721
-2014-11-01,"Station 4 + 50 BAF","Channel 13",1.02923342641013
-2014-11-01,"Station 4 + 56","Channel 12",1.31141758352486
-2014-11-01,"Station 4 + 65","Channel 12",0.420536395821623
-2014-11-01,"Station 4 + 78 ORD","Channel 13",1.88909725382312
-2014-11-01,"Station 5 + 13","Channel 12",1.11913480581406
-2014-11-01,"Station 5 + 48","Channel 12",0.914487320548394
-2014-11-01,"Station 6 + 30","Channel 12",0.480025680590882
-2014-11-01,"Station 6 + 93","Channel 12",0.834985279003699
-2015-11-01,"Station 01 + 04","Channel 19",1.53756372698086
-2015-11-01,"Station 01 + 07.5 BAF","Channel 21",1.46456037962759
-2015-11-01,"Station 01 + 49 ORD","Channel 21",0.61509532980796
-2015-11-01,"Station 02 + 04","Channel 19",1.40302935457778
-2015-11-01,"Station 02 + 15 BAF","Channel 21",0.74513321300955
-2015-11-01,"Station 02 + 52","Channel 19",1.36681950943104
-2015-11-01,"Station 03 + 63","Channel 19",0.885746903196978
-2015-11-01,"Station 03 + 80 BAF","Channel 21",0.0740225961475812
-2015-11-01,"Station 03 + 98","Channel 19",1.83296537912484
-2015-11-01,"Station 04 + 90 ORD","Channel 21",1.13390192449855
-2015-11-01,"Station 05 + 00","Channel 19",0.996037225790972
-2015-11-01,"Station 05 + 09","Channel 19",1.19413197612428
-2015-11-01,"Station 05 + 62","Channel 19",1.4513973854146
-2015-11-01,"Station 06 + 13","Channel 19",0.75778817583822
-2015-11-01,"Station 06 + 36 BAF","Channel 21",1.24137755235465
-2015-11-01,"Station 06 + 97","Channel 19",0.936699077339319
-2015-11-01,"Station 07 + 30","Channel 19",0.801818552543337
-2015-11-01,"Station 07 + 49.5 ORD","Channel 21",0.547645319987761
-2015-11-01,"Station 07 + 50","Channel 19",0.884790168876671
-2015-11-01,"Station 07 + 97","Channel 19",1.0924520511059
-2015-11-01,"Station 08 + 62 BAF","Channel 21",1.46428490572817
-2015-11-01,"Station 09 + 05","Channel 19",1.52574184449282
-2015-11-01,"Station 09 + 26","Channel 19",1.48541282773436
-2015-11-01,"Station 09 + 68","Channel 19",1.33939424903897
-2015-11-01,"Station 09 + 99 ORD","Channel 21",1.4487345723773
-2015-11-01,"Station 1 + 04","Channel 12",1.05215321223104
-2015-11-01,"Station 1 + 11.5 BAF","Channel 13",1.45072519756097
-2015-11-01,"Station 1 + 38.5 ORD","Channel 13",0.924304814090121
-2015-11-01,"Station 1 + 52","Channel 12",1.28207620589568
-2015-11-01,"Station 1 + 71 BAF","Channel 13",0.619644983309927
-2015-11-01,"Station 1 + 77 ORD","Channel 13",0.904984024871426
-2015-11-01,"Station 1 + 83","Channel 12",1.19279799375003
-2015-11-01,"Station 1 + 99 ORD","Channel 13",1.54146835124718
-2015-11-01,"Station 10 + 13 BAF","Channel 21",0.611421010124414
-2015-11-01,"Station 10 + 98","Channel 19",0.936142494109285
-2015-11-01,"Station 11 + 12 ORD","Channel 21",1.28313669310341
-2015-11-01,"Station 11 + 24 BAF","Channel 21",0.898995894728719
-2015-11-01,"Station 11 + 63 ORD","Channel 21",1.75927514737508
-2015-11-01,"Station 11 + 73 BAF","Channel 21",1.64837696506509
-2015-11-01,"Station 2 + 16 BAF","Channel 13",1.23865751545302
-2015-11-01,"Station 2 + 57 ORD","Channel 13",1.42993104624535
-2015-11-01,"Station 2 + 63","Channel 12",1.16478616143076
-2015-11-01,"Station 2 + 67 BAF","Channel 13",1.18349090801845
-2015-11-01,"Station 2 + 98","Channel 12",1.08595449921092
-2015-11-01,"Station 3 + 09 ORD","Channel 13",1.3523857193945
-2015-11-01,"Station 3 + 31 BAF","Channel 13",0.658794566013312
-2015-11-01,"Station 3 + 65 ORD","Channel 13",1.06461735003661
-2015-11-01,"Station 3 + 93","Channel 12",1.53409255923976
-2015-11-01,"Station 3 + 95.5 ORD","Channel 13",1.23504908639663
-2015-11-01,"Station 4 + 00","Channel 12",1.34265116769461
-2015-11-01,"Station 4 + 09","Channel 12",1.82740869978285
-2015-11-01,"Station 4 + 14.5 BAF","Channel 13",1.5879052390308
-2015-11-01,"Station 4 + 36 ORD","Channel 13",1.6729720342966
-2015-11-01,"Station 4 + 50 BAF","Channel 13",1.37477298524537
-2015-11-01,"Station 4 + 56","Channel 12",1.42505327436094
-2015-11-01,"Station 4 + 65","Channel 12",1.44848941750168
-2015-11-01,"Station 4 + 78 ORD","Channel 13",1.70135294604941
-2015-11-01,"Station 5 + 13","Channel 12",1.66023147459112
-2015-11-01,"Station 5 + 48","Channel 12",1.35454508293254
-2015-11-01,"Station 6 + 30","Channel 12",0.737162114998889
-2015-11-01,"Station 6 + 93","Channel 12",1.27989739695597
-2018-11-01,"Station 01 + 04","Channel 19",1.22319364752286
-2018-11-01,"Station 01 + 07.5 BAF","Channel 21",0.953171001760057
-2018-11-01,"Station 01 + 49 ORD","Channel 21",0.814736144244499
-2018-11-01,"Station 02 + 04","Channel 19",1.40518230461281
-2018-11-01,"Station 02 + 52","Channel 19",1.51653368307205
-2018-11-01,"Station 03 + 63","Channel 19",1.23517082071349
-2018-11-01,"Station 03 + 80 BAF","Channel 21",0.885118719207178
-2018-11-01,"Station 03 + 98","Channel 19",1.69070325951901
-2018-11-01,"Station 04 + 90 ORD","Channel 21",0.756762110624589
-2018-11-01,"Station 05 + 00","Channel 19",0.995677767718059
-2018-11-01,"Station 05 + 09","Channel 19",0.784248151759372
-2018-11-01,"Station 05 + 62","Channel 19",0.756323875425337
-2018-11-01,"Station 06 + 13","Channel 19",1.10807274121959
-2018-11-01,"Station 06 + 36 BAF","Channel 21",1.30207046405369
-2018-11-01,"Station 06 + 97","Channel 19",0.171512123965972
-2018-11-01,"Station 07 + 30","Channel 19",0.852992779035129
-2018-11-01,"Station 07 + 49.5 ORD","Channel 21",0.92511915775115
-2018-11-01,"Station 07 + 50","Channel 19",1.38926401874153
-2018-11-01,"Station 07 + 66 BAF","Channel 21",1.25409946524978
-2018-11-01,"Station 07 + 97","Channel 19",1.22970202764227
-2018-11-01,"Station 08 + 62 BAF","Channel 21",1.66231358224374
-2018-11-01,"Station 09 + 05","Channel 19",1.7540105996956
-2018-11-01,"Station 09 + 26","Channel 19",1.7995129285131
-2018-11-01,"Station 09 + 68","Channel 19",1.58996192620754
-2018-11-01,"Station 09 + 99 ORD","Channel 21",1.65466659987357
-2018-11-01,"Station 1 + 04","Channel 12",1.00143849133838
-2018-11-01,"Station 1 + 11.5 BAF","Channel 13",1.18869762678396
-2018-11-01,"Station 1 + 38.5 ORD","Channel 13",0.713077593650094
-2018-11-01,"Station 1 + 52","Channel 12",1.11207450216064
-2018-11-01,"Station 1 + 71 BAF","Channel 13",1.29174231220931
-2018-11-01,"Station 1 + 77 ORD","Channel 13",0.69327756381781
-2018-11-01,"Station 1 + 83","Channel 12",1.10708741893815
-2018-11-01,"Station 1 + 99 ORD","Channel 13",1.42069600480959
-2018-11-01,"Station 10 + 13 BAF","Channel 21",1.12553587352678
-2018-11-01,"Station 10 + 98","Channel 19",0.857449295931346
-2018-11-01,"Station 11 + 12 ORD","Channel 21",1.58199477873439
-2018-11-01,"Station 11 + 24 BAF","Channel 21",1.24536157145729
-2018-11-01,"Station 11 + 63 ORD","Channel 21",2.13141471363832
-2018-11-01,"Station 11 + 73 BAF","Channel 21",0.862888073700885
-2018-11-01,"Station 2 + 16 BAF","Channel 13",1.31440206997528
-2018-11-01,"Station 2 + 57 ORD","Channel 13",1.87587505943289
-2018-11-01,"Station 2 + 63","Channel 12",1.84241432930961
-2018-11-01,"Station 2 + 67 BAF","Channel 13",1.56657234670319
-2018-11-01,"Station 2 + 98","Channel 12",0.821541437939155
-2018-11-01,"Station 3 + 09 ORD","Channel 13",1.35934949570294
-2018-11-01,"Station 3 + 31 BAF","Channel 13",1.35392167691237
-2018-11-01,"Station 3 + 65 ORD","Channel 13",1.05860934420555
-2018-11-01,"Station 3 + 93","Channel 12",1.52040068694759
-2018-11-01,"Station 3 + 95.5 ORD","Channel 13",1.43744278194384
-2018-11-01,"Station 4 + 00","Channel 12",1.78975436229342
-2018-11-01,"Station 4 + 09","Channel 12",1.50036255821135
-2018-11-01,"Station 4 + 14.5 BAF","Channel 13",1.29093406019185
-2018-11-01,"Station 4 + 36 ORD","Channel 13",1.73350112782725
-2018-11-01,"Station 4 + 50 BAF","Channel 13",1.18995332298353
-2018-11-01,"Station 4 + 56","Channel 12",1.38796308563465
-2018-11-01,"Station 4 + 65","Channel 12",1.02122262104517
-2018-11-01,"Station 4 + 78 ORD","Channel 13",1.95658959145322
-2018-11-01,"Station 5 + 13","Channel 12",1.21310729154978
-2018-11-01,"Station 5 + 48","Channel 12",1.27950513923616
-2018-11-01,"Station 6 + 30","Channel 12",0.743288908924741
-2018-11-01,"Station 6 + 93","Channel 12",0.872513968674999
-2021-11-01,"Station 01 + 04","Channel 19",1.19330248869977
-2021-11-01,"Station 01 + 07.5 BAF","Channel 21",0.633552590490464
-2021-11-01,"Station 01 + 49 ORD","Channel 21",0.065449516177756
-2021-11-01,"Station 02 + 04","Channel 19",1.52358818235853
-2021-11-01,"Station 02 + 15 BAF","Channel 21",1.14370838942625
-2021-11-01,"Station 02 + 52","Channel 19",1.48975124654174
-2021-11-01,"Station 03 + 63","Channel 19",0.869868013195642
-2021-11-01,"Station 03 + 80 BAF","Channel 21",1.21004283655708
-2021-11-01,"Station 03 + 98","Channel 19",1.4415106860177
-2021-11-01,"Station 04 + 90 ORD","Channel 21",0.789115548837965
-2021-11-01,"Station 05 + 00","Channel 19",1.37865022633255
-2021-11-01,"Station 05 + 09","Channel 19",1.20685987919237
-2021-11-01,"Station 05 + 62","Channel 19",0.555870904111586
-2021-11-01,"Station 06 + 13","Channel 19",0.345596207246175
-2021-11-01,"Station 06 + 36 BAF","Channel 21",0.908374332821751
-2021-11-01,"Station 06 + 97","Channel 19",1.26236402841407
-2021-11-01,"Station 07 + 30","Channel 19",1.49641593494014
-2021-11-01,"Station 07 + 49.5 ORD","Channel 21",1.00546249694842
-2021-11-01,"Station 07 + 50","Channel 19",1.44480233286115
-2021-11-01,"Station 07 + 66 BAF","Channel 21",0.539458926673294
-2021-11-01,"Station 07 + 97","Channel 19",1.38485410685445
-2021-11-01,"Station 08 + 62 BAF","Channel 21",1.10820471026077
-2021-11-01,"Station 09 + 05","Channel 19",1.62438279597005
-2021-11-01,"Station 09 + 26","Channel 19",1.5634012540792
-2021-11-01,"Station 09 + 68","Channel 19",1.73724345501681
-2021-11-01,"Station 09 + 99 ORD","Channel 21",1.7031916739424
-2021-11-01,"Station 1 + 04","Channel 12",0.901235352054727
-2021-11-01,"Station 1 + 11.5 BAF","Channel 13",0.838931707576627
-2021-11-01,"Station 1 + 38.5 ORD","Channel 13",1.86529934695147
-2021-11-01,"Station 1 + 52","Channel 12",1.32032744951423
-2021-11-01,"Station 1 + 71 BAF","Channel 13",0.293992247305323
-2021-11-01,"Station 1 + 77 ORD","Channel 13",1.1501516687742
-2021-11-01,"Station 1 + 83","Channel 12",0.759799892000882
-2021-11-01,"Station 1 + 99 ORD","Channel 13",1.11687948831206
-2021-11-01,"Station 10 + 13 BAF","Channel 21",0.841170101366177
-2021-11-01,"Station 10 + 98","Channel 19",1.83521342994655
-2021-11-01,"Station 11 + 12 ORD","Channel 21",1.42844425120269
-2021-11-01,"Station 11 + 24 BAF","Channel 21",1.75724530546323
-2021-11-01,"Station 11 + 63 ORD","Channel 21",0.759284720030114
-2021-11-01,"Station 11 + 73 BAF","Channel 21",1.64391574678637
-2021-11-01,"Station 2 + 16 BAF","Channel 13",0.78211590385291
-2021-11-01,"Station 2 + 57 ORD","Channel 13",1.09777928203329
-2021-11-01,"Station 2 + 63","Channel 12",0.706603393650401
-2021-11-01,"Station 2 + 67 BAF","Channel 13",0.750033823661461
-2021-11-01,"Station 2 + 98","Channel 12",1.2361364089897
-2021-11-01,"Station 3 + 09 ORD","Channel 13",0.745077478670354
-2021-11-01,"Station 3 + 31 BAF","Channel 13",0.919994692225167
-2021-11-01,"Station 3 + 65 ORD","Channel 13",1.04135253095815
-2021-11-01,"Station 3 + 93","Channel 12",1.5042408823429
-2021-11-01,"Station 3 + 95.5 ORD","Channel 13",1.27741165861984
-2021-11-01,"Station 4 + 00","Channel 12",1.36977756182706
-2021-11-01,"Station 4 + 09","Channel 12",2.0683209857199
-2021-11-01,"Station 4 + 14.5 BAF","Channel 13",1.08434985128518
-2021-11-01,"Station 4 + 36 ORD","Channel 13",2.17428215118665
-2021-11-01,"Station 4 + 50 BAF","Channel 13",1.89425354311204
-2021-11-01,"Station 4 + 56","Channel 12",0.610671627847054
-2021-11-01,"Station 4 + 65","Channel 12",0.976098500305569
-2021-11-01,"Station 4 + 78 ORD","Channel 13",1.53492776695634
-2021-11-01,"Station 5 + 13","Channel 12",1.38240291584206
-2021-11-01,"Station 5 + 48","Channel 12",1.23823604875384
-2021-11-01,"Station 6 + 30","Channel 12",1.18887398426836
-2021-11-01,"Station 6 + 93","Channel 12",0.762688648334641
+"Channel","Station","Year","year.date","year.xaxis","channel.trt","station.trt","shan"
+"Channel 12","Station 1 + 04","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.5414713663635
+"Channel 12","Station 1 + 04","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.70056481330265
+"Channel 12","Station 1 + 04","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",0.938073771811968
+"Channel 12","Station 1 + 04","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.05215321223104
+"Channel 12","Station 1 + 04","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.00143849133838
+"Channel 12","Station 1 + 04","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",0.901235352054727
+"Channel 12","Station 1 + 52","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.7180591787588
+"Channel 12","Station 1 + 52","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.94007575803872
+"Channel 12","Station 1 + 52","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",1.31242692599055
+"Channel 12","Station 1 + 52","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.28207620589568
+"Channel 12","Station 1 + 52","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.11207450216064
+"Channel 12","Station 1 + 52","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",1.32032744951423
+"Channel 12","Station 1 + 83","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",0.801792720407733
+"Channel 12","Station 1 + 83","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.10717793280426
+"Channel 12","Station 1 + 83","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",1.21372008259041
+"Channel 12","Station 1 + 83","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.19279799375003
+"Channel 12","Station 1 + 83","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.10708741893815
+"Channel 12","Station 1 + 83","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",0.759799892000882
+"Channel 12","Station 2 + 63","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.0387099392832
+"Channel 12","Station 2 + 63","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.64553463399961
+"Channel 12","Station 2 + 63","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",1.2844264323753
+"Channel 12","Station 2 + 63","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.16478616143076
+"Channel 12","Station 2 + 63","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.84241432930961
+"Channel 12","Station 2 + 63","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",0.706603393650401
+"Channel 12","Station 2 + 98","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.20640498131097
+"Channel 12","Station 2 + 98","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.31228330855701
+"Channel 12","Station 2 + 98","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",1.55068953883342
+"Channel 12","Station 2 + 98","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.08595449921092
+"Channel 12","Station 2 + 98","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",0.821541437939155
+"Channel 12","Station 2 + 98","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",1.2361364089897
+"Channel 12","Station 3 + 93","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.34473613644369
+"Channel 12","Station 3 + 93","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.2445010254415
+"Channel 12","Station 3 + 93","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",1.35184033450331
+"Channel 12","Station 3 + 93","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.53409255923976
+"Channel 12","Station 3 + 93","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.52040068694759
+"Channel 12","Station 3 + 93","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",1.5042408823429
+"Channel 12","Station 4 + 00","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.31595330619536
+"Channel 12","Station 4 + 00","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.31823229494411
+"Channel 12","Station 4 + 00","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",0.863300095936082
+"Channel 12","Station 4 + 00","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.34265116769461
+"Channel 12","Station 4 + 00","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.78975436229342
+"Channel 12","Station 4 + 00","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",1.36977756182706
+"Channel 12","Station 4 + 09","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.49931262966908
+"Channel 12","Station 4 + 09","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.84292824130743
+"Channel 12","Station 4 + 09","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",1.69961242953177
+"Channel 12","Station 4 + 09","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.82740869978285
+"Channel 12","Station 4 + 09","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.50036255821135
+"Channel 12","Station 4 + 09","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",2.0683209857199
+"Channel 12","Station 4 + 56","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.0934591796547
+"Channel 12","Station 4 + 56","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.52061471070329
+"Channel 12","Station 4 + 56","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",1.31141758352486
+"Channel 12","Station 4 + 56","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.42505327436094
+"Channel 12","Station 4 + 56","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.38796308563465
+"Channel 12","Station 4 + 56","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",0.610671627847054
+"Channel 12","Station 4 + 65","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.31007346159741
+"Channel 12","Station 4 + 65","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",0.420536395821623
+"Channel 12","Station 4 + 65","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.44848941750168
+"Channel 12","Station 4 + 65","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.02122262104517
+"Channel 12","Station 4 + 65","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",0.976098500305569
+"Channel 12","Station 5 + 13","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.13729719999257
+"Channel 12","Station 5 + 13","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.91029641814545
+"Channel 12","Station 5 + 13","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",1.11913480581406
+"Channel 12","Station 5 + 13","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.66023147459112
+"Channel 12","Station 5 + 13","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.21310729154978
+"Channel 12","Station 5 + 13","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",1.38240291584206
+"Channel 12","Station 5 + 48","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",1.33057225938524
+"Channel 12","Station 5 + 48","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",1.43507509765543
+"Channel 12","Station 5 + 48","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",0.914487320548394
+"Channel 12","Station 5 + 48","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.35454508293254
+"Channel 12","Station 5 + 48","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",1.27950513923616
+"Channel 12","Station 5 + 48","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",1.23823604875384
+"Channel 12","Station 6 + 30","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",0.930171660211468
+"Channel 12","Station 6 + 30","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",0.974229916314775
+"Channel 12","Station 6 + 30","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",0.480025680590882
+"Channel 12","Station 6 + 30","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",0.737162114998889
+"Channel 12","Station 6 + 30","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",0.743288908924741
+"Channel 12","Station 6 + 30","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",1.18887398426836
+"Channel 12","Station 6 + 93","2012",2012-11-01,2012-01-01,"Channel 12: No treatment","No treatment",0.7221063497967
+"Channel 12","Station 6 + 93","2013",2013-11-01,2013-01-01,"Channel 12: No treatment","No treatment",0.712864890782891
+"Channel 12","Station 6 + 93","2014",2014-11-01,2014-01-01,"Channel 12: No treatment","No treatment",0.834985279003699
+"Channel 12","Station 6 + 93","2015",2015-11-01,2015-01-01,"Channel 12: No treatment","No treatment",1.27989739695597
+"Channel 12","Station 6 + 93","2018",2018-11-01,2018-01-01,"Channel 12: No treatment","No treatment",0.872513968674999
+"Channel 12","Station 6 + 93","2021",2021-11-01,2021-01-01,"Channel 12: No treatment","No treatment",0.762688648334641
+"Channel 13","Station 1 + 11.5 BAF","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",0.938687668440487
+"Channel 13","Station 1 + 11.5 BAF","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",0.202080078694975
+"Channel 13","Station 1 + 11.5 BAF","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",0.73274718391642
+"Channel 13","Station 1 + 11.5 BAF","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",1.45072519756097
+"Channel 13","Station 1 + 11.5 BAF","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",1.18869762678396
+"Channel 13","Station 1 + 11.5 BAF","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",0.838931707576627
+"Channel 13","Station 1 + 38.5 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",0.530211318198538
+"Channel 13","Station 1 + 38.5 ORD","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",0.63772474308719
+"Channel 13","Station 1 + 38.5 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",0.351980099310882
+"Channel 13","Station 1 + 38.5 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",0.924304814090121
+"Channel 13","Station 1 + 38.5 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",0.713077593650094
+"Channel 13","Station 1 + 38.5 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",1.86529934695147
+"Channel 13","Station 1 + 71 BAF","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",0.40404501056216
+"Channel 13","Station 1 + 71 BAF","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",0.568894036914716
+"Channel 13","Station 1 + 71 BAF","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",0.831993353887328
+"Channel 13","Station 1 + 71 BAF","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",0.619644983309927
+"Channel 13","Station 1 + 71 BAF","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",1.29174231220931
+"Channel 13","Station 1 + 71 BAF","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",0.293992247305323
+"Channel 13","Station 1 + 77 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",0.531877173814613
+"Channel 13","Station 1 + 77 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",0.475534452863528
+"Channel 13","Station 1 + 77 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",0.904984024871426
+"Channel 13","Station 1 + 77 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",0.69327756381781
+"Channel 13","Station 1 + 77 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",1.1501516687742
+"Channel 13","Station 1 + 99 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",1.62212250664874
+"Channel 13","Station 1 + 99 ORD","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",0.674048808252115
+"Channel 13","Station 1 + 99 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",1.4436325396229
+"Channel 13","Station 1 + 99 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",1.54146835124718
+"Channel 13","Station 1 + 99 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",1.42069600480959
+"Channel 13","Station 1 + 99 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",1.11687948831206
+"Channel 13","Station 2 + 16 BAF","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",0.819745032385005
+"Channel 13","Station 2 + 16 BAF","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",1.23399812996944
+"Channel 13","Station 2 + 16 BAF","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",0.516571915210404
+"Channel 13","Station 2 + 16 BAF","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",1.23865751545302
+"Channel 13","Station 2 + 16 BAF","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",1.31440206997528
+"Channel 13","Station 2 + 16 BAF","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",0.78211590385291
+"Channel 13","Station 2 + 57 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",1.51778910053798
+"Channel 13","Station 2 + 57 ORD","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",0.650794059626186
+"Channel 13","Station 2 + 57 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",1.29556121942049
+"Channel 13","Station 2 + 57 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",1.42993104624535
+"Channel 13","Station 2 + 57 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",1.87587505943289
+"Channel 13","Station 2 + 57 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",1.09777928203329
+"Channel 13","Station 2 + 67 BAF","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",1.70784650332993
+"Channel 13","Station 2 + 67 BAF","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",1.46451803526976
+"Channel 13","Station 2 + 67 BAF","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",1.63267922091521
+"Channel 13","Station 2 + 67 BAF","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",1.18349090801845
+"Channel 13","Station 2 + 67 BAF","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",1.56657234670319
+"Channel 13","Station 2 + 67 BAF","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",0.750033823661461
+"Channel 13","Station 3 + 09 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",1.23382636247314
+"Channel 13","Station 3 + 09 ORD","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",1.5126942745706
+"Channel 13","Station 3 + 09 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",1.21656814384571
+"Channel 13","Station 3 + 09 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",1.3523857193945
+"Channel 13","Station 3 + 09 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",1.35934949570294
+"Channel 13","Station 3 + 09 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",0.745077478670354
+"Channel 13","Station 3 + 31 BAF","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",0.623351776409872
+"Channel 13","Station 3 + 31 BAF","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",0.850610183780465
+"Channel 13","Station 3 + 31 BAF","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",0.302704540976598
+"Channel 13","Station 3 + 31 BAF","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",0.658794566013312
+"Channel 13","Station 3 + 31 BAF","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",1.35392167691237
+"Channel 13","Station 3 + 31 BAF","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",0.919994692225167
+"Channel 13","Station 3 + 65 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",1.22452298898839
+"Channel 13","Station 3 + 65 ORD","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",1.09409070351643
+"Channel 13","Station 3 + 65 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",0.998383121674852
+"Channel 13","Station 3 + 65 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",1.06461735003661
+"Channel 13","Station 3 + 65 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",1.05860934420555
+"Channel 13","Station 3 + 65 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",1.04135253095815
+"Channel 13","Station 3 + 95.5 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",1.19838115978729
+"Channel 13","Station 3 + 95.5 ORD","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",0.938073682038703
+"Channel 13","Station 3 + 95.5 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",1.20434806279692
+"Channel 13","Station 3 + 95.5 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",1.23504908639663
+"Channel 13","Station 3 + 95.5 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",1.43744278194384
+"Channel 13","Station 3 + 95.5 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",1.27741165861984
+"Channel 13","Station 4 + 14.5 BAF","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",1.53310253406705
+"Channel 13","Station 4 + 14.5 BAF","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",0.987485930953259
+"Channel 13","Station 4 + 14.5 BAF","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",1.39484562291473
+"Channel 13","Station 4 + 14.5 BAF","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",1.5879052390308
+"Channel 13","Station 4 + 14.5 BAF","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",1.29093406019185
+"Channel 13","Station 4 + 14.5 BAF","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",1.08434985128518
+"Channel 13","Station 4 + 36 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",1.13925868038684
+"Channel 13","Station 4 + 36 ORD","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",1.52842717358454
+"Channel 13","Station 4 + 36 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",1.23612682846721
+"Channel 13","Station 4 + 36 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",1.6729720342966
+"Channel 13","Station 4 + 36 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",1.73350112782725
+"Channel 13","Station 4 + 36 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",2.17428215118665
+"Channel 13","Station 4 + 50 BAF","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",1.15704409450081
+"Channel 13","Station 4 + 50 BAF","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",1.14024696542839
+"Channel 13","Station 4 + 50 BAF","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",1.02923342641013
+"Channel 13","Station 4 + 50 BAF","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",1.37477298524537
+"Channel 13","Station 4 + 50 BAF","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",1.18995332298353
+"Channel 13","Station 4 + 50 BAF","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",1.89425354311204
+"Channel 13","Station 4 + 78 ORD","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",1.93709352292395
+"Channel 13","Station 4 + 78 ORD","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",1.88909725382312
+"Channel 13","Station 4 + 78 ORD","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",1.70135294604941
+"Channel 13","Station 4 + 78 ORD","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",1.95658959145322
+"Channel 13","Station 4 + 78 ORD","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",1.53492776695634
+"Channel 19","Station 01 + 04","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.51291806829498
+"Channel 19","Station 01 + 04","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.14140085174175
+"Channel 19","Station 01 + 04","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.53756372698086
+"Channel 19","Station 01 + 04","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.22319364752286
+"Channel 19","Station 01 + 04","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.19330248869977
+"Channel 19","Station 02 + 04","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.78222253398608
+"Channel 19","Station 02 + 04","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.4266972549721
+"Channel 19","Station 02 + 04","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.40302935457778
+"Channel 19","Station 02 + 04","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.40518230461281
+"Channel 19","Station 02 + 04","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.52358818235853
+"Channel 19","Station 02 + 52","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.39826090540909
+"Channel 19","Station 02 + 52","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.10676534635869
+"Channel 19","Station 02 + 52","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.46589206941016
+"Channel 19","Station 02 + 52","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.36681950943104
+"Channel 19","Station 02 + 52","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.51653368307205
+"Channel 19","Station 02 + 52","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.48975124654174
+"Channel 19","Station 03 + 63","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.37359298744843
+"Channel 19","Station 03 + 63","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.1810588188159
+"Channel 19","Station 03 + 63","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.13422465433872
+"Channel 19","Station 03 + 63","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",0.885746903196978
+"Channel 19","Station 03 + 63","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.23517082071349
+"Channel 19","Station 03 + 63","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",0.869868013195642
+"Channel 19","Station 03 + 98","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.84159238795695
+"Channel 19","Station 03 + 98","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.79921416460599
+"Channel 19","Station 03 + 98","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.91021906890653
+"Channel 19","Station 03 + 98","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.83296537912484
+"Channel 19","Station 03 + 98","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.69070325951901
+"Channel 19","Station 03 + 98","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.4415106860177
+"Channel 19","Station 05 + 00","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.48208355200784
+"Channel 19","Station 05 + 00","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.1691821422793
+"Channel 19","Station 05 + 00","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.19498285487451
+"Channel 19","Station 05 + 00","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",0.996037225790972
+"Channel 19","Station 05 + 00","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",0.995677767718059
+"Channel 19","Station 05 + 00","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.37865022633255
+"Channel 19","Station 05 + 09","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",0.992781225645323
+"Channel 19","Station 05 + 09","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",0.519957588035119
+"Channel 19","Station 05 + 09","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.15599017805723
+"Channel 19","Station 05 + 09","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.19413197612428
+"Channel 19","Station 05 + 09","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",0.784248151759372
+"Channel 19","Station 05 + 09","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.20685987919237
+"Channel 19","Station 05 + 62","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.53468458568875
+"Channel 19","Station 05 + 62","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.2884094283585
+"Channel 19","Station 05 + 62","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.45570285740444
+"Channel 19","Station 05 + 62","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.4513973854146
+"Channel 19","Station 05 + 62","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",0.756323875425337
+"Channel 19","Station 05 + 62","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",0.555870904111586
+"Channel 19","Station 06 + 13","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.39986850250916
+"Channel 19","Station 06 + 13","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.04541806585257
+"Channel 19","Station 06 + 13","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.32654702831812
+"Channel 19","Station 06 + 13","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",0.75778817583822
+"Channel 19","Station 06 + 13","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.10807274121959
+"Channel 19","Station 06 + 13","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",0.345596207246175
+"Channel 19","Station 06 + 97","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.25507700407645
+"Channel 19","Station 06 + 97","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",0.129831338210192
+"Channel 19","Station 06 + 97","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",0.519580807272501
+"Channel 19","Station 06 + 97","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",0.936699077339319
+"Channel 19","Station 06 + 97","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",0.171512123965972
+"Channel 19","Station 06 + 97","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.26236402841407
+"Channel 19","Station 07 + 30","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",0.895268407757062
+"Channel 19","Station 07 + 30","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",0.717265633456969
+"Channel 19","Station 07 + 30","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.00922879193575
+"Channel 19","Station 07 + 30","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",0.801818552543337
+"Channel 19","Station 07 + 30","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",0.852992779035129
+"Channel 19","Station 07 + 30","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.49641593494014
+"Channel 19","Station 07 + 50","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.1011129879922
+"Channel 19","Station 07 + 50","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",0.315943299649481
+"Channel 19","Station 07 + 50","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",0.840115440210303
+"Channel 19","Station 07 + 50","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",0.884790168876671
+"Channel 19","Station 07 + 50","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.38926401874153
+"Channel 19","Station 07 + 50","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.44480233286115
+"Channel 19","Station 07 + 97","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.78850303469189
+"Channel 19","Station 07 + 97","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.43332371941839
+"Channel 19","Station 07 + 97","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.22532975348059
+"Channel 19","Station 07 + 97","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.0924520511059
+"Channel 19","Station 07 + 97","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.22970202764227
+"Channel 19","Station 07 + 97","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.38485410685445
+"Channel 19","Station 09 + 05","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.54927985710219
+"Channel 19","Station 09 + 05","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.33503300815969
+"Channel 19","Station 09 + 05","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.18595123471516
+"Channel 19","Station 09 + 05","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.52574184449282
+"Channel 19","Station 09 + 05","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.7540105996956
+"Channel 19","Station 09 + 05","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.62438279597005
+"Channel 19","Station 09 + 26","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.31130346977156
+"Channel 19","Station 09 + 26","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.39086061159963
+"Channel 19","Station 09 + 26","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.98662423928469
+"Channel 19","Station 09 + 26","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.48541282773436
+"Channel 19","Station 09 + 26","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.7995129285131
+"Channel 19","Station 09 + 26","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.5634012540792
+"Channel 19","Station 09 + 68","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",0.455279016373587
+"Channel 19","Station 09 + 68","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.62237811833743
+"Channel 19","Station 09 + 68","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.69198615089008
+"Channel 19","Station 09 + 68","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",1.33939424903897
+"Channel 19","Station 09 + 68","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",1.58996192620754
+"Channel 19","Station 09 + 68","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.73724345501681
+"Channel 19","Station 10 + 98","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",1.58722861205087
+"Channel 19","Station 10 + 98","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",1.7641275509523
+"Channel 19","Station 10 + 98","2014",2014-11-01,2014-01-01,"Channel 19: Upland treatment","No treatment",1.07944130581047
+"Channel 19","Station 10 + 98","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",0.936142494109285
+"Channel 19","Station 10 + 98","2018",2018-11-01,2018-01-01,"Channel 19: Upland treatment","No treatment",0.857449295931346
+"Channel 19","Station 10 + 98","2021",2021-11-01,2021-01-01,"Channel 19: Upland treatment","No treatment",1.83521342994655
+"Channel 21","Station 01 + 07.5 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",1.20067601099674
+"Channel 21","Station 01 + 07.5 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",0.76388299203104
+"Channel 21","Station 01 + 07.5 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",1.07134307662238
+"Channel 21","Station 01 + 07.5 BAF","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",1.46456037962759
+"Channel 21","Station 01 + 07.5 BAF","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",0.953171001760057
+"Channel 21","Station 01 + 07.5 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",0.633552590490464
+"Channel 21","Station 01 + 49 ORD","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",1.24021696554121
+"Channel 21","Station 01 + 49 ORD","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",1.61555082016875
+"Channel 21","Station 01 + 49 ORD","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",0.972948577429558
+"Channel 21","Station 01 + 49 ORD","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",0.61509532980796
+"Channel 21","Station 01 + 49 ORD","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",0.814736144244499
+"Channel 21","Station 01 + 49 ORD","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",0.065449516177756
+"Channel 21","Station 02 + 15 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",1.43954343672771
+"Channel 21","Station 02 + 15 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",1.4909804269615
+"Channel 21","Station 02 + 15 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",1.57523547692675
+"Channel 21","Station 02 + 15 BAF","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",0.74513321300955
+"Channel 21","Station 02 + 15 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",1.14370838942625
+"Channel 21","Station 03 + 80 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",0.386654554503635
+"Channel 21","Station 03 + 80 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",0.919271431098868
+"Channel 21","Station 03 + 80 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",0.658859104659058
+"Channel 21","Station 03 + 80 BAF","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",0.0740225961475812
+"Channel 21","Station 03 + 80 BAF","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",0.885118719207178
+"Channel 21","Station 03 + 80 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",1.21004283655708
+"Channel 21","Station 04 + 90 ORD","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",1.09014064434507
+"Channel 21","Station 04 + 90 ORD","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",1.10927669178165
+"Channel 21","Station 04 + 90 ORD","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",1.22067040266239
+"Channel 21","Station 04 + 90 ORD","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",1.13390192449855
+"Channel 21","Station 04 + 90 ORD","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",0.756762110624589
+"Channel 21","Station 04 + 90 ORD","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",0.789115548837965
+"Channel 21","Station 06 + 36 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",1.27984313502328
+"Channel 21","Station 06 + 36 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",1.26811785948974
+"Channel 21","Station 06 + 36 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",1.10180239726504
+"Channel 21","Station 06 + 36 BAF","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",1.24137755235465
+"Channel 21","Station 06 + 36 BAF","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",1.30207046405369
+"Channel 21","Station 06 + 36 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",0.908374332821751
+"Channel 21","Station 07 + 49.5 ORD","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",0.365073259125504
+"Channel 21","Station 07 + 49.5 ORD","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",0.804870993565915
+"Channel 21","Station 07 + 49.5 ORD","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",0.875289093369531
+"Channel 21","Station 07 + 49.5 ORD","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",0.547645319987761
+"Channel 21","Station 07 + 49.5 ORD","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",0.92511915775115
+"Channel 21","Station 07 + 49.5 ORD","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",1.00546249694842
+"Channel 21","Station 07 + 66 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",0.404509941773612
+"Channel 21","Station 07 + 66 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",0.376770161256437
+"Channel 21","Station 07 + 66 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",1.45858475280701
+"Channel 21","Station 07 + 66 BAF","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",1.25409946524978
+"Channel 21","Station 07 + 66 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",0.539458926673294
+"Channel 21","Station 08 + 62 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",1.16317204596377
+"Channel 21","Station 08 + 62 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",1.1461185601312
+"Channel 21","Station 08 + 62 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",1.33253460588321
+"Channel 21","Station 08 + 62 BAF","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",1.46428490572817
+"Channel 21","Station 08 + 62 BAF","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",1.66231358224374
+"Channel 21","Station 08 + 62 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",1.10820471026077
+"Channel 21","Station 09 + 99 ORD","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",0.943626573958522
+"Channel 21","Station 09 + 99 ORD","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",1.02161766995703
+"Channel 21","Station 09 + 99 ORD","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",1.63143725613214
+"Channel 21","Station 09 + 99 ORD","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",1.4487345723773
+"Channel 21","Station 09 + 99 ORD","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",1.65466659987357
+"Channel 21","Station 09 + 99 ORD","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",1.7031916739424
+"Channel 21","Station 10 + 13 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",0.181820282304918
+"Channel 21","Station 10 + 13 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",0.204158745302152
+"Channel 21","Station 10 + 13 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",0.660074654807292
+"Channel 21","Station 10 + 13 BAF","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",0.611421010124414
+"Channel 21","Station 10 + 13 BAF","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",1.12553587352678
+"Channel 21","Station 10 + 13 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",0.841170101366177
+"Channel 21","Station 11 + 12 ORD","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",1.38335712763323
+"Channel 21","Station 11 + 12 ORD","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",1.78195245311872
+"Channel 21","Station 11 + 12 ORD","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",1.46132182027925
+"Channel 21","Station 11 + 12 ORD","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",1.28313669310341
+"Channel 21","Station 11 + 12 ORD","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",1.58199477873439
+"Channel 21","Station 11 + 12 ORD","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",1.42844425120269
+"Channel 21","Station 11 + 24 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",1.59825223742886
+"Channel 21","Station 11 + 24 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",1.34479105299582
+"Channel 21","Station 11 + 24 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",0.88276207064869
+"Channel 21","Station 11 + 24 BAF","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",0.898995894728719
+"Channel 21","Station 11 + 24 BAF","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",1.24536157145729
+"Channel 21","Station 11 + 24 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",1.75724530546323
+"Channel 21","Station 11 + 63 ORD","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",1.96554359259447
+"Channel 21","Station 11 + 63 ORD","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",2.02029723451598
+"Channel 21","Station 11 + 63 ORD","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",1.92229337728948
+"Channel 21","Station 11 + 63 ORD","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",1.75927514737508
+"Channel 21","Station 11 + 63 ORD","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",2.13141471363832
+"Channel 21","Station 11 + 63 ORD","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",0.759284720030114
+"Channel 21","Station 11 + 73 BAF","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",1.34367018053545
+"Channel 21","Station 11 + 73 BAF","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",1.49176132257002
+"Channel 21","Station 11 + 73 BAF","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",1.64778579488428
+"Channel 21","Station 11 + 73 BAF","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",1.64837696506509
+"Channel 21","Station 11 + 73 BAF","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",0.862888073700885
+"Channel 21","Station 11 + 73 BAF","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",1.64391574678637

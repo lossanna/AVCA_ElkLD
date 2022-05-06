@@ -255,6 +255,7 @@ div.tocify {
 <h1>Introduction</h1>
 <ul>
 <li>The data wrangling scripts produced tidy data, but had many 0 values based on how the data sheets were originally structured, and all the measurements were by individual quadrat.</li>
+<li>Cover was measured in 4 (sometimes 6) quadrats at each station, labeled 1L (left and adjacent to transect tape when looking upstream), 2L (1-2 m left of transect tape), 1R (right and adjacent to transect tape), and 2R (1-2 m right of transect tape).</li>
 <li>The <code>AVCA_ElkLD/scripts/data-wranging/Summarise-all-channels.R</code> script averages the quadrats by station, and then further averages into different categories:
 <ul>
 <li>By plant species (identified by common name)</li>
@@ -332,7 +333,8 @@ ground.c12 &lt;- all.c12 %&gt;%
   group_by(Station, Year, Common) %&gt;% 
   summarise(Cover = mean(Cover), .groups = &quot;keep&quot;)</code></pre>
 <ul>
-<li>This averages the quadrats of each plant species or ground cover class for all the channels.</li>
+<li>This averages the 4 (sometimes 6) quadrats of each plant species or ground cover class for all the channels.</li>
+<li>Each station now has a single cover value for each plant species.</li>
 </ul>
 </div>
 <div id="combine-and-add-categorical-variables" class="section level1">

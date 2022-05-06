@@ -229,7 +229,6 @@ for(i in 1:nrow(ingfst.all)) {
     ingfst.all$ingfst[i] <- "Invasive grass"
   }
 }
-
   
 
 # Save dataframes ---------------------------------------------------------
