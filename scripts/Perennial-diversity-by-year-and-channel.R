@@ -325,6 +325,16 @@ dev.off()
 
 # Save data ---------------------------------------------------------------
 
+# Revert Year to YYYY-MM-DD
+richness <- richness %>% 
+  ungroup() %>% 
+  mutate(Year = year.date) %>% 
+  select(-year.date, -year.xaxis)
+shannon <- shannon %>% 
+  ungroup() %>% 
+  mutate(Year = year.date) %>% 
+  select(-year.date, -year.xaxis)
+
 write.csv(richness,
           file = "data/cleaned/All-Nov_perennial-richness.csv",
           row.names = FALSE)
