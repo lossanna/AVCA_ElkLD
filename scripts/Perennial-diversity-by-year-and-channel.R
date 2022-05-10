@@ -334,12 +334,33 @@ shannon <- shannon %>%
   ungroup() %>% 
   mutate(Year = year.date) %>% 
   select(-year.date, -year.xaxis)
+per.diversity <- richness %>% 
+  left_join(shannon)
 
-write.csv(richness,
-          file = "data/cleaned/All-Nov_perennial-richness.csv",
+# Add back upland treatment and in-channel treatment dummy variables
+per.diversity[ , "up.trt"] <- NA
+for(i in 1:nrow(per.diversity)) {
+  if(per.diversity$Channel[i] == "Channel 19") {
+    per.diversity$up.trt[i] <- 1
+  } else {
+    per.diversity$up.trt[i] <- 0
+  }
+}
+
+per.diversity[ , "inch.trt"] <- NA
+for(i in 1:nrow(per.diversity)) {
+  if(per.diversity$Channel[i] == "Channel 21") {
+    per.diversity$inch.trt[i] <- 1
+  } else if(per.diversity$Channel[i] == "Channel 13") {
+    per.diversity$inch.trt[i] <- 1
+  } else {
+    per.diversity$inch.trt[i] <- 0
+  }
+}
+
+write.csv(per.diversity,
+          file = "data/cleaned/All-Nov_perennial-diversity.csv",
           row.names = FALSE)
-write.csv(shannon,
-          file = "data/cleaned/All-Nov_perennial-shannon.csv",
-          row.names = FALSE)
+
 
 save.image("RData-RMarkdown/Perennial-diversity-by-year-and-channel.RData")

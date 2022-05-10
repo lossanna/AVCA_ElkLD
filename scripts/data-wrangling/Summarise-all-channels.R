@@ -121,6 +121,50 @@ for(i in 1:nrow(ground.all)) {
   }
 }
 
+# Add channel treatment as dummy binary variables: upland treatment
+plant.all[ , "up.trt"] <- NA
+for(i in 1:nrow(plant.all)) {
+  if(plant.all$Channel[i] == "Channel 19") {
+    plant.all$up.trt[i] <- 1
+  } else {
+    plant.all$up.trt[i] <- 0
+  }
+}
+
+ground.all[ , "up.trt"] <- NA
+for(i in 1:nrow(ground.all)) {
+  if(ground.all$Channel[i] == "Channel 19") {
+    ground.all$up.trt[i] <- 1
+  } else {
+    ground.all$up.trt[i] <- 0
+  }
+}
+
+
+# Add channel treatment as dummy binary variables: in-channel treatment
+plant.all[ , "inch.trt"] <- NA
+for(i in 1:nrow(plant.all)) {
+  if(plant.all$Channel[i] == "Channel 21") {
+    plant.all$inch.trt[i] <- 1
+  } else if(plant.all$Channel[i] == "Channel 13") {
+    plant.all$inch.trt[i] <- 1
+  } else {
+    plant.all$inch.trt[i] <- 0
+  }
+}
+
+ground.all[ , "inch.trt"] <- NA
+for(i in 1:nrow(ground.all)) {
+  if(ground.all$Channel[i] == "Channel 21") {
+    ground.all$inch.trt[i] <- 1
+  } else if(ground.all$Channel[i] == "Channel 13") {
+    ground.all$inch.trt[i] <- 1
+  } else {
+    ground.all$inch.trt[i] <- 0
+  }
+}
+
+
 # Add grass/forb/shrub/tree
 plant.all[ , "gfst"] <- NA
 for(i in 1:nrow(plant.all)) {
@@ -229,7 +273,10 @@ for(i in 1:nrow(ingfst.all)) {
     ingfst.all$ingfst[i] <- "Invasive grass"
   }
 }
-  
+
+
+
+
 
 # Save dataframes ---------------------------------------------------------
 
