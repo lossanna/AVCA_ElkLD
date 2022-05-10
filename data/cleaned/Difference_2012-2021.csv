@@ -1,0 +1,62 @@
+"","Channel","Station","station.trt","channel.trt","up.trt","inch.trt","total.diff","rich.diff","shan.diff","herb.diff","woody","wood.diff"
+"1","Channel 12","Station 1 + 04","No treatment","Channel 12: No treatment",0,0,16.25,-6,-0.640236014308773,6.5,"Woody",9.75
+"2","Channel 12","Station 1 + 52","No treatment","Channel 12: No treatment",0,0,-11.7083333333333,-7,-0.39773172924457,0.125,"Woody",-11.8333333333333
+"3","Channel 12","Station 1 + 83","No treatment","Channel 12: No treatment",0,0,4.375,1,-0.0419928284068509,-2.4583333333333,"Woody",6.8333333333333
+"4","Channel 12","Station 2 + 63","No treatment","Channel 12: No treatment",0,0,6.4583333333333,-6,-0.332106545632799,-0.41666666666667,"Woody",6.875
+"5","Channel 12","Station 2 + 98","No treatment","Channel 12: No treatment",0,0,38.4583333333333,0,0.0297314276787299,18.3333333333333,"Woody",20.125
+"6","Channel 12","Station 3 + 93","No treatment","Channel 12: No treatment",0,0,-5.125,1,0.15950474589921,5.0416666666667,"Woody",-10.1666666666667
+"7","Channel 12","Station 4 + 00","No treatment","Channel 12: No treatment",0,0,54.8958333333333,-1,0.0538242556316999,5.3958333333333,"Woody",49.5
+"8","Channel 12","Station 4 + 09","No treatment","Channel 12: No treatment",0,0,-32.6666666666667,1,0.56900835605082,5.54166666666667,"Woody",-38.2083333333333
+"9","Channel 12","Station 4 + 56","No treatment","Channel 12: No treatment",0,0,10.375,-2,-0.482787551807646,3.375,"Woody",7
+"10","Channel 12","Station 4 + 65","No treatment","Channel 12: No treatment",0,0,-27.9583333333333,-3,-0.333974961291841,-1.125,"Woody",-26.8333333333333
+"11","Channel 12","Station 5 + 13","No treatment","Channel 12: No treatment",0,0,6.9166666666667,2,0.24510571584949,3.7916666666667,"Woody",3.125
+"12","Channel 12","Station 5 + 48","No treatment","Channel 12: No treatment",0,0,4.6666666666667,0,-0.0923362106314001,1.125,"Woody",3.5416666666667
+"13","Channel 12","Station 6 + 30","No treatment","Channel 12: No treatment",0,0,-23.0416666666667,0,0.258702324056892,-4.2083333333333,"Woody",-18.8333333333333
+"14","Channel 12","Station 6 + 93","No treatment","Channel 12: No treatment",0,0,-13.5833333333333,0,0.040582298537941,0.125,"Woody",-13.7083333333333
+"15","Channel 13","Station 1 + 11.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,15.5833333333333,-4,-0.09975596086386,-0.91666666666667,"Woody",16.5
+"16","Channel 13","Station 1 + 38.5 ORD","One station dam","Channel 13: In-channel treatment",0,1,18.1666666666667,4,1.33508802875293,22.375,"Woody",-4.2083333333333
+"17","Channel 13","Station 1 + 71 BAF","Baffle","Channel 13: In-channel treatment",0,1,26.3333333333333,-2,-0.110052763256837,8.5,"Woody",17.8333333333333
+"18","Channel 13","Station 1 + 77 ORD","One station dam","Channel 13: In-channel treatment",0,1,-18.8166666666667,-2,0.618274494959587,4.01666666666667,"Woody",-22.8333333333333
+"19","Channel 13","Station 1 + 99 ORD","One station dam","Channel 13: In-channel treatment",0,1,-2,-2,-0.50524301833668,17.875,"Woody",-19.875
+"20","Channel 13","Station 2 + 16 BAF","Baffle","Channel 13: In-channel treatment",0,1,32.625,-3,-0.037629128532095,2.70833333333333,"Woody",29.9166666666667
+"21","Channel 13","Station 2 + 57 ORD","One station dam","Channel 13: In-channel treatment",0,1,18.0416666666667,0,-0.42000981850469,16,"Woody",2.04166666666667
+"22","Channel 13","Station 2 + 67 BAF","Baffle","Channel 13: In-channel treatment",0,1,41.625,-3,-0.957812679668469,-8.9583333333333,"Woody",50.5833333333333
+"23","Channel 13","Station 3 + 09 ORD","One station dam","Channel 13: In-channel treatment",0,1,-89.4583333333333,-8,-0.488748883802786,-7.4583333333333,"Woody",-82
+"24","Channel 13","Station 3 + 31 BAF","Baffle","Channel 13: In-channel treatment",0,1,15.25,3,0.296642915815295,16.5,"Woody",-1.25
+"25","Channel 13","Station 3 + 65 ORD","One station dam","Channel 13: In-channel treatment",0,1,62.4583333333333,2,-0.18317045803024,27.2083333333333,"Woody",35.25
+"26","Channel 13","Station 3 + 95.5 ORD","One station dam","Channel 13: In-channel treatment",0,1,26.1666666666667,-1,0.0790304988325501,30,"Woody",-3.8333333333333
+"27","Channel 13","Station 4 + 14.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,26.4583333333333,2,-0.44875268278187,21.4583333333333,"Woody",5
+"28","Channel 13","Station 4 + 36 ORD","One station dam","Channel 13: In-channel treatment",0,1,6,6,1.03502347079981,30.7083333333333,"Woody",-24.7083333333333
+"29","Channel 13","Station 4 + 50 BAF","Baffle","Channel 13: In-channel treatment",0,1,-1.6666666666667,1,0.73720944861123,16.875,"Woody",-18.5416666666667
+"30","Channel 13","Station 4 + 78 ORD","One station dam","Channel 13: In-channel treatment",0,1,-22.6666666666667,-1,-0.40216575596761,-8.5,"Woody",-14.1666666666667
+"31","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,-45.0416666666667,-4,-0.31961557959521,-5.2916666666667,"Woody",-39.75
+"32","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,28.416666666667,-2,0.09149034113265,21.4166666666667,"Woody",7
+"33","Channel 19","Station 03 + 63","No treatment","Channel 19: Upland treatment",1,0,3.5,-5,-0.503724974252788,-9.4583333333333,"Woody",12.9583333333333
+"34","Channel 19","Station 03 + 98","No treatment","Channel 19: Upland treatment",1,0,-14.125,-8,-0.40008170193925,-4.25,"Woody",-9.875
+"35","Channel 19","Station 05 + 00","No treatment","Channel 19: Upland treatment",1,0,17.5833333333333,-2,-0.10343332567529,10.25,"Woody",7.33333333333333
+"36","Channel 19","Station 05 + 09","No treatment","Channel 19: Upland treatment",1,0,24.9583333333333,-4,0.214078653547047,0.45833333333333,"Woody",24.5
+"37","Channel 19","Station 05 + 62","No treatment","Channel 19: Upland treatment",1,0,16.3333333333333,-7,-0.978813681577164,15.5,"Woody",0.83333333333333
+"38","Channel 19","Station 06 + 13","No treatment","Channel 19: Upland treatment",1,0,-28.1666666666667,-6,-1.05427229526298,6.8333333333333,"Woody",-35
+"39","Channel 19","Station 06 + 97","No treatment","Channel 19: Upland treatment",1,0,-3.6666666666667,-4,0.00728702433761996,19.875,"Woody",-23.5416666666667
+"40","Channel 19","Station 07 + 30","No treatment","Channel 19: Upland treatment",1,0,-43.8333333333333,-5,0.601147527183078,-3.125,"Woody",-40.7083333333333
+"41","Channel 19","Station 07 + 50","No treatment","Channel 19: Upland treatment",1,0,19.4166666666667,-2,0.34368934486895,1.5833333333333,"Woody",17.8333333333333
+"42","Channel 19","Station 07 + 97","No treatment","Channel 19: Upland treatment",1,0,26,-2,-0.40364892783744,29.5,"Woody",-3.5
+"43","Channel 19","Station 09 + 05","No treatment","Channel 19: Upland treatment",1,0,15.5833333333333,1,0.0751029388678601,10.0416666666667,"Woody",5.5416666666667
+"44","Channel 19","Station 09 + 26","No treatment","Channel 19: Upland treatment",1,0,42.6666666666667,-1,0.25209778430764,7.0416666666667,"Woody",35.625
+"45","Channel 19","Station 09 + 68","No treatment","Channel 19: Upland treatment",1,0,29.9583333333333,3,1.28196443864322,50.25,"Woody",-20.2916666666667
+"46","Channel 19","Station 10 + 98","No treatment","Channel 19: Upland treatment",1,0,17.2083333333333,-2,0.24798481789568,28.875,"Woody",-11.6666666666667
+"47","Channel 21","Station 01 + 07.5 BAF","Baffle","Channel 21: In-channel treatment",0,1,-5.875,-1,-0.567123420506276,7.0416666666667,"Woody",-12.9166666666667
+"48","Channel 21","Station 01 + 49 ORD","One station dam","Channel 21: In-channel treatment",0,1,55.625,-4,-1.17476744936345,6.75,"Woody",48.875
+"49","Channel 21","Station 02 + 15 BAF","Baffle","Channel 21: In-channel treatment",0,1,-24.4166666666667,-4,-0.29583504730146,-17.875,"Woody",-6.54166666666667
+"50","Channel 21","Station 03 + 80 BAF","Baffle","Channel 21: In-channel treatment",0,1,-3.4166666666667,-1,0.823388282053445,20.5416666666667,"Woody",-23.9583333333333
+"51","Channel 21","Station 04 + 90 ORD","One station dam","Channel 21: In-channel treatment",0,1,-1.45833333333333,0,-0.301025095507105,1.04166666666667,"Woody",-2.5
+"52","Channel 21","Station 06 + 36 BAF","Baffle","Channel 21: In-channel treatment",0,1,-6.25,-2,-0.371468802201529,8.79166666666667,"Woody",-15.0416666666667
+"53","Channel 21","Station 07 + 49.5 ORD","One station dam","Channel 21: In-channel treatment",0,1,-4.1666666666667,-2,0.640389237822916,13.2916666666667,"Woody",-17.4583333333333
+"54","Channel 21","Station 07 + 66 BAF","Baffle","Channel 21: In-channel treatment",0,1,3,0,0.134948984899682,3.08333333333333,"Woody",-0.0833333333333333
+"55","Channel 21","Station 08 + 62 BAF","Baffle","Channel 21: In-channel treatment",0,1,-0.2916666666667,-1,-0.0549673357030001,5.5,"Woody",-5.7916666666667
+"56","Channel 21","Station 09 + 99 ORD","One station dam","Channel 21: In-channel treatment",0,1,11.0833333333333,4,0.759565099983878,16.625,"Woody",-5.54166666666667
+"57","Channel 21","Station 10 + 13 BAF","Baffle","Channel 21: In-channel treatment",0,1,-36.875,3,0.659349819061259,6,"Woody",-42.875
+"58","Channel 21","Station 11 + 12 ORD","One station dam","Channel 21: In-channel treatment",0,1,-12.1666666666667,-2,0.0450871235694601,7.3333333333333,"Woody",-19.5
+"59","Channel 21","Station 11 + 24 BAF","Baffle","Channel 21: In-channel treatment",0,1,-13.5416666666667,-2,0.15899306803437,2.7083333333333,"Woody",-16.25
+"60","Channel 21","Station 11 + 63 ORD","One station dam","Channel 21: In-channel treatment",0,1,35.125,-4,-1.20625887256436,12.1666666666667,"Woody",22.9583333333333
+"61","Channel 21","Station 11 + 73 BAF","Baffle","Channel 21: In-channel treatment",0,1,37.3333333333333,4,0.30024556625092,38.6666666666667,"Woody",-1.33333333333333
