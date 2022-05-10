@@ -57,9 +57,11 @@ wood.wide <- woody.all %>%
          woody == "Woody") %>% 
   pivot_wider(names_from = Year, values_from = Cover) %>% 
   replace(is.na(.), 0) %>% # NA indicates woody plants were not measured that year; hence, 0
+                                # except for C19 2+4, which is actually NA since Nov 2012 data sheet is missing
   mutate(wood.diff = `2021-11-01` - `2012-11-01`) %>% 
   select(-`2012-11-01`, -`2013-11-01`, -`2014-11-01`, 
          -`2015-11-01`, -`2018-11-01`, -`2021-11-01`)
+wood.wide$wood.diff[wood.wide$Station == "Station 02 + 04"] <- NA # manually fix C19 2+4 (should be NA)
 
 
 # Combine -----------------------------------------------------------------
@@ -69,13 +71,14 @@ diff.12.21 <- total.wide %>%
   left_join(shannon.wide) %>% 
   left_join(herb.wide) %>% 
   select(-woody) %>% 
-  left_join(wood.wide) %>% 
-  filter(Station != "Station 02 + 04") # Nov 2012 data sheet is missing for this one
+  left_join(wood.wide) %>% # Nov 2012 data sheet is missing for C19 2+4 so they are all NA
+  select(-woody)
 
 
 # Save --------------------------------------------------------------------
 
 write.csv(diff.12.21,
-          file = "data/cleaned/Difference_2012-2021.csv")
+          file = "data/cleaned/Difference_2012-2021.csv",
+          row.names = FALSE)
 
 save.image("RData-RMarkdown/Difference_2012-2021.RData")

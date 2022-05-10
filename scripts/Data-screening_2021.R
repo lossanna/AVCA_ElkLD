@@ -23,10 +23,12 @@ width <- width %>%
   select(Channel, Station, Average) %>% 
   rename(Width = Average)
 
+diff.12.21 <- read.csv("data/cleaned/Difference_2012-2021.csv")
+
 
 # Compile 2021 data -------------------------------------------------------
 
-# Filter out 2021
+# Filter out to 2021 only
 total.2021 <- total.all %>% 
   filter(Year == "2021-11-01")
 herb.2021 <- woody.all %>% 
@@ -51,11 +53,13 @@ soil.chem$Year <- as.character(soil.chem$Year)
 dat.2021 <- total.2021 %>% 
   left_join(herb.2021) %>% 
   left_join(wood.2021) %>% 
+  mutate(Woody = replace_na(Woody, 0)) %>% # NA signals woody species were not measured at these stations; hence, cover is 0
   left_join(soil.chem) %>% 
   left_join(elevation) %>% 
   left_join(richness.2021) %>% 
   left_join(shannon.2021) %>% 
-  left_join(width)
+  left_join(width) %>% 
+  left_join(diff.12.21) # C19 2+4 data sheet from Nov 2012 is missing, so differences are all NA
 
 
 # Visualize distribution --------------------------------------------------
@@ -100,6 +104,7 @@ vis.boxplot(dat.2021, dat.2021$Elev_Diff, "Elevation difference, 2011-2019 (m)")
 vis.boxplot(dat.2021, dat.2021$rich, "Perennial plant richness")
 vis.boxplot(dat.2021, dat.2021$shan, "Perennial plant Shannon diversity")
 vis.boxplot(dat.2021, dat.2021$Width, "Channel width (m)")
+vis.boxplot(dat.2021, dat.2021$total.diff, "Difference in total cover (%)")
 
 # Quantile-quantile plots
 ggqqplot(dat.2021$Cover)
@@ -112,6 +117,7 @@ ggqqplot(dat.2021$Elev_Diff)
 ggqqplot(dat.2021$rich)
 ggqqplot(dat.2021$shan)
 ggqqplot(dat.2021$Width) # maybe problematic
+ggqqplot(dat.2021$total.diff)
 
 
 # Log transformation ------------------------------------------------------
@@ -155,4 +161,9 @@ summary(totcover.lm)
 
 # Save --------------------------------------------------------------------
 
+write.csv(dat.2021,
+          file = "data/cleaned/SEM-input.csv",
+          row.names = FALSE)
+
 save.image("RData-RMarkdown/Data-screening_2021.RData")
+ 
