@@ -52,3 +52,8 @@ varTable(fit.shannon)
 summary(fit.shannon, standardized = TRUE)
 
 semPaths(fit.shannon, "std")
+
+
+# Save --------------------------------------------------------------------
+
+save.image("RData-RMarkdown/Exploratory-SEM.RData")
