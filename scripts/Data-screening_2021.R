@@ -9,8 +9,7 @@ library(ggpubr)
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
 
-richness <- read.csv("data/cleaned/All-Nov_perennial-richness.csv")
-shannon <- read.csv("data/cleaned/All-Nov_perennial-shannon.csv")
+per.diversity <- read.csv("data/cleaned/All-Nov_perennial-diversity.csv")
 
 soil.chem <- read_xlsx("data/Excel_LO_edited/Blankinship-soil-chemistry_TN-TC-OM_LO.xlsx", 
                        sheet = "R_LO")
@@ -40,10 +39,12 @@ wood.2021 <- woody.all %>%
          woody == "Woody") %>% 
   rename(Woody = Cover) %>% 
   select(-woody)
-richness.2021 <- richness %>% 
-  filter(Year == "2021-11-01")
-shannon.2021 <- shannon %>% 
-  filter(Year == "2021-11-01")
+richness.2021 <- per.diversity %>% 
+  filter(Year == "2021-11-01") %>% 
+  select(-shan)
+shannon.2021 <- per.diversity %>% 
+  filter(Year == "2021-11-01") %>% 
+  select(-rich)
 
 # Compile variables
 soil.chem$Year <- as.character(soil.chem$Year)

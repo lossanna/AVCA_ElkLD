@@ -197,31 +197,37 @@ for(i in 1:nrow(plant.all)) {
 # Summarise by total, functional group, and native status -----------------
 
 total.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 fungr.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, Functional) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt, 
+           Functional) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 gfst.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, gfst) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt, 
+           gfst) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 woody.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, woody) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt,
+           woody) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 inwood.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, Native, woody) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt,
+           Native, woody) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 ingfst.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, gfst, Native) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt,
+           gfst, Native) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 innat.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, Native) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt,
+           Native) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
 
