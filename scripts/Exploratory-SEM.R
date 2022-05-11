@@ -9,7 +9,7 @@ dat.2021$inch.trt <- as.factor(dat.2021$inch.trt)
 dat.2021$up.trt <- as.factor(dat.2021$up.trt)
 
 
-# SEM (no latent variables) -----------------------------------------------
+####### SEM (no latent variables) #########################################
 
 
 # Total cover -------------------------------------------------------------
@@ -104,12 +104,28 @@ mod.herb3 <- '
     herb.diff ~ Width + up.trt + inch.trt + Elev_Diff + TN_log
     TN_log ~ up.trt + inch.trt
 '
-fit.herb3 <- sem(mod.herb3, data = dat.2021, fixed.x = TRUE) # got warning
+fit.herb3 <- sem(mod.herb3, data = dat.2021, fixed.x = TRUE) # got warning about variance
 varTable(fit.herb3)
 summary(fit.herb3, standardized = TRUE)
 
 semPaths(fit.herb3, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
 
+
+# Model 4 (cover 2021)
+mod.herb4 <- '
+  # regressions
+    Herbaceous ~ Width + up.trt + inch.trt + Elev_Diff + TN_log
+    TN_log ~ up.trt + inch.trt
+'
+fit.herb4 <- sem(mod.herb4, data = dat.2021, fixed.x = TRUE) # got warning about variance
+varTable(fit.herb4)
+summary(fit.herb4, standardized = TRUE)
+
+tiff("output_figs/Prelim-SEM_herb-cover_width_up-in-trt_elevation.tiff",
+     units = "in", height = 4, width = 6, res = 150)
+semPaths(fit.herb4, "std", edge.label.cex = 1, residuals = FALSE,
+         sizeMan = 7)
+dev.off()
 
 
 # Shannon diversity -------------------------------------------------------
