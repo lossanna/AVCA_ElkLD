@@ -1216,5 +1216,5 @@ ingf.known.plot.nov
 
 # Save data ---------------------------------------------------------------
 
-save.image("RData-RMarkdown/Cover-by-year-and-channel.RData")
+save.image("RData/Cover-by-year-and-channel.RData")
 

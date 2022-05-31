@@ -1,7 +1,7 @@
 ---
 title: "Data wrangling annotated example"
 author: "Lia Ossanna"
-date: "5/2/2022"
+date: "`r Sys.Date()`"
 output: 
   html_document:
     toc: true
@@ -10,15 +10,15 @@ output:
 
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-load("C12-data-wrangling.RData")
+load("../RData/C12-data-wrangling.RData")
 library(tidyverse)
 ```
 
 # Introduction
 - This document explains the data wrangling process for the Altar Valley Conservation Alliance Elkhorn-Las Delicias Demo project.
 - Data were originally collected on hard copy data sheets by hand in the field, and transcribed to Excel sheets, which were then given to me. Each channel has its own Excel spreadsheet, and each station has its own tab within each sheet.
-  - The original data sheets are located in `AVCA_ElkLD/data/Excel_raw/`.
-- I made minor changes to the Excel sheets and saved them as separate files under `AVCA_ElkLD/data/Excel_LO_edited/`. These sheets each have a README tab that explains the changes. I tried to keep as many changes as possible to be done in R, but some edits were necessary to add to the Excel sheets.
+  - The original data sheets are located in `data/Excel_raw/`.
+- I made minor changes to the Excel sheets and saved them as separate files under `data/Excel_LO_edited/`. These sheets each have a README tab that explains the changes. I tried to keep as many changes as possible to be done in R, but some edits were necessary to add to the Excel sheets.
   - In particular, cover of annual forbs and grasses were sometimes documented at the species level, but sometimes an overall value was made and check marks were written below to indicate the species present. These check marks were not always documented in the original Excel sheets, so I went through the original hard copy data sheets and noted where they existed in my version of the Excel spreadsheets. When there was more than one species present, I divided the total cover value evenly between the checked species.
 - Data sheets were formatted such that each functional group had a set list of common species already written into rows, but they were not always present at every site, so there were many empty cells. These are dealt with in the `Summarise-all-channels.R` script.
 - Cover was measured in 4 (sometimes 6) quadrats at each station, labeled 1L (left and adjacent to transect tape when looking upstream), 2L (1-2 m left of transect tape), 1R (right and adjacent to transect tape), and 2R (1-2 m right of transect tape).

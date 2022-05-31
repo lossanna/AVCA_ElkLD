@@ -315,5 +315,5 @@ write.csv(innat.all,
           row.names = FALSE)
 
 
-save.image("RData-RMarkdown/Summarise-all-channels.RData")
+save.image("RData/Summarise-all-channels.RData")
 

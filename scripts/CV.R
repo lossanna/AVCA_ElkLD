@@ -3,7 +3,7 @@ library(cvequality)
 
 # Load data ---------------------------------------------------------------
 
-load("Summarised plant and ground cover.RData")
+load("RData/Summarise-all-channels.RData")
 
 
 # Total plant cover -------------------------------------------------------
@@ -43,4 +43,4 @@ with(total1321.all, asymptotic_test(Cover, Channel)) # p = 0.0004935618
 
 
 
-save.image("CV.RData")
+save.image("RData/CV.RData")

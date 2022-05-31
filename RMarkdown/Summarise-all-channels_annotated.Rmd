@@ -1,7 +1,7 @@
 ---
 title: "Summarise all channels annotated"
 author: "Lia Ossanna"
-date: "5/2/2022"
+date: "`r Sys.Date()`"
 output: 
   html_document:
     toc: true
@@ -10,14 +10,14 @@ output:
 
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
-load("Summarise-all-channels.RData")
+load("../RData/Summarise-all-channels.RData")
 library(tidyverse)
 ```
 
 # Introduction
 - The data wrangling scripts produced tidy data, but had many 0 values based on how the data sheets were originally structured, and all the measurements were by individual quadrat.
 - Cover was measured in 4 (sometimes 6) quadrats at each station, labeled 1L (left and adjacent to transect tape when looking upstream), 2L (1-2 m left of transect tape), 1R (right and adjacent to transect tape), and 2R (1-2 m right of transect tape).
-- The `AVCA_ElkLD/scripts/data-wranging/Summarise-all-channels.R` script averages the quadrats by station, and then further averages into different categories:
+- The `scripts/data-wranging/Summarise-all-channels.R` script averages the quadrats by station, and then further averages into different categories:
   - By plant species (identified by common name)
   - Rock, soil, gravel, litter, biocrust (ground cover)
   - Total plant cover
@@ -318,5 +318,5 @@ write.csv(innat.all,
           row.names = FALSE)
 
 
-save.image("RData-RMarkdown/Summarise-all-channels.RData")
+save.image("RData/Summarise-all-channels.RData")
 ```

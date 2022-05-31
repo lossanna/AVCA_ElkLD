@@ -1922,6 +1922,6 @@ write.csv(all.c12,
           row.names = FALSE)
 
 
-save.image("RData-RMarkdown/C12-data-wrangling.RData")
+save.image("RData/C12-data-wrangling.RData")
 
 

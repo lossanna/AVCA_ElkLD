@@ -165,5 +165,5 @@ write.csv(dat.2021,
           file = "data/cleaned/SEM-input.csv",
           row.names = FALSE)
 
-save.image("RData-RMarkdown/Data-screening_2021.RData")
+save.image("RData/Data-screening_2021.RData")
  

@@ -2101,7 +2101,7 @@ write.csv(all.c13,
           row.names = FALSE)
 
 
-save.image("RData-RMarkdown/C13-data-wrangling.RData")
+save.image("RData/C13-data-wrangling.RData")
 
 
 

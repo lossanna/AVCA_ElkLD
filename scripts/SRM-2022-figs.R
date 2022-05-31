@@ -7,8 +7,8 @@ library(rcompanion)
  
 # Load data ---------------------------------------------------------------
 
-load(".RData/Cover by year and channel.RData")
-load(".RData/Perennial diversity by year and channel.RData")
+load("RData/Cover-by-year-and-channel.RData")
+load("RData/Perennial-diversity-by-year-and-channel.RData")
 
 
 # Common species ----------------------------------------------------------
@@ -40,7 +40,7 @@ total.plot.srm22 <- ggplot(total.channel.nov, aes(x = Year, y = mean,
   theme(legend.position = "none") 
 total.plot.srm22
 
-tiff("SRM_2022/Total plant cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
+tiff("output_figs/SRM_2022/Total plant cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
 total.plot.srm22
 dev.off()
 
@@ -81,7 +81,7 @@ herb.plot.srm22 <- ggplot(herb.channel.nov, aes(x = Year, y = mean,
   facet_wrap(~channel.trt)
 herb.plot.srm22
 
-tiff("SRM_2022/Herbaceous cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
+tiff("output_figs/SRM_2022/Herbaceous cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
 herb.plot.srm22
 dev.off()
 
@@ -111,7 +111,7 @@ inwood.known.plot.srm22 <- ggplot(inwood.channel.known.nov, aes(x = Year, y = me
   theme(legend.position = "bottom")
 inwood.known.plot.srm22
 
-tiff("SRM_2022/Inwood cover.tiff", units = "in", height = 7, width = 10, res = 300)
+tiff("output_figs/SRM_2022/Inwood cover.tiff", units = "in", height = 7, width = 10, res = 300)
 inwood.known.plot.srm22
 dev.off()
 
@@ -144,7 +144,7 @@ richness.plot.srm22 <- ggplot(richness.channel.year, aes(x = Year, y = mean,
   facet_wrap(~channel.trt)
 richness.plot.srm22
 
-tiff("SRM_2022/Richess.tiff", units = "in", height = 5.5, width = 10, res = 300)
+tiff("output_figs/SRM_2022/Richess.tiff", units = "in", height = 5.5, width = 10, res = 300)
 richness.plot.srm22
 dev.off()
 
@@ -172,7 +172,7 @@ shannon.plot.srm22 <- ggplot(shannon.channel.year, aes(x = Year, y = mean,
   facet_wrap(~channel.trt)
 shannon.plot.srm22
 
-tiff("SRM_2022/Shannon.tiff", units = "in", height = 5.5, width = 10, res = 300)
+tiff("output_figs/SRM_2022/Shannon.tiff", units = "in", height = 5.5, width = 10, res = 300)
 shannon.plot.srm22
 dev.off()
 
@@ -197,7 +197,7 @@ ground.soil.plot.srm22 <- ggplot(ground.channel.nov.soil, aes(x = Year, y = mean
   theme(legend.position = "none")
 ground.soil.plot.srm22
 
-tiff("SRM_2022/Soil cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
+tiff("output_figs/SRM_2022/Soil cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
 ground.soil.plot.srm22
 dev.off()
 

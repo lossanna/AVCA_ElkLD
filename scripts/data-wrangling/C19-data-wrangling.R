@@ -2296,6 +2296,6 @@ write.csv(all.c19,
           row.names = FALSE)
 
 
-save.image("RData-RMarkdown/C19-data-wrangling.RData")
+save.image("RData/C19-data-wrangling.RData")
 
 

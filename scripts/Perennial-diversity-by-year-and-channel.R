@@ -363,4 +363,4 @@ write.csv(per.diversity,
           row.names = FALSE)
 
 
-save.image("RData-RMarkdown/Perennial-diversity-by-year-and-channel.RData")
+save.image("RData/Perennial-diversity-by-year-and-channel.RData")
