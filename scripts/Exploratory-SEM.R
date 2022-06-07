@@ -9,86 +9,156 @@ dat.2021$inch.trt <- as.factor(dat.2021$inch.trt)
 dat.2021$up.trt <- as.factor(dat.2021$up.trt)
 
 
-# Model number does not mean variables are preserved across all models of same number
+# Models of the same number have the same variables (except main response variable)
 
 
 # Total cover -------------------------------------------------------------
 
 # Model 1 (2021 cover)
-mod.total1 <- '
+mod.total01 <- '
   # regressions
     Cover ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc
     OM_perc ~ up.trt + inch.trt
 '
-fit.total1 <- sem(mod.total1, data = dat.2021, fixed.x = TRUE) 
+fit.total01 <- sem(mod.total01, data = dat.2021, fixed.x = TRUE) 
   # Warning message: In lav_data_full(data = data, group = group, cluster = cluster,  :
       # lavaan WARNING: some observed variances are (at least) a factor 1000 times larger 
       # than others; use varTable(fit) to investigate
   # Discussed further here: https://groups.google.com/g/lavaan/c/FzShzsXYNco?pli=1
-vartable(fit.total1)
-summary(fit.total1, standardized = TRUE)
+vartable(fit.total01)
+summary(fit.total01, standardized = TRUE)
 
-semPaths(fit.total1, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
-
-
-# Model 2 (2021 cover)
-mod.total2 <- '
-  # regressions
-    Cover ~ Width + inch.trt + Elev_Diff + OM_perc
-    OM_perc ~ inch.trt
-'
-fit.total2 <- sem(mod.total2, data = dat.2021, fixed.x = TRUE) 
-    # Warning message: In lav_data_full(data = data, group = group, cluster = cluster,  :
-      # lavaan WARNING: some observed variances are (at least) a factor 1000 times larger 
-      # than others; use varTable(fit) to investigate
-vartable(fit.total2)
-summary(fit.total2, standardized = TRUE)
-
-semPaths(fit.total2, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.total01, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
 
 
-# Model 3 (difference)
-mod.total3 <- '
+# Model 2 (difference)
+mod.total02 <- '
   # regressions
     total.diff ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc
     OM_perc ~ inch.trt + up.trt
 '
-fit.total3 <- sem(mod.total3, data = dat.2021, fixed.x = TRUE) 
-    # Warning message: In lav_data_full(data = data, group = group, cluster = cluster,  :
-      # lavaan WARNING: some observed variances are (at least) a factor 1000 times larger 
-      # than others; use varTable(fit) to investigate
-vartable(fit.total3)
-summary(fit.total3, standardized = TRUE)
+fit.total02 <- sem(mod.total02, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total02)
+summary(fit.total02, standardized = TRUE)
 
-semPaths(fit.total3, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.total02, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
 
 
-# Model 4 (cover 2021)
-mod.total4 <- '
+# Model 3 (cover 2021)
+  # in-channel treatment effect only
+mod.total03 <- '
+  # regressions
+    Cover ~ Width + inch.trt + Elev_Diff + OM_perc
+    OM_perc ~ inch.trt
+'
+fit.total03 <- sem(mod.total03, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total03)
+summary(fit.total03, standardized = TRUE)
+
+semPaths(fit.total03, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+
+
+# Model 4 (difference)
+  # in-channel treatment effect only
+mod.total04 <- '
+  # regressions
+    total.diff ~ Width + inch.trt + Elev_Diff + OM_perc
+    OM_perc ~ inch.trt
+'
+fit.total04 <- sem(mod.total04, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total04)
+summary(fit.total04, standardized = TRUE)
+
+semPaths(fit.total04, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+
+
+# Model 5 (cover 2021)
+  # maximum variables
+mod.total05 <- '
   # regressions
     Cover ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc + TN_log
     OM_perc ~ up.trt + inch.trt
     TN_log ~ up.trt + inch.trt
 '
-fit.total4 <- sem(mod.total4, data = dat.2021, fixed.x = TRUE) # got warning about variance
-vartable(fit.total4)
-summary(fit.total4, standardized = TRUE)
+fit.total05 <- sem(mod.total05, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total05)
+summary(fit.total05, standardized = TRUE)
 
-semPaths(fit.total4, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+semPaths(fit.total05, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
-# Model 5 (difference 2021)
-mod.total5 <- '
+# Model 6 (difference 2021)
+  # maximum variables
+mod.total06 <- '
   # regressions
     total.diff ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc + TN_log
     OM_perc ~ up.trt + inch.trt
     TN_log ~ up.trt + inch.trt
 '
-fit.total5 <- sem(mod.total5, data = dat.2021, fixed.x = TRUE) # got warning about variance
-vartable(fit.total5)
-summary(fit.total5, standardized = TRUE)
+fit.total06 <- sem(mod.total06, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total06)
+summary(fit.total06, standardized = TRUE)
 
-semPaths(fit.total5, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+semPaths(fit.total06, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+
+
+# Model 7 (cover 2021)
+  # remove elevation to increase sample:variable ratio because it is not significant 
+mod.total07 <- '
+  # regressions
+    Cover ~ Width + up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+'
+fit.total07 <- sem(mod.total07, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total07)
+summary(fit.total07, standardized = TRUE)
+
+semPaths(fit.total07, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+
+# Model 8 (difference 2021)
+  # remove elevation to increase sample:variable ratio because it is not significant 
+mod.total08 <- '
+  # regressions
+    total.diff ~ Width + up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+'
+fit.total08 <- sem(mod.total08, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total08)
+summary(fit.total08, standardized = TRUE)
+
+semPaths(fit.total08, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+
+
+# Model 9 (cover 2021)
+  # no GIS-derived models
+mod.total09 <- '
+  # regressions
+    Cover ~ up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+'
+fit.total09 <- sem(mod.total09, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total09)
+summary(fit.total09, standardized = TRUE)
+
+semPaths(fit.total09, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+
+
+# Model 10 (difference 2021)
+  # no GIS-derived models
+mod.total10 <- '
+  # regressions
+    total.diff ~ up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+'
+fit.total10 <- sem(mod.total10, data = dat.2021, fixed.x = TRUE) # got warning about variance
+vartable(fit.total10)
+summary(fit.total10, standardized = TRUE)
+
+semPaths(fit.total10, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 
@@ -255,7 +325,7 @@ summary(fit.shan2, standardized = TRUE)
 semPaths(fit.shan2, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
-# Model 2 (Shannon 2021)
+# Model 2 (difference 2021)
 mod.shan3 <- '
   # regressions
     shan.diff ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc + TN_log
@@ -271,4 +341,4 @@ semPaths(fit.shan3, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 # Save --------------------------------------------------------------------
 
-save.image("RData-RMarkdown/Exploratory-SEM.RData")
+save.image("RData/Exploratory-SEM.RData")

@@ -1,0 +1,51 @@
+# List of models and their variables
+## With "res" as the main response variable that changes (cover or diversity)
+## and ".diff" as the difference between 2012 and 2021 (2021-2012)
+
+
+model 1
+    res ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc
+    OM_perc ~ up.trt + inch.trt
+
+model 2
+    res.diff ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc
+    OM_perc ~ inch.trt + up.trt
+
+model 3
+    res ~ Width + inch.trt + Elev_Diff + OM_perc
+    OM_perc ~ inch.trt
+
+model 4
+    res.diff ~ Width + inch.trt + Elev_Diff + OM_perc
+    OM_perc ~ inch.trt
+
+model 5
+    res ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+
+model 6
+    res.diff ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+
+model 7
+    res ~ Width + up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+
+model 8
+    res.diff ~ Width + up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+
+model 9
+    res ~ up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+
+model 10
+    res.diff ~ up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+

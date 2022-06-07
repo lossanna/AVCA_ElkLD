@@ -1,0 +1,14 @@
+---
+title: "Exploratory SEMs"
+author: "Lia Ossanna"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+- This document explores preliminary structural equation models (SEMs) using different response types of plant cover and diversity.
+
