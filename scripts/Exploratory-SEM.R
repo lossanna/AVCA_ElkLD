@@ -28,7 +28,7 @@ fit.total01 <- sem(mod.total01, data = dat.2021, fixed.x = TRUE)
 vartable(fit.total01)
 summary(fit.total01, standardized = TRUE)
 
-semPaths(fit.total01, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.total01, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 2 (difference)
@@ -41,7 +41,7 @@ fit.total02 <- sem(mod.total02, data = dat.2021, fixed.x = TRUE) # got warning a
 vartable(fit.total02)
 summary(fit.total02, standardized = TRUE)
 
-semPaths(fit.total02, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.total02, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 3 (cover 2021)
@@ -55,7 +55,7 @@ fit.total03 <- sem(mod.total03, data = dat.2021, fixed.x = TRUE) # got warning a
 vartable(fit.total03)
 summary(fit.total03, standardized = TRUE)
 
-semPaths(fit.total03, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.total03, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 4 (difference)
@@ -173,7 +173,7 @@ mod.herb01 <- '
 fit.herb01 <- sem(mod.herb01, data = dat.2021, fixed.x = TRUE) # got warning about variance
 summary(fit.herb01, standardized = TRUE)
 
-semPaths(fit.herb01, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.herb01, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 2 (difference)
@@ -186,7 +186,7 @@ fit.herb02 <- sem(mod.herb02, data = dat.2021, fixed.x = TRUE) # got warning abo
 vartable(fit.herb02)
 summary(fit.herb02, standardized = TRUE)
 
-semPaths(fit.herb02, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.herb02, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 3 (cover 2021)
@@ -200,7 +200,7 @@ fit.herb03 <- sem(mod.herb03, data = dat.2021, fixed.x = TRUE) # got warning abo
 vartable(fit.herb03)
 summary(fit.herb03, standardized = TRUE)
 
-semPaths(fit.herb03, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.herb03, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 4 (difference)
@@ -319,7 +319,7 @@ fit.wood01 <- sem(mod.wood01, data = dat.2021, fixed.x = TRUE) # got warning abo
 vartable(fit.wood01)
 summary(fit.wood01, standardized = TRUE)
 
-semPaths(fit.wood01, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.wood01, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 2 (difference)
@@ -332,7 +332,7 @@ fit.wood02 <- sem(mod.wood02, data = dat.2021, fixed.x = TRUE) # got warning abo
 vartable(fit.wood02)
 summary(fit.wood02, standardized = TRUE)
 
-semPaths(fit.wood02, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.wood02, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 3 (cover 2021)
@@ -346,7 +346,7 @@ fit.wood03 <- sem(mod.wood03, data = dat.2021, fixed.x = TRUE) # got warning abo
 vartable(fit.wood03)
 summary(fit.wood03, standardized = TRUE)
 
-semPaths(fit.wood03, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.wood03, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 4 (difference)
@@ -465,7 +465,7 @@ fit.rich01 <- sem(mod.rich01, data = dat.2021, fixed.x = TRUE) # got warning abo
 vartable(fit.rich01)
 summary(fit.rich01, standardized = TRUE)
 
-semPaths(fit.rich01, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.rich01, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 2 (difference)
@@ -478,7 +478,7 @@ fit.rich02 <- sem(mod.rich02, data = dat.2021, fixed.x = TRUE) # got warning abo
 vartable(fit.rich02)
 summary(fit.rich02, standardized = TRUE)
 
-semPaths(fit.rich02, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.rich02, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 3 (cover 2021)
@@ -492,7 +492,7 @@ fit.rich03 <- sem(mod.rich03, data = dat.2021, fixed.x = TRUE) # got warning abo
 vartable(fit.rich03)
 summary(fit.rich03, standardized = TRUE)
 
-semPaths(fit.rich03, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.rich03, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 4 (difference)
@@ -525,7 +525,7 @@ semPaths(fit.rich05, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7
 
 
 # Model 6 (difference 2021)
-# maximum variables
+  # maximum variables
 mod.rich06 <- '
   # regressions
     rich.diff ~ Width + up.trt + inch.trt + Elev_Diff + OM_perc + TN_log
@@ -611,7 +611,7 @@ fit.shan01 <- sem(mod.shan01, data = dat.2021, fixed.x = TRUE)
 vartable(fit.shan01)
 summary(fit.shan01, standardized = TRUE)
 
-semPaths(fit.shan01, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.shan01, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 2 (difference)
@@ -624,7 +624,7 @@ fit.shan02 <- sem(mod.shan02, data = dat.2021, fixed.x = TRUE)
 vartable(fit.shan02)
 summary(fit.shan02, standardized = TRUE)
 
-semPaths(fit.shan02, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.shan02, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 3 (cover 2021)
@@ -638,7 +638,7 @@ fit.shan03 <- sem(mod.shan03, data = dat.2021, fixed.x = TRUE)
 vartable(fit.shan03)
 summary(fit.shan03, standardized = TRUE)
 
-semPaths(fit.shan03, "std", edge.label.cex = 0.5, curvePivot = TRUE, residuals = FALSE)
+semPaths(fit.shan03, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 # Model 4 (difference)

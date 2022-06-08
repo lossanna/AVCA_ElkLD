@@ -20,8 +20,8 @@ library(rcompanion)
 
 
 # Introduction
-- The `AVCA_ElkLD/scripts/Cover-by-year-and-channel.R` script graphs plant and ground cover over time for each channel, and does comparison of means (ANOVA or Kruskal-Wallis) for select groups.
-- This follows data wrangling (`AVCA_ElkLD/scripts/data-wrangling/`), summarising by channel (`AVCA_ElkLD/scripts/data-wrangling/Summarise-all-channels.R`). See the annotated examples for those scripts in the `AVCA_ElkLD/RData-RMarkdown/` folder.
+- The `scripts/Cover-by-year-and-channel.R` script graphs plant and ground cover over time for each channel, and does comparison of means (ANOVA or Kruskal-Wallis) for select groups.
+- This follows data wrangling (`scripts/data-wrangling/`), summarising by channel (`scripts/data-wrangling/Summarise-all-channels.R`). See the annotated examples for those scripts in the `RMarkdown/` folder.
 
 
 # Setup
