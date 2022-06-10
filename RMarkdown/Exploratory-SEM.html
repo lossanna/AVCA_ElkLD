@@ -11,7 +11,7 @@
 
 <meta name="author" content="Lia Ossanna" />
 
-<meta name="date" content="2022-06-07" />
+<meta name="date" content="2022-06-09" />
 
 <title>Exploratory SEMs</title>
 
@@ -1512,7 +1512,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Exploratory SEMs</h1>
 <h4 class="author">Lia Ossanna</h4>
-<h4 class="date">2022-06-07</h4>
+<h4 class="date">2022-06-09</h4>
 
 </div>
 
@@ -1522,39 +1522,65 @@ div.tocify {
 <ul>
 <li>This document explores preliminary structural equation models (SEMs)
 using different response types of plant cover and diversity.</li>
-<li>Results are presented first, with the code example at the end.
-<ul>
+<li>Results are presented first, with the code example at the end.</li>
 <li>The left column of SEM diagrams is based on 2021 values. Right
 column is the difference between 2012 and 2021 (positive values indicate
-an increase over time).</li>
+an increase over time).
+<ul>
+<li>The main response variable is located in the lower lefthand corner
+of the diagrams; this is what changes between columns.</li>
 </ul></li>
 <li>Variables:
 <ul>
-<li><code>Width</code>: channel width, derived from the standard
-deviation of LiDAR data, which measure elevation difference from 2011 to
-2019; measurement is not very accurate.</li>
-<li><code>up.trt</code>: a categorical variable, indicating if upland
-treatments were present (Channel 19).</li>
-<li><code>inch.trt</code>: a categorical variable, indicating if
-in-channel treatments were present (Channels 13 and 21).
--<code>Elev_Diff</code>: elevation difference from 2011 to 2019, as
-measured by LiDAR. Some stations could not be measured, so including
-this variable means the sample size decreases.</li>
-<li><code>OM_perc</code>: organic matter percent from 2021 soil samples.
-<code>TN_log</code>: total nitrogen content from 2021 soil samples,
-log-transformed to improve normality.</li>
+<li><code>Width</code> (<code>Wdt</code>): channel width, derived from
+the standard deviation of LiDAR data, which measure elevation difference
+from 2011 to 2019; measurement is not very accurate.</li>
+<li><code>up.trt</code> (<code>up.</code>): a categorical variable,
+indicating if upland treatments were present (Channel 19).</li>
+<li><code>inch.trt</code> (<code>in.</code>): a categorical variable,
+indicating if in-channel treatments were present (Channels 13 and
+21).</li>
+<li><code>Elev_Diff</code> (<code>E_D</code>): elevation difference from
+2011 to 2019, as measured by LiDAR. Some stations could not be measured,
+so including this variable means the sample size decreases.</li>
+<li><code>OM_perc</code> (<code>OM_</code>): organic matter percent from
+2021 soil samples.</li>
+<li><code>TN_log</code> (<code>TN_</code>): total nitrogen content from
+2021 soil samples, log-transformed to improve normality.</li>
 </ul></li>
-<li>Response variables (2021 values and the difference between 2012 and
-2021):
+<li>Response variables:
 <ul>
-<li>Total cover</li>
-<li>Herbaceous cover</li>
-<li>Woody cover</li>
-<li>Perennial species richness</li>
-<li>Perennial Shannon diversity</li>
+<li>Total cover
+<ul>
+<li><code>Cvr</code>: 2021 total cover.</li>
+<li><code>tt.</code>: difference between 2012 and 2021 total cover.</li>
+</ul></li>
+<li>Herbaceous cover
+<ul>
+<li><code>Hrb</code>: 2021 herbaceous cover.</li>
+<li><code>hr.</code>: difference between 2012 and 2021 herbaceous
+cover.</li>
+</ul></li>
+<li>Woody cover
+<ul>
+<li><code>Wdy</code>: 2021 woody cover.</li>
+<li><code>wd.</code>: difference between 2012 and 2021 woody cover.</li>
+</ul></li>
+<li>Perennial species richness
+<ul>
+<li><code>rch</code>: 2021 richness.</li>
+<li><code>rc.</code>: difference between 2012 and 2021 richness.</li>
+</ul></li>
+<li>Perennial Shannon diversity
+<ul>
+<li><code>shn</code>: 2021 Shannon diversity</li>
+<li><code>sh.</code>: difference between 2012 and 2021 Shannon
+diversity.</li>
+</ul></li>
 </ul></li>
 <li>The data sheet for Channel 19 Station 2 + 4 is missing for 2012, so
-the station is dropped from all models.</li>
+that station is dropped from all models that use the difference between
+2012 and 2021.</li>
 </ul>
 </div>
 <div id="model-5-6-width-up.trt-inch.trt-elev_diff-om_perc-tn_log" class="section level1">

@@ -19,21 +19,32 @@ load("../RData/Exploratory-SEM.RData")
 # Introduction
 - This document explores preliminary structural equation models (SEMs) using different response types of plant cover and diversity.
 - Results are presented first, with the code example at the end.
-  - The left column of SEM diagrams is based on 2021 values. Right column is the difference between 2012 and 2021 (positive values indicate an increase over time).
+- The left column of SEM diagrams is based on 2021 values. Right column is the difference between 2012 and 2021 (positive values indicate an increase over time).
+  - The main response variable is located in the lower lefthand corner of the diagrams; this is what changes between columns.
 - Variables:
-  - `Width`: channel width, derived from the standard deviation of LiDAR data, which measure elevation difference from 2011 to 2019; measurement is not very accurate.
-  - `up.trt`: a categorical variable, indicating if upland treatments were present (Channel 19).
-  - `inch.trt`: a categorical variable, indicating if in-channel treatments were present (Channels 13 and 21).
-  -`Elev_Diff`: elevation difference from 2011 to 2019, as measured by LiDAR. Some stations could not be measured, so including this variable means the sample size decreases.
-  - `OM_perc`: organic matter percent from 2021 soil samples.
-  `TN_log`: total nitrogen content from 2021 soil samples, log-transformed to improve normality.
-- Response variables (2021 values and the difference between 2012 and 2021):
+  - `Width` (`Wdt`): channel width, derived from the standard deviation of LiDAR data, which measure elevation difference from 2011 to 2019; measurement is not very accurate.
+  - `up.trt` (`up.`): a categorical variable, indicating if upland treatments were present (Channel 19).
+  - `inch.trt` (`in.`): a categorical variable, indicating if in-channel treatments were present (Channels 13 and 21).
+  - `Elev_Diff` (`E_D`): elevation difference from 2011 to 2019, as measured by LiDAR. Some stations could not be measured, so including this variable means the sample size decreases.
+  - `OM_perc` (`OM_`): organic matter percent from 2021 soil samples.
+  - `TN_log` (`TN_`): total nitrogen content from 2021 soil samples, log-transformed to improve normality.
+- Response variables:
   - Total cover
+    - `Cvr`: 2021 total cover.
+    - `tt.`: difference between 2012 and 2021 total cover.
   - Herbaceous cover
+    - `Hrb`: 2021 herbaceous cover.
+    - `hr.`: difference between 2012 and 2021 herbaceous cover.
   - Woody cover
+    - `Wdy`: 2021 woody cover.
+    - `wd.`: difference between 2012 and 2021 woody cover.
   - Perennial species richness
+    - `rch`: 2021 richness.
+    - `rc.`: difference between 2012 and 2021 richness.
   - Perennial Shannon diversity
-- The data sheet for Channel 19 Station 2 + 4 is missing for 2012, so the station is dropped from all models.
+    - `shn`: 2021 Shannon diversity
+    - `sh.`: difference between 2012 and 2021 Shannon diversity.
+- The data sheet for Channel 19 Station 2 + 4 is missing for 2012, so that station is dropped from all models that use the difference between 2012 and 2021.
 
 
 # Model 5-6: `Width`, `up.trt`, `inch.trt`, `Elev_Diff`, `OM_perc`, `TN_log`
