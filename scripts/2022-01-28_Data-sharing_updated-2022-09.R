@@ -21,7 +21,7 @@ plant.all.nov <- plant.all %>%
   filter(Year != "2012-03-01")
 
 # Rain data
-rain <- read_xlsx("Elk_LD Rain data_LO.xlsx", sheet = "R_LO")
+rain <- read_xlsx("data/Excel_LO_edited/Elk_LD Rain data_LO.xlsx", sheet = "R_LO")
 rain$Date <- as.Date(rain$Date, format = "%Y-%m-%d")
 
 
@@ -34,7 +34,14 @@ common.plants <- count(common.plants, Common)
 common.plants <- common.plants[order(common.plants$n, decreasing = TRUE), ]
 
 
+
+
 ###### Entire channel averages ############################################
+
+# For ANOVA and KW analysis, see Cover-by-year-and-channel.R and Perennial-diversity-by-year-and-channel.R
+# For test of difference in CV, see CV.R
+
+
 
 # Total plant cover -------------------------------------------------------
 
@@ -132,6 +139,7 @@ total.table.ds <- data.frame(Channel = c("Channel 12", "Channel 19", "Channel 13
 total.table.ds$Cover_2012 <- round(total.table.ds$Cover_2012, 0)
 total.table.ds$Cover_2021 <- round(total.table.ds$Cover_2021, 0)
 
+
 # Channels 19 & 13
 total1913.channel <- total.channel %>% 
   filter(Channel %in% c("Channel 19", "Channel 13"))
@@ -156,6 +164,7 @@ tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/Total1913-plant-cover.
      units = "in", height = 4, width = 6, res = 300)
 total1913.plot.ds
 dev.off()
+
 
 # Channels 12 & 21
 total1221.channel <- total.channel %>% 
@@ -183,6 +192,7 @@ total1221.plot.ds
 dev.off()
 
 
+
 # Ground cover ------------------------------------------------------------
 
 ground.channel <- ground.all %>% 
@@ -208,6 +218,8 @@ for(i in 1:nrow(ground.channel)) {
     ground.channel$Year[i] <- "2021-01-01"
   }
 }
+
+ground.channel$Year <- as.Date(ground.channel$Year)
 
 ground.channel[ , "channel.trt"] <- NA
 for(i in 1:nrow(ground.channel)) {
@@ -242,7 +254,8 @@ ground.grs.plot.ds <- ggplot(ground.channel.grs, aes(x = Year, y = mean,
   theme(legend.position = "bottom")
 ground.grs.plot.ds
 
-tiff("0128_Data sharing/GravelRockSoil cover.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/GravelRockSoil-cover.tiff", 
+     units = "in", height = 5, width = 7, res = 300)
 ground.grs.plot.ds
 dev.off()
 
@@ -265,7 +278,8 @@ ground.soil.plot.ds <- ggplot(ground.channel.soil, aes(x = Year, y = mean,
   theme(legend.position = "none")
 ground.soil.plot.ds
 
-tiff("0128_Data sharing/Soil cover.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/Soil-cover.tiff", 
+     units = "in", height = 5, width = 7, res = 300)
 ground.soil.plot.ds
 dev.off()
 
@@ -281,6 +295,7 @@ soil.table.ds <- data.frame(Channel = c("Channel 12", "Channel 19", "Channel 13"
                                            filter(ground.channel.soil, Year == "2021-01-01" & Channel == "Channel 21")$mean))
 soil.table.ds$Cover_2012 <- round(soil.table.ds$Cover_2012, 0)
 soil.table.ds$Cover_2021 <- round(soil.table.ds$Cover_2021, 0)
+
 
 
 # Functional group (gfst) -------------------------------------------------
@@ -308,6 +323,8 @@ for(i in 1:nrow(gfst.channel)) {
     gfst.channel$Year[i] <- "2021-01-01"
   }
 }
+
+gfst.channel$Year <- as.Date(gfst.channel$Year)
 
 gfst.channel[ , "channel.trt"] <- NA
 for(i in 1:nrow(gfst.channel)) {
@@ -342,10 +359,6 @@ gfst.plot.ds <- ggplot(gfst.channel, aes(x = Year, y = mean,
   theme(legend.position = "bottom")
 gfst.plot.ds
 
-tiff("0128_Data sharing/GrassForbShrubTree cover.tiff", units = "in", height = 5, width = 7, res = 300)
-gfst.plot.ds
-dev.off()
-
 
 # Functional group (gfs) --------------------------------------------------
 
@@ -373,6 +386,8 @@ for(i in 1:nrow(gfs.channel)) {
     gfs.channel$Year[i] <- "2021-01-01"
   }
 }
+
+gfs.channel$Year <- as.Date(gfs.channel$Year)
 
 gfs.channel[ , "channel.trt"] <- NA
 for(i in 1:nrow(gfs.channel)) {
@@ -407,7 +422,8 @@ gfs.plot.ds <- ggplot(gfs.channel, aes(x = Year, y = mean,
   theme(legend.position = "bottom")
 gfs.plot.ds
 
-tiff("0128_Data sharing/GrassForbShrub cover.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/GrassForbShrub-cover.tiff", 
+     units = "in", height = 5, width = 7, res = 300)
 gfs.plot.ds
 dev.off()
 
@@ -437,6 +453,8 @@ for(i in 1:nrow(woody.channel)) {
     woody.channel$Year[i] <- "2021-01-01"
   }
 }
+
+woody.channel$Year <- as.Date(woody.channel$Year)
 
 woody.channel[ , "channel.trt"] <- NA
 for(i in 1:nrow(woody.channel)) {
@@ -468,9 +486,6 @@ woody.plot.ds <- ggplot(woody.channel, aes(x = Year, y = mean,
   theme(legend.position = "bottom")
 woody.plot.ds
 
-tiff("0128_Data sharing/WoodyHerb cover.tiff", units = "in", height = 5, width = 7, res = 300)
-woody.plot.ds
-dev.off()
 
 
 # Herbaceous --------------------------------------------------------------
@@ -500,6 +515,8 @@ for(i in 1:nrow(herb.channel)) {
   }
 }
 
+herb.channel$Year <- as.Date(herb.channel$Year)
+
 herb.channel[ , "channel.trt"] <- NA
 for(i in 1:nrow(herb.channel)) {
   if(herb.channel$Channel[i] == "Channel 12") {
@@ -528,9 +545,11 @@ herb.plot.ds <- ggplot(herb.channel, aes(x = Year, y = mean,
   facet_wrap(~channel.trt)
 herb.plot.ds
 
-tiff("0128_Data sharing/Herbaceous cover.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/Herbaceous-cover.tiff", 
+     units = "in", height = 5, width = 7, res = 300)
 herb.plot.ds
 dev.off()
+
 
 herb.table.ds <- data.frame(Channel = c("Channel 12", "Channel 19", "Channel 13", "Channel 21"),
                             Cover_2012 = c(filter(herb.channel, Year == "2012-01-01" & Channel == "Channel 12")$mean,
@@ -543,6 +562,7 @@ herb.table.ds <- data.frame(Channel = c("Channel 12", "Channel 19", "Channel 13"
                                            filter(herb.channel, Year == "2021-01-01" & Channel == "Channel 21")$mean))
 herb.table.ds$Cover_2012 <- round(herb.table.ds$Cover_2012, 0)
 herb.table.ds$Cover_2021 <- round(herb.table.ds$Cover_2021, 0)
+
 
 
 # Invasive/native and gfs -------------------------------------------------
@@ -571,6 +591,8 @@ for(i in 1:nrow(ingfs.channel)) {
     ingfs.channel$Year[i] <- "2021-01-01"
   }
 }
+
+ingfs.channel$Year <- as.Date(ingfs.channel$Year)
 
 ingfs.channel.known <- ingfs.channel %>% 
   filter(ingfst %in% c("Invasive forb", "Invasive grass", "Native forb",
@@ -601,10 +623,6 @@ ingfs.known.plot.ds <- ggplot(ingfs.channel.known, aes(x = Year, y = mean,
   theme(legend.position = "bottom")
 ingfs.known.plot.ds
 
-tiff("0128_Data sharing/InNatGFS cover.tiff", units = "in", height = 5, width = 7, res = 300)
-ingfs.known.plot.ds
-dev.off()
-
 
 
 # Invasive/native and grass/forb ------------------------------------------
@@ -634,6 +652,8 @@ for(i in 1:nrow(ingf.channel)) {
   }
 }
 
+ingfs.channel$Year <- as.Date(ingfs.channel$Year)
+
 ingfs.channel.known <- ingfs.channel %>% 
   filter(ingfst %in% c("Invasive forb", "Invasive grass", "Native forb",
                        "Native grass"))
@@ -661,9 +681,11 @@ ingf.known.plot.ds <- ggplot(ingfs.channel.known, aes(x = Year, y = mean,
   theme(legend.position = "bottom")
 ingf.known.plot.ds
 
-tiff("0128_Data sharing/InNatGF cover.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/InNatGF-cover.tiff", 
+     units = "in", height = 5, width = 7, res = 300)
 ingf.known.plot.ds
 dev.off()
+
 
 
 # Richness ----------------------------------------------------------------
@@ -699,6 +721,8 @@ for(i in 1:nrow(richness.channel)) {
   }
 }
 
+richness.channel$Year <- as.Date(richness.channel$Year)
+
 richness.channel$Channel <- factor(richness.channel$Channel,
                                    levels = c("Channel 12", "Channel 19",
                                               "Channel 13", "Channel 21"))
@@ -719,10 +743,6 @@ richness.plot.ds <- ggplot(richness.channel, aes(x = Year, y = mean,
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
 richness.plot.ds
-
-tiff("0128_Data sharing/Richness.tiff", units = "in", height = 4, width = 6, res = 300)
-richness.plot.ds
-dev.off()
 
 
 richness.channel[ , "channel.trt"] <- NA
@@ -746,14 +766,15 @@ richness.plot.fw.ds <- ggplot(richness.channel, aes(x = Year, y = mean,
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   xlab(NULL) +
   ylab("Number of species") +
-  ggtitle("Species richness") +
+  ggtitle("Perennial species richness") +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
   facet_wrap(~channel.trt)
 richness.plot.fw.ds
 
-tiff("0128_Data sharing/Richness_FW.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/Richness_FW.tiff", 
+     units = "in", height = 5, width = 7, res = 300)
 richness.plot.fw.ds
 dev.off()
 
@@ -806,6 +827,8 @@ for(i in 1:nrow(shannon.channel)) {
   }
 }
 
+shannon.channel$Year <- as.Date(shannon.channel$Year)
+
 shannon.channel$Channel <- factor(shannon.channel$Channel,
                                   levels = c("Channel 12", "Channel 19",
                                              "Channel 13", "Channel 21"))
@@ -826,10 +849,6 @@ shannon.plot.ds <- ggplot(shannon.channel, aes(x = Year, y = mean,
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
 shannon.plot.ds
-
-tiff("0128_Data sharing/Shannon.tiff", units = "in", height = 4, width = 6, res = 300)
-shannon.plot.ds
-dev.off()
 
 shannon.channel[ , "channel.trt"] <- NA
 for(i in 1:nrow(shannon.channel)) {
@@ -852,14 +871,15 @@ shannon.plot.fw.ds <- ggplot(shannon.channel, aes(x = Year, y = mean,
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   xlab(NULL) +
   ylab("Shannon diversity index") +
-  ggtitle("Plant diversity") +
+  ggtitle("Perennial plant diversity") +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
   facet_wrap(~channel.trt)
 shannon.plot.fw.ds
 
-tiff("0128_Data sharing/Shannon_FW.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/Shannon_FW.tiff", 
+     units = "in", height = 5, width = 7, res = 300)
 shannon.plot.fw.ds
 dev.off()
 
@@ -891,7 +911,8 @@ rain.plot.ds <- ggplot(rain, aes(x = Date, y = Avg)) +
   theme_bw(base_size = 14)
 rain.plot.ds
 
-tiff("0128_Data sharing/Rain.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/2022-01-28_Data-sharing_updated-2022-09/Rain.tiff", 
+     units = "in", height = 5, width = 7, res = 300)
 rain.plot.ds
 dev.off()
 
