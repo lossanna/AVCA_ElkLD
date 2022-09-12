@@ -85,7 +85,7 @@ vis.boxplot <- function(dat, y, ylab) {
          aes(x = Channel,
              y = y,
              fill = Channel)) +
-    geom_boxplot() +
+    geom_boxplot(outlier.shape = NA) +
     geom_jitter() +
     theme_bw() +
     xlab(NULL) +
@@ -97,8 +97,8 @@ vis.boxplot <- function(dat, y, ylab) {
 vis.boxplot(dat.2021, dat.2021$Cover, "Total plant cover (%)")
 vis.boxplot(dat.2021, dat.2021$Herbaceous, "Herbaceous cover (%)")
 vis.boxplot(dat.2021, dat.2021$Woody, "Woody cover (%)")
-vis.boxplot(dat.2021, dat.2021$TN_perc, "Soil N (%)") # Appear to be outliers
-vis.boxplot(dat.2021, dat.2021$TC_perc, "Soil C (%)") # Appear to be outliers
+vis.boxplot(dat.2021, dat.2021$TN_perc, "Soil N (%)") # Appears to be outlier
+vis.boxplot(dat.2021, dat.2021$TC_perc, "Soil C (%)") # Appears to be outlier
 vis.boxplot(dat.2021, dat.2021$OM_perc, "Organic matter (%)")
 vis.boxplot(dat.2021, dat.2021$Elev_Diff, "Elevation difference, 2011-2019 (m)")
 vis.boxplot(dat.2021, dat.2021$rich, "Perennial plant richness")
