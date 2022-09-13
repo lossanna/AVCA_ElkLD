@@ -978,6 +978,10 @@ ntherb <- inwood.known.nov %>%
 kruskal.test(Cover ~ Year, data = filter(ivherb, Channel == "Channel 12"))
 kruskal.test(Cover ~ Year, data = filter(ivherb, Channel == "Channel 13"))
 kruskal.test(Cover ~ Year, data = filter(ivherb, Channel == "Channel 21"))
+invherb.121321 <- ivherb %>% 
+  group_by(Channel, Year) %>% 
+  summarise(mean = mean(Cover),
+            .groups = "keep")
 
 ivherb19 <- ivherb %>% 
   filter(Channel == "Channel 19")
