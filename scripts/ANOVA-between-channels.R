@@ -62,4 +62,4 @@ hsd.om
 
 # Save --------------------------------------------------------------------
 
-save.image("ANOVA-between-channels.RData")
+save.image("RData/ANOVA-between-channels.RData")
