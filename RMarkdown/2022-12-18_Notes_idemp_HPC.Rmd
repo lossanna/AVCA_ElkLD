@@ -1,0 +1,189 @@
+---
+title: "Notes for demultiplexing 16S and ITS data with `idemp` using HPC"
+author: "Lia Ossanna"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Background for this guide
+- Required files include: raw data in the form of `I1.fastq.gz`, `R1.fastq.gz`, and `R2.fastq.gz`; a list of barcodes used during sample preparation.
+- These steps for demultiplexing use a mix of RStudio on personal computer and a UA HPC server.
+  + It is faster to demultiplex solely from the HPC server shell, but switching between platforms is likely easier for those less familiar with command-line interface (using the shell/terminal directly).
+- Throughout the code, change `16S` to `ITS` if necessary (the process for demultiplexing ITS data is otherwise identical for 16S data).
+- Knowledge of basic Unix shell commands is useful (`cd`, `pwd`, `ls`, `mv`) to navigate through directories from the shell/terminal.
+
+### High performance computing (HPC)
+- Connection to a UA HPC server is required. A very helpful guide for using UA HPC servers can be found [here](https://public.confluence.arizona.edu/display/UAHPC/User+Guide).
+- Access UA HPC servers at <https://ood.hpc.arizona.edu/>.
+- These instructions will submit jobs to the Puma server via `SLURM` script.
+  
+### Recomended file organization in UA HPC
+- Files for active projects should be stored in the `/groups/PI/` directory, which contains 500 GB of permanent storage.
+  - Once you are done with your project, save your files somewhere else and delete them from the UA HPC server to free up room for other people.
+  - If there is no space in `/groups/PI/`, use `/xdisk/PI/` instead, which is 2 TB of free storage. This is NOT permanent, however, and can only be saved for up to 300 days (and requires renewing).
+- Make a directory (folder) for personal use, and within that directories for each project.
+- Directories used in this example:
+  + `/groups/PI/netid/project_16S`
+  + `/groups/PI/netid/project_16S/scripts`
+  + `/groups/PI/netid/project_16S/raw_data`
+  + `/groups/PI/netid/project_16S/16S_demultiplexed` (This directory will be created automatically when running `idemp`)
+  
+
+### 1) Generate reverse-complement barcode list
+- This step is done on a personal computer using RStudio.
+- We generate a list of the reverse-complement barcodes, because during sample preparation barcodes are added to the reverse primer, but the barcodes Daniel provides are forward.
+- Ensure that you have a list of barcodes from the UA Microbiome Core saved to a personal computer (versus the UA HPC server). The list should be a `.txt` file (or `.csv`) with the barcode in the first column and the sample ID in the second column.
+- Open RStudio and ensure that the working directory is set to the location of the barcode `.txt` file.
+- Run the code in the chunk below, changing the file name to yours in `read.table()` (the first line), and changing `16S` to `ITS` where necessary.
+```{r, eval=FALSE}
+library(seqinr)
+
+# Read in a tab-delimited file with the barcodes in the first column 
+  # and the corresponding sample names in the second column
+barcode <- read.table("16S_barcodes.txt", header = TRUE)	# change to your file name
+
+# Get reverse complement of barcodes 
+barcode$Barcode_revcomp <- sapply(barcode[ , 1], 
+                                  function(x) {
+                                    toupper(c2s(rev(comp(s2c(x)))))
+                                    }
+                                  )
+
+# Build dataframe
+barcode_revcomp <- data.frame("Barcode" = barcode$Barcode_revcomp, 
+                              "SampleID" = barcode[ , 2])
+
+# Write dataframe to table 
+write.table(barcode_revcomp, 
+            "16S_barcodes_rev.txt", 
+            sep = "\t", 
+            quote = F, 
+            row.names = F)
+```
+
+### 2) Create directories in UA HPC (if needed)
+- Log on to UA HPC via <https://ood.hpc.arizona.edu>. This takes you to the Open OnDemand dashboard, where you can access server shells and view directories (folders) like a file explorer (versus via command line).
+- Click Files --> /groups.
+- Find your PI's folder and navigate to it.
+- Create a personal directory in `/groups/PI/`.
+  + Click New Dir (at the top), and name your personal directory without spaces (your NetID is recommended; full path: `/groups/PI/netid/`).
+- Create project directory within personal directory (name directory "projectname_16S" or "projectname_ITS"; full path: `/groups/PI/netid/projectname_16S/`).
+- Create a "raw_data" directory within project directory (full path: `/groups/PI/netid/projectname_16S/raw_data`).
+- Create a "scripts" directory within project directory (full path: `/groups/PI/netid/projectname_16S/scripts`).
+- You should now have created the first three directories listed in the previous section.
+
+### 3) Upload `fastq.gz` files to `raw_data/`
+- Transfer `I1.fastq.gz`, `R1.fastq.gz`, and `R2.fastq.gz` files into `raw_data/` directory using a file transfer program (see [here](https://public.confluence.arizona.edu/display/UAHPC/Transferring+Data) for instructions).
+  + FileZilla is a free and open-source option that supports SFTP (Port 22); your NetID is your username, and your password is the one associated with your NetID/WebAuth.
+- If `fastq.gz` files are elsewhere in your UA HPC account, move them to the `raw_data/` directory using the command `mv path_old path_new` in the shell/terminal.
+
+### 4) Upload reverse-complement barcode list to `raw_data/`
+- Upload the reverse complement barcode `.txt` file generated in Step 1 to the `raw_data/` directory.
+  + The file is very small so you can upload directly from Open OnDemand portal 
+  (navigate to directory and click Upload in the top right corner).
+
+### 5) Access Puma shell
+- Return to the [Open OnDemand dashboard](https://ood.hpc.arizona.edu).
+- Open the shell.
+  + Click Clusters --> Shell Access.
+- The remaining steps will be carried out in the shell. The Puma shell is the default UA HPC cluster (Ocelote and ElGato are both older clusters).
+
+### 6) Install `idemp` (if needed)
+- You only need to install `idemp` to your UA HPC account once.
+- Download `idemp` from <https://https://github.com/yhwu/idemp>.
+- `idemp` files should be installed under the directory `groups/PI/`.
+- To do so, navigate to that directory using the command `cd path`.
+- Follow directions from GitHub, copying and pasting code under "Compile and test".
+- In the shell/terminal:
+```{r, eval=FALSE}
+# Navigate to correct directory
+cd /groups/PI
+
+# Copy and paste from GitHub
+git clone https://github.com/yhwu/idemp
+cd idemp
+make
+make test
+```
+
+
+### 7) Create and write `SLURM` script
+- Navigate to `scripts/` folder using the command `cd path`.
+  + Example: `cd /groups/PI/netid/project_16S/scripts`.
+- Create a file that will become the script used to submit job to the Puma server using the command `touch filename`.
+  + Example: `touch 16S_demultiplex.slurm`
+- Edit the file by using the command `nano filename` (`nano` is a text editor built into the Puma shell).
+  + Example: `nano 16S_demultiplex.slurm`
+- Copy and paste the following code into the text editor, changing `16S` to `ITS` where necessary, changing `PI` to appropriate name, and changing paths for files, if they are different than example ones. Then save the file using `Ctrl+O` and then hitting `Enter`, and exit the text editor using `Cntrl+X`.
+  + Note: Because this document was made in `RMarkdown`, the first chunk of code looks like comments because they start with `#`. In `Linux` (the Puma shell), these are not comments, but very necessary commands. Comments in this code contain a space: `# comment`.
+```{r, eval=FALSE}
+#!/bin/bash
+
+#SBATCH --job-name=16S_demultiplex
+#SBATCH --nodes=1
+#SBATCH --ntasks=94
+#SBATCH --time=00:30:00
+#SBATCH --account=gornish
+#SBATCH --partition=standard
+#SBATCH --mail-type=END
+#SBATCH --mail-user=lossanna@arizona.edu
+
+# Set working directory
+cd /groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data
+
+# demultiplex using idemp
+/groups/egornish/software/idemp/idemp \
+-b 16S_barcodes_rev.txt \
+-I1 16S_I1.fastq.gz \
+-R1 16S_R1.fastq.gz \
+-R2 16S_R2.fastq.gz \
+-m 1 \
+-o 16S_demultiplexing/ # change me to your path
+```
+
+### 8) Submit the job 
+- Submit the job using the command `sbatch SLURMscript`.
+	+ Example: `sbatch 16S_demultiplexed.slurum`.
+- You will be provided a job number (all numerical digits). The job number is needed to monitor the status of the job, or view details about the job from the shell/terminal.
+
+### 9) Monitor the job
+-	Check the status of the job using the command `squeue jobnumber`
+- See [this page](https://public.confluence.arizona.edu/display/UAHPC/Running+Jobs+with+SLURM) of the UA HPC guide for more details. You can also add to the `SLURM` script to have an email sent to you when the job is finished.
+-	For reference, 68 samples can be demultiplexed in about 22 minutes using the HPC conditions in this example.
+
+
+### Breakdown of the `SLURM` script
+#### First chunk
+- `#!/bin/bash` means we are executing the script using the Bash shell.
+- The first 7 lines that start with `#SBATCH` specify the parameters of the job (see [this page](https://public.confluence.arizona.edu/display/UAHPC/Running+Jobs+with+SLURM#RunningJobswithSLURM-batch-directivesBatchJobDirectives) of the UA HPC guide for more details).
+- `--job-name` is the name of the job.
+- `--nodes` is the number of nodes to be used, which relates to the computing power requested; on Puma, one node has 94 cores (a medium-grade laptop usually has about 4 cores).
+- `--ntasks` is the number of cores per node requested.
+-	`--time` specifies the time limit (the real-time/wall-clock time the job will be allowed to run).
+	+ In this example, the job will be terminated after an hour regardless of if it is finished; however, 1 hour will be plenty of time.
+-	`--partition` can be `standard` or `windfall`, and refers to priority in assigning jobs, where `windfall` has lower priority (usually you will use `standard`, unless your PI uses the HPC system a lot).
+- `--account` is the name of the PI of whom to bill the hours/computing time.
+  - Note that for Elise Gornish's group, the group name is "gornish" even though her NetID and the `/groups` folder is "egornish".
+- `--mail-type=END` denotes that you will be emailed when the job is finished (`END`; can also be emailed when the job starts with `BEGIN`, or if it fails with `FAIL`).
+- `--mail-user` is the email to send the notifications to.
+-	These commands are standard for submitting any job to Puma.
+
+#### Second chunk
+-	The next line after the break is a command (`cd`) to set the working directory.
+
+##### Third chunk
+- The first line (after the comment) is the path to where the `idemp` file is located that contains the actual demultiplexing code; it is within the `idemp` directory created when `idemp` was installed.
+- `-b` is the path to where the barcode labels are located; we have to use the reverse complements.
+- `-I1` is the `I1.fastq.gz` file.
+-	`-R1` is the `R1.fastq.gz` file.
+-	`-R2` is the `R2 fastq.gz` file.
+-	`-m` is the number of base mismatches allowed; the default is `1`.
+-	`-o` is the output folder where the demultiplexed files will be sent.
+
