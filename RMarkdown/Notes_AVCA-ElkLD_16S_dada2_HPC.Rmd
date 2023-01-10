@@ -1,0 +1,404 @@
+---
+title: "Notes for 16S `dada2` on HPC for AVCA-ElkLD project"
+author: "Lia Ossanna"
+date: "2023-01-09"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load RData 
+load("C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexing/16S_dada2_HPC_small.RData")
+path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexing" 
+```
+
+
+## Background
+- Total of 69 samples to process:
+  - 62 soil samples
+  - 7 blanks (4 DNA extraction blanks, 2 blanks from sequencing, and one "unsigned" file)
+- Samples were sequenced at the [UA Microbiome Core](https://peds.arizona.edu/steele/microbiome-core) and demultiplexed using `idemp` (see `Notes_idemp_HPC.html` document for instruction).
+- These are annotated notes of the `DADA2` pipeline detailed in [this tutorial](https://benjjneb.github.io/dada2/tutorial.html) (tutorial v1.16) for filtering and trimming sequences, merging pair-ends, and constructing the ASV table and taxonomy tables. Comments about the code are written beneath the corresponding chunk.
+
+## High performance computing (HPC)
+- This code was run on the UA HPC Puma server through an interactive RStudio session with 94 cores, and a default 5 gb of RAM per core. See the  [guide](https://public.confluence.arizona.edu/display/UAHPC/User+Guide), and access UA HPC servers at <https://ood.hpc.arizona.edu/>. 
+- Run entirely on HPC server, but in multiple sessions.
+- R objects (`.RData`) generated were saved at intermediate steps because a single file was too large (the server tends to crash when the `.RData` file is >10 GB), and because the script was run in multiple sessions. Steps to save intermediate work are noted and discussed.
+  
+  
+## Getting ready
+### Load required packages
+```{r, message=FALSE}
+library(dada2)
+```
+- Used `dada` version `1.16.0`.
+
+### Set working directory
+```{r, eval=FALSE}
+# Set working directory
+setwd("/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing/")
+```
+- All the demultiplexed FASTQ files were transferred onto my HPC account using FileZilla Pro (without SSH).
+
+### Define working folder path
+```{r, eval=FALSE}
+# Define working folder path 
+path <- "/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing/" 
+```
+
+### List files in working folder
+```{r}
+# List the files in folder
+list.files(path)
+```
+- All files are there (ending in `.fastq.gz`), with a forward and reverse file for all samples.
+
+### Create lists of forward and reverse reads
+```{r}
+# Read the names of R1 and R2 files
+fnFs <- sort(list.files(path, pattern = "R1.*", full.names = TRUE))
+fnRs <- sort(list.files(path, pattern = "R2.*", full.names = TRUE))
+fnFs[1:3]
+
+# Check for matching lengths
+length(fnFs)
+length(fnFs) == length(fnRs)
+```
+
+
+### Extract sample names
+```{r}
+sample.names <- gsub("Undetermined_S0_L001_R1_001.fastq.gz_", "", basename(fnFs))
+sample.names = gsub(".fastq.gz", "", sample.names)
+sample.names[1:3]
+```
+
+
+## Inspect read quality profiles
+```{r}
+# Inspect quality of sequences in files
+plotQualityProfile(fnFs[1:10]) # forward
+plotQualityProfile(fnRs[1:10]) # reverse
+```
+
+- The quality score seems good for the forward reads for the first `140` nucleotides (nt), so I trimmed the first and last `10` nt of the `150`; this is the general recommended practice.
+- The quality of the reverse reads seems questionable? Reverse reads are always of lower quality, but these seem especially bad (worse than ones from SBAR and Carlota projects), and there's not just a certain drop-off point where they become bad. However, "DADA2 incorporates quality information into its error model", so hopefully this is enough, because at this point I think it relates to the quality of DNA extracted, and I am not going to go back and re-extract.
+
+
+## Filter and trim
+### Create new fastq files for trimming and filtering
+```{r, eval=FALSE}
+# Place filtered files in filtered/ subdirectory
+filtFs <- file.path(path, "filtered", paste0(sample.names, "_F_filt.fastq.gz"))
+filtRs <- file.path(path, "filtered", paste0(sample.names, "_R_filt.fastq.gz"))
+```
+```{r}
+filtFs[1:3]
+```
+
+
+### Trim
+```{r, eval=F}
+# Trim forwards and reverses at 140bp based on quality plots; also trim first 10 bp as recommended
+out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen = c(140, 140),
+                     maxN = 0, maxEE = c(2, 2), truncQ = 2, rm.phix = TRUE,
+                     compress = TRUE, multithread = TRUE, trimLeft = 10) # On Windows set multithread=FALSE
+
+out.df <- as.data.frame(out.df)
+```
+```{r}
+rownames(out.df) <- sample.names
+```
+- Took about 4.5 minutes on HPC.
+- `filterAndTrim()` trims off the first `10` nt, and trims again at position `140` nt for forward and reverse reads. This effectively means we are trimming off the first and last `10` nt as recommended from the `150` nt range we saw from the quality score plots.
+- The first four arguments of `filterAndTrim()` specify the input and output files for the forward and reverse reads.
+- `truncLen = c(140, 140)` means we are truncating the forward and reverse reads at position `140` nt.
+- `maxN = 0` means that no sequences are allowed with unknown nucleotides (N). This is a standard default.
+- `maxEE = c(2, 2)` means that reads with more than `2` expected errors will be discarded. Expected errors are based on the quality score. This is a standard default.
+- `truncQ = 2` truncates reads at the first instance of a quality score less than `2`. This is a standard default.
+- `rm.phix = TRUE` is another standard default. From R Documentation: "If `TRUE`, discard reads that match against the phiX genome, as determined by `isPhiX`".
+- `compress = TRUE` means that the output fastq files are gzipped (`.gz`).
+- `multithread` must be set to `FALSE` on Windows because Windows does not support multithreading in this instance.
+- `trimLeft = 10` will remove the first `10` nt, as recommended practice.
+
+### Check how many reads were removed
+```{r}
+# Check out.df to see if filtering was too stringent
+head(out.df)[ , 1:2]
+range(out.df$reads.out)
+```
+- Inspect `out` table to see how many reads were removed in filtering. 
+- The lower end of the range is so low because this includes blanks, which don't have many reads.
+
+```{r, eval=FALSE}
+# How much of the data was retained in each sample? The % column is added to out
+out.df$Retained = out.df$reads.out / out.df$reads.in * 100
+```
+```{r}
+head(out.df)
+summary(out.df$Retained)
+```
+- The `Retained` column is the percent of reads retained after trimming and filtering.
+- The first 6 samples listed here have ~90% of the reads retained, which is to be expected.
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save.image("16S_dada2_HPC1.RData")
+```
+- Save the first intermediate `.RData` file, because all the objects created are pretty small, but learning the error rates takes a while to run.
+
+## Learn the error rates
+### Model error
+```{r, eval=FALSE}
+# Model and learn error rates in filtered sequences, this takes a while
+errF <- learnErrors(filtFs, multithread = TRUE, verbose = TRUE)
+errR <- learnErrors(filtRs, multithread = TRUE, verbose = TRUE)
+```
+- The forward reads took 38 minutes and the reverse reads took 30 minutes to run on HPC with 94 cores and 5 gb/core. The algorithm is allowed ten rounds to reach convergence; here, the error rates for the forward and reverse reads converged after 7 rounds.
+- The output for `errF` and `errR` in was: `112070660 total bases in 862082 reads from 4 samples will be used for learning the error rates.`
+
+### Plot error rates
+```{r}
+# Plot error rates that are based on nucleotide transition probabilities and quality scores; observed scores (black) should match red lines (expected)
+plotErrors(errF, nominalQ = TRUE)
+plotErrors(errR, nominalQ = TRUE)
+```
+
+- These plots show the expected trends. For the A2A, C2C, G2G, and T2T plots the black lines (observed scores) match the red lines (expected scores) well.
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save.image("16S_dada2_HPC1.RData")
+```
+- Save the first intermediate `.RData` file, because all the objects created are pretty small, but learning the error rates takes a while to run.
+
+
+## Sample inference
+### Remove replicate sequences
+```{r, eval=F}
+# Reduce computation time by dereplicating identical sequences
+derepFs <- derepFastq(filtFs, verbose = TRUE)
+derepRs <- derepFastq(filtRs, verbose = TRUE)
+
+# Name the derep-class objects by the sample names
+names(derepFs) <- sample.names
+names(derepRs) <- sample.names
+```
+- Takes about 2-3 seconds to process each sample on HPC with 94 cores and 5 gb/core.
+- The output is something like "`Encountered 98936 unique sequences from 214422 total sequences read.`" for each sample.
+
+
+### Save intermeditae `.RData`
+```{r, eval=FALSE}
+save(derepFs, file = "16S_dada2_HPC2.RData") # save separately because it is 10.1 GB
+save(derepRs, file = "16S_dada2_HPC3.RData") # save separately because it is 13.3 GB
+```
+
+
+
+### Infer true sequence variants
+```{r, eval=FALSE}
+# Sample inference, this takes a while
+dadaFs <- dada(derepFs, err = errF, multithread = TRUE)
+dadaRs <- dada(derepRs, err = errR, multithread = TRUE)
+```
+- The first line of code took about 2 hours to run on HPC with 94 cores and 5 gb/core.
+  - Most samples take 1-1.5 minutes to run (it varies based on how many reads and unique sequences the sample has).
+  - The last sample, Sample 69, was of all the "unsigned" reads and was `Sample 69 - 1698261 reads in 1265578 unique sequences.`, and took about 40 minutes to run just this sample, which was way bigger than the rest (for comparison, Sample 1 was `Sample 1 - 214422 reads in 98936 unique sequences.`).
+- The second line of code took about 1 hr and 40 minutes to run.
+- The output is something like "`Sample 1 - 214422 reads in 98936 unique sequences.`" and goes through each sample. 
+
+### Inspect the `dada-class` object
+```{r}
+dadaFs[[1]]
+```
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(dadaFs, dadaRs, file = "16S_dada2_HPC4.RData")
+```
+
+
+
+## Merge pair-end reads
+### Join forward and reverse reads
+```{r, eval=FALSE}
+# Join forward and reverse reads
+mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose = TRUE)
+```
+- It takes about 10-20 seconds to merge each sample on HPC with 94 cores at 5 gb/core.
+- The output is something like "`131280 paired-reads (in 1993 unique pairings) successfully merged out of 202954 (in 28881 pairings) input.`", and will go through each sample.
+- The default is an overlap of 12 bp.
+
+### Inspect merger
+```{r}
+# Inspect the merger data.frame from the first sample
+head(mergers[[1]])
+```
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(dadaFs, dadaRs, mergers, 
+     file = "16S_dada2_HPC4.RData")
+```
+
+
+## Construct sequence table
+### Make ASV table
+```{r, eval=FALSE}
+seqtab <- makeSequenceTable(mergers)
+```
+```{r}
+dim(seqtab)
+```
+
+
+### Inspect ASV lengths
+```{r}
+# Inspect sequence lengths: Most amplicon sequence variants are 233bp
+table(nchar(getSequences(seqtab)))
+```
+
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(dadaFs, dadaRs, mergers, seqtab,
+     file = "16S_dada2_HPC4.RData")
+```
+
+
+## Remove chimeras
+```{r, eval=FALSE}
+seqtab.nochim <- removeBimeraDenovo(seqtab, 
+                                    method = "consensus", 
+                                    multithread = TRUE, 
+                                    verbose = TRUE)
+```
+- Takes <1 min to run on HPC with 94 cores and 5 gb/core.
+- The output in this example is: "`Identified 10325 bimeras out of 32399 input sequences.`"
+```{r}
+dim(seqtab.nochim)
+```
+
+
+
+```{r}
+# How much of the dataset is left after chimera identification and removal?
+sum(seqtab.nochim) / sum(seqtab) * 100
+```
+- There are about 94% of the ASVs retained after removing chimeras.
+- >25% of ASVs removed as chimeras should be cause for worry. See [this tutorial FAQ](https://benjjneb.github.io/dada2/faq.html#why-are-so-many-of-my-reads-being-removed-as-chimeras) for more details.
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(dadaFs, dadaRs, mergers, seqtab, seqtab.nochim,
+     file = "16S_dada2_HPC4.RData")
+```
+
+
+## Track reads through pipeline
+```{r}
+# Create function
+getN <- function(x) sum(getUniques(x))
+
+# Create table
+track <- cbind(out.df, sapply(dadaFs, getN), sapply(dadaRs, getN), sapply(mergers, getN), rowSums(seqtab.nochim))
+
+# Rename columns
+colnames(track) <- c("input", 
+                     "filtered", 
+                     "Retained %", 
+                     "denoisedF", 
+                     "denoisedR", 
+                     "merged", 
+                     "nonchim")
+rownames(track) <- sample.names
+
+# Total percent of dataset remaining
+track$InputRetained <- track$nonchim / track$input * 100
+head(track)
+summary(track$InputRetained)
+
+track$FilteredRetained <- track$nonchim / track$filtered * 100
+head(track)
+summary(track$FilteredRetained)
+```
+- Samples should have a majority of reads retained, so even if there is a large number of chimeras, they should relatively low in abundance. See [this tutorial FAQ](https://benjjneb.github.io/dada2/faq.html#why-are-so-many-of-my-reads-being-removed-as-chimeras) for more details.
+
+```{r}
+# Track soil samples only
+track.soil <- track[1:62, ]
+summary(track.soil$InputRetained)
+summary(track.soil$FilteredRetained)
+```
+- Examine soil samples only, not including blanks or the unsigned sample.
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(dadaFs, dadaRs, mergers, seqtab, seqtab.nochim, track, track.soil,
+     file = "16S_dada2_HPC4.RData")
+```
+
+
+## Assign taxonomy
+```{r, eval=FALSE}
+taxa <- assignTaxonomy(seqtab.nochim, 
+                       "/home/u18/lossanna/silva_v138.1/silva_nr99_v138.1_train_set.fa.gz", 
+                       multithread = TRUE)
+
+taxa <- addSpecies(taxa, "/home/u18/lossanna/silva_v138.1/silva_species_assignment_v138.1.fa.gz")
+```
+- The first line took about 8 minutes with 94 cores and 5 gb/core; the second line took 15 minutes. There is really no way to track progress (even with `verbose = TRUE`), so you just have to wait.
+- Zenodo link for Silva v138.1 download: <https://zenodo.org/record/4587955>.
+- `addSpecies` is required because the species information comes from a separate database file.
+- Output of the second line: `282 out of 22095 were assigned to the species level. Of which 229 had genera consistent with the input table.`
+
+## Create ASV rep table
+```{r}
+# Create ASV rep table
+ASV.rep <- data.frame(rep = colnames(seqtab.nochim))
+
+head(ASV.rep)
+
+# Add ASV number column
+ASV.rep$ASV <- c(1:ncol(seqtab.nochim))
+
+head(ASV.rep)
+
+# Add ASV_ to column
+ASV.rep$ASV <- paste("ASV_", ASV.rep$ASV, sep = "")
+
+head(ASV.rep)
+```
+
+## Add ASV names to other tables
+```{r}
+# Change the representative sequence in ASV and taxonomy tables to ASV ID
+colnames(seqtab.nochim) <- ASV.rep$ASV
+rownames(taxa) <- ASV.rep$ASV
+```
+
+
+## Save tables as `.txt` files
+```{r, eval=FALSE}
+# Save ASV table, taxonomy table and ASV rep
+write.table(taxa, "16S_taxa_table.txt", sep = "\t", quote = FALSE)
+write.table(seqtab.nochim, "16S_asv_table.txt", sep = "\t", quote = FALSE)
+write.table(track, "16S_sequence_pipeline_stats.txt", sep = "\t", quote = FALSE)
+write.table(ASV.rep,"16S_ASV_rep.txt",sep = "\t", quote = FALSE)
+```
+
+### Save intermediate `.RData`
+```{r, eval=F}
+save(dadaFs, dadaRs, mergers, seqtab, seqtab.nochim, track, track.soil, taxa, ASV.rep,
+     file = "16S_dada2_HPC4.RData")
+
+# Remove large objects and save workspace
+rm(derepFs, derepRs)
+save.image("16S_dada2_HPC_small.RData")
+```
+- The only files that are very large and cause the system to crash are the `derepFs` and `derepRs` objects. Remove those, and all the objects can be saved in a single file.

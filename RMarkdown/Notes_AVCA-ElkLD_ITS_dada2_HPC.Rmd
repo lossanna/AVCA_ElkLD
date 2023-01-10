@@ -1,0 +1,578 @@
+---
+title: "Notes for ITS `dada2` on HPC for AVCA-ElkLD project"
+author: "Lia Ossanna"
+date: "2023-01-10"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load RData 
+load("C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexing/ITS_dada2_HPC_small.RData")
+path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexing" 
+```
+
+
+## Background
+- Total of 69 samples to process:
+  - 62 soil samples
+  - 7 blanks (4 DNA extraction blanks, 2 blanks from sequencing, and one "unsigned" file)
+- Samples were sequenced at the [UA Microbiome Core](https://peds.arizona.edu/steele/microbiome-core) and demultiplexed using `idemp` (see `Notes_idemp_HPC.html` document for instruction).
+- These are annotated notes of the `DADA2` pipeline detailed in [this tutorial](https://benjjneb.github.io/dada2/tutorial.html) (ITS tutorial v1.8) for filtering and trimming sequences, merging pair-ends, and constructing the ASV table and taxonomy tables. Comments about the code are written beneath the corresponding chunk.
+
+## High performance computing (HPC)
+- This code was run on the UA HPC Puma server through an interactive RStudio session with 94 cores, and a default 5 gb of RAM per core. See the  [guide](https://public.confluence.arizona.edu/display/UAHPC/User+Guide), and access UA HPC servers at <https://ood.hpc.arizona.edu/>. 
+- Run entirely on HPC server, but in multiple sessions.
+- R objects (`.RData`) generated were saved at intermediate steps because a single file was too large (the server tends to crash when the `.RData` file is >10 GB), and because the script was run in multiple sessions. Steps to save intermediate work are noted and discussed.
+
+  
+## Getting ready
+- The steps in this section are identical to 16S analysis.
+
+### Load required packages
+```{r, message=FALSE}
+library(dada2)
+library(tidyverse)
+```
+- Used `dada` version `1.16.0`.
+
+### Set working directory
+```{r, eval=FALSE}
+# Set working directory
+setwd("/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/")
+```
+- All the demultiplexed FASTQ files were transferred onto my HPC account using FileZilla Pro.
+
+### Define working folder path
+```{r, eval=FALSE}
+# Define working folder path 
+path <- "/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/" 
+```
+
+### List files in working folder
+```{r}
+# List the files in folder
+list.files(path)
+```
+
+### Create lists of forward and reverse reads
+```{r}
+# Read the names of R1 and R2 files
+fnFs <- sort(list.files(path, pattern = "R1.*", full.names = TRUE))
+fnRs <- sort(list.files(path, pattern = "R2.*", full.names = TRUE))
+fnFs[1:3]
+```
+
+```{r}
+# Check for matching lengths
+length(fnFs)
+length(fnFs) == length(fnRs)
+```
+
+
+## **Identify primers**
+- This section is ITS-specific.
+
+### Assign primer sequences
+```{r}
+# Assign primer sequences
+FWD <- "CTTGGTCATTTAGAGGAAGTAA"  # forward primer sequence
+REV <- "GCTGCGTTCTTCATCGATGC"  # reverse primer sequence
+```
+- These are the primer sequences that UA Microbiome Core uses. They are the universal forward primer ITS1 and reverse primer ITS2.
+
+### Verify presence and orientation of primers
+```{r, eval=FALSE}
+# Verify presence and orientation of primers
+allOrients <- function(primer) {
+  # Create all orientations of the input sequence
+  require(Biostrings)
+  dna <- DNAString(primer)  # The Biostrings works w/ DNAString objects rather than character vectors
+  orients <- c(Forward = dna, Complement = complement(dna), Reverse = reverse(dna), 
+               RevComp = reverseComplement(dna))
+  return(sapply(orients, toString))  # Convert back to character vector
+}
+
+FWD.orients <- allOrients(FWD)
+REV.orients <- allOrients(REV)
+```
+```{r}
+FWD.orients
+REV.orients
+```
+- Verify that the forward, complement, reverse, and reverse complement of the primers is present.
+
+### Pre-filter to remove Ns
+```{r, eval=FALSE}
+# Prefilter to remove sequences with Ns and put N-filtered files in filtN subdirectory
+fnFs.filtN <- file.path(path, "filtN", basename(fnFs)) 
+fnRs.filtN <- file.path(path, "filtN", basename(fnRs))
+filterAndTrim(fnFs, fnFs.filtN, fnRs, fnRs.filtN, maxN = 0, multithread = TRUE)
+```
+- Takes about 7 minutes to run on HPC with 94 cores and 5 gb/core.
+- Removes sequences that contain ambiguous bases (Ns).
+- Creates new copies of `.fastq.gz` files and saves them in a subdirectory named `filtN`.
+
+### Count the presence of primers
+```{r, eval=FALSE}
+primerHits <- function(primer, fn) {
+  # Counts number of reads in which the primer is found
+  nhits <- vcountPattern(primer, sread(readFastq(fn)), fixed = FALSE)
+  return(sum(nhits > 0))
+}
+
+primerhits1 <- rbind(FWD.ForwardReads = sapply(FWD.orients, primerHits, fn = fnFs.filtN[[1]]), 
+                     FWD.ReverseReads = sapply(FWD.orients, primerHits, fn = fnRs.filtN[[1]]), 
+                     REV.ForwardReads = sapply(REV.orients, primerHits, fn = fnFs.filtN[[1]]), 
+                     REV.ReverseReads = sapply(REV.orients, primerHits, fn = fnRs.filtN[[1]]))
+
+primerhits8 <- rbind(FWD.ForwardReads = sapply(FWD.orients, primerHits, fn = fnFs.filtN[[8]]), 
+                     FWD.ReverseReads = sapply(FWD.orients, primerHits, fn = fnRs.filtN[[8]]), 
+                     REV.ForwardReads = sapply(REV.orients, primerHits, fn = fnFs.filtN[[8]]), 
+                     REV.ReverseReads = sapply(REV.orients, primerHits, fn = fnRs.filtN[[8]]))
+
+```
+```{r}
+primerhits1
+primerhits8
+```
+- Takes about 0.5-1 minute to make each table.
+
+
+## **Remove primers using `cutadapt`**
+- This section is ITS-specific.
+
+### Installing `cutadapt` on HPC
+`cutadapt` is a separate program that runs through `python`, so you must install `python` on your UA HPC account. I tried to create a virtual environment with `python 3.8`, the default version on the HPC server, but would get the following message when I tried to access `cutadapt` through `R`:  `/home/u18/lossanna/mypyenv/bin/python3: error while loading shared libraries: libpython3.8.so.1.0: cannot open shared object file: No such file or directory`. However, creating a virtual environment using `python 3.6` and installing `cutadapt` was successful. I don't know why `python 3.8` didn't work and `python 3.6` did, but I could not figure out that error message.
+
+### Assign path
+```{r, eval=FALSE}
+cutadapt <- "/home/u18/lossanna/mypyenv36/bin/cutadapt" 
+system2(cutadapt, args = "--version")
+```
+
+### Run `cutadapt`
+```{r, eval=FALSE}
+path.cut <- file.path(path, "cutadapt")
+if(!dir.exists(path.cut)) dir.create(path.cut)
+fnFs.cut <- file.path(path.cut, basename(fnFs))
+fnRs.cut <- file.path(path.cut, basename(fnRs))
+
+FWD.RC <- dada2:::rc(FWD)
+REV.RC <- dada2:::rc(REV)
+# Trim FWD and the reverse-complement of REV off of R1 (forward reads)
+R1.flags <- paste("-g", FWD, "-a", REV.RC) 
+# Trim REV and the reverse-complement of FWD off of R2 (reverse reads)
+R2.flags <- paste("-G", REV, "-A", FWD.RC) 
+# Run Cutadapt (this takes a while)
+for(i in seq_along(fnFs)) {
+  system2(cutadapt, args = c(R1.flags, R2.flags, "-n", 2, # -n 2 required to remove FWD and REV from reads
+                             "-o", fnFs.cut[i], "-p", fnRs.cut[i], # output files
+                             fnFs.filtN[i], fnRs.filtN[i])) # input files
+}
+```
+- The last line (`for` loop) took about 19 minutes to run on HPC with 94 cores.
+
+### Check for presence of primers
+```{r, eval=FALSE}
+primercut1 <- rbind(FWD.ForwardReads = sapply(FWD.orients, primerHits, fn = fnFs.cut[[1]]), 
+                   FWD.ReverseReads = sapply(FWD.orients, primerHits, fn = fnRs.cut[[1]]), 
+                   REV.ForwardReads = sapply(REV.orients, primerHits, fn = fnFs.cut[[1]]), 
+                   REV.ReverseReads = sapply(REV.orients, primerHits, fn = fnRs.cut[[1]])) 
+
+primercut8 <- rbind(FWD.ForwardReads = sapply(FWD.orients, primerHits, fn = fnFs.cut[[8]]), 
+                    FWD.ReverseReads = sapply(FWD.orients, primerHits, fn = fnRs.cut[[8]]), 
+                    REV.ForwardReads = sapply(REV.orients, primerHits, fn = fnFs.cut[[8]]), 
+                    REV.ReverseReads = sapply(REV.orients, primerHits, fn = fnRs.cut[[8]]))
+```
+```{r}
+primercut1 # Success! Primers are no longer detected in the cutadapted reads.
+primercut8
+```
+- It takes 0.5-1 minute to run each line and build the table.
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save.image("ITS_dada2_HPC1.RData")
+```
+
+
+## **Check `cutadapt` was successful and get sample names**
+- This section is similar to 16S analysis, but we are using `cutFs` and `cutRs` rather than `fnFs` and `fnRs`, because there were extra steps to remove Ns and primers.
+
+### Ensure matched files are present
+```{r, eval=FALSE}
+# Read the names of R1 and R2 files
+cutFs <- sort(list.files(path.cut, pattern = "R1.*", full.names = TRUE))
+cutRs <- sort(list.files(path.cut, pattern = "R2.*", full.names = TRUE))
+```
+```{r}
+# Check for matching lengths
+length(cutFs)
+length(cutFs) == length(cutFs) # TRUE
+```
+- There are `69` samples, as expected, and a matched forward and reverse file for each sample.
+
+### Extract sample names
+```{r}
+sample.names <- gsub("Undetermined_S0_L001_R1_001.fastq.gz_", "", basename(cutFs))
+sample.names <- gsub(".fastq.gz", "", sample.names)
+sample.names[1:3]
+```
+- The file names in `cutFs` are in the format `/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/Undetermined_S0_L001_R1_001.fastq.gz_xxx.fastq.gz`, where `xxx` is the sample name we want to extract to make the `sample.names` list.
+
+
+## Inspect read quality profiles
+- This is identical to 16S analysis.
+```{r}
+# Inspect quality of sequences in files
+plotQualityProfile(fnFs[1:10]) # forward
+plotQualityProfile(fnRs[1:10]) # reverse
+```
+
+- Again, the reverse reads look to be pretty bad quality but I am just going with it.
+
+
+## **Filter and trim**
+- The trimming parameters are slightly different for ITS data.
+
+### Create new fastq files for trimming and filtering
+```{r, eval=FALSE}
+# Place filtered files in filtered/ subdirectory
+filtFs <- file.path(path, "filtered", paste0(sample.names, "_F_filt.fastq.gz"))
+filtRs <- file.path(path, "filtered", paste0(sample.names, "_R_filt.fastq.gz"))
+```
+```{r}
+filtFs[1:3]
+```
+- This creates new copies of `.fastq.gz` files and saves them in a subdirectory named `filtered`.
+  - We now have 4 file versions for each sample: 
+    1. A version that has been demultiplexed and nothing else, located in the `ITS_demultiplexing/` folder.
+    2. A version that has been demultiplexed, and sequences with Ns have been removed, located in the `ITS_demultiplexing/filtNs/` subdirectory.
+    3. A version that has been demultiplexed, sequences with Ns removed, and primers removed, located in the `ITS_demultiplexing/cutadapt/` subdirectory.
+    4. A version that has been demultiplexed, sequences with Ns removed, primers removed, and filtered, located in the `ITS_demultiplexing/cutadapt/filtered/` subdirectory.
+
+### Trim
+```{r, eval=F}
+# Trim forwards and reverses at 140bp based on quality plots; also trim first 10 bp as recommended
+out <- filterAndTrim(cutFs, filtFs, cutRs, filtRs, maxN = 0, maxEE = c(2, 2), 
+                     truncQ = 2, minLen = 50, rm.phix = TRUE, compress = TRUE, multithread = TRUE) # On Windows set multithread=FALSE
+
+out.df <- as.data.frame(out.df)
+```
+```{r}
+rownames(out.df) <- sample.names
+```
+- Took about 3 minutes on HPC with 94 cores with 5 gb/core.
+- Output included the warning `Some input samples had no reads pass the filter.`, which refers to a DNA extraction blank that had 0 reads.
+  - This is not a problem, except in later pipeline steps there will only be `68` samples instead of `69`, so a few objects have to be altered to have matching lengths or number of rows.
+- The first four arguments of `filterAndTrim()` specify the input and output files for the forward and reverse reads.
+- `maxN = 0` means that no sequences are allowed with unknown nucleotides (N). This is a standard default.
+- `maxEE = c(2, 2)` means that reads with more than `2` expected errors will be discarded. Expected errors are based on the quality score. This is a standard default.
+- `truncQ = 2` truncates reads at the first instance of a quality score less than `2`. This is a standard default.
+- `rm.phix = TRUE` is another standard default. From R Documentation: "If `TRUE`, discard reads that match against the phiX genome, as determined by `isPhiX`".
+- `compress = TRUE` means that the output fastq files are gzipped (`.gz`).
+- `multithread` must be set to `FALSE` on Windows because Windows does not support multithreading in this instance, but can be set to `TRUE` when on the HPC server.
+
+### Check how many reads were removed
+```{r}
+# Check out.df to see if filtering was too stringent
+head(out.df)[ , 1:2]
+range(out.df$reads.out)
+
+# How much of the data was retained in each sample? The % column is added to out
+out.df$Retained = out.df$reads.out / out.df$reads.in * 100
+head(out.df)
+summary(out.df$Retained)
+```
+- The first samples have 50-70% of the reads retained.
+
+## Learn the error rates
+- This section is the same as 16S analysis.
+
+### Model error
+```{r, eval=FALSE}
+# Model and learn error rates in filtered sequences, this takes a while
+errF <- learnErrors(filtFs, multithread = TRUE, verbose = TRUE)
+errR <- learnErrors(filtRs, multithread = TRUE, verbose = TRUE)
+```
+- The forward reads took <2 minutes on HPC with 94 cores, and converged after 6 rounds.
+- The reverse reads took about 5 minutes, and converged after 7 rounds. 
+- The output for `errF` and `errR` was: `101045044 total bases in 669471 reads from 5 samples will be used for learning the error rates.`
+
+### Plot error rates
+```{r}
+# Plot error rates that are based on nucleotide transition probabilities and quality scores; observed scores (black) should match red lines (expected)
+plotErrors(errF, nominalQ = TRUE)
+plotErrors(errR, nominalQ = TRUE)
+```
+
+- These plots show the expected trends. For the A2A, C2C, G2G, and T2T plots the black lines (observed scores) match the red lines (expected scores) well.
+
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save.image("ITS_dada2_HPC1.RData")
+```
+
+
+## Sample inference
+- This section is the same as 16S analysis.
+
+### Remove replicate sequences
+```{r}
+# Find files with 0 reads retained
+out.df %>% 
+  filter(Retained == 0) 
+filtFs # blank3 is 67
+filtFs2 <- filtFs[-67]
+filtRs2 <- filtRs[-67]
+
+sample.names2 <- sample.names[-67]
+```
+- Because one of the samples (`avca-elkld_blank3`, DNA extraction blank 3) had 0 reads after filtering, no file was created for it, so we need to alter the `filtFs` and `filtRs` objects, which are vectors of all the file names, since no filtered file for `avca-elkld_blank3` exists.
+- Similarly, we must also create a new vector of sample names that excludes `avca-elkld_blank3`.
+
+```{r, eval=F}
+# Reduce computation time by dereplicating identical sequences
+derepFs <- derepFastq(filtFs2, verbose = TRUE)
+derepRs <- derepFastq(filtRs2, verbose = TRUE)
+
+# Name the derep-class objects by the sample names
+names(derepFs) <- sample.names2
+names(derepRs) <- sample.names2
+```
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(derepFs, derepRs, file = "ITS_dada2_HPC2.RData") # save as new file because derepFs is 3.9 GB and derepRs is derepRs is 8.6 GB
+```
+- At this stage, we can no longer save entire workspace image using `save.image()` because it causes the server to crash. Instead, we must save specific objects in multiple files using `save()`.
+
+
+### Infer true sequence variants
+```{r, eval=FALSE}
+# Sample inference, this takes a while
+dadaFs <- dada(derepFs, err = errF, multithread = TRUE)
+dadaRs <- dada(derepRs, err = errR, multithread = TRUE)
+```
+- The first line of code took about 5.5 min to run on HPC with 94 cores and 5 gb/core.
+  - Samples 1-67 took about 4 minutes to run.
+  - Sample 68 was of all the "unsigned" reads and was `Sample 68 - 424016 reads in 228714 unique sequences.`, and took about 1.5 minutes to run just this sample, which was bigger than the rest (for comparison, Sample 1 was `Sample 1 - 88636 reads in 28024 unique sequences.`).
+- The second line of code took about 11 minutes to run.
+
+### Inspect the `dada-class` object
+```{r}
+dadaFs[[1]]
+```
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(filtFs2, filtRs2, sample.names2, dadaFs, dadaRs, file = "ITS_dada2_HPC3.RData")
+```
+
+
+## Merge pair-end reads
+- This section is the same as 16S analysis.
+
+### Join forward and reverse reads
+```{r, eval=FALSE}
+# Join forward and reverse reads
+mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose = TRUE)
+```
+- It takes <1 second to merge each sample on HPC with 94 cores at 5 gb/core (running entire line took <1 min).
+- The output is something like `68990 paired-reads (in 244 unique pairings) successfully merged out of 83616 (in 542 pairings) input.`, and will go through each sample.
+- The default is an overlap of 12 bp.
+
+### Inspect merger
+```{r}
+# Inspect the merger data.frame from the first sample
+head(mergers[[1]])
+```
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(filtFs2, filtRs2, sample.names2, dadaFs, dadaRs, mergers, 
+     file = "ITS_dada2_HPC3.RData")
+```
+
+
+## Construct sequence table
+- This section is the same as 16S analysis.
+
+### Make ASV table
+```{r, eval=FALSE}
+seqtab <- makeSequenceTable(mergers)
+```
+```{r}
+dim(seqtab)
+
+# Inspect sequence lengths: Most amplicon sequence variants are 233bp
+table(nchar(getSequences(seqtab)))
+```
+- The most abundant length is `216` bp, with `118` ASVs of that length.
+
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(filtFs2, filtRs2, sample.names2, dadaFs, dadaRs, mergers, seqtab,
+     file = "ITS_dada2_HPC3.RData")
+```
+
+
+## Remove chimeras
+- This section is the same as 16S analysis.
+
+### Create new ASV table without chimeras
+```{r, eval=FALSE}
+seqtab.nochim <- removeBimeraDenovo(seqtab, 
+                                    method = "consensus", 
+                                    multithread = TRUE, 
+                                    verbose = TRUE)
+```
+- Takes <1 min to run on HPC with 94 cores and 5 gb/core.
+- The output was: "`Identified 192 bimeras out of 7111 input sequences.`"
+```{r}
+dim(seqtab.nochim)
+```
+- The ASV table (`seqtab.nochim`) currently has `68` rows (one for each sample) and `22095` columns (one for each ASV, after removing chimeras).
+
+
+```{r}
+# How much of the dataset is left after chimera identification and removal?
+sum(seqtab.nochim) / sum(seqtab) * 100
+```
+- There are about 99% of the ASVs retained after removing chimeras.
+- Over 25% of ASVs removed as chimeras should be cause for worry. See [this tutorial FAQ](https://benjjneb.github.io/dada2/faq.html#why-are-so-many-of-my-reads-being-removed-as-chimeras) for more details.
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(filtFs2, filtRs2, sample.names2, dadaFs, dadaRs, mergers, seqtab, seqtab.nochim,
+     file = "ITS_dada2_HPC3.RData")
+```
+
+
+## Track reads through pipeline
+- This section is the same as 16S analysis.
+
+### Create table to track reads
+```{r}
+# Create function
+getN <- function(x) sum(getUniques(x))
+
+# Create table
+out.df2 <- out.df[-67, ] # remove blank3
+track <- cbind(out.df2, sapply(dadaFs, getN), sapply(dadaRs, getN), sapply(mergers, getN), rowSums(seqtab.nochim))
+
+# Rename columns
+colnames(track) <- c("input", 
+                     "filtered", 
+                     "Retained %", 
+                     "denoisedF", 
+                     "denoisedR", 
+                     "merged", 
+                     "nonchim")
+rownames(track) <- sample.names2
+
+# Total percent of dataset remaining
+track$InputRetained <- track$nonchim / track$input * 100
+head(track)
+summary(track$InputRetained)
+
+track$FilteredRetained <- track$nonchim / track$filtered * 100
+head(track)
+summary(track$FilteredRetained)
+```
+- A majority of the total reads are not retained, but a majority of the filtered reads are.
+- Samples should have a majority of reads retained, so even if there is a large number of chimeras, they should relatively low in abundance. See [this tutorial FAQ](https://benjjneb.github.io/dada2/faq.html#why-are-so-many-of-my-reads-being-removed-as-chimeras) for more details.
+
+```{r}
+# Track soil samples only
+track.soil <- track[1:62, ]
+summary(track.soil$InputRetained)
+summary(track.soil$FilteredRetained)
+```
+- Examine soil samples only, not including blanks or the unsigned sample.
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(filtFs2, filtRs2, sample.names2, dadaFs, dadaRs, mergers, seqtab, seqtab.nochim, track, track.soil,
+     file = "ITS_dada2_HPC3.RData")
+```
+
+
+## **Assign taxonomy**
+```{r, eval=FALSE}
+taxa <- assignTaxonomy(seqtab.nochim, 
+                       "/home/u18/lossanna/sh_general_release_dynamic_all_29.11.2022.fasta", 
+                       multithread = TRUE, 
+                       tryRC = T)
+```
+- Took about 11 minutes with 94 cores and 5 gb/core. 
+- DOI for UNITE database used: <https://dx.doi.org/10.15156/BIO/2483913>.
+  - Used the `sh_general_release_all_29.11.2022.tgz` download.
+- Had to download 7-Zip Installer to unzip file and get `.fasta` file.
+
+## Create ASV rep table
+- This section is the same as 16S analysis.
+```{r, eval=FALSE}
+# Create ASV rep table
+ASV.rep <- data.frame(rep = colnames(seqtab.nochim))
+
+# Add ASV number column
+ASV.rep$ASV <- c(1:ncol(seqtab.nochim))
+
+# Add ASV_ to column
+ASV.rep$ASV <- paste("ASV_", ASV.rep$ASV, sep = "")
+```
+
+## Add ASV names to other tables
+- This section is the same as 16S analysis.
+```{r, eval=FALSE}
+# Change the representative sequence in ASV and taxonomy tables to ASV ID
+colnames(seqtab.nochim) <- ASV.rep$ASV
+rownames(taxa) <- ASV.rep$ASV
+```
+
+## **Clean up taxa table**
+- This section is ITS-specific, because the UNITE database is formatted slightly differently.
+```{r, eval=FALSE}
+# Remove "__" from taxa table
+taxa <- as.data.frame(taxa)
+taxa <- separate(taxa, Kingdom, c("k", "Kingdom"), "__")
+taxa <- separate(taxa, Phylum, c("p", "Phylum"), "__")
+taxa <- separate(taxa, Class, c("c", "Class"), "__")
+taxa <- separate(taxa, Order, c("o", "Order"), "__")
+taxa <- separate(taxa, Family, c("f", "Family"), "__")
+taxa <- separate(taxa, Genus, c("g", "Genus"), "__")
+taxa <- separate(taxa, Species, c("s", "Species"), "__")
+drop <- c("k", "p", "c", "o", "f", "g", "s")
+taxa <- select(all_of(taxa, -drop))
+```
+
+
+## Save tables as plain text files (`.txt`)
+- This section is the same as 16S analysis.
+```{r, eval=FALSE}
+# Save ASV table, taxonomy table and ASV rep
+write.table(taxa, "ITS_taxa_table.txt", sep = "\t", quote = FALSE)
+write.table(seqtab.nochim, "ITS_asv_table.txt", sep = "\t", quote = FALSE)
+write.table(track, "ITS_sequence_pipeline_stats.txt", sep = "\t", quote = FALSE)
+write.table(ASV.rep,"ITS_ASV_rep.txt",sep = "\t", quote = FALSE)
+```
+
+### Save intermediate `.RData`
+```{r, eval=FALSE}
+save(filtFs2, filtRs2, sample.names2, dadaFs, dadaRs, mergers, seqtab,
+     seqtab.nochim, out.df2, track, track.soil, taxa, ASV.rep,
+     file = "ITS_dada2_HPC3.RData")
+
+# Remove large objects and save workspace
+rm(derepFs, derepRs)
+save.image("ITS_dada2_HPC_small.RData")
+```
+- The only files that are very large and cause the system to crash are the `derepFs` and `derepRs` objects. Remove those, and all the objects can be saved in a single file.
