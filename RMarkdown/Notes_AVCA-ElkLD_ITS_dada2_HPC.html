@@ -1543,7 +1543,7 @@ library(tidyverse)</code></pre>
 <div id="set-working-directory" class="section level3">
 <h3>Set working directory</h3>
 <pre class="r"><code># Set working directory
-setwd(&quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/&quot;)</code></pre>
+setwd(&quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/&quot;)</code></pre>
 <ul>
 <li>All the demultiplexed FASTQ files were transferred onto my HPC
 account using FileZilla Pro.</li>
@@ -1552,7 +1552,7 @@ account using FileZilla Pro.</li>
 <div id="define-working-folder-path" class="section level3">
 <h3>Define working folder path</h3>
 <pre class="r"><code># Define working folder path 
-path &lt;- &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/&quot; </code></pre>
+path &lt;- &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/&quot; </code></pre>
 </div>
 <div id="list-files-in-working-folder" class="section level3">
 <h3>List files in working folder</h3>
@@ -1563,150 +1563,151 @@ list.files(path)</code></pre>
 ##   [3] &quot;ITS_ASV_rep.txt&quot;                                                  
 ##   [4] &quot;ITS_asv_table.txt&quot;                                                
 ##   [5] &quot;ITS_dada2_HPC_small.RData&quot;                                        
-##   [6] &quot;ITS_dada2_HPC2.RData&quot;                                             
-##   [7] &quot;ITS_dada2_HPC3.RData&quot;                                             
-##   [8] &quot;ITS_sequence_pipeline_stats.txt&quot;                                  
-##   [9] &quot;ITS_taxa_table.txt&quot;                                               
-##  [10] &quot;Undetermined_S0_L001_I1_001.fastq.gz.decode&quot;                      
-##  [11] &quot;Undetermined_S0_L001_I1_001.fastq.gz.decode.stat&quot;                 
-##  [12] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;  
-##  [13] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;  
-##  [14] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;  
-##  [15] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_04_c21.fastq.gz&quot;  
-##  [16] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_05_c21.fastq.gz&quot;  
-##  [17] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_06_c21.fastq.gz&quot;  
-##  [18] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_07_c21.fastq.gz&quot;  
-##  [19] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_08_c21.fastq.gz&quot;  
-##  [20] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_09_c21.fastq.gz&quot;  
-##  [21] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_10_c21.fastq.gz&quot;  
-##  [22] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_11_c21.fastq.gz&quot;  
-##  [23] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_12_c21.fastq.gz&quot;  
-##  [24] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_13_c21.fastq.gz&quot;  
-##  [25] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_14_c21.fastq.gz&quot;  
-##  [26] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_15_c21.fastq.gz&quot;  
-##  [27] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_16_c19.fastq.gz&quot;  
-##  [28] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_17_c19.fastq.gz&quot;  
-##  [29] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_18_c19.fastq.gz&quot;  
-##  [30] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_19_c19.fastq.gz&quot;  
-##  [31] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_20_c19.fastq.gz&quot;  
-##  [32] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_21_c19.fastq.gz&quot;  
-##  [33] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_22_c19.fastq.gz&quot;  
-##  [34] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_23_c19.fastq.gz&quot;  
-##  [35] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_24_c19.fastq.gz&quot;  
-##  [36] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_25_c19.fastq.gz&quot;  
-##  [37] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_26_c19.fastq.gz&quot;  
-##  [38] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_27_c19.fastq.gz&quot;  
-##  [39] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_28_c19.fastq.gz&quot;  
-##  [40] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_29_c19.fastq.gz&quot;  
-##  [41] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_30_c19.fastq.gz&quot;  
-##  [42] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_31_c19.fastq.gz&quot;  
-##  [43] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_32_c19.fastq.gz&quot;  
-##  [44] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_33_c13.fastq.gz&quot;  
-##  [45] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_34_c13.fastq.gz&quot;  
-##  [46] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_35_c13.fastq.gz&quot;  
-##  [47] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_36_c13.fastq.gz&quot;  
-##  [48] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_37_c13.fastq.gz&quot;  
-##  [49] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_38_c13.fastq.gz&quot;  
-##  [50] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_39_c13.fastq.gz&quot;  
-##  [51] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_40_c13.fastq.gz&quot;  
-##  [52] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_41_c13.fastq.gz&quot;  
-##  [53] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_42_c13.fastq.gz&quot;  
-##  [54] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_43_c13.fastq.gz&quot;  
-##  [55] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_44_c13.fastq.gz&quot;  
-##  [56] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_45_c13.fastq.gz&quot;  
-##  [57] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_46_c13.fastq.gz&quot;  
-##  [58] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_47_c13.fastq.gz&quot;  
-##  [59] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_48_c13.fastq.gz&quot;  
-##  [60] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_49_c12.fastq.gz&quot;  
-##  [61] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_50_c12.fastq.gz&quot;  
-##  [62] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_51_c12.fastq.gz&quot;  
-##  [63] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_52_c12.fastq.gz&quot;  
-##  [64] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_53_c12.fastq.gz&quot;  
-##  [65] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_54_c12.fastq.gz&quot;  
-##  [66] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_55_c12.fastq.gz&quot;  
-##  [67] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_56_c12.fastq.gz&quot;  
-##  [68] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_57_c12.fastq.gz&quot;  
-##  [69] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_58_c12.fastq.gz&quot;  
-##  [70] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_59_c12.fastq.gz&quot;  
-##  [71] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_60_c12.fastq.gz&quot;  
-##  [72] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_61_c12.fastq.gz&quot;  
-##  [73] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_62_c12.fastq.gz&quot;  
-##  [74] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank1.fastq.gz&quot;  
-##  [75] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank2.fastq.gz&quot;  
-##  [76] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank3.fastq.gz&quot;  
-##  [77] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank4.fastq.gz&quot;  
-##  [78] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_PCRZymo.fastq.gz&quot; 
-##  [79] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_PRCblank.fastq.gz&quot;
-##  [80] &quot;Undetermined_S0_L001_R1_001.fastq.gz_unsigned.fastq.gz&quot;           
-##  [81] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;  
-##  [82] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;  
-##  [83] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;  
-##  [84] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_04_c21.fastq.gz&quot;  
-##  [85] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_05_c21.fastq.gz&quot;  
-##  [86] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_06_c21.fastq.gz&quot;  
-##  [87] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_07_c21.fastq.gz&quot;  
-##  [88] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_08_c21.fastq.gz&quot;  
-##  [89] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_09_c21.fastq.gz&quot;  
-##  [90] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_10_c21.fastq.gz&quot;  
-##  [91] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_11_c21.fastq.gz&quot;  
-##  [92] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_12_c21.fastq.gz&quot;  
-##  [93] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_13_c21.fastq.gz&quot;  
-##  [94] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_14_c21.fastq.gz&quot;  
-##  [95] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_15_c21.fastq.gz&quot;  
-##  [96] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_16_c19.fastq.gz&quot;  
-##  [97] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_17_c19.fastq.gz&quot;  
-##  [98] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_18_c19.fastq.gz&quot;  
-##  [99] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_19_c19.fastq.gz&quot;  
-## [100] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_20_c19.fastq.gz&quot;  
-## [101] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_21_c19.fastq.gz&quot;  
-## [102] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_22_c19.fastq.gz&quot;  
-## [103] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_23_c19.fastq.gz&quot;  
-## [104] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_24_c19.fastq.gz&quot;  
-## [105] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_25_c19.fastq.gz&quot;  
-## [106] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_26_c19.fastq.gz&quot;  
-## [107] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_27_c19.fastq.gz&quot;  
-## [108] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_28_c19.fastq.gz&quot;  
-## [109] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_29_c19.fastq.gz&quot;  
-## [110] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_30_c19.fastq.gz&quot;  
-## [111] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_31_c19.fastq.gz&quot;  
-## [112] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_32_c19.fastq.gz&quot;  
-## [113] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_33_c13.fastq.gz&quot;  
-## [114] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_34_c13.fastq.gz&quot;  
-## [115] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_35_c13.fastq.gz&quot;  
-## [116] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_36_c13.fastq.gz&quot;  
-## [117] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_37_c13.fastq.gz&quot;  
-## [118] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_38_c13.fastq.gz&quot;  
-## [119] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_39_c13.fastq.gz&quot;  
-## [120] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_40_c13.fastq.gz&quot;  
-## [121] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_41_c13.fastq.gz&quot;  
-## [122] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_42_c13.fastq.gz&quot;  
-## [123] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_43_c13.fastq.gz&quot;  
-## [124] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_44_c13.fastq.gz&quot;  
-## [125] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_45_c13.fastq.gz&quot;  
-## [126] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_46_c13.fastq.gz&quot;  
-## [127] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_47_c13.fastq.gz&quot;  
-## [128] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_48_c13.fastq.gz&quot;  
-## [129] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_49_c12.fastq.gz&quot;  
-## [130] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_50_c12.fastq.gz&quot;  
-## [131] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_51_c12.fastq.gz&quot;  
-## [132] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_52_c12.fastq.gz&quot;  
-## [133] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_53_c12.fastq.gz&quot;  
-## [134] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_54_c12.fastq.gz&quot;  
-## [135] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_55_c12.fastq.gz&quot;  
-## [136] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_56_c12.fastq.gz&quot;  
-## [137] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_57_c12.fastq.gz&quot;  
-## [138] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_58_c12.fastq.gz&quot;  
-## [139] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_59_c12.fastq.gz&quot;  
-## [140] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_60_c12.fastq.gz&quot;  
-## [141] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_61_c12.fastq.gz&quot;  
-## [142] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_62_c12.fastq.gz&quot;  
-## [143] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_blank1.fastq.gz&quot;  
-## [144] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_blank2.fastq.gz&quot;  
-## [145] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_blank3.fastq.gz&quot;  
-## [146] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_blank4.fastq.gz&quot;  
-## [147] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_PCRZymo.fastq.gz&quot; 
-## [148] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_PRCblank.fastq.gz&quot;
-## [149] &quot;Undetermined_S0_L001_R2_001.fastq.gz_unsigned.fastq.gz&quot;</code></pre>
+##   [6] &quot;ITS_dada2_HPC1.RData&quot;                                             
+##   [7] &quot;ITS_dada2_HPC2.RData&quot;                                             
+##   [8] &quot;ITS_dada2_HPC3.RData&quot;                                             
+##   [9] &quot;ITS_sequence_pipeline_stats.txt&quot;                                  
+##  [10] &quot;ITS_taxa_table.txt&quot;                                               
+##  [11] &quot;Undetermined_S0_L001_I1_001.fastq.gz.decode&quot;                      
+##  [12] &quot;Undetermined_S0_L001_I1_001.fastq.gz.decode.stat&quot;                 
+##  [13] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;  
+##  [14] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;  
+##  [15] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;  
+##  [16] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_04_c21.fastq.gz&quot;  
+##  [17] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_05_c21.fastq.gz&quot;  
+##  [18] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_06_c21.fastq.gz&quot;  
+##  [19] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_07_c21.fastq.gz&quot;  
+##  [20] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_08_c21.fastq.gz&quot;  
+##  [21] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_09_c21.fastq.gz&quot;  
+##  [22] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_10_c21.fastq.gz&quot;  
+##  [23] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_11_c21.fastq.gz&quot;  
+##  [24] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_12_c21.fastq.gz&quot;  
+##  [25] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_13_c21.fastq.gz&quot;  
+##  [26] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_14_c21.fastq.gz&quot;  
+##  [27] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_15_c21.fastq.gz&quot;  
+##  [28] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_16_c19.fastq.gz&quot;  
+##  [29] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_17_c19.fastq.gz&quot;  
+##  [30] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_18_c19.fastq.gz&quot;  
+##  [31] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_19_c19.fastq.gz&quot;  
+##  [32] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_20_c19.fastq.gz&quot;  
+##  [33] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_21_c19.fastq.gz&quot;  
+##  [34] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_22_c19.fastq.gz&quot;  
+##  [35] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_23_c19.fastq.gz&quot;  
+##  [36] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_24_c19.fastq.gz&quot;  
+##  [37] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_25_c19.fastq.gz&quot;  
+##  [38] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_26_c19.fastq.gz&quot;  
+##  [39] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_27_c19.fastq.gz&quot;  
+##  [40] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_28_c19.fastq.gz&quot;  
+##  [41] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_29_c19.fastq.gz&quot;  
+##  [42] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_30_c19.fastq.gz&quot;  
+##  [43] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_31_c19.fastq.gz&quot;  
+##  [44] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_32_c19.fastq.gz&quot;  
+##  [45] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_33_c13.fastq.gz&quot;  
+##  [46] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_34_c13.fastq.gz&quot;  
+##  [47] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_35_c13.fastq.gz&quot;  
+##  [48] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_36_c13.fastq.gz&quot;  
+##  [49] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_37_c13.fastq.gz&quot;  
+##  [50] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_38_c13.fastq.gz&quot;  
+##  [51] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_39_c13.fastq.gz&quot;  
+##  [52] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_40_c13.fastq.gz&quot;  
+##  [53] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_41_c13.fastq.gz&quot;  
+##  [54] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_42_c13.fastq.gz&quot;  
+##  [55] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_43_c13.fastq.gz&quot;  
+##  [56] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_44_c13.fastq.gz&quot;  
+##  [57] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_45_c13.fastq.gz&quot;  
+##  [58] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_46_c13.fastq.gz&quot;  
+##  [59] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_47_c13.fastq.gz&quot;  
+##  [60] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_48_c13.fastq.gz&quot;  
+##  [61] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_49_c12.fastq.gz&quot;  
+##  [62] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_50_c12.fastq.gz&quot;  
+##  [63] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_51_c12.fastq.gz&quot;  
+##  [64] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_52_c12.fastq.gz&quot;  
+##  [65] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_53_c12.fastq.gz&quot;  
+##  [66] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_54_c12.fastq.gz&quot;  
+##  [67] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_55_c12.fastq.gz&quot;  
+##  [68] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_56_c12.fastq.gz&quot;  
+##  [69] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_57_c12.fastq.gz&quot;  
+##  [70] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_58_c12.fastq.gz&quot;  
+##  [71] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_59_c12.fastq.gz&quot;  
+##  [72] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_60_c12.fastq.gz&quot;  
+##  [73] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_61_c12.fastq.gz&quot;  
+##  [74] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_62_c12.fastq.gz&quot;  
+##  [75] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank1.fastq.gz&quot;  
+##  [76] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank2.fastq.gz&quot;  
+##  [77] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank3.fastq.gz&quot;  
+##  [78] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank4.fastq.gz&quot;  
+##  [79] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_PCRZymo.fastq.gz&quot; 
+##  [80] &quot;Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_PRCblank.fastq.gz&quot;
+##  [81] &quot;Undetermined_S0_L001_R1_001.fastq.gz_unsigned.fastq.gz&quot;           
+##  [82] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;  
+##  [83] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;  
+##  [84] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;  
+##  [85] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_04_c21.fastq.gz&quot;  
+##  [86] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_05_c21.fastq.gz&quot;  
+##  [87] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_06_c21.fastq.gz&quot;  
+##  [88] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_07_c21.fastq.gz&quot;  
+##  [89] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_08_c21.fastq.gz&quot;  
+##  [90] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_09_c21.fastq.gz&quot;  
+##  [91] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_10_c21.fastq.gz&quot;  
+##  [92] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_11_c21.fastq.gz&quot;  
+##  [93] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_12_c21.fastq.gz&quot;  
+##  [94] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_13_c21.fastq.gz&quot;  
+##  [95] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_14_c21.fastq.gz&quot;  
+##  [96] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_15_c21.fastq.gz&quot;  
+##  [97] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_16_c19.fastq.gz&quot;  
+##  [98] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_17_c19.fastq.gz&quot;  
+##  [99] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_18_c19.fastq.gz&quot;  
+## [100] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_19_c19.fastq.gz&quot;  
+## [101] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_20_c19.fastq.gz&quot;  
+## [102] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_21_c19.fastq.gz&quot;  
+## [103] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_22_c19.fastq.gz&quot;  
+## [104] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_23_c19.fastq.gz&quot;  
+## [105] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_24_c19.fastq.gz&quot;  
+## [106] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_25_c19.fastq.gz&quot;  
+## [107] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_26_c19.fastq.gz&quot;  
+## [108] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_27_c19.fastq.gz&quot;  
+## [109] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_28_c19.fastq.gz&quot;  
+## [110] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_29_c19.fastq.gz&quot;  
+## [111] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_30_c19.fastq.gz&quot;  
+## [112] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_31_c19.fastq.gz&quot;  
+## [113] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_32_c19.fastq.gz&quot;  
+## [114] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_33_c13.fastq.gz&quot;  
+## [115] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_34_c13.fastq.gz&quot;  
+## [116] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_35_c13.fastq.gz&quot;  
+## [117] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_36_c13.fastq.gz&quot;  
+## [118] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_37_c13.fastq.gz&quot;  
+## [119] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_38_c13.fastq.gz&quot;  
+## [120] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_39_c13.fastq.gz&quot;  
+## [121] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_40_c13.fastq.gz&quot;  
+## [122] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_41_c13.fastq.gz&quot;  
+## [123] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_42_c13.fastq.gz&quot;  
+## [124] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_43_c13.fastq.gz&quot;  
+## [125] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_44_c13.fastq.gz&quot;  
+## [126] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_45_c13.fastq.gz&quot;  
+## [127] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_46_c13.fastq.gz&quot;  
+## [128] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_47_c13.fastq.gz&quot;  
+## [129] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_48_c13.fastq.gz&quot;  
+## [130] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_49_c12.fastq.gz&quot;  
+## [131] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_50_c12.fastq.gz&quot;  
+## [132] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_51_c12.fastq.gz&quot;  
+## [133] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_52_c12.fastq.gz&quot;  
+## [134] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_53_c12.fastq.gz&quot;  
+## [135] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_54_c12.fastq.gz&quot;  
+## [136] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_55_c12.fastq.gz&quot;  
+## [137] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_56_c12.fastq.gz&quot;  
+## [138] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_57_c12.fastq.gz&quot;  
+## [139] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_58_c12.fastq.gz&quot;  
+## [140] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_59_c12.fastq.gz&quot;  
+## [141] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_60_c12.fastq.gz&quot;  
+## [142] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_61_c12.fastq.gz&quot;  
+## [143] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_62_c12.fastq.gz&quot;  
+## [144] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_blank1.fastq.gz&quot;  
+## [145] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_blank2.fastq.gz&quot;  
+## [146] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_blank3.fastq.gz&quot;  
+## [147] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_blank4.fastq.gz&quot;  
+## [148] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_PCRZymo.fastq.gz&quot; 
+## [149] &quot;Undetermined_S0_L001_R2_001.fastq.gz_avca-elkld_PRCblank.fastq.gz&quot;
+## [150] &quot;Undetermined_S0_L001_R2_001.fastq.gz_unsigned.fastq.gz&quot;</code></pre>
 </div>
 <div id="create-lists-of-forward-and-reverse-reads" class="section level3">
 <h3>Create lists of forward and reverse reads</h3>
@@ -1714,9 +1715,9 @@ list.files(path)</code></pre>
 fnFs &lt;- sort(list.files(path, pattern = &quot;R1.*&quot;, full.names = TRUE))
 fnRs &lt;- sort(list.files(path, pattern = &quot;R2.*&quot;, full.names = TRUE))
 fnFs[1:3]</code></pre>
-<pre><code>## [1] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexing/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;
-## [2] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexing/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;
-## [3] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexing/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;
+## [2] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;
+## [3] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;</code></pre>
 <pre class="r"><code># Check for matching lengths
 length(fnFs)</code></pre>
 <pre><code>## [1] 69</code></pre>
@@ -1928,7 +1929,7 @@ sample.names[1:3]</code></pre>
 <pre><code>## [1] &quot;avca-elkld_01_c21&quot; &quot;avca-elkld_02_c21&quot; &quot;avca-elkld_03_c21&quot;</code></pre>
 <ul>
 <li>The file names in <code>cutFs</code> are in the format
-<code>/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/Undetermined_S0_L001_R1_001.fastq.gz_xxx.fastq.gz</code>,
+<code>/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/Undetermined_S0_L001_R1_001.fastq.gz_xxx.fastq.gz</code>,
 where <code>xxx</code> is the sample name we want to extract to make the
 <code>sample.names</code> list.</li>
 </ul>
@@ -1964,9 +1965,9 @@ going with it.</li>
 filtFs &lt;- file.path(path, &quot;filtered&quot;, paste0(sample.names, &quot;_F_filt.fastq.gz&quot;))
 filtRs &lt;- file.path(path, &quot;filtered&quot;, paste0(sample.names, &quot;_R_filt.fastq.gz&quot;))</code></pre>
 <pre class="r"><code>filtFs[1:3]</code></pre>
-<pre><code>## [1] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;
-## [2] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;
-## [3] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;</code></pre>
+<pre><code>## [1] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;
+## [2] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;
+## [3] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;</code></pre>
 <ul>
 <li>This creates new copies of <code>.fastq.gz</code> files and saves
 them in a subdirectory named <code>filtered</code>.
@@ -1974,16 +1975,16 @@ them in a subdirectory named <code>filtered</code>.
 <li>We now have 4 file versions for each sample:
 <ol style="list-style-type: decimal">
 <li>A version that has been demultiplexed and nothing else, located in
-the <code>ITS_demultiplexing/</code> folder.</li>
+the <code>ITS_demultiplexed/</code> folder.</li>
 <li>A version that has been demultiplexed, and sequences with Ns have
-been removed, located in the <code>ITS_demultiplexing/filtNs/</code>
+been removed, located in the <code>ITS_demultiplexed/filtNs/</code>
 subdirectory.</li>
 <li>A version that has been demultiplexed, sequences with Ns removed,
 and primers removed, located in the
-<code>ITS_demultiplexing/cutadapt/</code> subdirectory.</li>
+<code>ITS_demultiplexed/cutadapt/</code> subdirectory.</li>
 <li>A version that has been demultiplexed, sequences with Ns removed,
 primers removed, and filtered, located in the
-<code>ITS_demultiplexing/cutadapt/filtered/</code> subdirectory.</li>
+<code>ITS_demultiplexed/cutadapt/filtered/</code> subdirectory.</li>
 </ol></li>
 </ul></li>
 </ul>
@@ -2112,75 +2113,75 @@ out.df %&gt;%
 <pre><code>##                   reads.in reads.out Retained
 ## avca-elkld_blank3        3         0        0</code></pre>
 <pre class="r"><code>filtFs # blank3 is 67</code></pre>
-<pre><code>##  [1] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;  
-##  [2] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;  
-##  [3] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;  
-##  [4] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_04_c21.fastq.gz&quot;  
-##  [5] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_05_c21.fastq.gz&quot;  
-##  [6] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_06_c21.fastq.gz&quot;  
-##  [7] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_07_c21.fastq.gz&quot;  
-##  [8] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_08_c21.fastq.gz&quot;  
-##  [9] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_09_c21.fastq.gz&quot;  
-## [10] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_10_c21.fastq.gz&quot;  
-## [11] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_11_c21.fastq.gz&quot;  
-## [12] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_12_c21.fastq.gz&quot;  
-## [13] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_13_c21.fastq.gz&quot;  
-## [14] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_14_c21.fastq.gz&quot;  
-## [15] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_15_c21.fastq.gz&quot;  
-## [16] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_16_c19.fastq.gz&quot;  
-## [17] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_17_c19.fastq.gz&quot;  
-## [18] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_18_c19.fastq.gz&quot;  
-## [19] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_19_c19.fastq.gz&quot;  
-## [20] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_20_c19.fastq.gz&quot;  
-## [21] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_21_c19.fastq.gz&quot;  
-## [22] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_22_c19.fastq.gz&quot;  
-## [23] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_23_c19.fastq.gz&quot;  
-## [24] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_24_c19.fastq.gz&quot;  
-## [25] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_25_c19.fastq.gz&quot;  
-## [26] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_26_c19.fastq.gz&quot;  
-## [27] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_27_c19.fastq.gz&quot;  
-## [28] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_28_c19.fastq.gz&quot;  
-## [29] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_29_c19.fastq.gz&quot;  
-## [30] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_30_c19.fastq.gz&quot;  
-## [31] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_31_c19.fastq.gz&quot;  
-## [32] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_32_c19.fastq.gz&quot;  
-## [33] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_33_c13.fastq.gz&quot;  
-## [34] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_34_c13.fastq.gz&quot;  
-## [35] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_35_c13.fastq.gz&quot;  
-## [36] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_36_c13.fastq.gz&quot;  
-## [37] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_37_c13.fastq.gz&quot;  
-## [38] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_38_c13.fastq.gz&quot;  
-## [39] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_39_c13.fastq.gz&quot;  
-## [40] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_40_c13.fastq.gz&quot;  
-## [41] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_41_c13.fastq.gz&quot;  
-## [42] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_42_c13.fastq.gz&quot;  
-## [43] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_43_c13.fastq.gz&quot;  
-## [44] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_44_c13.fastq.gz&quot;  
-## [45] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_45_c13.fastq.gz&quot;  
-## [46] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_46_c13.fastq.gz&quot;  
-## [47] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_47_c13.fastq.gz&quot;  
-## [48] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_48_c13.fastq.gz&quot;  
-## [49] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_49_c12.fastq.gz&quot;  
-## [50] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_50_c12.fastq.gz&quot;  
-## [51] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_51_c12.fastq.gz&quot;  
-## [52] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_52_c12.fastq.gz&quot;  
-## [53] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_53_c12.fastq.gz&quot;  
-## [54] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_54_c12.fastq.gz&quot;  
-## [55] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_55_c12.fastq.gz&quot;  
-## [56] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_56_c12.fastq.gz&quot;  
-## [57] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_57_c12.fastq.gz&quot;  
-## [58] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_58_c12.fastq.gz&quot;  
-## [59] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_59_c12.fastq.gz&quot;  
-## [60] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_60_c12.fastq.gz&quot;  
-## [61] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_61_c12.fastq.gz&quot;  
-## [62] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_62_c12.fastq.gz&quot;  
-## [63] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_PCRZymo.fastq.gz&quot; 
-## [64] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_PRCblank.fastq.gz&quot;
-## [65] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank1.fastq.gz&quot;  
-## [66] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank2.fastq.gz&quot;  
-## [67] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank3.fastq.gz&quot;  
-## [68] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank4.fastq.gz&quot;  
-## [69] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_unsigned.fastq.gz&quot;</code></pre>
+<pre><code>##  [1] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;  
+##  [2] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;  
+##  [3] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;  
+##  [4] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_04_c21.fastq.gz&quot;  
+##  [5] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_05_c21.fastq.gz&quot;  
+##  [6] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_06_c21.fastq.gz&quot;  
+##  [7] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_07_c21.fastq.gz&quot;  
+##  [8] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_08_c21.fastq.gz&quot;  
+##  [9] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_09_c21.fastq.gz&quot;  
+## [10] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_10_c21.fastq.gz&quot;  
+## [11] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_11_c21.fastq.gz&quot;  
+## [12] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_12_c21.fastq.gz&quot;  
+## [13] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_13_c21.fastq.gz&quot;  
+## [14] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_14_c21.fastq.gz&quot;  
+## [15] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_15_c21.fastq.gz&quot;  
+## [16] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_16_c19.fastq.gz&quot;  
+## [17] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_17_c19.fastq.gz&quot;  
+## [18] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_18_c19.fastq.gz&quot;  
+## [19] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_19_c19.fastq.gz&quot;  
+## [20] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_20_c19.fastq.gz&quot;  
+## [21] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_21_c19.fastq.gz&quot;  
+## [22] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_22_c19.fastq.gz&quot;  
+## [23] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_23_c19.fastq.gz&quot;  
+## [24] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_24_c19.fastq.gz&quot;  
+## [25] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_25_c19.fastq.gz&quot;  
+## [26] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_26_c19.fastq.gz&quot;  
+## [27] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_27_c19.fastq.gz&quot;  
+## [28] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_28_c19.fastq.gz&quot;  
+## [29] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_29_c19.fastq.gz&quot;  
+## [30] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_30_c19.fastq.gz&quot;  
+## [31] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_31_c19.fastq.gz&quot;  
+## [32] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_32_c19.fastq.gz&quot;  
+## [33] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_33_c13.fastq.gz&quot;  
+## [34] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_34_c13.fastq.gz&quot;  
+## [35] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_35_c13.fastq.gz&quot;  
+## [36] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_36_c13.fastq.gz&quot;  
+## [37] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_37_c13.fastq.gz&quot;  
+## [38] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_38_c13.fastq.gz&quot;  
+## [39] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_39_c13.fastq.gz&quot;  
+## [40] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_40_c13.fastq.gz&quot;  
+## [41] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_41_c13.fastq.gz&quot;  
+## [42] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_42_c13.fastq.gz&quot;  
+## [43] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_43_c13.fastq.gz&quot;  
+## [44] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_44_c13.fastq.gz&quot;  
+## [45] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_45_c13.fastq.gz&quot;  
+## [46] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_46_c13.fastq.gz&quot;  
+## [47] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_47_c13.fastq.gz&quot;  
+## [48] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_48_c13.fastq.gz&quot;  
+## [49] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_49_c12.fastq.gz&quot;  
+## [50] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_50_c12.fastq.gz&quot;  
+## [51] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_51_c12.fastq.gz&quot;  
+## [52] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_52_c12.fastq.gz&quot;  
+## [53] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_53_c12.fastq.gz&quot;  
+## [54] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_54_c12.fastq.gz&quot;  
+## [55] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_55_c12.fastq.gz&quot;  
+## [56] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_56_c12.fastq.gz&quot;  
+## [57] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_57_c12.fastq.gz&quot;  
+## [58] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_58_c12.fastq.gz&quot;  
+## [59] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_59_c12.fastq.gz&quot;  
+## [60] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_60_c12.fastq.gz&quot;  
+## [61] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_61_c12.fastq.gz&quot;  
+## [62] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_62_c12.fastq.gz&quot;  
+## [63] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_PCRZymo.fastq.gz&quot; 
+## [64] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_PRCblank.fastq.gz&quot;
+## [65] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank1.fastq.gz&quot;  
+## [66] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank2.fastq.gz&quot;  
+## [67] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank3.fastq.gz&quot;  
+## [68] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_blank4.fastq.gz&quot;  
+## [69] &quot;/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/filtered/Undetermined_S0_L001_R1_001.fastq.gz_unsigned.fastq.gz&quot;</code></pre>
 <pre class="r"><code>filtFs2 &lt;- filtFs[-67]
 filtRs2 &lt;- filtRs[-67]
 

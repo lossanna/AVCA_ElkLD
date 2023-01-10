@@ -12,8 +12,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 
 # Load RData 
-load("C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexing/ITS_dada2_HPC_small.RData")
-path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexing" 
+load("C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_dada2_HPC_small.RData")
+path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed" 
 ```
 
 
@@ -43,14 +43,14 @@ library(tidyverse)
 ### Set working directory
 ```{r, eval=FALSE}
 # Set working directory
-setwd("/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/")
+setwd("/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/")
 ```
 - All the demultiplexed FASTQ files were transferred onto my HPC account using FileZilla Pro.
 
 ### Define working folder path
 ```{r, eval=FALSE}
 # Define working folder path 
-path <- "/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/" 
+path <- "/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/" 
 ```
 
 ### List files in working folder
@@ -223,7 +223,7 @@ sample.names <- gsub("Undetermined_S0_L001_R1_001.fastq.gz_", "", basename(cutFs
 sample.names <- gsub(".fastq.gz", "", sample.names)
 sample.names[1:3]
 ```
-- The file names in `cutFs` are in the format `/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexing/cutadapt/Undetermined_S0_L001_R1_001.fastq.gz_xxx.fastq.gz`, where `xxx` is the sample name we want to extract to make the `sample.names` list.
+- The file names in `cutFs` are in the format `/groups/egornish/lossanna/AVCA-ElkLD_ITS/raw_data/ITS_demultiplexed/cutadapt/Undetermined_S0_L001_R1_001.fastq.gz_xxx.fastq.gz`, where `xxx` is the sample name we want to extract to make the `sample.names` list.
 
 
 ## Inspect read quality profiles
@@ -251,10 +251,10 @@ filtFs[1:3]
 ```
 - This creates new copies of `.fastq.gz` files and saves them in a subdirectory named `filtered`.
   - We now have 4 file versions for each sample: 
-    1. A version that has been demultiplexed and nothing else, located in the `ITS_demultiplexing/` folder.
-    2. A version that has been demultiplexed, and sequences with Ns have been removed, located in the `ITS_demultiplexing/filtNs/` subdirectory.
-    3. A version that has been demultiplexed, sequences with Ns removed, and primers removed, located in the `ITS_demultiplexing/cutadapt/` subdirectory.
-    4. A version that has been demultiplexed, sequences with Ns removed, primers removed, and filtered, located in the `ITS_demultiplexing/cutadapt/filtered/` subdirectory.
+    1. A version that has been demultiplexed and nothing else, located in the `ITS_demultiplexed/` folder.
+    2. A version that has been demultiplexed, and sequences with Ns have been removed, located in the `ITS_demultiplexed/filtNs/` subdirectory.
+    3. A version that has been demultiplexed, sequences with Ns removed, and primers removed, located in the `ITS_demultiplexed/cutadapt/` subdirectory.
+    4. A version that has been demultiplexed, sequences with Ns removed, primers removed, and filtered, located in the `ITS_demultiplexed/cutadapt/filtered/` subdirectory.
 
 ### Trim
 ```{r, eval=F}

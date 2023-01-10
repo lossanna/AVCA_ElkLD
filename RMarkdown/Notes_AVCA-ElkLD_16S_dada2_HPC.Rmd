@@ -12,8 +12,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 
 # Load RData 
-load("C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexing/16S_dada2_HPC_small.RData")
-path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexing" 
+load("C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/16S_dada2_HPC_small.RData")
+path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed" 
 ```
 
 
@@ -40,14 +40,14 @@ library(dada2)
 ### Set working directory
 ```{r, eval=FALSE}
 # Set working directory
-setwd("/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing/")
+setwd("/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexed/")
 ```
 - All the demultiplexed FASTQ files were transferred onto my HPC account using FileZilla Pro (without SSH).
 
 ### Define working folder path
 ```{r, eval=FALSE}
 # Define working folder path 
-path <- "/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing/" 
+path <- "/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexed/" 
 ```
 
 ### List files in working folder

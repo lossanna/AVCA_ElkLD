@@ -1539,7 +1539,7 @@ and discussed.</li>
 <div id="set-working-directory" class="section level3">
 <h3>Set working directory</h3>
 <pre class="r"><code># Set working directory
-setwd(&quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing/&quot;)</code></pre>
+setwd(&quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexed/&quot;)</code></pre>
 <ul>
 <li>All the demultiplexed FASTQ files were transferred onto my HPC
 account using FileZilla Pro (without SSH).</li>
@@ -1548,7 +1548,7 @@ account using FileZilla Pro (without SSH).</li>
 <div id="define-working-folder-path" class="section level3">
 <h3>Define working folder path</h3>
 <pre class="r"><code># Define working folder path 
-path &lt;- &quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing/&quot; </code></pre>
+path &lt;- &quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexed/&quot; </code></pre>
 </div>
 <div id="list-files-in-working-folder" class="section level3">
 <h3>List files in working folder</h3>
@@ -1715,9 +1715,9 @@ forward and reverse file for all samples.</li>
 fnFs &lt;- sort(list.files(path, pattern = &quot;R1.*&quot;, full.names = TRUE))
 fnRs &lt;- sort(list.files(path, pattern = &quot;R2.*&quot;, full.names = TRUE))
 fnFs[1:3]</code></pre>
-<pre><code>## [1] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexing/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;
-## [2] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexing/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;
-## [3] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexing/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;
+## [2] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;
+## [3] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;</code></pre>
 <pre class="r"><code># Check for matching lengths
 length(fnFs)</code></pre>
 <pre><code>## [1] 69</code></pre>
@@ -1765,9 +1765,9 @@ extracted, and I am not going to go back and re-extract.</li>
 filtFs &lt;- file.path(path, &quot;filtered&quot;, paste0(sample.names, &quot;_F_filt.fastq.gz&quot;))
 filtRs &lt;- file.path(path, &quot;filtered&quot;, paste0(sample.names, &quot;_R_filt.fastq.gz&quot;))</code></pre>
 <pre class="r"><code>filtFs[1:3]</code></pre>
-<pre><code>## [1] &quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing//filtered/avca-elkld_01_c21_F_filt.fastq.gz&quot;
-## [2] &quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing//filtered/avca-elkld_02_c21_F_filt.fastq.gz&quot;
-## [3] &quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexing//filtered/avca-elkld_03_c21_F_filt.fastq.gz&quot;</code></pre>
+<pre><code>## [1] &quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexed/filtered/avca-elkld_01_c21_F_filt.fastq.gz&quot;
+## [2] &quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexed/filtered/avca-elkld_02_c21_F_filt.fastq.gz&quot;
+## [3] &quot;/groups/egornish/lossanna/AVCA-ElkLD_16S/raw_data/16S_demultiplexed/filtered/avca-elkld_03_c21_F_filt.fastq.gz&quot;</code></pre>
 </div>
 <div id="trim" class="section level3">
 <h3>Trim</h3>
