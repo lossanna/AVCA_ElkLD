@@ -25,7 +25,7 @@ path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab
 - These are annotated notes of the `DADA2` pipeline detailed in [this tutorial](https://benjjneb.github.io/dada2/tutorial.html) (tutorial v1.16) for filtering and trimming sequences, merging pair-ends, and constructing the ASV table and taxonomy tables. Comments about the code are written beneath the corresponding chunk.
 
 ## High performance computing (HPC)
-- This code was run on the UA HPC Puma server through an interactive RStudio session with 94 cores, and a default 5 gb of RAM per core. See the  [guide](https://public.confluence.arizona.edu/display/UAHPC/User+Guide), and access UA HPC servers at <https://ood.hpc.arizona.edu/>. 
+- This code was run on the UA HPC Puma server through an interactive RStudio session with 94 cores, and a default 5 gb of RAM per core. See the  [UA HPC guide](https://public.confluence.arizona.edu/display/UAHPC/User+Guide), and access UA HPC servers at <https://ood.hpc.arizona.edu/>. 
 - Run entirely on HPC server, but in multiple sessions.
 - R objects (`.RData`) generated were saved at intermediate steps because a single file was too large (the server tends to crash when the `.RData` file is >10 GB), and because the script was run in multiple sessions. Steps to save intermediate work are noted and discussed.
   
@@ -62,7 +62,6 @@ list.files(path)
 # Read the names of R1 and R2 files
 fnFs <- sort(list.files(path, pattern = "R1.*", full.names = TRUE))
 fnRs <- sort(list.files(path, pattern = "R2.*", full.names = TRUE))
-fnFs[1:3]
 
 # Check for matching lengths
 length(fnFs)
@@ -106,7 +105,7 @@ filtFs[1:3]
 # Trim forwards and reverses at 140bp based on quality plots; also trim first 10 bp as recommended
 out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen = c(140, 140),
                      maxN = 0, maxEE = c(2, 2), truncQ = 2, rm.phix = TRUE,
-                     compress = TRUE, multithread = TRUE, trimLeft = 10) # On Windows set multithread=FALSE
+                     compress = TRUE, multithread = TRUE, trimLeft = 10) 
 
 out.df <- as.data.frame(out.df)
 ```
@@ -143,7 +142,7 @@ head(out.df)
 summary(out.df$Retained)
 ```
 - The `Retained` column is the percent of reads retained after trimming and filtering.
-- The first 6 samples listed here have ~90% of the reads retained, which is to be expected.
+- Most of the samples have ~90% of the reads retained, which is to be expected.
 
 ### Save intermediate `.RData`
 ```{r, eval=FALSE}
@@ -358,21 +357,29 @@ taxa <- addSpecies(taxa, "/home/u18/lossanna/silva_v138.1/silva_species_assignme
 - Output of the second line: `282 out of 22095 were assigned to the species level. Of which 229 had genera consistent with the input table.`
 
 ## Create ASV rep table
-```{r}
+```{r, eval=FALSE}
 # Create ASV rep table
 ASV.rep <- data.frame(rep = colnames(seqtab.nochim))
 
-head(ASV.rep)
+ASV.rep[1:2, ]
+```
+```{r, echo=FALSE}
+ASV.rep <- data.frame(rep = colnames(seqtab.nochim0))
 
+ASV.rep[1:2, ]
+```
+
+```{r}
 # Add ASV number column
 ASV.rep$ASV <- c(1:ncol(seqtab.nochim))
 
-head(ASV.rep)
+ASV.rep[1:2, ]
+
 
 # Add ASV_ to column
 ASV.rep$ASV <- paste("ASV_", ASV.rep$ASV, sep = "")
 
-head(ASV.rep)
+ASV.rep[1:2, ]
 ```
 
 ## Add ASV names to other tables
@@ -380,6 +387,9 @@ head(ASV.rep)
 # Change the representative sequence in ASV and taxonomy tables to ASV ID
 colnames(seqtab.nochim) <- ASV.rep$ASV
 rownames(taxa) <- ASV.rep$ASV
+
+seqtab.nochim[1:4, 1:5]
+head(taxa)
 ```
 
 

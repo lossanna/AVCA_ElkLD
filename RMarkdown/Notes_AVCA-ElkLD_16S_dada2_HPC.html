@@ -1517,8 +1517,8 @@ about the code are written beneath the corresponding chunk.</li>
 <ul>
 <li>This code was run on the UA HPC Puma server through an interactive
 RStudio session with 94 cores, and a default 5 gb of RAM per core. See
-the <a href="https://public.confluence.arizona.edu/display/UAHPC/User+Guide">guide</a>,
-and access UA HPC servers at <a href="https://ood.hpc.arizona.edu/" class="uri">https://ood.hpc.arizona.edu/</a>.</li>
+the <a href="https://public.confluence.arizona.edu/display/UAHPC/User+Guide">UA
+HPC guide</a>, and access UA HPC servers at <a href="https://ood.hpc.arizona.edu/" class="uri">https://ood.hpc.arizona.edu/</a>.</li>
 <li>Run entirely on HPC server, but in multiple sessions.</li>
 <li>R objects (<code>.RData</code>) generated were saved at intermediate
 steps because a single file was too large (the server tends to crash
@@ -1714,11 +1714,8 @@ forward and reverse file for all samples.</li>
 <pre class="r"><code># Read the names of R1 and R2 files
 fnFs &lt;- sort(list.files(path, pattern = &quot;R1.*&quot;, full.names = TRUE))
 fnRs &lt;- sort(list.files(path, pattern = &quot;R2.*&quot;, full.names = TRUE))
-fnFs[1:3]</code></pre>
-<pre><code>## [1] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_01_c21.fastq.gz&quot;
-## [2] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_02_c21.fastq.gz&quot;
-## [3] &quot;C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/Undetermined_S0_L001_R1_001.fastq.gz_avca-elkld_03_c21.fastq.gz&quot;</code></pre>
-<pre class="r"><code># Check for matching lengths
+
+# Check for matching lengths
 length(fnFs)</code></pre>
 <pre><code>## [1] 69</code></pre>
 <pre class="r"><code>length(fnFs) == length(fnRs)</code></pre>
@@ -1774,7 +1771,7 @@ filtRs &lt;- file.path(path, &quot;filtered&quot;, paste0(sample.names, &quot;_R
 <pre class="r"><code># Trim forwards and reverses at 140bp based on quality plots; also trim first 10 bp as recommended
 out &lt;- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen = c(140, 140),
                      maxN = 0, maxEE = c(2, 2), truncQ = 2, rm.phix = TRUE,
-                     compress = TRUE, multithread = TRUE, trimLeft = 10) # On Windows set multithread=FALSE
+                     compress = TRUE, multithread = TRUE, trimLeft = 10) 
 
 out.df &lt;- as.data.frame(out.df)</code></pre>
 <pre class="r"><code>rownames(out.df) &lt;- sample.names</code></pre>
@@ -1843,8 +1840,8 @@ out.df$Retained = out.df$reads.out / out.df$reads.in * 100</code></pre>
 <ul>
 <li>The <code>Retained</code> column is the percent of reads retained
 after trimming and filtering.</li>
-<li>The first 6 samples listed here have ~90% of the reads retained,
-which is to be expected.</li>
+<li>Most of the samples have ~90% of the reads retained, which is to be
+expected.</li>
 </ul>
 </div>
 <div id="save-intermediate-.rdata" class="section level3">
@@ -2045,10 +2042,10 @@ table(nchar(getSequences(seqtab)))</code></pre>
 “<code>Identified 10325 bimeras out of 32399 input sequences.</code>”</li>
 </ul>
 <pre class="r"><code>dim(seqtab.nochim)</code></pre>
-<pre><code>## [1]    69 22095</code></pre>
+<pre><code>## [1]    69 22074</code></pre>
 <pre class="r"><code># How much of the dataset is left after chimera identification and removal?
 sum(seqtab.nochim) / sum(seqtab) * 100</code></pre>
-<pre><code>## [1] 93.9746</code></pre>
+<pre><code>## [1] 93.95858</code></pre>
 <ul>
 <li>There are about 94% of the ASVs retained after removing
 chimeras.</li>
@@ -2085,41 +2082,41 @@ rownames(track) &lt;- sample.names
 track$InputRetained &lt;- track$nonchim / track$input * 100
 head(track)</code></pre>
 <pre><code>##                    input filtered Retained % denoisedF denoisedR merged nonchim
-## avca-elkld_01_c21 240716   214422   89.07675    208380    208428 131280  126969
-## avca-elkld_02_c21 198463   182287   91.84936    177256    178670 127037  121836
-## avca-elkld_03_c21 239364   220719   92.21061    212898    215108 138262  131457
+## avca-elkld_01_c21 240716   214422   89.07675    208380    208428 131280  126842
+## avca-elkld_02_c21 198463   182287   91.84936    177256    178670 127037  121712
+## avca-elkld_03_c21 239364   220719   92.21061    212898    215108 138262  131452
 ## avca-elkld_04_c21 275415   244654   88.83104    235940    238616 151112  143361
-## avca-elkld_05_c21 225966   207029   91.61954    200003    201755 130856  125422
+## avca-elkld_05_c21 225966   207029   91.61954    200003    201755 130856  125389
 ## avca-elkld_06_c21 243107   219935   90.46839    213219    213971 127617  121742
 ##                   InputRetained
-## avca-elkld_01_c21      52.74639
-## avca-elkld_02_c21      61.38978
-## avca-elkld_03_c21      54.91929
+## avca-elkld_01_c21      52.69363
+## avca-elkld_02_c21      61.32730
+## avca-elkld_03_c21      54.91720
 ## avca-elkld_04_c21      52.05272
-## avca-elkld_05_c21      55.50481
+## avca-elkld_05_c21      55.49021
 ## avca-elkld_06_c21      50.07754</code></pre>
 <pre class="r"><code>summary(track$InputRetained)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   22.89   54.24   57.21   58.03   60.30   86.79</code></pre>
+##   22.88   54.24   57.21   58.02   60.30   86.79</code></pre>
 <pre class="r"><code>track$FilteredRetained &lt;- track$nonchim / track$filtered * 100
 head(track)</code></pre>
 <pre><code>##                    input filtered Retained % denoisedF denoisedR merged nonchim
-## avca-elkld_01_c21 240716   214422   89.07675    208380    208428 131280  126969
-## avca-elkld_02_c21 198463   182287   91.84936    177256    178670 127037  121836
-## avca-elkld_03_c21 239364   220719   92.21061    212898    215108 138262  131457
+## avca-elkld_01_c21 240716   214422   89.07675    208380    208428 131280  126842
+## avca-elkld_02_c21 198463   182287   91.84936    177256    178670 127037  121712
+## avca-elkld_03_c21 239364   220719   92.21061    212898    215108 138262  131452
 ## avca-elkld_04_c21 275415   244654   88.83104    235940    238616 151112  143361
-## avca-elkld_05_c21 225966   207029   91.61954    200003    201755 130856  125422
+## avca-elkld_05_c21 225966   207029   91.61954    200003    201755 130856  125389
 ## avca-elkld_06_c21 243107   219935   90.46839    213219    213971 127617  121742
 ##                   InputRetained FilteredRetained
-## avca-elkld_01_c21      52.74639         59.21454
-## avca-elkld_02_c21      61.38978         66.83746
-## avca-elkld_03_c21      54.91929         59.55853
+## avca-elkld_01_c21      52.69363         59.15531
+## avca-elkld_02_c21      61.32730         66.76944
+## avca-elkld_03_c21      54.91720         59.55627
 ## avca-elkld_04_c21      52.05272         58.59745
-## avca-elkld_05_c21      55.50481         60.58185
+## avca-elkld_05_c21      55.49021         60.56591
 ## avca-elkld_06_c21      50.07754         55.35363</code></pre>
 <pre class="r"><code>summary(track$FilteredRetained)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   39.66   59.91   62.68   64.43   65.70   96.36</code></pre>
+##   39.65   59.91   62.68   64.42   65.70   96.36</code></pre>
 <ul>
 <li>Samples should have a majority of reads retained, so even if there
 is a large number of chimeras, they should relatively low in abundance.
@@ -2130,10 +2127,10 @@ tutorial FAQ</a> for more details.</li>
 track.soil &lt;- track[1:62, ]
 summary(track.soil$InputRetained)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   50.08   54.04   56.95   56.87   59.24   66.07</code></pre>
+##   50.08   54.04   56.94   56.86   59.24   66.07</code></pre>
 <pre class="r"><code>summary(track.soil$FilteredRetained)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   55.35   59.85   62.51   62.63   65.21   71.83</code></pre>
+##   55.35   59.85   62.51   62.62   65.20   71.83</code></pre>
 <ul>
 <li>Examine soil samples only, not including blanks or the unsigned
 sample.</li>
@@ -2167,42 +2164,57 @@ comes from a separate database file.</li>
 <pre class="r"><code># Create ASV rep table
 ASV.rep &lt;- data.frame(rep = colnames(seqtab.nochim))
 
-head(ASV.rep)</code></pre>
-<pre><code>##     rep
-## 1 ASV_1
-## 2 ASV_2
-## 3 ASV_3
-## 4 ASV_4
-## 5 ASV_5
-## 6 ASV_6</code></pre>
+ASV.rep[1:2, ]</code></pre>
+<pre><code>## [1] &quot;GCAAGCGTTATCCGGAATTATTGGGCGTAAAGAGCTCGTAGGCGGTTTGTCGCGTCTGCCGTGAAAGTCCGGGGCTCAACTCCGGATCTGCGGTGGGTACGGGCAGACTAGAGTGATGTAGGGGAGACTGGAATTCCTGGTGTAGCGGTGAAATGCGCAGATATCAGGAGGAACACCGATGGCGAAGGCAGGTCTCTGGGCATTAACTGACGCTGAGGAGCGAAAGCATGGGG&quot;
+## [2] &quot;GCTAGCGTTGTTCGGAATTACTGGGCGTAAAGCGCACGTAGGCGGCTTTGTAAGTTAGAGGTGAAAGCCCGGGGCTCAACTCCGGAATTGCCTTTAAGACTGCATCGCTAGAATTGTGGAGAGGTAAGTGGAATTCCGAGTGTAGAGGTGAAATTCGTAGATATTCGGAAGAACACCAGTGGCGAAGGCGACTTACTGGACACATATTGACGCTGAGGTGCGAAAGCGTGGGG&quot;</code></pre>
 <pre class="r"><code># Add ASV number column
 ASV.rep$ASV &lt;- c(1:ncol(seqtab.nochim))
 
-head(ASV.rep)</code></pre>
-<pre><code>##     rep ASV
-## 1 ASV_1   1
-## 2 ASV_2   2
-## 3 ASV_3   3
-## 4 ASV_4   4
-## 5 ASV_5   5
-## 6 ASV_6   6</code></pre>
+ASV.rep[1:2, ]</code></pre>
+<pre><code>##                                                                                                                                                                                                                                         rep
+## 1 GCAAGCGTTATCCGGAATTATTGGGCGTAAAGAGCTCGTAGGCGGTTTGTCGCGTCTGCCGTGAAAGTCCGGGGCTCAACTCCGGATCTGCGGTGGGTACGGGCAGACTAGAGTGATGTAGGGGAGACTGGAATTCCTGGTGTAGCGGTGAAATGCGCAGATATCAGGAGGAACACCGATGGCGAAGGCAGGTCTCTGGGCATTAACTGACGCTGAGGAGCGAAAGCATGGGG
+## 2 GCTAGCGTTGTTCGGAATTACTGGGCGTAAAGCGCACGTAGGCGGCTTTGTAAGTTAGAGGTGAAAGCCCGGGGCTCAACTCCGGAATTGCCTTTAAGACTGCATCGCTAGAATTGTGGAGAGGTAAGTGGAATTCCGAGTGTAGAGGTGAAATTCGTAGATATTCGGAAGAACACCAGTGGCGAAGGCGACTTACTGGACACATATTGACGCTGAGGTGCGAAAGCGTGGGG
+##   ASV
+## 1   1
+## 2   2</code></pre>
 <pre class="r"><code># Add ASV_ to column
 ASV.rep$ASV &lt;- paste(&quot;ASV_&quot;, ASV.rep$ASV, sep = &quot;&quot;)
 
-head(ASV.rep)</code></pre>
-<pre><code>##     rep   ASV
-## 1 ASV_1 ASV_1
-## 2 ASV_2 ASV_2
-## 3 ASV_3 ASV_3
-## 4 ASV_4 ASV_4
-## 5 ASV_5 ASV_5
-## 6 ASV_6 ASV_6</code></pre>
+ASV.rep[1:2, ]</code></pre>
+<pre><code>##                                                                                                                                                                                                                                         rep
+## 1 GCAAGCGTTATCCGGAATTATTGGGCGTAAAGAGCTCGTAGGCGGTTTGTCGCGTCTGCCGTGAAAGTCCGGGGCTCAACTCCGGATCTGCGGTGGGTACGGGCAGACTAGAGTGATGTAGGGGAGACTGGAATTCCTGGTGTAGCGGTGAAATGCGCAGATATCAGGAGGAACACCGATGGCGAAGGCAGGTCTCTGGGCATTAACTGACGCTGAGGAGCGAAAGCATGGGG
+## 2 GCTAGCGTTGTTCGGAATTACTGGGCGTAAAGCGCACGTAGGCGGCTTTGTAAGTTAGAGGTGAAAGCCCGGGGCTCAACTCCGGAATTGCCTTTAAGACTGCATCGCTAGAATTGTGGAGAGGTAAGTGGAATTCCGAGTGTAGAGGTGAAATTCGTAGATATTCGGAAGAACACCAGTGGCGAAGGCGACTTACTGGACACATATTGACGCTGAGGTGCGAAAGCGTGGGG
+##     ASV
+## 1 ASV_1
+## 2 ASV_2</code></pre>
 </div>
 <div id="add-asv-names-to-other-tables" class="section level2">
 <h2>Add ASV names to other tables</h2>
 <pre class="r"><code># Change the representative sequence in ASV and taxonomy tables to ASV ID
 colnames(seqtab.nochim) &lt;- ASV.rep$ASV
-rownames(taxa) &lt;- ASV.rep$ASV</code></pre>
+rownames(taxa) &lt;- ASV.rep$ASV
+
+seqtab.nochim[1:4, 1:5]</code></pre>
+<pre><code>##                   ASV_1 ASV_2 ASV_3 ASV_4 ASV_5
+## avca-elkld_01_c21  1118  1307   377   116   293
+## avca-elkld_02_c21  3492  1470  1297  1066   635
+## avca-elkld_03_c21  3027  1165   612   551   252
+## avca-elkld_04_c21  7502  1209  1393   516   510</code></pre>
+<pre class="r"><code>head(taxa)</code></pre>
+<pre><code>##       Kingdom    Phylum             Class                 Order             
+## ASV_1 &quot;Bacteria&quot; &quot;Actinobacteriota&quot; &quot;Actinobacteria&quot;      &quot;Micrococcales&quot;   
+## ASV_2 &quot;Bacteria&quot; &quot;Proteobacteria&quot;   &quot;Alphaproteobacteria&quot; &quot;Sphingomonadales&quot;
+## ASV_3 &quot;Bacteria&quot; &quot;Actinobacteriota&quot; &quot;Actinobacteria&quot;      &quot;Frankiales&quot;      
+## ASV_4 &quot;Bacteria&quot; &quot;Proteobacteria&quot;   &quot;Gammaproteobacteria&quot; &quot;Burkholderiales&quot; 
+## ASV_5 &quot;Bacteria&quot; &quot;Proteobacteria&quot;   &quot;Gammaproteobacteria&quot; &quot;Burkholderiales&quot; 
+## ASV_6 &quot;Bacteria&quot; &quot;Acidobacteriota&quot;  &quot;Blastocatellia&quot;      &quot;Pyrinomonadales&quot; 
+##       Family                Genus               Species
+## ASV_1 &quot;Micrococcaceae&quot;      &quot;Pseudarthrobacter&quot; NA     
+## ASV_2 &quot;Sphingomonadaceae&quot;   &quot;Sphingomonas&quot;      NA     
+## ASV_3 &quot;Geodermatophilaceae&quot; &quot;Blastococcus&quot;      NA     
+## ASV_4 &quot;Oxalobacteraceae&quot;    &quot;Massilia&quot;          NA     
+## ASV_5 &quot;Oxalobacteraceae&quot;    &quot;Massilia&quot;          NA     
+## ASV_6 &quot;Pyrinomonadaceae&quot;    &quot;RB41&quot;              NA</code></pre>
 </div>
 <div id="save-tables-as-.txt-files" class="section level2">
 <h2>Save tables as <code>.txt</code> files</h2>
