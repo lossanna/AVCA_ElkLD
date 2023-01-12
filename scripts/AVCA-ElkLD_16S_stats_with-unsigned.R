@@ -15,6 +15,8 @@ barc.asv.raw <- read.table("amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/
                            sep = "\t", header = TRUE, row.names = 1)
 barc.tax.raw <- read.table("amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/16S_taxa_table.txt", 
                            sep = "\t", header = TRUE, row.names = 1)
+barc.rep.raw <- read.table("amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/16S_ASV_rep.txt", 
+                           sep = "\t", header = TRUE, row.names = 1)
 
 
 # Generate clean tables ---------------------------------------------------
@@ -51,18 +53,23 @@ barc.tax <- barc.tax[-rm.contaminants, ]
 
 # Remove control samples from ASV table
 rownames(barc.asv)
-barc.asv <- barc.asv[-c(63:68), ]
-rownames(barc.asv)
+barc.asv.us <- barc.asv[-c(63:68), ] # keep unsigned
+                      # Note: ".us" added to object name means that the "unsigned" sample is included
+rownames(barc.asv.us)
 
 # Remove empty ASVs
-barc.asv <- subset(barc.asv, select = colSums(barc.asv)!=0)
-barc.tax <- barc.tax[colnames(barc.asv), ]
+barc.asv.us <- subset(barc.asv.us, select = colSums(barc.asv.us)!=0)
+barc.tax <- barc.tax[colnames(barc.asv.us), ]
 
 # Remove ASVs without kingdom information
 which(is.na(barc.tax$Kingdom))
 
-barc.asv <- barc.asv[ , -which(is.na(barc.tax$Kingdom))]
+barc.asv.us <- barc.asv.us[ , -which(is.na(barc.tax$Kingdom))]
 barc.tax <- barc.tax[-which(is.na(barc.tax$Kingdom)), ]
+
+# Remove ASV IDs from ASV.rep
+barc.rep <- subset(barc.rep.raw, 
+                   as.character(barc.rep.raw$ASV) %in% rownames(barc.tax))
 
 # Remove useless objects
 rm(barc.ext01.control, 
@@ -78,7 +85,6 @@ rm(barc.ext01.control,
 # Statistical analysis ----------------------------------------------------
 
 # Note: ".us" added to object name means that the "unsigned" sample is included
-barc.asv.us <- barc.asv
 
 # Read metadata
 meta.us <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
@@ -86,8 +92,8 @@ meta.us <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
                       sep = "\t")
 
 # Check number of sequences per sample
-hist(rowSums(barc.asv))
-summary(rowSums(barc.asv)) # min 77212 - max 184973; median 137167 
+hist(rowSums(barc.asv.us))
+summary(rowSums(barc.asv.us)) # min 77212 - max 646735; median 137230 
 
 # Normalization (metagenomeSeq), with unsigned
 barc.MR.us <- newMRexperiment(t(barc.asv.us))

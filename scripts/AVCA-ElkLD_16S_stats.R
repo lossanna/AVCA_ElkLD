@@ -17,6 +17,17 @@ barc.tax.raw <- read.table("amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/
                        sep = "\t", header = TRUE, row.names = 1)
 barc.rep.raw <- read.table("amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/16S_ASV_rep.txt", 
                        sep = "\t", header = TRUE, row.names = 1)
+pipeline.stats <- read.table("amplicon-sequencing/FASTQ_16S_raw/16S_demultiplexed/16S_sequence_pipeline_stats.txt",
+                             sep = "\t", header = TRUE, row.names = 1)
+
+
+# Investigate pipeline stats ----------------------------------------------
+
+summary(pipeline.stats$InputRetained)
+
+# Less than 50% retained:
+pipeline.stats %>% 
+  filter(InputRetained < 50) # unsigned sample only
 
 
 # Generate clean tables ---------------------------------------------------
@@ -53,7 +64,7 @@ barc.tax <- barc.tax[-rm.contaminants, ]
 
 # Remove control samples from ASV table
 rownames(barc.asv)
-barc.asv <- barc.asv[-c(63:68), ] # removed blanks, left "unsigned"
+barc.asv <- barc.asv[-c(63:69), ] # removed blanks and "unsigned"
 rownames(barc.asv)
 
 # Remove empty ASVs
@@ -71,8 +82,7 @@ barc.rep <- subset(barc.rep.raw,
                       as.character(barc.rep.raw$ASV) %in% rownames(barc.tax))
 
 # Save the clean asv table, taxonomy table and ASV.rep
-barc.asv.us <- barc.asv
-write.table(barc.asv.us, 
+write.table(barc.asv, 
             file = "data/cleaned/sequencing/bac_arc_clean_asv.txt", 
             quote = F, 
             sep = "\t", 
@@ -87,7 +97,6 @@ write.table(barc.rep,
             quote = F, 
             sep = "\t", 
             col.names = NA)
-
 
 # Remove useless objects
 rm(barc.ext01.control, 
@@ -125,13 +134,14 @@ table(nchar(seq.length))
 median(nchar(seq.length)) # 233 bp
 
 # Total reads
-sum(rowSums(barc.asv)) # 9065838
+sum(rowSums(barc.asv)) # 8419103
 
 # Reads per sample
-mean(rowSums(barc.asv)) # 143902.2
+mean(rowSums(barc.asv)) # 135792
 sd(rowSums(barc.asv)) # 66948.55
 summary(rowSums(barc.asv))
-
+# Min.   1st Qu.  Median  Mean    3rd Qu.   Max. 
+# 77212  124231   137163  135792  148312    184961
 
 
 # Statistical analysis ----------------------------------------------------
@@ -141,9 +151,6 @@ meta <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
                    header = TRUE,
                    sep = "\t")
 meta <- meta[-63, ] # remove "unsigned" row; see other script for analysis including "unsigned"
-
-# Create ASV table without "unsigned" sample
-barc.asv <- barc.asv.us[-63, ]
   
 # Check number of sequences per sample
 hist(rowSums(barc.asv))
