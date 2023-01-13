@@ -121,18 +121,18 @@ write.table(fungi.tax.unique,
 # Sequence length & number of reads ---------------------------------------
 
 seq.length <- as.vector(fungi.rep$rep)
-table(nchar(seq.length))
-median(nchar(seq.length)) # 233 bp
+table(nchar(seq.length)) # 208 bp most common
+median(nchar(seq.length)) # 216 bp
 
 # Total reads
-sum(rowSums(fungi.asv)) # 8419103
+sum(rowSums(fungi.asv)) # 5113868
 
 # Reads per sample
-mean(rowSums(fungi.asv)) # 135792
-sd(rowSums(fungi.asv)) # 66948.55
+mean(rowSums(fungi.asv)) # 82481.74
+sd(rowSums(fungi.asv)) # 24375.54
 summary(rowSums(fungi.asv))
-# Min.   1st Qu.  Median  Mean    3rd Qu.   Max. 
-# 77212  124231   137163  135792  148312    184961
+# Min.    1st Qu.  Median   Mean    3rd Qu. Max. 
+# 21287   68629   78378     82482   96509   144592 
 
 
 # Statistical analysis ----------------------------------------------------
@@ -145,7 +145,7 @@ meta <- meta[-63, ] # remove "unsigned" row; see other script for analysis inclu
 
 # Check number of sequences per sample
 hist(rowSums(fungi.asv))
-summary(rowSums(fungi.asv)) # min 77212 - max 184961; median 137167 
+summary(rowSums(fungi.asv)) # min 21287 - max 144592; median 78378 
 
 # Normalization (metagenomeSeq)
 fungi.MR <- newMRexperiment(t(fungi.asv))
@@ -169,15 +169,15 @@ write.table(meta,
 # NMDS ordination
 fungi.dist <- vegdist(fungi.norm, method = "bray")
 fungi.nmds <- metaMDS(fungi.dist, k = 2)
-fungi.nmds$stress # 0.1680366 
+fungi.nmds$stress # 0.2369334 
 
 meta$NMDS1 <- fungi.nmds$points[ , 1]
 meta$NMDS2 <- fungi.nmds$points[ , 2]
 
 
 # Test community similarity differences
-adonis2(fungi.dist ~ meta$Channel) # p < 0.001, 15% of variability explained by Channel
-adonis2(fungi.dist ~ meta$Treatment) # p < 0.001, 13% of variability explained by Treatment
+adonis2(fungi.dist ~ meta$Channel) # p < 0.001, 9% of variability explained by Channel
+adonis2(fungi.dist ~ meta$Treatment) # p < 0.001, 8% of variability explained by Treatment
 
 # Plot NMDS
 meta %>% 
@@ -196,16 +196,16 @@ fungi.betadisper <- betadisper(fungi.dist,
                               group = meta$Channel, 
                               type = "centroid")
 
-anova(fungi.betadisper) # p = 0.0001425 
+anova(fungi.betadisper) # p = 0.0002724 
 
 meta$betadisper <- fungi.betadisper$distances
 
 betadisper.hsd <- HSD.test(aov(betadisper ~ Channel, data = meta), trt = "Channel")
 betadisper.hsd
-# Channel 19  0.3847392      a
-# Channel 21  0.3649528      a
-# Channel 13  0.3279800     ab
-# Channel 12  0.2824097      b
+# Channel 19  0.5667671      a
+# Channel 21  0.5361576     ab
+# Channel 13  0.5076694     bc
+# Channel 12  0.4803405      c
 
 
 # Plot beta dispersion boxplot
@@ -224,8 +224,20 @@ meta %>%
 
 # Shannon diversity -------------------------------------------------------
 
-shapiro.test(meta$Shannon) # p-value = 9.452e-05
-kruskal.test(Shannon ~ Channel, data = meta) # p-value = 0.2663
+shapiro.test(meta$Shannon) # p-value = 0.0004526
+kruskal.test(Shannon ~ Channel, data = meta) # p-value = 0.01909
+dt <- dunnTest(Shannon ~ Channel, data = meta, method = "bh")
+dt <- dt$res
+cldList(comparison = dt$Comparison, p.value = dt$P.adj, threshold  = 0.05)
+meta %>% 
+  group_by(Channel) %>%
+  drop_na(Shannon) %>% 
+  summarise(mean = mean(Shannon)) %>% 
+  arrange(desc(mean)) 
+# 1 Channel 13  4.72  a
+# 2 Channel 12  4.41  ab
+# 3 Channel 19  4.23  b
+# 4 Channel 21  4.19  b
 
 # Plot Shannon diversity
 meta %>% 
@@ -243,9 +255,15 @@ meta %>%
 
 # Richness ----------------------------------------------------------------
 
-shapiro.test(meta$Richness) # p-value = 0.9817
+shapiro.test(meta$Richness) # p-value = 0.9629
 richness.anova <- aov(meta$Richness ~ meta$Channel, data = meta) 
-summary(richness.anova) # p = 0.348
+summary(richness.anova) # p = 0.00171
+richness.hsd <- HSD.test(richness.anova, trt = "meta$Channel")
+richness.hsd
+# Channel 13      471.3750      a
+# Channel 12      458.1429     ab
+# Channel 19      364.8235     bc
+# Channel 21      333.1333      c
 
 # Plot richness
 meta %>% 
@@ -358,7 +376,7 @@ fungi.phylum.bar$Channel <- rep(c("Channel 12",
                                  "Channel 13", 
                                  "Channel 19", 
                                  "Channel 21"), 
-                               times = 13)
+                               times = 5)
 
 fungi.phylum.bar %>% 
   ggplot(aes(x = Channel, y = proportion, fill = phylum)) +
@@ -367,8 +385,7 @@ fungi.phylum.bar %>%
   ylab("Relative abundance (%)") +
   theme_bw(base_size = 15)+
   theme(legend.title = element_blank()) +
-  scale_fill_manual(values = c(brewer.pal(n = 8, "Set1"), 
-                               brewer.pal(n = 4, "Dark2"),
+  scale_fill_manual(values = c(brewer.pal("Set1"),
                                "#999999"))
                                
 

@@ -1,0 +1,63 @@
+	Sample	Name	Channel	Treatment	Richness	Shannon
+1	1	Channel 21, Station 01 + 07.5 BAF	Channel 21	Baffle	241	4.23468667668081
+2	2	Channel 21, Station 01 + 49 ORD	Channel 21	One rock dam	211	4.46746298126177
+3	3	Channel 21, Station 02 + 15 BAF	Channel 21	Baffle	443	4.7346280778701
+4	4	Channel 21, Station 03 + 80 BAF	Channel 21	Baffle	288	4.50206929786493
+5	5	Channel 21, Station 04 + 90 ORD	Channel 21	One rock dam	418	3.98912588401685
+6	6	Channel 21, Station 06 + 36 BAF	Channel 21	Baffle	488	4.66952081160328
+7	7	Channel 21, Station 07 + 49.5 ORD	Channel 21	One rock dam	373	4.45231673062581
+8	8	Channel 21, Station 07 + 66 BAF	Channel 21	Baffle	354	4.52533732506712
+9	9	Channel 21, Station 08 + 62 BAF	Channel 21	Baffle	302	4.63577873672822
+10	10	Channel 21, Station 09 + 99 ORD	Channel 21	Baffle	244	3.13864191663475
+11	11	Channel 21, Station 10 + 13 BAF	Channel 21	Baffle	189	2.90846204741313
+12	12	Channel 21, Station 11 + 12 ORD	Channel 21	One rock dam	376	4.22130897978548
+13	13	Channel 21, Station 11 + 24 BAF	Channel 21	Baffle	254	3.5653263302371
+14	14	Channel 21, Station 11 + 63 ORD	Channel 21	One rock dam	387	4.23331418910362
+15	15	Channel 21, Station 11 + 73 BAF	Channel 21	Baffle	429	4.53245349422989
+16	16	Channel 19, Station 01 + 04	Channel 19	Upland treatment	268	4.35984874876173
+17	17	Channel 19, Station 02 + 04	Channel 19	Upland treatment	391	2.62445731878652
+18	18	Channel 19, Station 02 + 52	Channel 19	Upland treatment	325	4.61774446788802
+19	19	Channel 19, Station 03 + 63	Channel 19	Upland treatment	428	4.61450287041058
+20	20	Channel 19, Station 03 + 98	Channel 19	Upland treatment	389	4.11301218065008
+21	21	Channel 19, Station 05 + 00	Channel 19	Upland treatment	451	4.90539376597735
+22	22	Channel 19, Station 05 + 09	Channel 19	Upland treatment	228	4.33555370530175
+23	23	Channel 19, Station 05 + 62	Channel 19	Upland treatment	326	3.72824346342868
+24	24	Channel 19, Station 06 + 13	Channel 19	Upland treatment	383	4.33710479438394
+25	25	Channel 19, Station 06 + 97	Channel 19	Upland treatment	226	4.68289044760607
+26	26	Channel 19, Station 07 + 30	Channel 19	Upland treatment	54	2.83616117644619
+27	27	Channel 19, Station 07 + 50	Channel 19	Upland treatment	464	4.55993390271337
+28	28	Channel 19, Station 07 + 97	Channel 19	Upland treatment	332	4.13109706585882
+29	29	Channel 19, Station 09 + 05	Channel 19	Upland treatment	383	4.14946900287098
+30	30	Channel 19, Station 09 + 26	Channel 19	Upland treatment	483	4.95132095538236
+31	31	Channel 19, Station 09 + 68	Channel 19	Upland treatment	614	5.05740677921603
+32	32	Channel 19, Station 10 + 98	Channel 19	Upland treatment	457	3.87642614104469
+33	33	Channel 13, Station 1 + 11.5 BAF	Channel 13	Baffle	606	5.00523511649397
+34	34	Channel 13, Station 1 + 38.5 ORD	Channel 13	One rock dam	454	4.57604126226702
+35	35	Channel 13, Station 1 + 71 BAF	Channel 13	Baffle	268	4.72535683533114
+36	36	Channel 13, Station 1 + 77 ORD	Channel 13	One rock dam	512	5.15438141358714
+37	37	Channel 13, Station 1 + 99 ORD	Channel 13	One rock dam	448	4.68324321396436
+38	38	Channel 13, Station 2 + 16 BAF	Channel 13	Baffle	691	5.20318518990136
+39	39	Channel 13, Station 2 + 57 ORD	Channel 13	One rock dam	393	4.82506837444585
+40	40	Channel 13, Station 2 + 67 BAF	Channel 13	Baffle	336	4.8146271670799
+41	41	Channel 13, Station 3 + 09 ORD	Channel 13	One rock dam	276	3.62728219042791
+42	42	Channel 13, Station 3 + 31 BAF	Channel 13	Baffle	342	4.39592419074278
+43	43	Channel 13, Station 3 + 65 ORD	Channel 13	One rock dam	478	4.41019560073966
+44	44	Channel 13, Station 3 + 95.5 ORD	Channel 13	One rock dam	512	4.94334765581101
+45	45	Channel 13, Station 4 + 14.5 BAF	Channel 13	Baffle	637	5.23166816441063
+46	46	Channel 13, Station 4 + 36 ORD	Channel 13	One rock dam	574	5.02368438110902
+47	47	Channel 13, Station 4 + 50 BAF	Channel 13	Baffle	567	4.52480782726558
+48	48	Channel 13, Station 4 + 78 ORD	Channel 13	One rock dam	448	4.34530897169954
+49	49	Channel 12, Station 1 + 04	Channel 12	No treatment	533	4.90708269682486
+50	50	Channel 12, Station 1 + 52	Channel 12	No treatment	284	3.64994895018428
+51	51	Channel 12, Station 1 + 83	Channel 12	No treatment	486	4.56646571489021
+52	52	Channel 12, Station 2 + 63	Channel 12	No treatment	516	4.59797497828625
+53	53	Channel 12, Station 2 + 98	Channel 12	No treatment	526	4.22470092751021
+54	54	Channel 12, Station 3 + 93	Channel 12	No treatment	437	4.21539950141434
+55	55	Channel 12, Station 4 + 00	Channel 12	No treatment	477	4.11855121882311
+56	56	Channel 12, Station 4 + 09	Channel 12	No treatment	628	5.15742040610585
+57	57	Channel 12, Station 4 + 56	Channel 12	No treatment	384	4.67021959823185
+58	58	Channel 12, Station 4 + 65	Channel 12	No treatment	345	4.85812992745107
+59	59	Channel 12, Station 5 + 13	Channel 12	No treatment	390	3.80476931678236
+60	60	Channel 12, Station 5 + 48	Channel 12	No treatment	375	3.95813960130471
+61	61	Channel 12, Station 6 + 30	Channel 12	No treatment	547	4.82395628744766
+62	62	Channel 12, Station 6 + 93	Channel 12	No treatment	486	4.22014588877153
