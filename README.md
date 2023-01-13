@@ -5,4 +5,4 @@ Vegetation data analysis for Altar Valley Conservation Alliance Elkhorn-Las Deli
   
   
 # Author
-Contact: Lia Ossanna, lossanna@email.arizona.edu
+Contact: Lia Ossanna, lossanna@arizona.edu
