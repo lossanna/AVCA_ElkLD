@@ -1,0 +1,18 @@
+---
+title: "Notes for FAPROTAX using HPC"
+author: "Lia Ossanna"
+date: "2023-01-13"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Background 
+- FAPROTAX assigns putative functions based on taxonomy for 16S data. Analysis requires cleaned ASV and taxonomy tables (DADA2 pipeline completed and contaminants removed).
+  - ASV table: each row is a sample, each column is is an ASV.
+  - Taxonomy table: each row is an ASV, and the columns are taxonomy classifications (kingdom, phylum, etc.).
