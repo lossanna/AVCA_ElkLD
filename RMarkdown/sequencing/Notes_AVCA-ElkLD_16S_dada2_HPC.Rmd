@@ -28,6 +28,7 @@ path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab
 - This code was run on the UA HPC Puma server through an interactive RStudio session with 94 cores, and a default 5 gb of RAM per core. See the  [UA HPC guide](https://public.confluence.arizona.edu/display/UAHPC/User+Guide), and access UA HPC servers at <https://ood.hpc.arizona.edu/>. 
 - Run entirely on HPC server, but in multiple sessions.
 - R objects (`.RData`) generated were saved at intermediate steps because a single file was too large (the server tends to crash when the `.RData` file is >10 GB), and because the script was run in multiple sessions. Steps to save intermediate work are noted and discussed.
+- I have later realized that you don't actually have to run it in an interactive session and could theoretically just submit the entire script as a job, but then you can't see intermediate output.
   
   
 ## Getting ready

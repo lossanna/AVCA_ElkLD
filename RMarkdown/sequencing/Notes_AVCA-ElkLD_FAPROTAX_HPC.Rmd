@@ -1,3 +1,39 @@
+---
+title: "Notes for FAPROTAX using HPC"
+author: "Lia Ossanna"
+date: "2023-01-13"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+load("../../RData/FAPROTAX-tables.RData")
+```
+
+### Background 
+- FAPROTAX assigns putative functions based on taxonomy for 16S data. Analysis requires cleaned ASV and taxonomy tables (DADA2 pipeline completed and contaminants removed).
+  - ASV table: each row is a sample, each column is is an ASV.
+  - Taxonomy table: each row is an ASV, and the columns are taxonomy classifications (kingdom, phylum, etc.).
+
+### HPC
+- I ran this on the UA HPC server submitting it as a job. Computationally, this is not necessary, but I'm using Windows and don't have Python installed, so it's easier to use the server.
+- [Guide to UA HPC servers.](https://public.confluence.arizona.edu/display/UAHPC/User+Guide)
+- Accessed UA HPC servers at <https://ood.hpc.arizona.edu/>.
+- Submitted job to the Puma server via `SLURM` script.
+
+### Create input table for FAPROTAX
+- FAPROTAX needs the ASV table, but with all the taxonomy information included in a separate column.  
+  
+Example input table:
+```{r}
+ex[1:3, c(1, 16:20)]
+```
+
+Script:
+```{r, eval=FALSE}
 library(tidyverse)
 
 
@@ -51,5 +87,10 @@ write.table(fapro,
             quote = F, 
             sep = "\t", 
             col.names = NA)
+```
 
-save.image("RData/FAPROTAX-tables.RData")
+Completed table:
+```{r}
+head(fapro)
+```
+
