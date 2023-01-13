@@ -1495,8 +1495,13 @@ border-radius: 0px;
 <div id="background" class="section level3">
 <h3>Background</h3>
 <ul>
-<li>FAPROTAX assigns putative functions based on taxonomy for 16S data.
-Analysis requires cleaned ASV and taxonomy tables (DADA2 pipeline
+<li>FAPROTAX assigns putative functions based on taxonomy for 16S data:
+<a href="http://www.loucalab.com/archive/FAPROTAX" class="uri">http://www.loucalab.com/archive/FAPROTAX</a>
+<ul>
+<li>I downloaded the most recent version, which was
+<code>FAPROTAX 1.2.6</code>.</li>
+</ul></li>
+<li>Analysis requires cleaned ASV and taxonomy tables (DADA2 pipeline
 completed and contaminants removed).
 <ul>
 <li>ASV table: each row is a sample, each column is is an ASV.</li>
@@ -1708,6 +1713,42 @@ write.table(fapro,
 ## 4         D_0__Bacteria; D_1__Proteobacteria; D_2__Gammaproteobacteria; D_3__Burkholderiales; D_4__Oxalobacteraceae; D_5__Massilia; D_6__NA
 ## 5                 D_0__Bacteria; D_1__Acidobacteriota; D_2__Blastocatellia; D_3__Pyrinomonadales; D_4__Pyrinomonadaceae; D_5__RB41; D_6__NA
 ## 6 D_0__Bacteria; D_1__Proteobacteria; D_2__Alphaproteobacteria; D_3__Rhodobacterales; D_4__Rhodobacteraceae; D_5__Rubellimicrobium; D_6__NA</code></pre>
+</div>
+<div id="upload-files-to-hpc" class="section level3">
+<h3>Upload files to HPC</h3>
+<ul>
+<li><a href="http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Download">Download
+the latest release here</a>.</li>
+<li>Upload to HPC:
+<code>/groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6</code></li>
+</ul>
+</div>
+<div id="run-the-job" class="section level3">
+<h3>Run the job</h3>
+<p><code>SLURM</code> script:</p>
+<pre class="r"><code>#!/bin/bash
+
+#SBATCH --job-name=FAPROTAX
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=00:5:00
+#SBATCH --account=barberan
+#SBATCH --partition=standard
+#SBATCH --mail-type=END
+#SBATCH --mail-user=lossanna@arizona.edu
+
+# Set working directory
+cd /groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6
+
+# Load python
+module load python/3.6
+
+# FAPROTAX
+python3 collapse_table.py -i faprotax-input.tsv -o faprotax-output.tsv -g FAPROTAX.txt -d &quot;taxonomy&quot; -v</code></pre>
+<ul>
+<li>See the <a href="http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Instructions">FAPROTAX
+instructions</a> for more details.</li>
+</ul>
 </div>
 
 

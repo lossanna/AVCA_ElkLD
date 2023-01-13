@@ -14,7 +14,9 @@ load("../../RData/FAPROTAX-tables.RData")
 ```
 
 ### Background 
-- FAPROTAX assigns putative functions based on taxonomy for 16S data. Analysis requires cleaned ASV and taxonomy tables (DADA2 pipeline completed and contaminants removed).
+- FAPROTAX assigns putative functions based on taxonomy for 16S data: <http://www.loucalab.com/archive/FAPROTAX> 
+  - I downloaded the most recent version, which was `FAPROTAX 1.2.6`.
+- Analysis requires cleaned ASV and taxonomy tables (DADA2 pipeline completed and contaminants removed).
   - ASV table: each row is a sample, each column is is an ASV.
   - Taxonomy table: each row is an ASV, and the columns are taxonomy classifications (kingdom, phylum, etc.).
 
@@ -94,3 +96,32 @@ Completed table:
 head(fapro)
 ```
 
+### Upload files to HPC
+- [Download the latest release here](http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Download).
+- Upload to HPC: `/groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6`
+
+### Run the job
+`SLURM` script:
+```{r, eval=FALSE}
+#!/bin/bash
+
+#SBATCH --job-name=FAPROTAX
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=00:5:00
+#SBATCH --account=barberan
+#SBATCH --partition=standard
+#SBATCH --mail-type=END
+#SBATCH --mail-user=lossanna@arizona.edu
+
+# Set working directory
+cd /groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6
+
+# Load python
+module load python/3.6
+
+# FAPROTAX
+python3 collapse_table.py -i faprotax-input.tsv -o faprotax-output.tsv -g FAPROTAX.txt -d "taxonomy" -v
+```
+
+- See the [FAPROTAX instructions](http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Instructions) for more details.
