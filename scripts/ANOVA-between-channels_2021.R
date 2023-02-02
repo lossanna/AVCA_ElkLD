@@ -4,18 +4,20 @@ library(agricolae)
 
 # Load data ---------------------------------------------------------------
 
-dat.2021 <- read.csv("data/cleaned/SEM-input.csv")
+dat.2021.raw <- read.csv("data/cleaned/SEM-input.csv")
 meta <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
                    sep = "\t", header = TRUE)
 
 # Data wrangling ----------------------------------------------------------
 
 meta$Station <- gsub("^.*?, ", "", meta$Name)
-dat.2021 <- left_join(dat.2021, meta)
+dat.2021 <- left_join(dat.2021.raw, meta)
 
 dat.2021 <- dat.2021 %>% 
   rename(Richness.barc = Richness,
-         Shannon.barc = Shannon)
+         Shannon.barc = Shannon) %>% 
+  mutate(TN_ppt = TN_perc * 10,
+         TC_ppt = TC_perc * 10)
 
 
 # Normal distribution -----------------------------------------------------
@@ -26,7 +28,7 @@ ggqqplot(dat.2021$Herbaceous)
 ggqqplot(dat.2021$Woody)
 ggqqplot(dat.2021$TN_perc) # not normal - needs log transformation
 ggqqplot(dat.2021$TN_log)
-ggqqplot(dat.2021$TC_perc) # not normal?
+ggqqplot(dat.2021$TC_perc) # not normal - needs log transformation
 ggqqplot(dat.2021$TC_log)
 ggqqplot(dat.2021$OM_perc)
 ggqqplot(dat.2021$rich)
@@ -41,10 +43,34 @@ anova.tn <- aov(dat.2021$TN_log ~ dat.2021$Channel, data = dat.2021)
 summary(anova.tn) # p = 0.00548 
 hsd.tn <- HSD.test(anova.tn, trt = "dat.2021$Channel")
 hsd.tn
-# Channel 19        2.892133      a
-# Channel 13        2.800003      a
-# Channel 21        2.696254     ab
-# Channel 12        2.421492      b
+tn.letters <- hsd.tn$groups
+tn.letters <- tn.letters %>% 
+  mutate(Channel = rownames(tn.letters)) %>% 
+  arrange(Channel)
+
+# Boxplot
+letters <- data.frame(label = tn.letters$groups,
+                      x = 1:4,
+                      y = rep(0.64, 4))
+
+tn2021.plot <- ggplot(dat.2021, aes(x = Channel, y = TN_ppt)) +
+  geom_boxplot(aes(fill = Channel),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Channel),
+              alpha = 0.9,
+              size = 3) +
+  scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Total N (mg/g soil)") +
+  ggtitle("Soil nitrogen") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+tn2021.plot
 
 
 # Total C -----------------------------------------------------------------
@@ -53,10 +79,34 @@ anova.tc <- aov(dat.2021$TC_log ~ dat.2021$Channel, data = dat.2021)
 summary(anova.tc) # p = 0.0139 
 hsd.tc <- HSD.test(anova.tc, trt = "dat.2021$Channel")
 hsd.tc
-# Channel 19        4.893734      a
-# Channel 13        4.805516      a
-# Channel 21        4.606063     ab
-# Channel 12        4.256848      b
+tc.letters <- hsd.tc$groups
+tc.letters <- tc.letters %>% 
+  mutate(Channel = rownames(tc.letters)) %>% 
+  arrange(Channel)
+
+# Boxplot
+letters <- data.frame(label = tc.letters$groups,
+                      x = 1:4,
+                      y = rep(6.5, 4))
+
+tc2021.plot <- ggplot(dat.2021, aes(x = Channel, y = TC_ppt)) +
+  geom_boxplot(aes(fill = Channel),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Channel),
+              alpha = 0.9,
+              size = 3) +
+  scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Total C (mg/g soil)") +
+  ggtitle("Soil carbon") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+tc2021.plot
 
 
 # Organic matter ----------------------------------------------------------
@@ -65,10 +115,35 @@ anova.om <- aov(dat.2021$OM_perc ~ dat.2021$Channel, data = dat.2021)
 summary(anova.om)
 hsd.om <- HSD.test(anova.om, trt = "dat.2021$Channel")
 hsd.om
-# Channel 19        1.3677887      a
-# Channel 13        1.2597340     ab
-# Channel 21        1.1264686     bc
-# Channel 12        0.9121873      c
+om.letters <- hsd.om$groups
+om.letters <- om.letters %>% 
+  mutate(Channel = rownames(om.letters)) %>% 
+  arrange(Channel)
+
+# Boxplot
+letters <- data.frame(label = om.letters$groups,
+                      x = 1:4,
+                      y = rep(2.1, 4))
+
+om2021.plot <- ggplot(dat.2021, aes(x = Channel, y = OM_perc)) +
+  geom_boxplot(aes(fill = Channel),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Channel),
+              alpha = 0.9,
+              size = 3) +
+  scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Organic matter (%)") +
+  ggtitle("Soil organic matter") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+om2021.plot
+
 
 
 # Soil bac arc richness ---------------------------------------------------
@@ -76,11 +151,52 @@ hsd.om
 # ANOVA
 summary(aov(dat.2021$Richness.barc ~ dat.2021$Channel)) # NS
 
+# Boxplot
+barc.rich2021.plot <- ggplot(dat.2021, aes(x = Channel, y = Richness.barc)) +
+  geom_boxplot(aes(fill = Channel),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Channel),
+              alpha = 0.9,
+              size = 3) +
+  scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("No. of species (ASVs)") +
+  ggtitle("Soil bacterial & archaeal richness")
+barc.rich2021.plot
+
 
 # Soil bac arc diversity --------------------------------------------------
 
 # ANOVA
 summary(aov(dat.2021$Shannon.barc ~ dat.2021$Channel)) # NS
+
+# Boxplot
+barc.shan2021.plot <- ggplot(dat.2021, aes(x = Channel, y = Shannon.barc)) +
+  geom_boxplot(aes(fill = Channel),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Channel),
+              alpha = 0.9,
+              size = 3) +
+  scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Shannon diversity index") +
+  ggtitle("Soil bacterial & archaeal diversity")
+barc.shan2021.plot
+
+
+
+# Combine soil graphs -----------------------------------------------------
+
+ggarrange(tn2021.plot, tc2021.plot, om2021.plot, barc.rich2021.plot,
+          ncol = 2, nrow = 2)
 
 
 
@@ -165,12 +281,16 @@ summary(aov(dat.2021$rich ~ dat.2021$Channel))
 anova.rich <- aov(dat.2021$rich ~ dat.2021$Channel)
 hsd.rich <- HSD.test(anova.rich, trt = "dat.2021$Channel")
 hsd.rich
-# Channel 12      8.357143      a
-# Channel 13      7.562500     ab
-# Channel 19      6.941176     ab
-# Channel 21      5.733333      b
+rich.letters <- hsd.rich$groups
+rich.letters <- rich.letters %>% 
+  mutate(Channel = rownames(rich.letters)) %>% 
+  arrange(Channel)
 
 # Boxplot
+letters <- data.frame(label = rich.letters$groups,
+                      x = 1:4,
+                      y = rep(13.3, 4))
+
 rich2021.plot <- ggplot(dat.2021, aes(x = Channel, y = rich)) +
   geom_boxplot(aes(fill = Channel),
                alpha = 0.4,
@@ -184,7 +304,10 @@ rich2021.plot <- ggplot(dat.2021, aes(x = Channel, y = rich)) +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("No. of species") +
-  ggtitle("Perennial plant richness")
+  ggtitle("Perennial plant richness") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
 rich2021.plot
 
 
@@ -207,8 +330,15 @@ shan2021.plot <- ggplot(dat.2021, aes(x = Channel, y = Herbaceous)) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
   xlab(NULL) +
-  ylab("Herbaceous plant cover (%)")
+  ylab("Shannon diversity index") +
+  ggtitle("Perennial plant diversity")
 shan2021.plot
+
+
+# Combine plant graphs ----------------------------------------------------
+
+ggarrange(total2021.plot, herb2021.plot, rich2021.plot, shan2021.plot,
+          ncol = 2, nrow = 2)
 
 
 # Save --------------------------------------------------------------------
