@@ -200,6 +200,11 @@ total.all <- plant.all %>%
   group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
+notree.all <- plant.all %>% 
+  filter(gfst != "Tree") %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt) %>% 
+  summarise(Cover = sum(Cover), .groups = "keep")
+
 fungr.all <- plant.all %>% 
   group_by(Channel, Station, Year, station.trt, channel.trt, up.trt, inch.trt, 
            Functional) %>% 
@@ -294,6 +299,9 @@ write.csv(ground.all,
           row.names = FALSE)
 write.csv(total.all,
           file = "data/cleaned/Summarised-all_total-plant-cover.csv",
+          row.names = FALSE)
+write.csv(notree.all,
+          file = "data/cleaned/Summarised-all_notree-cover.csv",
           row.names = FALSE)
 write.csv(fungr.all,
           file = "data/cleaned/Summarised-all_functional-group-cover.csv",
