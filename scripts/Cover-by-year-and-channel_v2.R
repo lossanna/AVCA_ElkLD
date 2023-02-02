@@ -573,6 +573,62 @@ innat.plot <- ggplot(innat.channel, aes(x = year.date, y = mean,
   theme(legend.position = "bottom")
 innat.plot
 
+# Plot only known native status
+innat.channel.known <- innat.channel %>% 
+  filter(Native != "Unknown native status") 
+innat.channel.known$Native <- factor(innat.channel.known$Native,
+                                     levels = c("Native", "Invasive"))
+
+innat.known.plot <- ggplot(innat.channel.known, aes(x = year.xaxis, y = mean, 
+                                        group = Native, color = Native, shape = Native)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
+                position = position_dodge(0.05)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~channel.trt) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Plant cover by native status") +
+  scale_color_brewer(palette = "Dark2") +
+  theme_bw(base_size = 13) +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = "bottom")
+innat.known.plot
+
+# Native for ANOVA
+native <- innat.all %>% 
+  filter(Native == "Native")
+
+# ANOVA native C12
+summary(aov(Cover ~ Year, data = filter(native, Channel == "Channel 12"))) # NS
+
+# ANOVA native C13
+summary(aov(Cover ~ Year, data = filter(native, Channel == "Channel 13")))
+native13 <- native %>% 
+  filter(Channel == "Channel 13")
+anova.native13 <- aov(native13$Cover ~ native13$Year)
+hsd.native13 <- HSD.test(anova.native13, trt = "native13$Year")
+hsd.native13
+native13.letters <- hsd.native13$groups
+native13.letters <- native13.letters %>% 
+  mutate(Year = rownames(native13.letters)) %>% 
+  arrange(Year)
+
+# ANOVA native C19
+summary(aov(Cover ~ Year, data = filter(native, Channel == "Channel 19")))
+native19 <- native %>% 
+  filter(Channel == "Channel 19")
+anova.native19 <- aov(native19$Cover ~ native19$Year)
+hsd.native19 <- HSD.test(anova.native19, trt = "native19$Year")
+hsd.native19
+native19.letters <- hsd.native19$groups
+native19.letters <- native19.letters %>% 
+  mutate(Year = rownames(native19.letters)) %>% 
+  arrange(Year)
+
+# ANOVA native C21
+summary(aov(Cover ~ Year, data = filter(native, Channel == "Channel 21"))) # NS
 
 
 # Invasive/native and woody/herbaceous ------------------------------------
