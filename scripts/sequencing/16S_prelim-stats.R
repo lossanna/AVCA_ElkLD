@@ -239,7 +239,7 @@ write.table(meta,
             file = "data/cleaned/sequencing/bac_arc_diversity.txt", 
             quote = F, 
             sep = "\t", 
-            col.names = NA)
+            row.names = F)
 
 
 
