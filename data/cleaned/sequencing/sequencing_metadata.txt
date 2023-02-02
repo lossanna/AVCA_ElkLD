@@ -8,7 +8,7 @@ Sample	Name	Channel	Treatment
 07	Channel 21, Station 07 + 49.5 ORD	Channel 21	One rock dam
 08	Channel 21, Station 07 + 66 BAF	Channel 21	Baffle
 09	Channel 21, Station 08 + 62 BAF	Channel 21	Baffle
-10	Channel 21, Station 09 + 99 BAF	Channel 21	Baffle
+10	Channel 21, Station 09 + 99 ORD	Channel 21	One rock dam
 11	Channel 21, Station 10 + 13 BAF	Channel 21	Baffle
 12	Channel 21, Station 11 + 12 ORD	Channel 21	One rock dam
 13	Channel 21, Station 11 + 24 BAF	Channel 21	Baffle
