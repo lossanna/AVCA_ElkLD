@@ -211,3 +211,7 @@ box.norm.homvar.shan(shannon, "Channel 12")
 box.norm.homvar.shan(shannon, "Channel 13")
 box.norm.homvar.shan(shannon, "Channel 19")
 box.norm.homvar.shan(shannon, "Channel 21")
+
+
+
+save.image("RData/Data-screening_veg_2012-2021.RData")
