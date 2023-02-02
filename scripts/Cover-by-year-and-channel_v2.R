@@ -386,6 +386,9 @@ gfs.plot <- ggplot(gfs.channel, aes(x = year.xaxis, y = mean,
 gfs.plot
 
 
+# No tree (grass, forb, shrub combined) -----------------------------------
+
+notree <- 
 
 # Woody/herbaceous --------------------------------------------------------
 

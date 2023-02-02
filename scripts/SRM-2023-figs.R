@@ -28,8 +28,8 @@ letters <- data.frame(label = c(total13.letters$groups,
                       channel.trt = c(rep("Channel 13: In-channel treatment", 6),
                                       rep("Channel 19: Upland treatment", 6)),
                       x = rep(total.channel$year.xaxis[1:6], 2),
-                      y = c(70, 60, 70, 65, 60, 55,
-                            50, 45, 48, 43, 55, 60))
+                      y = c(70, 60, 70, 65, 65, 55,
+                            55, 45, 48, 38, 55, 60))
 
 anova.lab <- data.frame(label = rep("ANOVA", 2),
                         channel.trt = c("Channel 13: In-channel treatment",
@@ -89,10 +89,10 @@ letters <- data.frame(label = c(herb12.letters$groups,
                                       rep("Channel 19: Upland treatment", 6),
                                       rep("Channel 21: In-channel treatment", 6)),
                       x = rep(total.channel$year.xaxis[1:6], 4),
-                      y = c(20, 25, 15, 25, 30, 23,
-                            20, 15, 22, 20, 38, 33,
-                            20, 12, 25, 8, 13, 28,
-                            15, 13, 23, 18, 25, 25))
+                      y = c(18, 23, 14, 23, 27, 23,
+                            18, 13, 21, 19, 38, 33,
+                            20, 12, 26, 8, 14, 28,
+                            13, 11, 21, 18, 24, 24))
 
 anova.lab <- data.frame(label = c(rep("ANOVA", 4)),
                         channel.trt = c("Channel 12: No treatment",
@@ -120,7 +120,7 @@ herb.plot.srm23 <- ggplot(herb.channel, aes(x = year.xaxis, y = mean,
             color = "black") +
   geom_text(data = anova.lab,
             mapping = aes(x = x, y = y, label = label),
-            size = 3, color = "gray30")
+            size = 3.5, color = "gray30")
 herb.plot.srm23
 
 tiff("output_figs/SRM_2023/Herbaceous-cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
@@ -138,8 +138,8 @@ letters <- data.frame(label = c(native13.letters$groups,
                                       rep("Channel 19: Upland treatment", 12)),
                       x = rep(total.channel$year.xaxis[1:6], 3),
                       y = c(63, 60, 64, 60, 60, 42,
-                            70, 68, 68, 37, 50, 60,
-                            10, 10, 10, 10, 15, 20))
+                            70, 64, 64, 37, 50, 60,
+                            11, 11, 11, 11, 15, 20))
 
 anova.lab <- data.frame(label = c(rep("ANOVA", 2)),
                         channel.trt = c("Channel 13: In-channel treatment",
@@ -181,9 +181,9 @@ letters <- data.frame(label = c(ntherb13.letters$groups,
                       channel.trt = c(rep("Channel 13: In-channel treatment", 6),
                                       rep("Channel 19: Upland treatment", 12)),
                       x = rep(total.channel$year.xaxis[1:6], 3),
-                      y = c(13, 10, 15, 13, 22, 17,
-                            23, 16, 27, 13, 17, 20,
-                            2, 2, 2, 2, 3, 8))
+                      y = c(14, 10, 15, 13, 21, 17,
+                            23, 16, 27, 13, 17, 19,
+                            1.5, 1.5, 1.5, 1.5, 3, 8))
 
 anova.lab <- data.frame(label = c(rep("ANOVA", 2)),
                         channel.trt = c("Channel 13: In-channel treatment",
@@ -257,7 +257,7 @@ richness.plot.srm23 <- ggplot(richness.channel, aes(x = year.xaxis, y = mean,
             color = "black") +
   geom_text(data = anova.lab,
             mapping = aes(x = x, y = y, label = label),
-            size = 3, color = "gray30")
+            size = 3.5, color = "gray30")
 richness.plot.srm23
 
 tiff("output_figs/SRM_2023/Richess.tiff", units = "in", height = 5.5, width = 10, res = 300)
@@ -300,9 +300,9 @@ letters <- data.frame(label = c(soil12.letters$groups,
                                       rep("Channel 19: Upland treatment", 6),
                                       rep("Channel 21: In-channel treatment", 6)),
                       x = rep(total.channel$year.xaxis[1:6], 4),
-                      y = c(40, 52, 42, 60, 40, 53,
-                            65, 61, 57, 40, 32, 35,
-                            50, 55, 40, 63, 50, 40,
+                      y = c(40, 52, 42, 60, 38, 53,
+                            65, 61, 57, 39, 32, 35,
+                            49, 54, 38, 63, 48, 39,
                             53, 59, 50, 47, 53, 25))
 
 anova.lab <- data.frame(label = c(rep("ANOVA", 4)),
