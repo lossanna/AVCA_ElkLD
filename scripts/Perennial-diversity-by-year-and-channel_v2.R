@@ -149,7 +149,7 @@ anova.lab <- data.frame(label = c(rep("ANOVA", 3)),
 richness.plot.letters <- ggplot(richness.channel, aes(x = year.xaxis, y = mean, 
                                                       group = channel.trt, 
                                                       color = channel.trt)) +
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
@@ -195,7 +195,7 @@ shannon.channel <- shannon %>%
 shannon.plot <- ggplot(shannon.channel, aes(x = year.xaxis, y = mean, 
                                                group = channel.trt, 
                                                color = channel.trt)) +
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
