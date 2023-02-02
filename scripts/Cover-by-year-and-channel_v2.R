@@ -651,7 +651,8 @@ hsd.invas19
 invas19.letters <- hsd.invas19$groups
 invas19.letters <- invas19.letters %>% 
   mutate(Year = rownames(invas19.letters)) %>% 
-  arrange(Year)
+  arrange(Year) %>% 
+  mutate(groups.up = c("B", "B", "B", "B", "AB", "A"))
 
 # ANOVA invasive C21
 summary(aov(Cover ~ Year, data = filter(invas, Channel == "Channel 21"))) # NS
@@ -659,7 +660,7 @@ summary(aov(Cover ~ Year, data = filter(invas, Channel == "Channel 21"))) # NS
 # Plot with letters added
 letters <- data.frame(label = c(native13.letters$groups,
                                 native19.letters$groups,
-                                invas19.letters$groups),
+                                invas19.letters$groups.up),
                       channel.trt = c(rep("Channel 13: In-channel treatment", 6),
                                       rep("Channel 19: Upland treatment", 12)),
                       x = rep(total.channel$year.xaxis[1:6], 3),
@@ -745,6 +746,35 @@ inwood.known.plot <- ggplot(inwood.channel.known, aes(x = year.date, y = mean,
   theme(legend.position = "bottom")
 inwood.known.plot
 
+# Native woody is the same as all woody (there are no invasive woody)
+
+
+
+# Invasive/native for herbaceous ------------------------------------------
+
+# Plot only known herbaceous by native status
+inwood.channel.known.herb <- inwood.channel %>% 
+  filter(inwood %in% c("Invasive herb", "Native herb"))
+inwood.channel.known.herb$inwood <- factor(inwood.channel.known.herb$inwood,
+                                           levels = c("Native herb", "Invasive herb"))
+
+inwood.known.herb.plot <- ggplot(inwood.channel.known.herb, aes(x = year.xaxis, y = mean, 
+                                                      group = inwood, color = inwood, shape = inwood)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE), 
+                position = position_dodge(0.05)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~channel.trt) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover by native status") +
+  scale_color_brewer(palette = "Dark2") +
+  theme_bw(base_size = 13) +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = "bottom")
+inwood.known.herb.plot
+
 
 # Native/invasive herb for ANOVA
 ivherb <- inwood.all %>% 
@@ -768,7 +798,8 @@ hsd.ivherb19
 ivherb19.letters <- hsd.ivherb19$groups
 ivherb19.letters <- ivherb19.letters %>% 
   mutate(Year = rownames(ivherb19.letters)) %>% 
-  arrange(Year)
+  arrange(Year) %>% 
+  mutate(groups.up = c("B", "B", "B", "B", "AB", "A"))
 
 # ANOVA invasive herb C21
 summary(aov(Cover ~ Year, data = filter(ivherb, Channel == "Channel 21"))) # NS
@@ -804,7 +835,46 @@ ntherb19.letters <- ntherb19.letters %>%
 # ANOVA native herb C21
 summary(aov(Cover ~ Year, data = filter(ntherb, Channel == "Channel 21"))) # NS
 
-# Native woody is the same as all woody (there are no invasive woody)
+
+# Plot with letters added
+letters <- data.frame(label = c(ntherb13.letters$groups,
+                                ntherb19.letters$groups,
+                                ivherb19.letters$groups.up),
+                      channel.trt = c(rep("Channel 13: In-channel treatment", 6),
+                                      rep("Channel 19: Upland treatment", 12)),
+                      x = rep(total.channel$year.xaxis[1:6], 3),
+                      y = c(13, 10, 15, 13, 22, 17,
+                            23, 16, 27, 13, 17, 20,
+                            2, 2, 2, 2, 3, 8))
+
+anova.lab <- data.frame(label = c(rep("ANOVA", 2)),
+                        channel.trt = c("Channel 13: In-channel treatment",
+                                        "Channel 19: Upland treatment"),
+                        x = c(rep(as.Date("2020-01-01"), 2)),
+                        y = c(28, 28))
+
+inwood.known.herb.plot.letters <- ggplot(inwood.channel.known.herb, 
+                                         aes(x = year.xaxis, y = mean)) +
+  geom_line(linewidth = 1, aes(color = inwood)) +
+  geom_point(size = 3, aes(color = inwood, shape = inwood)) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE, color = inwood, shape = inwood)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover by native status") +
+  scale_color_brewer(palette = "Dark2") +
+  theme_bw(base_size = 13) +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = "bottom") +
+  facet_wrap(~channel.trt) +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label, group = channel.trt),
+            color = "black") +
+  geom_text(data = anova.lab,
+            mapping = aes(x = x, y = y, label = label, group = channel.trt),
+            size = 3.5, color = "gray30")
+inwood.known.herb.plot.letters
+
 
 
 
