@@ -7,6 +7,7 @@ library(plotrix)
 plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
 ground.all <- read.csv("data/cleaned/Summarised-all_ground-cover.csv")
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
 fungr.all <- read.csv("data/cleaned/Summarised-all_functional-group-cover.csv")
 gfst.all <- read.csv("data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv")
 woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
@@ -55,6 +56,7 @@ year <- function(x) {
 plant.all <- year(plant.all)
 ground.all <- year(ground.all)
 total.all <- year(total.all)
+notree.all <- year(notree.all)
 fungr.all <- year(fungr.all)
 gfst.all <- year(gfst.all)
 woody.all <- year(woody.all)
@@ -164,6 +166,103 @@ total.plot.letters
 dev.off()
 
 
+# No tree (grass, forb, shrub combined) -----------------------------------
+
+# Find channel averages by year
+notree.channel <- notree.all %>% 
+  group_by(Channel, Year, year.date, year.xaxis, channel.trt) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+# Plot
+notree.plot <- ggplot(notree.channel, aes(x = year.xaxis, y = mean, 
+                                        group = channel.trt, 
+                                        color = channel.trt)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~channel.trt) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Combined cover of grasses, forbs, and shrubs (no trees)") +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+notree.plot
+
+
+# ANOVA C12
+summary(aov(Cover ~ Year, data = filter(notree.all, Channel == "Channel 12"))) # NS
+
+# ANOVA C13
+summary(aov(Cover ~ Year, data = filter(notree.all, Channel == "Channel 13")))
+notree13 <- notree.all %>% 
+  filter(Channel == "Channel 13")
+anova.notree13 <- aov(notree13$Cover ~ notree13$Year)
+hsd.notree13 <- HSD.test(anova.notree13, trt = "notree13$Year")
+hsd.notree13
+notree13.letters <- hsd.notree13$groups
+notree13.letters <- notree13.letters %>% 
+  mutate(Year = rownames(notree13.letters)) %>% 
+  arrange(Year)
+
+# ANOVA C19
+summary(aov(Cover ~ Year, data = filter(notree.all, Channel == "Channel 19")))
+notree19 <- notree.all %>% 
+  filter(Channel == "Channel 19")
+anova.notree19 <- aov(notree19$Cover ~ notree19$Year)
+hsd.notree19 <- HSD.test(anova.notree19, trt = "notree19$Year")
+hsd.notree19
+notree19.letters <- hsd.notree19$groups
+notree19.letters <- notree19.letters %>% 
+  mutate(Year = rownames(notree19.letters)) %>% 
+  arrange(Year)
+
+# ANOVA C21
+summary(aov(Cover ~ Year, data = filter(notree.all, Channel == "Channel 21"))) # NS
+
+
+# Plot with letters added
+letters <- data.frame(label = c(notree13.letters$groups,
+                                notree19.letters$groups),
+                      channel.trt = c(rep("Channel 13: In-channel treatment", 6),
+                                      rep("Channel 19: Upland treatment", 6)),
+                      x = rep(notree.channel$year.xaxis[1:6], 2),
+                      y = c(48, 40, 50, 55, 53, 45,
+                            45, 35, 48, 23, 35, 60))
+
+anova.lab <- data.frame(label = rep("ANOVA", 2),
+                        channel.trt = c("Channel 13: In-channel treatment",
+                                        "Channel 19: Upland treatment"),
+                        x = c(rep(as.Date("2020-01-01"), 2)),
+                        y = c(13, 13))
+
+notree.plot.letters <- ggplot(notree.channel, aes(x = year.xaxis, y = mean, 
+                                                  group = channel.trt, 
+                                                  color = channel.trt)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~channel.trt) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Combined cover of grasses, forbs, and shrubs (no trees)") +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  geom_text(data = anova.lab,
+            mapping = aes(x = x, y = y, label = label),
+            size = 3.5, color = "gray30")
+notree.plot.letters
+
+  
 
 # Ground cover ------------------------------------------------------------
 
@@ -386,9 +485,6 @@ gfs.plot <- ggplot(gfs.channel, aes(x = year.xaxis, y = mean,
 gfs.plot
 
 
-# No tree (grass, forb, shrub combined) -----------------------------------
-
-notree <- 
 
 # Woody/herbaceous --------------------------------------------------------
 
