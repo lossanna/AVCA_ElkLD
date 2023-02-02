@@ -166,19 +166,13 @@ barc.norm <- t(MRcounts(barc.MR, norm = T, log = F))
 meta$Richness <- specnumber(barc.norm)
 meta$Shannon <- diversity(barc.norm, index = "shannon")
 
-write.table(meta, 
-            file = "data/cleaned/sequencing/bac_arc_richness_Shannon.txt", 
-            quote = F, 
-            sep = "\t", 
-            col.names = NA)
-
 
 # NMDS & beta dispersion --------------------------------------------------
 
 # NMDS ordination
 barc.dist <- vegdist(barc.norm, method = "bray")
 barc.nmds <- metaMDS(barc.dist, k = 2)
-barc.nmds$stress # 0.1680366 
+barc.nmds$stress # 0.1680364 
 
 meta$NMDS1 <- barc.nmds$points[ , 1]
 meta$NMDS2 <- barc.nmds$points[ , 2]
@@ -190,9 +184,21 @@ adonis2(barc.dist ~ meta$Treatment) # p < 0.001, 13% of variability explained by
 
 # Plot NMDS
 meta %>% 
-ggplot(aes(x = NMDS1, y = NMDS2)) +
-  geom_point(aes(color = Channel)) +
-  stat_ellipse(aes(color = Channel))
+ggplot(aes(x = NMDS1, y = NMDS2, color = Channel, shape = Channel)) +
+  geom_point(size = 3) +
+  stat_ellipse()
+
+meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Channel, shape = Channel)) +
+  geom_point(size = 5) +
+  scale_shape_manual(values = c(15:18)) +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+
+meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Channel, shape = Treatment)) +
+  geom_point(size = 3) +
+  scale_shape_manual(values = c(15:18))
 
 meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2)) +
@@ -229,9 +235,25 @@ meta %>%
   xlab(NULL) +
   ylab("Beta dispersion") 
 
+write.table(meta, 
+            file = "data/cleaned/sequencing/bac_arc_diversity.txt", 
+            quote = F, 
+            sep = "\t", 
+            col.names = NA)
+
 
 
 # Shannon diversity -------------------------------------------------------
+
+# Explore distribution
+boxplot(Shannon ~ Channel, data = meta)
+
+plot(tapply(meta$Shannon,
+            meta$Channel, var),
+     tapply(meta$Shannon,
+            meta$Channel, mean))
+
+plot(aov(Shannon ~ Channel, data = meta)) # QQ plot is pretty off; likely not normal
 
 shapiro.test(meta$Shannon) # p-value = 9.452e-05
 kruskal.test(Shannon ~ Channel, data = meta) # p-value = 0.2663
@@ -251,6 +273,16 @@ meta %>%
 
 
 # Richness ----------------------------------------------------------------
+
+# Explore distribution
+boxplot(Richness ~ Channel, data = meta)
+
+plot(tapply(meta$Richness,
+            meta$Channel, var),
+     tapply(meta$Richness,
+            meta$Channel, mean))
+
+plot(aov(Richness ~ Channel, data = meta))
 
 shapiro.test(meta$Richness) # p-value = 0.9817
 richness.anova <- aov(meta$Richness ~ meta$Channel, data = meta) 
