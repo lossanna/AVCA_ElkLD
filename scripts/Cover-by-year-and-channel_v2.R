@@ -278,7 +278,7 @@ letters <- data.frame(label = c(soil12.letters$groups,
                                       rep("Channel 13: In-channel treatment", 6),
                                       rep("Channel 19: Upland treatment", 6),
                                       rep("Channel 21: In-channel treatment", 6)),
-                      x = rep(ground.channel.soil$year.xaxis[1:6], 4),
+                      x = rep(total.channel$year.xaxis[1:6], 4),
                       y = c(40, 52, 42, 60, 40, 53,
                             65, 61, 57, 40, 32, 35,
                             50, 55, 40, 63, 50, 40,
@@ -504,7 +504,7 @@ letters <- data.frame(label = c(herb12.letters$groups,
                                       rep("Channel 13: In-channel treatment", 6),
                                       rep("Channel 19: Upland treatment", 6),
                                       rep("Channel 21: In-channel treatment", 6)),
-                      x = rep(ground.channel.soil$year.xaxis[1:6], 4),
+                      x = rep(total.channel$year.xaxis[1:6], 4),
                       y = c(20, 25, 15, 25, 30, 23,
                             20, 15, 22, 20, 38, 33,
                             20, 12, 25, 8, 13, 28,
@@ -629,6 +629,71 @@ native19.letters <- native19.letters %>%
 
 # ANOVA native C21
 summary(aov(Cover ~ Year, data = filter(native, Channel == "Channel 21"))) # NS
+
+
+# Invasive for ANOVA
+invas <- innat.all %>% 
+  filter(Native == "Invasive")
+
+# ANOVA invasive C12
+summary(aov(Cover ~ Year, data = filter(invas, Channel == "Channel 12"))) # NS
+
+# ANOVA invasive C13
+summary(aov(Cover ~ Year, data = filter(invas, Channel == "Channel 13")))
+
+# ANOVA invasive C19
+summary(aov(Cover ~ Year, data = filter(invas, Channel == "Channel 19")))
+invas19 <- invas %>% 
+  filter(Channel == "Channel 19")
+anova.invas19 <- aov(invas19$Cover ~ invas19$Year)
+hsd.invas19 <- HSD.test(anova.invas19, trt = "invas19$Year")
+hsd.invas19
+invas19.letters <- hsd.invas19$groups
+invas19.letters <- invas19.letters %>% 
+  mutate(Year = rownames(invas19.letters)) %>% 
+  arrange(Year)
+
+# ANOVA invasive C21
+summary(aov(Cover ~ Year, data = filter(invas, Channel == "Channel 21"))) # NS
+
+# Plot with letters added
+letters <- data.frame(label = c(native13.letters$groups,
+                                native19.letters$groups,
+                                invas19.letters$groups),
+                      channel.trt = c(rep("Channel 13: In-channel treatment", 6),
+                                      rep("Channel 19: Upland treatment", 12)),
+                      x = rep(total.channel$year.xaxis[1:6], 3),
+                      y = c(63, 60, 64, 60, 60, 42,
+                            70, 68, 68, 37, 50, 60,
+                            10, 10, 10, 10, 15, 20))
+
+anova.lab <- data.frame(label = c(rep("ANOVA", 2)),
+                        channel.trt = c("Channel 13: In-channel treatment",
+                                        "Channel 19: Upland treatment"),
+                        x = c(rep(as.Date("2020-01-01"), 2)),
+                        y = c(75, 75))
+
+innat.known.plot.letters <- ggplot(innat.channel.known, aes(x = year.xaxis, y = mean)) +
+  geom_line(linewidth = 1, aes(color = Native)) +
+  geom_point(size = 3, aes(color = Native, shape = Native)) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE, color = Native, shape = Native)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Plant cover by native status") +
+  scale_color_brewer(palette = "Dark2") +
+  theme_bw(base_size = 13) +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = "bottom") +
+  facet_wrap(~channel.trt) +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label, group = channel.trt),
+            color = "black") +
+  geom_text(data = anova.lab,
+            mapping = aes(x = x, y = y, label = label, group = channel.trt),
+            size = 3.5, color = "gray30")
+innat.known.plot.letters
+
 
 
 # Invasive/native and woody/herbaceous ------------------------------------
