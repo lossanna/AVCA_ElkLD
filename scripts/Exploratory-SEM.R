@@ -132,7 +132,7 @@ semPaths(fit.total08, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 
 
 
 # Model 9 (cover 2021)
-  # no GIS-derived models
+  # no GIS-derived variables
 mod.total09 <- '
   # regressions
     Cover ~ up.trt + inch.trt + OM_perc + TN_log
@@ -147,7 +147,7 @@ semPaths(fit.total09, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 
 
 
 # Model 10 (difference 2021)
-  # no GIS-derived models
+  # no GIS-derived variables
 mod.total10 <- '
   # regressions
     total.diff ~ up.trt + inch.trt + OM_perc + TN_log
@@ -159,6 +159,38 @@ vartable(fit.total10)
 summary(fit.total10, standardized = TRUE)
 
 semPaths(fit.total10, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+
+
+# Model 9.13 (cover 2021, with Channel 13 and excluding C21)
+  # no GIS-derived variables
+mod.total09.13 <- '
+  # regressions
+    total.diff ~ up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+'
+fit.total09.13 <- sem(mod.total09.13, data = filter(dat.2021, Channel != "Channel 21"), 
+                   fixed.x = TRUE) # got warning about variance
+vartable(fit.total09.13)
+summary(fit.total09.13, standardized = TRUE)
+
+semPaths(fit.total09.13, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
+
+
+# Model 9.21 (cover 2021, with Channel 21 and excluding C13)
+  # no GIS-derived variables
+mod.total09.21 <- '
+  # regressions
+    total.diff ~ up.trt + inch.trt + OM_perc + TN_log
+    OM_perc ~ up.trt + inch.trt
+    TN_log ~ up.trt + inch.trt
+'
+fit.total09.21 <- sem(mod.total09.21, data = filter(dat.2021, Channel != "Channel 13"), 
+                      fixed.x = TRUE) # got warning about variance
+vartable(fit.total09.21)
+summary(fit.total09.21, standardized = TRUE)
+
+semPaths(fit.total09.21, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7)
 
 
 
