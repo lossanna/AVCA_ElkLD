@@ -221,14 +221,19 @@ meta <- meta %>%
                              levels = c("In-channel treatment", "Upland treatment",
                                         "No treatment")))
 
-meta %>% 
+nmds2021 <- meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment2, shape = Treatment2)) +
   geom_point(size = 4) +
   scale_shape_manual(values = c(15, 17, 18)) +
   scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_minimal() +
+  theme_minimal(base_size = 14) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
+nmds2021
+
+tiff("output_figs/SRM_2023/NMDS.tiff", units = "in", height = 5.5, width = 10, res = 300)
+nmds2021
+dev.off()
 
 
 # 2021 ANOVA comparisons --------------------------------------------------
