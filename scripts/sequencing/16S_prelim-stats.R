@@ -345,6 +345,7 @@ write.table(meta,
 
 # Shannon diversity -------------------------------------------------------
 
+# By channel
 # Explore distribution
 boxplot(Shannon ~ Channel, data = meta)
 
@@ -369,6 +370,37 @@ meta %>%
                outlier.shape = NA) +
   xlab(NULL) +
   ylab("Bacteria & archaea Shannon diversity")
+
+
+# By treatment 2
+# Explore distribution
+boxplot(Shannon ~ Treatment2, data = meta)
+
+plot(tapply(meta$Shannon,
+            meta$Treatment2, var),
+     tapply(meta$Shannon,
+            meta$Treatment2, mean))
+
+plot(aov(Shannon ~ Treatment2, data = meta)) # QQ plot is pretty off; likely not normal
+
+shapiro.test(meta$Shannon) # p-value = 9.452e-05
+kruskal.test(Shannon ~ Treatment2, data = meta) # p-value = 0.1412
+
+# Plot Shannon diversity
+meta %>% 
+  ggplot(aes(Treatment2, Shannon), color = Treatment2) +
+  geom_jitter(aes(color = Treatment2), 
+              alpha = 0.8, 
+              size = 4) +
+  geom_boxplot(aes(fill = Treatment2), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("Shannon diversity index") +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
 
 
 
@@ -398,7 +430,38 @@ meta %>%
                alpha = 0.3, 
                outlier.shape = NA) +
   xlab(NULL) +
-  ylab("Bacteria & archaea richness")
+  ylab("Richness")
+
+
+# By treatment 2
+# Explore distribution
+boxplot(Richness ~ Treatment2, data = meta)
+
+plot(tapply(meta$Richness,
+            meta$Treatment2, var),
+     tapply(meta$Richness,
+            meta$Treatment2, mean))
+
+plot(aov(Richness ~ Treatment2, data = meta)) # QQ plot seems normal
+
+shapiro.test(meta$Richness) # p-value = 0.9817
+summary(aov(meta$Richness ~ meta$Treatment2)) # p-value = 0.288
+
+# Plot Richness diversity
+meta %>% 
+  ggplot(aes(Treatment2, Richness), color = Treatment2) +
+  geom_jitter(aes(color = Treatment2), 
+              alpha = 0.8, 
+              size = 4) +
+  geom_boxplot(aes(fill = Treatment2), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("Richness") +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
 
 
 
