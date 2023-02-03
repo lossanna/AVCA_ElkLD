@@ -59,17 +59,18 @@ tn2021.plot <- ggplot(dat.2021, aes(x = Channel, y = TN_ppt)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("Total N (mg/g soil)") +
   ggtitle("Soil nitrogen") +
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000"))
 tn2021.plot
 
 
@@ -95,17 +96,18 @@ tc2021.plot <- ggplot(dat.2021, aes(x = Channel, y = TC_ppt)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("Total C (mg/g soil)") +
   ggtitle("Soil carbon") +
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000"))
 tc2021.plot
 
 
@@ -131,17 +133,18 @@ om2021.plot <- ggplot(dat.2021, aes(x = Channel, y = OM_perc)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("Organic matter (%)") +
   ggtitle("Soil organic matter") +
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000"))
 om2021.plot
 
 
@@ -158,14 +161,15 @@ barc.rich2021.plot <- ggplot(dat.2021, aes(x = Channel, y = Richness.barc)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("No. of species (ASVs)") +
-  ggtitle("Soil bacterial & archaeal richness")
+  ggtitle("Soil bacterial & archaeal richness") +
+  theme(axis.text.x = element_text(color = "#000000"))
 barc.rich2021.plot
 
 
@@ -181,14 +185,15 @@ barc.shan2021.plot <- ggplot(dat.2021, aes(x = Channel, y = Shannon.barc)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
-  ylab("Shannon diversity index") +
-  ggtitle("Soil bacterial & archaeal diversity")
+  ylab("Shannon diversity index") + 
+  ggtitle("Soil bacterial & archaeal diversity") +
+  theme(axis.text.x = element_text(color = "#000000"))
 barc.shan2021.plot
 
 
@@ -223,17 +228,18 @@ total2021.plot <- ggplot(dat.2021, aes(x = Channel, y = Cover)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Total plant cover") +
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000"))
 total2021.plot
 
 
@@ -260,17 +266,18 @@ herb2021.plot <- ggplot(dat.2021, aes(x = Channel, y = Herbaceous)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Herbaceous plant cover") +
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000"))
 herb2021.plot
 
 
@@ -297,17 +304,18 @@ rich2021.plot <- ggplot(dat.2021, aes(x = Channel, y = rich)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("No. of species") +
   ggtitle("Perennial plant richness") +
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000"))
 rich2021.plot
 
 
@@ -324,14 +332,15 @@ shan2021.plot <- ggplot(dat.2021, aes(x = Channel, y = Herbaceous)) +
                outlier.shape = NA) +
   geom_jitter(aes(color = Channel),
               alpha = 0.9,
-              size = 3) +
+              size = 2) +
   scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("Shannon diversity index") +
-  ggtitle("Perennial plant diversity")
+  ggtitle("Perennial plant diversity") +
+  theme(axis.text.x = element_text(color = "#000000"))
 shan2021.plot
 
 

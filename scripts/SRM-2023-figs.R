@@ -2,12 +2,13 @@ library(tidyverse)
 library(vegan)
 library(plotrix)
 library(agricolae)
+library(ggpubr)
  
 # Load data ---------------------------------------------------------------
 
 load("RData/Perennial-diversity-by-year-and-channel_v2.RData")
 load("RData/Cover-by-year-and-channel_v2.RData")
-
+load("RData/ANOVA-between-channels_2021.RData")
 
 
 # Common species ----------------------------------------------------------
@@ -16,9 +17,6 @@ common.plants <- plant.all %>%
   filter(Cover >= 15) 
 common.plants <- count(common.plants, Common)
 common.plants <- common.plants[order(common.plants$n, decreasing = TRUE), ]
-
-
-###### Entire channel averages ############################################
 
 
 # Total plant cover -------------------------------------------------------
@@ -244,7 +242,7 @@ richness.plot.srm23 <- ggplot(richness.channel, aes(x = year.xaxis, y = mean,
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   xlab(NULL) +
   ylab("Number of species") +
   ggtitle("Perennial species richness") +
@@ -337,6 +335,19 @@ ground.soil.plot.srm23
 
 tiff("output_figs/SRM_2023/Soil-cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
 ground.soil.plot.srm23
+dev.off()
+
+
+# 2021 ANOVA comparisons --------------------------------------------------
+
+tiff("output_figs/SRM_2023/Soil2021.tiff", units = "in", height = 7, width = 8, res = 300)
+ggarrange(tn2021.plot, tc2021.plot, om2021.plot, barc.rich2021.plot,
+          ncol = 2, nrow = 2)
+dev.off()
+
+tiff("output_figs/SRM_2023/Plant2021.tiff", units = "in", height = 7, width = 8, res = 300)
+ggarrange(total2021.plot, herb2021.plot, rich2021.plot, shan2021.plot,
+          ncol = 2, nrow = 2)
 dev.off()
 
 
