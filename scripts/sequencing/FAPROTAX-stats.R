@@ -3,7 +3,8 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-fapro.raw <- read.table("data/cleaned/sequencing/faprotax-output.tsv")
+fapro.raw <- read.table("data/cleaned/sequencing/faprotax-output.tsv",
+                        header = T)
 
 
 # Wrangling ---------------------------------------------------------------

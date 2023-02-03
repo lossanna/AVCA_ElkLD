@@ -1,7 +1,7 @@
 ---
 title: "Notes for FAPROTAX using HPC"
 author: "Lia Ossanna"
-date: "2023-01-13"
+date: "2023-02-03"
 output:
   html_document:
     toc: true
@@ -29,9 +29,12 @@ load("../../RData/FAPROTAX-tables.RData")
 ### Create input table for FAPROTAX
 - FAPROTAX needs the ASV table, but with all the taxonomy information included in a separate column.  
   
-Example input table:
+Example input table:  
+- First column (`#OTU ID`): OTU identifier, equivalent to `asv` column in our input.  
+- Next four columns: sample names.  
+- Last column (`taxonomy`, wrapped around to its own line): how taxonomy information be formatted for FAPROTAX input.
 ```{r}
-ex[1:3, c(1, 16:20)]
+ex[1, c(1, 16:20)]
 ```
 
 Script:
@@ -41,7 +44,7 @@ library(tidyverse)
 
 # load data ---------------------------------------------------------------
 
-ex <- read_tsv("amplicon-sequencing/FAPROTAX_1.2.6/Download/example_otu_faprotax.tsv") # example
+ex <- read_tsv("amplicon-sequencing/FAPROTAX_1.2.6/example_otu_faprotax.tsv") # example
 barc.asv.raw <- read.table("data/cleaned/sequencing/bac_arc_clean_asv.txt")
 barc.tax <- read.table("data/cleaned/sequencing/bac_arc_clean_tax.txt", 
                        sep = "\t", header = T, row.names = 1)
@@ -82,13 +85,13 @@ write.table(fapro,
             file = "data/cleaned/sequencing/faprotax-input.tsv",
             quote = F, 
             sep = "\t", 
-            col.names = NA)
+            row.names = F)
 
 write.table(fapro, 
             file = "amplicon-sequencing/FAPROTAX_1.2.6/faprotax-input.tsv",
             quote = F, 
             sep = "\t", 
-            col.names = NA)
+            row.names = F)
 ```
 
 Completed table:
@@ -96,11 +99,19 @@ Completed table:
 head(fapro)
 ```
 
+Condensed:
+```{r}
+fapro[1:3, c(1:3, 64)]
+```
+
+
 ### Upload files to HPC
 - [Download the latest release here](http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Download).
 - Upload to HPC: `/groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6`
 
-### Run the job
+### Write the `SLURM` script
+- Create script in desired folder.
+
 `SLURM` script:
 ```{r, eval=FALSE}
 #!/bin/bash
@@ -118,10 +129,17 @@ head(fapro)
 cd /groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6
 
 # Load python
-module load python/3.6
+module load python/3.8
 
 # FAPROTAX
 python3 collapse_table.py -i faprotax-input.tsv -o faprotax-output.tsv -g FAPROTAX.txt -d "taxonomy" -v
 ```
 
+
+### Run the job
+- Access UA servers at <https://ood.hpc.arizona.edu/>.
+- Run command: `sbatch /groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6/faprotax.slurm`
+  - `sbatch`: submit a job
+  - `/groups/...`: path to `SLURM` script.
+- Note: if rerunning FAPROTAX, delete the `faprotax-output.tsv` file first (it cannot overwrite the existing file).
 - See the [FAPROTAX instructions](http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Instructions) for more details.

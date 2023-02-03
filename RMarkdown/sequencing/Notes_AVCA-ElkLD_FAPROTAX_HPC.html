@@ -11,7 +11,7 @@
 
 <meta name="author" content="Lia Ossanna" />
 
-<meta name="date" content="2023-01-13" />
+<meta name="date" content="2023-02-03" />
 
 <title>Notes for FAPROTAX using HPC</title>
 
@@ -1487,7 +1487,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">Notes for FAPROTAX using HPC</h1>
 <h4 class="author">Lia Ossanna</h4>
-<h4 class="date">2023-01-13</h4>
+<h4 class="date">2023-02-03</h4>
 
 </div>
 
@@ -1528,23 +1528,24 @@ to UA HPC servers.</a></li>
 <li>FAPROTAX needs the ASV table, but with all the taxonomy information
 included in a separate column.</li>
 </ul>
-<p>Example input table:</p>
-<pre class="r"><code>ex[1:3, c(1, 16:20)]</code></pre>
+<p>Example input table:<br />
+- First column (<code>#OTU ID</code>): OTU identifier, equivalent to
+<code>asv</code> column in our input.<br />
+- Next four columns: sample names.<br />
+- Last column (<code>taxonomy</code>, wrapped around to its own line):
+how taxonomy information be formatted for FAPROTAX input.</p>
+<pre class="r"><code>ex[1, c(1, 16:20)]</code></pre>
 <pre><code>##   #OTU ID BG.feces.7920 BG.rumen.6882 BG.feces.6803 BG.rumen.6803
 ## 1       0             0             0             0             0
-## 2       1             0             0             0             0
-## 3       2             0             0             0             0
 ##                                                                                                                                                            taxonomy
-## 1 D_0__Bacteria; D_1__Proteobacteria; D_2__Betaproteobacteria; D_3__Nitrosomonadales; D_4__Nitrosomonadaceae; D_5__uncultured; D_6__uncultured beta proteobacterium
-## 2                D_0__Bacteria; D_1__Firmicutes; D_2__Clostridia; D_3__Clostridiales; D_4__Family XIII; D_5__Mogibacterium; D_6__uncultured rumen bacterium 3C0d-10
-## 3                         D_0__Bacteria; D_1__Firmicutes; D_2__Clostridia; D_3__Clostridiales; D_4__Christensenellaceae; D_5__uncultured; D_6__uncultured bacterium</code></pre>
+## 1 D_0__Bacteria; D_1__Proteobacteria; D_2__Betaproteobacteria; D_3__Nitrosomonadales; D_4__Nitrosomonadaceae; D_5__uncultured; D_6__uncultured beta proteobacterium</code></pre>
 <p>Script:</p>
 <pre class="r"><code>library(tidyverse)
 
 
 # load data ---------------------------------------------------------------
 
-ex &lt;- read_tsv(&quot;amplicon-sequencing/FAPROTAX_1.2.6/Download/example_otu_faprotax.tsv&quot;) # example
+ex &lt;- read_tsv(&quot;amplicon-sequencing/FAPROTAX_1.2.6/example_otu_faprotax.tsv&quot;) # example
 barc.asv.raw &lt;- read.table(&quot;data/cleaned/sequencing/bac_arc_clean_asv.txt&quot;)
 barc.tax &lt;- read.table(&quot;data/cleaned/sequencing/bac_arc_clean_tax.txt&quot;, 
                        sep = &quot;\t&quot;, header = T, row.names = 1)
@@ -1585,13 +1586,13 @@ write.table(fapro,
             file = &quot;data/cleaned/sequencing/faprotax-input.tsv&quot;,
             quote = F, 
             sep = &quot;\t&quot;, 
-            col.names = NA)
+            row.names = F)
 
 write.table(fapro, 
             file = &quot;amplicon-sequencing/FAPROTAX_1.2.6/faprotax-input.tsv&quot;,
             quote = F, 
             sep = &quot;\t&quot;, 
-            col.names = NA)</code></pre>
+            row.names = F)</code></pre>
 <p>Completed table:</p>
 <pre class="r"><code>head(fapro)</code></pre>
 <pre><code>##     asv avca-elkld_01_c21 avca-elkld_02_c21 avca-elkld_03_c21 avca-elkld_04_c21
@@ -1713,6 +1714,16 @@ write.table(fapro,
 ## 4         D_0__Bacteria; D_1__Proteobacteria; D_2__Gammaproteobacteria; D_3__Burkholderiales; D_4__Oxalobacteraceae; D_5__Massilia; D_6__NA
 ## 5                 D_0__Bacteria; D_1__Acidobacteriota; D_2__Blastocatellia; D_3__Pyrinomonadales; D_4__Pyrinomonadaceae; D_5__RB41; D_6__NA
 ## 6 D_0__Bacteria; D_1__Proteobacteria; D_2__Alphaproteobacteria; D_3__Rhodobacterales; D_4__Rhodobacteraceae; D_5__Rubellimicrobium; D_6__NA</code></pre>
+<p>Condensed:</p>
+<pre class="r"><code>fapro[1:3, c(1:3, 64)]</code></pre>
+<pre><code>##     asv avca-elkld_01_c21 avca-elkld_02_c21
+## 1 ASV_1              1118              3492
+## 2 ASV_2              1307              1470
+## 3 ASV_4               116              1066
+##                                                                                                                                  taxonomy
+## 1     D_0__Bacteria; D_1__Actinobacteriota; D_2__Actinobacteria; D_3__Micrococcales; D_4__Micrococcaceae; D_5__Pseudarthrobacter; D_6__NA
+## 2 D_0__Bacteria; D_1__Proteobacteria; D_2__Alphaproteobacteria; D_3__Sphingomonadales; D_4__Sphingomonadaceae; D_5__Sphingomonas; D_6__NA
+## 3       D_0__Bacteria; D_1__Proteobacteria; D_2__Gammaproteobacteria; D_3__Burkholderiales; D_4__Oxalobacteraceae; D_5__Massilia; D_6__NA</code></pre>
 </div>
 <div id="upload-files-to-hpc" class="section level3">
 <h3>Upload files to HPC</h3>
@@ -1723,8 +1734,11 @@ the latest release here</a>.</li>
 <code>/groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6</code></li>
 </ul>
 </div>
-<div id="run-the-job" class="section level3">
-<h3>Run the job</h3>
+<div id="write-the-slurm-script" class="section level3">
+<h3>Write the <code>SLURM</code> script</h3>
+<ul>
+<li>Create script in desired folder.</li>
+</ul>
 <p><code>SLURM</code> script:</p>
 <pre class="r"><code>#!/bin/bash
 
@@ -1741,11 +1755,24 @@ the latest release here</a>.</li>
 cd /groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6
 
 # Load python
-module load python/3.6
+module load python/3.8
 
 # FAPROTAX
 python3 collapse_table.py -i faprotax-input.tsv -o faprotax-output.tsv -g FAPROTAX.txt -d &quot;taxonomy&quot; -v</code></pre>
+</div>
+<div id="run-the-job" class="section level3">
+<h3>Run the job</h3>
 <ul>
+<li>Access UA servers at <a href="https://ood.hpc.arizona.edu/" class="uri">https://ood.hpc.arizona.edu/</a>.</li>
+<li>Run command:
+<code>sbatch /groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6/faprotax.slurm</code>
+<ul>
+<li><code>sbatch</code>: submit a job</li>
+<li><code>/groups/...</code>: path to <code>SLURM</code> script.</li>
+</ul></li>
+<li>Note: if rerunning FAPROTAX, delete the
+<code>faprotax-output.tsv</code> file first (it cannot overwrite the
+existing file).</li>
 <li>See the <a href="http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Instructions">FAPROTAX
 instructions</a> for more details.</li>
 </ul>

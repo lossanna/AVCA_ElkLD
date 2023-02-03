@@ -3,7 +3,7 @@ library(tidyverse)
 
 # load data ---------------------------------------------------------------
 
-ex <- read_tsv("amplicon-sequencing/FAPROTAX_1.2.6/Download/example_otu_faprotax.tsv") # example
+ex <- read_tsv("amplicon-sequencing/FAPROTAX_1.2.6/example_otu_faprotax.tsv") # example
 barc.asv.raw <- read.table("data/cleaned/sequencing/bac_arc_clean_asv.txt")
 barc.tax <- read.table("data/cleaned/sequencing/bac_arc_clean_tax.txt", 
                        sep = "\t", header = T, row.names = 1)
@@ -44,12 +44,12 @@ write.table(fapro,
             file = "data/cleaned/sequencing/faprotax-input.tsv",
             quote = F, 
             sep = "\t", 
-            col.names = NA)
+            row.names = F)
 
 write.table(fapro, 
             file = "amplicon-sequencing/FAPROTAX_1.2.6/faprotax-input.tsv",
             quote = F, 
             sep = "\t", 
-            col.names = NA)
+            row.names = F)
 
 save.image("RData/FAPROTAX-tables.RData")
