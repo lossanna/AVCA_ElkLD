@@ -214,6 +214,23 @@ shannon.plot.srm23
 dev.off()
 
 
+# 2021 NMDS ---------------------------------------------------------------
+
+meta <- meta %>% 
+  mutate(Treatment2 = factor(meta$Treatment2, 
+                             levels = c("In-channel treatment", "Upland treatment",
+                                        "No treatment")))
+
+meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment2, shape = Treatment2)) +
+  geom_point(size = 4) +
+  scale_shape_manual(values = c(15, 17, 18)) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_minimal() +
+  theme(legend.title = element_blank()) +
+  theme(legend.position = "bottom")
+
+
 # 2021 ANOVA comparisons --------------------------------------------------
 
 # Total N 
