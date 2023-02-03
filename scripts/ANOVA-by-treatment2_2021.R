@@ -1,5 +1,5 @@
 library(tidyverse)
-library(ggpubr)
+library(car)
 library(agricolae)
 
 # Load data ---------------------------------------------------------------
@@ -27,18 +27,18 @@ dat.2021$Treatment2 <- factor(dat.2021$Treatment2,
 # Normal distribution -----------------------------------------------------
 
 # Quantile-quantile plots
-ggqqplot(dat.2021$Cover)
-ggqqplot(dat.2021$Herbaceous)
-ggqqplot(dat.2021$Woody)
-ggqqplot(dat.2021$TN_perc) # not normal - needs log transformation
-ggqqplot(dat.2021$TN_log)
-ggqqplot(dat.2021$TC_perc) # not normal - needs log transformation
-ggqqplot(dat.2021$TC_log)
-ggqqplot(dat.2021$OM_perc)
-ggqqplot(dat.2021$rich)
-ggqqplot(dat.2021$shan)
-ggqqplot(dat.2021$Richness.barc)
-ggqqplot(dat.2021$Shannon.barc)
+qqPlot(dat.2021$Cover)
+qqPlot(dat.2021$Herbaceous)
+qqPlot(dat.2021$Woody)
+qqPlot(dat.2021$TN_perc) # not normal - needs log transformation
+qqPlot(dat.2021$TN_log)
+qqPlot(dat.2021$TC_perc) # not normal - needs log transformation
+qqPlot(dat.2021$TC_log)
+qqPlot(dat.2021$OM_perc)
+qqPlot(dat.2021$rich)
+qqPlot(dat.2021$shan)
+qqPlot(dat.2021$Richness.barc)
+qqPlot(dat.2021$Shannon.barc)
 
 
 # Total N -----------------------------------------------------------------
