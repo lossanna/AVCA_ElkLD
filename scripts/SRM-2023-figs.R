@@ -28,7 +28,7 @@ common.plants <- common.plants[order(common.plants$n, decreasing = TRUE), ]
 precip.srm23 <- ggplot(precip, aes(x = year.xaxis, y = Precip_cum)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   xlab(NULL) +
   ylab("Precipitation (in)") +
   ggtitle("Cumulative summer precipitation") +
@@ -37,7 +37,7 @@ precip.srm23 <- ggplot(precip, aes(x = year.xaxis, y = Precip_cum)) +
   theme(axis.text.x = element_text(color = "#000000"))
 precip.srm23
 
-tiff("output_figs/SRM_2023/Precip.tiff", units = "in", height = 5.5, width = 10, res = 300)
+tiff("output_figs/SRM_2023/Precip.tiff", units = "in", height = 3, width = 5, res = 300)
 precip.srm23
 dev.off()
   
@@ -226,12 +226,12 @@ nmds2021 <- meta %>%
   geom_point(size = 4) +
   scale_shape_manual(values = c(15, 17, 18)) +
   scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_minimal(base_size = 14) +
+  theme_minimal(base_size = 15) +
   theme(legend.title = element_blank()) +
   theme(legend.position = "bottom")
 nmds2021
 
-tiff("output_figs/SRM_2023/NMDS.tiff", units = "in", height = 5.5, width = 10, res = 300)
+tiff("output_figs/SRM_2023/NMDS.tiff", units = "in", height = 5, width = 9, res = 300)
 nmds2021
 dev.off()
 
@@ -347,7 +347,7 @@ barc.shan2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Shannon.barc)) +
 barc.shan2021.plot
 
 # Combine soil graphs 
-tiff("output_figs/SRM_2023/Soil2021.tiff", units = "in", height = 7, width = 9, res = 300)
+tiff("output_figs/SRM_2023/Soil2021.tiff", units = "in", height = 5, width = 9, res = 300)
 ggarrange(tn2021.plot, tc2021.plot, om2021.plot, barc.rich2021.plot,
           ncol = 2, nrow = 2)
 dev.off()
@@ -434,7 +434,7 @@ shan2021.plot
 
 
 # Combine plant graphs 
-tiff("output_figs/SRM_2023/Plant2021.tiff", units = "in", height = 7, width = 9, res = 300)
+tiff("output_figs/SRM_2023/Plant2021.tiff", units = "in", height = 5, width = 9, res = 300)
 ggarrange(total2021.plot, herb2021.plot, rich2021.plot, shan2021.plot,
           ncol = 2, nrow = 2)
 dev.off()
