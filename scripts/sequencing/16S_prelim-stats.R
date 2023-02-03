@@ -151,6 +151,14 @@ meta <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
                    header = TRUE,
                    sep = "\t")
 meta <- meta[-63, ] # remove "unsigned" row; see other script for analysis including "unsigned"
+
+meta <- meta %>% 
+  mutate(Treatment = factor(meta$Treatment,
+                            levels = c("Baffle", "One rock dam", 
+                                       "Upland treatment", "No treatment")),
+         Treatment2 = factor(meta$Treatment2, 
+                             levels = c("In-channel treatment", "Upland treatment",
+                                        "No treatment")))
   
 # Check number of sequences per sample
 hist(rowSums(barc.asv))
@@ -172,7 +180,7 @@ meta$Shannon <- diversity(barc.norm, index = "shannon")
 # NMDS ordination
 barc.dist <- vegdist(barc.norm, method = "bray")
 barc.nmds <- metaMDS(barc.dist, k = 2)
-barc.nmds$stress # 0.1680364 
+barc.nmds$stress # 0.1680364 (varies)
 
 meta$NMDS1 <- barc.nmds$points[ , 1]
 meta$NMDS2 <- barc.nmds$points[ , 2]
@@ -181,59 +189,151 @@ meta$NMDS2 <- barc.nmds$points[ , 2]
 # Test community similarity differences
 adonis2(barc.dist ~ meta$Channel) # p < 0.001, 15% of variability explained by Channel
 adonis2(barc.dist ~ meta$Treatment) # p < 0.001, 13% of variability explained by Treatment
+adonis2(barc.dist ~ meta$Treatment2) # p < 0.001, 11% of variability explained by Treatment2 (BAF and ORD combined)
+
 
 # Plot NMDS
+# By channel
 meta %>% 
 ggplot(aes(x = NMDS1, y = NMDS2, color = Channel, shape = Channel)) +
   geom_point(size = 3) +
-  stat_ellipse()
+  stat_ellipse() 
 
 meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = Channel, shape = Channel)) +
-  geom_point(size = 5) +
+  geom_point(size = 4) +
   scale_shape_manual(values = c(15:18)) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   theme_minimal() +
   theme(legend.title = element_blank())
 
+# By treatment
+meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment, shape = Treatment)) +
+  geom_point(size = 4) +
+  scale_shape_manual(values = c(15:18)) +
+  scale_color_manual(values = c("#33A02C","#33A02C", "#1F78B4", "red")) +
+  theme_minimal()
+
+# By treatment2
+meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment2, shape = Treatment2)) +
+  geom_point(size = 4) +
+  scale_shape_manual(values = c(15, 17, 18)) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_minimal() 
+
+# By channel and treatment
 meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = Channel, shape = Treatment)) +
   geom_point(size = 3) +
-  scale_shape_manual(values = c(15:18))
-
-meta %>% 
-  ggplot(aes(x = NMDS1, y = NMDS2)) +
-  geom_point(aes(color = Treatment)) +
-  stat_ellipse(aes(color = Treatment))
+  scale_shape_manual(values = c(15:18)) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) 
 
 
-# Beta dispersion 
-barc.betadisper <- betadisper(barc.dist, 
+
+# Beta dispersion by channel
+barc.betadisper.c <- betadisper(barc.dist, 
                               group = meta$Channel, 
                               type = "centroid")
 
-anova(barc.betadisper) # p = 0.0001425 
+anova(barc.betadisper.c) # p = 0.0001425 
 
-meta$betadisper <- barc.betadisper$distances
+meta$betadisper.channel <- barc.betadisper.c$distances
 
-betadisper.hsd <- HSD.test(aov(betadisper ~ Channel, data = meta), trt = "Channel")
-betadisper.hsd
-# Channel 19  0.3847392      a
-# Channel 21  0.3649528      a
-# Channel 13  0.3279800     ab
-# Channel 12  0.2824097      b
+betadisper.c.hsd <- HSD.test(aov(betadisper.channel ~ Channel, data = meta), trt = "Channel")
+betadisper.c.hsd
 
-
-# Plot beta dispersion boxplot
 meta %>% 
-  ggplot(aes(Channel, betadisper), color = Channel) +
+  ggplot(aes(Channel, betadisper.channel)) +
   geom_jitter(aes(color = Channel), 
               alpha = 0.8, 
               size = 4) +
   geom_boxplot(aes(fill = Channel), 
                alpha = 0.3, 
                outlier.shape = NA) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  scale_fill_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
   xlab(NULL) +
   ylab("Beta dispersion") 
+
+
+# Beta dispersion by treatment
+barc.betadisper.t <- betadisper(barc.dist, 
+                                group = meta$Treatment, 
+                                type = "centroid")
+
+anova(barc.betadisper.t) # p = 5.534e-05 
+
+meta$betadisper.treatment <- barc.betadisper.t$distances
+
+betadisper.t.hsd <- HSD.test(aov(betadisper.treatment ~ Treatment, data = meta), 
+                             trt = "Treatment")
+betadisper.t.hsd
+betadis.letters.t <- betadisper.t.hsd$groups
+betadis.letters.t <- betadis.letters.t[c("Baffle", "One rock dam", 
+                                         "Upland treatment", "No treatment"), ]
+
+letters <- data.frame(label = betadis.letters.t$groups,
+                      x = 1:4,
+                      y = c(rep(0.55, 4)))
+
+meta %>% 
+  ggplot(aes(Treatment, betadisper.treatment)) +
+  geom_jitter(aes(color = Treatment), 
+              alpha = 0.8, 
+              size = 4) +
+  geom_boxplot(aes(fill = Treatment), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  scale_color_manual(values = c("#33A02C","#33A02C", "#1F78B4", "red")) +
+  scale_fill_manual(values = c("#33A02C","#33A02C", "#1F78B4", "red")) +
+  xlab(NULL) +
+  ylab("Beta dispersion") +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") 
+  
+
+# Beta dispersion by treatment 2
+barc.betadisper.t2 <- betadisper(barc.dist, 
+                                group = meta$Treatment2, 
+                                type = "centroid")
+
+anova(barc.betadisper.t2) # p = 5.683e-05 
+
+meta$betadisper.treatment2 <- barc.betadisper.t2$distances
+
+betadisper.t2.hsd <- HSD.test(aov(betadisper.treatment2 ~ Treatment2, data = meta), 
+                             trt = "Treatment2")
+betadisper.t2.hsd
+betadis.letters.t2 <- betadisper.t2.hsd$groups
+betadis.letters.t2 <- betadis.letters.t2[c("In-channel treatment", 
+                                         "Upland treatment", "No treatment"), ]
+letters <- data.frame(label = betadis.letters.t2$groups,
+                      x = 1:3,
+                      y = c(rep(0.55, 3)))
+
+meta %>% 
+  ggplot(aes(Treatment2, betadisper.treatment2)) +
+  geom_jitter(aes(color = Treatment2), 
+              alpha = 0.8, 
+              size = 4) +
+  geom_boxplot(aes(fill = Treatment2), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  xlab(NULL) +
+  ylab("Beta dispersion") +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") 
+
 
 write.table(meta, 
             file = "data/cleaned/sequencing/bac_arc_diversity.txt", 
