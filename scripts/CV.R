@@ -3,7 +3,14 @@ library(cvequality)
 
 # Load data ---------------------------------------------------------------
 
-load("RData/Summarise-all-channels.RData")
+total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+
+
+# Data wrangling ----------------------------------------------------------
+
+total.all <- total.all %>% 
+  mutate(Year = gsub("-.*", "", total.all$Year),
+         Treatment = gsub("^.*?: ", "", total.all$channel.trt))
 
 
 # Total plant cover -------------------------------------------------------
@@ -40,6 +47,7 @@ with(total1219.all, asymptotic_test(Cover, Channel)) # NS
 total1321.all <- total.all %>% 
   filter(Channel %in% c("Channel 13", "Channel 21"))
 with(total1321.all, asymptotic_test(Cover, Channel)) # p = 0.0004935618
+
 
 
 
