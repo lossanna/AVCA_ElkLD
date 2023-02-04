@@ -150,7 +150,6 @@ summary(rowSums(barc.asv))
 meta <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
                    header = TRUE,
                    sep = "\t")
-meta <- meta[-63, ] # remove "unsigned" row; see other script for analysis including "unsigned"
 
 meta <- meta %>% 
   mutate(Treatment = factor(meta$Treatment,

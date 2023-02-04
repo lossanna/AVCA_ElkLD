@@ -87,7 +87,7 @@ rm(barc.ext01.control,
 # Note: ".us" added to object name means that the "unsigned" sample is included
 
 # Read metadata
-meta.us <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
+meta.us <- read.table(file = "data/cleaned/sequencing/sequencing_metadata_with-unsigned.txt.txt",
                       header = TRUE,
                       sep = "\t")
 

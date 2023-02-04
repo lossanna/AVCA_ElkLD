@@ -61,3 +61,4 @@ Sample	Name	Channel	Treatment	Treatment2
 60	Channel 12, Station 5 + 48	Channel 12	No treatment	No treatment
 61	Channel 12, Station 6 + 30	Channel 12	No treatment	No treatment
 62	Channel 12, Station 6 + 93	Channel 12	No treatment	No treatment
+69	Unsigned	Unsigned	Unsigned	Unsigned
