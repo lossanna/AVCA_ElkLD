@@ -6,21 +6,17 @@ library(ggpubr)
  
 # Load data ---------------------------------------------------------------
 
-load("RData/Perennial-diversity-by-year-and-channel_v2.RData")
-load("RData/Cover-by-year-and-channel_v2.RData")
-load("RData/ANOVA-by-treatment2_2021.RData")
+total.channel <- read_csv("data/cleaned/Channel-average_total-cover.csv") %>% 
+  mutate(year.date = as.Date(year.date),
+         year.xaxis = as.Date(year.xaxis))
+
+richness.channel <- read_csv("data/cleaned/")
 
 precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
                      sep = "\t", header = TRUE)
 precip$year.xaxis <- as.Date(precip$year.xaxis)
 
 
-# Common species ----------------------------------------------------------
-
-common.plants <- plant.all %>% 
-  filter(Cover >= 15) 
-common.plants <- count(common.plants, Common)
-common.plants <- common.plants[order(common.plants$n, decreasing = TRUE), ]
 
 
 # Precipitation -----------------------------------------------------------
@@ -32,12 +28,14 @@ precip.srm23 <- ggplot(precip, aes(x = year.xaxis, y = Precip_cum)) +
   xlab(NULL) +
   ylab("Precipitation (in)") +
   ggtitle("Cumulative summer precipitation") +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   scale_y_continuous(limits = c(0, 14)) +
-  theme(axis.text.x = element_text(color = "#000000"))
+  theme(axis.text.x = element_text(color = "#000000")) +
+  labs(caption = "Data from Pima County precipitation gauge #6380") +
+  theme(plot.caption = element_text(size = 6))
 precip.srm23
 
-tiff("output_figs/SRM_2023/Precip.tiff", units = "in", height = 3, width = 5, res = 300)
+tiff("output_figs/SRM_2023/Precip.tiff", units = "in", height = 3, width = 4, res = 300)
 precip.srm23
 dev.off()
   
@@ -45,32 +43,50 @@ dev.off()
 
 # Total plant cover -------------------------------------------------------
 
-letters <- data.frame(label = c(total13.letters$groups,
-                                total19.letters$groups),
-                      channel.trt = c(rep("Channel 13: In-channel treatment", 6),
-                                      rep("Channel 19: Upland treatment", 6)),
+# Reorder and rename channels
+total.channel <- total.channel %>% 
+  mutate(trt.full = case_when(
+    channel.trt == "Channel 12: No treatment" ~ "No treatment",
+    channel.trt == "Channel 13: In-channel treatment" ~ "In-channel treatment A",
+    channel.trt == "Channel 19: Upland treatment" ~ "Upland treatment",
+    channel.trt == "Channel 21: In-channel treatment" ~ "In-channel treatment B")) %>% 
+  mutate(across(trt.full, factor,
+                          levels = c("In-channel treatment A",
+                                      "In-channel treatment B",
+                                      "Upland treatment",
+                                      "No treatment")))
+
+# Plot
+letters <- data.frame(label = c("ab", "b", "ab", "b","a", "ab",
+                                "ab", "ab", "ab", "c", "bc", "a"),
+                      trt.full = c(rep("In-channel treatment A", 6),
+                                      rep("Upland treatment", 6)),
                       x = rep(total.channel$year.xaxis[1:6], 2),
                       y = c(70, 60, 70, 65, 65, 55,
                             55, 45, 48, 38, 55, 60))
 
-anova.lab <- data.frame(label = rep("ANOVA", 2),
-                        channel.trt = c("Channel 13: In-channel treatment",
-                                        "Channel 19: Upland treatment"),
+anova.lab <- data.frame(label = rep("ANOVA, p < 0.05", 2),
+                        trt.full = c("In-channel treatment A",
+                                      "Upland treatment"),
                         x = c(rep(as.Date("2020-01-01"), 2)),
                         y = c(7, 7))
 
 total.plot.srm23 <- ggplot(total.channel, aes(x = year.xaxis, y = mean, 
-                                                group = channel.trt, 
-                                                color = channel.trt)) +
+                                                group = trt.full, 
+                                                color = trt.full)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~channel.trt) +
+  facet_wrap(~factor(trt.full,
+                     levels = c("In-channel treatment A",
+                                "In-channel treatment B",
+                                "Upland treatment",
+                                "No treatment"))) +
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Total plant cover") +
-  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  scale_color_manual(values = c("#33A02C",  "#33A02C", "#1F78B4","red")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
   geom_text(data = letters,
@@ -78,7 +94,7 @@ total.plot.srm23 <- ggplot(total.channel, aes(x = year.xaxis, y = mean,
             color = "black") +
   geom_text(data = anova.lab,
             mapping = aes(x = x, y = y, label = label),
-            size = 3.5, color = "gray30") +
+            size = 3, color = "gray30") +
   scale_y_continuous(limits = c(0, 85)) +
   theme(axis.text.x = element_text(color = "#000000"))
 total.plot.srm23
@@ -87,57 +103,8 @@ tiff("output_figs/SRM_2023/Total-plant-cover.tiff", units = "in", height = 5.5, 
 total.plot.srm23
 dev.off()
 
-
-
-# Herbaceous cover --------------------------------------------------------
-
-letters <- data.frame(label = c(herb12.letters$groups, 
-                                herb13.letters$groups,
-                                herb19.letters$groups,
-                                herb21.letters$groups),
-                      channel.trt = c(rep("Channel 12: No treatment", 6),
-                                      rep("Channel 13: In-channel treatment", 6),
-                                      rep("Channel 19: Upland treatment", 6),
-                                      rep("Channel 21: In-channel treatment", 6)),
-                      x = rep(total.channel$year.xaxis[1:6], 4),
-                      y = c(18, 23, 14, 23, 27, 23,
-                            18, 13, 21, 19, 38, 33,
-                            20, 12, 26, 8, 14, 28,
-                            13, 11, 21, 18, 24, 24))
-
-anova.lab <- data.frame(label = c(rep("ANOVA", 4)),
-                        channel.trt = c("Channel 12: No treatment",
-                                        "Channel 13: In-channel treatment",
-                                        "Channel 19: Upland treatment",
-                                        "Channel 21: In-channel treatment"),
-                        x = c(rep(as.Date("2020-01-01"), 4)),
-                        y = c(4, 4, 4, 4))
-
-herb.plot.srm23 <- ggplot(herb.channel, aes(x = year.xaxis, y = mean, 
-                                            group = channel.trt, color = channel.trt)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Herbaceous cover") +
-  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") +
-  facet_wrap(~channel.trt) +
-  geom_text(data = letters,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black") +
-  geom_text(data = anova.lab,
-            mapping = aes(x = x, y = y, label = label),
-            size = 3.5, color = "gray30") +
-  scale_y_continuous(limits = c(0, 40)) +
-  theme(axis.text.x = element_text(color = "#000000"))
-herb.plot.srm23
-
-tiff("output_figs/SRM_2023/Herbaceous-cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
-herb.plot.srm23
+tiff("output_figs/SRM_2023/Total-plant-cover_narrow.tiff", units = "in", height = 5, width = 7, res = 300)
+total.plot.srm23
 dev.off()
 
 
@@ -441,16 +408,70 @@ dev.off()
 
 
 
-
-# Save --------------------------------------------------------------------
-
-save.image("RData/SRM-2023-figs.RData")
-
-
 # Others ------------------------------------------------------------------
 
-# Plots that look nice but won't be used in the talk probably
+# Common species
+common.plants <- plant.all %>% 
+  filter(Cover >= 15) 
+common.plants <- count(common.plants, Common)
+common.plants <- common.plants[order(common.plants$n, decreasing = TRUE), ]
 
+
+
+# Plots that look nice but won't be used in the talk 
+load("RData/Perennial-diversity-by-year-and-channel_v2.RData")
+load("RData/Cover-by-year-and-channel_v2.RData")
+load("RData/ANOVA-by-treatment2_2021.RData")
+
+# Herbaceous cover 
+letters <- data.frame(label = c(herb12.letters$groups, 
+                                herb13.letters$groups,
+                                herb19.letters$groups,
+                                herb21.letters$groups),
+                      channel.trt = c(rep("Channel 12: No treatment", 6),
+                                      rep("Channel 13: In-channel treatment", 6),
+                                      rep("Channel 19: Upland treatment", 6),
+                                      rep("Channel 21: In-channel treatment", 6)),
+                      x = rep(total.channel$year.xaxis[1:6], 4),
+                      y = c(18, 23, 14, 23, 27, 23,
+                            18, 13, 21, 19, 38, 33,
+                            20, 12, 26, 8, 14, 28,
+                            13, 11, 21, 18, 24, 24))
+
+anova.lab <- data.frame(label = c(rep("ANOVA", 4)),
+                        channel.trt = c("Channel 12: No treatment",
+                                        "Channel 13: In-channel treatment",
+                                        "Channel 19: Upland treatment",
+                                        "Channel 21: In-channel treatment"),
+                        x = c(rep(as.Date("2020-01-01"), 4)),
+                        y = c(4, 4, 4, 4))
+
+herb.plot.srm23 <- ggplot(herb.channel, aes(x = year.xaxis, y = mean, 
+                                            group = channel.trt, color = channel.trt)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  facet_wrap(~channel.trt) +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  geom_text(data = anova.lab,
+            mapping = aes(x = x, y = y, label = label),
+            size = 3.5, color = "gray30") +
+  scale_y_continuous(limits = c(0, 40)) +
+  theme(axis.text.x = element_text(color = "#000000"))
+herb.plot.srm23
+
+tiff("output_figs/SRM_2023/Herbaceous-cover.tiff", units = "in", height = 5.5, width = 10, res = 300)
+herb.plot.srm23
+dev.off()
 
 # Soil cover 
 letters <- data.frame(label = c(soil12.letters$groups, 
@@ -589,5 +610,7 @@ inwood.known.herb.plot.srm23
 dev.off()
 
 
+# Save --------------------------------------------------------------------
 
+save.image("RData/SRM-2023-figs.RData")
 

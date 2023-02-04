@@ -75,6 +75,10 @@ total.channel <- total.all %>%
             SE = std.error(Cover),
             .groups = "keep")
 
+write.csv(total.channel,
+          file = "data/cleaned/Channel-average_total-cover.csv",
+          row.names = FALSE)
+
 # Plot
 total.plot <- ggplot(total.channel, aes(x = year.xaxis, y = mean, 
                                                 group = channel.trt, 
