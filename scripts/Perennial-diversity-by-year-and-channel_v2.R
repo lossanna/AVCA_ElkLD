@@ -63,6 +63,10 @@ richness.channel <- richness %>%
             SE = std.error(rich),
             .groups = "keep") 
 
+write.csv(richness.channel,
+          file = "data/cleaned/Channel-average_richness.csv",
+          row.names = FALSE)
+
 # Plot
 richness.plot <- ggplot(richness.channel, aes(x = year.xaxis, y = mean, 
                                                  group = channel.trt, 
@@ -190,6 +194,10 @@ shannon.channel <- shannon %>%
             SD = sd(shan),
             SE = std.error(shan),
             .groups = "keep") 
+
+write.csv(shannon.channel,
+          file = "data/cleaned/Channel-average_Shannon.csv",
+          row.names = FALSE)
 
 # Plot 
 shannon.plot <- ggplot(shannon.channel, aes(x = year.xaxis, y = mean, 

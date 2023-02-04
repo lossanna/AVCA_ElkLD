@@ -6,15 +6,21 @@ library(ggpubr)
  
 # Load data ---------------------------------------------------------------
 
+precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
+                     sep = "\t", header = TRUE)
+precip$year.xaxis <- as.Date(precip$year.xaxis)
+
 total.channel <- read_csv("data/cleaned/Channel-average_total-cover.csv") %>% 
   mutate(year.date = as.Date(year.date),
          year.xaxis = as.Date(year.xaxis))
 
-richness.channel <- read_csv("data/cleaned/")
+richness.channel <- read_csv("data/cleaned/Channel-average_richness.csv") %>% 
+  mutate(year.date = as.Date(year.date),
+         year.xaxis = as.Date(year.xaxis))
 
-precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
-                     sep = "\t", header = TRUE)
-precip$year.xaxis <- as.Date(precip$year.xaxis)
+shannon.channel <- read_csv("data/cleaned/Channel-average_Shannon.csv") %>% 
+  mutate(year.date = as.Date(year.date),
+         year.xaxis = as.Date(year.xaxis))
 
 
 
@@ -111,44 +117,62 @@ dev.off()
 
 # Species richness --------------------------------------------------------
 
-letters <- data.frame(label = c(richness13.letters$groups,
-                                                    richness19.letters$groups,
-                                                    richness21.letters$groups),
-                                          channel.trt = c(rep("Channel 13: In-channel treatment", 6),
-                                                          rep("Channel 19: Upland treatment", 6),
-                                                          rep("Channel 21: In-channel treatment", 6)),
-                                          x = rep(richness.channel$year.xaxis[1:6], 3),
-                                          y = c(9.3, 8.2, 8.2, 9, 10.6, 9,
-                                                10.9, 9.5, 9.5, 10.1, 8.2, 8.1,
-                                                7.6, 7.9, 9.8, 8.5, 9.7, 6.9))
+# Reorder and rename channels
+richness.channel <- richness.channel %>% 
+  mutate(trt.full = case_when(
+    channel.trt == "Channel 12: No treatment" ~ "No treatment",
+    channel.trt == "Channel 13: In-channel treatment" ~ "In-channel treatment A",
+    channel.trt == "Channel 19: Upland treatment" ~ "Upland treatment",
+    channel.trt == "Channel 21: In-channel treatment" ~ "In-channel treatment B")) %>% 
+  mutate(across(trt.full, factor,
+                levels = c("In-channel treatment A",
+                           "In-channel treatment B",
+                           "Upland treatment",
+                           "No treatment")))
 
-anova.lab <- data.frame(label = c(rep("ANOVA", 3)),
-                        channel.trt = c("Channel 13: In-channel treatment", 
-                                        "Channel 19: Upland treatment",
-                                        "Channel 21: In-channel treatment"),
+# Plot
+letters <- data.frame(label = c("ab", "b", "b", "ab", "a", "ab",
+                                "ab", "ab", "a", "ab", "ab", "b",
+                                "a", "ab", "ab", "ab", "b", "b"),
+                      trt.full = c(rep("In-channel treatment A", 6),
+                                   rep("In-channel treatment B", 6),
+                                    rep("Upland treatment", 6)),
+                      x = rep(richness.channel$year.xaxis[1:6], 3),
+                      y = c(9.3, 8.2, 8.2, 8.8, 10.3, 8.8,
+                            7.6, 7.9, 9.8, 8.5, 9.7, 6.9,
+                            10.9, 9.5, 9.5, 10.1, 8.2, 8.1))
+
+anova.lab <- data.frame(label = c(rep("ANOVA, p < 0.05", 3)),
+                        trt.full = c(rep("In-channel treatment A", 6),
+                                     rep("In-channel treatment B", 6),
+                                     rep("Upland treatment", 6)),
                         x = c(rep(as.Date("2020-01-01"), 3)),
                         y = c(10.5, 10.5, 10.5))
 
 richness.plot.srm23 <- ggplot(richness.channel, aes(x = year.xaxis, y = mean, 
-                                                      group = channel.trt, 
-                                                      color = channel.trt)) +
+                                                      group = trt.full, 
+                                                      color = trt.full)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   xlab(NULL) +
   ylab("Number of species") +
-  ggtitle("Perennial species richness") +
-  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  ggtitle("Perennial plant species richness") +
+  scale_color_manual(values = c("#33A02C", "#33A02C", "#1F78B4", "red")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
-  facet_wrap(~channel.trt) +
+  facet_wrap(~factor(trt.full,
+                      levels = c("In-channel treatment A",
+                                 "In-channel treatment B",
+                                 "Upland treatment",
+                                 "No treatment"))) +
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
   geom_text(data = anova.lab,
             mapping = aes(x = x, y = y, label = label),
-            size = 3.5, color = "gray30") +
+            size = 3, color = "gray30") +
   theme(axis.text.x = element_text(color = "#000000"))
 richness.plot.srm23
 
@@ -156,12 +180,30 @@ tiff("output_figs/SRM_2023/Richess.tiff", units = "in", height = 5.5, width = 10
 richness.plot.srm23
 dev.off()
 
+tiff("output_figs/SRM_2023/Richess_narrow.tiff", units = "in", height = 5, width = 7, res = 300)
+richness.plot.srm23
+dev.off()
+
 
 # Shannon diversity -------------------------------------------------------
 
+# Reorder and rename channels
+shannon.channel <- shannon.channel %>% 
+  mutate(trt.full = case_when(
+    channel.trt == "Channel 12: No treatment" ~ "No treatment",
+    channel.trt == "Channel 13: In-channel treatment" ~ "In-channel treatment A",
+    channel.trt == "Channel 19: Upland treatment" ~ "Upland treatment",
+    channel.trt == "Channel 21: In-channel treatment" ~ "In-channel treatment B")) %>% 
+  mutate(across(trt.full, factor,
+                levels = c("In-channel treatment A",
+                           "In-channel treatment B",
+                           "Upland treatment",
+                           "No treatment")))
+
+# Plot
 shannon.plot.srm23 <- ggplot(shannon.channel, aes(x = year.xaxis, y = mean, 
-                                            group = channel.trt, 
-                                            color = channel.trt)) +
+                                            group = trt.full, 
+                                            color = trt.full)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -169,16 +211,21 @@ shannon.plot.srm23 <- ggplot(shannon.channel, aes(x = year.xaxis, y = mean,
   xlab(NULL) +
   ylab("Shannon diversity index") +
   ggtitle("Perennial plant diversity") +
-  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  scale_color_manual(values = c("#33A02C", "#33A02C", "#1F78B4", "red")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
-  facet_wrap(~channel.trt) +
+  facet_wrap(~factor(trt.full,
+                     levels = c("In-channel treatment A",
+                                "In-channel treatment B",
+                                "Upland treatment",
+                                "No treatment"))) +
   theme(axis.text.x = element_text(color = "#000000"))
 shannon.plot.srm23
 
 tiff("output_figs/SRM_2023/Shannon.tiff", units = "in", height = 5.5, width = 10, res = 300)
 shannon.plot.srm23
 dev.off()
+
 
 
 # 2021 NMDS ---------------------------------------------------------------
