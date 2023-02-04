@@ -5,17 +5,15 @@ library(car)
 
 fapro.raw <- read.table("data/cleaned/sequencing/faprotax-output.tsv",
                         header = T)
+
 meta <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
-                   sep = "\t", header = TRUE)
+                   sep = "\t", header = TRUE, row.names = 1)
+
+barc.asv <- read.table("data/cleaned/sequencing/bac_arc_clean_asv.txt",
+                       sep = "\t", header = TRUE, row.names = 1)
 
 
-# List of categories ------------------------------------------------------
-
-write.csv(fapro.raw$group,
-          file = "data/cleaned/sequencing/faprotax-categories.csv",
-          row.names = FALSE)
-
-# Wrangling ---------------------------------------------------------------
+# Data wrangling ----------------------------------------------------------
 
 # Remove ASV col
 fapro0 <- fapro.raw %>% 
@@ -38,17 +36,44 @@ str(fapro0)
 fapro0[] <- lapply(fapro0, as.numeric)
 str(fapro0)
 
-# Add metadata
-meta <- meta[-63, ] # remove unsigned
-fapro <- left_join(meta, fapro0) 
+# Remove empty cols
+fapro <- fapro0 %>% 
+  select(-Sample)
+fapro <- fapro[ , colSums(fapro !=0) > 0]
 fapro <- fapro %>% 
-  mutate(Channel = factor(fapro$Channel),
-         Treatment = factor(fapro$Treatment,
+  mutate(Sample = c(1:62))
+
+# Add metadata
+fapro <- left_join(meta, fapro) 
+fapro <- fapro %>% 
+  mutate(Channel = factor(fapro.all$Channel),
+         Treatment = factor(fapro.all$Treatment,
                             levels = c("Baffle", "One rock dam", 
                                        "Upland treatment", "No treatment")),
-         Treatment2 = factor(fapro$Treatment2,
+         Treatment2 = factor(fapro.all$Treatment2,
                              levels = c("In-channel treatment", "Upland treatment",
                                         "No treatment")))
+
+# Write table of categories
+write.csv(colnames(fapro[ , -c(1:5)]),
+          file = "data/cleaned/sequencing/faprotax-categories.csv",
+          row.names = FALSE)
+
+# Row sums of FAPROTAX-assigned reads
+sum.fapro <- fapro0 %>% 
+  select(-Sample) 
+sum.fapro <- sum.fapro %>% 
+  mutate(sum.fapro = rowSums(sum.fapro)) %>% 
+  select(sum.fapro) %>% 
+  mutate(Sample = 1:62)
+
+# Row sums of reads from all ASVs
+sum.asv <- data.frame(Sample = 1:62,
+                      sum_asv = rowSums(barc.asv))
+  
+
+
+
 
 
 
