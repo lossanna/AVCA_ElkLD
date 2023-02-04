@@ -22,6 +22,10 @@ shannon.channel <- read_csv("data/cleaned/Channel-average_Shannon.csv") %>%
   mutate(year.date = as.Date(year.date),
          year.xaxis = as.Date(year.xaxis))
 
+meta <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
+                    sep = "\t", header = TRUE)
+
+dat.2021 <- read_csv("data/cleaned/SEM-input.csv")
 
 
 
@@ -242,7 +246,10 @@ nmds2021 <- meta %>%
   scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
   theme_minimal(base_size = 15) +
   theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  labs(x = "Axis 1",
+       y = "Axis 2",
+       title = "Bacteria & archaea")
 nmds2021
 
 tiff("output_figs/SRM_2023/NMDS.tiff", units = "in", height = 5, width = 9, res = 300)
@@ -252,10 +259,23 @@ dev.off()
 
 # 2021 ANOVA comparisons --------------------------------------------------
 
+# Add Treament2 col
+dat.2021 <- dat.2021 %>% 
+  mutate(Treatment2 = case_when(
+    str_detect(channel.trt, "In-channel") ~ "In-channel",
+    str_detect(channel.trt, "Upland") ~ "Upland",
+    str_detect(channel.trt, "No treat") ~ "None")) %>% 
+  mutate(across(Treatment2, factor,
+                levels = c("In-channel",
+                           "Upland",
+                           "None"))) %>% 
+  mutate(TN_ppt = TN_perc * 10,
+         TC_ppt = TC_perc * 10) 
+
 # Total N 
-letters <- data.frame(label = tn.letters$groups,
+letters <- data.frame(label = c("a", "a", "b"),
                       x = 1:3,
-                      y = rep(0.64, 3))
+                      y = rep(0.59, 3))
 tn2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = TN_ppt)) +
   geom_boxplot(aes(fill = Treatment2),
                alpha = 0.4,
@@ -277,7 +297,7 @@ tn2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = TN_ppt)) +
 tn2021.plot
 
 # Total C 
-letters <- data.frame(label = tc.letters$groups,
+letters <- data.frame(label = c("a", "a", "b"),
                       x = 1:3,
                       y = rep(6.5, 3))
 tc2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = TC_ppt)) +
@@ -301,9 +321,9 @@ tc2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = TC_ppt)) +
 tc2021.plot
 
 # Organic matter
-letters <- data.frame(label = om.letters$groups,
+letters <- data.frame(label = c("b", "a", "c"),
                       x = 1:3,
-                      y = rep(2.1, 3))
+                      y = rep(2.04, 3))
 om2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = OM_perc)) +
   geom_boxplot(aes(fill = Treatment2),
                alpha = 0.4,
@@ -323,6 +343,16 @@ om2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = OM_perc)) +
             color = "black") +
   theme(axis.text.x = element_text(color = "#000000"))
 om2021.plot
+
+# Combine soil chemistry graphs 
+tiff("output_figs/SRM_2023/Soil-chem-2021.tiff", units = "in", height = 5, width = 8, res = 300)
+soilchem2021.plot <- ggarrange(tn2021.plot, tc2021.plot, om2021.plot, 
+          ncol = 3, nrow = 1)
+annotate_figure(soilchem2021.plot,
+                bottom = "Treatment")
+dev.off()
+
+
 
 # Soil bac arc richness 
 barc.rich2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Richness.barc)) +
@@ -386,30 +416,6 @@ total2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Cover)) +
   theme(axis.text.x = element_text(color = "#000000"))
 total2021.plot
 
-# Herbaceous cover
-letters <- data.frame(label = herb.letters$groups,
-                      x = 1:3,
-                      y = rep(75, 3))
-herb2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Herbaceous)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Herbaceous plant cover") +
-  geom_text(data = letters,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black") +
-  theme(axis.text.x = element_text(color = "#000000"))
-herb2021.plot
-
 # Perennial plant richness
 rich2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = rich)) +
   geom_boxplot(aes(fill = Treatment2),
@@ -448,9 +454,11 @@ shan2021.plot
 
 
 # Combine plant graphs 
-tiff("output_figs/SRM_2023/Plant2021.tiff", units = "in", height = 5, width = 9, res = 300)
-ggarrange(total2021.plot, herb2021.plot, rich2021.plot, shan2021.plot,
-          ncol = 2, nrow = 2)
+tiff("output_figs/SRM_2023/Plant2021.tiff", units = "in", height = 5, width = 8, res = 300)
+plant2021.plot <- ggarrange(total2021.plot, rich2021.plot, shan2021.plot,
+          ncol = 3, nrow = 1)
+annotate_figure(plant2021.plot,
+                bottom = "Treatment")
 dev.off()
 
 
@@ -655,6 +663,31 @@ inwood.known.herb.plot.srm23
 tiff("output_figs/SRM_2023/Invasive-native-cover_herbaceous.tiff", units = "in", height = 5.5, width = 10, res = 300)
 inwood.known.herb.plot.srm23
 dev.off()
+
+
+# Herbaceous cover, 2021 ANOVA
+letters <- data.frame(label = herb.letters$groups,
+                      x = 1:3,
+                      y = rep(75, 3))
+herb2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Herbaceous)) +
+  geom_boxplot(aes(fill = Treatment2),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment2),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous plant cover") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000"))
+herb2021.plot
 
 
 # Save --------------------------------------------------------------------

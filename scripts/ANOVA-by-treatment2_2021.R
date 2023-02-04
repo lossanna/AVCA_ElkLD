@@ -22,6 +22,10 @@ dat.2021$Treatment2 <- factor(dat.2021$Treatment2,
                               levels = c("In-channel treatment", 
                                          "Upland treatment", "No treatment"))
 
+# Add C:N ratio col
+dat.2021 <- dat.2021 %>% 
+  mutate(CN_ratio = TC_perc / TN_perc)
+
 
 
 # Normal distribution -----------------------------------------------------
@@ -35,6 +39,7 @@ qqPlot(dat.2021$TN_log)
 qqPlot(dat.2021$TC_perc) # not normal - needs log transformation
 qqPlot(dat.2021$TC_log)
 qqPlot(dat.2021$OM_perc)
+qqPlot(dat.2021$CN_ratio)
 qqPlot(dat.2021$rich)
 qqPlot(dat.2021$shan)
 qqPlot(dat.2021$Richness.barc)
@@ -109,6 +114,30 @@ tc2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = TC_ppt)) +
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
+  theme(axis.text.x = element_text(color = "#000000"))
+tc2021.plot
+
+
+# C:N ratio ---------------------------------------------------------------
+
+anova.cn <- aov(dat.2021$CN_ratio ~ dat.2021$Treatment2, data = dat.2021)
+summary(anova.cn) # p = 0.142  
+
+# Boxplot
+tc2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = CN_ratio)) +
+  geom_boxplot(aes(fill = Treatment2),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment2),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Proportion") +
+  ggtitle("Carbon-to-nitrogen ratio") +
   theme(axis.text.x = element_text(color = "#000000"))
 tc2021.plot
 
