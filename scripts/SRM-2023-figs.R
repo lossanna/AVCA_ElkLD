@@ -483,8 +483,10 @@ annotate_figure(plant2021.plot,
 dev.off()
 
 
-# 2021 NMDS ---------------------------------------------------------------
 
+# 2021 NMDS and beta dispersion -------------------------------------------
+
+# NMDS
 nmds2021 <- meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = trt.short, shape = trt.short)) +
   geom_point(size = 4) +
@@ -498,8 +500,34 @@ nmds2021 <- meta %>%
        title = "Bacteria & archaea")
 nmds2021
 
-tiff("output_figs/SRM_2023/NMDS.tiff", units = "in", height = 5, width = 9, res = 300)
-nmds2021
+# Beta dispersion
+letters <- data.frame(label = c("a", "a", "b"),
+                      x = 1:3,
+                      y = c(rep(0.55, 3)))
+
+betadisp2021 <- meta %>% 
+  ggplot(aes(trt.short, betadisper.treatment2)) +
+  geom_jitter(aes(color = trt.short), 
+              alpha = 0.8, 
+              size = 4) +
+  geom_boxplot(aes(fill = trt.short), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  xlab(NULL) +
+  ylab("Beta dispersion") +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  ggtitle("Beta dispersion")
+betadisp2021
+
+
+tiff("output_figs/SRM_2023/NMDS_beta-dispersion.tiff", units = "in", height = 5, width = 9, res = 300)
+ggarrange()
 dev.off()
 
 
