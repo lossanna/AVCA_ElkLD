@@ -499,10 +499,10 @@ nmds2021 <- meta %>%
        color = "Treatment",
        shape = "Treatment") +
   theme(legend.position = "bottom") +
-  geom_text(aes(x = 0.35, y = -0.45, label = "PERMANOVA, p < 0.05"),
-            size = 2, color = "gray30") +
-  geom_text(aes(x = 0.35, y = -0.5, label = "Stress = 0.168"),
-            size = 2, color = "gray30") 
+  geom_text(aes(x = 0.3, y = -0.55, label = "PERMANOVA, p < 0.05"),
+            size = 2.5, color = "gray30") +
+  geom_text(aes(x = 0.35, y = -0.65, label = "Stress = 0.168"),
+            size = 2.5, color = "gray30") 
 nmds2021
 
 # Beta dispersion
@@ -529,7 +529,9 @@ betadisp2021 <- meta %>%
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
-  ggtitle("Beta dispersion") 
+  ggtitle("Beta diversity") +
+  geom_text(aes(x = 0.9, y = 0.22, label = "ANOVA, p < 0.05"),
+            size = 2.5, color = "gray30")
 betadisp2021
 
 
