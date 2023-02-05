@@ -232,15 +232,261 @@ dev.off()
 
 
 
-# 2021 NMDS ---------------------------------------------------------------
+# 2021 data wrangling -----------------------------------------------------
+
+# Add trt.short col
+dat.2021 <- dat.2021 %>% 
+  mutate(trt.short = case_when(
+    str_detect(channel.trt, "In-channel") ~ "In-channel",
+    str_detect(channel.trt, "Upland") ~ "Upland",
+    str_detect(channel.trt, "No treat") ~ "None")) %>% 
+  mutate(across(trt.short, factor,
+                levels = c("In-channel",
+                           "Upland",
+                           "None"))) %>% 
+  mutate(TN_ppt = TN_perc * 10,
+         TC_ppt = TC_perc * 10) 
+
 
 meta <- meta %>% 
   mutate(Treatment2 = factor(meta$Treatment2, 
                              levels = c("In-channel treatment", "Upland treatment",
-                                        "No treatment")))
+                                        "No treatment"))) %>% 
+  mutate(trt.short = case_when(
+    str_detect(Treatment2, "In-channel") ~ "In-channel",
+    str_detect(Treatment2, "Upland") ~ "Upland",
+    str_detect(Treatment2, "No treat") ~ "None")) %>% 
+  mutate(across(trt.short, factor,
+                levels = c("In-channel",
+                           "Upland",
+                           "None")))
+  
+
+
+
+# 2021 soil chemistry -----------------------------------------------------
+
+# Total N
+letters <- data.frame(label = c("a", "a", "b"),
+                      x = 1:3,
+                      y = rep(0.59, 3))
+
+tn2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = TN_ppt)) +
+  geom_boxplot(aes(fill = trt.short),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = trt.short),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Total N (mg/g soil)") +
+  ggtitle("Soil nitrogen") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  geom_text(aes(x = 1.1, y = 0.68, label = "ANOVA, p < 0.05"),
+          size = 2.3, color = "gray30") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+tn2021.plot
+
+
+# Total C 
+letters <- data.frame(label = c("a", "a", "b"),
+                      x = 1:3,
+                      y = rep(6.5, 3))
+
+tc2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = TC_ppt)) +
+  geom_boxplot(aes(fill = trt.short),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = trt.short),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Total C (mg/g soil)") +
+  ggtitle("Soil carbon") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  geom_text(aes(x = 1.1, y = 7.25, label = "ANOVA, p < 0.05"),
+            size = 2.3, color = "gray30") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+tc2021.plot
+
+
+
+# Organic matter
+letters <- data.frame(label = c("b", "a", "c"),
+                      x = 1:3,
+                      y = rep(2.04, 3))
+om2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = OM_perc)) +
+  geom_boxplot(aes(fill = trt.short),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = trt.short),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Organic matter (%)") +
+  ggtitle("Soil organic matter") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  geom_text(aes(x = 1, y = 2.3, label = "ANOVA, p < 0.05"),
+            size = 2.3, color = "gray30") +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+om2021.plot
+
+# Combine soil chemistry graphs 
+tiff("output_figs/SRM_2023/Soil-chem-2021.tiff", units = "in", height = 4.7, width = 8, res = 300)
+soilchem2021.plot <- ggarrange(tn2021.plot, tc2021.plot, om2021.plot, 
+          ncol = 3, nrow = 1) 
+annotate_figure(soilchem2021.plot,
+                bottom = "Treatment")
+dev.off()
+
+
+
+# 2021 soil microbial -----------------------------------------------------
+
+# Soil bac arc richness 
+barc.rich2021.plot <- ggplot(meta, aes(x = trt.short, y = Richness)) +
+  geom_boxplot(aes(fill = trt.short),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = trt.short),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("No. of species (ASVs)") +
+  ggtitle("Bacterial & archaeal richness") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+barc.rich2021.plot
+
+# Soil bac arc diversity 
+barc.shan2021.plot <- ggplot(meta, aes(x = trt.short, y = Shannon)) +
+  geom_boxplot(aes(fill = trt.short),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = trt.short),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Shannon diversity index") + 
+  ggtitle("Bacterial & archaeal diversity") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+barc.shan2021.plot
+
+# Combine soil graphs 
+tiff("output_figs/SRM_2023/Soil-microbial-2021.tiff", units = "in", height = 4.7, width = 7, res = 300)
+soilbarc2021.plot <- ggarrange(barc.rich2021.plot, barc.shan2021.plot,
+          ncol = 2, nrow = 1)
+annotate_figure(soilbarc2021.plot,
+                bottom = "Treatment")
+dev.off()
+
+
+
+# 2021 plant  -------------------------------------------------------------
+
+# Total plant cover
+total2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = Cover)) +
+  geom_boxplot(aes(fill = trt.short),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = trt.short),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Total plant cover") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+total2021.plot
+
+# Perennial plant richness
+rich2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = rich)) +
+  geom_boxplot(aes(fill = trt.short),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = trt.short),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("No. of species") +
+  ggtitle("Perennial plant richness") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+rich2021.plot
+
+# Perennial plant diversity 
+shan2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = shan)) +
+  geom_boxplot(aes(fill = trt.short),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = trt.short),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Shannon diversity index") +
+  ggtitle("Perennial plant diversity") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+shan2021.plot
+
+
+# Combine plant graphs 
+tiff("output_figs/SRM_2023/Plant2021.tiff", units = "in", height = 4.7, width = 8, res = 300)
+plant2021.plot <- ggarrange(total2021.plot, rich2021.plot, shan2021.plot,
+          ncol = 3, nrow = 1)
+annotate_figure(plant2021.plot,
+                bottom = "Treatment")
+dev.off()
+
+
+# 2021 NMDS ---------------------------------------------------------------
 
 nmds2021 <- meta %>% 
-  ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment2, shape = Treatment2)) +
+  ggplot(aes(x = NMDS1, y = NMDS2, color = trt.short, shape = trt.short)) +
   geom_point(size = 4) +
   scale_shape_manual(values = c(15, 17, 18)) +
   scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
@@ -254,211 +500,6 @@ nmds2021
 
 tiff("output_figs/SRM_2023/NMDS.tiff", units = "in", height = 5, width = 9, res = 300)
 nmds2021
-dev.off()
-
-
-# 2021 ANOVA comparisons --------------------------------------------------
-
-# Add Treament2 col
-dat.2021 <- dat.2021 %>% 
-  mutate(Treatment2 = case_when(
-    str_detect(channel.trt, "In-channel") ~ "In-channel",
-    str_detect(channel.trt, "Upland") ~ "Upland",
-    str_detect(channel.trt, "No treat") ~ "None")) %>% 
-  mutate(across(Treatment2, factor,
-                levels = c("In-channel",
-                           "Upland",
-                           "None"))) %>% 
-  mutate(TN_ppt = TN_perc * 10,
-         TC_ppt = TC_perc * 10) 
-
-# Total N 
-letters <- data.frame(label = c("a", "a", "b"),
-                      x = 1:3,
-                      y = rep(0.59, 3))
-tn2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = TN_ppt)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Total N (mg/g soil)") +
-  ggtitle("Soil nitrogen") +
-  geom_text(data = letters,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black") +
-  theme(axis.text.x = element_text(color = "#000000"))
-tn2021.plot
-
-# Total C 
-letters <- data.frame(label = c("a", "a", "b"),
-                      x = 1:3,
-                      y = rep(6.5, 3))
-tc2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = TC_ppt)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Total C (mg/g soil)") +
-  ggtitle("Soil carbon") +
-  geom_text(data = letters,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black") +
-  theme(axis.text.x = element_text(color = "#000000"))
-tc2021.plot
-
-# Organic matter
-letters <- data.frame(label = c("b", "a", "c"),
-                      x = 1:3,
-                      y = rep(2.04, 3))
-om2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = OM_perc)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Organic matter (%)") +
-  ggtitle("Soil organic matter") +
-  geom_text(data = letters,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black") +
-  theme(axis.text.x = element_text(color = "#000000"))
-om2021.plot
-
-# Combine soil chemistry graphs 
-tiff("output_figs/SRM_2023/Soil-chem-2021.tiff", units = "in", height = 5, width = 8, res = 300)
-soilchem2021.plot <- ggarrange(tn2021.plot, tc2021.plot, om2021.plot, 
-          ncol = 3, nrow = 1)
-annotate_figure(soilchem2021.plot,
-                bottom = "Treatment")
-dev.off()
-
-
-
-# Soil bac arc richness 
-barc.rich2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Richness.barc)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("No. of species (ASVs)") +
-  ggtitle("Soil bacterial & archaeal richness") +
-  theme(axis.text.x = element_text(color = "#000000"))
-barc.rich2021.plot
-
-# Soil bac arc diversity 
-barc.shan2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Shannon.barc)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Shannon diversity index") + 
-  ggtitle("Soil bacterial & archaeal diversity") +
-  theme(axis.text.x = element_text(color = "#000000"))
-barc.shan2021.plot
-
-# Combine soil graphs 
-tiff("output_figs/SRM_2023/Soil2021.tiff", units = "in", height = 5, width = 9, res = 300)
-ggarrange(tn2021.plot, tc2021.plot, om2021.plot, barc.rich2021.plot,
-          ncol = 2, nrow = 2)
-dev.off()
-
-
-
-# Total plant cover
-total2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Cover)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Total plant cover") +
-  theme(axis.text.x = element_text(color = "#000000"))
-total2021.plot
-
-# Perennial plant richness
-rich2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = rich)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("No. of species") +
-  ggtitle("Perennial plant richness") +
-  theme(axis.text.x = element_text(color = "#000000"))
-rich2021.plot
-
-# Perennial plant diversity 
-shan2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = shan)) +
-  geom_boxplot(aes(fill = Treatment2),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Shannon diversity index") +
-  ggtitle("Perennial plant diversity") +
-  theme(axis.text.x = element_text(color = "#000000"))
-shan2021.plot
-
-
-# Combine plant graphs 
-tiff("output_figs/SRM_2023/Plant2021.tiff", units = "in", height = 5, width = 8, res = 300)
-plant2021.plot <- ggarrange(total2021.plot, rich2021.plot, shan2021.plot,
-          ncol = 3, nrow = 1)
-annotate_figure(plant2021.plot,
-                bottom = "Treatment")
 dev.off()
 
 
