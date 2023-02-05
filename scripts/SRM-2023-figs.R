@@ -492,12 +492,12 @@ nmds2021 <- meta %>%
   geom_point(size = 4) +
   scale_shape_manual(values = c(15, 17, 18)) +
   scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  theme_minimal(base_size = 15) +
+  theme_bw(base_size = 14) +
   theme(legend.title = element_blank()) +
-  theme(legend.position = "bottom") +
   labs(x = "Axis 1",
        y = "Axis 2",
-       title = "Bacteria & archaea")
+       title = "Bacteria & archaea NMDS") +
+  theme(legend.position = "none")
 nmds2021
 
 # Beta dispersion
@@ -507,7 +507,8 @@ letters <- data.frame(label = c("a", "a", "b"),
 
 betadisp2021 <- meta %>% 
   ggplot(aes(trt.short, betadisper.treatment2)) +
-  geom_jitter(aes(color = trt.short), 
+  geom_jitter(aes(color = trt.short,
+                  shape = trt.short), 
               alpha = 0.8, 
               size = 4) +
   geom_boxplot(aes(fill = trt.short), 
@@ -522,12 +523,15 @@ betadisp2021 <- meta %>%
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
-  ggtitle("Beta dispersion")
+  ggtitle("Bacteria & archaea beta dispersion") 
 betadisp2021
 
 
+# Combine plots
 tiff("output_figs/SRM_2023/NMDS_beta-dispersion.tiff", units = "in", height = 5, width = 9, res = 300)
-ggarrange()
+ggarrange(nmds2021, betadisp2021,
+          ncol = 2, nrow = 1, common.legend = TRUE,
+          legend = "bottom")
 dev.off()
 
 
