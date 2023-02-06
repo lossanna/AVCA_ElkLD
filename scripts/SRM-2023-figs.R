@@ -367,11 +367,11 @@ dev.off()
 # 2021 soil microbial -----------------------------------------------------
 
 # Soil bac arc richness 
-barc.rich2021.plot <- ggplot(meta, aes(x = trt.short, y = Richness)) +
+barc.rich2021.plot <- ggplot(meta, aes(x = Treatment2, y = Richness)) +
   geom_boxplot(aes(fill = trt.short),
                alpha = 0.4,
                outlier.shape = NA) +
-  geom_jitter(aes(color = trt.short),
+  geom_jitter(aes(color = Treatment2),
               alpha = 0.9,
               size = 2) +
   scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
@@ -384,6 +384,11 @@ barc.rich2021.plot <- ggplot(meta, aes(x = trt.short, y = Richness)) +
   theme(axis.text.x = element_text(color = "#000000")) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 barc.rich2021.plot
+
+tiff("output_figs/SRM_2023/Soil-richness.tiff", units = "in", height = 4, width = 4.5, res = 300)
+barc.rich2021.plot
+dev.off()
+
 
 # Soil bac arc diversity 
 barc.shan2021.plot <- ggplot(meta, aes(x = trt.short, y = Shannon)) +
@@ -536,7 +541,7 @@ betadisp2021
 
 
 # Combine plots
-tiff("output_figs/SRM_2023/NMDS_beta-dispersion.tiff", units = "in", height = 5, width = 9, res = 300)
+tiff("output_figs/SRM_2023/NMDS_beta-dispersion.tiff", units = "in", height = 5, width = 8.5, res = 300)
 ggarrange(nmds2021, betadisp2021,
           ncol = 2, nrow = 1, common.legend = TRUE,
           legend = "bottom", widths = c(1.5, 1))
@@ -750,11 +755,11 @@ dev.off()
 letters <- data.frame(label = herb.letters$groups,
                       x = 1:3,
                       y = rep(75, 3))
-herb2021.plot <- ggplot(dat.2021, aes(x = Treatment2, y = Herbaceous)) +
-  geom_boxplot(aes(fill = Treatment2),
+herb2021.plot <- ggplot(dat.2021, aes(x = trt.full, y = Herbaceous)) +
+  geom_boxplot(aes(fill = trt.full),
                alpha = 0.4,
                outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment2),
+  geom_jitter(aes(color = trt.full),
               alpha = 0.9,
               size = 2) +
   scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
