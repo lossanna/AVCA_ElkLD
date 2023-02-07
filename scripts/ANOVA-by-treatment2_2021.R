@@ -351,6 +351,14 @@ ggarrange(total2021.plot, herb2021.plot, rich2021.plot, shan2021.plot,
           ncol = 2, nrow = 2)
 
 
+# Elevation difference ----------------------------------------------------
+
+summary(aov(dat.2021$Elev_Diff ~ dat.2021$Treatment2))
+anova.elev <- aov(dat.2021$Elev_Diff ~ dat.2021$Treatment2)
+hsd.elev <- HSD.test(anova.elev, trt = "dat.2021$Treatment2")
+hsd.elev
+
+
 # Save --------------------------------------------------------------------
 
 save.image("RData/ANOVA-by-treatment2_2021.RData")
