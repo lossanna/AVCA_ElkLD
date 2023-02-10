@@ -5,7 +5,15 @@ library(car)
 
 # Load data ---------------------------------------------------------------
 
+precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
+                     sep = "\t", header = TRUE)
+precip$year.xaxis <- as.Date(precip$year.xaxis)
+precip_join <- precip %>% 
+  select(year.xaxis, Precip_cum)
+
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+
+
 
 
 # Functions ---------------------------------------------------------------
@@ -44,8 +52,9 @@ year <- function(x) {
   x <- x %>% 
     mutate(Treatment2 = case_when(
       Treatment2 == "No treatment" ~ "Control",
-      TRUE ~ Treatment2
-    ))
+      TRUE ~ Treatment2))
+  
+  x <- left_join(x, precip_join)
   
   return(x)
 }
@@ -92,6 +101,11 @@ summary(aov(Cover ~ Treatment2 * Year, data = total.all))
 anova.total <- aov(Cover ~ Treatment2 * Year, data = total.all)
 Anova(anova.total, type = "III")
 TukeyHSD(anova.total, which = "Treatment2")
+
+# Correlation with precipitation
+plot(Cover ~ Precip_cum, data = total.all)
+
+
 
 
 

@@ -113,7 +113,7 @@ shannon <- plant.per %>%
 
 # Channel summarised (stations averaged)
 shannon.avg <- shannon %>% 
-  group_by(Treatment2, Year, year.date, year.xaxis, channel.trt) %>% 
+  group_by(Treatment2, Year, year.date, year.xaxis) %>% 
   summarise(mean = mean(shan),
             SD = sd(shan),
             SE = std.error(shan),
@@ -145,5 +145,7 @@ summary(aov(shan ~ Treatment2 * Year, data = shannon))
 anova.shan <- aov(shan ~ Treatment2 * Year, data = shannon)
 Anova(anova.shan, type = "III") # NS
 
+
+save.image("Perennial-diversity-by-year-and-Treatment2.RData")
 
 
