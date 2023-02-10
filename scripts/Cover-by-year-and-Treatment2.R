@@ -54,8 +54,6 @@ year <- function(x) {
       Treatment2 == "No treatment" ~ "Control",
       TRUE ~ Treatment2))
   
-  x <- left_join(x, precip_join)
-  
   return(x)
 }
 
@@ -96,7 +94,7 @@ total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean,
   theme(legend.position = "none") 
 total.plot
 
-# ANOVA
+# Two-factor ANOVA
 summary(aov(Cover ~ Treatment2 + Year, data = total.all))
 anova.total <- aov(Cover ~ Treatment2 + Year, data = total.all)
 Anova(anova.total, type = "III")
@@ -104,8 +102,11 @@ TukeyHSD(anova.total, which = "Treatment2")
 TukeyHSD(anova.total, which = "Year")
 
 
+# One-way ANOVA for In-channel
+summary(aov(Cover ~ Year, data = filter(total.all, Treatment2 == "In-channel treatment"))) # NS
 
 # Correlation with precipitation
+total.all <- left_join(total.all, precip_join)
 plot(Cover ~ Precip_cum, data = total.all)
 summary(lm(Cover ~ Precip_cum, data = total.all))
 
