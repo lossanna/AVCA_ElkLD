@@ -10,26 +10,35 @@ total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 
 total.all <- total.all %>% 
   mutate(Year = gsub("-.*", "", total.all$Year),
-         Treatment = gsub("^.*?: ", "", total.all$channel.trt))
+         Treatment2 = gsub("^.*?: ", "", total.all$channel.trt))
 
 
 # Total plant cover -------------------------------------------------------
 
-# Between all channels
-with(total.all, asymptotic_test(Cover, Treatment2))
+# By Treatment2
+# Between all treatments
+with(total.all, asymptotic_test(Cover, Treatment2)) # p = 0.04598678
 
+# In-channel/control
 totalin.cn.all <- total.all %>% 
-  filter(Treatment2 %in% c("In-channel treatment", "Control"))
-with(totalin.cn.all, asymptotic_test(Cover, Channel))
+  filter(Treatment2 %in% c("In-channel treatment", "No treatment"))
+with(totalin.cn.all, asymptotic_test(Cover, Channel)) # p = 3.347947e-05
 
+# In-channel/Upland
 totalin.up.all <- total.all %>% 
   filter(Treatment2 %in% c("Upland treatment", "In-channel treatment"))
-with(totalin.up.all, asymptotic_test(Cover, Channel))
+with(totalin.up.all, asymptotic_test(Cover, Channel)) # p = 0.0002622423
 
+# Upland/control
 totalup.cn.all <- total.all %>% 
-  filter(Treatment2 %in% c("Upland treatment", "Control"))
-with(totalup.cn.all, asymptotic_test(Cover, Channel))
+  filter(Treatment2 %in% c("Upland treatment", "No treatment"))
+with(totalup.cn.all, asymptotic_test(Cover, Channel)) # NS
 
+
+
+# By channel
+# Between all channels
+with(total.all, asymptotic_test(Cover, Channel))
 
 # Between Channels 12 and 13
 total1213.all <- total.all %>% 
