@@ -97,15 +97,17 @@ total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean,
 total.plot
 
 # ANOVA
-summary(aov(Cover ~ Treatment2 * Year, data = total.all))
-anova.total <- aov(Cover ~ Treatment2 * Year, data = total.all)
+summary(aov(Cover ~ Treatment2 + Year, data = total.all))
+anova.total <- aov(Cover ~ Treatment2 + Year, data = total.all)
 Anova(anova.total, type = "III")
 TukeyHSD(anova.total, which = "Treatment2")
+TukeyHSD(anova.total, which = "Year")
+
+
 
 # Correlation with precipitation
 plot(Cover ~ Precip_cum, data = total.all)
-
-
+summary(lm(Cover ~ Precip_cum, data = total.all))
 
 
 

@@ -16,7 +16,20 @@ total.all <- total.all %>%
 # Total plant cover -------------------------------------------------------
 
 # Between all channels
-with(total.all, asymptotic_test(Cover, Channel))
+with(total.all, asymptotic_test(Cover, Treatment2))
+
+totalin.cn.all <- total.all %>% 
+  filter(Treatment2 %in% c("In-channel treatment", "Control"))
+with(totalin.cn.all, asymptotic_test(Cover, Channel))
+
+totalin.up.all <- total.all %>% 
+  filter(Treatment2 %in% c("Upland treatment", "In-channel treatment"))
+with(totalin.up.all, asymptotic_test(Cover, Channel))
+
+totalup.cn.all <- total.all %>% 
+  filter(Treatment2 %in% c("Upland treatment", "Control"))
+with(totalup.cn.all, asymptotic_test(Cover, Channel))
+
 
 # Between Channels 12 and 13
 total1213.all <- total.all %>% 
