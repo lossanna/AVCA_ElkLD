@@ -99,7 +99,6 @@
 31,"2012-11-01","Channel 19","Station 01 + 04","Gravel",12.1666666666667,"No treatment","Channel 19: Upland treatment",1,0
 31,"2012-11-01","Channel 19","Station 01 + 04","Rock",10.4166666666667,"No treatment","Channel 19: Upland treatment",1,0
 31,"2012-11-01","Channel 19","Station 01 + 04","Soil",43.8333333333333,"No treatment","Channel 19: Upland treatment",1,0
-32,"2012-11-01","Channel 19","Station 02 + 04",NA,NA,NA,NA,NA,NA
 33,"2012-11-01","Channel 19","Station 02 + 52","Gravel",10.4166666666667,"No treatment","Channel 19: Upland treatment",1,0
 33,"2012-11-01","Channel 19","Station 02 + 52","Rock",12.0833333333333,"No treatment","Channel 19: Upland treatment",1,0
 33,"2012-11-01","Channel 19","Station 02 + 52","Soil",52.0833333333333,"No treatment","Channel 19: Upland treatment",1,0
@@ -220,7 +219,6 @@
 71,"2013-11-01","Channel 12","Station 4 + 56","Gravel",30.4166666666667,"No treatment","Channel 12: No treatment",0,0
 71,"2013-11-01","Channel 12","Station 4 + 56","Rock",22.0833333333333,"No treatment","Channel 12: No treatment",0,0
 71,"2013-11-01","Channel 12","Station 4 + 56","Soil",24.1666666666667,"No treatment","Channel 12: No treatment",0,0
-72,"2013-11-01","Channel 12","Station 4 + 65",NA,NA,NA,NA,NA,NA
 73,"2013-11-01","Channel 12","Station 5 + 13","Biocrust",2.91666666666667,"No treatment","Channel 12: No treatment",0,0
 73,"2013-11-01","Channel 12","Station 5 + 13","Gravel",26.25,"No treatment","Channel 12: No treatment",0,0
 73,"2013-11-01","Channel 12","Station 5 + 13","Rock",8.75,"No treatment","Channel 12: No treatment",0,0
@@ -276,7 +274,6 @@
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Gravel",15.5833333333333,"Baffle","Channel 13: In-channel treatment",0,1
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Rock",1.33333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Soil",62.0833333333333,"Baffle","Channel 13: In-channel treatment",0,1
-91,"2013-11-01","Channel 13","Station 4 + 78 ORD",NA,NA,NA,NA,NA,NA
 92,"2013-11-01","Channel 19","Station 01 + 04","Gravel",11.75,"No treatment","Channel 19: Upland treatment",1,0
 92,"2013-11-01","Channel 19","Station 01 + 04","Rock",10.4166666666667,"No treatment","Channel 19: Upland treatment",1,0
 92,"2013-11-01","Channel 19","Station 01 + 04","Soil",33.75,"No treatment","Channel 19: Upland treatment",1,0
@@ -505,7 +502,6 @@
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Litter",13.875,"One station dam","Channel 13: In-channel treatment",0,1
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Rock",0.75,"One station dam","Channel 13: In-channel treatment",0,1
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Soil",50,"One station dam","Channel 13: In-channel treatment",0,1
-154,"2014-11-01","Channel 19","Station 01 + 04",NA,NA,NA,NA,NA,NA
 155,"2014-11-01","Channel 19","Station 02 + 04","Biocrust",0.625,"No treatment","Channel 19: Upland treatment",1,0
 155,"2014-11-01","Channel 19","Station 02 + 04","Gravel",13.875,"No treatment","Channel 19: Upland treatment",1,0
 155,"2014-11-01","Channel 19","Station 02 + 04","Litter",0.5,"No treatment","Channel 19: Upland treatment",1,0
@@ -1139,7 +1135,6 @@
 331,"2021-11-01","Channel 13","Station 2 + 67 BAF","Gravel",23.75,"Baffle","Channel 13: In-channel treatment",0,1
 331,"2021-11-01","Channel 13","Station 2 + 67 BAF","Rock",5.625,"Baffle","Channel 13: In-channel treatment",0,1
 331,"2021-11-01","Channel 13","Station 2 + 67 BAF","Soil",32.5,"Baffle","Channel 13: In-channel treatment",0,1
-332,"2021-11-01","Channel 13","Station 3 + 09 ORD",NA,NA,NA,NA,NA,NA
 333,"2021-11-01","Channel 13","Station 3 + 31 BAF","Gravel",17,"Baffle","Channel 13: In-channel treatment",0,1
 333,"2021-11-01","Channel 13","Station 3 + 31 BAF","Rock",4.5,"Baffle","Channel 13: In-channel treatment",0,1
 333,"2021-11-01","Channel 13","Station 3 + 31 BAF","Soil",43.75,"Baffle","Channel 13: In-channel treatment",0,1
@@ -1257,20 +1252,6 @@
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Gravel",23.125,"Baffle","Channel 21: In-channel treatment",0,1
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Rock",2,"Baffle","Channel 21: In-channel treatment",0,1
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Soil",31.875,"Baffle","Channel 21: In-channel treatment",0,1
-372,"2012-03-01","Channel 12","Station 1 + 04",NA,NA,NA,NA,NA,NA
-373,"2012-03-01","Channel 12","Station 1 + 52",NA,NA,NA,NA,NA,NA
-374,"2012-03-01","Channel 12","Station 1 + 83",NA,NA,NA,NA,NA,NA
-375,"2012-03-01","Channel 12","Station 2 + 63",NA,NA,NA,NA,NA,NA
-376,"2012-03-01","Channel 12","Station 2 + 98",NA,NA,NA,NA,NA,NA
-377,"2012-03-01","Channel 12","Station 3 + 93",NA,NA,NA,NA,NA,NA
-378,"2012-03-01","Channel 12","Station 4 + 00",NA,NA,NA,NA,NA,NA
-379,"2012-03-01","Channel 12","Station 4 + 09",NA,NA,NA,NA,NA,NA
-380,"2012-03-01","Channel 12","Station 4 + 56",NA,NA,NA,NA,NA,NA
-381,"2012-03-01","Channel 12","Station 4 + 65",NA,NA,NA,NA,NA,NA
-382,"2012-03-01","Channel 12","Station 5 + 13",NA,NA,NA,NA,NA,NA
-383,"2012-03-01","Channel 12","Station 5 + 48",NA,NA,NA,NA,NA,NA
-384,"2012-03-01","Channel 12","Station 6 + 30",NA,NA,NA,NA,NA,NA
-385,"2012-03-01","Channel 12","Station 6 + 93",NA,NA,NA,NA,NA,NA
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Biocrust",0.5,"Baffle","Channel 13: In-channel treatment",0,1
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Gravel",28,"Baffle","Channel 13: In-channel treatment",0,1
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Litter",8.75,"Baffle","Channel 13: In-channel treatment",0,1
@@ -1345,7 +1326,6 @@
 402,"2012-03-01","Channel 19","Station 01 + 04","Gravel",32.5,"No treatment","Channel 19: Upland treatment",1,0
 402,"2012-03-01","Channel 19","Station 01 + 04","Rock",14.5833333333333,"No treatment","Channel 19: Upland treatment",1,0
 402,"2012-03-01","Channel 19","Station 01 + 04","Soil",42.0833333333333,"No treatment","Channel 19: Upland treatment",1,0
-403,"2012-03-01","Channel 19","Station 02 + 04",NA,NA,NA,NA,NA,NA
 404,"2012-03-01","Channel 19","Station 02 + 52","Gravel",18.75,"No treatment","Channel 19: Upland treatment",1,0
 404,"2012-03-01","Channel 19","Station 02 + 52","Rock",1.75,"No treatment","Channel 19: Upland treatment",1,0
 404,"2012-03-01","Channel 19","Station 02 + 52","Soil",54.1666666666667,"No treatment","Channel 19: Upland treatment",1,0

@@ -295,23 +295,30 @@ all.c <- bind_rows(all.c12, all.c13, all.c19, all.c21) %>%
   distinct(.keep_all = TRUE) %>% 
   arrange(Year) 
 all.c <- all.c[c(63:433, 1:62), ]
-all.c$PlotTimeID <- c(1:nrow(all.c)) # 371 for Nov samples bc one of the data sheets was lost
+all.c$PlotTimeID <- c(1:nrow(all.c)) 
 all.c <- all.c %>% 
   separate(Station, c("Channel", "Station"), "_") %>% 
   select(PlotTimeID, Year, Channel, Station)
-  
-  
-# Add to dataframes
-plant.all <- left_join(all.c, plant.all)
-ground.all <- left_join(all.c, ground.all)
-total.all <- left_join(all.c, total.all)
-notree.all <- left_join(all.c, notree.all)
-fungr.all <- left_join(all.c, fungr.all)
-gfst.all <- left_join(all.c, gfst.all)
-woody.all <- left_join(all.c, woody.all)
-inwood.all <- left_join(all.c, inwood.all)
-innat.all <- left_join(all.c, innat.all)
 
+# Add to dataframes
+plant.all <- left_join(all.c, plant.all) %>% 
+  filter(!is.na(Cover))
+ground.all <- left_join(all.c, ground.all) %>% 
+  filter(!is.na(Cover))
+total.all <- left_join(all.c, total.all) %>% 
+  filter(!is.na(Cover))
+notree.all <- left_join(all.c, notree.all) %>% 
+  filter(!is.na(Cover))
+fungr.all <- left_join(all.c, fungr.all) %>% 
+  filter(!is.na(Cover))
+gfst.all <- left_join(all.c, gfst.all) %>% 
+  filter(!is.na(Cover))
+woody.all <- left_join(all.c, woody.all) %>% 
+  filter(!is.na(Cover))
+inwood.all <- left_join(all.c, inwood.all) %>% 
+  filter(!is.na(Cover))
+innat.all <- left_join(all.c, innat.all) %>% 
+  filter(!is.na(Cover))
 
 
 # Save dataframes ---------------------------------------------------------

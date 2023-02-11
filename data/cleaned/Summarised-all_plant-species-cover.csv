@@ -318,7 +318,6 @@
 31,"2012-11-01","Channel 19","Station 01 + 04","Shrub","Native","Ocotillo","Fouquieria splendens",2.5,"No treatment","Channel 19: Upland treatment",1,0,"Shrub","Woody"
 31,"2012-11-01","Channel 19","Station 01 + 04","Shrub","Native","Snakeweed","Gutierrezia sarothrae",2.91666666666667,"No treatment","Channel 19: Upland treatment",1,0,"Shrub","Woody"
 31,"2012-11-01","Channel 19","Station 01 + 04","Tree","Native","Velvet mesquite","Prosopis velutina",43.3333333333333,"No treatment","Channel 19: Upland treatment",1,0,"Tree","Woody"
-32,"2012-11-01","Channel 19","Station 02 + 04",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 33,"2012-11-01","Channel 19","Station 02 + 52","Annual forb","Native","Coulter's spiderling","Boerhavia coulteri",0.416666666666667,"No treatment","Channel 19: Upland treatment",1,0,"Forb","Herbaceous"
 33,"2012-11-01","Channel 19","Station 02 + 52","Annual forb","Native","Sorrel buckwheat","Eriogonum polycladon",0.416666666666667,"No treatment","Channel 19: Upland treatment",1,0,"Forb","Herbaceous"
 33,"2012-11-01","Channel 19","Station 02 + 52","Annual grass","Native","Feather fingergrass","Chloris virgata",0.416666666666667,"No treatment","Channel 19: Upland treatment",1,0,"Grass","Herbaceous"
@@ -740,7 +739,6 @@
 71,"2013-11-01","Channel 12","Station 4 + 56","Shrub","Native","False mesquite","Calliandra eriophylla",8.75,"No treatment","Channel 12: No treatment",0,0,"Shrub","Woody"
 71,"2013-11-01","Channel 12","Station 4 + 56","Shrub","Native","Snakeweed","Gutierrezia sarothrae",0.416666666666667,"No treatment","Channel 12: No treatment",0,0,"Shrub","Woody"
 71,"2013-11-01","Channel 12","Station 4 + 56","Tree","Native","Velvet mesquite","Prosopis velutina",13.3333333333333,"No treatment","Channel 12: No treatment",0,0,"Tree","Woody"
-72,"2013-11-01","Channel 12","Station 4 + 65",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 73,"2013-11-01","Channel 12","Station 5 + 13","Annual grass","Native","Mexican panic","Panicum",0.0833333333333333,"No treatment","Channel 12: No treatment",0,0,"Grass","Herbaceous"
 73,"2013-11-01","Channel 12","Station 5 + 13","Annual grass","Native","Needle grama","Bouteloua aristidoides",0.416666666666667,"No treatment","Channel 12: No treatment",0,0,"Grass","Herbaceous"
 73,"2013-11-01","Channel 12","Station 5 + 13","Annual grass","Native","Sixweek threeawn","Aristida adscensionis",0.625,"No treatment","Channel 12: No treatment",0,0,"Grass","Herbaceous"
@@ -908,7 +906,6 @@
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Perennial grass","Native","Tanglehead","Heteropogon contortus",2.5,"Baffle","Channel 13: In-channel treatment",0,1,"Grass","Herbaceous"
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Shrub","Native","Snakeweed","Gutierrezia sarothrae",2.5,"Baffle","Channel 13: In-channel treatment",0,1,"Shrub","Woody"
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Tree","Native","Velvet mesquite","Prosopis velutina",42.9166666666667,"Baffle","Channel 13: In-channel treatment",0,1,"Tree","Woody"
-91,"2013-11-01","Channel 13","Station 4 + 78 ORD",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 92,"2013-11-01","Channel 19","Station 01 + 04","Annual forb","Native","Pigweed","Amaranthus palmeri/fimbriatus",0.0833333333333333,"No treatment","Channel 19: Upland treatment",1,0,"Forb","Herbaceous"
 92,"2013-11-01","Channel 19","Station 01 + 04","Perennial forb","Native","Slender janusia","Janusia gracilis",0.0833333333333333,"No treatment","Channel 19: Upland treatment",1,0,"Forb","Herbaceous"
 92,"2013-11-01","Channel 19","Station 01 + 04","Perennial grass","Invasive","Lehmann lovegrass","Eragrostis lehmanniana",2.91666666666667,"No treatment","Channel 19: Upland treatment",1,0,"Grass","Herbaceous"
@@ -1455,7 +1452,6 @@
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Shrub","Native","False mesquite","Calliandra eriophylla",7.5,"One station dam","Channel 13: In-channel treatment",0,1,"Shrub","Woody"
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Shrub","Native","Snakeweed","Gutierrezia sarothrae",9.375,"One station dam","Channel 13: In-channel treatment",0,1,"Shrub","Woody"
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Tree","Native","Velvet mesquite","Prosopis velutina",10,"One station dam","Channel 13: In-channel treatment",0,1,"Tree","Woody"
-154,"2014-11-01","Channel 19","Station 01 + 04",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 155,"2014-11-01","Channel 19","Station 02 + 04","Annual grass","Unknown native status","Annual grass (year summed)",NA,0.625,"No treatment","Channel 19: Upland treatment",1,0,"Grass","Herbaceous"
 155,"2014-11-01","Channel 19","Station 02 + 04","Perennial forb","Unknown native status","Indian mallow","Abutilon",0.125,"No treatment","Channel 19: Upland treatment",1,0,"Forb","Herbaceous"
 155,"2014-11-01","Channel 19","Station 02 + 04","Perennial grass","Invasive","Lehmann lovegrass","Eragrostis lehmanniana",1.5,"No treatment","Channel 19: Upland treatment",1,0,"Grass","Herbaceous"
@@ -2214,7 +2210,6 @@
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Perennial grass","Native","Tanglehead","Heteropogon contortus",0.125,"One station dam","Channel 21: In-channel treatment",0,1,"Grass","Herbaceous"
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Shrub","Native","Shortleaf baccharis","Baccharis brachyphylla",0.125,"One station dam","Channel 21: In-channel treatment",0,1,"Shrub","Woody"
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Tree","Native","Velvet mesquite","Prosopis velutina",24.5,"One station dam","Channel 21: In-channel treatment",0,1,"Tree","Woody"
-240,"2015-11-01","Channel 21","Station 07 + 66 BAF",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Annual grass","Native","Feather fingergrass","Chloris virgata",0.125,"Baffle","Channel 21: In-channel treatment",0,1,"Grass","Herbaceous"
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Annual grass","Unknown native status","Annual grass (year summed)",NA,0.625,"Baffle","Channel 21: In-channel treatment",0,1,"Grass","Herbaceous"
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Perennial forb","Invasive","Spreading fantails","Sida abutifolia",0.125,"Baffle","Channel 21: In-channel treatment",0,1,"Forb","Herbaceous"
@@ -3450,20 +3445,7 @@
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Shrub","Native","Desert zinnia","Zinnia acerosa",0.625,"Baffle","Channel 21: In-channel treatment",0,1,"Shrub","Woody"
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Shrub","Native","False mesquite","Calliandra eriophylla",0.625,"Baffle","Channel 21: In-channel treatment",0,1,"Shrub","Woody"
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Tree","Native","Velvet mesquite","Prosopis velutina",3.75,"Baffle","Channel 21: In-channel treatment",0,1,"Tree","Woody"
-372,"2012-03-01","Channel 12","Station 1 + 04",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-373,"2012-03-01","Channel 12","Station 1 + 52",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-374,"2012-03-01","Channel 12","Station 1 + 83",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-375,"2012-03-01","Channel 12","Station 2 + 63",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-376,"2012-03-01","Channel 12","Station 2 + 98",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-377,"2012-03-01","Channel 12","Station 3 + 93",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 378,"2012-03-01","Channel 12","Station 4 + 00","Tree","Native","Velvet mesquite","Prosopis velutina",14.1666666666667,"No treatment","Channel 12: No treatment",0,0,"Tree","Woody"
-379,"2012-03-01","Channel 12","Station 4 + 09",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-380,"2012-03-01","Channel 12","Station 4 + 56",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-381,"2012-03-01","Channel 12","Station 4 + 65",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-382,"2012-03-01","Channel 12","Station 5 + 13",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-383,"2012-03-01","Channel 12","Station 5 + 48",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-384,"2012-03-01","Channel 12","Station 6 + 30",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-385,"2012-03-01","Channel 12","Station 6 + 93",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Perennial grass","Native","Slender grama","Bouteloua repens",0.166666666666667,"Baffle","Channel 13: In-channel treatment",0,1,"Grass","Herbaceous"
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Shrub","Native","False mesquite","Calliandra eriophylla",6.25,"Baffle","Channel 13: In-channel treatment",0,1,"Shrub","Woody"
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Shrub","Native","Snakeweed","Gutierrezia sarothrae",6.75,"Baffle","Channel 13: In-channel treatment",0,1,"Shrub","Woody"
@@ -3600,7 +3582,6 @@
 402,"2012-03-01","Channel 19","Station 01 + 04","Shrub","Native","False mesquite","Calliandra eriophylla",0.0833333333333333,"No treatment","Channel 19: Upland treatment",1,0,"Shrub","Woody"
 402,"2012-03-01","Channel 19","Station 01 + 04","Shrub","Native","Snakeweed","Gutierrezia sarothrae",0.5,"No treatment","Channel 19: Upland treatment",1,0,"Shrub","Woody"
 402,"2012-03-01","Channel 19","Station 01 + 04","Tree","Native","Velvet mesquite","Prosopis velutina",12.9166666666667,"No treatment","Channel 19: Upland treatment",1,0,"Tree","Woody"
-403,"2012-03-01","Channel 19","Station 02 + 04",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 404,"2012-03-01","Channel 19","Station 02 + 52","Annual forb","Native","Sorrel buckwheat","Eriogonum polycladon",0.0833333333333333,"No treatment","Channel 19: Upland treatment",1,0,"Forb","Herbaceous"
 404,"2012-03-01","Channel 19","Station 02 + 52","Annual forb","Native","Tansymustard","Descurainia pinnata",0.0833333333333333,"No treatment","Channel 19: Upland treatment",1,0,"Forb","Herbaceous"
 404,"2012-03-01","Channel 19","Station 02 + 52","Annual forb","Unknown native status","Annual forb (year summed)",NA,1,"No treatment","Channel 19: Upland treatment",1,0,"Forb","Herbaceous"

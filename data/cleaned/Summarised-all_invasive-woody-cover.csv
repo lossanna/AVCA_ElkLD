@@ -112,7 +112,6 @@
 31,"2012-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Native herb",12.9166666666667
 31,"2012-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Native woody",76.75
 31,"2012-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Unknown herb",0.166666666666667
-32,"2012-11-01","Channel 19","Station 02 + 04",NA,NA,NA,NA,NA,NA
 33,"2012-11-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Invasive herb",0.416666666666667
 33,"2012-11-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Native herb",44.3333333333333
 33,"2012-11-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Native woody",55.5
@@ -251,7 +250,6 @@
 71,"2013-11-01","Channel 12","Station 4 + 56","No treatment","Channel 12: No treatment",0,0,"Native herb",21.4166666666667
 71,"2013-11-01","Channel 12","Station 4 + 56","No treatment","Channel 12: No treatment",0,0,"Native woody",22.5
 71,"2013-11-01","Channel 12","Station 4 + 56","No treatment","Channel 12: No treatment",0,0,"Unknown herb",0.416666666666667
-72,"2013-11-01","Channel 12","Station 4 + 65",NA,NA,NA,NA,NA,NA
 73,"2013-11-01","Channel 12","Station 5 + 13","No treatment","Channel 12: No treatment",0,0,"Native herb",19.9583333333333
 73,"2013-11-01","Channel 12","Station 5 + 13","No treatment","Channel 12: No treatment",0,0,"Native woody",30.9166666666667
 73,"2013-11-01","Channel 12","Station 5 + 13","No treatment","Channel 12: No treatment",0,0,"Unknown herb",0.291666666666667
@@ -315,7 +313,6 @@
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Native herb",13.4166666666667
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Native woody",45.4166666666667
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Unknown herb",0.166666666666667
-91,"2013-11-01","Channel 13","Station 4 + 78 ORD",NA,NA,NA,NA,NA,NA
 92,"2013-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Invasive herb",2.91666666666667
 92,"2013-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Native herb",5.08333333333333
 92,"2013-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Native woody",75.0833333333333
@@ -532,7 +529,6 @@
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","One station dam","Channel 13: In-channel treatment",0,1,"Native herb",19.625
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","One station dam","Channel 13: In-channel treatment",0,1,"Native woody",27.5
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","One station dam","Channel 13: In-channel treatment",0,1,"Unknown herb",0.25
-154,"2014-11-01","Channel 19","Station 01 + 04",NA,NA,NA,NA,NA,NA
 155,"2014-11-01","Channel 19","Station 02 + 04","No treatment","Channel 19: Upland treatment",1,0,"Invasive herb",1.5
 155,"2014-11-01","Channel 19","Station 02 + 04","No treatment","Channel 19: Upland treatment",1,0,"Native herb",20.25
 155,"2014-11-01","Channel 19","Station 02 + 04","No treatment","Channel 19: Upland treatment",1,0,"Native woody",62.125
@@ -825,7 +821,6 @@
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","One station dam","Channel 21: In-channel treatment",0,1,"Native herb",2.875
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","One station dam","Channel 21: In-channel treatment",0,1,"Native woody",24.625
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","One station dam","Channel 21: In-channel treatment",0,1,"Unknown herb",0.125
-240,"2015-11-01","Channel 21","Station 07 + 66 BAF",NA,NA,NA,NA,NA,NA
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Invasive herb",12
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Native herb",3
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Native woody",15.25
@@ -1306,20 +1301,7 @@
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Native herb",19.25
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Native woody",5
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Unknown herb",4.75
-372,"2012-03-01","Channel 12","Station 1 + 04",NA,NA,NA,NA,NA,NA
-373,"2012-03-01","Channel 12","Station 1 + 52",NA,NA,NA,NA,NA,NA
-374,"2012-03-01","Channel 12","Station 1 + 83",NA,NA,NA,NA,NA,NA
-375,"2012-03-01","Channel 12","Station 2 + 63",NA,NA,NA,NA,NA,NA
-376,"2012-03-01","Channel 12","Station 2 + 98",NA,NA,NA,NA,NA,NA
-377,"2012-03-01","Channel 12","Station 3 + 93",NA,NA,NA,NA,NA,NA
 378,"2012-03-01","Channel 12","Station 4 + 00","No treatment","Channel 12: No treatment",0,0,"Native woody",14.1666666666667
-379,"2012-03-01","Channel 12","Station 4 + 09",NA,NA,NA,NA,NA,NA
-380,"2012-03-01","Channel 12","Station 4 + 56",NA,NA,NA,NA,NA,NA
-381,"2012-03-01","Channel 12","Station 4 + 65",NA,NA,NA,NA,NA,NA
-382,"2012-03-01","Channel 12","Station 5 + 13",NA,NA,NA,NA,NA,NA
-383,"2012-03-01","Channel 12","Station 5 + 48",NA,NA,NA,NA,NA,NA
-384,"2012-03-01","Channel 12","Station 6 + 30",NA,NA,NA,NA,NA,NA
-385,"2012-03-01","Channel 12","Station 6 + 93",NA,NA,NA,NA,NA,NA
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Native herb",0.166666666666667
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Native woody",66.75
 387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","One station dam","Channel 13: In-channel treatment",0,1,"Native herb",0.0833333333333333
@@ -1380,7 +1362,6 @@
 402,"2012-03-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Native herb",4.75
 402,"2012-03-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Native woody",13.5
 402,"2012-03-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Unknown herb",0.583333333333333
-403,"2012-03-01","Channel 19","Station 02 + 04",NA,NA,NA,NA,NA,NA
 404,"2012-03-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Native herb",8.33333333333333
 404,"2012-03-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Native woody",49.1666666666667
 404,"2012-03-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Unknown herb",2.58333333333333

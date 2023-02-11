@@ -4,6 +4,7 @@ library(cvequality)
 # Load data ---------------------------------------------------------------
 
 total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
                      sep = "\t", header = TRUE)
@@ -16,7 +17,11 @@ precip$year.xaxis <- as.Date(precip$year.xaxis)
 
 total.all <- total.all %>% 
   mutate(Year = gsub("-.*", "", total.all$Year),
-         Treatment2 = gsub("^.*?: ", "", total.all$channel.trt))
+         Treatment2 = gsub("^.*?: ", "", total.all$channel.trt)) %>% 
+  mutate(Treatment2 = case_when(
+    Treatment2 == "No treatment" ~ "Control",
+    TRUE ~ Treatment2))
+
 
 
 # By Treatment2 -----------------------------------------------------------
@@ -25,7 +30,7 @@ total.all <- total.all %>%
 with(total.all, asymptotic_test(Cover, Treatment2)) # p = 0.04598678
 
 totalin.cn.all <- total.all %>% 
-  filter(Treatment2 %in% c("In-channel treatment", "No treatment"))
+  filter(Treatment2 %in% c("In-channel treatment", "Control"))
 with(totalin.cn.all, asymptotic_test(Cover, Treatment2)) # p = 0.01270811
 
 totalin.up.all <- total.all %>% 
@@ -33,7 +38,7 @@ totalin.up.all <- total.all %>%
 with(totalin.up.all, asymptotic_test(Cover, Treatment2)) # NS
 
 totalup.cn.all <- total.all %>% 
-  filter(Treatment2 %in% c("Upland treatment", "No treatment"))
+  filter(Treatment2 %in% c("Upland treatment", "Control"))
 with(totalup.cn.all, asymptotic_test(Cover, Treatment2)) # NS
 
 
@@ -45,7 +50,7 @@ total.12.15 <- total.all %>%
 with(total.12.15, asymptotic_test(Cover, Treatment2)) # NS
 
 totalin.cn.12.15 <- total.12.15 %>% 
-  filter(Treatment2 %in% c("In-channel treatment", "No treatment"))
+  filter(Treatment2 %in% c("In-channel treatment", "Control"))
 with(totalin.cn.12.15, asymptotic_test(Cover, Treatment2)) # NS
 
 totalin.up.12.15 <- total.12.15 %>% 
@@ -53,8 +58,33 @@ totalin.up.12.15 <- total.12.15 %>%
 with(totalin.up.12.15, asymptotic_test(Cover, Treatment2)) # NS
 
 totalup.cn.12.15 <- total.12.15 %>% 
-  filter(Treatment2 %in% c("Upland treatment", "No treatment"))
+  filter(Treatment2 %in% c("Upland treatment", "Control"))
 with(totalup.cn.12.15, asymptotic_test(Cover, Treatment2)) # NS
+
+
+
+# Richness
+with(per.div, asymptotic_test(rich, Treatment2)) # p = 0.01160437
+
+richin.cn.all <- per.div %>% 
+  filter(Treatment2 %in% c("In-channel treatment", "Control"))
+with(richin.cn.all, asymptotic_test(rich, Treatment2)) # p = 0.002754744
+
+richin.up.all <- per.div %>% 
+  filter(Treatment2 %in% c("Upland treatment", "In-channel treatment"))
+with(richin.up.all, asymptotic_test(rich, Treatment2)) # NS
+
+richup.cn.all <- per.div %>% 
+  filter(Treatment2 %in% c("Upland treatment", "Control"))
+with(richup.cn.all, asymptotic_test(rich, Treatment2)) # p = 0.0307329
+
+
+# 2012-2015 precipitation
+(6.46 - 10.98) / 10.98 # 41% decrease
+rich.12.15 <- per.div %>% 
+  filter(Year %in% c("2012", "2013", "2014", "2015"))
+
+with(rich.12.15, asymptotic_test(rich, Treatment2)) # NS
 
 
 

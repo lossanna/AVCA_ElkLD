@@ -114,7 +114,6 @@
 31,"2012-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Grass",16
 31,"2012-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Shrub",33.4166666666667
 31,"2012-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Tree",43.3333333333333
-32,"2012-11-01","Channel 19","Station 02 + 04",NA,NA,NA,NA,NA,NA
 33,"2012-11-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Forb",3.08333333333333
 33,"2012-11-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Grass",42.5
 33,"2012-11-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Shrub",0.5
@@ -257,7 +256,6 @@
 71,"2013-11-01","Channel 12","Station 4 + 56","No treatment","Channel 12: No treatment",0,0,"Grass",20.5833333333333
 71,"2013-11-01","Channel 12","Station 4 + 56","No treatment","Channel 12: No treatment",0,0,"Shrub",9.16666666666667
 71,"2013-11-01","Channel 12","Station 4 + 56","No treatment","Channel 12: No treatment",0,0,"Tree",13.3333333333333
-72,"2013-11-01","Channel 12","Station 4 + 65",NA,NA,NA,NA,NA,NA
 73,"2013-11-01","Channel 12","Station 5 + 13","No treatment","Channel 12: No treatment",0,0,"Forb",5.41666666666667
 73,"2013-11-01","Channel 12","Station 5 + 13","No treatment","Channel 12: No treatment",0,0,"Grass",14.8333333333333
 73,"2013-11-01","Channel 12","Station 5 + 13","No treatment","Channel 12: No treatment",0,0,"Shrub",24.6666666666667
@@ -321,7 +319,6 @@
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Grass",10.75
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Shrub",2.5
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Tree",42.9166666666667
-91,"2013-11-01","Channel 13","Station 4 + 78 ORD",NA,NA,NA,NA,NA,NA
 92,"2013-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Forb",0.166666666666667
 92,"2013-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Grass",7.83333333333333
 92,"2013-11-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Shrub",30.4166666666667
@@ -528,7 +525,6 @@
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","One station dam","Channel 13: In-channel treatment",0,1,"Grass",23
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","One station dam","Channel 13: In-channel treatment",0,1,"Shrub",17.5
 153,"2014-11-01","Channel 13","Station 4 + 78 ORD","One station dam","Channel 13: In-channel treatment",0,1,"Tree",10
-154,"2014-11-01","Channel 19","Station 01 + 04",NA,NA,NA,NA,NA,NA
 155,"2014-11-01","Channel 19","Station 02 + 04","No treatment","Channel 19: Upland treatment",1,0,"Forb",0.125
 155,"2014-11-01","Channel 19","Station 02 + 04","No treatment","Channel 19: Upland treatment",1,0,"Grass",22.375
 155,"2014-11-01","Channel 19","Station 02 + 04","No treatment","Channel 19: Upland treatment",1,0,"Shrub",16.375
@@ -816,7 +812,6 @@
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","One station dam","Channel 21: In-channel treatment",0,1,"Grass",2.125
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","One station dam","Channel 21: In-channel treatment",0,1,"Shrub",0.125
 239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","One station dam","Channel 21: In-channel treatment",0,1,"Tree",24.5
-240,"2015-11-01","Channel 21","Station 07 + 66 BAF",NA,NA,NA,NA,NA,NA
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Forb",0.75
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Grass",14.875
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Shrub",15.125
@@ -1268,20 +1263,7 @@
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Grass",32.375
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Shrub",1.25
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Baffle","Channel 21: In-channel treatment",0,1,"Tree",3.75
-372,"2012-03-01","Channel 12","Station 1 + 04",NA,NA,NA,NA,NA,NA
-373,"2012-03-01","Channel 12","Station 1 + 52",NA,NA,NA,NA,NA,NA
-374,"2012-03-01","Channel 12","Station 1 + 83",NA,NA,NA,NA,NA,NA
-375,"2012-03-01","Channel 12","Station 2 + 63",NA,NA,NA,NA,NA,NA
-376,"2012-03-01","Channel 12","Station 2 + 98",NA,NA,NA,NA,NA,NA
-377,"2012-03-01","Channel 12","Station 3 + 93",NA,NA,NA,NA,NA,NA
 378,"2012-03-01","Channel 12","Station 4 + 00","No treatment","Channel 12: No treatment",0,0,"Tree",14.1666666666667
-379,"2012-03-01","Channel 12","Station 4 + 09",NA,NA,NA,NA,NA,NA
-380,"2012-03-01","Channel 12","Station 4 + 56",NA,NA,NA,NA,NA,NA
-381,"2012-03-01","Channel 12","Station 4 + 65",NA,NA,NA,NA,NA,NA
-382,"2012-03-01","Channel 12","Station 5 + 13",NA,NA,NA,NA,NA,NA
-383,"2012-03-01","Channel 12","Station 5 + 48",NA,NA,NA,NA,NA,NA
-384,"2012-03-01","Channel 12","Station 6 + 30",NA,NA,NA,NA,NA,NA
-385,"2012-03-01","Channel 12","Station 6 + 93",NA,NA,NA,NA,NA,NA
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Grass",0.166666666666667
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Shrub",13
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,"Tree",53.75
@@ -1343,7 +1325,6 @@
 402,"2012-03-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Grass",2.16666666666667
 402,"2012-03-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Shrub",0.583333333333333
 402,"2012-03-01","Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,"Tree",12.9166666666667
-403,"2012-03-01","Channel 19","Station 02 + 04",NA,NA,NA,NA,NA,NA
 404,"2012-03-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Forb",3.5
 404,"2012-03-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Grass",7.41666666666667
 404,"2012-03-01","Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,"Tree",49.1666666666667
