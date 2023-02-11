@@ -5,66 +5,14 @@ library(agricolae)
 
 # Load data ---------------------------------------------------------------
 
-plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
-
-
-# Data wrangling ----------------------------------------------------------
-
-# Add year as date and character, and retain Nov samples for perennial species only
-year <- function(x) {
-  x <- x %>% 
-    mutate(year.date = as.Date(x$Year))
-  
-  x[ , "year.xaxis"] <- NA
-  for(i in 1:nrow(x)) {
-    if(x$Year[i] == "2012-11-01") {
-      x$year.xaxis[i] <- "2012-01-01"
-    } else if(x$Year[i] == "2013-11-01") {
-      x$year.xaxis[i] <- "2013-01-01"
-    } else if(x$Year[i] == "2014-11-01") {
-      x$year.xaxis[i] <- "2014-01-01"
-    } else if(x$Year[i] == "2015-11-01") {
-      x$year.xaxis[i] <- "2015-01-01"
-    } else if(x$Year[i] == "2018-11-01") {
-      x$year.xaxis[i] <- "2018-01-01"
-    } else if(x$Year[i] == "2021-11-01") {
-      x$year.xaxis[i] <- "2021-01-01"
-    } else {
-      x$year.xaxis[i] <- "2012-03-01"
-    }
-  }
-  x$year.xaxis <- as.Date(x$year.xaxis)
-  
-  x <- x %>% 
-    filter(year.xaxis != "2012-03-01") %>% 
-    filter(!str_detect(Functional, "Annual"))
-  x$Year <- as.factor(gsub("-.*", "", x$Year))
-  
-  x$Treatment2 <- gsub("^.*?: ", "", x$channel.trt)
-  
-  x <- x %>% 
-    mutate(Treatment2 = case_when(
-      Treatment2 == "No treatment" ~ "Control",
-      TRUE ~ Treatment2
-    ))
-  
-  return(x)
-}
-
-plant.per <- year(plant.all)
+per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
+per.div$year.xaxis <- as.Date(per.div$year.xaxis)
 
 
 # Richness ----------------------------------------------------------------
 
-# By treatment and station
-richness <- plant.per %>%  
-  group_by(Channel, Station, Treatment2, Year, year.date, year.xaxis, 
-           channel.trt, station.trt) %>% 
-  summarise(rich = n_distinct(Common),
-            .groups = "keep")
-
 # Channel summarised (stations averaged)
-richness.avg <- richness %>% 
+richness.avg <- per.div %>% 
   group_by(Treatment2, Year, year.date, year.xaxis) %>% 
   summarise(mean = mean(rich),
             SD = sd(rich),
@@ -104,15 +52,8 @@ TukeyHSD(anova.rich, which = "Treatment2:Year")
 
 # Shannon diversity -------------------------------------------------------
 
-# By channel and station
-shannon <- plant.per %>%  
-  group_by(Channel, Station, Treatment2, Year, year.date, year.xaxis, 
-           channel.trt, station.trt) %>% 
-  summarise(shan = diversity(Cover),
-            .groups = "keep")
-
 # Channel summarised (stations averaged)
-shannon.avg <- shannon %>% 
+shannon.avg <- per.div %>% 
   group_by(Treatment2, Year, year.date, year.xaxis) %>% 
   summarise(mean = mean(shan),
             SD = sd(shan),
