@@ -5,6 +5,10 @@ library(cvequality)
 
 total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 
+precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
+                     sep = "\t", header = TRUE)
+precip$year.xaxis <- as.Date(precip$year.xaxis)
+
 
 # Data wrangling ----------------------------------------------------------
 
@@ -20,16 +24,35 @@ with(total.all, asymptotic_test(Cover, Treatment2)) # p = 0.04598678
 
 totalin.cn.all <- total.all %>% 
   filter(Treatment2 %in% c("In-channel treatment", "No treatment"))
-with(totalin.cn.all, asymptotic_test(Cover, Channel)) # p = 3.347947e-05
+with(totalin.cn.all, asymptotic_test(Cover, Treatment2)) # p = 0.01270811
 
 totalin.up.all <- total.all %>% 
   filter(Treatment2 %in% c("Upland treatment", "In-channel treatment"))
-with(totalin.up.all, asymptotic_test(Cover, Channel)) # p = 0.0002622423
+with(totalin.up.all, asymptotic_test(Cover, Treatment2)) # NS
 
 totalup.cn.all <- total.all %>% 
   filter(Treatment2 %in% c("Upland treatment", "No treatment"))
-with(totalup.cn.all, asymptotic_test(Cover, Channel)) # NS
+with(totalup.cn.all, asymptotic_test(Cover, Treatment2)) # NS
 
+
+# 2012-2015 precipitation
+(6.46 - 10.98) / 10.98 # 41% decrease
+total.12.15 <- total.all %>% 
+  filter(Year %in% c("2012", "2013", "2014", "2015"))
+
+with(total.12.15, asymptotic_test(Cover, Treatment2)) # NS
+
+totalin.cn.12.15 <- total.12.15 %>% 
+  filter(Treatment2 %in% c("In-channel treatment", "No treatment"))
+with(totalin.cn.12.15, asymptotic_test(Cover, Treatment2)) # NS
+
+totalin.up.12.15 <- total.12.15 %>% 
+  filter(Treatment2 %in% c("Upland treatment", "In-channel treatment"))
+with(totalin.up.12.15, asymptotic_test(Cover, Treatment2)) # NS
+
+totalup.cn.12.15 <- total.12.15 %>% 
+  filter(Treatment2 %in% c("Upland treatment", "No treatment"))
+with(totalup.cn.12.15, asymptotic_test(Cover, Treatment2)) # NS
 
 
 

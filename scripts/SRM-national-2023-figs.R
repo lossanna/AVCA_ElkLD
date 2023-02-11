@@ -31,7 +31,9 @@ dat.2021 <- read_csv("data/cleaned/SEM-input.csv")
 
 # Precipitation -----------------------------------------------------------
 
-precip.srm23 <- ggplot(precip, aes(x = year.xaxis, y = Precip_cum)) +
+precip.sample <- precip[1:6, ]
+
+precip.srm23 <- ggplot(precip.sample, aes(x = year.xaxis, y = Precip_cum)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
@@ -49,6 +51,19 @@ tiff("output_figs/SRM_2023/Precip.tiff", units = "in", height = 3, width = 4, re
 precip.srm23
 dev.off()
   
+
+ggplot(precip, aes(x = year.xaxis, y = Precip_cum)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  xlab(NULL) +
+  ylab("Precipitation (in)") +
+  ggtitle("Cumulative summer precipitation") +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 14)) +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  labs(caption = "Data from Pima County precipitation gauge #6380") +
+  theme(plot.caption = element_text(size = 6))
 
 
 # Total plant cover -------------------------------------------------------

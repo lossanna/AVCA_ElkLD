@@ -9,6 +9,7 @@ library(ggpubr)
 precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
                      sep = "\t", header = TRUE)
 precip$year.xaxis <- as.Date(precip$year.xaxis)
+precip <- precip[1:6, ]
 
 total.channel <- read_csv("data/cleaned/Channel-average_total-cover.csv") %>% 
   mutate(year.date = as.Date(year.date),

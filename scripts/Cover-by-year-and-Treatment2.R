@@ -8,7 +8,7 @@ library(car)
 precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
                      sep = "\t", header = TRUE)
 precip$year.xaxis <- as.Date(precip$year.xaxis)
-precip_join <- precip %>% 
+precip_join <- precip[1:6, ] %>% 
   select(year.xaxis, Precip_cum)
 
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
@@ -110,5 +110,8 @@ total.all <- left_join(total.all, precip_join)
 plot(Cover ~ Precip_cum, data = total.all)
 summary(lm(Cover ~ Precip_cum, data = total.all))
 
+
+# 2012-2015 precipitation
+(6.46 - 10.98) / 10.98 # 41% decrease
 
 
