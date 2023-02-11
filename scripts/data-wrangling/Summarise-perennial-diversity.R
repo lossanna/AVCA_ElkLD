@@ -67,7 +67,7 @@ shannon <- plant.per %>%
   summarise(shan = diversity(Cover),
             .groups = "keep")
 
-per.div <- bind_rows(richness, shannon)
+per.div <- left_join(richness, shannon)
 
 write.csv(per.div,
           file = "data/cleaned/Summarised-all_perennial-diversity.csv")
