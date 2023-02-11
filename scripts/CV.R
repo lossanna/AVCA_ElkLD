@@ -10,6 +10,8 @@ precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
 precip$year.xaxis <- as.Date(precip$year.xaxis)
 
 
+
+
 # Data wrangling ----------------------------------------------------------
 
 total.all <- total.all %>% 
