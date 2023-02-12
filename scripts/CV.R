@@ -26,7 +26,10 @@ total.all <- total.all %>%
 
 # By Treatment2 -----------------------------------------------------------
 
-# Total plant cover
+
+# Total plant cover -------------------------------------------------------
+
+# All years
 with(total.all, asymptotic_test(Cover, Treatment2)) # p = 0.04598678
 
 totalin.cn.all <- total.all %>% 
@@ -49,21 +52,11 @@ total.12.15 <- total.all %>%
 
 with(total.12.15, asymptotic_test(Cover, Treatment2)) # NS
 
-totalin.cn.12.15 <- total.12.15 %>% 
-  filter(Treatment2 %in% c("In-channel treatment", "Control"))
-with(totalin.cn.12.15, asymptotic_test(Cover, Treatment2)) # NS
-
-totalin.up.12.15 <- total.12.15 %>% 
-  filter(Treatment2 %in% c("Upland treatment", "In-channel treatment"))
-with(totalin.up.12.15, asymptotic_test(Cover, Treatment2)) # NS
-
-totalup.cn.12.15 <- total.12.15 %>% 
-  filter(Treatment2 %in% c("Upland treatment", "Control"))
-with(totalup.cn.12.15, asymptotic_test(Cover, Treatment2)) # NS
 
 
+# Richness ----------------------------------------------------------------
 
-# Richness
+# All years
 with(per.div, asymptotic_test(rich, Treatment2)) # p = 0.01160437
 
 richin.cn.all <- per.div %>% 
@@ -85,6 +78,46 @@ rich.12.15 <- per.div %>%
   filter(Year %in% c("2012", "2013", "2014", "2015"))
 
 with(rich.12.15, asymptotic_test(rich, Treatment2)) # NS
+
+
+
+
+# Shannon -----------------------------------------------------------------
+
+# All years
+with(per.div, asymptotic_test(shan, Treatment2)) # p = 0.006889485
+
+shanin.cn.all <- per.div %>% 
+  filter(Treatment2 %in% c("In-channel treatment", "Control"))
+with(shanin.cn.all, asymptotic_test(shan, Treatment2)) # p = 0.005136371
+
+shanin.up.all <- per.div %>% 
+  filter(Treatment2 %in% c("Upland treatment", "In-channel treatment"))
+with(shanin.up.all, asymptotic_test(shan, Treatment2)) # p = 0.04515136
+
+shanup.cn.all <- per.div %>% 
+  filter(Treatment2 %in% c("Upland treatment", "Control"))
+with(shanup.cn.all, asymptotic_test(shan, Treatment2)) # NS
+
+
+# 2012-2015 precipitation
+(6.46 - 10.98) / 10.98 # 41% decrease
+shan.12.15 <- per.div %>% 
+  filter(Year %in% c("2012", "2013", "2014", "2015"))
+
+with(shan.12.15, asymptotic_test(shan, Treatment2)) # p = 0.008836917
+
+shanin.cn.12.15 <- shan.12.15 %>% 
+  filter(Treatment2 %in% c("In-channel treatment", "Control"))
+with(shanin.cn.12.15, asymptotic_test(shan, Treatment2)) # p = 0.006691954
+
+shanin.up.12.15 <- shan.12.15 %>% 
+  filter(Treatment2 %in% c("Upland treatment", "In-channel treatment"))
+with(shanin.up.12.15, asymptotic_test(shan, Treatment2)) # NS
+
+shanup.cn.12.15 <- shan.12.15 %>% 
+  filter(Treatment2 %in% c("Upland treatment", "Control"))
+with(shanup.cn.12.15, asymptotic_test(shan, Treatment2)) # NS
 
 
 
