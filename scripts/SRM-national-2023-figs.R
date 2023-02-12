@@ -147,6 +147,10 @@ tiff("output_figs/SRM_2023/Shannon.tiff", units = "in", height = 4, width = 11, 
 shannon.plot.srm23
 dev.off()
 
+tiff("output_figs/SRM_2023/Shannon_flat.tiff", units = "in", height = 3.5, width = 11, res = 300)
+shannon.plot.srm23
+dev.off()
+
 
 
 # 2021 data wrangling -----------------------------------------------------
@@ -205,7 +209,7 @@ tn2021.plot
 # Total C 
 letters <- data.frame(label = c("b", "a", "a"),
                       x = 1:3,
-                      y = rep(6.5, 3))
+                      y = rep(6.2, 3))
 
 tc2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = TC_ppt)) +
   geom_boxplot(aes(fill = trt.short),
@@ -214,8 +218,8 @@ tc2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = TC_ppt)) +
   geom_jitter(aes(color = trt.short),
               alpha = 0.9,
               size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_fill_manual(values = c("red", "#33A02C", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
@@ -244,8 +248,8 @@ om2021.plot <- ggplot(dat.2021, aes(x = trt.short, y = OM_perc)) +
   geom_jitter(aes(color = trt.short),
               alpha = 0.9,
               size = 2) +
-  scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
-  scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  scale_fill_manual(values = c("red", "#33A02C", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
   xlab(NULL) +
