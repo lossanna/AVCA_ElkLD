@@ -7,6 +7,7 @@ library(agricolae)
 
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 per.div$year.xaxis <- as.Date(per.div$year.xaxis)
+per.div$Year <- factor(per.div$Year)
 
 
 # Richness ----------------------------------------------------------------
@@ -41,10 +42,17 @@ richness.plot <- ggplot(richness.avg, aes(x = year.xaxis, y = mean,
 richness.plot
 
 # ANOVA 
-summary(aov(rich ~ Treatment2 * Year, data = richness))
-anova.rich <- aov(rich ~ Treatment2 * Year, data = richness)
+summary(aov(rich ~ Treatment2 * Year, data = per.div))
+anova.rich <- aov(rich ~ Treatment2 * Year, data = per.div)
 Anova(anova.rich, type = "III")
+# Treatment2        98.85   2   8.7389 0.0001983 ***
+# Year              76.57   5   2.7078 0.0204050 *  
+# Treatment2:Year  174.48  10   3.0851 0.0008918 ***
 TukeyHSD(anova.rich, which = "Treatment2")
+#                                       p adj
+# In-channel treatment-Control          0.0000001
+# Upland treatment-Control              0.0048189
+# Upland treatment-In-channel treatment 0.0619346
 TukeyHSD(anova.rich, which = "Year")
 TukeyHSD(anova.rich, which = "Treatment2:Year")
 
@@ -82,8 +90,8 @@ shannon.plot <- ggplot(shannon.avg, aes(x = year.xaxis, y = mean,
 shannon.plot
 
 # ANOVA
-summary(aov(shan ~ Treatment2 * Year, data = shannon))
-anova.shan <- aov(shan ~ Treatment2 * Year, data = shannon)
+summary(aov(shan ~ Treatment2 * Year, data = per.div))
+anova.shan <- aov(shan ~ Treatment2 * Year, data = per.div)
 Anova(anova.shan, type = "III") # NS
 
 

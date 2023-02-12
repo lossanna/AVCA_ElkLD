@@ -95,10 +95,17 @@ total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean,
 total.plot
 
 # Two-factor ANOVA
-summary(aov(Cover ~ Treatment2 + Year, data = total.all))
-anova.total <- aov(Cover ~ Treatment2 + Year, data = total.all)
+summary(aov(Cover ~ Treatment2 * Year, data = total.all))
+anova.total <- aov(Cover ~ Treatment2 * Year, data = total.all)
 Anova(anova.total, type = "III")
+# Treatment2        5734   2  4.6298   0.01037 *  
+# Year              5468   5  1.7662   0.11911    
+# Treatment2:Year  24527  10  3.9608 3.891e-05 ***
 TukeyHSD(anova.total, which = "Treatment2")
+#                                        p adj
+# In-channel treatment-Control           0.0154913
+# Upland treatment-Control               0.9979668
+# Upland treatment-In-channel treatment  0.0072213
 TukeyHSD(anova.total, which = "Year")
 
 
@@ -114,4 +121,15 @@ summary(lm(Cover ~ Precip_cum, data = total.all))
 # 2012-2015 precipitation
 (6.46 - 10.98) / 10.98 # 41% decrease
 
+# 2-factor ANOVA, 2012-2015
+total.12.15 <- total.all %>% 
+  filter(Year %in% c("2012", "2013", "2014", "2015"))
+summary(aov(Cover ~ Treatment2 * Year, data = total.12.15))
+anova.total.12.15 <- aov(Cover ~ Treatment2 * Year, data = total.12.15)
+Anova(anova.total.12.15, type = "III")
+# Treatment2        5734   2  5.3900  0.005156 ** 
+# Year              5261   3  3.2967  0.021254 *  
+# Treatment2:Year  17188   6  5.3858 3.162e-05 ***
 
+
+save.image("RData/Cover-by-year-and-Treatment2.RData")
