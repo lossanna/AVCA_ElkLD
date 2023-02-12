@@ -47,7 +47,7 @@ precip.srm23 <- ggplot(precip.sample, aes(x = year.xaxis, y = Precip_cum)) +
   theme(plot.caption = element_text(size = 6))
 precip.srm23
 
-tiff("output_figs/SRM_2023/Precip.tiff", units = "in", height = 3, width = 4, res = 300)
+tiff("output_figs/SRM_2023/Precip.tiff", units = "in", height = 2.5, width = 4, res = 300)
 precip.srm23
 dev.off()
   
@@ -89,7 +89,7 @@ tiff("output_figs/SRM_2023/Total-plant-cover.tiff", units = "in", height = 4, wi
 total.plot.srm23
 dev.off()
 
-tiff("output_figs/SRM_2023/Total-plant-cover_narrow.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/SRM_2023/Total-plant-cover_flat.tiff", units = "in", height = 3.5, width = 11, res = 300)
 total.plot.srm23
 dev.off()
 
@@ -119,7 +119,7 @@ tiff("output_figs/SRM_2023/Richess.tiff", units = "in", height = 4, width = 11, 
 richness.plot.srm23
 dev.off()
 
-tiff("output_figs/SRM_2023/Richess_narrow.tiff", units = "in", height = 5, width = 7, res = 300)
+tiff("output_figs/SRM_2023/Richess_flat.tiff", units = "in", height = 3.5, width = 11, res = 300)
 richness.plot.srm23
 dev.off()
 
