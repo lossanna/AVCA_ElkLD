@@ -421,7 +421,7 @@ nmds2021 <- meta %>%
 nmds2021
 
 # Beta dispersion
-letters <- data.frame(label = c("a", "a", "b"),
+letters <- data.frame(label = c("b", "a", "a"),
                       x = 1:3,
                       y = c(rep(0.55, 3)))
 
