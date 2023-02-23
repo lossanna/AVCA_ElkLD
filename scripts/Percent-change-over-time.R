@@ -26,9 +26,21 @@ total.diff <- left_join(total.diff, meta)
 total.diff <- total.diff |> 
   select(-Name)
 
-test <- total.diff |> 
+total.diff.long <- total.diff
+
+total.diff <- total.diff.long |> 
   pivot_wider(names_from = Sample, values_from = Cover)
 
-test <- total.diff |> 
-  group_by(Sample) |> 
-  mutate(d12.13 = diff(Cover[Year %in% 2012:2021]))
+total.diff.12.15 <- total.diff[1:4, -c(1)]
+total.diff.12.15 <- as.matrix(total.diff.12.15)
+ts1215 <- ts(total.diff.12.15, 1, 4, frequency = 1)
+
+pcdf1215 <- ts1215 / stats::lag(ts1215, -1) -1
+pcdf1215 <- as.data.frame(pcdf1215)
+pcdf1215$Year <- c("2012-2013", "2013-2014", "2015-2016")
+pcdf1215 <- pcdf1215 |> 
+  pivot_longer(!Year, names_to = "Sample", values_to = "dCover")
+pcdf1215$Sample <- gsub("^.*?\\.", "", pcdf1215$Sample)
+pcdf1215 <- left_join(pcdf1215, meta)
+
+save.image("RData/Percent-change-over-time.RData")
