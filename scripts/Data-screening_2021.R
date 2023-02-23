@@ -162,6 +162,10 @@ summary(totcover.lm)
 # Save --------------------------------------------------------------------
 
 write.csv(dat.2021,
+          file = "data/cleaned/Data-2021_clean.csv",
+          row.names = FALSE)
+
+write.csv(dat.2021,
           file = "data/cleaned/SEM-input.csv",
           row.names = FALSE)
 
