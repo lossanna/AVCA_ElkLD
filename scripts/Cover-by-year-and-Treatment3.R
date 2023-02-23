@@ -12,8 +12,8 @@ precip_join <- precip[1:6, ] %>%
   select(year.xaxis, Precip_cum)
 
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-
-
+herb.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv") |> 
+  filter(woody == "Herbaceous")
 
 
 # Functions ---------------------------------------------------------------
@@ -51,6 +51,7 @@ year <- function(x) {
   
   x <- x %>% 
     mutate(Treatment3 = case_when(
+      Treatment3 == "In-channel treatment" ~ "Treated",
       Treatment3 == "No treatment" ~ "Control",
       Treatment3 == "Upland treatment" ~ "Control",
       TRUE ~ Treatment3))
@@ -62,6 +63,7 @@ year <- function(x) {
 # Data wrangling ----------------------------------------------------------
 
 total.all <- year(total.all)
+herb.all <- year(herb.all)
 
 
 # Total plant cover -------------------------------------------------------
@@ -90,25 +92,23 @@ total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean,
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Total plant cover") +
-  scale_color_manual(values = c("red", "#33A02C")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
 total.plot
 
 # Two-factor ANOVA
 summary(aov(Cover ~ Treatment3 * Year, data = total.all))
-anova.total <- aov(Cover ~ Treatment3 * Year, data = total.all)
 # Treatment3        1   7910    7910  12.156 0.000551 ***
 # Year              5   9274    1855   2.850 0.015416 *  
 # Treatment3:Year   5   9656    1931   2.968 0.012231 *  
-TukeyHSD(anova.total, which = "Treatment3")
-#                                        p adj
-# In-channel treatment-Control           0.000551
+anova.total <- aov(Cover ~ Treatment3 * Year, data = total.all)
+TukeyHSD(anova.total, which = "Treatment3") # p = 0.000551
 TukeyHSD(anova.total, which = "Year")
 
 
-# One-way ANOVA for In-channel
-summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "In-channel treatment"))) # NS
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Treated"))) # NS
 
 # One-way ANOVA for Control
 summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Control")))
@@ -117,11 +117,17 @@ total.ctrl <- total.all |>
 anova.total.ctrl <- aov(total.ctrl$Cover ~ total.ctrl$Year)
 hsd.total.ctrl <- HSD.test(anova.total.ctrl, trt = "total.ctrl$Year")
 hsd.total.ctrl
+# 2021         62.87903      a
+# 2013         61.16528      a
+# 2012         59.25694      a
+# 2014         51.68333     ab
+# 2018         46.09274     ab
+# 2015         39.35282      b
 
 # Correlation with precipitation
 total.all <- left_join(total.all, precip_join)
 plot(Cover ~ Precip_cum, data = total.all)
-summary(lm(Cover ~ Precip_cum, data = total.all))
+summary(lm(Cover ~ Precip_cum + Treatment3, data = total.all))
 
 
 # 2012-2015 precipitation
@@ -135,8 +141,8 @@ anova.total.12.15 <- aov(Cover ~ Treatment3 * Year, data = total.12.15)
 TukeyHSD(anova.total.12.15, which = "Treatment3") # p = 0.0001197
 TukeyHSD(anova.total.12.15, which = "Year")
 
-# One-way ANOVA, 2012-2015
-summary(aov(Cover ~ Year, data = filter(total.12.15, Treatment3 == "In-channel treatment"))) # NS
+# One-way ANOVA, 2012-2015 (shows the same thing as all years)
+summary(aov(Cover ~ Year, data = filter(total.12.15, Treatment3 == "Treated"))) # NS
 
 summary(aov(Cover ~ Year, data = filter(total.12.15, Treatment3 == "Control"))) # NS
 total.12.15.ctrl <- total.12.15 |> 
@@ -149,5 +155,73 @@ hsd.total.12.15.ctrl
 # 2014               51.68333     ab
 # 2015               39.35282      b
 
+
+
+# Herbaceous cover --------------------------------------------------------
+
+# Find averages by year
+herb.avg <- herb.all %>% 
+  group_by(Treatment3, Year, year.date, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(herb.avg,
+          file = "data/cleaned/Treatment3-average_herb-cover.csv",
+          row.names = FALSE)
+
+# Plot
+herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                                  group = Treatment3, 
+                                  color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+herb.plot
+
+# Two-factor ANOVA
+summary(aov(Cover ~ Treatment3 * Year, data = herb.all))
+# Treatment3        1   1917  1917.4  14.104 0.000202 ***
+# Year              5   7091  1418.1  10.432 2.37e-09 ***
+# Treatment3:Year   5   2319   463.8   3.412 0.005042 ** 
+anova.herb <- aov(Cover ~ Treatment3 * Year, data = herb.all)
+TukeyHSD(anova.herb, which = "Treatment3") # p = 0.0002022
+
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
+herb.trt <- herb.all |> 
+  filter(Treatment3 == "Treated")
+anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year)
+hsd.herb.trt <- HSD.test(anova.herb.trt, trt = "herb.trt$Year")
+hsd.herb.trt
+# 2018      24.489919      a
+# 2021      21.761290     ab
+# 2014      15.139113     bc
+# 2015      12.781250     cd
+# 2012      11.436828     cd
+# 2013       6.929598      d
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Control")))
+herb.ctrl <- herb.all |> 
+  filter(Treatment3 == "Control")
+anova.herb.ctrl <- aov(herb.ctrl$Cover ~ herb.ctrl$Year)
+hsd.herb.ctrl <- HSD.test(anova.herb.ctrl, trt = "herb.ctrl$Year")
+hsd.herb.ctrl
+# 2021        26.78629      a
+# 2014        22.28333     ab
+# 2012        20.03472     ab
+# 2018        19.89718     ab
+# 2013        17.41528      b
+# 2015        14.21169      b
 
 save.image("RData/Cover-by-year-and-Treatment3.RData")

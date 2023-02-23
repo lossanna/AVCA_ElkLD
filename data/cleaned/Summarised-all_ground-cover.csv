@@ -46,55 +46,55 @@
 15,"2012-11-01","Channel 13","Station 1 + 11.5 BAF","Gravel",18.3333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 15,"2012-11-01","Channel 13","Station 1 + 11.5 BAF","Rock",5.83333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 15,"2012-11-01","Channel 13","Station 1 + 11.5 BAF","Soil",50.4166666666667,"Baffle","Channel 13: In-channel treatment",0,1
-16,"2012-11-01","Channel 13","Station 1 + 38.5 ORD","Biocrust",2.91666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-16,"2012-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",26.25,"One station dam","Channel 13: In-channel treatment",0,1
-16,"2012-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",1.08333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-16,"2012-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",20.0833333333333,"One station dam","Channel 13: In-channel treatment",0,1
+16,"2012-11-01","Channel 13","Station 1 + 38.5 ORD","Biocrust",2.91666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+16,"2012-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",26.25,"One rock dam","Channel 13: In-channel treatment",0,1
+16,"2012-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",1.08333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+16,"2012-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",20.0833333333333,"One rock dam","Channel 13: In-channel treatment",0,1
 17,"2012-11-01","Channel 13","Station 1 + 71 BAF","Biocrust",0.0833333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 17,"2012-11-01","Channel 13","Station 1 + 71 BAF","Gravel",20.0833333333333,"Baffle","Channel 13: In-channel treatment",0,1
 17,"2012-11-01","Channel 13","Station 1 + 71 BAF","Rock",3.83333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 17,"2012-11-01","Channel 13","Station 1 + 71 BAF","Soil",41.75,"Baffle","Channel 13: In-channel treatment",0,1
-18,"2012-11-01","Channel 13","Station 1 + 77 ORD","Biocrust",0.416666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-18,"2012-11-01","Channel 13","Station 1 + 77 ORD","Gravel",18.75,"One station dam","Channel 13: In-channel treatment",0,1
-18,"2012-11-01","Channel 13","Station 1 + 77 ORD","Rock",5.83333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-18,"2012-11-01","Channel 13","Station 1 + 77 ORD","Soil",41.75,"One station dam","Channel 13: In-channel treatment",0,1
-19,"2012-11-01","Channel 13","Station 1 + 99 ORD","Gravel",20.4166666666667,"One station dam","Channel 13: In-channel treatment",0,1
-19,"2012-11-01","Channel 13","Station 1 + 99 ORD","Rock",3.75,"One station dam","Channel 13: In-channel treatment",0,1
-19,"2012-11-01","Channel 13","Station 1 + 99 ORD","Soil",53.75,"One station dam","Channel 13: In-channel treatment",0,1
+18,"2012-11-01","Channel 13","Station 1 + 77 ORD","Biocrust",0.416666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+18,"2012-11-01","Channel 13","Station 1 + 77 ORD","Gravel",18.75,"One rock dam","Channel 13: In-channel treatment",0,1
+18,"2012-11-01","Channel 13","Station 1 + 77 ORD","Rock",5.83333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+18,"2012-11-01","Channel 13","Station 1 + 77 ORD","Soil",41.75,"One rock dam","Channel 13: In-channel treatment",0,1
+19,"2012-11-01","Channel 13","Station 1 + 99 ORD","Gravel",20.4166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+19,"2012-11-01","Channel 13","Station 1 + 99 ORD","Rock",3.75,"One rock dam","Channel 13: In-channel treatment",0,1
+19,"2012-11-01","Channel 13","Station 1 + 99 ORD","Soil",53.75,"One rock dam","Channel 13: In-channel treatment",0,1
 20,"2012-11-01","Channel 13","Station 2 + 16 BAF","Gravel",14.25,"Baffle","Channel 13: In-channel treatment",0,1
 20,"2012-11-01","Channel 13","Station 2 + 16 BAF","Rock",3.08333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 20,"2012-11-01","Channel 13","Station 2 + 16 BAF","Soil",70,"Baffle","Channel 13: In-channel treatment",0,1
-21,"2012-11-01","Channel 13","Station 2 + 57 ORD","Gravel",21.75,"One station dam","Channel 13: In-channel treatment",0,1
-21,"2012-11-01","Channel 13","Station 2 + 57 ORD","Rock",1.66666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-21,"2012-11-01","Channel 13","Station 2 + 57 ORD","Soil",62.0833333333333,"One station dam","Channel 13: In-channel treatment",0,1
+21,"2012-11-01","Channel 13","Station 2 + 57 ORD","Gravel",21.75,"One rock dam","Channel 13: In-channel treatment",0,1
+21,"2012-11-01","Channel 13","Station 2 + 57 ORD","Rock",1.66666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+21,"2012-11-01","Channel 13","Station 2 + 57 ORD","Soil",62.0833333333333,"One rock dam","Channel 13: In-channel treatment",0,1
 22,"2012-11-01","Channel 13","Station 2 + 67 BAF","Gravel",35.8333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 22,"2012-11-01","Channel 13","Station 2 + 67 BAF","Rock",12.0833333333333,"Baffle","Channel 13: In-channel treatment",0,1
 22,"2012-11-01","Channel 13","Station 2 + 67 BAF","Soil",41.6666666666667,"Baffle","Channel 13: In-channel treatment",0,1
-23,"2012-11-01","Channel 13","Station 3 + 09 ORD","Biocrust",0.166666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-23,"2012-11-01","Channel 13","Station 3 + 09 ORD","Gravel",1.83333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-23,"2012-11-01","Channel 13","Station 3 + 09 ORD","Rock",1.66666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-23,"2012-11-01","Channel 13","Station 3 + 09 ORD","Soil",57.9166666666667,"One station dam","Channel 13: In-channel treatment",0,1
+23,"2012-11-01","Channel 13","Station 3 + 09 ORD","Biocrust",0.166666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+23,"2012-11-01","Channel 13","Station 3 + 09 ORD","Gravel",1.83333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+23,"2012-11-01","Channel 13","Station 3 + 09 ORD","Rock",1.66666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+23,"2012-11-01","Channel 13","Station 3 + 09 ORD","Soil",57.9166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
 24,"2012-11-01","Channel 13","Station 3 + 31 BAF","Gravel",32.0833333333333,"Baffle","Channel 13: In-channel treatment",0,1
 24,"2012-11-01","Channel 13","Station 3 + 31 BAF","Rock",7.58333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 24,"2012-11-01","Channel 13","Station 3 + 31 BAF","Soil",65.8333333333333,"Baffle","Channel 13: In-channel treatment",0,1
-25,"2012-11-01","Channel 13","Station 3 + 65 ORD","Gravel",16.6666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-25,"2012-11-01","Channel 13","Station 3 + 65 ORD","Rock",2.91666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-25,"2012-11-01","Channel 13","Station 3 + 65 ORD","Soil",57.5,"One station dam","Channel 13: In-channel treatment",0,1
-26,"2012-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",14.1666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-26,"2012-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",3.5,"One station dam","Channel 13: In-channel treatment",0,1
-26,"2012-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",75.4166666666667,"One station dam","Channel 13: In-channel treatment",0,1
+25,"2012-11-01","Channel 13","Station 3 + 65 ORD","Gravel",16.6666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+25,"2012-11-01","Channel 13","Station 3 + 65 ORD","Rock",2.91666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+25,"2012-11-01","Channel 13","Station 3 + 65 ORD","Soil",57.5,"One rock dam","Channel 13: In-channel treatment",0,1
+26,"2012-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",14.1666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+26,"2012-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",3.5,"One rock dam","Channel 13: In-channel treatment",0,1
+26,"2012-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",75.4166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
 27,"2012-11-01","Channel 13","Station 4 + 14.5 BAF","Gravel",34.1666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 27,"2012-11-01","Channel 13","Station 4 + 14.5 BAF","Rock",7.91666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 27,"2012-11-01","Channel 13","Station 4 + 14.5 BAF","Soil",45.8333333333333,"Baffle","Channel 13: In-channel treatment",0,1
-28,"2012-11-01","Channel 13","Station 4 + 36 ORD","Gravel",21.3333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-28,"2012-11-01","Channel 13","Station 4 + 36 ORD","Rock",0.0833333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-28,"2012-11-01","Channel 13","Station 4 + 36 ORD","Soil",65.4166666666667,"One station dam","Channel 13: In-channel treatment",0,1
+28,"2012-11-01","Channel 13","Station 4 + 36 ORD","Gravel",21.3333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+28,"2012-11-01","Channel 13","Station 4 + 36 ORD","Rock",0.0833333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+28,"2012-11-01","Channel 13","Station 4 + 36 ORD","Soil",65.4166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
 29,"2012-11-01","Channel 13","Station 4 + 50 BAF","Gravel",6,"Baffle","Channel 13: In-channel treatment",0,1
 29,"2012-11-01","Channel 13","Station 4 + 50 BAF","Rock",0.416666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 29,"2012-11-01","Channel 13","Station 4 + 50 BAF","Soil",85.4166666666667,"Baffle","Channel 13: In-channel treatment",0,1
-30,"2012-11-01","Channel 13","Station 4 + 78 ORD","Gravel",9.58333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-30,"2012-11-01","Channel 13","Station 4 + 78 ORD","Rock",3.33333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-30,"2012-11-01","Channel 13","Station 4 + 78 ORD","Soil",73.3333333333333,"One station dam","Channel 13: In-channel treatment",0,1
+30,"2012-11-01","Channel 13","Station 4 + 78 ORD","Gravel",9.58333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+30,"2012-11-01","Channel 13","Station 4 + 78 ORD","Rock",3.33333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+30,"2012-11-01","Channel 13","Station 4 + 78 ORD","Soil",73.3333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
 31,"2012-11-01","Channel 19","Station 01 + 04","Biocrust",0.416666666666667,"No treatment","Channel 19: Upland treatment",1,0
 31,"2012-11-01","Channel 19","Station 01 + 04","Gravel",12.1666666666667,"No treatment","Channel 19: Upland treatment",1,0
 31,"2012-11-01","Channel 19","Station 01 + 04","Rock",10.4166666666667,"No treatment","Channel 19: Upland treatment",1,0
@@ -149,45 +149,45 @@
 48,"2012-11-01","Channel 21","Station 01 + 07.5 BAF","Gravel",6.66666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 48,"2012-11-01","Channel 21","Station 01 + 07.5 BAF","Rock",3.5,"Baffle","Channel 21: In-channel treatment",0,1
 48,"2012-11-01","Channel 21","Station 01 + 07.5 BAF","Soil",63.75,"Baffle","Channel 21: In-channel treatment",0,1
-49,"2012-11-01","Channel 21","Station 01 + 49 ORD","Gravel",12.1666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-49,"2012-11-01","Channel 21","Station 01 + 49 ORD","Rock",18,"One station dam","Channel 21: In-channel treatment",0,1
-49,"2012-11-01","Channel 21","Station 01 + 49 ORD","Soil",59.5833333333333,"One station dam","Channel 21: In-channel treatment",0,1
+49,"2012-11-01","Channel 21","Station 01 + 49 ORD","Gravel",12.1666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+49,"2012-11-01","Channel 21","Station 01 + 49 ORD","Rock",18,"One rock dam","Channel 21: In-channel treatment",0,1
+49,"2012-11-01","Channel 21","Station 01 + 49 ORD","Soil",59.5833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
 50,"2012-11-01","Channel 21","Station 02 + 15 BAF","Gravel",26.6666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 50,"2012-11-01","Channel 21","Station 02 + 15 BAF","Rock",28.3333333333333,"Baffle","Channel 21: In-channel treatment",0,1
 50,"2012-11-01","Channel 21","Station 02 + 15 BAF","Soil",28.75,"Baffle","Channel 21: In-channel treatment",0,1
 51,"2012-11-01","Channel 21","Station 03 + 80 BAF","Gravel",20.4166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 51,"2012-11-01","Channel 21","Station 03 + 80 BAF","Rock",5.91666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 51,"2012-11-01","Channel 21","Station 03 + 80 BAF","Soil",70,"Baffle","Channel 21: In-channel treatment",0,1
-52,"2012-11-01","Channel 21","Station 04 + 90 ORD","Gravel",20.4166666666667,"One station dam","Channel 21: In-channel treatment",0,1
-52,"2012-11-01","Channel 21","Station 04 + 90 ORD","Rock",30.8333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-52,"2012-11-01","Channel 21","Station 04 + 90 ORD","Soil",46.25,"One station dam","Channel 21: In-channel treatment",0,1
+52,"2012-11-01","Channel 21","Station 04 + 90 ORD","Gravel",20.4166666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+52,"2012-11-01","Channel 21","Station 04 + 90 ORD","Rock",30.8333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+52,"2012-11-01","Channel 21","Station 04 + 90 ORD","Soil",46.25,"One rock dam","Channel 21: In-channel treatment",0,1
 53,"2012-11-01","Channel 21","Station 06 + 36 BAF","Gravel",15.5833333333333,"Baffle","Channel 21: In-channel treatment",0,1
 53,"2012-11-01","Channel 21","Station 06 + 36 BAF","Rock",11.6666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 53,"2012-11-01","Channel 21","Station 06 + 36 BAF","Soil",69.5833333333333,"Baffle","Channel 21: In-channel treatment",0,1
-54,"2012-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",14.5833333333333,"One station dam","Channel 21: In-channel treatment",0,1
-54,"2012-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",5.91666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-54,"2012-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",75.8333333333333,"One station dam","Channel 21: In-channel treatment",0,1
+54,"2012-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",14.5833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+54,"2012-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",5.91666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+54,"2012-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",75.8333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
 55,"2012-11-01","Channel 21","Station 07 + 66 BAF","Gravel",18.75,"Baffle","Channel 21: In-channel treatment",0,1
 55,"2012-11-01","Channel 21","Station 07 + 66 BAF","Rock",8.41666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 55,"2012-11-01","Channel 21","Station 07 + 66 BAF","Soil",67.9166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 56,"2012-11-01","Channel 21","Station 08 + 62 BAF","Gravel",15.9166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 56,"2012-11-01","Channel 21","Station 08 + 62 BAF","Rock",5.91666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 56,"2012-11-01","Channel 21","Station 08 + 62 BAF","Soil",59.5833333333333,"Baffle","Channel 21: In-channel treatment",0,1
-57,"2012-11-01","Channel 21","Station 09 + 99 ORD","Gravel",32.0833333333333,"One station dam","Channel 21: In-channel treatment",0,1
-57,"2012-11-01","Channel 21","Station 09 + 99 ORD","Rock",15.1666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-57,"2012-11-01","Channel 21","Station 09 + 99 ORD","Soil",55.8333333333333,"One station dam","Channel 21: In-channel treatment",0,1
+57,"2012-11-01","Channel 21","Station 09 + 99 ORD","Gravel",32.0833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+57,"2012-11-01","Channel 21","Station 09 + 99 ORD","Rock",15.1666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+57,"2012-11-01","Channel 21","Station 09 + 99 ORD","Soil",55.8333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
 58,"2012-11-01","Channel 21","Station 10 + 13 BAF","Gravel",34.1666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 58,"2012-11-01","Channel 21","Station 10 + 13 BAF","Rock",16.6666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 58,"2012-11-01","Channel 21","Station 10 + 13 BAF","Soil",57.9166666666667,"Baffle","Channel 21: In-channel treatment",0,1
-59,"2012-11-01","Channel 21","Station 11 + 12 ORD","Gravel",8.08333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-59,"2012-11-01","Channel 21","Station 11 + 12 ORD","Rock",3,"One station dam","Channel 21: In-channel treatment",0,1
-59,"2012-11-01","Channel 21","Station 11 + 12 ORD","Soil",61.6666666666667,"One station dam","Channel 21: In-channel treatment",0,1
+59,"2012-11-01","Channel 21","Station 11 + 12 ORD","Gravel",8.08333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+59,"2012-11-01","Channel 21","Station 11 + 12 ORD","Rock",3,"One rock dam","Channel 21: In-channel treatment",0,1
+59,"2012-11-01","Channel 21","Station 11 + 12 ORD","Soil",61.6666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
 60,"2012-11-01","Channel 21","Station 11 + 24 BAF","Gravel",6,"Baffle","Channel 21: In-channel treatment",0,1
 60,"2012-11-01","Channel 21","Station 11 + 24 BAF","Rock",1.66666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 60,"2012-11-01","Channel 21","Station 11 + 24 BAF","Soil",65.8333333333333,"Baffle","Channel 21: In-channel treatment",0,1
-61,"2012-11-01","Channel 21","Station 11 + 63 ORD","Gravel",30,"One station dam","Channel 21: In-channel treatment",0,1
-61,"2012-11-01","Channel 21","Station 11 + 63 ORD","Rock",3.91666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-61,"2012-11-01","Channel 21","Station 11 + 63 ORD","Soil",46.25,"One station dam","Channel 21: In-channel treatment",0,1
+61,"2012-11-01","Channel 21","Station 11 + 63 ORD","Gravel",30,"One rock dam","Channel 21: In-channel treatment",0,1
+61,"2012-11-01","Channel 21","Station 11 + 63 ORD","Rock",3.91666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+61,"2012-11-01","Channel 21","Station 11 + 63 ORD","Soil",46.25,"One rock dam","Channel 21: In-channel treatment",0,1
 62,"2012-11-01","Channel 21","Station 11 + 73 BAF","Gravel",28.75,"Baffle","Channel 21: In-channel treatment",0,1
 62,"2012-11-01","Channel 21","Station 11 + 73 BAF","Rock",0.416666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 62,"2012-11-01","Channel 21","Station 11 + 73 BAF","Soil",65.4166666666667,"Baffle","Channel 21: In-channel treatment",0,1
@@ -235,42 +235,42 @@
 77,"2013-11-01","Channel 13","Station 1 + 11.5 BAF","Gravel",20.4166666666667,"Baffle","Channel 13: In-channel treatment",0,1
 77,"2013-11-01","Channel 13","Station 1 + 11.5 BAF","Rock",5.91666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 77,"2013-11-01","Channel 13","Station 1 + 11.5 BAF","Soil",39.5833333333333,"Baffle","Channel 13: In-channel treatment",0,1
-78,"2013-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",20.0833333333333,"One station dam","Channel 13: In-channel treatment",0,1
-78,"2013-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",0.833333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-78,"2013-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",53.75,"One station dam","Channel 13: In-channel treatment",0,1
+78,"2013-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",20.0833333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+78,"2013-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",0.833333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+78,"2013-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",53.75,"One rock dam","Channel 13: In-channel treatment",0,1
 79,"2013-11-01","Channel 13","Station 1 + 71 BAF","Gravel",25.8333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 79,"2013-11-01","Channel 13","Station 1 + 71 BAF","Rock",3.91666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 79,"2013-11-01","Channel 13","Station 1 + 71 BAF","Soil",44.1666666666667,"Baffle","Channel 13: In-channel treatment",0,1
-80,"2013-11-01","Channel 13","Station 1 + 99 ORD","Gravel",14.1666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-80,"2013-11-01","Channel 13","Station 1 + 99 ORD","Rock",5.16666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-80,"2013-11-01","Channel 13","Station 1 + 99 ORD","Soil",40.4166666666667,"One station dam","Channel 13: In-channel treatment",0,1
+80,"2013-11-01","Channel 13","Station 1 + 99 ORD","Gravel",14.1666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+80,"2013-11-01","Channel 13","Station 1 + 99 ORD","Rock",5.16666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+80,"2013-11-01","Channel 13","Station 1 + 99 ORD","Soil",40.4166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
 81,"2013-11-01","Channel 13","Station 2 + 16 BAF","Gravel",27.9166666666667,"Baffle","Channel 13: In-channel treatment",0,1
 81,"2013-11-01","Channel 13","Station 2 + 16 BAF","Rock",3.08333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 81,"2013-11-01","Channel 13","Station 2 + 16 BAF","Soil",54.1666666666667,"Baffle","Channel 13: In-channel treatment",0,1
-82,"2013-11-01","Channel 13","Station 2 + 57 ORD","Gravel",10.4166666666667,"One station dam","Channel 13: In-channel treatment",0,1
-82,"2013-11-01","Channel 13","Station 2 + 57 ORD","Rock",3.33333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-82,"2013-11-01","Channel 13","Station 2 + 57 ORD","Soil",79.5833333333333,"One station dam","Channel 13: In-channel treatment",0,1
+82,"2013-11-01","Channel 13","Station 2 + 57 ORD","Gravel",10.4166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+82,"2013-11-01","Channel 13","Station 2 + 57 ORD","Rock",3.33333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+82,"2013-11-01","Channel 13","Station 2 + 57 ORD","Soil",79.5833333333333,"One rock dam","Channel 13: In-channel treatment",0,1
 83,"2013-11-01","Channel 13","Station 2 + 67 BAF","Gravel",11.4166666666667,"Baffle","Channel 13: In-channel treatment",0,1
 83,"2013-11-01","Channel 13","Station 2 + 67 BAF","Rock",0.333333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 83,"2013-11-01","Channel 13","Station 2 + 67 BAF","Soil",81.6666666666667,"Baffle","Channel 13: In-channel treatment",0,1
-84,"2013-11-01","Channel 13","Station 3 + 09 ORD","Gravel",26,"One station dam","Channel 13: In-channel treatment",0,1
-84,"2013-11-01","Channel 13","Station 3 + 09 ORD","Rock",3.5,"One station dam","Channel 13: In-channel treatment",0,1
-84,"2013-11-01","Channel 13","Station 3 + 09 ORD","Soil",50.4166666666667,"One station dam","Channel 13: In-channel treatment",0,1
+84,"2013-11-01","Channel 13","Station 3 + 09 ORD","Gravel",26,"One rock dam","Channel 13: In-channel treatment",0,1
+84,"2013-11-01","Channel 13","Station 3 + 09 ORD","Rock",3.5,"One rock dam","Channel 13: In-channel treatment",0,1
+84,"2013-11-01","Channel 13","Station 3 + 09 ORD","Soil",50.4166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
 85,"2013-11-01","Channel 13","Station 3 + 31 BAF","Gravel",1.5,"Baffle","Channel 13: In-channel treatment",0,1
 85,"2013-11-01","Channel 13","Station 3 + 31 BAF","Rock",0.833333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 85,"2013-11-01","Channel 13","Station 3 + 31 BAF","Soil",32.5,"Baffle","Channel 13: In-channel treatment",0,1
-86,"2013-11-01","Channel 13","Station 3 + 65 ORD","Gravel",6.33333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-86,"2013-11-01","Channel 13","Station 3 + 65 ORD","Rock",1.33333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-86,"2013-11-01","Channel 13","Station 3 + 65 ORD","Soil",38.3333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-87,"2013-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",20.0833333333333,"One station dam","Channel 13: In-channel treatment",0,1
-87,"2013-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",1,"One station dam","Channel 13: In-channel treatment",0,1
-87,"2013-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",46.25,"One station dam","Channel 13: In-channel treatment",0,1
+86,"2013-11-01","Channel 13","Station 3 + 65 ORD","Gravel",6.33333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+86,"2013-11-01","Channel 13","Station 3 + 65 ORD","Rock",1.33333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+86,"2013-11-01","Channel 13","Station 3 + 65 ORD","Soil",38.3333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+87,"2013-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",20.0833333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+87,"2013-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",1,"One rock dam","Channel 13: In-channel treatment",0,1
+87,"2013-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",46.25,"One rock dam","Channel 13: In-channel treatment",0,1
 88,"2013-11-01","Channel 13","Station 4 + 14.5 BAF","Gravel",10.0833333333333,"Baffle","Channel 13: In-channel treatment",0,1
 88,"2013-11-01","Channel 13","Station 4 + 14.5 BAF","Rock",3.08333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 88,"2013-11-01","Channel 13","Station 4 + 14.5 BAF","Soil",61.6666666666667,"Baffle","Channel 13: In-channel treatment",0,1
-89,"2013-11-01","Channel 13","Station 4 + 36 ORD","Gravel",20.0833333333333,"One station dam","Channel 13: In-channel treatment",0,1
-89,"2013-11-01","Channel 13","Station 4 + 36 ORD","Rock",1.66666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-89,"2013-11-01","Channel 13","Station 4 + 36 ORD","Soil",50,"One station dam","Channel 13: In-channel treatment",0,1
+89,"2013-11-01","Channel 13","Station 4 + 36 ORD","Gravel",20.0833333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+89,"2013-11-01","Channel 13","Station 4 + 36 ORD","Rock",1.66666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+89,"2013-11-01","Channel 13","Station 4 + 36 ORD","Soil",50,"One rock dam","Channel 13: In-channel treatment",0,1
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Gravel",15.5833333333333,"Baffle","Channel 13: In-channel treatment",0,1
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Rock",1.33333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 90,"2013-11-01","Channel 13","Station 4 + 50 BAF","Soil",62.0833333333333,"Baffle","Channel 13: In-channel treatment",0,1
@@ -328,45 +328,45 @@
 109,"2013-11-01","Channel 21","Station 01 + 07.5 BAF","Gravel",10.8333333333333,"Baffle","Channel 21: In-channel treatment",0,1
 109,"2013-11-01","Channel 21","Station 01 + 07.5 BAF","Rock",5.5,"Baffle","Channel 21: In-channel treatment",0,1
 109,"2013-11-01","Channel 21","Station 01 + 07.5 BAF","Soil",75.8333333333333,"Baffle","Channel 21: In-channel treatment",0,1
-110,"2013-11-01","Channel 21","Station 01 + 49 ORD","Gravel",18.3333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-110,"2013-11-01","Channel 21","Station 01 + 49 ORD","Rock",12.1666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-110,"2013-11-01","Channel 21","Station 01 + 49 ORD","Soil",61.6666666666667,"One station dam","Channel 21: In-channel treatment",0,1
+110,"2013-11-01","Channel 21","Station 01 + 49 ORD","Gravel",18.3333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+110,"2013-11-01","Channel 21","Station 01 + 49 ORD","Rock",12.1666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+110,"2013-11-01","Channel 21","Station 01 + 49 ORD","Soil",61.6666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
 111,"2013-11-01","Channel 21","Station 02 + 15 BAF","Gravel",30,"Baffle","Channel 21: In-channel treatment",0,1
 111,"2013-11-01","Channel 21","Station 02 + 15 BAF","Rock",20.4166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 111,"2013-11-01","Channel 21","Station 02 + 15 BAF","Soil",50,"Baffle","Channel 21: In-channel treatment",0,1
 112,"2013-11-01","Channel 21","Station 03 + 80 BAF","Gravel",24.1666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 112,"2013-11-01","Channel 21","Station 03 + 80 BAF","Rock",10.8333333333333,"Baffle","Channel 21: In-channel treatment",0,1
 112,"2013-11-01","Channel 21","Station 03 + 80 BAF","Soil",65.8333333333333,"Baffle","Channel 21: In-channel treatment",0,1
-113,"2013-11-01","Channel 21","Station 04 + 90 ORD","Gravel",18.3333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-113,"2013-11-01","Channel 21","Station 04 + 90 ORD","Rock",26.6666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-113,"2013-11-01","Channel 21","Station 04 + 90 ORD","Soil",61.6666666666667,"One station dam","Channel 21: In-channel treatment",0,1
+113,"2013-11-01","Channel 21","Station 04 + 90 ORD","Gravel",18.3333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+113,"2013-11-01","Channel 21","Station 04 + 90 ORD","Rock",26.6666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+113,"2013-11-01","Channel 21","Station 04 + 90 ORD","Soil",61.6666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
 114,"2013-11-01","Channel 21","Station 06 + 36 BAF","Gravel",9.75,"Baffle","Channel 21: In-channel treatment",0,1
 114,"2013-11-01","Channel 21","Station 06 + 36 BAF","Rock",7.66666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 114,"2013-11-01","Channel 21","Station 06 + 36 BAF","Soil",71.6666666666667,"Baffle","Channel 21: In-channel treatment",0,1
-115,"2013-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",10.8333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-115,"2013-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",5.91666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-115,"2013-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",77.5,"One station dam","Channel 21: In-channel treatment",0,1
+115,"2013-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",10.8333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+115,"2013-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",5.91666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+115,"2013-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",77.5,"One rock dam","Channel 21: In-channel treatment",0,1
 116,"2013-11-01","Channel 21","Station 07 + 66 BAF","Gravel",12.9166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 116,"2013-11-01","Channel 21","Station 07 + 66 BAF","Rock",24.1666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 116,"2013-11-01","Channel 21","Station 07 + 66 BAF","Soil",73.75,"Baffle","Channel 21: In-channel treatment",0,1
 117,"2013-11-01","Channel 21","Station 08 + 62 BAF","Gravel",8.33333333333333,"Baffle","Channel 21: In-channel treatment",0,1
 117,"2013-11-01","Channel 21","Station 08 + 62 BAF","Rock",5.66666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 117,"2013-11-01","Channel 21","Station 08 + 62 BAF","Soil",70,"Baffle","Channel 21: In-channel treatment",0,1
-118,"2013-11-01","Channel 21","Station 09 + 99 ORD","Gravel",27.9166666666667,"One station dam","Channel 21: In-channel treatment",0,1
-118,"2013-11-01","Channel 21","Station 09 + 99 ORD","Rock",9.58333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-118,"2013-11-01","Channel 21","Station 09 + 99 ORD","Soil",55.8333333333333,"One station dam","Channel 21: In-channel treatment",0,1
+118,"2013-11-01","Channel 21","Station 09 + 99 ORD","Gravel",27.9166666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+118,"2013-11-01","Channel 21","Station 09 + 99 ORD","Rock",9.58333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+118,"2013-11-01","Channel 21","Station 09 + 99 ORD","Soil",55.8333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
 119,"2013-11-01","Channel 21","Station 10 + 13 BAF","Gravel",26.6666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 119,"2013-11-01","Channel 21","Station 10 + 13 BAF","Rock",17.6666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 119,"2013-11-01","Channel 21","Station 10 + 13 BAF","Soil",54.1666666666667,"Baffle","Channel 21: In-channel treatment",0,1
-120,"2013-11-01","Channel 21","Station 11 + 12 ORD","Gravel",6.33333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-120,"2013-11-01","Channel 21","Station 11 + 12 ORD","Rock",3.75,"One station dam","Channel 21: In-channel treatment",0,1
-120,"2013-11-01","Channel 21","Station 11 + 12 ORD","Soil",79.5833333333333,"One station dam","Channel 21: In-channel treatment",0,1
+120,"2013-11-01","Channel 21","Station 11 + 12 ORD","Gravel",6.33333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+120,"2013-11-01","Channel 21","Station 11 + 12 ORD","Rock",3.75,"One rock dam","Channel 21: In-channel treatment",0,1
+120,"2013-11-01","Channel 21","Station 11 + 12 ORD","Soil",79.5833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
 121,"2013-11-01","Channel 21","Station 11 + 24 BAF","Gravel",6.33333333333333,"Baffle","Channel 21: In-channel treatment",0,1
 121,"2013-11-01","Channel 21","Station 11 + 24 BAF","Rock",0.666666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 121,"2013-11-01","Channel 21","Station 11 + 24 BAF","Soil",63.75,"Baffle","Channel 21: In-channel treatment",0,1
-122,"2013-11-01","Channel 21","Station 11 + 63 ORD","Gravel",35.8333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-122,"2013-11-01","Channel 21","Station 11 + 63 ORD","Rock",3.58333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-122,"2013-11-01","Channel 21","Station 11 + 63 ORD","Soil",57.9166666666667,"One station dam","Channel 21: In-channel treatment",0,1
+122,"2013-11-01","Channel 21","Station 11 + 63 ORD","Gravel",35.8333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+122,"2013-11-01","Channel 21","Station 11 + 63 ORD","Rock",3.58333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+122,"2013-11-01","Channel 21","Station 11 + 63 ORD","Soil",57.9166666666667,"One rock dam","Channel 21: In-channel treatment",0,1
 123,"2013-11-01","Channel 21","Station 11 + 73 BAF","Gravel",14.5833333333333,"Baffle","Channel 21: In-channel treatment",0,1
 123,"2013-11-01","Channel 21","Station 11 + 73 BAF","Rock",0.666666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 123,"2013-11-01","Channel 21","Station 11 + 73 BAF","Soil",77.5,"Baffle","Channel 21: In-channel treatment",0,1
@@ -434,74 +434,74 @@
 138,"2014-11-01","Channel 13","Station 1 + 11.5 BAF","Litter",8.75,"Baffle","Channel 13: In-channel treatment",0,1
 138,"2014-11-01","Channel 13","Station 1 + 11.5 BAF","Rock",8.75,"Baffle","Channel 13: In-channel treatment",0,1
 138,"2014-11-01","Channel 13","Station 1 + 11.5 BAF","Soil",56.25,"Baffle","Channel 13: In-channel treatment",0,1
-139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Biocrust",3.75,"One station dam","Channel 13: In-channel treatment",0,1
-139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",17.5,"One station dam","Channel 13: In-channel treatment",0,1
-139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Litter",20.625,"One station dam","Channel 13: In-channel treatment",0,1
-139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",1.25,"One station dam","Channel 13: In-channel treatment",0,1
-139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",62.5,"One station dam","Channel 13: In-channel treatment",0,1
+139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Biocrust",3.75,"One rock dam","Channel 13: In-channel treatment",0,1
+139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",17.5,"One rock dam","Channel 13: In-channel treatment",0,1
+139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Litter",20.625,"One rock dam","Channel 13: In-channel treatment",0,1
+139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",1.25,"One rock dam","Channel 13: In-channel treatment",0,1
+139,"2014-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",62.5,"One rock dam","Channel 13: In-channel treatment",0,1
 140,"2014-11-01","Channel 13","Station 1 + 71 BAF","Biocrust",0.625,"Baffle","Channel 13: In-channel treatment",0,1
 140,"2014-11-01","Channel 13","Station 1 + 71 BAF","Gravel",16.875,"Baffle","Channel 13: In-channel treatment",0,1
 140,"2014-11-01","Channel 13","Station 1 + 71 BAF","Litter",23.125,"Baffle","Channel 13: In-channel treatment",0,1
 140,"2014-11-01","Channel 13","Station 1 + 71 BAF","Rock",8.125,"Baffle","Channel 13: In-channel treatment",0,1
 140,"2014-11-01","Channel 13","Station 1 + 71 BAF","Soil",35,"Baffle","Channel 13: In-channel treatment",0,1
-141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Biocrust",0.125,"One station dam","Channel 13: In-channel treatment",0,1
-141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Gravel",8.25,"One station dam","Channel 13: In-channel treatment",0,1
-141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Litter",40.75,"One station dam","Channel 13: In-channel treatment",0,1
-141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Rock",14.375,"One station dam","Channel 13: In-channel treatment",0,1
-141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Soil",22.5,"One station dam","Channel 13: In-channel treatment",0,1
-142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Biocrust",0.125,"One station dam","Channel 13: In-channel treatment",0,1
-142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Gravel",11.375,"One station dam","Channel 13: In-channel treatment",0,1
-142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Litter",8.25,"One station dam","Channel 13: In-channel treatment",0,1
-142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Rock",4.375,"One station dam","Channel 13: In-channel treatment",0,1
-142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Soil",55.625,"One station dam","Channel 13: In-channel treatment",0,1
+141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Biocrust",0.125,"One rock dam","Channel 13: In-channel treatment",0,1
+141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Gravel",8.25,"One rock dam","Channel 13: In-channel treatment",0,1
+141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Litter",40.75,"One rock dam","Channel 13: In-channel treatment",0,1
+141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Rock",14.375,"One rock dam","Channel 13: In-channel treatment",0,1
+141,"2014-11-01","Channel 13","Station 1 + 77 ORD","Soil",22.5,"One rock dam","Channel 13: In-channel treatment",0,1
+142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Biocrust",0.125,"One rock dam","Channel 13: In-channel treatment",0,1
+142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Gravel",11.375,"One rock dam","Channel 13: In-channel treatment",0,1
+142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Litter",8.25,"One rock dam","Channel 13: In-channel treatment",0,1
+142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Rock",4.375,"One rock dam","Channel 13: In-channel treatment",0,1
+142,"2014-11-01","Channel 13","Station 1 + 99 ORD","Soil",55.625,"One rock dam","Channel 13: In-channel treatment",0,1
 143,"2014-11-01","Channel 13","Station 2 + 16 BAF","Gravel",11.875,"Baffle","Channel 13: In-channel treatment",0,1
 143,"2014-11-01","Channel 13","Station 2 + 16 BAF","Litter",11.875,"Baffle","Channel 13: In-channel treatment",0,1
 143,"2014-11-01","Channel 13","Station 2 + 16 BAF","Rock",5,"Baffle","Channel 13: In-channel treatment",0,1
 143,"2014-11-01","Channel 13","Station 2 + 16 BAF","Soil",56.25,"Baffle","Channel 13: In-channel treatment",0,1
-144,"2014-11-01","Channel 13","Station 2 + 57 ORD","Gravel",5.625,"One station dam","Channel 13: In-channel treatment",0,1
-144,"2014-11-01","Channel 13","Station 2 + 57 ORD","Litter",1,"One station dam","Channel 13: In-channel treatment",0,1
-144,"2014-11-01","Channel 13","Station 2 + 57 ORD","Rock",0.75,"One station dam","Channel 13: In-channel treatment",0,1
-144,"2014-11-01","Channel 13","Station 2 + 57 ORD","Soil",79.375,"One station dam","Channel 13: In-channel treatment",0,1
+144,"2014-11-01","Channel 13","Station 2 + 57 ORD","Gravel",5.625,"One rock dam","Channel 13: In-channel treatment",0,1
+144,"2014-11-01","Channel 13","Station 2 + 57 ORD","Litter",1,"One rock dam","Channel 13: In-channel treatment",0,1
+144,"2014-11-01","Channel 13","Station 2 + 57 ORD","Rock",0.75,"One rock dam","Channel 13: In-channel treatment",0,1
+144,"2014-11-01","Channel 13","Station 2 + 57 ORD","Soil",79.375,"One rock dam","Channel 13: In-channel treatment",0,1
 145,"2014-11-01","Channel 13","Station 2 + 67 BAF","Gravel",8.75,"Baffle","Channel 13: In-channel treatment",0,1
 145,"2014-11-01","Channel 13","Station 2 + 67 BAF","Litter",26.25,"Baffle","Channel 13: In-channel treatment",0,1
 145,"2014-11-01","Channel 13","Station 2 + 67 BAF","Rock",5,"Baffle","Channel 13: In-channel treatment",0,1
 145,"2014-11-01","Channel 13","Station 2 + 67 BAF","Soil",32.5,"Baffle","Channel 13: In-channel treatment",0,1
-146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Biocrust",0.125,"One station dam","Channel 13: In-channel treatment",0,1
-146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Gravel",8.125,"One station dam","Channel 13: In-channel treatment",0,1
-146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Litter",20,"One station dam","Channel 13: In-channel treatment",0,1
-146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Rock",4.5,"One station dam","Channel 13: In-channel treatment",0,1
-146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Soil",50,"One station dam","Channel 13: In-channel treatment",0,1
+146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Biocrust",0.125,"One rock dam","Channel 13: In-channel treatment",0,1
+146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Gravel",8.125,"One rock dam","Channel 13: In-channel treatment",0,1
+146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Litter",20,"One rock dam","Channel 13: In-channel treatment",0,1
+146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Rock",4.5,"One rock dam","Channel 13: In-channel treatment",0,1
+146,"2014-11-01","Channel 13","Station 3 + 09 ORD","Soil",50,"One rock dam","Channel 13: In-channel treatment",0,1
 147,"2014-11-01","Channel 13","Station 3 + 31 BAF","Gravel",13.875,"Baffle","Channel 13: In-channel treatment",0,1
 147,"2014-11-01","Channel 13","Station 3 + 31 BAF","Litter",23.125,"Baffle","Channel 13: In-channel treatment",0,1
 147,"2014-11-01","Channel 13","Station 3 + 31 BAF","Rock",1.25,"Baffle","Channel 13: In-channel treatment",0,1
 147,"2014-11-01","Channel 13","Station 3 + 31 BAF","Soil",44.375,"Baffle","Channel 13: In-channel treatment",0,1
-148,"2014-11-01","Channel 13","Station 3 + 65 ORD","Gravel",17.5,"One station dam","Channel 13: In-channel treatment",0,1
-148,"2014-11-01","Channel 13","Station 3 + 65 ORD","Litter",26.25,"One station dam","Channel 13: In-channel treatment",0,1
-148,"2014-11-01","Channel 13","Station 3 + 65 ORD","Rock",1.25,"One station dam","Channel 13: In-channel treatment",0,1
-148,"2014-11-01","Channel 13","Station 3 + 65 ORD","Soil",26.25,"One station dam","Channel 13: In-channel treatment",0,1
-149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Biocrust",0.125,"One station dam","Channel 13: In-channel treatment",0,1
-149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",11.875,"One station dam","Channel 13: In-channel treatment",0,1
-149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Litter",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",7.75,"One station dam","Channel 13: In-channel treatment",0,1
-149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",38.75,"One station dam","Channel 13: In-channel treatment",0,1
+148,"2014-11-01","Channel 13","Station 3 + 65 ORD","Gravel",17.5,"One rock dam","Channel 13: In-channel treatment",0,1
+148,"2014-11-01","Channel 13","Station 3 + 65 ORD","Litter",26.25,"One rock dam","Channel 13: In-channel treatment",0,1
+148,"2014-11-01","Channel 13","Station 3 + 65 ORD","Rock",1.25,"One rock dam","Channel 13: In-channel treatment",0,1
+148,"2014-11-01","Channel 13","Station 3 + 65 ORD","Soil",26.25,"One rock dam","Channel 13: In-channel treatment",0,1
+149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Biocrust",0.125,"One rock dam","Channel 13: In-channel treatment",0,1
+149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",11.875,"One rock dam","Channel 13: In-channel treatment",0,1
+149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Litter",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",7.75,"One rock dam","Channel 13: In-channel treatment",0,1
+149,"2014-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",38.75,"One rock dam","Channel 13: In-channel treatment",0,1
 150,"2014-11-01","Channel 13","Station 4 + 14.5 BAF","Biocrust",0.125,"Baffle","Channel 13: In-channel treatment",0,1
 150,"2014-11-01","Channel 13","Station 4 + 14.5 BAF","Gravel",17.5,"Baffle","Channel 13: In-channel treatment",0,1
 150,"2014-11-01","Channel 13","Station 4 + 14.5 BAF","Litter",10.75,"Baffle","Channel 13: In-channel treatment",0,1
 150,"2014-11-01","Channel 13","Station 4 + 14.5 BAF","Rock",5.125,"Baffle","Channel 13: In-channel treatment",0,1
 150,"2014-11-01","Channel 13","Station 4 + 14.5 BAF","Soil",23.75,"Baffle","Channel 13: In-channel treatment",0,1
-151,"2014-11-01","Channel 13","Station 4 + 36 ORD","Gravel",14.375,"One station dam","Channel 13: In-channel treatment",0,1
-151,"2014-11-01","Channel 13","Station 4 + 36 ORD","Litter",2,"One station dam","Channel 13: In-channel treatment",0,1
-151,"2014-11-01","Channel 13","Station 4 + 36 ORD","Rock",1.375,"One station dam","Channel 13: In-channel treatment",0,1
-151,"2014-11-01","Channel 13","Station 4 + 36 ORD","Soil",61.25,"One station dam","Channel 13: In-channel treatment",0,1
+151,"2014-11-01","Channel 13","Station 4 + 36 ORD","Gravel",14.375,"One rock dam","Channel 13: In-channel treatment",0,1
+151,"2014-11-01","Channel 13","Station 4 + 36 ORD","Litter",2,"One rock dam","Channel 13: In-channel treatment",0,1
+151,"2014-11-01","Channel 13","Station 4 + 36 ORD","Rock",1.375,"One rock dam","Channel 13: In-channel treatment",0,1
+151,"2014-11-01","Channel 13","Station 4 + 36 ORD","Soil",61.25,"One rock dam","Channel 13: In-channel treatment",0,1
 152,"2014-11-01","Channel 13","Station 4 + 50 BAF","Biocrust",3.75,"Baffle","Channel 13: In-channel treatment",0,1
 152,"2014-11-01","Channel 13","Station 4 + 50 BAF","Gravel",10,"Baffle","Channel 13: In-channel treatment",0,1
 152,"2014-11-01","Channel 13","Station 4 + 50 BAF","Litter",10.625,"Baffle","Channel 13: In-channel treatment",0,1
 152,"2014-11-01","Channel 13","Station 4 + 50 BAF","Rock",0.625,"Baffle","Channel 13: In-channel treatment",0,1
 152,"2014-11-01","Channel 13","Station 4 + 50 BAF","Soil",61.875,"Baffle","Channel 13: In-channel treatment",0,1
-153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Gravel",4.5,"One station dam","Channel 13: In-channel treatment",0,1
-153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Litter",13.875,"One station dam","Channel 13: In-channel treatment",0,1
-153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Rock",0.75,"One station dam","Channel 13: In-channel treatment",0,1
-153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Soil",50,"One station dam","Channel 13: In-channel treatment",0,1
+153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Gravel",4.5,"One rock dam","Channel 13: In-channel treatment",0,1
+153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Litter",13.875,"One rock dam","Channel 13: In-channel treatment",0,1
+153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Rock",0.75,"One rock dam","Channel 13: In-channel treatment",0,1
+153,"2014-11-01","Channel 13","Station 4 + 78 ORD","Soil",50,"One rock dam","Channel 13: In-channel treatment",0,1
 155,"2014-11-01","Channel 19","Station 02 + 04","Biocrust",0.625,"No treatment","Channel 19: Upland treatment",1,0
 155,"2014-11-01","Channel 19","Station 02 + 04","Gravel",13.875,"No treatment","Channel 19: Upland treatment",1,0
 155,"2014-11-01","Channel 19","Station 02 + 04","Litter",0.5,"No treatment","Channel 19: Upland treatment",1,0
@@ -574,11 +574,11 @@
 171,"2014-11-01","Channel 21","Station 01 + 07.5 BAF","Litter",4.625,"Baffle","Channel 21: In-channel treatment",0,1
 171,"2014-11-01","Channel 21","Station 01 + 07.5 BAF","Rock",0.75,"Baffle","Channel 21: In-channel treatment",0,1
 171,"2014-11-01","Channel 21","Station 01 + 07.5 BAF","Soil",67.5,"Baffle","Channel 21: In-channel treatment",0,1
-172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Biocrust",3.75,"One station dam","Channel 21: In-channel treatment",0,1
-172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Gravel",13.875,"One station dam","Channel 21: In-channel treatment",0,1
-172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Litter",8.25,"One station dam","Channel 21: In-channel treatment",0,1
-172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Rock",8.125,"One station dam","Channel 21: In-channel treatment",0,1
-172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Soil",50,"One station dam","Channel 21: In-channel treatment",0,1
+172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Biocrust",3.75,"One rock dam","Channel 21: In-channel treatment",0,1
+172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Gravel",13.875,"One rock dam","Channel 21: In-channel treatment",0,1
+172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Litter",8.25,"One rock dam","Channel 21: In-channel treatment",0,1
+172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Rock",8.125,"One rock dam","Channel 21: In-channel treatment",0,1
+172,"2014-11-01","Channel 21","Station 01 + 49 ORD","Soil",50,"One rock dam","Channel 21: In-channel treatment",0,1
 173,"2014-11-01","Channel 21","Station 02 + 15 BAF","Gravel",20.625,"Baffle","Channel 21: In-channel treatment",0,1
 173,"2014-11-01","Channel 21","Station 02 + 15 BAF","Litter",5.125,"Baffle","Channel 21: In-channel treatment",0,1
 173,"2014-11-01","Channel 21","Station 02 + 15 BAF","Rock",26.25,"Baffle","Channel 21: In-channel treatment",0,1
@@ -587,19 +587,19 @@
 174,"2014-11-01","Channel 21","Station 03 + 80 BAF","Litter",1,"Baffle","Channel 21: In-channel treatment",0,1
 174,"2014-11-01","Channel 21","Station 03 + 80 BAF","Rock",13.125,"Baffle","Channel 21: In-channel treatment",0,1
 174,"2014-11-01","Channel 21","Station 03 + 80 BAF","Soil",67.5,"Baffle","Channel 21: In-channel treatment",0,1
-175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Biocrust",0.75,"One station dam","Channel 21: In-channel treatment",0,1
-175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Gravel",26.25,"One station dam","Channel 21: In-channel treatment",0,1
-175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Litter",2,"One station dam","Channel 21: In-channel treatment",0,1
-175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Rock",17.5,"One station dam","Channel 21: In-channel treatment",0,1
-175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Soil",55.625,"One station dam","Channel 21: In-channel treatment",0,1
+175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Biocrust",0.75,"One rock dam","Channel 21: In-channel treatment",0,1
+175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Gravel",26.25,"One rock dam","Channel 21: In-channel treatment",0,1
+175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Litter",2,"One rock dam","Channel 21: In-channel treatment",0,1
+175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Rock",17.5,"One rock dam","Channel 21: In-channel treatment",0,1
+175,"2014-11-01","Channel 21","Station 04 + 90 ORD","Soil",55.625,"One rock dam","Channel 21: In-channel treatment",0,1
 176,"2014-11-01","Channel 21","Station 06 + 36 BAF","Gravel",1.5,"Baffle","Channel 21: In-channel treatment",0,1
 176,"2014-11-01","Channel 21","Station 06 + 36 BAF","Litter",10.25,"Baffle","Channel 21: In-channel treatment",0,1
 176,"2014-11-01","Channel 21","Station 06 + 36 BAF","Rock",10,"Baffle","Channel 21: In-channel treatment",0,1
 176,"2014-11-01","Channel 21","Station 06 + 36 BAF","Soil",61.875,"Baffle","Channel 21: In-channel treatment",0,1
-177,"2014-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",8.75,"One station dam","Channel 21: In-channel treatment",0,1
-177,"2014-11-01","Channel 21","Station 07 + 49.5 ORD","Litter",4.625,"One station dam","Channel 21: In-channel treatment",0,1
-177,"2014-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",14.375,"One station dam","Channel 21: In-channel treatment",0,1
-177,"2014-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",73.75,"One station dam","Channel 21: In-channel treatment",0,1
+177,"2014-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",8.75,"One rock dam","Channel 21: In-channel treatment",0,1
+177,"2014-11-01","Channel 21","Station 07 + 49.5 ORD","Litter",4.625,"One rock dam","Channel 21: In-channel treatment",0,1
+177,"2014-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",14.375,"One rock dam","Channel 21: In-channel treatment",0,1
+177,"2014-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",73.75,"One rock dam","Channel 21: In-channel treatment",0,1
 178,"2014-11-01","Channel 21","Station 07 + 66 BAF","Gravel",8.75,"Baffle","Channel 21: In-channel treatment",0,1
 178,"2014-11-01","Channel 21","Station 07 + 66 BAF","Litter",4.625,"Baffle","Channel 21: In-channel treatment",0,1
 178,"2014-11-01","Channel 21","Station 07 + 66 BAF","Rock",20.625,"Baffle","Channel 21: In-channel treatment",0,1
@@ -608,26 +608,26 @@
 179,"2014-11-01","Channel 21","Station 08 + 62 BAF","Litter",2.5,"Baffle","Channel 21: In-channel treatment",0,1
 179,"2014-11-01","Channel 21","Station 08 + 62 BAF","Rock",13.875,"Baffle","Channel 21: In-channel treatment",0,1
 179,"2014-11-01","Channel 21","Station 08 + 62 BAF","Soil",64.375,"Baffle","Channel 21: In-channel treatment",0,1
-180,"2014-11-01","Channel 21","Station 09 + 99 ORD","Gravel",23.125,"One station dam","Channel 21: In-channel treatment",0,1
-180,"2014-11-01","Channel 21","Station 09 + 99 ORD","Litter",2,"One station dam","Channel 21: In-channel treatment",0,1
-180,"2014-11-01","Channel 21","Station 09 + 99 ORD","Rock",14.375,"One station dam","Channel 21: In-channel treatment",0,1
-180,"2014-11-01","Channel 21","Station 09 + 99 ORD","Soil",53.125,"One station dam","Channel 21: In-channel treatment",0,1
+180,"2014-11-01","Channel 21","Station 09 + 99 ORD","Gravel",23.125,"One rock dam","Channel 21: In-channel treatment",0,1
+180,"2014-11-01","Channel 21","Station 09 + 99 ORD","Litter",2,"One rock dam","Channel 21: In-channel treatment",0,1
+180,"2014-11-01","Channel 21","Station 09 + 99 ORD","Rock",14.375,"One rock dam","Channel 21: In-channel treatment",0,1
+180,"2014-11-01","Channel 21","Station 09 + 99 ORD","Soil",53.125,"One rock dam","Channel 21: In-channel treatment",0,1
 181,"2014-11-01","Channel 21","Station 10 + 13 BAF","Gravel",14.375,"Baffle","Channel 21: In-channel treatment",0,1
 181,"2014-11-01","Channel 21","Station 10 + 13 BAF","Litter",2.5,"Baffle","Channel 21: In-channel treatment",0,1
 181,"2014-11-01","Channel 21","Station 10 + 13 BAF","Rock",26.25,"Baffle","Channel 21: In-channel treatment",0,1
 181,"2014-11-01","Channel 21","Station 10 + 13 BAF","Soil",50,"Baffle","Channel 21: In-channel treatment",0,1
-182,"2014-11-01","Channel 21","Station 11 + 12 ORD","Gravel",17,"One station dam","Channel 21: In-channel treatment",0,1
-182,"2014-11-01","Channel 21","Station 11 + 12 ORD","Litter",4.625,"One station dam","Channel 21: In-channel treatment",0,1
-182,"2014-11-01","Channel 21","Station 11 + 12 ORD","Rock",1.875,"One station dam","Channel 21: In-channel treatment",0,1
-182,"2014-11-01","Channel 21","Station 11 + 12 ORD","Soil",44.375,"One station dam","Channel 21: In-channel treatment",0,1
+182,"2014-11-01","Channel 21","Station 11 + 12 ORD","Gravel",17,"One rock dam","Channel 21: In-channel treatment",0,1
+182,"2014-11-01","Channel 21","Station 11 + 12 ORD","Litter",4.625,"One rock dam","Channel 21: In-channel treatment",0,1
+182,"2014-11-01","Channel 21","Station 11 + 12 ORD","Rock",1.875,"One rock dam","Channel 21: In-channel treatment",0,1
+182,"2014-11-01","Channel 21","Station 11 + 12 ORD","Soil",44.375,"One rock dam","Channel 21: In-channel treatment",0,1
 183,"2014-11-01","Channel 21","Station 11 + 24 BAF","Gravel",11.875,"Baffle","Channel 21: In-channel treatment",0,1
 183,"2014-11-01","Channel 21","Station 11 + 24 BAF","Litter",2.5,"Baffle","Channel 21: In-channel treatment",0,1
 183,"2014-11-01","Channel 21","Station 11 + 24 BAF","Rock",1.375,"Baffle","Channel 21: In-channel treatment",0,1
 183,"2014-11-01","Channel 21","Station 11 + 24 BAF","Soil",73.75,"Baffle","Channel 21: In-channel treatment",0,1
-184,"2014-11-01","Channel 21","Station 11 + 63 ORD","Gravel",22.5,"One station dam","Channel 21: In-channel treatment",0,1
-184,"2014-11-01","Channel 21","Station 11 + 63 ORD","Litter",1.875,"One station dam","Channel 21: In-channel treatment",0,1
-184,"2014-11-01","Channel 21","Station 11 + 63 ORD","Rock",8.125,"One station dam","Channel 21: In-channel treatment",0,1
-184,"2014-11-01","Channel 21","Station 11 + 63 ORD","Soil",34.375,"One station dam","Channel 21: In-channel treatment",0,1
+184,"2014-11-01","Channel 21","Station 11 + 63 ORD","Gravel",22.5,"One rock dam","Channel 21: In-channel treatment",0,1
+184,"2014-11-01","Channel 21","Station 11 + 63 ORD","Litter",1.875,"One rock dam","Channel 21: In-channel treatment",0,1
+184,"2014-11-01","Channel 21","Station 11 + 63 ORD","Rock",8.125,"One rock dam","Channel 21: In-channel treatment",0,1
+184,"2014-11-01","Channel 21","Station 11 + 63 ORD","Soil",34.375,"One rock dam","Channel 21: In-channel treatment",0,1
 185,"2014-11-01","Channel 21","Station 11 + 73 BAF","Gravel",28.25,"Baffle","Channel 21: In-channel treatment",0,1
 185,"2014-11-01","Channel 21","Station 11 + 73 BAF","Litter",2,"Baffle","Channel 21: In-channel treatment",0,1
 185,"2014-11-01","Channel 21","Station 11 + 73 BAF","Rock",5.125,"Baffle","Channel 21: In-channel treatment",0,1
@@ -677,51 +677,51 @@
 200,"2015-11-01","Channel 13","Station 1 + 11.5 BAF","Gravel",11.875,"Baffle","Channel 13: In-channel treatment",0,1
 200,"2015-11-01","Channel 13","Station 1 + 11.5 BAF","Rock",26.25,"Baffle","Channel 13: In-channel treatment",0,1
 200,"2015-11-01","Channel 13","Station 1 + 11.5 BAF","Soil",15,"Baffle","Channel 13: In-channel treatment",0,1
-201,"2015-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",8.25,"One station dam","Channel 13: In-channel treatment",0,1
-201,"2015-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",5.625,"One station dam","Channel 13: In-channel treatment",0,1
-201,"2015-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",14.375,"One station dam","Channel 13: In-channel treatment",0,1
+201,"2015-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",8.25,"One rock dam","Channel 13: In-channel treatment",0,1
+201,"2015-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",5.625,"One rock dam","Channel 13: In-channel treatment",0,1
+201,"2015-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",14.375,"One rock dam","Channel 13: In-channel treatment",0,1
 202,"2015-11-01","Channel 13","Station 1 + 71 BAF","Gravel",1.875,"Baffle","Channel 13: In-channel treatment",0,1
 202,"2015-11-01","Channel 13","Station 1 + 71 BAF","Rock",18.75,"Baffle","Channel 13: In-channel treatment",0,1
 202,"2015-11-01","Channel 13","Station 1 + 71 BAF","Soil",13.75,"Baffle","Channel 13: In-channel treatment",0,1
-203,"2015-11-01","Channel 13","Station 1 + 77 ORD","Gravel",5,"One station dam","Channel 13: In-channel treatment",0,1
-203,"2015-11-01","Channel 13","Station 1 + 77 ORD","Rock",19.5,"One station dam","Channel 13: In-channel treatment",0,1
-203,"2015-11-01","Channel 13","Station 1 + 77 ORD","Soil",13.75,"One station dam","Channel 13: In-channel treatment",0,1
-204,"2015-11-01","Channel 13","Station 1 + 99 ORD","Gravel",8.75,"One station dam","Channel 13: In-channel treatment",0,1
-204,"2015-11-01","Channel 13","Station 1 + 99 ORD","Rock",17.5,"One station dam","Channel 13: In-channel treatment",0,1
-204,"2015-11-01","Channel 13","Station 1 + 99 ORD","Soil",20,"One station dam","Channel 13: In-channel treatment",0,1
+203,"2015-11-01","Channel 13","Station 1 + 77 ORD","Gravel",5,"One rock dam","Channel 13: In-channel treatment",0,1
+203,"2015-11-01","Channel 13","Station 1 + 77 ORD","Rock",19.5,"One rock dam","Channel 13: In-channel treatment",0,1
+203,"2015-11-01","Channel 13","Station 1 + 77 ORD","Soil",13.75,"One rock dam","Channel 13: In-channel treatment",0,1
+204,"2015-11-01","Channel 13","Station 1 + 99 ORD","Gravel",8.75,"One rock dam","Channel 13: In-channel treatment",0,1
+204,"2015-11-01","Channel 13","Station 1 + 99 ORD","Rock",17.5,"One rock dam","Channel 13: In-channel treatment",0,1
+204,"2015-11-01","Channel 13","Station 1 + 99 ORD","Soil",20,"One rock dam","Channel 13: In-channel treatment",0,1
 205,"2015-11-01","Channel 13","Station 2 + 16 BAF","Gravel",20.625,"Baffle","Channel 13: In-channel treatment",0,1
 205,"2015-11-01","Channel 13","Station 2 + 16 BAF","Rock",14.375,"Baffle","Channel 13: In-channel treatment",0,1
 205,"2015-11-01","Channel 13","Station 2 + 16 BAF","Soil",43.75,"Baffle","Channel 13: In-channel treatment",0,1
-206,"2015-11-01","Channel 13","Station 2 + 57 ORD","Gravel",8.75,"One station dam","Channel 13: In-channel treatment",0,1
-206,"2015-11-01","Channel 13","Station 2 + 57 ORD","Rock",13.875,"One station dam","Channel 13: In-channel treatment",0,1
-206,"2015-11-01","Channel 13","Station 2 + 57 ORD","Soil",44.375,"One station dam","Channel 13: In-channel treatment",0,1
+206,"2015-11-01","Channel 13","Station 2 + 57 ORD","Gravel",8.75,"One rock dam","Channel 13: In-channel treatment",0,1
+206,"2015-11-01","Channel 13","Station 2 + 57 ORD","Rock",13.875,"One rock dam","Channel 13: In-channel treatment",0,1
+206,"2015-11-01","Channel 13","Station 2 + 57 ORD","Soil",44.375,"One rock dam","Channel 13: In-channel treatment",0,1
 207,"2015-11-01","Channel 13","Station 2 + 67 BAF","Gravel",5.625,"Baffle","Channel 13: In-channel treatment",0,1
 207,"2015-11-01","Channel 13","Station 2 + 67 BAF","Rock",20.625,"Baffle","Channel 13: In-channel treatment",0,1
 207,"2015-11-01","Channel 13","Station 2 + 67 BAF","Soil",4.5,"Baffle","Channel 13: In-channel treatment",0,1
-208,"2015-11-01","Channel 13","Station 3 + 09 ORD","Gravel",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-208,"2015-11-01","Channel 13","Station 3 + 09 ORD","Rock",8.25,"One station dam","Channel 13: In-channel treatment",0,1
-208,"2015-11-01","Channel 13","Station 3 + 09 ORD","Soil",35.625,"One station dam","Channel 13: In-channel treatment",0,1
+208,"2015-11-01","Channel 13","Station 3 + 09 ORD","Gravel",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+208,"2015-11-01","Channel 13","Station 3 + 09 ORD","Rock",8.25,"One rock dam","Channel 13: In-channel treatment",0,1
+208,"2015-11-01","Channel 13","Station 3 + 09 ORD","Soil",35.625,"One rock dam","Channel 13: In-channel treatment",0,1
 209,"2015-11-01","Channel 13","Station 3 + 31 BAF","Gravel",4,"Baffle","Channel 13: In-channel treatment",0,1
 209,"2015-11-01","Channel 13","Station 3 + 31 BAF","Rock",4,"Baffle","Channel 13: In-channel treatment",0,1
 209,"2015-11-01","Channel 13","Station 3 + 31 BAF","Soil",38.125,"Baffle","Channel 13: In-channel treatment",0,1
-210,"2015-11-01","Channel 13","Station 3 + 65 ORD","Gravel",8.75,"One station dam","Channel 13: In-channel treatment",0,1
-210,"2015-11-01","Channel 13","Station 3 + 65 ORD","Rock",7.625,"One station dam","Channel 13: In-channel treatment",0,1
-210,"2015-11-01","Channel 13","Station 3 + 65 ORD","Soil",38.75,"One station dam","Channel 13: In-channel treatment",0,1
-211,"2015-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",2.5,"One station dam","Channel 13: In-channel treatment",0,1
-211,"2015-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",8.75,"One station dam","Channel 13: In-channel treatment",0,1
-211,"2015-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",29.375,"One station dam","Channel 13: In-channel treatment",0,1
+210,"2015-11-01","Channel 13","Station 3 + 65 ORD","Gravel",8.75,"One rock dam","Channel 13: In-channel treatment",0,1
+210,"2015-11-01","Channel 13","Station 3 + 65 ORD","Rock",7.625,"One rock dam","Channel 13: In-channel treatment",0,1
+210,"2015-11-01","Channel 13","Station 3 + 65 ORD","Soil",38.75,"One rock dam","Channel 13: In-channel treatment",0,1
+211,"2015-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",2.5,"One rock dam","Channel 13: In-channel treatment",0,1
+211,"2015-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",8.75,"One rock dam","Channel 13: In-channel treatment",0,1
+211,"2015-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",29.375,"One rock dam","Channel 13: In-channel treatment",0,1
 212,"2015-11-01","Channel 13","Station 4 + 14.5 BAF","Gravel",8.75,"Baffle","Channel 13: In-channel treatment",0,1
 212,"2015-11-01","Channel 13","Station 4 + 14.5 BAF","Rock",15,"Baffle","Channel 13: In-channel treatment",0,1
 212,"2015-11-01","Channel 13","Station 4 + 14.5 BAF","Soil",43.75,"Baffle","Channel 13: In-channel treatment",0,1
-213,"2015-11-01","Channel 13","Station 4 + 36 ORD","Gravel",13.875,"One station dam","Channel 13: In-channel treatment",0,1
-213,"2015-11-01","Channel 13","Station 4 + 36 ORD","Rock",10.625,"One station dam","Channel 13: In-channel treatment",0,1
-213,"2015-11-01","Channel 13","Station 4 + 36 ORD","Soil",28.125,"One station dam","Channel 13: In-channel treatment",0,1
+213,"2015-11-01","Channel 13","Station 4 + 36 ORD","Gravel",13.875,"One rock dam","Channel 13: In-channel treatment",0,1
+213,"2015-11-01","Channel 13","Station 4 + 36 ORD","Rock",10.625,"One rock dam","Channel 13: In-channel treatment",0,1
+213,"2015-11-01","Channel 13","Station 4 + 36 ORD","Soil",28.125,"One rock dam","Channel 13: In-channel treatment",0,1
 214,"2015-11-01","Channel 13","Station 4 + 50 BAF","Gravel",4,"Baffle","Channel 13: In-channel treatment",0,1
 214,"2015-11-01","Channel 13","Station 4 + 50 BAF","Rock",10.625,"Baffle","Channel 13: In-channel treatment",0,1
 214,"2015-11-01","Channel 13","Station 4 + 50 BAF","Soil",49.375,"Baffle","Channel 13: In-channel treatment",0,1
-215,"2015-11-01","Channel 13","Station 4 + 78 ORD","Gravel",11.875,"One station dam","Channel 13: In-channel treatment",0,1
-215,"2015-11-01","Channel 13","Station 4 + 78 ORD","Rock",10.625,"One station dam","Channel 13: In-channel treatment",0,1
-215,"2015-11-01","Channel 13","Station 4 + 78 ORD","Soil",38.125,"One station dam","Channel 13: In-channel treatment",0,1
+215,"2015-11-01","Channel 13","Station 4 + 78 ORD","Gravel",11.875,"One rock dam","Channel 13: In-channel treatment",0,1
+215,"2015-11-01","Channel 13","Station 4 + 78 ORD","Rock",10.625,"One rock dam","Channel 13: In-channel treatment",0,1
+215,"2015-11-01","Channel 13","Station 4 + 78 ORD","Soil",38.125,"One rock dam","Channel 13: In-channel treatment",0,1
 216,"2015-11-01","Channel 19","Station 01 + 04","Gravel",2.5,"No treatment","Channel 19: Upland treatment",1,0
 216,"2015-11-01","Channel 19","Station 01 + 04","Rock",8.75,"No treatment","Channel 19: Upland treatment",1,0
 216,"2015-11-01","Channel 19","Station 01 + 04","Soil",44.375,"No treatment","Channel 19: Upland treatment",1,0
@@ -776,45 +776,45 @@
 233,"2015-11-01","Channel 21","Station 01 + 07.5 BAF","Gravel",5.125,"Baffle","Channel 21: In-channel treatment",0,1
 233,"2015-11-01","Channel 21","Station 01 + 07.5 BAF","Rock",0.25,"Baffle","Channel 21: In-channel treatment",0,1
 233,"2015-11-01","Channel 21","Station 01 + 07.5 BAF","Soil",73.75,"Baffle","Channel 21: In-channel treatment",0,1
-234,"2015-11-01","Channel 21","Station 01 + 49 ORD","Gravel",4.125,"One station dam","Channel 21: In-channel treatment",0,1
-234,"2015-11-01","Channel 21","Station 01 + 49 ORD","Rock",5.125,"One station dam","Channel 21: In-channel treatment",0,1
-234,"2015-11-01","Channel 21","Station 01 + 49 ORD","Soil",76.25,"One station dam","Channel 21: In-channel treatment",0,1
+234,"2015-11-01","Channel 21","Station 01 + 49 ORD","Gravel",4.125,"One rock dam","Channel 21: In-channel treatment",0,1
+234,"2015-11-01","Channel 21","Station 01 + 49 ORD","Rock",5.125,"One rock dam","Channel 21: In-channel treatment",0,1
+234,"2015-11-01","Channel 21","Station 01 + 49 ORD","Soil",76.25,"One rock dam","Channel 21: In-channel treatment",0,1
 235,"2015-11-01","Channel 21","Station 02 + 15 BAF","Gravel",11.875,"Baffle","Channel 21: In-channel treatment",0,1
 235,"2015-11-01","Channel 21","Station 02 + 15 BAF","Rock",20.625,"Baffle","Channel 21: In-channel treatment",0,1
 235,"2015-11-01","Channel 21","Station 02 + 15 BAF","Soil",43.75,"Baffle","Channel 21: In-channel treatment",0,1
 236,"2015-11-01","Channel 21","Station 03 + 80 BAF","Gravel",15,"Baffle","Channel 21: In-channel treatment",0,1
 236,"2015-11-01","Channel 21","Station 03 + 80 BAF","Rock",13.875,"Baffle","Channel 21: In-channel treatment",0,1
 236,"2015-11-01","Channel 21","Station 03 + 80 BAF","Soil",43.75,"Baffle","Channel 21: In-channel treatment",0,1
-237,"2015-11-01","Channel 21","Station 04 + 90 ORD","Gravel",17.5,"One station dam","Channel 21: In-channel treatment",0,1
-237,"2015-11-01","Channel 21","Station 04 + 90 ORD","Rock",20.625,"One station dam","Channel 21: In-channel treatment",0,1
-237,"2015-11-01","Channel 21","Station 04 + 90 ORD","Soil",44.375,"One station dam","Channel 21: In-channel treatment",0,1
+237,"2015-11-01","Channel 21","Station 04 + 90 ORD","Gravel",17.5,"One rock dam","Channel 21: In-channel treatment",0,1
+237,"2015-11-01","Channel 21","Station 04 + 90 ORD","Rock",20.625,"One rock dam","Channel 21: In-channel treatment",0,1
+237,"2015-11-01","Channel 21","Station 04 + 90 ORD","Soil",44.375,"One rock dam","Channel 21: In-channel treatment",0,1
 238,"2015-11-01","Channel 21","Station 06 + 36 BAF","Gravel",1.5,"Baffle","Channel 21: In-channel treatment",0,1
 238,"2015-11-01","Channel 21","Station 06 + 36 BAF","Rock",7.5,"Baffle","Channel 21: In-channel treatment",0,1
 238,"2015-11-01","Channel 21","Station 06 + 36 BAF","Soil",65,"Baffle","Channel 21: In-channel treatment",0,1
-239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",29.375,"One station dam","Channel 21: In-channel treatment",0,1
-239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",26.875,"One station dam","Channel 21: In-channel treatment",0,1
-239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",43.75,"One station dam","Channel 21: In-channel treatment",0,1
+239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",29.375,"One rock dam","Channel 21: In-channel treatment",0,1
+239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",26.875,"One rock dam","Channel 21: In-channel treatment",0,1
+239,"2015-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",43.75,"One rock dam","Channel 21: In-channel treatment",0,1
 240,"2015-11-01","Channel 21","Station 07 + 66 BAF","Gravel",31.875,"Baffle","Channel 21: In-channel treatment",0,1
 240,"2015-11-01","Channel 21","Station 07 + 66 BAF","Rock",20.625,"Baffle","Channel 21: In-channel treatment",0,1
 240,"2015-11-01","Channel 21","Station 07 + 66 BAF","Soil",46.875,"Baffle","Channel 21: In-channel treatment",0,1
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Gravel",5.625,"Baffle","Channel 21: In-channel treatment",0,1
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Rock",7.75,"Baffle","Channel 21: In-channel treatment",0,1
 241,"2015-11-01","Channel 21","Station 08 + 62 BAF","Soil",56.25,"Baffle","Channel 21: In-channel treatment",0,1
-242,"2015-11-01","Channel 21","Station 09 + 99 ORD","Gravel",20.625,"One station dam","Channel 21: In-channel treatment",0,1
-242,"2015-11-01","Channel 21","Station 09 + 99 ORD","Rock",14.375,"One station dam","Channel 21: In-channel treatment",0,1
-242,"2015-11-01","Channel 21","Station 09 + 99 ORD","Soil",65,"One station dam","Channel 21: In-channel treatment",0,1
+242,"2015-11-01","Channel 21","Station 09 + 99 ORD","Gravel",20.625,"One rock dam","Channel 21: In-channel treatment",0,1
+242,"2015-11-01","Channel 21","Station 09 + 99 ORD","Rock",14.375,"One rock dam","Channel 21: In-channel treatment",0,1
+242,"2015-11-01","Channel 21","Station 09 + 99 ORD","Soil",65,"One rock dam","Channel 21: In-channel treatment",0,1
 243,"2015-11-01","Channel 21","Station 10 + 13 BAF","Gravel",5.125,"Baffle","Channel 21: In-channel treatment",0,1
 243,"2015-11-01","Channel 21","Station 10 + 13 BAF","Rock",26.25,"Baffle","Channel 21: In-channel treatment",0,1
 243,"2015-11-01","Channel 21","Station 10 + 13 BAF","Soil",44.375,"Baffle","Channel 21: In-channel treatment",0,1
-244,"2015-11-01","Channel 21","Station 11 + 12 ORD","Gravel",8.75,"One station dam","Channel 21: In-channel treatment",0,1
-244,"2015-11-01","Channel 21","Station 11 + 12 ORD","Rock",8.125,"One station dam","Channel 21: In-channel treatment",0,1
-244,"2015-11-01","Channel 21","Station 11 + 12 ORD","Soil",38.125,"One station dam","Channel 21: In-channel treatment",0,1
+244,"2015-11-01","Channel 21","Station 11 + 12 ORD","Gravel",8.75,"One rock dam","Channel 21: In-channel treatment",0,1
+244,"2015-11-01","Channel 21","Station 11 + 12 ORD","Rock",8.125,"One rock dam","Channel 21: In-channel treatment",0,1
+244,"2015-11-01","Channel 21","Station 11 + 12 ORD","Soil",38.125,"One rock dam","Channel 21: In-channel treatment",0,1
 245,"2015-11-01","Channel 21","Station 11 + 24 BAF","Gravel",5.625,"Baffle","Channel 21: In-channel treatment",0,1
 245,"2015-11-01","Channel 21","Station 11 + 24 BAF","Rock",4.5,"Baffle","Channel 21: In-channel treatment",0,1
 245,"2015-11-01","Channel 21","Station 11 + 24 BAF","Soil",68.125,"Baffle","Channel 21: In-channel treatment",0,1
-246,"2015-11-01","Channel 21","Station 11 + 63 ORD","Gravel",11.875,"One station dam","Channel 21: In-channel treatment",0,1
-246,"2015-11-01","Channel 21","Station 11 + 63 ORD","Rock",2,"One station dam","Channel 21: In-channel treatment",0,1
-246,"2015-11-01","Channel 21","Station 11 + 63 ORD","Soil",43.75,"One station dam","Channel 21: In-channel treatment",0,1
+246,"2015-11-01","Channel 21","Station 11 + 63 ORD","Gravel",11.875,"One rock dam","Channel 21: In-channel treatment",0,1
+246,"2015-11-01","Channel 21","Station 11 + 63 ORD","Rock",2,"One rock dam","Channel 21: In-channel treatment",0,1
+246,"2015-11-01","Channel 21","Station 11 + 63 ORD","Soil",43.75,"One rock dam","Channel 21: In-channel treatment",0,1
 247,"2015-11-01","Channel 21","Station 11 + 73 BAF","Gravel",19.5,"Baffle","Channel 21: In-channel treatment",0,1
 247,"2015-11-01","Channel 21","Station 11 + 73 BAF","Rock",4.5,"Baffle","Channel 21: In-channel treatment",0,1
 247,"2015-11-01","Channel 21","Station 11 + 73 BAF","Soil",61.25,"Baffle","Channel 21: In-channel treatment",0,1
@@ -882,66 +882,66 @@
 262,"2018-11-01","Channel 13","Station 1 + 11.5 BAF","Litter",8.75,"Baffle","Channel 13: In-channel treatment",0,1
 262,"2018-11-01","Channel 13","Station 1 + 11.5 BAF","Rock",26.875,"Baffle","Channel 13: In-channel treatment",0,1
 262,"2018-11-01","Channel 13","Station 1 + 11.5 BAF","Soil",50,"Baffle","Channel 13: In-channel treatment",0,1
-263,"2018-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",10.25,"One station dam","Channel 13: In-channel treatment",0,1
-263,"2018-11-01","Channel 13","Station 1 + 38.5 ORD","Litter",70.625,"One station dam","Channel 13: In-channel treatment",0,1
-263,"2018-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",0.125,"One station dam","Channel 13: In-channel treatment",0,1
-263,"2018-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",17.5,"One station dam","Channel 13: In-channel treatment",0,1
+263,"2018-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",10.25,"One rock dam","Channel 13: In-channel treatment",0,1
+263,"2018-11-01","Channel 13","Station 1 + 38.5 ORD","Litter",70.625,"One rock dam","Channel 13: In-channel treatment",0,1
+263,"2018-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",0.125,"One rock dam","Channel 13: In-channel treatment",0,1
+263,"2018-11-01","Channel 13","Station 1 + 38.5 ORD","Soil",17.5,"One rock dam","Channel 13: In-channel treatment",0,1
 264,"2018-11-01","Channel 13","Station 1 + 71 BAF","Gravel",8.25,"Baffle","Channel 13: In-channel treatment",0,1
 264,"2018-11-01","Channel 13","Station 1 + 71 BAF","Litter",61.25,"Baffle","Channel 13: In-channel treatment",0,1
 264,"2018-11-01","Channel 13","Station 1 + 71 BAF","Rock",11.875,"Baffle","Channel 13: In-channel treatment",0,1
 264,"2018-11-01","Channel 13","Station 1 + 71 BAF","Soil",19.5,"Baffle","Channel 13: In-channel treatment",0,1
-265,"2018-11-01","Channel 13","Station 1 + 77 ORD","Gravel",1.5,"One station dam","Channel 13: In-channel treatment",0,1
-265,"2018-11-01","Channel 13","Station 1 + 77 ORD","Litter",55.625,"One station dam","Channel 13: In-channel treatment",0,1
-265,"2018-11-01","Channel 13","Station 1 + 77 ORD","Rock",14.375,"One station dam","Channel 13: In-channel treatment",0,1
-265,"2018-11-01","Channel 13","Station 1 + 77 ORD","Soil",26.25,"One station dam","Channel 13: In-channel treatment",0,1
-266,"2018-11-01","Channel 13","Station 1 + 99 ORD","Gravel",7.75,"One station dam","Channel 13: In-channel treatment",0,1
-266,"2018-11-01","Channel 13","Station 1 + 99 ORD","Litter",49.375,"One station dam","Channel 13: In-channel treatment",0,1
-266,"2018-11-01","Channel 13","Station 1 + 99 ORD","Rock",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-266,"2018-11-01","Channel 13","Station 1 + 99 ORD","Soil",17,"One station dam","Channel 13: In-channel treatment",0,1
+265,"2018-11-01","Channel 13","Station 1 + 77 ORD","Gravel",1.5,"One rock dam","Channel 13: In-channel treatment",0,1
+265,"2018-11-01","Channel 13","Station 1 + 77 ORD","Litter",55.625,"One rock dam","Channel 13: In-channel treatment",0,1
+265,"2018-11-01","Channel 13","Station 1 + 77 ORD","Rock",14.375,"One rock dam","Channel 13: In-channel treatment",0,1
+265,"2018-11-01","Channel 13","Station 1 + 77 ORD","Soil",26.25,"One rock dam","Channel 13: In-channel treatment",0,1
+266,"2018-11-01","Channel 13","Station 1 + 99 ORD","Gravel",7.75,"One rock dam","Channel 13: In-channel treatment",0,1
+266,"2018-11-01","Channel 13","Station 1 + 99 ORD","Litter",49.375,"One rock dam","Channel 13: In-channel treatment",0,1
+266,"2018-11-01","Channel 13","Station 1 + 99 ORD","Rock",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+266,"2018-11-01","Channel 13","Station 1 + 99 ORD","Soil",17,"One rock dam","Channel 13: In-channel treatment",0,1
 267,"2018-11-01","Channel 13","Station 2 + 16 BAF","Gravel",17.5,"Baffle","Channel 13: In-channel treatment",0,1
 267,"2018-11-01","Channel 13","Station 2 + 16 BAF","Litter",43.75,"Baffle","Channel 13: In-channel treatment",0,1
 267,"2018-11-01","Channel 13","Station 2 + 16 BAF","Rock",8.75,"Baffle","Channel 13: In-channel treatment",0,1
 267,"2018-11-01","Channel 13","Station 2 + 16 BAF","Soil",20.625,"Baffle","Channel 13: In-channel treatment",0,1
-268,"2018-11-01","Channel 13","Station 2 + 57 ORD","Gravel",4.125,"One station dam","Channel 13: In-channel treatment",0,1
-268,"2018-11-01","Channel 13","Station 2 + 57 ORD","Litter",55.625,"One station dam","Channel 13: In-channel treatment",0,1
-268,"2018-11-01","Channel 13","Station 2 + 57 ORD","Rock",4.5,"One station dam","Channel 13: In-channel treatment",0,1
-268,"2018-11-01","Channel 13","Station 2 + 57 ORD","Soil",32.5,"One station dam","Channel 13: In-channel treatment",0,1
+268,"2018-11-01","Channel 13","Station 2 + 57 ORD","Gravel",4.125,"One rock dam","Channel 13: In-channel treatment",0,1
+268,"2018-11-01","Channel 13","Station 2 + 57 ORD","Litter",55.625,"One rock dam","Channel 13: In-channel treatment",0,1
+268,"2018-11-01","Channel 13","Station 2 + 57 ORD","Rock",4.5,"One rock dam","Channel 13: In-channel treatment",0,1
+268,"2018-11-01","Channel 13","Station 2 + 57 ORD","Soil",32.5,"One rock dam","Channel 13: In-channel treatment",0,1
 269,"2018-11-01","Channel 13","Station 2 + 67 BAF","Gravel",2,"Baffle","Channel 13: In-channel treatment",0,1
 269,"2018-11-01","Channel 13","Station 2 + 67 BAF","Litter",65,"Baffle","Channel 13: In-channel treatment",0,1
 269,"2018-11-01","Channel 13","Station 2 + 67 BAF","Rock",8.75,"Baffle","Channel 13: In-channel treatment",0,1
 269,"2018-11-01","Channel 13","Station 2 + 67 BAF","Soil",17,"Baffle","Channel 13: In-channel treatment",0,1
-270,"2018-11-01","Channel 13","Station 3 + 09 ORD","Gravel",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-270,"2018-11-01","Channel 13","Station 3 + 09 ORD","Litter",70.625,"One station dam","Channel 13: In-channel treatment",0,1
-270,"2018-11-01","Channel 13","Station 3 + 09 ORD","Rock",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-270,"2018-11-01","Channel 13","Station 3 + 09 ORD","Soil",20,"One station dam","Channel 13: In-channel treatment",0,1
+270,"2018-11-01","Channel 13","Station 3 + 09 ORD","Gravel",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+270,"2018-11-01","Channel 13","Station 3 + 09 ORD","Litter",70.625,"One rock dam","Channel 13: In-channel treatment",0,1
+270,"2018-11-01","Channel 13","Station 3 + 09 ORD","Rock",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+270,"2018-11-01","Channel 13","Station 3 + 09 ORD","Soil",20,"One rock dam","Channel 13: In-channel treatment",0,1
 271,"2018-11-01","Channel 13","Station 3 + 31 BAF","Gravel",11.875,"Baffle","Channel 13: In-channel treatment",0,1
 271,"2018-11-01","Channel 13","Station 3 + 31 BAF","Litter",43.75,"Baffle","Channel 13: In-channel treatment",0,1
 271,"2018-11-01","Channel 13","Station 3 + 31 BAF","Rock",1.375,"Baffle","Channel 13: In-channel treatment",0,1
 271,"2018-11-01","Channel 13","Station 3 + 31 BAF","Soil",32.5,"Baffle","Channel 13: In-channel treatment",0,1
-272,"2018-11-01","Channel 13","Station 3 + 65 ORD","Gravel",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-272,"2018-11-01","Channel 13","Station 3 + 65 ORD","Litter",47.5,"One station dam","Channel 13: In-channel treatment",0,1
-272,"2018-11-01","Channel 13","Station 3 + 65 ORD","Rock",1.25,"One station dam","Channel 13: In-channel treatment",0,1
-272,"2018-11-01","Channel 13","Station 3 + 65 ORD","Soil",28.875,"One station dam","Channel 13: In-channel treatment",0,1
-273,"2018-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",15,"One station dam","Channel 13: In-channel treatment",0,1
-273,"2018-11-01","Channel 13","Station 3 + 95.5 ORD","Litter",50.625,"One station dam","Channel 13: In-channel treatment",0,1
-273,"2018-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",1.375,"One station dam","Channel 13: In-channel treatment",0,1
-273,"2018-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",17.5,"One station dam","Channel 13: In-channel treatment",0,1
+272,"2018-11-01","Channel 13","Station 3 + 65 ORD","Gravel",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+272,"2018-11-01","Channel 13","Station 3 + 65 ORD","Litter",47.5,"One rock dam","Channel 13: In-channel treatment",0,1
+272,"2018-11-01","Channel 13","Station 3 + 65 ORD","Rock",1.25,"One rock dam","Channel 13: In-channel treatment",0,1
+272,"2018-11-01","Channel 13","Station 3 + 65 ORD","Soil",28.875,"One rock dam","Channel 13: In-channel treatment",0,1
+273,"2018-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",15,"One rock dam","Channel 13: In-channel treatment",0,1
+273,"2018-11-01","Channel 13","Station 3 + 95.5 ORD","Litter",50.625,"One rock dam","Channel 13: In-channel treatment",0,1
+273,"2018-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",1.375,"One rock dam","Channel 13: In-channel treatment",0,1
+273,"2018-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",17.5,"One rock dam","Channel 13: In-channel treatment",0,1
 274,"2018-11-01","Channel 13","Station 4 + 14.5 BAF","Gravel",23.25,"Baffle","Channel 13: In-channel treatment",0,1
 274,"2018-11-01","Channel 13","Station 4 + 14.5 BAF","Litter",50,"Baffle","Channel 13: In-channel treatment",0,1
 274,"2018-11-01","Channel 13","Station 4 + 14.5 BAF","Rock",2.5,"Baffle","Channel 13: In-channel treatment",0,1
 274,"2018-11-01","Channel 13","Station 4 + 14.5 BAF","Soil",8.75,"Baffle","Channel 13: In-channel treatment",0,1
-275,"2018-11-01","Channel 13","Station 4 + 36 ORD","Gravel",11.25,"One station dam","Channel 13: In-channel treatment",0,1
-275,"2018-11-01","Channel 13","Station 4 + 36 ORD","Litter",50,"One station dam","Channel 13: In-channel treatment",0,1
-275,"2018-11-01","Channel 13","Station 4 + 36 ORD","Rock",1.5,"One station dam","Channel 13: In-channel treatment",0,1
-275,"2018-11-01","Channel 13","Station 4 + 36 ORD","Soil",15,"One station dam","Channel 13: In-channel treatment",0,1
+275,"2018-11-01","Channel 13","Station 4 + 36 ORD","Gravel",11.25,"One rock dam","Channel 13: In-channel treatment",0,1
+275,"2018-11-01","Channel 13","Station 4 + 36 ORD","Litter",50,"One rock dam","Channel 13: In-channel treatment",0,1
+275,"2018-11-01","Channel 13","Station 4 + 36 ORD","Rock",1.5,"One rock dam","Channel 13: In-channel treatment",0,1
+275,"2018-11-01","Channel 13","Station 4 + 36 ORD","Soil",15,"One rock dam","Channel 13: In-channel treatment",0,1
 276,"2018-11-01","Channel 13","Station 4 + 50 BAF","Gravel",8.25,"Baffle","Channel 13: In-channel treatment",0,1
 276,"2018-11-01","Channel 13","Station 4 + 50 BAF","Litter",52.5,"Baffle","Channel 13: In-channel treatment",0,1
 276,"2018-11-01","Channel 13","Station 4 + 50 BAF","Rock",4,"Baffle","Channel 13: In-channel treatment",0,1
 276,"2018-11-01","Channel 13","Station 4 + 50 BAF","Soil",35,"Baffle","Channel 13: In-channel treatment",0,1
-277,"2018-11-01","Channel 13","Station 4 + 78 ORD","Gravel",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-277,"2018-11-01","Channel 13","Station 4 + 78 ORD","Litter",61.25,"One station dam","Channel 13: In-channel treatment",0,1
-277,"2018-11-01","Channel 13","Station 4 + 78 ORD","Rock",0.625,"One station dam","Channel 13: In-channel treatment",0,1
-277,"2018-11-01","Channel 13","Station 4 + 78 ORD","Soil",23.125,"One station dam","Channel 13: In-channel treatment",0,1
+277,"2018-11-01","Channel 13","Station 4 + 78 ORD","Gravel",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+277,"2018-11-01","Channel 13","Station 4 + 78 ORD","Litter",61.25,"One rock dam","Channel 13: In-channel treatment",0,1
+277,"2018-11-01","Channel 13","Station 4 + 78 ORD","Rock",0.625,"One rock dam","Channel 13: In-channel treatment",0,1
+277,"2018-11-01","Channel 13","Station 4 + 78 ORD","Soil",23.125,"One rock dam","Channel 13: In-channel treatment",0,1
 278,"2018-11-01","Channel 19","Station 01 + 04","Gravel",17,"No treatment","Channel 19: Upland treatment",1,0
 278,"2018-11-01","Channel 19","Station 01 + 04","Litter",8.25,"No treatment","Channel 19: Upland treatment",1,0
 278,"2018-11-01","Channel 19","Station 01 + 04","Rock",26.25,"No treatment","Channel 19: Upland treatment",1,0
@@ -1014,10 +1014,10 @@
 295,"2018-11-01","Channel 21","Station 01 + 07.5 BAF","Gravel",14.375,"Baffle","Channel 21: In-channel treatment",0,1
 295,"2018-11-01","Channel 21","Station 01 + 07.5 BAF","Rock",0.875,"Baffle","Channel 21: In-channel treatment",0,1
 295,"2018-11-01","Channel 21","Station 01 + 07.5 BAF","Soil",55.625,"Baffle","Channel 21: In-channel treatment",0,1
-296,"2018-11-01","Channel 21","Station 01 + 49 ORD","Gravel",4.625,"One station dam","Channel 21: In-channel treatment",0,1
-296,"2018-11-01","Channel 21","Station 01 + 49 ORD","Litter",0.625,"One station dam","Channel 21: In-channel treatment",0,1
-296,"2018-11-01","Channel 21","Station 01 + 49 ORD","Rock",3.875,"One station dam","Channel 21: In-channel treatment",0,1
-296,"2018-11-01","Channel 21","Station 01 + 49 ORD","Soil",70.625,"One station dam","Channel 21: In-channel treatment",0,1
+296,"2018-11-01","Channel 21","Station 01 + 49 ORD","Gravel",4.625,"One rock dam","Channel 21: In-channel treatment",0,1
+296,"2018-11-01","Channel 21","Station 01 + 49 ORD","Litter",0.625,"One rock dam","Channel 21: In-channel treatment",0,1
+296,"2018-11-01","Channel 21","Station 01 + 49 ORD","Rock",3.875,"One rock dam","Channel 21: In-channel treatment",0,1
+296,"2018-11-01","Channel 21","Station 01 + 49 ORD","Soil",70.625,"One rock dam","Channel 21: In-channel treatment",0,1
 297,"2018-11-01","Channel 21","Station 02 + 15 BAF","Gravel",32.5,"Baffle","Channel 21: In-channel treatment",0,1
 297,"2018-11-01","Channel 21","Station 02 + 15 BAF","Litter",0.75,"Baffle","Channel 21: In-channel treatment",0,1
 297,"2018-11-01","Channel 21","Station 02 + 15 BAF","Rock",5.625,"Baffle","Channel 21: In-channel treatment",0,1
@@ -1026,18 +1026,18 @@
 298,"2018-11-01","Channel 21","Station 03 + 80 BAF","Litter",0.25,"Baffle","Channel 21: In-channel treatment",0,1
 298,"2018-11-01","Channel 21","Station 03 + 80 BAF","Rock",8.25,"Baffle","Channel 21: In-channel treatment",0,1
 298,"2018-11-01","Channel 21","Station 03 + 80 BAF","Soil",56.25,"Baffle","Channel 21: In-channel treatment",0,1
-299,"2018-11-01","Channel 21","Station 04 + 90 ORD","Gravel",17.5,"One station dam","Channel 21: In-channel treatment",0,1
-299,"2018-11-01","Channel 21","Station 04 + 90 ORD","Litter",0.875,"One station dam","Channel 21: In-channel treatment",0,1
-299,"2018-11-01","Channel 21","Station 04 + 90 ORD","Rock",17.5,"One station dam","Channel 21: In-channel treatment",0,1
-299,"2018-11-01","Channel 21","Station 04 + 90 ORD","Soil",50,"One station dam","Channel 21: In-channel treatment",0,1
+299,"2018-11-01","Channel 21","Station 04 + 90 ORD","Gravel",17.5,"One rock dam","Channel 21: In-channel treatment",0,1
+299,"2018-11-01","Channel 21","Station 04 + 90 ORD","Litter",0.875,"One rock dam","Channel 21: In-channel treatment",0,1
+299,"2018-11-01","Channel 21","Station 04 + 90 ORD","Rock",17.5,"One rock dam","Channel 21: In-channel treatment",0,1
+299,"2018-11-01","Channel 21","Station 04 + 90 ORD","Soil",50,"One rock dam","Channel 21: In-channel treatment",0,1
 300,"2018-11-01","Channel 21","Station 06 + 36 BAF","Gravel",1.5,"Baffle","Channel 21: In-channel treatment",0,1
 300,"2018-11-01","Channel 21","Station 06 + 36 BAF","Litter",4.5,"Baffle","Channel 21: In-channel treatment",0,1
 300,"2018-11-01","Channel 21","Station 06 + 36 BAF","Rock",1.25,"Baffle","Channel 21: In-channel treatment",0,1
 300,"2018-11-01","Channel 21","Station 06 + 36 BAF","Soil",69.375,"Baffle","Channel 21: In-channel treatment",0,1
-301,"2018-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",15,"One station dam","Channel 21: In-channel treatment",0,1
-301,"2018-11-01","Channel 21","Station 07 + 49.5 ORD","Litter",1.5,"One station dam","Channel 21: In-channel treatment",0,1
-301,"2018-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",26.25,"One station dam","Channel 21: In-channel treatment",0,1
-301,"2018-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",43.75,"One station dam","Channel 21: In-channel treatment",0,1
+301,"2018-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",15,"One rock dam","Channel 21: In-channel treatment",0,1
+301,"2018-11-01","Channel 21","Station 07 + 49.5 ORD","Litter",1.5,"One rock dam","Channel 21: In-channel treatment",0,1
+301,"2018-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",26.25,"One rock dam","Channel 21: In-channel treatment",0,1
+301,"2018-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",43.75,"One rock dam","Channel 21: In-channel treatment",0,1
 302,"2018-11-01","Channel 21","Station 07 + 66 BAF","Gravel",8.75,"Baffle","Channel 21: In-channel treatment",0,1
 302,"2018-11-01","Channel 21","Station 07 + 66 BAF","Litter",0.25,"Baffle","Channel 21: In-channel treatment",0,1
 302,"2018-11-01","Channel 21","Station 07 + 66 BAF","Rock",8.25,"Baffle","Channel 21: In-channel treatment",0,1
@@ -1046,26 +1046,26 @@
 303,"2018-11-01","Channel 21","Station 08 + 62 BAF","Litter",1.5,"Baffle","Channel 21: In-channel treatment",0,1
 303,"2018-11-01","Channel 21","Station 08 + 62 BAF","Rock",8.125,"Baffle","Channel 21: In-channel treatment",0,1
 303,"2018-11-01","Channel 21","Station 08 + 62 BAF","Soil",56.25,"Baffle","Channel 21: In-channel treatment",0,1
-304,"2018-11-01","Channel 21","Station 09 + 99 ORD","Gravel",26.25,"One station dam","Channel 21: In-channel treatment",0,1
-304,"2018-11-01","Channel 21","Station 09 + 99 ORD","Litter",0.25,"One station dam","Channel 21: In-channel treatment",0,1
-304,"2018-11-01","Channel 21","Station 09 + 99 ORD","Rock",8.25,"One station dam","Channel 21: In-channel treatment",0,1
-304,"2018-11-01","Channel 21","Station 09 + 99 ORD","Soil",61.875,"One station dam","Channel 21: In-channel treatment",0,1
+304,"2018-11-01","Channel 21","Station 09 + 99 ORD","Gravel",26.25,"One rock dam","Channel 21: In-channel treatment",0,1
+304,"2018-11-01","Channel 21","Station 09 + 99 ORD","Litter",0.25,"One rock dam","Channel 21: In-channel treatment",0,1
+304,"2018-11-01","Channel 21","Station 09 + 99 ORD","Rock",8.25,"One rock dam","Channel 21: In-channel treatment",0,1
+304,"2018-11-01","Channel 21","Station 09 + 99 ORD","Soil",61.875,"One rock dam","Channel 21: In-channel treatment",0,1
 305,"2018-11-01","Channel 21","Station 10 + 13 BAF","Gravel",2.5,"Baffle","Channel 21: In-channel treatment",0,1
 305,"2018-11-01","Channel 21","Station 10 + 13 BAF","Litter",2,"Baffle","Channel 21: In-channel treatment",0,1
 305,"2018-11-01","Channel 21","Station 10 + 13 BAF","Rock",20.625,"Baffle","Channel 21: In-channel treatment",0,1
 305,"2018-11-01","Channel 21","Station 10 + 13 BAF","Soil",73.75,"Baffle","Channel 21: In-channel treatment",0,1
-306,"2018-11-01","Channel 21","Station 11 + 12 ORD","Gravel",11.875,"One station dam","Channel 21: In-channel treatment",0,1
-306,"2018-11-01","Channel 21","Station 11 + 12 ORD","Litter",1.875,"One station dam","Channel 21: In-channel treatment",0,1
-306,"2018-11-01","Channel 21","Station 11 + 12 ORD","Rock",8.75,"One station dam","Channel 21: In-channel treatment",0,1
-306,"2018-11-01","Channel 21","Station 11 + 12 ORD","Soil",43.75,"One station dam","Channel 21: In-channel treatment",0,1
+306,"2018-11-01","Channel 21","Station 11 + 12 ORD","Gravel",11.875,"One rock dam","Channel 21: In-channel treatment",0,1
+306,"2018-11-01","Channel 21","Station 11 + 12 ORD","Litter",1.875,"One rock dam","Channel 21: In-channel treatment",0,1
+306,"2018-11-01","Channel 21","Station 11 + 12 ORD","Rock",8.75,"One rock dam","Channel 21: In-channel treatment",0,1
+306,"2018-11-01","Channel 21","Station 11 + 12 ORD","Soil",43.75,"One rock dam","Channel 21: In-channel treatment",0,1
 307,"2018-11-01","Channel 21","Station 11 + 24 BAF","Gravel",2,"Baffle","Channel 21: In-channel treatment",0,1
 307,"2018-11-01","Channel 21","Station 11 + 24 BAF","Litter",2,"Baffle","Channel 21: In-channel treatment",0,1
 307,"2018-11-01","Channel 21","Station 11 + 24 BAF","Rock",3.875,"Baffle","Channel 21: In-channel treatment",0,1
 307,"2018-11-01","Channel 21","Station 11 + 24 BAF","Soil",67.5,"Baffle","Channel 21: In-channel treatment",0,1
-308,"2018-11-01","Channel 21","Station 11 + 63 ORD","Gravel",11.875,"One station dam","Channel 21: In-channel treatment",0,1
-308,"2018-11-01","Channel 21","Station 11 + 63 ORD","Litter",2.5,"One station dam","Channel 21: In-channel treatment",0,1
-308,"2018-11-01","Channel 21","Station 11 + 63 ORD","Rock",2,"One station dam","Channel 21: In-channel treatment",0,1
-308,"2018-11-01","Channel 21","Station 11 + 63 ORD","Soil",50,"One station dam","Channel 21: In-channel treatment",0,1
+308,"2018-11-01","Channel 21","Station 11 + 63 ORD","Gravel",11.875,"One rock dam","Channel 21: In-channel treatment",0,1
+308,"2018-11-01","Channel 21","Station 11 + 63 ORD","Litter",2.5,"One rock dam","Channel 21: In-channel treatment",0,1
+308,"2018-11-01","Channel 21","Station 11 + 63 ORD","Rock",2,"One rock dam","Channel 21: In-channel treatment",0,1
+308,"2018-11-01","Channel 21","Station 11 + 63 ORD","Soil",50,"One rock dam","Channel 21: In-channel treatment",0,1
 309,"2018-11-01","Channel 21","Station 11 + 73 BAF","Gravel",11.875,"Baffle","Channel 21: In-channel treatment",0,1
 309,"2018-11-01","Channel 21","Station 11 + 73 BAF","Litter",0.875,"Baffle","Channel 21: In-channel treatment",0,1
 309,"2018-11-01","Channel 21","Station 11 + 73 BAF","Rock",1.875,"Baffle","Channel 21: In-channel treatment",0,1
@@ -1115,47 +1115,47 @@
 324,"2021-11-01","Channel 13","Station 1 + 11.5 BAF","Gravel",44.375,"Baffle","Channel 13: In-channel treatment",0,1
 324,"2021-11-01","Channel 13","Station 1 + 11.5 BAF","Rock",47,"Baffle","Channel 13: In-channel treatment",0,1
 324,"2021-11-01","Channel 13","Station 1 + 11.5 BAF","Soil",8.25,"Baffle","Channel 13: In-channel treatment",0,1
-325,"2021-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",40.75,"One station dam","Channel 13: In-channel treatment",0,1
-325,"2021-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",0.5,"One station dam","Channel 13: In-channel treatment",0,1
+325,"2021-11-01","Channel 13","Station 1 + 38.5 ORD","Gravel",40.75,"One rock dam","Channel 13: In-channel treatment",0,1
+325,"2021-11-01","Channel 13","Station 1 + 38.5 ORD","Rock",0.5,"One rock dam","Channel 13: In-channel treatment",0,1
 326,"2021-11-01","Channel 13","Station 1 + 71 BAF","Gravel",4.625,"Baffle","Channel 13: In-channel treatment",0,1
 326,"2021-11-01","Channel 13","Station 1 + 71 BAF","Rock",11.25,"Baffle","Channel 13: In-channel treatment",0,1
 326,"2021-11-01","Channel 13","Station 1 + 71 BAF","Soil",13.375,"Baffle","Channel 13: In-channel treatment",0,1
-327,"2021-11-01","Channel 13","Station 1 + 77 ORD","Gravel",7.85,"One station dam","Channel 13: In-channel treatment",0,1
-327,"2021-11-01","Channel 13","Station 1 + 77 ORD","Rock",1.8,"One station dam","Channel 13: In-channel treatment",0,1
-327,"2021-11-01","Channel 13","Station 1 + 77 ORD","Soil",10.1,"One station dam","Channel 13: In-channel treatment",0,1
-328,"2021-11-01","Channel 13","Station 1 + 99 ORD","Gravel",9.625,"One station dam","Channel 13: In-channel treatment",0,1
-328,"2021-11-01","Channel 13","Station 1 + 99 ORD","Rock",3.875,"One station dam","Channel 13: In-channel treatment",0,1
-328,"2021-11-01","Channel 13","Station 1 + 99 ORD","Soil",52.625,"One station dam","Channel 13: In-channel treatment",0,1
+327,"2021-11-01","Channel 13","Station 1 + 77 ORD","Gravel",7.85,"One rock dam","Channel 13: In-channel treatment",0,1
+327,"2021-11-01","Channel 13","Station 1 + 77 ORD","Rock",1.8,"One rock dam","Channel 13: In-channel treatment",0,1
+327,"2021-11-01","Channel 13","Station 1 + 77 ORD","Soil",10.1,"One rock dam","Channel 13: In-channel treatment",0,1
+328,"2021-11-01","Channel 13","Station 1 + 99 ORD","Gravel",9.625,"One rock dam","Channel 13: In-channel treatment",0,1
+328,"2021-11-01","Channel 13","Station 1 + 99 ORD","Rock",3.875,"One rock dam","Channel 13: In-channel treatment",0,1
+328,"2021-11-01","Channel 13","Station 1 + 99 ORD","Soil",52.625,"One rock dam","Channel 13: In-channel treatment",0,1
 329,"2021-11-01","Channel 13","Station 2 + 16 BAF","Gravel",23.75,"Baffle","Channel 13: In-channel treatment",0,1
 329,"2021-11-01","Channel 13","Station 2 + 16 BAF","Rock",5.625,"Baffle","Channel 13: In-channel treatment",0,1
 329,"2021-11-01","Channel 13","Station 2 + 16 BAF","Soil",32.5,"Baffle","Channel 13: In-channel treatment",0,1
-330,"2021-11-01","Channel 13","Station 2 + 57 ORD","Gravel",9.625,"One station dam","Channel 13: In-channel treatment",0,1
-330,"2021-11-01","Channel 13","Station 2 + 57 ORD","Rock",3.875,"One station dam","Channel 13: In-channel treatment",0,1
-330,"2021-11-01","Channel 13","Station 2 + 57 ORD","Soil",52.625,"One station dam","Channel 13: In-channel treatment",0,1
+330,"2021-11-01","Channel 13","Station 2 + 57 ORD","Gravel",9.625,"One rock dam","Channel 13: In-channel treatment",0,1
+330,"2021-11-01","Channel 13","Station 2 + 57 ORD","Rock",3.875,"One rock dam","Channel 13: In-channel treatment",0,1
+330,"2021-11-01","Channel 13","Station 2 + 57 ORD","Soil",52.625,"One rock dam","Channel 13: In-channel treatment",0,1
 331,"2021-11-01","Channel 13","Station 2 + 67 BAF","Gravel",23.75,"Baffle","Channel 13: In-channel treatment",0,1
 331,"2021-11-01","Channel 13","Station 2 + 67 BAF","Rock",5.625,"Baffle","Channel 13: In-channel treatment",0,1
 331,"2021-11-01","Channel 13","Station 2 + 67 BAF","Soil",32.5,"Baffle","Channel 13: In-channel treatment",0,1
 333,"2021-11-01","Channel 13","Station 3 + 31 BAF","Gravel",17,"Baffle","Channel 13: In-channel treatment",0,1
 333,"2021-11-01","Channel 13","Station 3 + 31 BAF","Rock",4.5,"Baffle","Channel 13: In-channel treatment",0,1
 333,"2021-11-01","Channel 13","Station 3 + 31 BAF","Soil",43.75,"Baffle","Channel 13: In-channel treatment",0,1
-334,"2021-11-01","Channel 13","Station 3 + 65 ORD","Gravel",22.625,"One station dam","Channel 13: In-channel treatment",0,1
-334,"2021-11-01","Channel 13","Station 3 + 65 ORD","Rock",25.75,"One station dam","Channel 13: In-channel treatment",0,1
-334,"2021-11-01","Channel 13","Station 3 + 65 ORD","Soil",11.375,"One station dam","Channel 13: In-channel treatment",0,1
-335,"2021-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",11.875,"One station dam","Channel 13: In-channel treatment",0,1
-335,"2021-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-335,"2021-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",25.25,"One station dam","Channel 13: In-channel treatment",0,1
+334,"2021-11-01","Channel 13","Station 3 + 65 ORD","Gravel",22.625,"One rock dam","Channel 13: In-channel treatment",0,1
+334,"2021-11-01","Channel 13","Station 3 + 65 ORD","Rock",25.75,"One rock dam","Channel 13: In-channel treatment",0,1
+334,"2021-11-01","Channel 13","Station 3 + 65 ORD","Soil",11.375,"One rock dam","Channel 13: In-channel treatment",0,1
+335,"2021-11-01","Channel 13","Station 3 + 95.5 ORD","Gravel",11.875,"One rock dam","Channel 13: In-channel treatment",0,1
+335,"2021-11-01","Channel 13","Station 3 + 95.5 ORD","Rock",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+335,"2021-11-01","Channel 13","Station 3 + 95.5 ORD","Soil",25.25,"One rock dam","Channel 13: In-channel treatment",0,1
 336,"2021-11-01","Channel 13","Station 4 + 14.5 BAF","Gravel",13.375,"Baffle","Channel 13: In-channel treatment",0,1
 336,"2021-11-01","Channel 13","Station 4 + 14.5 BAF","Rock",14.375,"Baffle","Channel 13: In-channel treatment",0,1
 336,"2021-11-01","Channel 13","Station 4 + 14.5 BAF","Soil",10.25,"Baffle","Channel 13: In-channel treatment",0,1
-337,"2021-11-01","Channel 13","Station 4 + 36 ORD","Gravel",22.625,"One station dam","Channel 13: In-channel treatment",0,1
-337,"2021-11-01","Channel 13","Station 4 + 36 ORD","Rock",19.5,"One station dam","Channel 13: In-channel treatment",0,1
-337,"2021-11-01","Channel 13","Station 4 + 36 ORD","Soil",34.5,"One station dam","Channel 13: In-channel treatment",0,1
+337,"2021-11-01","Channel 13","Station 4 + 36 ORD","Gravel",22.625,"One rock dam","Channel 13: In-channel treatment",0,1
+337,"2021-11-01","Channel 13","Station 4 + 36 ORD","Rock",19.5,"One rock dam","Channel 13: In-channel treatment",0,1
+337,"2021-11-01","Channel 13","Station 4 + 36 ORD","Soil",34.5,"One rock dam","Channel 13: In-channel treatment",0,1
 338,"2021-11-01","Channel 13","Station 4 + 50 BAF","Gravel",7.75,"Baffle","Channel 13: In-channel treatment",0,1
 338,"2021-11-01","Channel 13","Station 4 + 50 BAF","Rock",13.25,"Baffle","Channel 13: In-channel treatment",0,1
 338,"2021-11-01","Channel 13","Station 4 + 50 BAF","Soil",28.25,"Baffle","Channel 13: In-channel treatment",0,1
-339,"2021-11-01","Channel 13","Station 4 + 78 ORD","Gravel",5.125,"One station dam","Channel 13: In-channel treatment",0,1
-339,"2021-11-01","Channel 13","Station 4 + 78 ORD","Rock",4.625,"One station dam","Channel 13: In-channel treatment",0,1
-339,"2021-11-01","Channel 13","Station 4 + 78 ORD","Soil",17.5,"One station dam","Channel 13: In-channel treatment",0,1
+339,"2021-11-01","Channel 13","Station 4 + 78 ORD","Gravel",5.125,"One rock dam","Channel 13: In-channel treatment",0,1
+339,"2021-11-01","Channel 13","Station 4 + 78 ORD","Rock",4.625,"One rock dam","Channel 13: In-channel treatment",0,1
+339,"2021-11-01","Channel 13","Station 4 + 78 ORD","Soil",17.5,"One rock dam","Channel 13: In-channel treatment",0,1
 340,"2021-11-01","Channel 19","Station 01 + 04","Gravel",11.375,"No treatment","Channel 19: Upland treatment",1,0
 340,"2021-11-01","Channel 19","Station 01 + 04","Rock",11.875,"No treatment","Channel 19: Upland treatment",1,0
 340,"2021-11-01","Channel 19","Station 01 + 04","Soil",34.5,"No treatment","Channel 19: Upland treatment",1,0
@@ -1210,45 +1210,45 @@
 357,"2021-11-01","Channel 21","Station 01 + 07.5 BAF","Gravel",44.375,"Baffle","Channel 21: In-channel treatment",0,1
 357,"2021-11-01","Channel 21","Station 01 + 07.5 BAF","Rock",2,"Baffle","Channel 21: In-channel treatment",0,1
 357,"2021-11-01","Channel 21","Station 01 + 07.5 BAF","Soil",43.75,"Baffle","Channel 21: In-channel treatment",0,1
-358,"2021-11-01","Channel 21","Station 01 + 49 ORD","Gravel",31.875,"One station dam","Channel 21: In-channel treatment",0,1
-358,"2021-11-01","Channel 21","Station 01 + 49 ORD","Rock",3.875,"One station dam","Channel 21: In-channel treatment",0,1
-358,"2021-11-01","Channel 21","Station 01 + 49 ORD","Soil",38.125,"One station dam","Channel 21: In-channel treatment",0,1
+358,"2021-11-01","Channel 21","Station 01 + 49 ORD","Gravel",31.875,"One rock dam","Channel 21: In-channel treatment",0,1
+358,"2021-11-01","Channel 21","Station 01 + 49 ORD","Rock",3.875,"One rock dam","Channel 21: In-channel treatment",0,1
+358,"2021-11-01","Channel 21","Station 01 + 49 ORD","Soil",38.125,"One rock dam","Channel 21: In-channel treatment",0,1
 359,"2021-11-01","Channel 21","Station 02 + 15 BAF","Gravel",61.25,"Baffle","Channel 21: In-channel treatment",0,1
 359,"2021-11-01","Channel 21","Station 02 + 15 BAF","Rock",8.75,"Baffle","Channel 21: In-channel treatment",0,1
 359,"2021-11-01","Channel 21","Station 02 + 15 BAF","Soil",23.75,"Baffle","Channel 21: In-channel treatment",0,1
 360,"2021-11-01","Channel 21","Station 03 + 80 BAF","Gravel",26.25,"Baffle","Channel 21: In-channel treatment",0,1
 360,"2021-11-01","Channel 21","Station 03 + 80 BAF","Rock",7.625,"Baffle","Channel 21: In-channel treatment",0,1
 360,"2021-11-01","Channel 21","Station 03 + 80 BAF","Soil",44.375,"Baffle","Channel 21: In-channel treatment",0,1
-361,"2021-11-01","Channel 21","Station 04 + 90 ORD","Gravel",32.5,"One station dam","Channel 21: In-channel treatment",0,1
-361,"2021-11-01","Channel 21","Station 04 + 90 ORD","Rock",35,"One station dam","Channel 21: In-channel treatment",0,1
-361,"2021-11-01","Channel 21","Station 04 + 90 ORD","Soil",26.25,"One station dam","Channel 21: In-channel treatment",0,1
+361,"2021-11-01","Channel 21","Station 04 + 90 ORD","Gravel",32.5,"One rock dam","Channel 21: In-channel treatment",0,1
+361,"2021-11-01","Channel 21","Station 04 + 90 ORD","Rock",35,"One rock dam","Channel 21: In-channel treatment",0,1
+361,"2021-11-01","Channel 21","Station 04 + 90 ORD","Soil",26.25,"One rock dam","Channel 21: In-channel treatment",0,1
 362,"2021-11-01","Channel 21","Station 06 + 36 BAF","Gravel",4.5,"Baffle","Channel 21: In-channel treatment",0,1
 362,"2021-11-01","Channel 21","Station 06 + 36 BAF","Rock",4.375,"Baffle","Channel 21: In-channel treatment",0,1
 362,"2021-11-01","Channel 21","Station 06 + 36 BAF","Soil",58.125,"Baffle","Channel 21: In-channel treatment",0,1
-363,"2021-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",15,"One station dam","Channel 21: In-channel treatment",0,1
-363,"2021-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",50,"One station dam","Channel 21: In-channel treatment",0,1
-363,"2021-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",16.875,"One station dam","Channel 21: In-channel treatment",0,1
+363,"2021-11-01","Channel 21","Station 07 + 49.5 ORD","Gravel",15,"One rock dam","Channel 21: In-channel treatment",0,1
+363,"2021-11-01","Channel 21","Station 07 + 49.5 ORD","Rock",50,"One rock dam","Channel 21: In-channel treatment",0,1
+363,"2021-11-01","Channel 21","Station 07 + 49.5 ORD","Soil",16.875,"One rock dam","Channel 21: In-channel treatment",0,1
 364,"2021-11-01","Channel 21","Station 07 + 66 BAF","Gravel",61.25,"Baffle","Channel 21: In-channel treatment",0,1
 364,"2021-11-01","Channel 21","Station 07 + 66 BAF","Rock",4.5,"Baffle","Channel 21: In-channel treatment",0,1
 364,"2021-11-01","Channel 21","Station 07 + 66 BAF","Soil",23.125,"Baffle","Channel 21: In-channel treatment",0,1
 365,"2021-11-01","Channel 21","Station 08 + 62 BAF","Gravel",35,"Baffle","Channel 21: In-channel treatment",0,1
 365,"2021-11-01","Channel 21","Station 08 + 62 BAF","Rock",5.125,"Baffle","Channel 21: In-channel treatment",0,1
 365,"2021-11-01","Channel 21","Station 08 + 62 BAF","Soil",14.375,"Baffle","Channel 21: In-channel treatment",0,1
-366,"2021-11-01","Channel 21","Station 09 + 99 ORD","Gravel",56.25,"One station dam","Channel 21: In-channel treatment",0,1
-366,"2021-11-01","Channel 21","Station 09 + 99 ORD","Rock",10.125,"One station dam","Channel 21: In-channel treatment",0,1
-366,"2021-11-01","Channel 21","Station 09 + 99 ORD","Soil",26.25,"One station dam","Channel 21: In-channel treatment",0,1
+366,"2021-11-01","Channel 21","Station 09 + 99 ORD","Gravel",56.25,"One rock dam","Channel 21: In-channel treatment",0,1
+366,"2021-11-01","Channel 21","Station 09 + 99 ORD","Rock",10.125,"One rock dam","Channel 21: In-channel treatment",0,1
+366,"2021-11-01","Channel 21","Station 09 + 99 ORD","Soil",26.25,"One rock dam","Channel 21: In-channel treatment",0,1
 367,"2021-11-01","Channel 21","Station 10 + 13 BAF","Gravel",50,"Baffle","Channel 21: In-channel treatment",0,1
 367,"2021-11-01","Channel 21","Station 10 + 13 BAF","Rock",20,"Baffle","Channel 21: In-channel treatment",0,1
 367,"2021-11-01","Channel 21","Station 10 + 13 BAF","Soil",35,"Baffle","Channel 21: In-channel treatment",0,1
-368,"2021-11-01","Channel 21","Station 11 + 12 ORD","Gravel",28.875,"One station dam","Channel 21: In-channel treatment",0,1
-368,"2021-11-01","Channel 21","Station 11 + 12 ORD","Rock",26.25,"One station dam","Channel 21: In-channel treatment",0,1
-368,"2021-11-01","Channel 21","Station 11 + 12 ORD","Soil",8.75,"One station dam","Channel 21: In-channel treatment",0,1
+368,"2021-11-01","Channel 21","Station 11 + 12 ORD","Gravel",28.875,"One rock dam","Channel 21: In-channel treatment",0,1
+368,"2021-11-01","Channel 21","Station 11 + 12 ORD","Rock",26.25,"One rock dam","Channel 21: In-channel treatment",0,1
+368,"2021-11-01","Channel 21","Station 11 + 12 ORD","Soil",8.75,"One rock dam","Channel 21: In-channel treatment",0,1
 369,"2021-11-01","Channel 21","Station 11 + 24 BAF","Gravel",29.375,"Baffle","Channel 21: In-channel treatment",0,1
 369,"2021-11-01","Channel 21","Station 11 + 24 BAF","Rock",1.25,"Baffle","Channel 21: In-channel treatment",0,1
 369,"2021-11-01","Channel 21","Station 11 + 24 BAF","Soil",56.25,"Baffle","Channel 21: In-channel treatment",0,1
-370,"2021-11-01","Channel 21","Station 11 + 63 ORD","Gravel",31.875,"One station dam","Channel 21: In-channel treatment",0,1
-370,"2021-11-01","Channel 21","Station 11 + 63 ORD","Rock",23.75,"One station dam","Channel 21: In-channel treatment",0,1
-370,"2021-11-01","Channel 21","Station 11 + 63 ORD","Soil",44.375,"One station dam","Channel 21: In-channel treatment",0,1
+370,"2021-11-01","Channel 21","Station 11 + 63 ORD","Gravel",31.875,"One rock dam","Channel 21: In-channel treatment",0,1
+370,"2021-11-01","Channel 21","Station 11 + 63 ORD","Rock",23.75,"One rock dam","Channel 21: In-channel treatment",0,1
+370,"2021-11-01","Channel 21","Station 11 + 63 ORD","Soil",44.375,"One rock dam","Channel 21: In-channel treatment",0,1
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Gravel",23.125,"Baffle","Channel 21: In-channel treatment",0,1
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Rock",2,"Baffle","Channel 21: In-channel treatment",0,1
 371,"2021-11-01","Channel 21","Station 11 + 73 BAF","Soil",31.875,"Baffle","Channel 21: In-channel treatment",0,1
@@ -1257,72 +1257,72 @@
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Litter",8.75,"Baffle","Channel 13: In-channel treatment",0,1
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Rock",11.6666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 386,"2012-03-01","Channel 13","Station 1 + 11.5 BAF","Soil",53.75,"Baffle","Channel 13: In-channel treatment",0,1
-387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Biocrust",2.5,"One station dam","Channel 13: In-channel treatment",0,1
-387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Gravel",18.3333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Litter",0.0833333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Rock",1.33333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Soil",50,"One station dam","Channel 13: In-channel treatment",0,1
+387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Biocrust",2.5,"One rock dam","Channel 13: In-channel treatment",0,1
+387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Gravel",18.3333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Litter",0.0833333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Rock",1.33333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+387,"2012-03-01","Channel 13","Station 1 + 38.5 ORD","Soil",50,"One rock dam","Channel 13: In-channel treatment",0,1
 388,"2012-03-01","Channel 13","Station 1 + 71 BAF","Biocrust",0.0833333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 388,"2012-03-01","Channel 13","Station 1 + 71 BAF","Gravel",22.1666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 388,"2012-03-01","Channel 13","Station 1 + 71 BAF","Litter",2.5,"Baffle","Channel 13: In-channel treatment",0,1
 388,"2012-03-01","Channel 13","Station 1 + 71 BAF","Rock",8,"Baffle","Channel 13: In-channel treatment",0,1
 388,"2012-03-01","Channel 13","Station 1 + 71 BAF","Soil",41.6666666666667,"Baffle","Channel 13: In-channel treatment",0,1
-389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Biocrust",0.0833333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Gravel",18,"One station dam","Channel 13: In-channel treatment",0,1
-389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Litter",6.25,"One station dam","Channel 13: In-channel treatment",0,1
-389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Rock",15.9166666666667,"One station dam","Channel 13: In-channel treatment",0,1
-389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Soil",40,"One station dam","Channel 13: In-channel treatment",0,1
-390,"2012-03-01","Channel 13","Station 1 + 99 ORD","Gravel",20.4166666666667,"One station dam","Channel 13: In-channel treatment",0,1
-390,"2012-03-01","Channel 13","Station 1 + 99 ORD","Litter",2.91666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-390,"2012-03-01","Channel 13","Station 1 + 99 ORD","Rock",5.91666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-390,"2012-03-01","Channel 13","Station 1 + 99 ORD","Soil",62.0833333333333,"One station dam","Channel 13: In-channel treatment",0,1
+389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Biocrust",0.0833333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Gravel",18,"One rock dam","Channel 13: In-channel treatment",0,1
+389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Litter",6.25,"One rock dam","Channel 13: In-channel treatment",0,1
+389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Rock",15.9166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+389,"2012-03-01","Channel 13","Station 1 + 77 ORD","Soil",40,"One rock dam","Channel 13: In-channel treatment",0,1
+390,"2012-03-01","Channel 13","Station 1 + 99 ORD","Gravel",20.4166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+390,"2012-03-01","Channel 13","Station 1 + 99 ORD","Litter",2.91666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+390,"2012-03-01","Channel 13","Station 1 + 99 ORD","Rock",5.91666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+390,"2012-03-01","Channel 13","Station 1 + 99 ORD","Soil",62.0833333333333,"One rock dam","Channel 13: In-channel treatment",0,1
 391,"2012-03-01","Channel 13","Station 2 + 16 BAF","Biocrust",0.416666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 391,"2012-03-01","Channel 13","Station 2 + 16 BAF","Gravel",27.9166666666667,"Baffle","Channel 13: In-channel treatment",0,1
 391,"2012-03-01","Channel 13","Station 2 + 16 BAF","Litter",0.416666666666667,"Baffle","Channel 13: In-channel treatment",0,1
 391,"2012-03-01","Channel 13","Station 2 + 16 BAF","Rock",9.33333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 391,"2012-03-01","Channel 13","Station 2 + 16 BAF","Soil",69.5833333333333,"Baffle","Channel 13: In-channel treatment",0,1
-392,"2012-03-01","Channel 13","Station 2 + 57 ORD","Gravel",26.25,"One station dam","Channel 13: In-channel treatment",0,1
-392,"2012-03-01","Channel 13","Station 2 + 57 ORD","Litter",6.25,"One station dam","Channel 13: In-channel treatment",0,1
-392,"2012-03-01","Channel 13","Station 2 + 57 ORD","Rock",13.8333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-392,"2012-03-01","Channel 13","Station 2 + 57 ORD","Soil",52.0833333333333,"One station dam","Channel 13: In-channel treatment",0,1
+392,"2012-03-01","Channel 13","Station 2 + 57 ORD","Gravel",26.25,"One rock dam","Channel 13: In-channel treatment",0,1
+392,"2012-03-01","Channel 13","Station 2 + 57 ORD","Litter",6.25,"One rock dam","Channel 13: In-channel treatment",0,1
+392,"2012-03-01","Channel 13","Station 2 + 57 ORD","Rock",13.8333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+392,"2012-03-01","Channel 13","Station 2 + 57 ORD","Soil",52.0833333333333,"One rock dam","Channel 13: In-channel treatment",0,1
 393,"2012-03-01","Channel 13","Station 2 + 67 BAF","Gravel",45.8333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 393,"2012-03-01","Channel 13","Station 2 + 67 BAF","Litter",6.25,"Baffle","Channel 13: In-channel treatment",0,1
 393,"2012-03-01","Channel 13","Station 2 + 67 BAF","Rock",18,"Baffle","Channel 13: In-channel treatment",0,1
 393,"2012-03-01","Channel 13","Station 2 + 67 BAF","Soil",42.0833333333333,"Baffle","Channel 13: In-channel treatment",0,1
-394,"2012-03-01","Channel 13","Station 3 + 09 ORD","Gravel",17.6666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-394,"2012-03-01","Channel 13","Station 3 + 09 ORD","Litter",20.8333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-394,"2012-03-01","Channel 13","Station 3 + 09 ORD","Rock",9.25,"One station dam","Channel 13: In-channel treatment",0,1
-394,"2012-03-01","Channel 13","Station 3 + 09 ORD","Soil",57.9166666666667,"One station dam","Channel 13: In-channel treatment",0,1
+394,"2012-03-01","Channel 13","Station 3 + 09 ORD","Gravel",17.6666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+394,"2012-03-01","Channel 13","Station 3 + 09 ORD","Litter",20.8333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+394,"2012-03-01","Channel 13","Station 3 + 09 ORD","Rock",9.25,"One rock dam","Channel 13: In-channel treatment",0,1
+394,"2012-03-01","Channel 13","Station 3 + 09 ORD","Soil",57.9166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
 395,"2012-03-01","Channel 13","Station 3 + 31 BAF","Gravel",15.5,"Baffle","Channel 13: In-channel treatment",0,1
 395,"2012-03-01","Channel 13","Station 3 + 31 BAF","Litter",22.5,"Baffle","Channel 13: In-channel treatment",0,1
 395,"2012-03-01","Channel 13","Station 3 + 31 BAF","Rock",3.75,"Baffle","Channel 13: In-channel treatment",0,1
 395,"2012-03-01","Channel 13","Station 3 + 31 BAF","Soil",45.8333333333333,"Baffle","Channel 13: In-channel treatment",0,1
-396,"2012-03-01","Channel 13","Station 3 + 65 ORD","Gravel",8.75,"One station dam","Channel 13: In-channel treatment",0,1
-396,"2012-03-01","Channel 13","Station 3 + 65 ORD","Litter",2.91666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-396,"2012-03-01","Channel 13","Station 3 + 65 ORD","Rock",3.41666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-396,"2012-03-01","Channel 13","Station 3 + 65 ORD","Soil",50,"One station dam","Channel 13: In-channel treatment",0,1
-397,"2012-03-01","Channel 13","Station 3 + 95.5 ORD","Gravel",14.25,"One station dam","Channel 13: In-channel treatment",0,1
-397,"2012-03-01","Channel 13","Station 3 + 95.5 ORD","Litter",2.5,"One station dam","Channel 13: In-channel treatment",0,1
-397,"2012-03-01","Channel 13","Station 3 + 95.5 ORD","Rock",5.66666666666667,"One station dam","Channel 13: In-channel treatment",0,1
-397,"2012-03-01","Channel 13","Station 3 + 95.5 ORD","Soil",65.8333333333333,"One station dam","Channel 13: In-channel treatment",0,1
+396,"2012-03-01","Channel 13","Station 3 + 65 ORD","Gravel",8.75,"One rock dam","Channel 13: In-channel treatment",0,1
+396,"2012-03-01","Channel 13","Station 3 + 65 ORD","Litter",2.91666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+396,"2012-03-01","Channel 13","Station 3 + 65 ORD","Rock",3.41666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+396,"2012-03-01","Channel 13","Station 3 + 65 ORD","Soil",50,"One rock dam","Channel 13: In-channel treatment",0,1
+397,"2012-03-01","Channel 13","Station 3 + 95.5 ORD","Gravel",14.25,"One rock dam","Channel 13: In-channel treatment",0,1
+397,"2012-03-01","Channel 13","Station 3 + 95.5 ORD","Litter",2.5,"One rock dam","Channel 13: In-channel treatment",0,1
+397,"2012-03-01","Channel 13","Station 3 + 95.5 ORD","Rock",5.66666666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+397,"2012-03-01","Channel 13","Station 3 + 95.5 ORD","Soil",65.8333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
 398,"2012-03-01","Channel 13","Station 4 + 14.5 BAF","Gravel",25.9166666666667,"Baffle","Channel 13: In-channel treatment",0,1
 398,"2012-03-01","Channel 13","Station 4 + 14.5 BAF","Litter",0.0833333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 398,"2012-03-01","Channel 13","Station 4 + 14.5 BAF","Rock",6.25,"Baffle","Channel 13: In-channel treatment",0,1
 398,"2012-03-01","Channel 13","Station 4 + 14.5 BAF","Soil",41.6666666666667,"Baffle","Channel 13: In-channel treatment",0,1
-399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Biocrust",0.0833333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Gravel",38,"One station dam","Channel 13: In-channel treatment",0,1
-399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Litter",2.5,"One station dam","Channel 13: In-channel treatment",0,1
-399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Rock",3.83333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Soil",70,"One station dam","Channel 13: In-channel treatment",0,1
+399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Biocrust",0.0833333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Gravel",38,"One rock dam","Channel 13: In-channel treatment",0,1
+399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Litter",2.5,"One rock dam","Channel 13: In-channel treatment",0,1
+399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Rock",3.83333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+399,"2012-03-01","Channel 13","Station 4 + 36 ORD","Soil",70,"One rock dam","Channel 13: In-channel treatment",0,1
 400,"2012-03-01","Channel 13","Station 4 + 50 BAF","Gravel",10.8333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 400,"2012-03-01","Channel 13","Station 4 + 50 BAF","Litter",2.5,"Baffle","Channel 13: In-channel treatment",0,1
 400,"2012-03-01","Channel 13","Station 4 + 50 BAF","Rock",3.08333333333333,"Baffle","Channel 13: In-channel treatment",0,1
 400,"2012-03-01","Channel 13","Station 4 + 50 BAF","Soil",81.25,"Baffle","Channel 13: In-channel treatment",0,1
-401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Biocrust",0.0833333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Gravel",24.25,"One station dam","Channel 13: In-channel treatment",0,1
-401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Litter",15.4166666666667,"One station dam","Channel 13: In-channel treatment",0,1
-401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Rock",3.83333333333333,"One station dam","Channel 13: In-channel treatment",0,1
-401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Soil",58.3333333333333,"One station dam","Channel 13: In-channel treatment",0,1
+401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Biocrust",0.0833333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Gravel",24.25,"One rock dam","Channel 13: In-channel treatment",0,1
+401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Litter",15.4166666666667,"One rock dam","Channel 13: In-channel treatment",0,1
+401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Rock",3.83333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
+401,"2012-03-01","Channel 13","Station 4 + 78 ORD","Soil",58.3333333333333,"One rock dam","Channel 13: In-channel treatment",0,1
 402,"2012-03-01","Channel 19","Station 01 + 04","Gravel",32.5,"No treatment","Channel 19: Upland treatment",1,0
 402,"2012-03-01","Channel 19","Station 01 + 04","Rock",14.5833333333333,"No treatment","Channel 19: Upland treatment",1,0
 402,"2012-03-01","Channel 19","Station 01 + 04","Soil",42.0833333333333,"No treatment","Channel 19: Upland treatment",1,0
@@ -1380,24 +1380,24 @@
 419,"2012-03-01","Channel 21","Station 01 + 07.5 BAF","Gravel",20.4166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 419,"2012-03-01","Channel 21","Station 01 + 07.5 BAF","Rock",14.25,"Baffle","Channel 21: In-channel treatment",0,1
 419,"2012-03-01","Channel 21","Station 01 + 07.5 BAF","Soil",57.9166666666667,"Baffle","Channel 21: In-channel treatment",0,1
-420,"2012-03-01","Channel 21","Station 01 + 49 ORD","Gravel",26.25,"One station dam","Channel 21: In-channel treatment",0,1
-420,"2012-03-01","Channel 21","Station 01 + 49 ORD","Rock",26.6666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-420,"2012-03-01","Channel 21","Station 01 + 49 ORD","Soil",38.3333333333333,"One station dam","Channel 21: In-channel treatment",0,1
+420,"2012-03-01","Channel 21","Station 01 + 49 ORD","Gravel",26.25,"One rock dam","Channel 21: In-channel treatment",0,1
+420,"2012-03-01","Channel 21","Station 01 + 49 ORD","Rock",26.6666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+420,"2012-03-01","Channel 21","Station 01 + 49 ORD","Soil",38.3333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
 421,"2012-03-01","Channel 21","Station 02 + 15 BAF","Gravel",34.1666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 421,"2012-03-01","Channel 21","Station 02 + 15 BAF","Rock",18.75,"Baffle","Channel 21: In-channel treatment",0,1
 421,"2012-03-01","Channel 21","Station 02 + 15 BAF","Soil",42.0833333333333,"Baffle","Channel 21: In-channel treatment",0,1
 422,"2012-03-01","Channel 21","Station 03 + 80 BAF","Gravel",34.1666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 422,"2012-03-01","Channel 21","Station 03 + 80 BAF","Rock",8.75,"Baffle","Channel 21: In-channel treatment",0,1
 422,"2012-03-01","Channel 21","Station 03 + 80 BAF","Soil",54.1666666666667,"Baffle","Channel 21: In-channel treatment",0,1
-423,"2012-03-01","Channel 21","Station 04 + 90 ORD","Gravel",22.5,"One station dam","Channel 21: In-channel treatment",0,1
-423,"2012-03-01","Channel 21","Station 04 + 90 ORD","Rock",42.0833333333333,"One station dam","Channel 21: In-channel treatment",0,1
-423,"2012-03-01","Channel 21","Station 04 + 90 ORD","Soil",34.1666666666667,"One station dam","Channel 21: In-channel treatment",0,1
+423,"2012-03-01","Channel 21","Station 04 + 90 ORD","Gravel",22.5,"One rock dam","Channel 21: In-channel treatment",0,1
+423,"2012-03-01","Channel 21","Station 04 + 90 ORD","Rock",42.0833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+423,"2012-03-01","Channel 21","Station 04 + 90 ORD","Soil",34.1666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
 424,"2012-03-01","Channel 21","Station 06 + 36 BAF","Gravel",16.6666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 424,"2012-03-01","Channel 21","Station 06 + 36 BAF","Rock",15.5833333333333,"Baffle","Channel 21: In-channel treatment",0,1
 424,"2012-03-01","Channel 21","Station 06 + 36 BAF","Soil",50,"Baffle","Channel 21: In-channel treatment",0,1
-425,"2012-03-01","Channel 21","Station 07 + 49.5 ORD","Gravel",16.6666666666667,"One station dam","Channel 21: In-channel treatment",0,1
-425,"2012-03-01","Channel 21","Station 07 + 49.5 ORD","Rock",16.25,"One station dam","Channel 21: In-channel treatment",0,1
-425,"2012-03-01","Channel 21","Station 07 + 49.5 ORD","Soil",60,"One station dam","Channel 21: In-channel treatment",0,1
+425,"2012-03-01","Channel 21","Station 07 + 49.5 ORD","Gravel",16.6666666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+425,"2012-03-01","Channel 21","Station 07 + 49.5 ORD","Rock",16.25,"One rock dam","Channel 21: In-channel treatment",0,1
+425,"2012-03-01","Channel 21","Station 07 + 49.5 ORD","Soil",60,"One rock dam","Channel 21: In-channel treatment",0,1
 426,"2012-03-01","Channel 21","Station 07 + 66 BAF","Gravel",28.3666666666667,"Baffle","Channel 21: In-channel treatment",0,1
 426,"2012-03-01","Channel 21","Station 07 + 66 BAF","Rock",27.9166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 426,"2012-03-01","Channel 21","Station 07 + 66 BAF","Soil",45.8333333333333,"Baffle","Channel 21: In-channel treatment",0,1
@@ -1405,21 +1405,21 @@
 427,"2012-03-01","Channel 21","Station 08 + 62 BAF","Gravel",20.4166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 427,"2012-03-01","Channel 21","Station 08 + 62 BAF","Rock",8,"Baffle","Channel 21: In-channel treatment",0,1
 427,"2012-03-01","Channel 21","Station 08 + 62 BAF","Soil",61.6666666666667,"Baffle","Channel 21: In-channel treatment",0,1
-428,"2012-03-01","Channel 21","Station 09 + 99 ORD","Gravel",46.25,"One station dam","Channel 21: In-channel treatment",0,1
-428,"2012-03-01","Channel 21","Station 09 + 99 ORD","Rock",12.9166666666667,"One station dam","Channel 21: In-channel treatment",0,1
-428,"2012-03-01","Channel 21","Station 09 + 99 ORD","Soil",37.9166666666667,"One station dam","Channel 21: In-channel treatment",0,1
+428,"2012-03-01","Channel 21","Station 09 + 99 ORD","Gravel",46.25,"One rock dam","Channel 21: In-channel treatment",0,1
+428,"2012-03-01","Channel 21","Station 09 + 99 ORD","Rock",12.9166666666667,"One rock dam","Channel 21: In-channel treatment",0,1
+428,"2012-03-01","Channel 21","Station 09 + 99 ORD","Soil",37.9166666666667,"One rock dam","Channel 21: In-channel treatment",0,1
 429,"2012-03-01","Channel 21","Station 10 + 13 BAF","Gravel",38.3333333333333,"Baffle","Channel 21: In-channel treatment",0,1
 429,"2012-03-01","Channel 21","Station 10 + 13 BAF","Rock",30.4166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 429,"2012-03-01","Channel 21","Station 10 + 13 BAF","Soil",34.1666666666667,"Baffle","Channel 21: In-channel treatment",0,1
-430,"2012-03-01","Channel 21","Station 11 + 12 ORD","Gravel",14.5833333333333,"One station dam","Channel 21: In-channel treatment",0,1
-430,"2012-03-01","Channel 21","Station 11 + 12 ORD","Rock",22.0833333333333,"One station dam","Channel 21: In-channel treatment",0,1
-430,"2012-03-01","Channel 21","Station 11 + 12 ORD","Soil",46.25,"One station dam","Channel 21: In-channel treatment",0,1
+430,"2012-03-01","Channel 21","Station 11 + 12 ORD","Gravel",14.5833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+430,"2012-03-01","Channel 21","Station 11 + 12 ORD","Rock",22.0833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+430,"2012-03-01","Channel 21","Station 11 + 12 ORD","Soil",46.25,"One rock dam","Channel 21: In-channel treatment",0,1
 431,"2012-03-01","Channel 21","Station 11 + 24 BAF","Gravel",12.9166666666667,"Baffle","Channel 21: In-channel treatment",0,1
 431,"2012-03-01","Channel 21","Station 11 + 24 BAF","Rock",19.75,"Baffle","Channel 21: In-channel treatment",0,1
 431,"2012-03-01","Channel 21","Station 11 + 24 BAF","Soil",46.25,"Baffle","Channel 21: In-channel treatment",0,1
-432,"2012-03-01","Channel 21","Station 11 + 63 ORD","Gravel",34.5833333333333,"One station dam","Channel 21: In-channel treatment",0,1
-432,"2012-03-01","Channel 21","Station 11 + 63 ORD","Rock",15.8333333333333,"One station dam","Channel 21: In-channel treatment",0,1
-432,"2012-03-01","Channel 21","Station 11 + 63 ORD","Soil",42.0833333333333,"One station dam","Channel 21: In-channel treatment",0,1
+432,"2012-03-01","Channel 21","Station 11 + 63 ORD","Gravel",34.5833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+432,"2012-03-01","Channel 21","Station 11 + 63 ORD","Rock",15.8333333333333,"One rock dam","Channel 21: In-channel treatment",0,1
+432,"2012-03-01","Channel 21","Station 11 + 63 ORD","Soil",42.0833333333333,"One rock dam","Channel 21: In-channel treatment",0,1
 433,"2012-03-01","Channel 21","Station 11 + 73 BAF","Gravel",42.0833333333333,"Baffle","Channel 21: In-channel treatment",0,1
 433,"2012-03-01","Channel 21","Station 11 + 73 BAF","Rock",5.58333333333333,"Baffle","Channel 21: In-channel treatment",0,1
 433,"2012-03-01","Channel 21","Station 11 + 73 BAF","Soil",50,"Baffle","Channel 21: In-channel treatment",0,1

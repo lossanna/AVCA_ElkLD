@@ -75,7 +75,7 @@ ground.all <- ground.all %>%
 plant.all[ , "station.trt"] <- NA
 for(i in 1:nrow(plant.all)) {
   if(str_detect(plant.all$Station, "ORD")[i] == TRUE) {
-    plant.all$station.trt[i] <- "One station dam"
+    plant.all$station.trt[i] <- "One rock dam"
   } else if(str_detect(plant.all$Station, "BAF")[i] == TRUE) {
     plant.all$station.trt[i] <- "Baffle"
   } else {
@@ -86,7 +86,7 @@ for(i in 1:nrow(plant.all)) {
 ground.all[ , "station.trt"] <- NA
 for(i in 1:nrow(ground.all)) {
   if(str_detect(ground.all$Station, "ORD")[i] == TRUE) {
-    ground.all$station.trt[i] <- "One station dam"
+    ground.all$station.trt[i] <- "One rock dam"
   } else if(str_detect(ground.all$Station, "BAF")[i] == TRUE) {
     ground.all$station.trt[i] <- "Baffle"
   } else {

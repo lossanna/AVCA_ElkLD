@@ -88,94 +88,94 @@
 "87","Channel 13","Station 1 + 11.5 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",8,1.45072519756097
 "88","Channel 13","Station 1 + 11.5 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",7,1.18869762678396
 "89","Channel 13","Station 1 + 11.5 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",6,0.838931707576627
-"90","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",8,0.530211318198538
-"91","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",5,0.63772474308719
-"92","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",6,0.351980099310882
-"93","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",7,0.924304814090121
-"94","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",9,0.713077593650094
-"95","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",12,1.86529934695147
+"90","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",8,0.530211318198538
+"91","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One rock dam",5,0.63772474308719
+"92","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",6,0.351980099310882
+"93","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",7,0.924304814090121
+"94","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",9,0.713077593650094
+"95","Channel 13","Station 1 + 38.5 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",12,1.86529934695147
 "96","Channel 13","Station 1 + 71 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",6,0.40404501056216
 "97","Channel 13","Station 1 + 71 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",3,0.568894036914716
 "98","Channel 13","Station 1 + 71 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",6,0.831993353887328
 "99","Channel 13","Station 1 + 71 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",7,0.619644983309927
 "100","Channel 13","Station 1 + 71 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",10,1.29174231220931
 "101","Channel 13","Station 1 + 71 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",4,0.293992247305323
-"102","Channel 13","Station 1 + 77 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",9,0.531877173814613
-"103","Channel 13","Station 1 + 77 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",3,0.475534452863528
-"104","Channel 13","Station 1 + 77 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",5,0.904984024871426
-"105","Channel 13","Station 1 + 77 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",8,0.69327756381781
-"106","Channel 13","Station 1 + 77 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",7,1.1501516687742
-"107","Channel 13","Station 1 + 99 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",11,1.62212250664874
-"108","Channel 13","Station 1 + 99 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",5,0.674048808252115
-"109","Channel 13","Station 1 + 99 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",9,1.4436325396229
-"110","Channel 13","Station 1 + 99 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",9,1.54146835124718
-"111","Channel 13","Station 1 + 99 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",10,1.42069600480959
-"112","Channel 13","Station 1 + 99 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",9,1.11687948831206
+"102","Channel 13","Station 1 + 77 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",9,0.531877173814613
+"103","Channel 13","Station 1 + 77 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",3,0.475534452863528
+"104","Channel 13","Station 1 + 77 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",5,0.904984024871426
+"105","Channel 13","Station 1 + 77 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",8,0.69327756381781
+"106","Channel 13","Station 1 + 77 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",7,1.1501516687742
+"107","Channel 13","Station 1 + 99 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",11,1.62212250664874
+"108","Channel 13","Station 1 + 99 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One rock dam",5,0.674048808252115
+"109","Channel 13","Station 1 + 99 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",9,1.4436325396229
+"110","Channel 13","Station 1 + 99 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",9,1.54146835124718
+"111","Channel 13","Station 1 + 99 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",10,1.42069600480959
+"112","Channel 13","Station 1 + 99 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",9,1.11687948831206
 "113","Channel 13","Station 2 + 16 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",11,0.819745032385005
 "114","Channel 13","Station 2 + 16 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",8,1.23399812996944
 "115","Channel 13","Station 2 + 16 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",7,0.516571915210404
 "116","Channel 13","Station 2 + 16 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",8,1.23865751545302
 "117","Channel 13","Station 2 + 16 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",7,1.31440206997528
 "118","Channel 13","Station 2 + 16 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",8,0.78211590385291
-"119","Channel 13","Station 2 + 57 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",8,1.51778910053798
-"120","Channel 13","Station 2 + 57 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",7,0.650794059626186
-"121","Channel 13","Station 2 + 57 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",6,1.29556121942049
-"122","Channel 13","Station 2 + 57 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",8,1.42993104624535
-"123","Channel 13","Station 2 + 57 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",14,1.87587505943289
-"124","Channel 13","Station 2 + 57 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",8,1.09777928203329
+"119","Channel 13","Station 2 + 57 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",8,1.51778910053798
+"120","Channel 13","Station 2 + 57 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One rock dam",7,0.650794059626186
+"121","Channel 13","Station 2 + 57 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",6,1.29556121942049
+"122","Channel 13","Station 2 + 57 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",8,1.42993104624535
+"123","Channel 13","Station 2 + 57 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",14,1.87587505943289
+"124","Channel 13","Station 2 + 57 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",8,1.09777928203329
 "125","Channel 13","Station 2 + 67 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",11,1.70784650332993
 "126","Channel 13","Station 2 + 67 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",7,1.46451803526976
 "127","Channel 13","Station 2 + 67 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",7,1.63267922091521
 "128","Channel 13","Station 2 + 67 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",7,1.18349090801845
 "129","Channel 13","Station 2 + 67 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",9,1.56657234670319
 "130","Channel 13","Station 2 + 67 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",8,0.750033823661461
-"131","Channel 13","Station 3 + 09 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",11,1.23382636247314
-"132","Channel 13","Station 3 + 09 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",10,1.5126942745706
-"133","Channel 13","Station 3 + 09 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",7,1.21656814384571
-"134","Channel 13","Station 3 + 09 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",10,1.3523857193945
-"135","Channel 13","Station 3 + 09 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",11,1.35934949570294
-"136","Channel 13","Station 3 + 09 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",3,0.745077478670354
+"131","Channel 13","Station 3 + 09 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",11,1.23382636247314
+"132","Channel 13","Station 3 + 09 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One rock dam",10,1.5126942745706
+"133","Channel 13","Station 3 + 09 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",7,1.21656814384571
+"134","Channel 13","Station 3 + 09 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",10,1.3523857193945
+"135","Channel 13","Station 3 + 09 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",11,1.35934949570294
+"136","Channel 13","Station 3 + 09 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",3,0.745077478670354
 "137","Channel 13","Station 3 + 31 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",3,0.623351776409872
 "138","Channel 13","Station 3 + 31 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",8,0.850610183780465
 "139","Channel 13","Station 3 + 31 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",5,0.302704540976598
 "140","Channel 13","Station 3 + 31 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",5,0.658794566013312
 "141","Channel 13","Station 3 + 31 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",8,1.35392167691237
 "142","Channel 13","Station 3 + 31 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",6,0.919994692225167
-"143","Channel 13","Station 3 + 65 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",4,1.22452298898839
-"144","Channel 13","Station 3 + 65 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",7,1.09409070351643
-"145","Channel 13","Station 3 + 65 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",5,0.998383121674852
-"146","Channel 13","Station 3 + 65 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",7,1.06461735003661
-"147","Channel 13","Station 3 + 65 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",7,1.05860934420555
-"148","Channel 13","Station 3 + 65 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",6,1.04135253095815
-"149","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",8,1.19838115978729
-"150","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",7,0.938073682038703
-"151","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",8,1.20434806279692
-"152","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",10,1.23504908639663
-"153","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",10,1.43744278194384
-"154","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",7,1.27741165861984
+"143","Channel 13","Station 3 + 65 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",4,1.22452298898839
+"144","Channel 13","Station 3 + 65 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One rock dam",7,1.09409070351643
+"145","Channel 13","Station 3 + 65 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",5,0.998383121674852
+"146","Channel 13","Station 3 + 65 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",7,1.06461735003661
+"147","Channel 13","Station 3 + 65 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",7,1.05860934420555
+"148","Channel 13","Station 3 + 65 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",6,1.04135253095815
+"149","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",8,1.19838115978729
+"150","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One rock dam",7,0.938073682038703
+"151","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",8,1.20434806279692
+"152","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",10,1.23504908639663
+"153","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",10,1.43744278194384
+"154","Channel 13","Station 3 + 95.5 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",7,1.27741165861984
 "155","Channel 13","Station 4 + 14.5 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",6,1.53310253406705
 "156","Channel 13","Station 4 + 14.5 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",8,0.987485930953259
 "157","Channel 13","Station 4 + 14.5 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",8,1.39484562291473
 "158","Channel 13","Station 4 + 14.5 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",8,1.5879052390308
 "159","Channel 13","Station 4 + 14.5 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",7,1.29093406019185
 "160","Channel 13","Station 4 + 14.5 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",8,1.08434985128518
-"161","Channel 13","Station 4 + 36 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",6,1.13925868038684
-"162","Channel 13","Station 4 + 36 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One station dam",9,1.52842717358454
-"163","Channel 13","Station 4 + 36 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",6,1.23612682846721
-"164","Channel 13","Station 4 + 36 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",8,1.6729720342966
-"165","Channel 13","Station 4 + 36 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",10,1.73350112782725
-"166","Channel 13","Station 4 + 36 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",12,2.17428215118665
+"161","Channel 13","Station 4 + 36 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",6,1.13925868038684
+"162","Channel 13","Station 4 + 36 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","One rock dam",9,1.52842717358454
+"163","Channel 13","Station 4 + 36 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",6,1.23612682846721
+"164","Channel 13","Station 4 + 36 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",8,1.6729720342966
+"165","Channel 13","Station 4 + 36 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",10,1.73350112782725
+"166","Channel 13","Station 4 + 36 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",12,2.17428215118665
 "167","Channel 13","Station 4 + 50 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","Baffle",8,1.15704409450081
 "168","Channel 13","Station 4 + 50 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 13: In-channel treatment","Baffle",9,1.14024696542839
 "169","Channel 13","Station 4 + 50 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","Baffle",10,1.02923342641013
 "170","Channel 13","Station 4 + 50 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","Baffle",8,1.37477298524537
 "171","Channel 13","Station 4 + 50 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","Baffle",11,1.18995332298353
 "172","Channel 13","Station 4 + 50 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","Baffle",9,1.89425354311204
-"173","Channel 13","Station 4 + 78 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One station dam",9,1.93709352292395
-"174","Channel 13","Station 4 + 78 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One station dam",10,1.88909725382312
-"175","Channel 13","Station 4 + 78 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One station dam",9,1.70135294604941
-"176","Channel 13","Station 4 + 78 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One station dam",12,1.95658959145322
-"177","Channel 13","Station 4 + 78 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One station dam",8,1.53492776695634
+"173","Channel 13","Station 4 + 78 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 13: In-channel treatment","One rock dam",9,1.93709352292395
+"174","Channel 13","Station 4 + 78 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 13: In-channel treatment","One rock dam",10,1.88909725382312
+"175","Channel 13","Station 4 + 78 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 13: In-channel treatment","One rock dam",9,1.70135294604941
+"176","Channel 13","Station 4 + 78 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 13: In-channel treatment","One rock dam",12,1.95658959145322
+"177","Channel 13","Station 4 + 78 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 13: In-channel treatment","One rock dam",8,1.53492776695634
 "178","Channel 19","Station 01 + 04","Upland treatment","2012",2012-11-01,2012-01-01,"Channel 19: Upland treatment","No treatment",12,1.51291806829498
 "179","Channel 19","Station 01 + 04","Upland treatment","2013",2013-11-01,2013-01-01,"Channel 19: Upland treatment","No treatment",12,1.14140085174175
 "180","Channel 19","Station 01 + 04","Upland treatment","2015",2015-11-01,2015-01-01,"Channel 19: Upland treatment","No treatment",10,1.53756372698086
@@ -282,12 +282,12 @@
 "281","Channel 21","Station 01 + 07.5 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",8,1.46456037962759
 "282","Channel 21","Station 01 + 07.5 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",3,0.953171001760057
 "283","Channel 21","Station 01 + 07.5 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",5,0.633552590490464
-"284","Channel 21","Station 01 + 49 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",7,1.24021696554121
-"285","Channel 21","Station 01 + 49 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",7,1.61555082016875
-"286","Channel 21","Station 01 + 49 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",6,0.972948577429558
-"287","Channel 21","Station 01 + 49 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",5,0.61509532980796
-"288","Channel 21","Station 01 + 49 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",6,0.814736144244499
-"289","Channel 21","Station 01 + 49 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",3,0.065449516177756
+"284","Channel 21","Station 01 + 49 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One rock dam",7,1.24021696554121
+"285","Channel 21","Station 01 + 49 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One rock dam",7,1.61555082016875
+"286","Channel 21","Station 01 + 49 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One rock dam",6,0.972948577429558
+"287","Channel 21","Station 01 + 49 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One rock dam",5,0.61509532980796
+"288","Channel 21","Station 01 + 49 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One rock dam",6,0.814736144244499
+"289","Channel 21","Station 01 + 49 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One rock dam",3,0.065449516177756
 "290","Channel 21","Station 02 + 15 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",8,1.43954343672771
 "291","Channel 21","Station 02 + 15 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",8,1.4909804269615
 "292","Channel 21","Station 02 + 15 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",10,1.57523547692675
@@ -299,24 +299,24 @@
 "298","Channel 21","Station 03 + 80 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",2,0.0740225961475812
 "299","Channel 21","Station 03 + 80 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",7,0.885118719207178
 "300","Channel 21","Station 03 + 80 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",5,1.21004283655708
-"301","Channel 21","Station 04 + 90 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",5,1.09014064434507
-"302","Channel 21","Station 04 + 90 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",6,1.10927669178165
-"303","Channel 21","Station 04 + 90 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",5,1.22067040266239
-"304","Channel 21","Station 04 + 90 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",5,1.13390192449855
-"305","Channel 21","Station 04 + 90 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",5,0.756762110624589
-"306","Channel 21","Station 04 + 90 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",5,0.789115548837965
+"301","Channel 21","Station 04 + 90 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One rock dam",5,1.09014064434507
+"302","Channel 21","Station 04 + 90 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One rock dam",6,1.10927669178165
+"303","Channel 21","Station 04 + 90 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One rock dam",5,1.22067040266239
+"304","Channel 21","Station 04 + 90 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One rock dam",5,1.13390192449855
+"305","Channel 21","Station 04 + 90 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One rock dam",5,0.756762110624589
+"306","Channel 21","Station 04 + 90 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One rock dam",5,0.789115548837965
 "307","Channel 21","Station 06 + 36 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",8,1.27984313502328
 "308","Channel 21","Station 06 + 36 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",7,1.26811785948974
 "309","Channel 21","Station 06 + 36 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",11,1.10180239726504
 "310","Channel 21","Station 06 + 36 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",7,1.24137755235465
 "311","Channel 21","Station 06 + 36 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",10,1.30207046405369
 "312","Channel 21","Station 06 + 36 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",6,0.908374332821751
-"313","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",5,0.365073259125504
-"314","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",7,0.804870993565915
-"315","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",7,0.875289093369531
-"316","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",6,0.547645319987761
-"317","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",7,0.92511915775115
-"318","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",3,1.00546249694842
+"313","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One rock dam",5,0.365073259125504
+"314","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One rock dam",7,0.804870993565915
+"315","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One rock dam",7,0.875289093369531
+"316","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One rock dam",6,0.547645319987761
+"317","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One rock dam",7,0.92511915775115
+"318","Channel 21","Station 07 + 49.5 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One rock dam",3,1.00546249694842
 "319","Channel 21","Station 07 + 66 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",4,0.404509941773612
 "320","Channel 21","Station 07 + 66 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",2,0.376770161256437
 "321","Channel 21","Station 07 + 66 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",5,1.45858475280701
@@ -328,36 +328,36 @@
 "327","Channel 21","Station 08 + 62 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",10,1.46428490572817
 "328","Channel 21","Station 08 + 62 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",14,1.66231358224374
 "329","Channel 21","Station 08 + 62 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",6,1.10820471026077
-"330","Channel 21","Station 09 + 99 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",6,0.943626573958522
-"331","Channel 21","Station 09 + 99 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",6,1.02161766995703
-"332","Channel 21","Station 09 + 99 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",10,1.63143725613214
-"333","Channel 21","Station 09 + 99 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",11,1.4487345723773
-"334","Channel 21","Station 09 + 99 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",10,1.65466659987357
-"335","Channel 21","Station 09 + 99 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",10,1.7031916739424
+"330","Channel 21","Station 09 + 99 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One rock dam",6,0.943626573958522
+"331","Channel 21","Station 09 + 99 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One rock dam",6,1.02161766995703
+"332","Channel 21","Station 09 + 99 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One rock dam",10,1.63143725613214
+"333","Channel 21","Station 09 + 99 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One rock dam",11,1.4487345723773
+"334","Channel 21","Station 09 + 99 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One rock dam",10,1.65466659987357
+"335","Channel 21","Station 09 + 99 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One rock dam",10,1.7031916739424
 "336","Channel 21","Station 10 + 13 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",2,0.181820282304918
 "337","Channel 21","Station 10 + 13 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",3,0.204158745302152
 "338","Channel 21","Station 10 + 13 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",11,0.660074654807292
 "339","Channel 21","Station 10 + 13 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",6,0.611421010124414
 "340","Channel 21","Station 10 + 13 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",11,1.12553587352678
 "341","Channel 21","Station 10 + 13 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",5,0.841170101366177
-"342","Channel 21","Station 11 + 12 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",9,1.38335712763323
-"343","Channel 21","Station 11 + 12 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",11,1.78195245311872
-"344","Channel 21","Station 11 + 12 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",10,1.46132182027925
-"345","Channel 21","Station 11 + 12 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",8,1.28313669310341
-"346","Channel 21","Station 11 + 12 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",10,1.58199477873439
-"347","Channel 21","Station 11 + 12 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",7,1.42844425120269
+"342","Channel 21","Station 11 + 12 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One rock dam",9,1.38335712763323
+"343","Channel 21","Station 11 + 12 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One rock dam",11,1.78195245311872
+"344","Channel 21","Station 11 + 12 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One rock dam",10,1.46132182027925
+"345","Channel 21","Station 11 + 12 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One rock dam",8,1.28313669310341
+"346","Channel 21","Station 11 + 12 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One rock dam",10,1.58199477873439
+"347","Channel 21","Station 11 + 12 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One rock dam",7,1.42844425120269
 "348","Channel 21","Station 11 + 24 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",8,1.59825223742886
 "349","Channel 21","Station 11 + 24 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",6,1.34479105299582
 "350","Channel 21","Station 11 + 24 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",9,0.88276207064869
 "351","Channel 21","Station 11 + 24 BAF","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","Baffle",5,0.898995894728719
 "352","Channel 21","Station 11 + 24 BAF","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","Baffle",7,1.24536157145729
 "353","Channel 21","Station 11 + 24 BAF","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","Baffle",6,1.75724530546323
-"354","Channel 21","Station 11 + 63 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One station dam",10,1.96554359259447
-"355","Channel 21","Station 11 + 63 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One station dam",11,2.02029723451598
-"356","Channel 21","Station 11 + 63 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One station dam",14,1.92229337728948
-"357","Channel 21","Station 11 + 63 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One station dam",14,1.75927514737508
-"358","Channel 21","Station 11 + 63 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One station dam",13,2.13141471363832
-"359","Channel 21","Station 11 + 63 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One station dam",6,0.759284720030114
+"354","Channel 21","Station 11 + 63 ORD","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","One rock dam",10,1.96554359259447
+"355","Channel 21","Station 11 + 63 ORD","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","One rock dam",11,2.02029723451598
+"356","Channel 21","Station 11 + 63 ORD","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","One rock dam",14,1.92229337728948
+"357","Channel 21","Station 11 + 63 ORD","In-channel treatment","2015",2015-11-01,2015-01-01,"Channel 21: In-channel treatment","One rock dam",14,1.75927514737508
+"358","Channel 21","Station 11 + 63 ORD","In-channel treatment","2018",2018-11-01,2018-01-01,"Channel 21: In-channel treatment","One rock dam",13,2.13141471363832
+"359","Channel 21","Station 11 + 63 ORD","In-channel treatment","2021",2021-11-01,2021-01-01,"Channel 21: In-channel treatment","One rock dam",6,0.759284720030114
 "360","Channel 21","Station 11 + 73 BAF","In-channel treatment","2012",2012-11-01,2012-01-01,"Channel 21: In-channel treatment","Baffle",7,1.34367018053545
 "361","Channel 21","Station 11 + 73 BAF","In-channel treatment","2013",2013-11-01,2013-01-01,"Channel 21: In-channel treatment","Baffle",11,1.49176132257002
 "362","Channel 21","Station 11 + 73 BAF","In-channel treatment","2014",2014-11-01,2014-01-01,"Channel 21: In-channel treatment","Baffle",12,1.64778579488428
