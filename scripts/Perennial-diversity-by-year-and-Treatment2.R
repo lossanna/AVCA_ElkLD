@@ -95,6 +95,6 @@ anova.shan <- aov(shan ~ Treatment2 * Year, data = per.div)
 Anova(anova.shan, type = "III") # NS
 
 
-save.image("Perennial-diversity-by-year-and-Treatment2.RData")
+save.image("RData/Perennial-diversity-by-year-and-Treatment2.RData")
 
 
