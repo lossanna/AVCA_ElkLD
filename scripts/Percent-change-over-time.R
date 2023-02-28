@@ -5,6 +5,7 @@ library(tidyverse)
 total.sum <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.sum <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv") |> 
   filter(woody == "Herbaceous")
+per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 meta.raw <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
                    sep = "\t", header = TRUE)
 
@@ -47,8 +48,8 @@ total.change2 <- as.matrix(total.change2)
 totalts2 <- ts(total.change2, 1, 3, frequency = 1)
 
 # Calculate percent change 
-total.pd1 <- log(totalts1) - log(stats::lag(totalts1, - 1)) # 1-year interval for 2012-2015
-total.pd2 <- (log(totalts2) - log(stats::lag(totalts2 - 1))) / 3 # 3-year interval for 2015-2021
+total.pd1 <- log(totalts1) - log(stats::lag(totalts1)) # 1-year interval for 2012-2015
+total.pd2 <- (log(totalts2) - log(stats::lag(totalts2))) / 3 # 3-year interval for 2015-2021
 
 # Reformat as dataframe, add years, names & Treatment3
 total.pd <- rbind(total.pd1, total.pd2)
@@ -73,6 +74,11 @@ write.csv(total.pd,
 ggplot(total.pd, aes(x = Treatment3, y = dCover)) +
   geom_boxplot() +
   geom_jitter() 
+
+ggplot(total.pd, aes(x = Year, y = dCover)) +
+  geom_boxplot() +
+  geom_jitter() +
+  facet_wrap(~Treatment3)
   
 t.test(filter(total.pd, Treatment3 == "Treated")$dCover, 
        filter(total.pd, Treatment3 == "Control")$dCover) # NS
@@ -111,8 +117,8 @@ herb.change2 <- as.matrix(herb.change2)
 herbts2 <- ts(herb.change2, 1, 3, frequency = 1)
 
 # Calculate percent change 
-herb.pd1 <- log(herbts1) - log(stats::lag(herbts1, - 1)) # 1-year interval for 2012-2015
-herb.pd2 <- (log(herbts2) - log(stats::lag(herbts2 - 1))) / 3 # 3-year interval for 2015-2021
+herb.pd1 <- log(herbts1) - log(stats::lag(herbts1)) # 1-year interval for 2012-2015
+herb.pd2 <- (log(herbts2) - log(stats::lag(herbts2))) / 3 # 3-year interval for 2015-2021
 
 # Reformat as dataframe, add years, names & Treatment3
 herb.pd <- rbind(herb.pd1, herb.pd2)
@@ -138,9 +144,151 @@ ggplot(herb.pd, aes(x = Treatment3, y = dCover)) +
   geom_boxplot() +
   geom_jitter() 
 
+ggplot(herb.pd, aes(x = Year, y = dCover)) +
+  geom_boxplot() +
+  geom_jitter() +
+  facet_wrap(~Treatment3)
+
 t.test(filter(herb.pd, Treatment3 == "Treated")$dCover, 
        filter(herb.pd, Treatment3 == "Control")$dCover) # NS
 
+
+
+# Perennial richness ------------------------------------------------------
+
+# Remove March samples, format to join with names from meta
+rich.change <- per.div |> 
+  select(Year, Channel, Station, rich) |> 
+  filter(!str_detect(Year, "-03")) |> 
+  mutate(Year = gsub("-.*", "", Year))
+rich.change$Name <- paste0(rich.change$Channel, ", ", rich.change$Station)
+rich.change <- rich.change |> 
+  select(-Channel, -Station) |> 
+  mutate(Year = as.numeric(Year))
+
+# Add Sample no. from meta
+rich.change <- left_join(rich.change, meta)
+rich.change <- rich.change |> 
+  select(-Name)
+rich.change.long <- rich.change
+
+# Pivot wider so every column is a sample and every row is a year
+# separate 2012-2015 and 2015-2021
+rich.change.wide <- rich.change.long |> 
+  pivot_wider(names_from = Sample, values_from = rich)
+rich.change1 <- rich.change.wide[1:4, -c(1)]
+rich.change2 <- rich.change.wide[4:6, -c(1)]
+
+# Convert to time series object
+rich.change1 <- as.matrix(rich.change1)
+richts1 <- ts(rich.change1, 1, 4, frequency = 1)
+rich.change2 <- as.matrix(rich.change2)
+richts2 <- ts(rich.change2, 1, 3, frequency = 1)
+
+# Calculate percent change 
+rich.pd1 <- log(richts1) - log(stats::lag(richts1)) # 1-year interval for 2012-2015
+rich.pd2 <- (log(richts2) - log(stats::lag(richts2))) / 3 # 3-year interval for 2015-2021
+
+# Reformat as dataframe, add years, names & Treatment3
+rich.pd <- rbind(rich.pd1, rich.pd2)
+rich.pd <- as.data.frame(rich.pd)
+rich.pd$Year <- c("2012-2013", "2013-2014", "2014-2015", "2015-2018", "2018-2021")
+rich.pd <- rich.pd |> 
+  pivot_longer(!Year, names_to = "Sample", values_to = "dRichness")
+rich.pd$Sample <- gsub("^.*?\\.", "", rich.pd$Sample)
+rich.pd$Sample <- as.numeric(rich.pd$Sample)
+rich.pd <- left_join(rich.pd, meta)
+rich.pd <- rich.pd |> 
+  mutate(Treatment3 = case_when(
+    str_detect(rich.pd$Name, "Channel 12|Channel 19") ~ "Control",
+    str_detect(rich.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
+  arrange(Sample)
+
+write.csv(rich.pd,
+          file = "data/cleaned/Percent-difference_rich-cover.csv")
+
+
+# Plot by Treatment3
+ggplot(rich.pd, aes(x = Treatment3, y = dRichness)) +
+  geom_boxplot() +
+  geom_jitter() 
+
+ggplot(rich.pd, aes(x = Year, y = dRichness)) +
+  geom_boxplot() +
+  geom_jitter() +
+  facet_wrap(~Treatment3)
+
+t.test(filter(rich.pd, Treatment3 == "Treated")$dRichness, 
+       filter(rich.pd, Treatment3 == "Control")$dRichness) # NS
+
+
+
+# Perennial Shannon -------------------------------------------------------
+
+# Remove March samples, format to join with names from meta
+shan.change <- per.div |> 
+  select(Year, Channel, Station, shan) |> 
+  filter(!str_detect(Year, "-03")) |> 
+  mutate(Year = gsub("-.*", "", Year))
+shan.change$Name <- paste0(shan.change$Channel, ", ", shan.change$Station)
+shan.change <- shan.change |> 
+  select(-Channel, -Station) |> 
+  mutate(Year = as.numeric(Year))
+
+# Add Sample no. from meta
+shan.change <- left_join(shan.change, meta)
+shan.change <- shan.change |> 
+  select(-Name)
+shan.change.long <- shan.change
+
+# Pivot wider so every column is a sample and every row is a year
+  # separate 2012-2015 and 2015-2021
+shan.change.wide <- shan.change.long |> 
+  pivot_wider(names_from = Sample, values_from = shan)
+shan.change1 <- shan.change.wide[1:4, -c(1)]
+shan.change2 <- shan.change.wide[4:6, -c(1)]
+
+# Convert to time series object
+shan.change1 <- as.matrix(shan.change1)
+shants1 <- ts(shan.change1, 1, 4, frequency = 1)
+shan.change2 <- as.matrix(shan.change2)
+shants2 <- ts(shan.change2, 1, 3, frequency = 1)
+
+# Calculate percent change 
+shan.pd1 <- log(shants1) - log(stats::lag(shants1)) # 1-year interval for 2012-2015
+shan.pd2 <- (log(shants2) - log(stats::lag(shants2))) / 3 # 3-year interval for 2015-2021
+
+# Reformat as dataframe, add years, names & Treatment3
+shan.pd <- rbind(shan.pd1, shan.pd2)
+shan.pd <- as.data.frame(shan.pd)
+shan.pd$Year <- c("2012-2013", "2013-2014", "2014-2015", "2015-2018", "2018-2021")
+shan.pd <- shan.pd |> 
+  pivot_longer(!Year, names_to = "Sample", values_to = "dShannon")
+shan.pd$Sample <- gsub("^.*?\\.", "", shan.pd$Sample)
+shan.pd$Sample <- as.numeric(shan.pd$Sample)
+shan.pd <- left_join(shan.pd, meta)
+shan.pd <- shan.pd |> 
+  mutate(Treatment3 = case_when(
+    str_detect(shan.pd$Name, "Channel 12|Channel 19") ~ "Control",
+    str_detect(shan.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
+  arrange(Sample)
+
+write.csv(shan.pd,
+          file = "data/cleaned/Percent-difference_shan-cover.csv")
+
+
+# Plot by Treatment3
+ggplot(shan.pd, aes(x = Treatment3, y = dShannon)) +
+  geom_boxplot() +
+  geom_jitter() 
+
+ggplot(shan.pd, aes(x = Year, y = dShannon)) +
+  geom_boxplot() +
+  geom_jitter() +
+  facet_wrap(~Treatment3)
+
+t.test(filter(shan.pd, Treatment3 == "Treated")$dShannon, 
+       filter(shan.pd, Treatment3 == "Control")$dShannon) # NS
 
 save.image("RData/Percent-change-over-time.RData")
 
