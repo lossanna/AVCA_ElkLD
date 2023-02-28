@@ -1,5 +1,6 @@
 library(tidyverse)
 
+
 # Load data ---------------------------------------------------------------
 
 total.sum <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
@@ -59,7 +60,6 @@ total.pd <- total.pd |>
     str_detect(total.pd$Name, "Channel 13|Channel 21") ~ "Treated"))
 
 
-
 # Percent change in total cover, 2012-2015
 total.change.12.15 <- total.change.wide[1:4, -c(1)]
 total.change.12.15 <- as.matrix(total.change.12.15)
@@ -71,6 +71,7 @@ total.pd1215$Year <- c("2012-2013", "2013-2014", "2015-2016")
 total.pd1215 <- total.pd1215 |> 
   pivot_longer(!Year, names_to = "Sample", values_to = "dCover")
 total.pd1215$Sample <- gsub("^.*?\\.", "", total.pd1215$Sample)
+total.pd1215$Sample <- as.numeric(total.pd1215$Sample)
 total.pd1215 <- left_join(total.pd1215, meta)
 
 
@@ -78,3 +79,4 @@ total.pd1215 <- left_join(total.pd1215, meta)
 
 
 save.image("RData/Percent-change-over-time.RData")
+

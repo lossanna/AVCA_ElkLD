@@ -20,14 +20,40 @@ total.all <- total.all %>%
          Treatment2 = gsub("^.*?: ", "", total.all$channel.trt)) %>% 
   mutate(Treatment2 = case_when(
     Treatment2 == "No treatment" ~ "Control",
-    TRUE ~ Treatment2))
+    TRUE ~ Treatment2)) |> 
+  mutate(Treatment3 = case_when(
+    str_detect(Treatment2, c("Control|Upland")) ~ "Control",
+    str_detect(Treatment2, "In-channel") ~ "Treated"))
+
+per.div <- per.div |> 
+  mutate(Treatment3 = case_when(
+    str_detect(channel.trt, c("No|Upland")) ~ "Control",
+    str_detect(channel.trt, "In-channel") ~ "Treated"))
+
+
+# By Treatment3 -----------------------------------------------------------
+
+## Total plant cover
+# All years
+with(total.all, asymptotic_test(Cover, Treatment3)) # NS
+
+# 2012-2015 precipitation
+(6.46 - 10.98) / 10.98 # 41% decrease
+total.12.15 <- total.all %>% 
+  filter(Year %in% c("2012", "2013", "2014", "2015"))
+with(total.12.15, asymptotic_test(Cover, Treatment3)) # NS
+
+# Richness
+with(per.div, asymptotic_test(rich, Treatment3)) # 0.03851548
+
+# Shannon
+with(per.div, asymptotic_test(shan, Treatment2)) # 0.006889485
 
 
 
 # By Treatment2 -----------------------------------------------------------
 
-
-# Total plant cover -------------------------------------------------------
+## Total plant cover ------------------------------------------------------
 
 # All years
 with(total.all, asymptotic_test(Cover, Treatment2)) # p = 0.04598678
@@ -54,7 +80,7 @@ with(total.12.15, asymptotic_test(Cover, Treatment2)) # NS
 
 
 
-# Richness ----------------------------------------------------------------
+## Richness ---------------------------------------------------------------
 
 # All years
 with(per.div, asymptotic_test(rich, Treatment2)) # p = 0.01160437
@@ -82,7 +108,7 @@ with(rich.12.15, asymptotic_test(rich, Treatment2)) # NS
 
 
 
-# Shannon -----------------------------------------------------------------
+## Shannon ----------------------------------------------------------------
 
 # All years
 with(per.div, asymptotic_test(shan, Treatment2)) # p = 0.006889485
