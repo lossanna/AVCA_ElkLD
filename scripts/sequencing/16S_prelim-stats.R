@@ -6,6 +6,7 @@ library(rcompanion)
 library(tidyverse)
 library(ggpubr)
 library(reshape2)
+library(car)
 
 
 # Load data ---------------------------------------------------------------
@@ -157,7 +158,11 @@ meta <- meta %>%
                                        "Upland treatment", "No treatment")),
          Treatment2 = factor(meta$Treatment2, 
                              levels = c("In-channel treatment", "Upland treatment",
-                                        "No treatment")))
+                                        "No treatment"))) |> 
+  mutate(Treatment3 = case_when(
+    Treatment2 == "No treatment" ~ "Control",
+    Treatment2 == "Upland treatment" ~ "Control",
+    Treatment2 == "In-channel treatment" ~ "Treated"))
   
 # Check number of sequences per sample
 hist(rowSums(barc.asv))
@@ -189,7 +194,7 @@ meta$NMDS2 <- barc.nmds$points[ , 2]
 adonis2(barc.dist ~ meta$Channel) # p < 0.001, 15% of variability explained by Channel
 adonis2(barc.dist ~ meta$Treatment) # p < 0.001, 13% of variability explained by Treatment
 adonis2(barc.dist ~ meta$Treatment2) # p < 0.001, 11% of variability explained by Treatment2 (BAF and ORD combined)
-
+adonis2(barc.dist ~ meta$Treatment3) # p = 0.028, 3% of variability explained by Treatment3
 
 # Plot NMDS
 # By channel
@@ -206,7 +211,7 @@ meta %>%
   theme_minimal() +
   theme(legend.title = element_blank())
 
-# By treatment
+# By treatment1
 meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment, shape = Treatment)) +
   geom_point(size = 4) +
@@ -220,6 +225,13 @@ meta %>%
   geom_point(size = 4) +
   scale_shape_manual(values = c(15, 17, 18)) +
   scale_color_manual(values = c("#33A02C", "#1F78B4", "red")) +
+  theme_minimal() 
+
+# By treatment3
+meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment3, shape = Treatment3)) +
+  geom_point(size = 4) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
   theme_minimal() 
 
 # By channel and treatment
@@ -333,6 +345,13 @@ meta %>%
             mapping = aes(x = x, y = y, label = label),
             color = "black") 
 
+# Beta dispersion by treatment 2
+barc.betadisper.t3 <- betadisper(barc.dist, 
+                                 group = meta$Treatment3, 
+                                 type = "centroid")
+
+anova(barc.betadisper.t3) # NS
+
 
 write.table(meta, 
             file = "data/cleaned/sequencing/bac_arc_diversity.txt", 
@@ -402,6 +421,21 @@ meta %>%
   theme(legend.position = "none") 
 
 
+# By treatment3
+  # Explore distribution
+boxplot(Shannon ~ Treatment3, data = meta)
+qqPlot(meta$Shannon)
+
+t.test(filter(meta, Treatment3 == "Control")$Shannon,
+       filter(meta, Treatment3 == "Treated")$Shannon) # NS
+
+# Plot Shannon diversity
+meta |> 
+  ggplot(aes(Treatment3, Shannon)) +
+  geom_boxplot() +
+  geom_jitter()
+
+
 
 # Richness ----------------------------------------------------------------
 
@@ -461,6 +495,21 @@ meta %>%
   scale_fill_manual(values = c("#33A02C", "#1F78B4", "red")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
+
+
+# By treatment3
+# Explore distribution
+boxplot(Richness ~ Treatment3, data = meta)
+qqPlot(meta$Richness)
+
+t.test(filter(meta, Treatment3 == "Control")$Richness,
+       filter(meta, Treatment3 == "Treated")$Richness) # NS
+
+# Plot 
+meta |> 
+  ggplot(aes(Treatment3, Richness)) +
+  geom_boxplot() +
+  geom_jitter()
 
 
 
