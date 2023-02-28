@@ -124,6 +124,36 @@ hsd.total.ctrl
 # 2018         46.09274     ab
 # 2015         39.35282      b
 
+# Plot with one-way ANOVA letters
+total.ctrl.letters <- hsd.total.ctrl$groups
+total.ctrl.letters <- total.ctrl.letters |> 
+  mutate(Year = rownames(total.ctrl.letters)) |> 
+  arrange(Year)
+letters <- data.frame(x = total.avg$year.xaxis[1:6],
+                      y = rep(67, 6),
+                      label = total.ctrl.letters$groups,
+                      Treatment3 = c(rep("Control", 6)))
+
+total.plot.letters <- ggplot(total.avg, aes(x = year.xaxis, y = mean, 
+                                            group = Treatment3, 
+                                            color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Total plant cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+total.plot.letters
+
+
 # Correlation with precipitation
 total.all <- left_join(total.all, precip_join)
 plot(Cover ~ Precip_cum, data = total.all)
@@ -154,6 +184,8 @@ hsd.total.12.15.ctrl
 # 2012               59.25694      a
 # 2014               51.68333     ab
 # 2015               39.35282      b
+
+
 
 
 
@@ -223,5 +255,41 @@ hsd.herb.ctrl
 # 2018        19.89718     ab
 # 2013        17.41528      b
 # 2015        14.21169      b
+
+
+# Plot with one-way ANOVA letters
+herb.ctrl.letters <- hsd.herb.ctrl$groups
+herb.ctrl.letters <- herb.ctrl.letters |> 
+  mutate(Year = rownames(herb.ctrl.letters)) |> 
+  arrange(Year)
+herb.trt.letters <- hsd.herb.trt$groups
+herb.trt.letters <-herb.trt.letters |> 
+  mutate(Year = rownames(herb.trt.letters)) |> 
+  arrange(Year)
+letters <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
+                      y = rep(28, 12),
+                      label = c(herb.ctrl.letters$groups,
+                                herb.trt.letters$groups),
+                      Treatment3 = c(rep("Control", 6),
+                                     rep("Treated", 6)))
+herb.plot.letters <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                                  group = Treatment3, 
+                                  color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+herb.plot.letters
+
 
 save.image("RData/Cover-by-year-and-Treatment3.RData")
