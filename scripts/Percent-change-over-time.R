@@ -72,12 +72,34 @@ write.csv(total.pd,
 
 # Plot by Treatment3
 ggplot(total.pd, aes(x = Treatment3, y = dCover)) +
-  geom_boxplot() +
-  geom_jitter() 
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in total cover")
 
 ggplot(total.pd, aes(x = Year, y = dCover)) +
-  geom_boxplot() +
-  geom_jitter() +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in total cover") +
   facet_wrap(~Treatment3)
   
 t.test(filter(total.pd, Treatment3 == "Treated")$dCover, 
@@ -140,15 +162,38 @@ write.csv(herb.pd,
 
 
 # Plot by Treatment3
-ggplot(herb.pd, aes(x = Treatment3, y = dCover)) +
-  geom_boxplot() +
-  geom_jitter() 
+ggplot(herb.pd, aes(x = Year, y = dCover)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in herbaceous cover") 
 
 ggplot(herb.pd, aes(x = Year, y = dCover)) +
-  geom_boxplot() +
-  geom_jitter() +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in herbaceous cover") +
   facet_wrap(~Treatment3)
 
+# T-test
 t.test(filter(herb.pd, Treatment3 == "Treated")$dCover, 
        filter(herb.pd, Treatment3 == "Control")$dCover) # NS
 
@@ -209,13 +254,35 @@ write.csv(rich.pd,
 
 
 # Plot by Treatment3
-ggplot(rich.pd, aes(x = Treatment3, y = dRichness)) +
-  geom_boxplot() +
-  geom_jitter() 
+ggplot(rich.pd, aes(x = Year, y = dRichness)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in perennial richness")
 
 ggplot(rich.pd, aes(x = Year, y = dRichness)) +
-  geom_boxplot() +
-  geom_jitter() +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in perennial richness") +
   facet_wrap(~Treatment3)
 
 t.test(filter(rich.pd, Treatment3 == "Treated")$dRichness, 
@@ -278,15 +345,38 @@ write.csv(shan.pd,
 
 
 # Plot by Treatment3
-ggplot(shan.pd, aes(x = Treatment3, y = dShannon)) +
-  geom_boxplot() +
-  geom_jitter() 
+ggplot(shan.pd, aes(x = Year, y = dShannon)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in perennial diversity") 
 
 ggplot(shan.pd, aes(x = Year, y = dShannon)) +
-  geom_boxplot() +
-  geom_jitter() +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in perennial diversity") +
   facet_wrap(~Treatment3)
 
+# T-test
 t.test(filter(shan.pd, Treatment3 == "Treated")$dShannon, 
        filter(shan.pd, Treatment3 == "Control")$dShannon) # NS
 
