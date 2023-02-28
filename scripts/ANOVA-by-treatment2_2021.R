@@ -4,7 +4,7 @@ library(agricolae)
 
 # Load data ---------------------------------------------------------------
 
-dat.2021.raw <- read.csv("data/cleaned/SEM-input.csv")
+dat.2021.raw <- read.csv("data/cleaned/Data-2021_clean.csv")
 meta <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
                    sep = "\t", header = TRUE)
 

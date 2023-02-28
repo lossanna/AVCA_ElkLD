@@ -290,5 +290,7 @@ ggplot(shan.pd, aes(x = Year, y = dShannon)) +
 t.test(filter(shan.pd, Treatment3 == "Treated")$dShannon, 
        filter(shan.pd, Treatment3 == "Control")$dShannon) # NS
 
+
+
 save.image("RData/Percent-change-over-time.RData")
 
