@@ -10,13 +10,14 @@ library(car)
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
 
-per.diversity <- read.csv("data/cleaned/All-Nov_perennial-diversity.csv")
+per.diversity <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 meta <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
                    sep = "\t", header = TRUE)
 
 soil.chem <- read_xlsx("data/Excel_LO_edited/Blankinship-soil-chemistry_TN-TC-OM_LO.xlsx", 
-                       sheet = "R_LO")
+                       sheet = "R_LO") |> 
+  select(-Year, -Treatment)
 
 elevation <- read_xlsx("data/Excel_LO_edited/Vegetation monitoring point elevation change data_LO.xlsx",
                        sheet = "R_LO")
@@ -28,6 +29,7 @@ width <- width %>%
   rename(Width = Average)
 
 diff.12.21 <- read.csv("data/cleaned/Difference_2012-2021.csv")
+diff.12.21$station.trt <- gsub("One station dam", "One rock dam", diff.12.21$station.trt)
 
 
 # Compile 2021 data -------------------------------------------------------
@@ -46,14 +48,13 @@ wood.2021 <- woody.all %>%
   rename(Woody = Cover) %>% 
   select(-woody)
 richness.2021 <- per.diversity %>% 
-  filter(Year == "2021-11-01") %>% 
-  select(-shan)
+  filter(year.date == "2021-11-01") %>% 
+  select(Channel, Station, rich)
 shannon.2021 <- per.diversity %>% 
-  filter(Year == "2021-11-01") %>% 
-  select(-rich)
+  filter(year.date == "2021-11-01") %>% 
+  select(Channel, Station, shan)
 
 # Compile variables
-soil.chem$Year <- as.character(soil.chem$Year)
 dat.2021 <- total.2021 %>% 
   left_join(herb.2021) %>% 
   left_join(wood.2021) %>% 
