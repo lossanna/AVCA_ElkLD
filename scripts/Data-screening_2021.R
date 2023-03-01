@@ -139,6 +139,8 @@ hist(dat.2021$TC_log, breaks = 10)
 qqPlot(dat.2021$TN_log)
 qqPlot(dat.2021$TC_log)
 
+dat.2021.sem <- dat.2021
+
 
 # Bivariate scatterplot matrix --------------------------------------------
 
@@ -149,8 +151,47 @@ pairs(~ rich + TN_log + TC_log + OM_perc + Elev_Diff + Width, data = dat.2021)
 pairs(~ shan + TN_log + TC_log + OM_perc + Elev_Diff + Width, data = dat.2021)
 
 
-# Multiple linear regression ----------------------------------------------
+# Add treatments and rename cols ------------------------------------------
 
+dat.2021$Name <- paste0(dat.2021$Channel, ", ", dat.2021$Station)
+dat.2021 <- left_join(dat.2021, meta)
+
+dat.2021 <- dat.2021 %>% 
+  rename(Richness.barc = Richness,
+         Shannon.barc = Shannon) %>% 
+  mutate(TN_ppt = TN_perc * 10,
+         TC_ppt = TC_perc * 10) |> 
+  mutate(Treatment3 = case_when(
+    Treatment2 == "No treatment" ~ "Control",
+    Treatment2 == "Upland treatment" ~ "Control",
+    Treatment2 == "In-channel treatment" ~ "Treated"))
+
+dat.2021 <- dat.2021 |> 
+  select(PlotTimeID, Sample, Name, Channel, Station, Treatment1, Treatment2, Treatment3,
+         Cover, Herbaceous, Woody, rich, shan,
+         TN_perc, TN_log, TN_ppt, TC_perc, TC_log, TC_ppt, CN_ratio, OM_perc,
+         Elev_Diff, Width,
+         Richness.barc, Shannon.barc, NMDS1, NMDS2, betadisper.channel,
+         betadisper.treatment1, betadisper.treatment2, betadisper.treatment3)
+
+
+# Save --------------------------------------------------------------------
+
+write.csv(dat.2021,
+          file = "data/cleaned/Data-2021_clean.csv",
+          row.names = FALSE)
+
+save.image("RData/Data-screening_2021.RData")
+ 
+
+
+
+# Old analysis ------------------------------------------------------------
+
+dat.2021.sem <- dat.2021.sem |> 
+  select(-CN_ratio)
+
+# Multiple linear regression 
 totcover.lm <- lm(Cover ~ TN_log + TC_log + OM_perc + Elev_Diff + Width, 
                   data = dat.2021)
 car::vif(totcover.lm) # TN and TC are collinear
@@ -164,32 +205,7 @@ check_model(totcover.lm)
 
 summary(totcover.lm)
 
-
-# Add treatments and rename cols ------------------------------------------
-
-meta$Station <- gsub("^.*?, ", "", meta$Name)
-dat.2021 <- left_join(dat.2021, meta)
-
-dat.2021 <- dat.2021 %>% 
-  rename(Richness.barc = Richness,
-         Shannon.barc = Shannon) %>% 
-  mutate(TN_ppt = TN_perc * 10,
-         TC_ppt = TC_perc * 10) |> 
-  mutate(Treatment3 = case_when(
-    Treatment2 == "No treatment" ~ "Control",
-    Treatment2 == "Upland treatment" ~ "Control",
-    Treatment2 == "In-channel treatment" ~ "Treated"))
-
-
-# Save --------------------------------------------------------------------
-
-write.csv(dat.2021,
-          file = "data/cleaned/Data-2021_clean.csv",
-          row.names = FALSE)
-
-write.csv(dat.2021,
-          file = "data/cleaned/SEM-input.csv",
-          row.names = FALSE)
-
-save.image("RData/Data-screening_2021.RData")
- 
+# write.csv(dat.2021,
+#           file = "data/cleaned/SEM-input.csv",
+#           row.names = FALSE) 
+  # do not overwrite CSV because I don't think I can currently recreate it because of problems with the Difference_2012-2021 script and data
