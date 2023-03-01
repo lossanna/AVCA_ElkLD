@@ -150,19 +150,13 @@ summary(rowSums(barc.asv))
 # Read metadata
 meta <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
                    header = TRUE,
-                   sep = "\t")
-
-meta <- meta %>% 
-  mutate(Treatment = factor(meta$Treatment,
+                   sep = "\t") %>% 
+  mutate(Treatment1 = factor(meta$Treatment1,
                             levels = c("Baffle", "One rock dam", 
                                        "Upland treatment", "No treatment")),
          Treatment2 = factor(meta$Treatment2, 
                              levels = c("In-channel treatment", "Upland treatment",
-                                        "No treatment"))) |> 
-  mutate(Treatment3 = case_when(
-    Treatment2 == "No treatment" ~ "Control",
-    Treatment2 == "Upland treatment" ~ "Control",
-    Treatment2 == "In-channel treatment" ~ "Treated"))
+                                        "No treatment"))) 
   
 # Check number of sequences per sample
 hist(rowSums(barc.asv))
@@ -269,32 +263,32 @@ meta %>%
   ylab("Beta dispersion") 
 
 
-# Beta dispersion by treatment
-barc.betadisper.t <- betadisper(barc.dist, 
-                                group = meta$Treatment, 
+# Beta dispersion by Treatment1
+barc.betadisper.t1 <- betadisper(barc.dist, 
+                                group = meta$Treatment1, 
                                 type = "centroid")
 
 anova(barc.betadisper.t) # p = 5.534e-05 
 
-meta$betadisper.treatment <- barc.betadisper.t$distances
+meta$betadisper.treatment1 <- barc.betadisper.t1$distances
 
-betadisper.t.hsd <- HSD.test(aov(betadisper.treatment ~ Treatment, data = meta), 
-                             trt = "Treatment")
-betadisper.t.hsd
-betadis.letters.t <- betadisper.t.hsd$groups
-betadis.letters.t <- betadis.letters.t[c("Baffle", "One rock dam", 
+betadisper.t1.hsd <- HSD.test(aov(betadisper.treatment1 ~ Treatment1, data = meta), 
+                             trt = "Treatment1")
+betadisper.t1.hsd
+betadis.letters.t1 <- betadisper.t1.hsd$groups
+betadis.letters.t1 <- betadis.letters.t1[c("Baffle", "One rock dam", 
                                          "Upland treatment", "No treatment"), ]
 
-letters <- data.frame(label = betadis.letters.t$groups,
+letters <- data.frame(label = betadis.letters.t1$groups,
                       x = 1:4,
                       y = c(rep(0.55, 4)))
 
 meta %>% 
-  ggplot(aes(Treatment, betadisper.treatment)) +
-  geom_jitter(aes(color = Treatment), 
+  ggplot(aes(Treatment1, betadisper.treatment1)) +
+  geom_jitter(aes(color = Treatment1), 
               alpha = 0.8, 
               size = 4) +
-  geom_boxplot(aes(fill = Treatment), 
+  geom_boxplot(aes(fill = Treatment1), 
                alpha = 0.3, 
                outlier.shape = NA) +
   scale_color_manual(values = c("#33A02C","#33A02C", "#1F78B4", "red")) +
@@ -352,6 +346,7 @@ barc.betadisper.t3 <- betadisper(barc.dist,
 
 anova(barc.betadisper.t3) # NS
 
+meta$betadisper.treatment3 <- barc.betadisper.t3$distances
 
 write.table(meta, 
             file = "data/cleaned/sequencing/bac_arc_diversity.txt", 
@@ -390,7 +385,7 @@ meta %>%
   ylab("Bacteria & archaea Shannon diversity")
 
 
-# By treatment 2
+# By Treatment2
 # Explore distribution
 boxplot(Shannon ~ Treatment2, data = meta)
 
@@ -421,7 +416,7 @@ meta %>%
   theme(legend.position = "none") 
 
 
-# By treatment3
+# By Treatment3
   # Explore distribution
 boxplot(Shannon ~ Treatment3, data = meta)
 qqPlot(meta$Shannon)
@@ -466,7 +461,7 @@ meta %>%
   ylab("Richness")
 
 
-# By treatment 2
+# By Treatment2
 # Explore distribution
 boxplot(Richness ~ Treatment2, data = meta)
 
@@ -497,7 +492,7 @@ meta %>%
   theme(legend.position = "none") 
 
 
-# By treatment3
+# By Treatment3
 # Explore distribution
 boxplot(Richness ~ Treatment3, data = meta)
 qqPlot(meta$Richness)
