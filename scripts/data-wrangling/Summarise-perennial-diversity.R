@@ -4,7 +4,9 @@ library(vegan)
 # Load data ---------------------------------------------------------------
 
 plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
-
+meta <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
+                   sep = "\t",
+                   header = TRUE)
 
 # Data wrangling ----------------------------------------------------------
 
@@ -37,13 +39,7 @@ year <- function(x) {
     filter(year.xaxis != "2012-03-01") %>% 
     filter(!str_detect(Functional, "Annual"))
   x$Year <- as.factor(gsub("-.*", "", x$Year))
-  
-  x$Treatment2 <- gsub("^.*?: ", "", x$channel.trt)
-  
-  x <- x %>% 
-    mutate(Treatment2 = case_when(
-      Treatment2 == "No treatment" ~ "Control",
-      TRUE ~ Treatment2))
+
   
   return(x)
 }
@@ -56,13 +52,13 @@ plant.per <- year(plant.all)
 
 # By treatment and station
 richness <- plant.per %>%  
-  group_by(Channel, Station, Treatment2, Year, year.date, year.xaxis, 
+  group_by(Channel, Station, Year, year.date, year.xaxis, 
            channel.trt, station.trt) %>% 
   summarise(rich = n_distinct(Common),
             .groups = "keep") 
 
 shannon <- plant.per %>%  
-  group_by(Channel, Station, Treatment2, Year, year.date, year.xaxis, 
+  group_by(Channel, Station, Year, year.date, year.xaxis, 
            channel.trt, station.trt) %>% 
   summarise(shan = diversity(Cover),
             .groups = "keep")
