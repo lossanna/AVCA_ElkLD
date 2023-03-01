@@ -205,7 +205,6 @@ check_model(totcover.lm)
 
 summary(totcover.lm)
 
-# write.csv(dat.2021,
-#           file = "data/cleaned/SEM-input.csv",
-#           row.names = FALSE) 
-  # do not overwrite CSV because I don't think I can currently recreate it because of problems with the Difference_2012-2021 script and data
+write.csv(dat.2021,
+          file = "data/cleaned/SEM-input.csv",
+          row.names = FALSE)

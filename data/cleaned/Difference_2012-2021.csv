@@ -14,23 +14,22 @@
 "Channel 12","Station 6 + 30","No treatment","Channel 12: No treatment",0,0,-23.0416666666667,0,0.258702324056892,-4.2083333333333,-18.8333333333333
 "Channel 12","Station 6 + 93","No treatment","Channel 12: No treatment",0,0,-13.5833333333333,0,0.040582298537941,0.125,-13.7083333333333
 "Channel 13","Station 1 + 11.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,15.5833333333333,-4,-0.09975596086386,-0.91666666666667,16.5
-"Channel 13","Station 1 + 38.5 ORD","One station dam","Channel 13: In-channel treatment",0,1,18.1666666666667,4,1.33508802875293,22.375,-4.2083333333333
+"Channel 13","Station 1 + 38.5 ORD","One rock dam","Channel 13: In-channel treatment",0,1,18.1666666666667,4,1.33508802875293,22.375,-4.2083333333333
 "Channel 13","Station 1 + 71 BAF","Baffle","Channel 13: In-channel treatment",0,1,26.3333333333333,-2,-0.110052763256837,8.5,17.8333333333333
-"Channel 13","Station 1 + 77 ORD","One station dam","Channel 13: In-channel treatment",0,1,-18.8166666666667,-2,0.618274494959587,4.01666666666667,-22.8333333333333
-"Channel 13","Station 1 + 99 ORD","One station dam","Channel 13: In-channel treatment",0,1,-2,-2,-0.50524301833668,17.875,-19.875
+"Channel 13","Station 1 + 77 ORD","One rock dam","Channel 13: In-channel treatment",0,1,-18.8166666666667,-2,0.618274494959587,4.01666666666667,-22.8333333333333
+"Channel 13","Station 1 + 99 ORD","One rock dam","Channel 13: In-channel treatment",0,1,-2,-2,-0.50524301833668,17.875,-19.875
 "Channel 13","Station 2 + 16 BAF","Baffle","Channel 13: In-channel treatment",0,1,32.625,-3,-0.037629128532095,2.70833333333333,29.9166666666667
-"Channel 13","Station 2 + 57 ORD","One station dam","Channel 13: In-channel treatment",0,1,18.0416666666667,0,-0.42000981850469,16,2.04166666666667
+"Channel 13","Station 2 + 57 ORD","One rock dam","Channel 13: In-channel treatment",0,1,18.0416666666667,0,-0.42000981850469,16,2.04166666666667
 "Channel 13","Station 2 + 67 BAF","Baffle","Channel 13: In-channel treatment",0,1,41.625,-3,-0.957812679668469,-8.9583333333333,50.5833333333333
-"Channel 13","Station 3 + 09 ORD","One station dam","Channel 13: In-channel treatment",0,1,-89.4583333333333,-8,-0.488748883802786,-7.4583333333333,-82
+"Channel 13","Station 3 + 09 ORD","One rock dam","Channel 13: In-channel treatment",0,1,-89.4583333333333,-8,-0.488748883802786,-7.4583333333333,-82
 "Channel 13","Station 3 + 31 BAF","Baffle","Channel 13: In-channel treatment",0,1,15.25,3,0.296642915815295,16.5,-1.25
-"Channel 13","Station 3 + 65 ORD","One station dam","Channel 13: In-channel treatment",0,1,62.4583333333333,2,-0.18317045803024,27.2083333333333,35.25
-"Channel 13","Station 3 + 95.5 ORD","One station dam","Channel 13: In-channel treatment",0,1,26.1666666666667,-1,0.0790304988325501,30,-3.8333333333333
+"Channel 13","Station 3 + 65 ORD","One rock dam","Channel 13: In-channel treatment",0,1,62.4583333333333,2,-0.18317045803024,27.2083333333333,35.25
+"Channel 13","Station 3 + 95.5 ORD","One rock dam","Channel 13: In-channel treatment",0,1,26.1666666666667,-1,0.0790304988325501,30,-3.8333333333333
 "Channel 13","Station 4 + 14.5 BAF","Baffle","Channel 13: In-channel treatment",0,1,26.4583333333333,2,-0.44875268278187,21.4583333333333,5
-"Channel 13","Station 4 + 36 ORD","One station dam","Channel 13: In-channel treatment",0,1,6,6,1.03502347079981,30.7083333333333,-24.7083333333333
+"Channel 13","Station 4 + 36 ORD","One rock dam","Channel 13: In-channel treatment",0,1,6,6,1.03502347079981,30.7083333333333,-24.7083333333333
 "Channel 13","Station 4 + 50 BAF","Baffle","Channel 13: In-channel treatment",0,1,-1.6666666666667,1,0.73720944861123,16.875,-18.5416666666667
-"Channel 13","Station 4 + 78 ORD","One station dam","Channel 13: In-channel treatment",0,1,-22.6666666666667,-1,-0.40216575596761,-8.5,-14.1666666666667
+"Channel 13","Station 4 + 78 ORD","One rock dam","Channel 13: In-channel treatment",0,1,-22.6666666666667,-1,-0.40216575596761,-8.5,-14.1666666666667
 "Channel 19","Station 01 + 04","No treatment","Channel 19: Upland treatment",1,0,-45.0416666666667,-4,-0.31961557959521,-5.2916666666667,-39.75
-"Channel 19","Station 02 + 04","No treatment","Channel 19: Upland treatment",1,0,NA,NA,NA,NA,NA
 "Channel 19","Station 02 + 52","No treatment","Channel 19: Upland treatment",1,0,28.416666666667,-2,0.09149034113265,21.4166666666667,7
 "Channel 19","Station 03 + 63","No treatment","Channel 19: Upland treatment",1,0,3.5,-5,-0.503724974252788,-9.4583333333333,12.9583333333333
 "Channel 19","Station 03 + 98","No treatment","Channel 19: Upland treatment",1,0,-14.125,-8,-0.40008170193925,-4.25,-9.875
@@ -47,17 +46,18 @@
 "Channel 19","Station 09 + 68","No treatment","Channel 19: Upland treatment",1,0,29.9583333333333,3,1.28196443864322,50.25,-20.2916666666667
 "Channel 19","Station 10 + 98","No treatment","Channel 19: Upland treatment",1,0,17.2083333333333,-2,0.24798481789568,28.875,-11.6666666666667
 "Channel 21","Station 01 + 07.5 BAF","Baffle","Channel 21: In-channel treatment",0,1,-5.875,-1,-0.567123420506276,7.0416666666667,-12.9166666666667
-"Channel 21","Station 01 + 49 ORD","One station dam","Channel 21: In-channel treatment",0,1,55.625,-4,-1.17476744936345,6.75,48.875
+"Channel 21","Station 01 + 49 ORD","One rock dam","Channel 21: In-channel treatment",0,1,55.625,-4,-1.17476744936345,6.75,48.875
 "Channel 21","Station 02 + 15 BAF","Baffle","Channel 21: In-channel treatment",0,1,-24.4166666666667,-4,-0.29583504730146,-17.875,-6.54166666666667
 "Channel 21","Station 03 + 80 BAF","Baffle","Channel 21: In-channel treatment",0,1,-3.4166666666667,-1,0.823388282053445,20.5416666666667,-23.9583333333333
-"Channel 21","Station 04 + 90 ORD","One station dam","Channel 21: In-channel treatment",0,1,-1.45833333333333,0,-0.301025095507105,1.04166666666667,-2.5
+"Channel 21","Station 04 + 90 ORD","One rock dam","Channel 21: In-channel treatment",0,1,-1.45833333333333,0,-0.301025095507105,1.04166666666667,-2.5
 "Channel 21","Station 06 + 36 BAF","Baffle","Channel 21: In-channel treatment",0,1,-6.25,-2,-0.371468802201529,8.79166666666667,-15.0416666666667
-"Channel 21","Station 07 + 49.5 ORD","One station dam","Channel 21: In-channel treatment",0,1,-4.1666666666667,-2,0.640389237822916,13.2916666666667,-17.4583333333333
+"Channel 21","Station 07 + 49.5 ORD","One rock dam","Channel 21: In-channel treatment",0,1,-4.1666666666667,-2,0.640389237822916,13.2916666666667,-17.4583333333333
 "Channel 21","Station 07 + 66 BAF","Baffle","Channel 21: In-channel treatment",0,1,3,0,0.134948984899682,3.08333333333333,-0.0833333333333333
 "Channel 21","Station 08 + 62 BAF","Baffle","Channel 21: In-channel treatment",0,1,-0.2916666666667,-1,-0.0549673357030001,5.5,-5.7916666666667
-"Channel 21","Station 09 + 99 ORD","One station dam","Channel 21: In-channel treatment",0,1,11.0833333333333,4,0.759565099983878,16.625,-5.54166666666667
+"Channel 21","Station 09 + 99 ORD","One rock dam","Channel 21: In-channel treatment",0,1,11.0833333333333,4,0.759565099983878,16.625,-5.54166666666667
 "Channel 21","Station 10 + 13 BAF","Baffle","Channel 21: In-channel treatment",0,1,-36.875,3,0.659349819061259,6,-42.875
-"Channel 21","Station 11 + 12 ORD","One station dam","Channel 21: In-channel treatment",0,1,-12.1666666666667,-2,0.0450871235694601,7.3333333333333,-19.5
+"Channel 21","Station 11 + 12 ORD","One rock dam","Channel 21: In-channel treatment",0,1,-12.1666666666667,-2,0.0450871235694601,7.3333333333333,-19.5
 "Channel 21","Station 11 + 24 BAF","Baffle","Channel 21: In-channel treatment",0,1,-13.5416666666667,-2,0.15899306803437,2.7083333333333,-16.25
-"Channel 21","Station 11 + 63 ORD","One station dam","Channel 21: In-channel treatment",0,1,35.125,-4,-1.20625887256436,12.1666666666667,22.9583333333333
+"Channel 21","Station 11 + 63 ORD","One rock dam","Channel 21: In-channel treatment",0,1,35.125,-4,-1.20625887256436,12.1666666666667,22.9583333333333
 "Channel 21","Station 11 + 73 BAF","Baffle","Channel 21: In-channel treatment",0,1,37.3333333333333,4,0.30024556625092,38.6666666666667,-1.33333333333333
+"Channel 19","Station 02 + 04","No treatment","Channel 19: Upland treatment",1,0,NA,NA,NA,NA,NA

@@ -18,6 +18,7 @@ per.diversity <- read.csv("data/cleaned/All-Nov_perennial-diversity.csv")
 soil.wide <- ground.all %>% 
   filter(Year != "2012-03-01") %>% 
   filter(Common == "Soil") %>% 
+  select(-PlotTimeID) |> 
   pivot_wider(names_from = Year, values_from = Cover) %>% 
   mutate(soil.diff = `2021-11-01` - `2012-11-01`) %>% 
   select(-`2012-11-01`, -`2013-11-01`, -`2014-11-01`, 
@@ -25,6 +26,7 @@ soil.wide <- ground.all %>%
 
 total.wide <- total.all %>% 
   filter(Year != "2012-03-01") %>% 
+  select(-PlotTimeID) |> 
   pivot_wider(names_from = Year, values_from = Cover) %>% 
   mutate(total.diff = `2021-11-01` - `2012-11-01`) %>% 
   select(-`2012-11-01`, -`2013-11-01`, -`2014-11-01`, 
@@ -47,6 +49,7 @@ shannon.wide <- per.diversity %>%
 herb.wide <- woody.all %>% 
   filter(Year != "2012-03-01",
          woody == "Herbaceous") %>% 
+  select(-PlotTimeID) |> 
   pivot_wider(names_from = Year, values_from = Cover) %>% 
   mutate(herb.diff = `2021-11-01` - `2012-11-01`) %>% 
   select(-`2012-11-01`, -`2013-11-01`, -`2014-11-01`, 
@@ -55,6 +58,7 @@ herb.wide <- woody.all %>%
 wood.wide <- woody.all %>% 
   filter(Year != "2012-03-01",
          woody == "Woody") %>% 
+  select(-PlotTimeID) |> 
   pivot_wider(names_from = Year, values_from = Cover) %>% 
   replace(is.na(.), 0) %>% # NA indicates woody plants were not measured that year; hence, 0
                                 # except for C19 2+4, which is actually NA since Nov 2012 data sheet is missing
