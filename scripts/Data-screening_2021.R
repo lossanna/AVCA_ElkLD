@@ -3,6 +3,7 @@ library(readxl)
 library(caret)
 library(performance)
 library(ggpubr)
+library(car)
 
 # Load data ---------------------------------------------------------------
 
@@ -10,6 +11,9 @@ total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
 
 per.diversity <- read.csv("data/cleaned/All-Nov_perennial-diversity.csv")
+
+meta <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
+                   sep = "\t", header = TRUE)
 
 soil.chem <- read_xlsx("data/Excel_LO_edited/Blankinship-soil-chemistry_TN-TC-OM_LO.xlsx", 
                        sheet = "R_LO")
@@ -60,7 +64,8 @@ dat.2021 <- total.2021 %>%
   left_join(shannon.2021) %>% 
   left_join(width) %>% 
   left_join(diff.12.21) # C19 2+4 data sheet from Nov 2012 is missing, so differences are all NA
-
+dat.2021 <- dat.2021 |> 
+  mutate(CN_ratio = TC_perc / TN_perc)
 
 # Visualize distribution --------------------------------------------------
 
@@ -107,17 +112,18 @@ vis.boxplot(dat.2021, dat.2021$Width, "Channel width (m)")
 vis.boxplot(dat.2021, dat.2021$total.diff, "Difference in total cover (%)")
 
 # Quantile-quantile plots
-ggqqplot(dat.2021$Cover)
-ggqqplot(dat.2021$Herbaceous)
-ggqqplot(dat.2021$Woody)
-ggqqplot(dat.2021$TN_perc) # not normal?
-ggqqplot(dat.2021$TC_perc) # not normal?
-ggqqplot(dat.2021$OM_perc)
-ggqqplot(dat.2021$Elev_Diff)
-ggqqplot(dat.2021$rich)
-ggqqplot(dat.2021$shan)
-ggqqplot(dat.2021$Width) # maybe problematic
-ggqqplot(dat.2021$total.diff)
+qqPlot(dat.2021$Cover)
+qqPlot(dat.2021$Herbaceous)
+qqPlot(dat.2021$Woody)
+qqPlot(dat.2021$TN_perc) # not normal?
+qqPlot(dat.2021$TC_perc) # not normal?
+qqPlot(dat.2021$CN_ratio)
+qqPlot(dat.2021$OM_perc)
+qqPlot(dat.2021$Elev_Diff)
+qqPlot(dat.2021$rich)
+qqPlot(dat.2021$shan)
+qqPlot(dat.2021$Width) # maybe problematic
+qqPlot(dat.2021$total.diff)
 
 
 # Log transformation ------------------------------------------------------
@@ -129,8 +135,8 @@ dat.2021 <- dat.2021 %>%
 hist(dat.2021$TN_log, breaks = 10)
 hist(dat.2021$TC_log, breaks = 10)
 
-ggqqplot(dat.2021$TN_log)
-ggqqplot(dat.2021$TC_log)
+qqPlot(dat.2021$TN_log)
+qqPlot(dat.2021$TC_log)
 
 
 # Bivariate scatterplot matrix --------------------------------------------
@@ -157,6 +163,21 @@ check_model(totcover.lm)
 
 summary(totcover.lm)
 
+
+# Add treatments and rename cols ------------------------------------------
+
+meta$Station <- gsub("^.*?, ", "", meta$Name)
+dat.2021 <- left_join(dat.2021, meta)
+
+dat.2021 <- dat.2021 %>% 
+  rename(Richness.barc = Richness,
+         Shannon.barc = Shannon) %>% 
+  mutate(TN_ppt = TN_perc * 10,
+         TC_ppt = TC_perc * 10) |> 
+  mutate(Treatment3 = case_when(
+    Treatment2 == "No treatment" ~ "Control",
+    Treatment2 == "Upland treatment" ~ "Control",
+    Treatment2 == "In-channel treatment" ~ "Treated"))
 
 
 # Save --------------------------------------------------------------------
