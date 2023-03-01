@@ -29,7 +29,6 @@ width <- width %>%
   rename(Width = Average)
 
 diff.12.21 <- read.csv("data/cleaned/Difference_2012-2021.csv")
-diff.12.21$station.trt <- gsub("One station dam", "One rock dam", diff.12.21$station.trt)
 
 
 # Compile 2021 data -------------------------------------------------------
@@ -139,7 +138,8 @@ hist(dat.2021$TC_log, breaks = 10)
 qqPlot(dat.2021$TN_log)
 qqPlot(dat.2021$TC_log)
 
-dat.2021.sem <- dat.2021
+dat.2021.sem <- dat.2021 |> 
+  select(-CN_ratio)
 
 
 # Bivariate scatterplot matrix --------------------------------------------
