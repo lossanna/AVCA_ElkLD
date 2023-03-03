@@ -47,17 +47,17 @@ Sample	Name	Channel	Station	Treatment1	Treatment2	Treatment3
 46	Channel 13, Station 4 + 36 ORD	Channel 13	Station 4 + 36 ORD	One rock dam	In-channel treatment	Treated
 47	Channel 13, Station 4 + 50 BAF	Channel 13	Station 4 + 50 BAF	Baffle	In-channel treatment	Treated
 48	Channel 13, Station 4 + 78 ORD	Channel 13	Station 4 + 78 ORD	One rock dam	In-channel treatment	Treated
-49	Channel 12, Station 1 + 04	Channel 12	Station 1 + 04	No treatment	No treatment	Control
-50	Channel 12, Station 1 + 52	Channel 12	Station 1 + 52	No treatment	No treatment	Control
-51	Channel 12, Station 1 + 83	Channel 12	Station 1 + 83	No treatment	No treatment	Control
-52	Channel 12, Station 2 + 63	Channel 12	Station 2 + 63	No treatment	No treatment	Control
-53	Channel 12, Station 2 + 98	Channel 12	Station 2 + 98	No treatment	No treatment	Control
-54	Channel 12, Station 3 + 93	Channel 12	Station 3 + 93	No treatment	No treatment	Control
-55	Channel 12, Station 4 + 00	Channel 12	Station 4 + 00	No treatment	No treatment	Control
-56	Channel 12, Station 4 + 09	Channel 12	Station 4 + 09	No treatment	No treatment	Control
-57	Channel 12, Station 4 + 56	Channel 12	Station 4 + 56	No treatment	No treatment	Control
-58	Channel 12, Station 4 + 65	Channel 12	Station 4 + 65	No treatment	No treatment	Control
-59	Channel 12, Station 5 + 13	Channel 12	Station 5 + 13	No treatment	No treatment	Control
-60	Channel 12, Station 5 + 48	Channel 12	Station 5 + 48	No treatment	No treatment	Control
-61	Channel 12, Station 6 + 30	Channel 12	Station 6 + 30	No treatment	No treatment	Control
-62	Channel 12, Station 6 + 93	Channel 12	Station 6 + 93	No treatment	No treatment	Control
+49	Channel 12, Station 1 + 04	Channel 12	Station 1 + 04	No treatment	Control	Control
+50	Channel 12, Station 1 + 52	Channel 12	Station 1 + 52	No treatment	Control	Control
+51	Channel 12, Station 1 + 83	Channel 12	Station 1 + 83	No treatment	Control	Control
+52	Channel 12, Station 2 + 63	Channel 12	Station 2 + 63	No treatment	Control	Control
+53	Channel 12, Station 2 + 98	Channel 12	Station 2 + 98	No treatment	Control	Control
+54	Channel 12, Station 3 + 93	Channel 12	Station 3 + 93	No treatment	Control	Control
+55	Channel 12, Station 4 + 00	Channel 12	Station 4 + 00	No treatment	Control	Control
+56	Channel 12, Station 4 + 09	Channel 12	Station 4 + 09	No treatment	Control	Control
+57	Channel 12, Station 4 + 56	Channel 12	Station 4 + 56	No treatment	Control	Control
+58	Channel 12, Station 4 + 65	Channel 12	Station 4 + 65	No treatment	Control	Control
+59	Channel 12, Station 5 + 13	Channel 12	Station 5 + 13	No treatment	Control	Control
+60	Channel 12, Station 5 + 48	Channel 12	Station 5 + 48	No treatment	Control	Control
+61	Channel 12, Station 6 + 30	Channel 12	Station 6 + 30	No treatment	Control	Control
+62	Channel 12, Station 6 + 93	Channel 12	Station 6 + 93	No treatment	Control	Control
