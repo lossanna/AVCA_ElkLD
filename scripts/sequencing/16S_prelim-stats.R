@@ -85,19 +85,19 @@ barc.rep <- subset(barc.rep.raw,
 # Save the clean asv table, taxonomy table and ASV.rep
 write.table(barc.asv, 
             file = "data/cleaned/sequencing/bac_arc_clean_asv.txt", 
-            quote = F, 
+            quote = FALSE, 
             sep = "\t", 
             col.names = NA)
 write.table(barc.tax, 
             file = "data/cleaned/sequencing/bac_arc_clean_tax.txt", 
-            quote = F, 
+            quote = FALSE, 
             sep = "\t", 
             col.names = NA)
 write.table(barc.rep, 
             file = "data/cleaned/sequencing/bac_arc_clean_rep.txt", 
-            quote = F, 
+            quote = FALSE, 
             sep = "\t", 
-            col.names = NA)
+            row.names = FALSE)
 
 # Remove useless objects
 rm(barc.ext01.control, 
@@ -123,9 +123,9 @@ barc.tax.unique <- unique(barc.tax.unique)
 
 write.table(barc.tax.unique,
             file = "data/cleaned/sequencing/bac_arc_clean_tax_unique.txt",
-            quote = F, 
+            quote = FALSE, 
             sep = "\t", 
-            col.names = NA)
+            row.names = FALSE)
 
 
 # Sequence length & number of reads ---------------------------------------
@@ -150,13 +150,7 @@ summary(rowSums(barc.asv))
 # Read metadata
 meta <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
                    header = TRUE,
-                   sep = "\t") %>% 
-  mutate(Treatment1 = factor(meta$Treatment1,
-                            levels = c("Baffle", "One rock dam", 
-                                       "Upland treatment", "No treatment")),
-         Treatment2 = factor(meta$Treatment2, 
-                             levels = c("In-channel treatment", "Upland treatment",
-                                        "No treatment"))) 
+                   sep = "\t")
   
 # Check number of sequences per sample
 hist(rowSums(barc.asv))
@@ -186,7 +180,7 @@ meta$NMDS2 <- barc.nmds$points[ , 2]
 
 # Test community similarity differences
 adonis2(barc.dist ~ meta$Channel) # p < 0.001, 15% of variability explained by Channel
-adonis2(barc.dist ~ meta$Treatment) # p < 0.001, 13% of variability explained by Treatment
+adonis2(barc.dist ~ meta$Treatment1) # p < 0.001, 13% of variability explained by Treatment
 adonis2(barc.dist ~ meta$Treatment2) # p < 0.001, 11% of variability explained by Treatment2 (BAF and ORD combined)
 adonis2(barc.dist ~ meta$Treatment3) # p = 0.028, 3% of variability explained by Treatment3
 
@@ -277,7 +271,7 @@ betadisper.t1.hsd <- HSD.test(aov(betadisper.treatment1 ~ Treatment1, data = met
 betadisper.t1.hsd
 betadis.letters.t1 <- betadisper.t1.hsd$groups
 betadis.letters.t1 <- betadis.letters.t1[c("Baffle", "One rock dam", 
-                                         "Upland treatment", "No treatment"), ]
+                                         "Upland treatment", "Control"), ]
 
 letters <- data.frame(label = betadis.letters.t1$groups,
                       x = 1:4,
@@ -316,7 +310,7 @@ betadisper.t2.hsd <- HSD.test(aov(betadisper.treatment2 ~ Treatment2, data = met
 betadisper.t2.hsd
 betadis.letters.t2 <- betadisper.t2.hsd$groups
 betadis.letters.t2 <- betadis.letters.t2[c("In-channel treatment", 
-                                         "Upland treatment", "No treatment"), ]
+                                         "Upland treatment", "Control"), ]
 letters <- data.frame(label = betadis.letters.t2$groups,
                       x = 1:3,
                       y = c(rep(0.55, 3)))
@@ -350,9 +344,9 @@ meta$betadisper.treatment3 <- barc.betadisper.t3$distances
 
 write.table(meta, 
             file = "data/cleaned/sequencing/bac_arc_diversity.txt", 
-            quote = F, 
+            quote = FALSE, 
             sep = "\t", 
-            row.names = F)
+            row.names = FALSE)
 
 
 
@@ -522,7 +516,7 @@ barc.phylum$Unclassified = 100 - rowSums(barc.phylum)
 
 write.table(barc.phylum,
             file = "data/cleaned/sequencing/bac_arc_phylum.txt",
-            quote = F,
+            quote = FALSE,
             sep ="\t",
             col.names = NA)
 
@@ -542,7 +536,7 @@ barc.phylum <- as.data.frame(t(barc.phylum))
 
 write.table(barc.phylum,
             file = "data/cleaned/sequencing/bac_arc_phyla_avg-ch.txt",
-            quote = F,
+            quote = FALSE,
             sep ="\t",
             col.names = NA)
 
@@ -567,7 +561,7 @@ barc.phylum.d <- as.data.frame(t(barc.phylum.d))
 
 write.table(barc.phylum.d,
             file = "data/cleaned/sequencing/bac_arc_dominant_phyla_sample.txt",
-            quote = F,
+            quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
 
@@ -591,7 +585,7 @@ barc.phylum.dc <- as.data.frame(t(barc.phylum.dc))
 
 write.table(barc.phylum.dc,
             file = "data/cleaned/sequencing/bac_arc_dominant_phyla_avg-ch.txt",
-            quote = F,
+            quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
 
@@ -634,7 +628,7 @@ barc.family$Unclassified = 100 - rowSums(barc.family)
 
 write.table(barc.family,
             file = "data/cleaned/sequencing/bac_arc_family.txt",
-            quote = F,
+            quote = FALSE,
             sep ="\t",
             col.names = NA)
 
@@ -654,7 +648,7 @@ barc.family <- as.data.frame(t(barc.family))
 
 write.table(barc.family,
             file = "data/cleaned/sequencing/bac_arc_phyla_avg-ch.txt",
-            quote = F,
+            quote = FALSE,
             sep ="\t",
             col.names = NA)
 
@@ -679,7 +673,7 @@ barc.family.d <- as.data.frame(t(barc.family.d))
 
 write.table(barc.family.d,
             file = "data/cleaned/sequencing/bac_arc_dominant_phyla_sample.txt",
-            quote = F,
+            quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
 
@@ -703,7 +697,7 @@ barc.family.dc <- as.data.frame(t(barc.family.dc))
 
 write.table(barc.family.dc,
             file = "data/cleaned/sequencing/bac_arc_dominant_phyla_avg-ch.txt",
-            quote = F,
+            quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
 
