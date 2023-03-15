@@ -3,35 +3,49 @@ library(cvequality)
 
 # Load data ---------------------------------------------------------------
 
-total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
+total.all.raw <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+per.div.raw <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
                      sep = "\t", header = TRUE)
 precip$year.xaxis <- as.Date(precip$year.xaxis)
 
-
+meta <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
+                       sep = "\t", header = TRUE)
 
 
 # Data wrangling ----------------------------------------------------------
 
-total.all <- total.all %>% 
-  mutate(Year = gsub("-.*", "", total.all$Year),
-         Treatment2 = gsub("^.*?: ", "", total.all$channel.trt)) %>% 
-  mutate(Treatment2 = case_when(
-    Treatment2 == "No treatment" ~ "Control",
-    TRUE ~ Treatment2)) |> 
-  mutate(Treatment3 = case_when(
-    str_detect(Treatment2, c("Control|Upland")) ~ "Control",
-    str_detect(Treatment2, "In-channel") ~ "Treated"))
+total.all <- total.all.raw %>% 
+  filter(!str_detect(Year, "03-01")) |> 
+  left_join(meta) |> 
+  select(-contains("trt"), -PlotTimeID) |> 
+  mutate(Year = gsub("-.*", "", Year))
 
-per.div <- per.div |> 
-  mutate(Treatment3 = case_when(
-    str_detect(channel.trt, c("No|Upland")) ~ "Control",
-    str_detect(channel.trt, "In-channel") ~ "Treated"))
+per.div <- left_join(per.div.raw, meta)
 
 
-# By Treatment3 -----------------------------------------------------------
+
+# By Treatment3 (each sample) ---------------------------------------------
+
+total.sample <- total.all |> 
+  group_by(Sample, Channel, Station, Name, Treatment3) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep")
+
+summary(filter(total.sample, Treatment3 == "Treated")$CV)
+summary(filter(total.sample, Treatment3 == "Control")$CV)
+
+t.test(filter(total.sample, Treatment3 == "Treated")$CV,
+       filter(total.sample, Treatment3 == "Control")$CV)
+
+total.sample |> 
+ggplot(aes(x = Treatment3, y = CV)) +
+  geom_boxplot() +
+  geom_jitter() 
+
+
+# By Treatment3 (all) -----------------------------------------------------
 
 ## Total plant cover
 # All years
