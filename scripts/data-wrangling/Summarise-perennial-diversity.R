@@ -1,3 +1,10 @@
+# Purpose: Cover is measured by species in 4-6 quadrats, which need to be 
+#   converted to richness and Shannon diversity across all quadrats (summarised).
+#   Also, add additional columns for grouping (channel and station treatment,
+#     lifeform with native status).
+# This creates cleaned data sheet for plant perennial diversity from 2012-2021.
+
+
 library(tidyverse)
 library(vegan)
 

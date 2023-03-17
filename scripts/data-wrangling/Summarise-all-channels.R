@@ -1,3 +1,9 @@
+# Purpose: Cover is measured in 4-6 quadrats, which need to be averaged (summarised).
+#   Also, add additional columns for grouping (channel and station treatment,
+#     lifeform with native status).
+# These are the cleaned data sheets for plant cover from 2012-2021.
+
+
 library(tidyverse)
 
 # Load data ---------------------------------------------------------------

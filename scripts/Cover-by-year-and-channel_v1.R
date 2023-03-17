@@ -1,3 +1,16 @@
+# Purpose: Run one-way ANOVAs to compare between channels over time for 2012-2021 plant data.
+
+# AVCA & partners were more interested in comparing channels, but later I decided I wanted to group
+#   samples differently, and that the channel distinctions were less meaningful to those who
+#   had never worked on the project.
+# Analysis grouping by channel was used to present to AVCA & partners in data sharing meeting,
+#   and to present at SRM 2022.
+# Main differences between version 1 & 2 were that I used Shapiro-Wilk to test every level for normality,
+#   and I created weird graphs where the x-axis wasn't aligned correctly by date, and is preserved
+#   because I used this analysis to create SRM 2022 figures, but analysis is updated in v2,
+#   so v1 should no longer be used.
+
+
 library(tidyverse)
 library(agricolae)
 library(plotrix)

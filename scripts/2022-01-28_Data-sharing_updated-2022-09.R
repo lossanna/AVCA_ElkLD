@@ -1,3 +1,11 @@
+# Purpose: Analysis and figures for the AVCA data sharing community event on 2022-01-18, updated Sept 2022.
+
+# Needed to be updated because previously, I had moved some data into different rows in the Excel sheets, 
+#   but then realized later that was a misinterpretation and the data were entered correctly.
+#   The original analysis are in a separate repo, as I did this pre-GitHub and didn't want to transfer
+#   incorrect analysis. This script can stand on its own in this repo.
+
+
 library(tidyverse)
 library(vegan)
 library(plotrix)

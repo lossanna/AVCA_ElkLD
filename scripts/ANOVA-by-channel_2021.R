@@ -1,3 +1,11 @@
+# Purpose: Run one-way ANOVAs to compare between channels for 2021 plant and soil data.
+
+# AVCA & partners were more interested in comparing channels, but later I decided I wanted to group
+#   samples differently, and that the channel distinctions were less meaningful to those who
+#   had never worked on the project.
+# Analysis grouping by channel was never formally presented anywhere.
+
+
 library(tidyverse)
 library(ggpubr)
 library(agricolae)

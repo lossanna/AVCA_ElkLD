@@ -1,3 +1,7 @@
+# Purpose: Create figures for poster at Society for Range Management 2022 annual meeting.
+#   Script is to create figures only; analysis done in separate script.
+
+
 library(tidyverse)
 library(vegan)
 library(plotrix)

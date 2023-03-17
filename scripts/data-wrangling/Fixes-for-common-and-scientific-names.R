@@ -1,4 +1,5 @@
-# List of all corrections for plant names, with a generic "ch.station" object
+# List of all corrections for plant names, with a generic "ch.station" object.
+#   Intended as a comprehensive list of changes, but individual changes were all documented in scripts.
 
 # Add missing common names
 ch.station$Common[ch.station$Scientific == "Ambrosia psylotachya"] <- "Cuman ragweed"

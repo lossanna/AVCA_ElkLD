@@ -1,3 +1,13 @@
+# Purpose: Run one-way ANOVAs to compare between channels over time for 2012-2021 plant data.
+
+# Version 2 replaces version 1 because I decided to do ANOVA for all, based on the visualizing
+#   distributions in Data-screening_veg_2012-2021.R (I decided that all were normal).
+# AVCA & partners were more interested in comparing channels, but later I decided I wanted to group
+#   samples differently, and that the channel distinctions were less meaningful to those who
+#   had never worked on the project.
+# Analysis grouping by channel was never formally presented anywhere.
+
+
 library(tidyverse)
 library(agricolae)
 library(plotrix)

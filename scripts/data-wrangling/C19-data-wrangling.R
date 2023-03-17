@@ -1,3 +1,7 @@
+# Purpose: Standardize scientific and common names, lifeform, date; address trace values; 
+#   and resolve problems noted in Excel sheet in terms of other values.
+
+
 library(readxl)
 library(tidyverse)
 

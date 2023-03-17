@@ -1,3 +1,12 @@
+# Purpose: Data screening for 2021 plant and soil data, and write cleaned data table.
+
+# Checked for normality, visualized distribution, checked collinearity
+# Determined all were normally distributed except TN_perc & TC_perc, which were log-transformed,
+#   and found that OM & TC were collinear
+# Produced a clean data sheet for 2021 data (Data-2021_clean.csv).
+#   Previously had created data for SEM input, but then later decided SEM was not the right tool.
+
+
 library(tidyverse)
 library(readxl)
 library(caret)
@@ -186,24 +195,9 @@ save.image("RData/Data-screening_2021.RData")
 
 
 
-# Old analysis ------------------------------------------------------------
-
+# Old analysis output
 dat.2021.sem <- dat.2021.sem |> 
   select(-CN_ratio)
-
-# Multiple linear regression 
-totcover.lm <- lm(Cover ~ TN_log + TC_log + OM_perc + Elev_Diff + Width, 
-                  data = dat.2021)
-car::vif(totcover.lm) # TN and TC are collinear
-check_model(totcover.lm) # maximize Plots window if get "Error in grid.call"
-
-# Drop TC because it is collinear and similar biologically to OM
-totcover.lm <- lm(Cover ~ TN_log + OM_perc + Elev_Diff + Width, 
-                  data = dat.2021)
-
-check_model(totcover.lm)
-
-summary(totcover.lm)
 
 write.csv(dat.2021,
           file = "data/cleaned/SEM-input.csv",

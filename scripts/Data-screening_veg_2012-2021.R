@@ -1,4 +1,9 @@
-library(tidyverse)
+# Purpose: Data screening for temporal 2012-2021 plant data (cover & diversity).
+# Checked for normality and visualized distribution.
+# Determined all were normally distributed.
+
+
+library(tidyver.se)
 library(agricolae)
 library(car)
 library(vegan)
