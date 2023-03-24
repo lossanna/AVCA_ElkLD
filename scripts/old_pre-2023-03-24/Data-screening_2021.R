@@ -190,4 +190,15 @@ write.csv(dat.2021,
           file = "data/cleaned/Data-2021_clean.csv",
           row.names = FALSE)
 
-save.image("RData/Data-screening_2021.RData")
+save.image("RData/old_pre-2023-03-24/Data-screening_2021.RData")
+ 
+
+
+
+# Old analysis output
+dat.2021.sem <- dat.2021.sem |> 
+  select(-CN_ratio)
+
+write.csv(dat.2021,
+          file = "data/cleaned/old-summarised/SEM-input.csv",
+          row.names = FALSE)

@@ -20,15 +20,15 @@ library(car)
 
 # Load data ---------------------------------------------------------------
 
-plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
-ground.all <- read.csv("data/cleaned/Summarised-all_ground-cover.csv")
-total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-fungr.all <- read.csv("data/cleaned/Summarised-all_functional-group-cover.csv")
-gfst.all <- read.csv("data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv")
-woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
-inwood.all <- read.csv("data/cleaned/Summarised-all_invasive-woody-cover.csv")
-ingfst.all <- read.csv("data/cleaned/Summarised-all_invasive-grassforbshrubtree-cover.csv")
-innat.all <- read.csv("data/cleaned/Summarised-all_invasive-native-cover.csv")
+plant.all <- read.csv("data/cleaned/old-summarised/Summarised-all_plant-species-cover.csv")
+ground.all <- read.csv("data/cleaned/old-summarised/Summarised-all_ground-cover.csv")
+total.all <- read.csv("data/cleaned/old-summarised/Summarised-all_total-plant-cover.csv")
+fungr.all <- read.csv("data/cleaned/old-summarised/Summarised-all_functional-group-cover.csv")
+gfst.all <- read.csv("data/cleaned/old-summarised/Summarised-all_grass-forb-shrub-tree-cover.csv")
+woody.all <- read.csv("data/cleaned/old-summarised/Summarised-all_woody-herb-cover.csv")
+inwood.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-woody-cover.csv")
+ingfst.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-grassforbshrubtree-cover.csv")
+innat.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-native-cover.csv")
 
 # Add year as date and character
 year <- function(x) {
@@ -276,10 +276,6 @@ total.plot.nov.letters <- ggplot(total.channel.nov, aes(x = year.xaxis, y = mean
             size = 3, color = "black")
 total.plot.nov.letters
 
-pdf("output_figs/Total-cover.pdf", width = 7, height = 5)
-total.plot.nov.letters
-dev.off()
-
 
 
 # Ground cover ------------------------------------------------------------
@@ -487,11 +483,6 @@ ground.soil.plot.nov.letters <- ggplot(ground.channel.soil.nov,
             mapping = aes(x = x, y = y, label = label),
             size = 3, color = "black")
 ground.soil.plot.nov.letters
-
-pdf("output_figs/Soil-cover.pdf", width = 7, height = 5)
-ground.soil.plot.nov.letters
-dev.off()
-
 
 
 # Functional group (as collected) -----------------------------------------
@@ -855,11 +846,6 @@ herb.plot.nov.letters <- ggplot(herb.channel.nov, aes(x = year.xaxis, y = mean,
             mapping = aes(x = x, y = y, label = label),
             size = 3, color = "black")
 herb.plot.nov.letters
-
-pdf("output_figs/Herbaceous-cover.pdf", width = 7, height = 5)
-herb.plot.nov.letters
-dev.off()
-
 
 
 # Invasive/native ---------------------------------------------------------
@@ -1233,5 +1219,5 @@ ingf.known.plot.nov
 
 # Save data ---------------------------------------------------------------
 
-save.image("RData/Cover-by-year-and-channel.RData")
+save.image("RData/old_pre-2023-03-24/Cover-by-year-and-channel.RData")
 

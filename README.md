@@ -1,6 +1,6 @@
 # AVCA_ElkLD
 Created: 2022-01-31  
-Last updated: 2023-03-17  
+Last updated: 2023-03-24 
   
 ## Description  
   Vegetation data analysis for Altar Valley Conservation Alliance Elkhorn-Las Delicias demonstration project, ten-year monitoring of stream channels with induced meandering. 
@@ -29,5 +29,7 @@ The order scripts should be run in to recreate the current/most recent version o
 - `scripts/`
     - `data-wrangling/`
     - `sequencing/`
+    - `old_pre-2023-03-24/`
+        - Created 2023-03-24 as a place for prior analysis that has since been discontinued (have been replaced by better grouping and statistical models); usually uses data from `data/cleaned/old-summarised/` folder.
 - `.gitignore`
 - `AVCA_ElkLD.Rproj`

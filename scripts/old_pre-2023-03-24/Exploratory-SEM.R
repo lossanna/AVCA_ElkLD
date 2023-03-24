@@ -4,7 +4,7 @@ library(semPlot)
 
 # Load data ---------------------------------------------------------------
 
-dat.2021 <- read.csv("data/cleaned/SEM-input.csv")
+dat.2021 <- read.csv("data/cleaned/old-summarised/SEM-input.csv")
 dat.2021$inch.trt <- as.factor(dat.2021$inch.trt)
 dat.2021$up.trt <- as.factor(dat.2021$up.trt)
 
@@ -778,4 +778,4 @@ semPaths(fit.shan10, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7
 
 # Save --------------------------------------------------------------------
 
-save.image("RData/Exploratory-SEM.RData")
+save.image("RData/old_pre-2023-03-24/Exploratory-SEM.RData")

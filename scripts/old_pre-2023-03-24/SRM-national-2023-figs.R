@@ -1,3 +1,5 @@
+# Purpose: Document analysis and create figures for presentation to national annual SRM meeting.
+
 library(tidyverse)
 library(vegan)
 library(plotrix)
@@ -461,5 +463,5 @@ dev.off()
 
 # Save --------------------------------------------------------------------
 
-save.image("RData/SRM-national-2023-figs.RData")
+save.image("RData/old_pre-2023-03-24/SRM-national-2023-figs.RData")
 

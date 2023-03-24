@@ -11,8 +11,8 @@ library(rcompanion)
  
 # Load data ---------------------------------------------------------------
 
-load("RData/Cover-by-year-and-channel_v1.RData")
-load("RData/Perennial-diversity-by-year-and-channel_v1.RData")
+load("RData/old_pre-2023-03-24/Cover-by-year-and-channel_v1.RData")
+load("RData/old_pre-2023-03-24/Perennial-diversity-by-year-and-channel_v1.RData")
 
 
 # Common species ----------------------------------------------------------

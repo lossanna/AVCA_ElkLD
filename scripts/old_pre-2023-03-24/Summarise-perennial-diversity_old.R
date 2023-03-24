@@ -3,7 +3,7 @@
 #   Also, add additional columns for grouping (channel and station treatment,
 #     lifeform with native status).
 # This is the cleaned data for perennial plant diversity from 2012-2021 that were used in older, 
-#   initial analysis and are compatible with/needed for scripts: 
+#   initial analysis and are compatible with/needed for scripts (in scripts/old_pre-2023-03-24/ folder): 
 #     Perennial-diversity-by-year-and-channel_v1.R
 #     Perennial-diversity-by-year-and-channel_v2.R
 

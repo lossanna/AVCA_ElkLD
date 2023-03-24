@@ -1,12 +1,13 @@
 # Purpose: Cover is measured in 4-6 quadrats, which need to be averaged (summarised).
 #   Add columns for grouping: channel and station treatment, lifeform with native status.
-# These are the cleaned data sheets for plant cover from 2012-2021 that were used in older, initial analysis
-#   and are compatible with/needed for scripts: 
+# These are the cleaned data sheets for plant cover from 2012-2021 that were used in older, 
+#   initial analysis, and are compatible with/needed for scripts (in scripts/old_pre-2023-03-24/ folder): 
 #     2022-01-28_Data-sharing_updated-2022-09.R
 #     Cover-by-year-and-channel_v1.R
 #     Cover-by-year-and-channel_v2.R
+#     Cover-by-year-and-Treatment2.R      
 #     Difference_2012-2021.R
-#     Perennial-diversity-by-year-and-channel_v1.R
+      
 
 
 library(tidyverse)
@@ -365,3 +366,4 @@ write.csv(innat.all,
           file = "data/cleaned/old-summarised/Summarised-all_invasive-native-cover.csv",
           row.names = FALSE)
 
+save.image("RData/old_pre-2023-03-24/Summarise-all-channels_old.RData")

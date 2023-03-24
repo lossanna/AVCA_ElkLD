@@ -13,7 +13,7 @@ woody.all <- read.csv("data/cleaned/old-summarised/Summarised-all_woody-herb-cov
 inwood.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-woody-cover.csv")
 ingfst.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-grassforbshrubtree-cover.csv")
 innat.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-native-cover.csv")
-per.diversity <- read.csv("data/cleaned/All-Nov_perennial-diversity.csv")
+per.diversity <- read.csv("data/cleaned/old-summarised/All-Nov_perennial-diversity.csv")
 
 
 # Find difference in cover from 2012 to 2021 ------------------------------
@@ -85,7 +85,7 @@ diff.12.21 <- total.wide %>%
 # Save --------------------------------------------------------------------
 
 write.csv(diff.12.21,
-          file = "data/cleaned/Difference_2012-2021.csv",
+          file = "data/cleaned/old-summarised/Difference_2012-2021.csv",
           row.names = FALSE)
 
-save.image("RData/Difference_2012-2021.RData")
+save.image("RData/old-pre-2023-03-24/Difference_2012-2021.RData")

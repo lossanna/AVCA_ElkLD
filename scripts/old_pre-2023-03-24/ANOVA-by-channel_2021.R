@@ -12,7 +12,7 @@ library(agricolae)
 
 # Load data ---------------------------------------------------------------
 
-dat.2021.raw <- read.csv("data/cleaned/SEM-input.csv")
+dat.2021.raw <- read.csv("data/cleaned/old-summarised/SEM-input.csv")
 meta <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
                    sep = "\t", header = TRUE)
 
@@ -360,4 +360,4 @@ ggarrange(total2021.plot, herb2021.plot, rich2021.plot, shan2021.plot,
 
 # Save --------------------------------------------------------------------
 
-save.image("RData/ANOVA-by-channel_2021.RData")
+save.image("RData/old_pre-2023-03-24/ANOVA-by-channel_2021.RData")

@@ -1,3 +1,7 @@
+# Purpose: Run one-way ANOVA and two-factor ANOVA to compare by Treatment2 over time for 2012-2021 plant data.
+#   Treatment 2: In-channel treatment, Upland treatment, No treatment/control
+#   Analysis presented at AZ SRM 2023 and national SRM 2023.
+
 library(tidyverse)
 library(agricolae)
 library(plotrix)
@@ -11,7 +15,7 @@ precip$year.xaxis <- as.Date(precip$year.xaxis)
 precip_join <- precip[1:6, ] %>% 
   select(year.xaxis, Precip_cum)
 
-total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+total.all <- read.csv("data/cleaned/old-summarised/Summarised-all_total-plant-cover.csv")
 
 
 
@@ -74,7 +78,7 @@ total.avg <- total.all %>%
             .groups = "keep")
 
 write.csv(total.avg,
-          file = "data/cleaned/Treatment2-average_total-cover.csv",
+          file = "data/cleaned/old-summarised/Treatment2-average_total-cover.csv",
           row.names = FALSE)
 
 # Plot
@@ -132,4 +136,4 @@ Anova(anova.total.12.15, type = "III")
 # Treatment2:Year  17188   6  5.3858 3.162e-05 ***
 
 
-save.image("RData/Cover-by-year-and-Treatment2.RData")
+save.image("RData/old_pre-2023-03-24/Cover-by-year-and-Treatment2.RData")

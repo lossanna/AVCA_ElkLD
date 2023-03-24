@@ -5,7 +5,7 @@ library(agricolae)
 
 # Load data ---------------------------------------------------------------
 
-per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
+per.div <- read.csv("data/cleaned/old-summarised/Summarised-all_perennial-diversity.csv")
 per.div$year.xaxis <- as.Date(per.div$year.xaxis)
 per.div$Year <- factor(per.div$Year)
 
@@ -21,7 +21,7 @@ richness.avg <- per.div %>%
             .groups = "keep") 
 
 write.csv(richness.avg,
-          file = "data/cleaned/Treatment2-average_richness.csv",
+          file = "data/cleaned/old-summarised/Treatment2-average_richness.csv",
           row.names = FALSE)
 
 # Plot
@@ -95,6 +95,6 @@ anova.shan <- aov(shan ~ Treatment2 * Year, data = per.div)
 Anova(anova.shan, type = "III") # NS
 
 
-save.image("RData/Perennial-diversity-by-year-and-Treatment2.RData")
+save.image("RData/old_pre-2023-03-24/Perennial-diversity-by-year-and-Treatment2.RData")
 
 

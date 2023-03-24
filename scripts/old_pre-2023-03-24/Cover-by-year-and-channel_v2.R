@@ -86,7 +86,7 @@ total.channel <- total.all %>%
             .groups = "keep")
 
 write.csv(total.channel,
-          file = "data/cleaned/Channel-average_total-cover.csv",
+          file = "data/cleaned/old-summarised/Channel-average_total-cover.csv",
           row.names = FALSE)
 
 # Plot
@@ -174,10 +174,6 @@ total.plot.letters <- ggplot(total.channel, aes(x = year.xaxis, y = mean,
             mapping = aes(x = x, y = y, label = label),
             size = 3, color = "black")
 total.plot.letters
-
-pdf("output_figs/Total-cover.pdf", width = 7, height = 5)
-total.plot.letters
-dev.off()
 
 
 # No tree (grass, forb, shrub combined) -----------------------------------
@@ -427,11 +423,6 @@ ground.soil.plot.letters <- ggplot(ground.channel.soil,
             size = 3, color = "black")
 ground.soil.plot.letters
 
-pdf("output_figs/Soil-cover.pdf", width = 7, height = 5)
-ground.soil.plot.letters
-dev.off()
-
-
 
 # Functional group (gfst) -------------------------------------------------
 
@@ -651,11 +642,6 @@ herb.plot.letters <- ggplot(herb.channel, aes(x = year.xaxis, y = mean,
             mapping = aes(x = x, y = y, label = label),
             size = 3, color = "black")
 herb.plot.letters
-
-pdf("output_figs/Herbaceous-cover.pdf", width = 7, height = 5)
-herb.plot.letters
-dev.off()
-
 
 
 # Invasive/native ---------------------------------------------------------
@@ -1142,5 +1128,5 @@ ingf.known.plot
 
 # Save data ---------------------------------------------------------------
 
-save.image("RData/Cover-by-year-and-channel_v2.RData")
+save.image("RData/old_pre-2023-03-24/Cover-by-year-and-channel_v2.RData")
 

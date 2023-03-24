@@ -1,3 +1,5 @@
+# Purpose: Document analysis and create figures for presentation to Arizona Section winter meeting of SRM.
+
 library(tidyverse)
 library(vegan)
 library(plotrix)
@@ -11,22 +13,22 @@ precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
 precip$year.xaxis <- as.Date(precip$year.xaxis)
 precip <- precip[1:6, ]
 
-total.channel <- read_csv("data/cleaned/Channel-average_total-cover.csv") %>% 
+total.channel <- read_csv("data/cleaned/old-summarised/Channel-average_total-cover.csv") %>% 
   mutate(year.date = as.Date(year.date),
          year.xaxis = as.Date(year.xaxis))
 
-richness.channel <- read_csv("data/cleaned/Channel-average_richness.csv") %>% 
+richness.channel <- read_csv("data/cleaned/old-summarised/Channel-average_richness.csv") %>% 
   mutate(year.date = as.Date(year.date),
          year.xaxis = as.Date(year.xaxis))
 
-shannon.channel <- read_csv("data/cleaned/Channel-average_Shannon.csv") %>% 
+shannon.channel <- read_csv("data/cleaned/old-summarised/Channel-average_Shannon.csv") %>% 
   mutate(year.date = as.Date(year.date),
          year.xaxis = as.Date(year.xaxis))
 
 meta <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
                     sep = "\t", header = TRUE)
 
-dat.2021 <- read_csv("data/cleaned/SEM-input.csv")
+dat.2021 <- read_csv("data/cleaned/old-summarised/SEM-input.csv")
 
 
 
@@ -779,5 +781,5 @@ herb2021.plot
 
 # Save --------------------------------------------------------------------
 
-save.image("RData/SRM-AZ-2023-figs.RData")
+save.image("RData/old_pre-2023-03-24/SRM-AZ-2023-figs.RData")
 

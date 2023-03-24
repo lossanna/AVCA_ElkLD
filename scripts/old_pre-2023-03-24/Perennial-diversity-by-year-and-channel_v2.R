@@ -5,7 +5,7 @@ library(agricolae)
 
 # Load data ---------------------------------------------------------------
 
-plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
+plant.all <- read.csv("data/cleaned/old-summarised/Summarised-all_plant-species-cover.csv")
 
 
 # Data wrangling ----------------------------------------------------------
@@ -64,7 +64,7 @@ richness.channel <- richness %>%
             .groups = "keep") 
 
 write.csv(richness.channel,
-          file = "data/cleaned/Channel-average_richness.csv",
+          file = "data/cleaned/old-summarised/Channel-average_richness.csv",
           row.names = FALSE)
 
 # Plot
@@ -172,9 +172,6 @@ richness.plot.letters <- ggplot(richness.channel, aes(x = year.xaxis, y = mean,
             size = 3, color = "black")
 richness.plot.letters
 
-pdf("output_figs/Perennial-richness.pdf", width = 7, height = 5)
-richness.plot.letters
-dev.off()
 
 
 
@@ -196,7 +193,7 @@ shannon.channel <- shannon %>%
             .groups = "keep") 
 
 write.csv(shannon.channel,
-          file = "data/cleaned/Channel-average_Shannon.csv",
+          file = "data/cleaned/old-summarised/Channel-average_Shannon.csv",
           row.names = FALSE)
 
 # Plot 
@@ -222,10 +219,6 @@ summary(aov(shan ~ Year, data = filter(shannon, Channel == "Channel 13"))) # NS
 summary(aov(shan ~ Year, data = filter(shannon, Channel == "Channel 19"))) # NS
 summary(aov(shan ~ Year, data = filter(shannon, Channel == "Channel 21"))) # NS
 
-# No statistical letters to add; write plot to pdf
-pdf("output_figs/Perennial-Shannon.pdf", width = 7, height = 5)
-shannon.plot
-dev.off()
 
 
 # Save data ---------------------------------------------------------------
@@ -264,8 +257,8 @@ for(i in 1:nrow(per.diversity)) {
 }
 
 write.csv(per.diversity,
-          file = "data/cleaned/All-Nov_perennial-diversity.csv",
+          file = "data/cleaned/old-summarised/All-Nov_perennial-diversity.csv",
           row.names = FALSE)
 
 
-save.image("RData/Perennial-diversity-by-year-and-channel_v2.RData")
+save.image("RData/old_pre-2023-03-24/Perennial-diversity-by-year-and-channel_v2.RData")

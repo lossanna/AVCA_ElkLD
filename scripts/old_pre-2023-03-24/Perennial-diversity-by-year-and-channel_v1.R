@@ -7,7 +7,7 @@ library(rcompanion)
 
 # Load data ---------------------------------------------------------------
 
-plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
+plant.all <- read.csv("data/cleaned/old-summarised/Summarised-all_plant-species-cover.csv")
 
 # Add year as date and character
 year <- function(x) {
@@ -239,9 +239,6 @@ richness.plot.letters <- ggplot(richness.channel, aes(x = year.xaxis, y = mean,
             size = 3, color = "black")
 richness.plot.letters
 
-pdf("output_figs/Perennial-richness.pdf", width = 7, height = 5)
-richness.plot.letters
-dev.off()
 
 
 
@@ -317,10 +314,6 @@ summary(aov(shan ~ Year, data = filter(shannon, Channel == "Channel 21"))) # NS
 # Kruskal-Wallis
 kruskal.test(shan ~ Year, data = filter(shannon, Channel == "Channel 19")) # NS
 
-# No statistical letters to add; write plot to pdf
-pdf("output_figs/Perennial-Shannon.pdf", width = 7, height = 5)
-shannon.plot.fw
-dev.off()
 
 
 # Save data ---------------------------------------------------------------
@@ -359,7 +352,7 @@ for(i in 1:nrow(per.diversity)) {
 }
 
 write.csv(per.diversity,
-          file = "data/cleaned/All-Nov_perennial-diversity.csv",
+          file = "data/cleaned/old-summarised/All-Nov_perennial-diversity.csv",
           row.names = FALSE)
 
 
