@@ -1,7 +1,7 @@
 # Purpose: Run one-way ANOVAs to compare by Treatment2 grouping for 2021 plant and soil data.
 #   Treatment2 groups Channels 13 & 21 as "In-channel treatment", Channel 19 as "Upland treatment",
 #     and Channel 12 as "Control".
-#   Treatment2 grouping analysis was used for
+#   Treatment2 grouping analysis was used for AZ SRM and national SRM 2023 presentations.
 
 
 library(tidyverse)

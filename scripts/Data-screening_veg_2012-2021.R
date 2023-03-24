@@ -24,7 +24,7 @@ innat.all <- read.csv("data/cleaned/Summarised-all_invasive-native-cover.csv")
 # Functions ---------------------------------------------------------------
 
 # Add year as date and character, and retain Nov samples only
-year <- function(x) {
+year <- function(x) {a
   x <- x %>% 
     mutate(year.date = as.Date(x$Year))
   
@@ -51,6 +51,17 @@ year <- function(x) {
   x <- x %>% 
     filter(year.xaxis != "2012-03-01") 
   x$Year <- as.factor(gsub("-.*", "", x$Year))
+  
+  x$Treatment3 <- gsub("^.*?: ", "", x$channel.trt)
+  
+  x <- x %>% 
+    mutate(Treatment3 = case_when(
+      Treatment3 == "In-channel treatment" ~ "Treated",
+      Treatment3 == "No treatment" ~ "Control",
+      Treatment3 == "Upland treatment" ~ "Control",
+      TRUE ~ Treatment3)) |> 
+    mutate(Station = factor(Station),
+           Treatment3 = factor(Treatment3))
   
   return(x)
 }

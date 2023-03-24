@@ -2,6 +2,9 @@ library(tidyverse)
 library(agricolae)
 library(plotrix)
 library(car)
+library(lme4)
+library(nlme)
+library(rstatix)
 
 # Load data ---------------------------------------------------------------
 
@@ -54,7 +57,10 @@ year <- function(x) {
       Treatment3 == "In-channel treatment" ~ "Treated",
       Treatment3 == "No treatment" ~ "Control",
       Treatment3 == "Upland treatment" ~ "Control",
-      TRUE ~ Treatment3))
+      TRUE ~ Treatment3)) |> 
+    mutate(Channel = factor(Channel),
+           Station = factor(Station),
+           Treatment3 = factor(Treatment3))
   
   return(x)
 }
@@ -96,6 +102,13 @@ total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean,
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
 total.plot
+
+
+# Repeated measures ANOVA
+
+
+
+# Old analysis
 
 # Two-factor ANOVA
 summary(aov(Cover ~ Treatment3 * Year, data = total.all))

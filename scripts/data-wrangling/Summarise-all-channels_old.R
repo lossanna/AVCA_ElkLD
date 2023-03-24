@@ -1,9 +1,12 @@
 # Purpose: Cover is measured in 4-6 quadrats, which need to be averaged (summarised).
-#   Add columns for grouping: channel and station treatment, Treatment 1-3,
-#     lifeform with native status).
-#   Add columns for formatting Year in multiple ways:
-#     just year (20XX); year with correct month, and year formatted for x-axis when graphing (20XX-01-01).
-# These are the cleaned data sheets for plant cover from 2012-2021.
+#   Add columns for grouping: channel and station treatment, lifeform with native status.
+# These are the cleaned data sheets for plant cover from 2012-2021 that were used in older, initial analysis
+#   and are compatiable with/needed for scripts: 
+#     2022-01-28_Data-sharing_updated-2022-09.R
+#     Cover-by-year-and-channel_v1.R
+#     Cover-by-year-and-channel_v2.R
+#     Difference_2012-2021.R
+#     Perennial-diversity-by-year-and-channel_v1.R
 
 
 library(tidyverse)
