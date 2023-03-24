@@ -14,16 +14,16 @@ library(plotrix)
 
 # Load data ---------------------------------------------------------------
 
-plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
-ground.all <- read.csv("data/cleaned/Summarised-all_ground-cover.csv")
-total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
-fungr.all <- read.csv("data/cleaned/Summarised-all_functional-group-cover.csv")
-gfst.all <- read.csv("data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv")
-woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
-inwood.all <- read.csv("data/cleaned/Summarised-all_invasive-woody-cover.csv")
-ingfst.all <- read.csv("data/cleaned/Summarised-all_invasive-grassforbshrubtree-cover.csv")
-innat.all <- read.csv("data/cleaned/Summarised-all_invasive-native-cover.csv")
+plant.all <- read.csv("data/cleaned/old-summarised/Summarised-all_plant-species-cover.csv")
+ground.all <- read.csv("data/cleaned/old-summarised/Summarised-all_ground-cover.csv")
+total.all <- read.csv("data/cleaned/old-summarised/Summarised-all_total-plant-cover.csv")
+notree.all <- read.csv("data/cleaned/old-summarised/Summarised-all_notree-cover.csv")
+fungr.all <- read.csv("data/cleaned/old-summarised/Summarised-all_functional-group-cover.csv")
+gfst.all <- read.csv("data/cleaned/old-summarised/Summarised-all_grass-forb-shrub-tree-cover.csv")
+woody.all <- read.csv("data/cleaned/old-summarised/Summarised-all_woody-herb-cover.csv")
+inwood.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-woody-cover.csv")
+ingfst.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-grassforbshrubtree-cover.csv")
+innat.all <- read.csv("data/cleaned/old-summarised/Summarised-all_invasive-native-cover.csv")
 
 
 # Functions ---------------------------------------------------------------

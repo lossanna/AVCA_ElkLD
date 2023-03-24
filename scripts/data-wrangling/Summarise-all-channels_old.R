@@ -1,7 +1,7 @@
 # Purpose: Cover is measured in 4-6 quadrats, which need to be averaged (summarised).
 #   Add columns for grouping: channel and station treatment, lifeform with native status.
 # These are the cleaned data sheets for plant cover from 2012-2021 that were used in older, initial analysis
-#   and are compatiable with/needed for scripts: 
+#   and are compatible with/needed for scripts: 
 #     2022-01-28_Data-sharing_updated-2022-09.R
 #     Cover-by-year-and-channel_v1.R
 #     Cover-by-year-and-channel_v2.R
@@ -335,36 +335,33 @@ innat.all <- left_join(all.c, innat.all) %>%
 # Save dataframes ---------------------------------------------------------
 
 write.csv(plant.all,
-          file = "data/cleaned/Summarised-all_plant-species-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_plant-species-cover.csv",
           row.names = FALSE)
 write.csv(ground.all,
-          file = "data/cleaned/Summarised-all_ground-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_ground-cover.csv",
           row.names = FALSE)
 write.csv(total.all,
-          file = "data/cleaned/Summarised-all_total-plant-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_total-plant-cover.csv",
           row.names = FALSE)
 write.csv(notree.all,
-          file = "data/cleaned/Summarised-all_notree-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_notree-cover.csv",
           row.names = FALSE)
 write.csv(fungr.all,
-          file = "data/cleaned/Summarised-all_functional-group-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_functional-group-cover.csv",
           row.names = FALSE)
 write.csv(gfst.all,
-          file = "data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_grass-forb-shrub-tree-cover.csv",
           row.names = FALSE)
 write.csv(woody.all,
-          file = "data/cleaned/Summarised-all_woody-herb-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_woody-herb-cover.csv",
           row.names = FALSE)
 write.csv(inwood.all,
-          file = "data/cleaned/Summarised-all_invasive-woody-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_invasive-woody-cover.csv",
           row.names = FALSE)
 write.csv(ingfst.all,
-          file = "data/cleaned/Summarised-all_invasive-grassforbshrubtree-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_invasive-grassforbshrubtree-cover.csv",
           row.names = FALSE)
 write.csv(innat.all,
-          file = "data/cleaned/Summarised-all_invasive-native-cover.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_invasive-native-cover.csv",
           row.names = FALSE)
-
-
-save.image("RData/Summarise-all-channels.RData")
 

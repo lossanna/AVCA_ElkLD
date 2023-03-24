@@ -1,3 +1,6 @@
+# Purpose: Compare CVs across different channel and treatment groupings to look for a
+#   resistance effect (idea is that rocks lower CV even during times of variable rainfall).
+
 library(tidyverse)
 library(cvequality)
 
