@@ -2,7 +2,10 @@
 #   converted to richness and Shannon diversity across all quadrats (summarised).
 #   Also, add additional columns for grouping (channel and station treatment,
 #     lifeform with native status).
-# This creates cleaned data sheet for perennial plant diversity from 2012-2021.
+# This is the cleaned data for perennial plant diversity from 2012-2021 that were used in older, 
+#   initial analysis and are compatible with/needed for scripts: 
+#     Perennial-diversity-by-year-and-channel_v1.R
+#     Perennial-diversity-by-year-and-channel_v2.R
 
 
 library(tidyverse)
@@ -46,7 +49,7 @@ year <- function(x) {
     filter(year.xaxis != "2012-03-01") %>% 
     filter(!str_detect(Functional, "Annual"))
   x$Year <- as.factor(gsub("-.*", "", x$Year))
-
+  
   
   return(x)
 }
@@ -73,5 +76,5 @@ shannon <- plant.per %>%
 per.div <- left_join(richness, shannon)
 
 write.csv(per.div,
-          file = "data/cleaned/Summarised-all_perennial-diversity.csv",
+          file = "data/cleaned/old-summarised/Summarised-all_perennial-diversity.csv",
           row.names = FALSE)
