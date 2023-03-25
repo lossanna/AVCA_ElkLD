@@ -1,7 +1,7 @@
 ---
 title: "Summarise all channels annotated"
 author: "Lia Ossanna"
-date: "`r Sys.Date()`"
+date: "2023-03-24"
 output: 
   html_document:
     toc: true
@@ -17,16 +17,17 @@ library(tidyverse)
 # Introduction
 - The data wrangling scripts produced tidy data, but had many 0 values based on how the data sheets were originally structured, and all the measurements were by individual quadrat.
 - Cover was measured in 4 (sometimes 6) quadrats at each station, labeled 1L (left and adjacent to transect tape when looking upstream), 2L (1-2 m left of transect tape), 1R (right and adjacent to transect tape), and 2R (1-2 m right of transect tape).
+- Sampling occurred in March of 2012, but we will only use data from November surveys.
 - The `scripts/data-wranging/Summarise-all-channels.R` script averages the quadrats by station, and then further averages into different categories:
   - By plant species (identified by common name)
-  - Rock, soil, gravel, litter, biocrust (ground cover)
   - Total plant cover
-  - Annual grass, annual forb, perennial grass, perennial forb, shrub, tree (functional group as collected)
-  - Grass, forb, shrub, tree
-  - Woody, herbaceous
-  - Invasive, native, unknown
-  - Invasive/native/unknown and woody/herbaceous
-  - Invasive/native/unknown and grass/forb/shrub/tree
+  - Herbaceous cover
+- Grouping based on lifeform beyond just woody/herbaceous is not pursued anymore. Ground cover data also not used in later analysis, so it has been removed.
+- `Year` is formatted in several ways:
+  - As only 4 digits, as character (`20XX`)
+  - As the correct year and month, in date format (`20XX-XX-01`)
+    - 2021 sampling technically happened at the end of October, but we do not need to be as specific as the sampling day.
+  - As the correct year but all assigned Jan, so as to align correctly on the x-axis (`20XX-01-01`)
 - Annotations refer to the chunk of code above.
 
 
