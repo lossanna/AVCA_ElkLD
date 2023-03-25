@@ -11,29 +11,25 @@ output:
 ```{r setup, include=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 load("../RData/Summarise-all-channels.RData")
-library(tidyverse)
 ```
 
 # Introduction
 - The data wrangling scripts produced tidy data, but had many 0 values based on how the data sheets were originally structured, and all the measurements were by individual quadrat.
-- Cover was measured in 4 (sometimes 6) quadrats at each station, labeled 1L (left and adjacent to transect tape when looking upstream), 2L (1-2 m left of transect tape), 1R (right and adjacent to transect tape), and 2R (1-2 m right of transect tape).
-- Sampling occurred in March of 2012, but we will only use data from November surveys.
-- The `scripts/data-wranging/Summarise-all-channels.R` script averages the quadrats by station, and then further averages into different categories:
-  - By plant species (identified by common name)
-  - Total plant cover
-  - Herbaceous cover
-- Grouping based on lifeform beyond just woody/herbaceous is not pursued anymore. Ground cover data also not used in later analysis, so it has been removed.
-- `Year` is formatted in several ways:
+- Species cover was measured in 4 (sometimes 6) quadrats at each station, labeled 1L (left and adjacent to transect tape when looking upstream), 2L (1-2 m left of transect tape), 1R (right and adjacent to transect tape), and 2R (1-2 m right of transect tape). Cover must be averaged (summarised) across quadrats for each station, and perennial richness and Shannon diversity must also be calculated by pooling all quadrats for each station.
+- Sampling occurred once in March of 2012, but we will only use data from November surveys.
+- Cover is further summarised by plant species (identified by common name), total plant cover, and herbaceous cover.
+  - Grouping based on lifeform beyond just herbaceous is not pursued anymore. Ground cover data also not used in later analysis, so it has been removed. See previous version of annotation for that analysis.
+- `Year` is formatted in two ways:
   - As only 4 digits, as character (`20XX`)
-  - As the correct year and month, in date format (`20XX-XX-01`)
-    - 2021 sampling technically happened at the end of October, but we do not need to be as specific as the sampling day.
   - As the correct year but all assigned Jan, so as to align correctly on the x-axis (`20XX-01-01`)
+- Ultimately this script will produce cleaned data for plant cover and diversity from 2012-2021.
 - Annotations refer to the chunk of code above.
 
 
 # Setup
 ```{r}
 library(tidyverse)
+library(vegan)
 
 # Load data ---------------------------------------------------------------
 
@@ -45,278 +41,185 @@ all.c21 <- read.csv("data/cleaned/C21-cover.csv")
 
 # Summarise quadrats by station
 ```{r}
-# Summarise by plant species and ground cover class -----------------------
+# Summarise by plant species ----------------------------------------------
 
-# Channel 13
+# Remove ground cover data for all channels
 plant.c13 <- all.c13 %>% 
   filter(!Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
   group_by(Station, Year, Functional, Native, Common, Scientific) %>% 
   summarise(Cover = mean(Cover), .groups = "keep")
 
-ground.c13 <- all.c13 %>% 
-  filter(Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
-  group_by(Station, Year, Common) %>% 
-  summarise(Cover = mean(Cover), .groups = "keep")
-
-
-# Channel 21
 plant.c21 <- all.c21 %>% 
   filter(!Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
   group_by(Station, Year, Functional, Native, Common, Scientific) %>% 
   summarise(Cover = mean(Cover), .groups = "keep")
 
-ground.c21 <- all.c21 %>% 
-  filter(Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
-  group_by(Station, Year, Common) %>% 
-  summarise(Cover = mean(Cover), .groups = "keep")
-
-
-# Channel 19 
 plant.c19 <- all.c19 %>% 
   filter(!Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
   group_by(Station, Year, Functional, Native, Common, Scientific) %>% 
   summarise(Cover = mean(Cover), .groups = "keep")
 
-ground.c19 <- all.c19 %>% 
-  filter(Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
-  group_by(Station, Year, Common) %>% 
-  summarise(Cover = mean(Cover), .groups = "keep")
-
-
-# Channel 12 
 plant.c12 <- all.c12 %>% 
   filter(!Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
   group_by(Station, Year, Functional, Native, Common, Scientific) %>% 
   summarise(Cover = mean(Cover), .groups = "keep")
-
-ground.c12 <- all.c12 %>% 
-  filter(Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
-  group_by(Station, Year, Common) %>% 
-  summarise(Cover = mean(Cover), .groups = "keep")
 ```
-- This averages the 4 (sometimes 6) quadrats of each plant species or ground cover class for all the channels.
+- This averages the 4 (sometimes 6) quadrats of each plant species for all the channels.
 - Each station now has a single cover value for each plant species.
 
 
-# Combine and add categorical variables
+# Combine and remove 0% cover
 ```{r}
-# Combine and add treatment, gfst, and woody/herbaceous -------------------
-
-# Combine and rows of remove 0% cover 
+# Combine channels and remove rows of 0% cover
 plant.all <- rbind(plant.c12, plant.c13, plant.c19, plant.c21)
 plant.all <- plant.all %>% 
   filter(Cover > 0) %>% 
   separate(Station, c("Channel", "Station"), "_")
+```
+- Because of how the data sheets were formatted, certain common species were pre-filled in, and converted to 0 when not found in quadrats. We do not consider these 0s to be data because we are not interested in tracking specific species across time, so it is okay to remove these.
 
-ground.all <- rbind(ground.c12, ground.c13, ground.c19, ground.c21)
-ground.all <- ground.all %>% 
-  filter(Cover > 0) %>% 
-  separate(Station, c("Channel", "Station"), "_")
 
-# Add station treatment
-plant.all[ , "station.trt"] <- NA
-for(i in 1:nrow(plant.all)) {
-  if(str_detect(plant.all$Station, "ORD")[i] == TRUE) {
-    plant.all$station.trt[i] <- "One station dam"
-  } else if(str_detect(plant.all$Station, "BAF")[i] == TRUE) {
-    plant.all$station.trt[i] <- "Baffle"
-  } else {
-    plant.all$station.trt[i] <- "No treatment"
-  }
-}
-
-ground.all[ , "station.trt"] <- NA
-for(i in 1:nrow(ground.all)) {
-  if(str_detect(ground.all$Station, "ORD")[i] == TRUE) {
-    ground.all$station.trt[i] <- "One station dam"
-  } else if(str_detect(ground.all$Station, "BAF")[i] == TRUE) {
-    ground.all$station.trt[i] <- "Baffle"
-  } else {
-    ground.all$station.trt[i] <- "No treatment"
-  }
-}
+# Add grouping variables
+```{r}
+# Add grouping cols
+# Add station and channel treatment cols
+plant.all <- plant.all |> 
+  mutate(station.trt = case_when(
+    str_detect(Station, "ORD") ~ "One rock dam",
+    str_detect(Station, "BAF") ~ "Baffle",
+    TRUE ~ "No treatment"))
 
 # Add channel treatment
-plant.all[ , "channel.trt"] <- NA
-for(i in 1:nrow(plant.all)) {
-  if(plant.all$Channel[i] == "Channel 12") {
-    plant.all$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(plant.all$Channel[i] == "Channel 13") {
-    plant.all$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(plant.all$Channel[i] == "Channel 19") {
-    plant.all$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    plant.all$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
+plant.all <- plant.all |> 
+  mutate(channel.trt = case_when(
+    str_detect(Channel, "12") ~ "Channel 12: No treatment",
+    str_detect(Station, "13") ~ "Channel 13: In-channel treatment",
+    str_detect(Station, "19") ~ "Channel 19: Upland treatment",
+    TRUE ~ "Channel 21: In-channel treatment"))
 
-ground.all[ , "channel.trt"] <- NA
-for(i in 1:nrow(ground.all)) {
-  if(ground.all$Channel[i] == "Channel 12") {
-    ground.all$channel.trt[i] <- "Channel 12: No treatment"
-  } else if(ground.all$Channel[i] == "Channel 13") {
-    ground.all$channel.trt[i] <- "Channel 13: In-channel treatment"
-  }  else if(ground.all$Channel[i] == "Channel 19") {
-    ground.all$channel.trt[i] <- "Channel 19: Upland treatment"
-  } else {
-    ground.all$channel.trt[i] <- "Channel 21: In-channel treatment"
-  }
-}
+# Add Treatment1
+plant.all <- plant.all |> 
+  mutate(Treatment1 = case_when(
+    str_detect(Station, "19") ~ "Upland",
+    TRUE ~ station.trt)) |> 
+  mutate(Treatment1 = as.factor(Treatment1))
 
-# Add grass/forb/shrub/tree
-plant.all[ , "gfst"] <- NA
-for(i in 1:nrow(plant.all)) {
-  if(str_detect(plant.all$Functional, "grass")[i] == TRUE) {
-    plant.all$gfst[i] <- "Grass"
-  } else if(str_detect(plant.all$Functional, "forb")[i] == TRUE) {
-    plant.all$gfst[i] <- "Forb"
-  } else if(str_detect(plant.all$Functional, "Shrub")[i] == TRUE) {
-    plant.all$gfst[i] <- "Shrub"
-  } else {
-    plant.all$gfst[i] <- "Tree"
-  }
-} 
+# Add Treatment2
+plant.all$Treatment2 <- as.factor(gsub("^.*?: ", "", plant.all$channel.trt))
+
+# Add Treatment3
+plant.all <- plant.all |> 
+  mutate(Treatment3 = case_when(
+    str_detect("In-channel treatment", channel.trt) ~ "Treated",
+    TRUE ~ "Control")) |> 
+  mutate(Treatment3 = as.factor(Treatment3))
 
 # Add woody/herbaceous
-plant.all[ , "woody"] <- NA
-for(i in 1:nrow(plant.all)) {
-  if(str_detect(plant.all$Functional, "grass")[i] == TRUE) {
-    plant.all$woody[i] <- "Herbaceous"
-  } else if(str_detect(plant.all$Functional, "forb")[i] == TRUE) {
-    plant.all$woody[i] <- "Herbaceous"
-  } else if(str_detect(plant.all$Functional, "Shrub")[i] == TRUE) {
-    plant.all$woody[i] <- "Woody"
-  } else {
-    plant.all$woody[i] <- "Woody"
-  }
-} 
+plant.all <- plant.all |> 
+  mutate(woody = case_when(
+    str_detect(Functional, c("grass|forb")) ~ "Herbaceous",
+    TRUE ~ "Woody")) 
+
+# Remove March 2012 sampling
+plant.all <- plant.all |> 
+  filter(Year != "2012-03-01")
+
+# Add year.xaxis 
+plant.all <-plant.all |> 
+  mutate(year.xaxis = case_when(
+    Year == "2012-11-01" ~ "2012-01-01",
+    Year == "2013-11-01" ~ "2013-01-01",
+    Year == "2014-11-01" ~ "2014-01-01",
+    Year == "2015-11-01" ~ "2015-01-01",
+    Year == "2018-11-01" ~ "2018-01-01",
+    Year == "2021-11-01" ~ "2021-01-01")) |> 
+  mutate(year.xaxis = as.Date(year.xaxis))
+
+# Shorten Year to 4 digits
+plant.all$Year <- as.factor(gsub("-.*", "", plant.all$Year))
 ```
 
-# Summarise by more specific groups
+
+# Summarise by total cover and herb cover
 ```{r}
-# Summarise by total, functional group, and native status -----------------
-
 total.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt) %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
   summarise(Cover = sum(Cover), .groups = "keep")
 
-fungr.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, Functional) %>% 
-  summarise(Cover = sum(Cover), .groups = "keep")
-
-gfst.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, gfst) %>% 
-  summarise(Cover = sum(Cover), .groups = "keep")
-
-woody.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, woody) %>% 
-  summarise(Cover = sum(Cover), .groups = "keep")
-
-inwood.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, Native, woody) %>% 
-  summarise(Cover = sum(Cover), .groups = "keep")
-
-ingfst.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, gfst, Native) %>% 
-  summarise(Cover = sum(Cover), .groups = "keep")
-
-innat.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, Native) %>% 
-  summarise(Cover = sum(Cover), .groups = "keep")
+herb.all <- plant.all %>% 
+  group_by(Channel, Station, Year, station.trt, channel.trt, woody,
+           Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
+  summarise(Cover = sum(Cover), .groups = "keep") |> 
+  filter(woody == "Herbaceous")
 ```
 - More specific groups are made by summing the appropriate species by category.
-- `total.all` is total plant cover (all plants summed).
-- `fungr.all` is by functional group, as collected: annual/perennial grass and forb, shrub, and tree.
-- `gfst.all` is by grass, forb, shrub, and tree.
-- `woody.all` is by woody and herbaceous.
-- `inwood.all` is by invasive/native and woody/herbaceous.
-- `ingfst.all` is by invasive/native and grass/forb/shrub/tree.
-- `innat.all` is by invasive and native.
 
 
-# Fix categorical variable names
+# Calculate richness and Shannon
 ```{r}
-# Fix invasive/native and woody/herbaceous names (inwood) -----------------
+# Richness and Shannon ----------------------------------------------------
 
-inwood.all <- inwood.all %>% 
-  unite("inwood", Native:woody, sep = " ") 
+# Remove annuals
+plant.per <- plant.all |> 
+  filter(!str_detect(Functional, "Annual"))
 
-for(i in 1:nrow(inwood.all)) {
-  if(inwood.all$inwood[i] == "Unknown native status Herbaceous") {
-    inwood.all$inwood[i] <- "Unknown herb"
-  } else if(inwood.all$inwood[i] == "Native Herbaceous") {
-    inwood.all$inwood[i] <- "Native herb"
-  }  else if(inwood.all$inwood[i] == "Native Woody") {
-    inwood.all$inwood[i] <- "Native woody"
-  }  else if(inwood.all$inwood[i] == "Invasive Herbaceous") {
-    inwood.all$inwood[i] <- "Invasive herb"
-  }  else if(inwood.all$inwood[i] == "Invasive Woody") {
-    inwood.all$inwood[i] <- "Invasive woody"
-  } else {
-    inwood.all$inwood[i] <- "Unknown woody"
-  }
-}
+# By treatment and station
+richness <- plant.per %>%  
+  group_by(Channel, Station, Year, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
+  summarise(rich = n_distinct(Common),
+            .groups = "keep") 
 
+shannon <- plant.per %>%  
+  group_by(Channel, Station, Year, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
+  summarise(shan = diversity(Cover),
+            .groups = "keep")
 
-# Fix invasive/native and gfst names (ingfst) -----------------------------
-
-ingfst.all <- ingfst.all %>% 
-  unite("ingfst", Native:gfst, sep = " ")
-
-for(i in 1:nrow(ingfst.all)) {
-  if(ingfst.all$ingfst[i] == "Unknown native status Grass") {
-    ingfst.all$ingfst[i] <- "Unknown grass"
-  } else if(ingfst.all$ingfst[i] == "Unknown native status Forb") {
-    ingfst.all$ingfst[i] <- "Unknown forb"
-  } else if(ingfst.all$ingfst[i] == "Unknown native status Shrub") {
-    ingfst.all$ingfst[i] <- "Unknown shrub"
-  } else if(ingfst.all$ingfst[i] == "Native Forb") {
-    ingfst.all$ingfst[i] <- "Native forb"
-  } else if(ingfst.all$ingfst[i] == "Native Grass") {
-    ingfst.all$ingfst[i] <- "Native grass"
-  } else if(ingfst.all$ingfst[i] == "Native Shrub") {
-    ingfst.all$ingfst[i] <- "Native shrub"
-  } else if(ingfst.all$ingfst[i] == "Native Tree") {
-    ingfst.all$ingfst[i] <- "Native tree"
-  } else if(ingfst.all$ingfst[i] == "Invasive Forb") {
-    ingfst.all$ingfst[i] <- "Invasive forb"
-  } else {
-    ingfst.all$ingfst[i] <- "Invasive grass"
-  }
-}
+per.div <- left_join(richness, shannon)
 ```
+
+# Assign an ID for each sampling event
+```{r}
+# Assign record number for each sampling event ----------------------------
+
+# Create ID
+all.c <- bind_rows(all.c12, all.c13, all.c19, all.c21) %>% 
+  select(Year, Station) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Year) |> 
+  filter(Year != "2012-03-01") 
+all.c$PlotTimeID <- c(1:nrow(all.c)) 
+all.c <- all.c %>% 
+  separate(Station, c("Channel", "Station"), "_") %>% 
+  select(PlotTimeID, Year, Channel, Station)
+all.c$Year <- gsub("-.*", "", all.c$Year)
+
+# Add to ID dataframes (remove NAs because some data sheets were lost)
+plant.all <- left_join(all.c, plant.all) %>% 
+  filter(!is.na(Cover))
+total.all <- left_join(all.c, total.all) %>% 
+  filter(!is.na(Cover))
+herb.all <- left_join(all.c, herb.all) %>% 
+  filter(!is.na(Cover))
+per.div <- left_join(all.c, per.div) |> 
+  filter(!is.na(shan))
+```
+- "Each sampling event" refers to every station, with each year as a unique event.
 
 # Save as CSVs and `.RData`
 ```{r}
 # Save dataframes ---------------------------------------------------------
 
-write.csv(plant.all,
-          file = "data/cleaned/Summarised-all_plant-species-cover.csv",
-          row.names = FALSE)
-write.csv(ground.all,
-          file = "data/cleaned/Summarised-all_ground-cover.csv",
-          row.names = FALSE)
-write.csv(total.all,
-          file = "data/cleaned/Summarised-all_total-plant-cover.csv",
-          row.names = FALSE)
-write.csv(fungr.all,
-          file = "data/cleaned/Summarised-all_functional-group-cover.csv",
-          row.names = FALSE)
-write.csv(gfst.all,
-          file = "data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv",
-          row.names = FALSE)
-write.csv(woody.all,
-          file = "data/cleaned/Summarised-all_woody-herb-cover.csv",
-          row.names = FALSE)
-write.csv(inwood.all,
-          file = "data/cleaned/Summarised-all_invasive-woody-cover.csv",
-          row.names = FALSE)
-write.csv(ingfst.all,
-          file = "data/cleaned/Summarised-all_invasive-grassforbshrubtree-cover.csv",
-          row.names = FALSE)
-write.csv(innat.all,
-          file = "data/cleaned/Summarised-all_invasive-native-cover.csv",
-          row.names = FALSE)
+write_csv(plant.all,
+          file = "data/cleaned/Summarised-all_plant-species-cover.csv")
+write_csv(total.all,
+          file = "data/cleaned/Summarised-all_total-plant-cover.csv")
+write_csv(herb.all,
+          file = "data/cleaned/Summarised-all_herb-cover.csv")
+write_csv(per.div,
+          file = "data/cleaned/Summarised-all_perennial-diversity.csv")
 
 
 save.image("RData/Summarise-all-channels.RData")
