@@ -1653,7 +1653,9 @@ herb.all &lt;- plant.all %&gt;%
   group_by(Channel, Station, Year, station.trt, channel.trt, woody,
            Treatment1, Treatment2, Treatment3, year.xaxis) %&gt;% 
   summarise(Cover = sum(Cover), .groups = &quot;keep&quot;) |&gt; 
-  filter(woody == &quot;Herbaceous&quot;)</code></pre>
+  filter(woody == &quot;Herbaceous&quot;) |&gt; 
+  ungroup() |&gt; 
+  select(-woody)</code></pre>
 <ul>
 <li>More specific groups are made by summing the appropriate species by
 category.</li>

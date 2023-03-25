@@ -120,7 +120,9 @@ herb.all <- plant.all %>%
   group_by(Channel, Station, Year, station.trt, channel.trt, woody,
            Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
   summarise(Cover = sum(Cover), .groups = "keep") |> 
-  filter(woody == "Herbaceous")
+  filter(woody == "Herbaceous") |> 
+  ungroup() |> 
+  select(-woody)
 
 
 # Richness and Shannon ----------------------------------------------------
