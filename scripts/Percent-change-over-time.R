@@ -63,6 +63,9 @@ total.pd <- total.pd |>
     str_detect(total.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
   arrange(Sample)
 
+# Back-transform from log
+total.pd$backtrans.dCover <- exp(total.pd$dCover)
+
 write_csv(total.pd,
           file = "data/cleaned/Percent-difference_total-cover.csv")
 
@@ -153,6 +156,9 @@ herb.pd <- herb.pd |>
     str_detect(herb.pd$Name, "Channel 12|Channel 19") ~ "Control",
     str_detect(herb.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
   arrange(Sample)
+
+# Back-transform from log
+herb.pd$backtrans.dCover <- exp(herb.pd$dCover)
 
 write_csv(herb.pd,
           file = "data/cleaned/Percent-difference_herb-cover.csv")
@@ -246,6 +252,9 @@ rich.pd <- rich.pd |>
     str_detect(rich.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
   arrange(Sample)
 
+# Back-transform from log
+rich.pd$backtrans.dRichness <- exp(rich.pd$dRichness)
+
 write_csv(rich.pd,
           file = "data/cleaned/Percent-difference_rich.csv")
 
@@ -336,6 +345,9 @@ shan.pd <- shan.pd |>
     str_detect(shan.pd$Name, "Channel 12|Channel 19") ~ "Control",
     str_detect(shan.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
   arrange(Sample)
+
+# Back-transform from log
+shan.pd$backtrans.dShannon <- exp(shan.pd$dShannon)
 
 write_csv(shan.pd,
           file = "data/cleaned/Percent-difference_shan.csv")

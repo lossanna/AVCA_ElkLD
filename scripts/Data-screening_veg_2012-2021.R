@@ -18,6 +18,11 @@ total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
+total.pd <- read_csv("data/cleaned/Percent-difference_total-cover.csv")
+herb.pd <- read_csv("data/cleaned/Percent-difference_herb-cover.csv")
+rich.pd <- read_csv("data/cleaned/Percent-difference_rich.csv")
+shan.pd <- read_csv("data/cleaned/Percent-difference_shan.csv")
+
 
 # Data wrangling ----------------------------------------------------------
 
@@ -29,6 +34,7 @@ herb.all[group.cols] <- lapply(herb.all[group.cols], factor)
 per.div[group.cols] <- lapply(per.div[group.cols], factor)
 
 # Separate out control and treated
+# Control
 total.ctrl <- total.all |> 
   filter(Treatment3 == "Control")
 herb.ctrl <- herb.all |> 
@@ -36,11 +42,31 @@ herb.ctrl <- herb.all |>
 per.div.ctrl <- per.div |> 
   filter(Treatment3 == "Control")
 
+total.ctrl.pd <- total.pd |> 
+  filter(Treatment3 == "Control")
+herb.ctrl.pd <- herb.pd |> 
+  filter(Treatment3 == "Control")
+rich.ctrl.pd <- rich.pd |> 
+  filter(Treatment3 == "Control")
+shan.ctrl.pd <- shan.pd |> 
+  filter(Treatment3 == "Control")
+
+
+# Treated
 total.trt <- total.all |> 
   filter(Treatment3 == "Treated")
 herb.trt <- herb.all |> 
   filter(Treatment3 == "Treated")
 per.div.trt <- per.div |> 
+  filter(Treatment3 == "Treated")
+
+total.trt.pd <- total.pd |> 
+  filter(Treatment3 == "Treated")
+herb.trt.pd <- herb.pd |> 
+  filter(Treatment3 == "Treated")
+rich.trt.pd <- rich.pd |> 
+  filter(Treatment3 == "Treated")
+shan.trt.pd <- shan.pd |> 
   filter(Treatment3 == "Treated")
 
 
@@ -307,6 +333,25 @@ qqPlot(per.div.trt.18$shan)
 qqPlot(per.div.ctrl.21$shan)
 qqPlot(per.div.trt.21$shan)
 
+
+# Percent difference
+qqPlot(total.ctrl.pd$backtrans.dCover)
+qqPlot(total.trt.pd$backtrans.dCover)
+qqPlot(herb.ctrl.pd$backtrans.dCover)
+qqPlot(herb.trt.pd$backtrans.dCover)
+qqPlot(rich.ctrl.pd$backtrans.dRichness)
+qqPlot(rich.trt.pd$backtrans.dRichness)
+qqPlot(shan.ctrl.pd$backtrans.dShannon)
+qqPlot(shan.trt.pd$backtrans.dShannon)
+
+qqPlot(total.ctrl.pd$backtrans.dCover)
+qqPlot(total.trt.pd$backtrans.dCover)
+qqPlot(herb.ctrl.pd$backtrans.dCover)
+qqPlot(herb.trt.pd$backtrans.dCover)
+qqPlot(rich.ctrl.pd$backtrans.dRichness)
+qqPlot(rich.trt.pd$backtrans.dRichness)
+qqPlot(shan.ctrl.pd$backtrans.dShannon)
+qqPlot(shan.trt.pd$backtrans.dShannon)
 
 
 # Check for outliers ------------------------------------------------------
