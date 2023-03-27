@@ -1,233 +1,335 @@
 # Purpose: Data screening for temporal 2012-2021 plant data (cover & diversity).
-# Checked for normality and visualized distribution.
-# Determined all were normally distributed.
+# Checked for normality:
+#   Total cover, richness, and Shannon were normally distributed for all years, and by year.
+#   Herb cover was normally distributed by year, but not really for all years combined.
+# Checked for outliers:
+#   There were a few outliers, but none of them were extreme (all years combined).
 
 
-library(tidyver.se)
+library(tidyverse)
 library(agricolae)
 library(car)
 library(vegan)
+library(rstatix)
 
 # Load data ---------------------------------------------------------------
 
-plant.all <- read.csv("data/cleaned/Summarised-all_plant-species-cover.csv")
-ground.all <- read.csv("data/cleaned/Summarised-all_ground-cover.csv")
-total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-fungr.all <- read.csv("data/cleaned/Summarised-all_functional-group-cover.csv")
-gfst.all <- read.csv("data/cleaned/Summarised-all_grass-forb-shrub-tree-cover.csv")
-woody.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
-inwood.all <- read.csv("data/cleaned/Summarised-all_invasive-woody-cover.csv")
-ingfst.all <- read.csv("data/cleaned/Summarised-all_invasive-grassforbshrubtree-cover.csv")
-innat.all <- read.csv("data/cleaned/Summarised-all_invasive-native-cover.csv")
-
-
-# Functions ---------------------------------------------------------------
-
-# Add year as date and character, and retain Nov samples only
-year <- function(x) {a
-  x <- x %>% 
-    mutate(year.date = as.Date(x$Year))
-  
-  x[ , "year.xaxis"] <- NA
-  for(i in 1:nrow(x)) {
-    if(x$Year[i] == "2012-11-01") {
-      x$year.xaxis[i] <- "2012-01-01"
-    } else if(x$Year[i] == "2013-11-01") {
-      x$year.xaxis[i] <- "2013-01-01"
-    } else if(x$Year[i] == "2014-11-01") {
-      x$year.xaxis[i] <- "2014-01-01"
-    } else if(x$Year[i] == "2015-11-01") {
-      x$year.xaxis[i] <- "2015-01-01"
-    } else if(x$Year[i] == "2018-11-01") {
-      x$year.xaxis[i] <- "2018-01-01"
-    } else if(x$Year[i] == "2021-11-01") {
-      x$year.xaxis[i] <- "2021-01-01"
-    } else {
-      x$year.xaxis[i] <- "2012-03-01"
-    }
-  }
-  x$year.xaxis <- as.Date(x$year.xaxis)
-  
-  x <- x %>% 
-    filter(year.xaxis != "2012-03-01") 
-  x$Year <- as.factor(gsub("-.*", "", x$Year))
-  
-  x$Treatment3 <- gsub("^.*?: ", "", x$channel.trt)
-  
-  x <- x %>% 
-    mutate(Treatment3 = case_when(
-      Treatment3 == "In-channel treatment" ~ "Treated",
-      Treatment3 == "No treatment" ~ "Control",
-      Treatment3 == "Upland treatment" ~ "Control",
-      TRUE ~ Treatment3)) |> 
-    mutate(Station = factor(Station),
-           Treatment3 = factor(Treatment3))
-  
-  return(x)
-}
-
-
-
-# Check normality and homogeneity of variance
-
-# Cover as response variable
-box.norm.homvar <- function(x, channel) {
-  
-  boxplot(Cover ~ Year, data = filter(x, Channel == channel))
-  
-  plot(tapply(filter(x, Channel == channel)$Cover,
-              filter(x, Channel == channel)$Year, var),
-       tapply(filter(x, Channel == channel)$Cover,
-              filter(x, Channel == channel)$Year, mean))
-  
-  plot(aov(Cover ~ Year, data = filter(x, Channel == channel)))
-  
-}
-
-# Richness as response variable
-box.norm.homvar.rich <- function(x, channel) {
-  
-  boxplot(rich ~ Year, data = filter(x, Channel == channel))
-  
-  plot(tapply(filter(x, Channel == channel)$rich,
-              filter(x, Channel == channel)$Year, var),
-       tapply(filter(x, Channel == channel)$rich,
-              filter(x, Channel == channel)$Year, mean))
-  
-  plot(aov(rich ~ Year, data = filter(x, Channel == channel)))
-  
-}
-
-# Diversity as response variable
-box.norm.homvar.shan <- function(x, channel) {
-  
-  boxplot(shan ~ Year, data = filter(x, Channel == channel))
-  
-  plot(tapply(filter(x, Channel == channel)$shan,
-              filter(x, Channel == channel)$Year, var),
-       tapply(filter(x, Channel == channel)$shan,
-              filter(x, Channel == channel)$Year, mean))
-  
-  plot(aov(shan ~ Year, data = filter(x, Channel == channel)))
-  
-}
+total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv")
+per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 
 # Data wrangling ----------------------------------------------------------
 
-plant.all <- year(plant.all)
-ground.all <- year(ground.all)
-total.all <- year(total.all)
-fungr.all <- year(fungr.all)
-gfst.all <- year(gfst.all)
-woody.all <- year(woody.all)
-inwood.all <- year(inwood.all)
-ingfst.all <- year(ingfst.all)
-innat.all <- year(innat.all)
+# Convert grouping cols to factor
+group.cols <- c("Year", "Channel", "Station", "Treatment1", "Treatment2", "Treatment3")
+
+total.all[group.cols] <- lapply(total.all[group.cols], factor)
+herb.all[group.cols] <- lapply(herb.all[group.cols], factor)
+per.div[group.cols] <- lapply(per.div[group.cols], factor)
+
+# Separate out control and treated
+total.ctrl <- total.all |> 
+  filter(Treatment3 == "Control")
+herb.ctrl <- herb.all |> 
+  filter(Treatment3 == "Control")
+per.div.ctrl <- per.div |> 
+  filter(Treatment3 == "Control")
+
+total.trt <- total.all |> 
+  filter(Treatment3 == "Treated")
+herb.trt <- herb.all |> 
+  filter(Treatment3 == "Treated")
+per.div.trt <- per.div |> 
+  filter(Treatment3 == "Treated")
 
 
-# Total cover -------------------------------------------------------------
+# Separate out by year
+# 2012
+total.ctrl.12 <- total.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2012")
+herb.ctrl.12 <- herb.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2012")
+per.div.ctrl.12 <- per.div |> 
+  filter(Treatment3 == "Control",
+         Year == "2012")
 
-box.norm.homvar(total.all, "Channel 12")
-box.norm.homvar(total.all, "Channel 13")
-box.norm.homvar(total.all, "Channel 19")
-box.norm.homvar(total.all, "Channel 21")
+total.trt.12 <- total.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2012")
+herb.trt.12 <- herb.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2012")
+per.div.trt.12 <- per.div |> 
+  filter(Treatment3 == "Treated",
+         Year == "2012")
+
+# 2013
+total.ctrl.13 <- total.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2013")
+herb.ctrl.13 <- herb.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2013")
+per.div.ctrl.13 <- per.div |> 
+  filter(Treatment3 == "Control",
+         Year == "2013")
+
+total.trt.13 <- total.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2013")
+herb.trt.13 <- herb.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2013")
+per.div.trt.13 <- per.div |> 
+  filter(Treatment3 == "Treated",
+         Year == "2013")
+
+# 2014
+total.ctrl.14 <- total.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2014")
+herb.ctrl.14 <- herb.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2014")
+per.div.ctrl.14 <- per.div |> 
+  filter(Treatment3 == "Control",
+         Year == "2014")
+
+total.trt.14 <- total.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2014")
+herb.trt.14 <- herb.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2014")
+per.div.trt.14 <- per.div |> 
+  filter(Treatment3 == "Treated",
+         Year == "2014")
+
+# 2015
+total.ctrl.15 <- total.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2015")
+herb.ctrl.15 <- herb.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2015")
+per.div.ctrl.15 <- per.div |> 
+  filter(Treatment3 == "Control",
+         Year == "2015")
+
+total.trt.15 <- total.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2015")
+herb.trt.15 <- herb.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2015")
+per.div.trt.15 <- per.div |> 
+  filter(Treatment3 == "Treated",
+         Year == "2015")
+
+# 2018
+total.ctrl.18 <- total.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2018")
+herb.ctrl.18 <- herb.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2018")
+per.div.ctrl.18 <- per.div |> 
+  filter(Treatment3 == "Control",
+         Year == "2018")
+
+total.trt.18 <- total.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2018")
+herb.trt.18 <- herb.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2018")
+per.div.trt.18 <- per.div |> 
+  filter(Treatment3 == "Treated",
+         Year == "2018")
+
+# 2021
+total.ctrl.21 <- total.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2021")
+herb.ctrl.21 <- herb.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2021")
+per.div.ctrl.21 <- per.div |> 
+  filter(Treatment3 == "Control",
+         Year == "2021")
+
+total.trt.21 <- total.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2021")
+herb.trt.21 <- herb.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2021")
+per.div.trt.21 <- per.div |> 
+  filter(Treatment3 == "Treated",
+         Year == "2021")
 
 
-# Functional group (gfst) -------------------------------------------------
 
-box.norm.homvar(gfst.all, "Channel 12")
-box.norm.homvar(gfst.all, "Channel 13")
-box.norm.homvar(gfst.all, "Channel 19")
-box.norm.homvar(gfst.all, "Channel 21")
+# Check distribution ------------------------------------------------------
 
-# Grass
-gfst.g <- gfst.all %>% 
-  filter(gfst == "Grass")
-box.norm.homvar(gfst.g, "Channel 12")
-box.norm.homvar(gfst.g, "Channel 13")
-box.norm.homvar(gfst.g, "Channel 19")
-box.norm.homvar(gfst.g, "Channel 21")
+# Total cover
+# All years
+hist(total.ctrl$Cover, breaks = 10)
+hist(total.trt$Cover, breaks = 10)
 
-# Forb
-gfst.f <- gfst.all %>% 
-  filter(gfst == "Forb")
-box.norm.homvar(gfst.f, "Channel 12")
-box.norm.homvar(gfst.f, "Channel 13")
-box.norm.homvar(gfst.f, "Channel 19")
-box.norm.homvar(gfst.f, "Channel 21")
+# By year
+hist(total.ctrl.12$Cover, breaks = 15)
+hist(total.trt.12$Cover, breaks = 15)
 
-# Shrub
-gfst.s <- gfst.all %>% 
-  filter(gfst == "Shrub")
-box.norm.homvar(gfst.s, "Channel 12")
-box.norm.homvar(gfst.s, "Channel 13")
-box.norm.homvar(gfst.s, "Channel 19")
-box.norm.homvar(gfst.s, "Channel 21")
+hist(total.ctrl.13$Cover, breaks = 15)
+hist(total.trt.13$Cover, breaks = 15)
 
-# Tree
-gfst.t <- gfst.all %>% 
-  filter(gfst == "Tree")
-box.norm.homvar(gfst.t, "Channel 12")
-box.norm.homvar(gfst.t, "Channel 13")
-box.norm.homvar(gfst.t, "Channel 19")
-box.norm.homvar(gfst.t, "Channel 21")  
+hist(total.ctrl.14$Cover, breaks = 15)
+hist(total.trt.14$Cover, breaks = 15)
+
+hist(total.ctrl.15$Cover, breaks = 15)
+hist(total.trt.15$Cover, breaks = 15)
+
+hist(total.ctrl.18$Cover, breaks = 15)
+hist(total.trt.18$Cover, breaks = 15)
+
+hist(total.ctrl.21$Cover, breaks = 15)
+hist(total.trt.21$Cover, breaks = 15)
 
 
-# Woody/herbaceous --------------------------------------------------------
-
-box.norm.homvar(woody.all, "Channel 12")
-box.norm.homvar(woody.all, "Channel 13")
-box.norm.homvar(woody.all, "Channel 19")
-box.norm.homvar(woody.all, "Channel 21")
-
-# Herbaceous
-woody.herb <- woody.all %>% 
-  filter(woody == "Herbaceous")
-box.norm.homvar(woody.herb, "Channel 12")
-box.norm.homvar(woody.herb, "Channel 13")
-box.norm.homvar(woody.herb, "Channel 19")
-box.norm.homvar(woody.herb, "Channel 21")
-
-# Woody
-woody.wood <- woody.all %>% 
-  filter(woody == "Woody")
-box.norm.homvar(woody.wood, "Channel 12")
-box.norm.homvar(woody.wood, "Channel 13")
-box.norm.homvar(woody.wood, "Channel 19")
-box.norm.homvar(woody.wood, "Channel 21")
+# Herb cover
+hist(herb.ctrl$Cover, breaks = 10)
+hist(herb.trt$Cover, breaks = 10)
 
 
 
-# Perennial richness ------------------------------------------------------
+# Check normality ---------------------------------------------------------
 
-# Define richness
-richness <- plant.all %>%  
-  group_by(Channel, Station, Year, year.date, year.xaxis, 
-           channel.trt, station.trt) %>% 
-  summarise(rich = n_distinct(Common),
-            .groups = "keep")
+# Total cover
+# All years
+qqPlot(total.ctrl$Cover) # maybe normal?
+qqPlot(total.trt$Cover) # maybe normal?
 
-box.norm.homvar.rich(richness, "Channel 12")
-box.norm.homvar.rich(richness, "Channel 13")
-box.norm.homvar.rich(richness, "Channel 19")
-box.norm.homvar.rich(richness, "Channel 21")
+# By year
+qqPlot(total.ctrl.12$Cover)
+qqPlot(total.trt.12$Cover)
+
+qqPlot(total.ctrl.13$Cover)
+qqPlot(total.trt.13$Cover)
+
+qqPlot(total.ctrl.14$Cover)
+qqPlot(total.trt.14$Cover)
+
+qqPlot(total.ctrl.15$Cover)
+qqPlot(total.trt.15$Cover)
+
+qqPlot(total.ctrl.18$Cover)
+qqPlot(total.trt.18$Cover)
+
+qqPlot(total.ctrl.21$Cover)
+qqPlot(total.trt.21$Cover)
 
 
-# Perennial diversity -----------------------------------------------------
+# Herb cover
+# All years
+qqPlot(herb.ctrl$Cover) # not normal
+qqPlot(herb.trt$Cover) # not normal
 
-# Define Shannon diversity
-shannon <- plant.all %>%  
-  group_by(Channel, Station, Year, year.date, year.xaxis, 
-           channel.trt, station.trt) %>% 
-  summarise(shan = diversity(Cover),
-            .groups = "keep")
+# By year
+qqPlot(herb.ctrl.12$Cover)
+qqPlot(herb.trt.12$Cover)
 
-box.norm.homvar.shan(shannon, "Channel 12")
-box.norm.homvar.shan(shannon, "Channel 13")
-box.norm.homvar.shan(shannon, "Channel 19")
-box.norm.homvar.shan(shannon, "Channel 21")
+qqPlot(herb.ctrl.13$Cover)
+qqPlot(herb.trt.13$Cover)
 
+qqPlot(herb.ctrl.14$Cover)
+qqPlot(herb.trt.14$Cover)
+
+qqPlot(herb.ctrl.15$Cover)
+qqPlot(herb.trt.15$Cover)
+
+qqPlot(herb.ctrl.18$Cover)
+qqPlot(herb.trt.18$Cover)
+
+qqPlot(herb.ctrl.21$Cover)
+qqPlot(herb.trt.21$Cover)
+
+
+# Richness
+# All years
+qqPlot(per.div.ctrl$rich)
+qqPlot(per.div.trt$rich)
+
+# By year
+qqPlot(per.div.ctrl.12$rich)
+qqPlot(per.div.trt.12$rich)
+
+qqPlot(per.div.ctrl.13$rich)
+qqPlot(per.div.trt.13$rich)
+
+qqPlot(per.div.ctrl.14$rich)
+qqPlot(per.div.trt.14$rich)
+
+qqPlot(per.div.ctrl.15$rich)
+qqPlot(per.div.trt.15$rich)
+
+qqPlot(per.div.ctrl.18$rich)
+qqPlot(per.div.trt.18$rich)
+
+qqPlot(per.div.ctrl.21$rich)
+qqPlot(per.div.trt.21$rich)
+
+
+# Shannon
+# All years
+qqPlot(per.div.ctrl$shan)
+qqPlot(per.div.trt$shan)
+
+# By year
+qqPlot(per.div.ctrl.12$shan)
+qqPlot(per.div.trt.12$shan)
+
+qqPlot(per.div.ctrl.13$shan)
+qqPlot(per.div.trt.13$shan)
+
+qqPlot(per.div.ctrl.14$shan)
+qqPlot(per.div.trt.14$shan)
+
+qqPlot(per.div.ctrl.15$shan)
+qqPlot(per.div.trt.15$shan)
+
+qqPlot(per.div.ctrl.18$shan)
+qqPlot(per.div.trt.18$shan)
+
+qqPlot(per.div.ctrl.21$shan)
+qqPlot(per.div.trt.21$shan)
+
+
+
+# Check for outliers ------------------------------------------------------
+
+total.all |> 
+  select(Cover, Treatment3, Year) |> 
+  group_by(Treatment3, Year) |> 
+  identify_outliers(Cover)
+
+herb.all |> 
+  select(Cover, Treatment3, Year) |> 
+  group_by(Treatment3, Year) |> 
+  identify_outliers(Cover)
+
+per.div |> 
+  select(rich, Treatment3, Year) |> 
+  group_by(Treatment3, Year) |> 
+  identify_outliers(rich)
+
+per.div |> 
+  select(shan, Treatment3, Year) |> 
+  group_by(Treatment3, Year) |> 
+  identify_outliers(shan)
 
 
 save.image("RData/Data-screening_veg_2012-2021.RData")
