@@ -1,3 +1,13 @@
+# Purpose: Plot and analysis for ANOVA comparisons by Treatment3 (Treated/Control)
+#   for total cover and herbaceous cover
+# Old analysis, includes: 
+#   one-way ANOVA for Control and Treated separately
+#   two-factor ANOVA
+#   comparisons of just 2012-2015 (to relate to precipitation)
+# Analysis discontinued because one-way ANOVA violates independence of repeated measures,
+#   and two-factor ANOVA has Year as a fixed factor
+
+
 library(tidyverse)
 library(agricolae)
 library(plotrix)
@@ -14,8 +24,8 @@ precip$year.xaxis <- as.Date(precip$year.xaxis)
 precip_join <- precip[1:6, ] %>% 
   select(year.xaxis, Precip_cum)
 
-total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-herb.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv") |> 
+total.all <- read.csv("data/cleaned/old-summarised/Summarised-all_total-plant-cover.csv")
+herb.all <- read.csv("data/cleaned/old-summarised/Summarised-all_woody-herb-cover.csv") |> 
   filter(woody == "Herbaceous")
 
 
@@ -83,7 +93,7 @@ total.avg <- total.all %>%
             .groups = "keep")
 
 write.csv(total.avg,
-          file = "data/cleaned/Treatment3-average_total-cover.csv",
+          file = "data/cleaned/old-summarised/Treatment3-average_total-cover.csv",
           row.names = FALSE)
 
 # Plot
@@ -103,12 +113,6 @@ total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean,
   theme(legend.position = "none") 
 total.plot
 
-
-# Repeated measures ANOVA
-
-
-
-# Old analysis
 
 # Two-factor ANOVA
 summary(aov(Cover ~ Treatment3 * Year, data = total.all))
@@ -213,7 +217,7 @@ herb.avg <- herb.all %>%
             .groups = "keep")
 
 write.csv(herb.avg,
-          file = "data/cleaned/Treatment3-average_herb-cover.csv",
+          file = "data/cleaned/old-summarised/Treatment3-average_herb-cover.csv",
           row.names = FALSE)
 
 # Plot
@@ -305,4 +309,4 @@ herb.plot.letters <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
 herb.plot.letters
 
 
-save.image("RData/Cover-by-year-and-Treatment3.RData")
+save.image("RData/old_pre-2023-03-24/Cover-by-year-and-Treatment3.RData")

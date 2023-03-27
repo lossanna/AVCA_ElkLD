@@ -1,3 +1,12 @@
+# Purpose: Plot and analysis for ANOVA comparisons by Treatment3 (Treated/Control)
+#   for perennial richness and Shannon diversity
+# Old analysis, includes: 
+#   one-way ANOVA for Control and Treated separately
+#   two-factor ANOVA
+# Analysis discontinued because one-way ANOVA violates independence of repeated measures,
+#   and two-factor ANOVA has Year as a fixed factor
+
+
 library(tidyverse)
 library(vegan)
 library(plotrix)
@@ -5,7 +14,7 @@ library(agricolae)
 
 # Load data ---------------------------------------------------------------
 
-per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv") |> 
+per.div <- read.csv("data/cleaned/old-summarised/Summarised-all_perennial-diversity.csv") |> 
   mutate(year.xaxis = as.Date(year.xaxis),
          Year = factor(Year),
          Treatment3 = case_when(
@@ -26,7 +35,7 @@ richness.avg <- per.div %>%
             .groups = "keep") 
 
 write.csv(richness.avg,
-          file = "data/cleaned/Treatment3-average_richness.csv",
+          file = "data/cleaned/old-summarised/Treatment3-average_richness.csv",
           row.names = FALSE)
 
 # Plot
@@ -94,7 +103,7 @@ shannon.avg <- per.div %>%
             .groups = "keep") 
 
 write.csv(shannon.avg,
-          file = "data/cleaned/Treatment3-average_Shannon.csv",
+          file = "data/cleaned/old-summarised/Treatment3-average_Shannon.csv",
           row.names = FALSE)
 
 # Plot 
@@ -127,6 +136,6 @@ summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # NS
 summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Control"))) # NS
 
 
-save.image("RData/Perennial-diversity-by-year-and-Treatment3.RData")
+save.image("RData/old_pre-2023-03-24/Perennial-diversity-by-year-and-Treatment3.RData")
 
 
