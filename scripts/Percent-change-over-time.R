@@ -250,7 +250,7 @@ rich.pd <- rich.pd |>
   arrange(Sample)
 
 write.csv(rich.pd,
-          file = "data/cleaned/Percent-difference_rich-cover.csv")
+          file = "data/cleaned/Percent-difference_rich.csv")
 
 
 # Plot by Treatment3
@@ -341,7 +341,7 @@ shan.pd <- shan.pd |>
   arrange(Sample)
 
 write.csv(shan.pd,
-          file = "data/cleaned/Percent-difference_shan-cover.csv")
+          file = "data/cleaned/Percent-difference_shan.csv")
 
 
 # Plot by Treatment3
