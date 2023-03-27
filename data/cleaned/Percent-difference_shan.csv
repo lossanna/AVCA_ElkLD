@@ -1,311 +1,311 @@
-"","Year","Sample","dShannon","Name","Treatment3"
-"1","2012-2013",1,0.452225394009804,"Channel 21, Station 01 + 07.5 BAF","Treated"
-"2","2013-2014",1,-0.338253726487086,"Channel 21, Station 01 + 07.5 BAF","Treated"
-"3","2014-2015",1,-0.312642042119197,"Channel 21, Station 01 + 07.5 BAF","Treated"
-"4","2015-2018",1,0.143172023826413,"Channel 21, Station 01 + 07.5 BAF","Treated"
-"5","2018-2021",1,0.136150436895652,"Channel 21, Station 01 + 07.5 BAF","Treated"
-"6","2012-2013",2,-0.264389627123355,"Channel 21, Station 01 + 49 ORD","Treated"
-"7","2013-2014",2,0.507100011344953,"Channel 21, Station 01 + 49 ORD","Treated"
-"8","2014-2015",2,0.458553967670417,"Channel 21, Station 01 + 49 ORD","Treated"
-"9","2015-2018",2,-0.0936956826058643,"Channel 21, Station 01 + 49 ORD","Treated"
-"10","2018-2021",2,0.840528403780984,"Channel 21, Station 01 + 49 ORD","Treated"
-"11","2012-2013",3,-0.0351079027528894,"Channel 21, Station 02 + 15 BAF","Treated"
-"12","2013-2014",3,-0.0549708620226974,"Channel 21, Station 02 + 15 BAF","Treated"
-"13","2014-2015",3,0.74859703744034,"Channel 21, Station 02 + 15 BAF","Treated"
-"14","2015-2018",3,NA,"Channel 21, Station 02 + 15 BAF","Treated"
-"15","2018-2021",3,NA,"Channel 21, Station 02 + 15 BAF","Treated"
-"16","2012-2013",4,-0.866049763205909,"Channel 21, Station 03 + 80 BAF","Treated"
-"17","2013-2014",4,0.333071723675685,"Channel 21, Station 03 + 80 BAF","Treated"
-"18","2014-2015",4,2.18613930997332,"Channel 21, Station 03 + 80 BAF","Treated"
-"19","2015-2018",4,-0.827117127356318,"Channel 21, Station 03 + 80 BAF","Treated"
-"20","2018-2021",4,-0.104229752689822,"Channel 21, Station 03 + 80 BAF","Treated"
-"21","2012-2013",5,-0.0174014544697901,"Channel 21, Station 04 + 90 ORD","Treated"
-"22","2013-2014",5,-0.0956920443024007,"Channel 21, Station 04 + 90 ORD","Treated"
-"23","2014-2015",5,0.0737355029660792,"Channel 21, Station 04 + 90 ORD","Treated"
-"24","2015-2018",5,0.13479034765756,"Channel 21, Station 04 + 90 ORD","Treated"
-"25","2018-2021",5,-0.0139546028708029,"Channel 21, Station 04 + 90 ORD","Treated"
-"26","2012-2013",6,0.00920371883857235,"Channel 21, Station 06 + 36 BAF","Treated"
-"27","2013-2014",6,0.140586418994319,"Channel 21, Station 06 + 36 BAF","Treated"
-"28","2014-2015",6,-0.119274310484266,"Channel 21, Station 06 + 36 BAF","Treated"
-"29","2015-2018",6,-0.0159113232896589,"Channel 21, Station 06 + 36 BAF","Treated"
-"30","2018-2021",6,0.120018128899645,"Channel 21, Station 06 + 36 BAF","Treated"
-"31","2012-2013",7,-0.790583964760436,"Channel 21, Station 07 + 49.5 ORD","Treated"
-"32","2013-2014",7,-0.0838722160761071,"Channel 21, Station 07 + 49.5 ORD","Treated"
-"33","2014-2015",7,0.468926373105429,"Channel 21, Station 07 + 49.5 ORD","Treated"
-"34","2015-2018",7,-0.17476489909981,"Channel 21, Station 07 + 49.5 ORD","Treated"
-"35","2018-2021",7,-0.027760120732562,"Channel 21, Station 07 + 49.5 ORD","Treated"
-"36","2012-2013",8,0.0710409644337329,"Channel 21, Station 07 + 66 BAF","Treated"
-"37","2013-2014",8,-1.35358654749384,"Channel 21, Station 07 + 66 BAF","Treated"
-"38","2014-2015",8,NA,"Channel 21, Station 07 + 66 BAF","Treated"
-"39","2015-2018",8,NA,"Channel 21, Station 07 + 66 BAF","Treated"
-"40","2018-2021",8,0.281202128945752,"Channel 21, Station 07 + 66 BAF","Treated"
-"41","2012-2013",9,0.0147697269432023,"Channel 21, Station 08 + 62 BAF","Treated"
-"42","2013-2014",9,-0.150701778811439,"Channel 21, Station 08 + 62 BAF","Treated"
-"43","2014-2015",9,-0.0942841569786202,"Channel 21, Station 08 + 62 BAF","Treated"
-"44","2015-2018",9,-0.0422811173120678,"Channel 21, Station 08 + 62 BAF","Treated"
-"45","2018-2021",9,0.135156342822257,"Channel 21, Station 08 + 62 BAF","Treated"
-"46","2012-2013",10,-0.0794120914745521,"Channel 21, Station 09 + 99 ORD","Treated"
-"47","2013-2014",10,-0.468074056589489,"Channel 21, Station 09 + 99 ORD","Treated"
-"48","2014-2015",10,0.11877091183662,"Channel 21, Station 09 + 99 ORD","Treated"
-"49","2015-2018",10,-0.0443030238708419,"Channel 21, Station 09 + 99 ORD","Treated"
-"50","2018-2021",10,-0.00963480259944416,"Channel 21, Station 09 + 99 ORD","Treated"
-"51","2012-2013",11,-0.115879115123989,"Channel 21, Station 10 + 13 BAF","Treated"
-"52","2013-2014",11,-1.17345508749,"Channel 21, Station 10 + 13 BAF","Treated"
-"53","2014-2015",11,0.0765671691429083,"Channel 21, Station 10 + 13 BAF","Treated"
-"54","2015-2018",11,-0.203409586809042,"Channel 21, Station 10 + 13 BAF","Treated"
-"55","2018-2021",11,0.0970735442971899,"Channel 21, Station 10 + 13 BAF","Treated"
-"56","2012-2013",12,-0.253196400815806,"Channel 21, Station 11 + 12 ORD","Treated"
-"57","2013-2014",12,0.198368264453066,"Channel 21, Station 11 + 12 ORD","Treated"
-"58","2014-2015",12,0.130033760749957,"Channel 21, Station 11 + 12 ORD","Treated"
-"59","2015-2018",12,-0.0697929823937354,"Channel 21, Station 11 + 12 ORD","Treated"
-"60","2018-2021",12,0.0340335510338488,"Channel 21, Station 11 + 12 ORD","Treated"
-"61","2012-2013",13,0.172672030534803,"Channel 21, Station 11 + 24 BAF","Treated"
-"62","2013-2014",13,0.420938220404996,"Channel 21, Station 11 + 24 BAF","Treated"
-"63","2014-2015",13,-0.0182227593445235,"Channel 21, Station 11 + 24 BAF","Treated"
-"64","2015-2018",13,-0.10863423920061,"Channel 21, Station 11 + 24 BAF","Treated"
-"65","2018-2021",13,-0.114773836317045,"Channel 21, Station 11 + 24 BAF","Treated"
-"66","2012-2013",14,-0.027475801871426,"Channel 21, Station 11 + 63 ORD","Treated"
-"67","2013-2014",14,0.0497257058188112,"Channel 21, Station 11 + 63 ORD","Treated"
-"68","2014-2015",14,0.0886170644344059,"Channel 21, Station 11 + 63 ORD","Treated"
-"69","2015-2018",14,-0.0639613559733135,"Channel 21, Station 11 + 63 ORD","Treated"
-"70","2018-2021",14,0.344054796926318,"Channel 21, Station 11 + 63 ORD","Treated"
-"71","2012-2013",15,-0.104552706919158,"Channel 21, Station 11 + 73 BAF","Treated"
-"72","2013-2014",15,-0.0994749266899911,"Channel 21, Station 11 + 73 BAF","Treated"
-"73","2014-2015",15,-0.000358702060669902,"Channel 21, Station 11 + 73 BAF","Treated"
-"74","2015-2018",15,0.215753812338119,"Channel 21, Station 11 + 73 BAF","Treated"
-"75","2018-2021",15,-0.21485044571802,"Channel 21, Station 11 + 73 BAF","Treated"
-"76","2012-2013",16,0.281783956173396,"Channel 19, Station 01 + 04","Control"
-"77","2013-2014",16,NA,"Channel 19, Station 01 + 04","Control"
-"78","2014-2015",16,NA,"Channel 19, Station 01 + 04","Control"
-"79","2015-2018",16,0.0762446619966045,"Channel 19, Station 01 + 04","Control"
-"80","2018-2021",16,0.00824683944681345,"Channel 19, Station 01 + 04","Control"
-"81","2012-2013",17,NA,"Channel 19, Station 02 + 04","Control"
-"82","2013-2014",17,0.222499038935221,"Channel 19, Station 02 + 04","Control"
-"83","2014-2015",17,0.0167284374741567,"Channel 19, Station 02 + 04","Control"
-"84","2015-2018",17,-0.000511108306193812,"Channel 19, Station 02 + 04","Control"
-"85","2018-2021",17,-0.0269670502191097,"Channel 19, Station 02 + 04","Control"
-"86","2012-2013",18,0.233787595334797,"Channel 19, Station 02 + 52","Control"
-"87","2013-2014",18,-0.28102231956946,"Channel 19, Station 02 + 52","Control"
-"88","2014-2015",18,0.0699774632928808,"Channel 19, Station 02 + 52","Control"
-"89","2015-2018",18,-0.0346469146671796,"Channel 19, Station 02 + 52","Control"
-"90","2018-2021",18,0.00593936718978577,"Channel 19, Station 02 + 52","Control"
-"91","2012-2013",19,0.151018585130335,"Channel 19, Station 03 + 63","Control"
-"92","2013-2014",19,0.040462046654944,"Channel 19, Station 03 + 63","Control"
-"93","2014-2015",19,0.247273325059453,"Channel 19, Station 03 + 63","Control"
-"94","2015-2018",19,-0.110844436124837,"Channel 19, Station 03 + 63","Control"
-"95","2018-2021",19,0.116874354898439,"Channel 19, Station 03 + 63","Control"
-"96","2012-2013",20,0.0232806312347508,"Channel 19, Station 03 + 98","Control"
-"97","2013-2014",20,-0.0598679368875458,"Channel 19, Station 03 + 98","Control"
-"98","2014-2015",20,0.0412828501126908,"Channel 19, Station 03 + 98","Control"
-"99","2015-2018",20,0.0269301696205057,"Channel 19, Station 03 + 98","Control"
-"100","2018-2021",20,0.0531509736924639,"Channel 19, Station 03 + 98","Control"
-"101","2012-2013",21,0.237144422471977,"Channel 19, Station 05 + 00","Control"
-"102","2013-2014",21,-0.0218273572094202,"Channel 19, Station 05 + 00","Control"
-"103","2014-2015",21,0.182102484699039,"Channel 19, Station 05 + 00","Control"
-"104","2015-2018",21,0.000120317775714945,"Channel 19, Station 05 + 00","Control"
-"105","2018-2021",21,-0.108478841263585,"Channel 19, Station 05 + 00","Control"
-"106","2012-2013",22,0.646763076423009,"Channel 19, Station 05 + 09","Control"
-"107","2013-2014",22,-0.798965305927711,"Channel 19, Station 05 + 09","Control"
-"108","2014-2015",22,-0.0324622679057129,"Channel 19, Station 05 + 09","Control"
-"109","2015-2018",22,0.140149776747309,"Channel 19, Station 05 + 09","Control"
-"110","2018-2021",22,-0.143683877947218,"Channel 19, Station 05 + 09","Control"
-"111","2012-2013",23,0.174916421959311,"Channel 19, Station 05 + 62","Control"
-"112","2013-2014",23,-0.122080391164434,"Channel 19, Station 05 + 62","Control"
-"113","2014-2015",23,0.00296204105680908,"Channel 19, Station 05 + 62","Control"
-"114","2015-2018",23,0.217270798110832,"Channel 19, Station 05 + 62","Control"
-"115","2018-2021",23,0.102644536881833,"Channel 19, Station 05 + 62","Control"
-"116","2012-2013",24,0.291961437000929,"Channel 19, Station 06 + 13","Control"
-"117","2013-2014",24,-0.238162478472382,"Channel 19, Station 06 + 13","Control"
-"118","2014-2015",24,0.559930730696447,"Channel 19, Station 06 + 13","Control"
-"119","2015-2018",24,-0.126657873628241,"Channel 19, Station 06 + 13","Control"
-"120","2018-2021",24,0.388368817868752,"Channel 19, Station 06 + 13","Control"
-"121","2012-2013",25,2.2687159977909,"Channel 19, Station 06 + 97","Control"
-"122","2013-2014",25,-1.38678613688692,"Channel 19, Station 06 + 97","Control"
-"123","2014-2015",25,-0.589339728593235,"Channel 19, Station 06 + 97","Control"
-"124","2015-2018",25,0.565902705805404,"Channel 19, Station 06 + 97","Control"
-"125","2018-2021",25,-0.665362499098963,"Channel 19, Station 06 + 97","Control"
-"126","2012-2013",26,0.221677319241327,"Channel 19, Station 07 + 30","Control"
-"127","2013-2014",26,-0.341495494815924,"Channel 19, Station 07 + 30","Control"
-"128","2014-2015",26,0.230059407266625,"Channel 19, Station 07 + 30","Control"
-"129","2015-2018",26,-0.020622914507619,"Channel 19, Station 07 + 30","Control"
-"130","2018-2021",26,-0.187359023062369,"Channel 19, Station 07 + 30","Control"
-"131","2012-2013",27,1.24851398852197,"Channel 19, Station 07 + 50","Control"
-"132","2013-2014",27,-0.977976545218501,"Channel 19, Station 07 + 50","Control"
-"133","2014-2015",27,-0.0518112083647483,"Channel 19, Station 07 + 50","Control"
-"134","2015-2018",27,-0.150392961132657,"Channel 19, Station 07 + 50","Control"
-"135","2018-2021",27,-0.0130661314474294,"Channel 19, Station 07 + 50","Control"
-"136","2012-2013",28,0.221382949869583,"Channel 19, Station 07 + 97","Control"
-"137","2013-2014",28,0.156786032339126,"Channel 19, Station 07 + 97","Control"
-"138","2014-2015",28,0.114785236410735,"Channel 19, Station 07 + 97","Control"
-"139","2015-2018",28,-0.0394490427367302,"Channel 19, Station 07 + 97","Control"
-"140","2018-2021",28,-0.039607636664304,"Channel 19, Station 07 + 97","Control"
-"141","2012-2013",29,0.148834197886299,"Channel 19, Station 09 + 05","Control"
-"142","2013-2014",29,0.118410834470455,"Channel 19, Station 09 + 05","Control"
-"143","2014-2015",29,-0.251935564894084,"Channel 19, Station 09 + 05","Control"
-"144","2015-2018",29,-0.0464747299680961,"Channel 19, Station 09 + 05","Control"
-"145","2018-2021",29,0.0255923371065588,"Channel 19, Station 09 + 05","Control"
-"146","2012-2013",30,-0.0589010429806306,"Channel 19, Station 09 + 26","Control"
-"147","2013-2014",30,-0.356514135529256,"Channel 19, Station 09 + 26","Control"
-"148","2014-2015",30,0.290744104021788,"Channel 19, Station 09 + 26","Control"
-"149","2015-2018",30,-0.0639411003065165,"Channel 19, Station 09 + 26","Control"
-"150","2018-2021",30,0.0468840980205638,"Channel 19, Station 09 + 26","Control"
-"151","2012-2013",31,-1.27073787228208,"Channel 19, Station 09 + 68","Control"
-"152","2013-2014",31,-0.0420100289916695,"Channel 19, Station 09 + 68","Control"
-"153","2014-2015",31,0.233685617297303,"Channel 19, Station 09 + 68","Control"
-"154","2015-2018",31,-0.0571642037879757,"Channel 19, Station 09 + 68","Control"
-"155","2018-2021",31,-0.0295298552007705,"Channel 19, Station 09 + 68","Control"
-"156","2012-2013",32,-0.105666778634854,"Channel 19, Station 10 + 98","Control"
-"157","2013-2014",32,0.491212664915916,"Channel 19, Station 10 + 98","Control"
-"158","2014-2015",32,0.142431174645911,"Channel 19, Station 10 + 98","Control"
-"159","2015-2018",32,0.0292685516680973,"Channel 19, Station 10 + 98","Control"
-"160","2018-2021",32,-0.25365133904669,"Channel 19, Station 10 + 98","Control"
-"161","2012-2013",33,1.53581875438138,"Channel 13, Station 1 + 11.5 BAF","Treated"
-"162","2013-2014",33,-1.28813668838561,"Channel 13, Station 1 + 11.5 BAF","Treated"
-"163","2014-2015",33,-0.68301811022454,"Channel 13, Station 1 + 11.5 BAF","Treated"
-"164","2015-2018",33,0.0664017637109176,"Channel 13, Station 1 + 11.5 BAF","Treated"
-"165","2018-2021",33,0.116161416585265,"Channel 13, Station 1 + 11.5 BAF","Treated"
-"166","2012-2013",34,-0.184631112418408,"Channel 13, Station 1 + 38.5 ORD","Treated"
-"167","2013-2014",34,0.59433211513034,"Channel 13, Station 1 + 38.5 ORD","Treated"
-"168","2014-2015",34,-0.965467264669141,"Channel 13, Station 1 + 38.5 ORD","Treated"
-"169","2015-2018",34,0.0864838870428626,"Channel 13, Station 1 + 38.5 ORD","Treated"
-"170","2018-2021",34,-0.320528861818302,"Channel 13, Station 1 + 38.5 ORD","Treated"
-"171","2012-2013",35,-0.342167905882702,"Channel 13, Station 1 + 71 BAF","Treated"
-"172","2013-2014",35,-0.380130262752572,"Channel 13, Station 1 + 71 BAF","Treated"
-"173","2014-2015",35,0.294677746200928,"Channel 13, Station 1 + 71 BAF","Treated"
-"174","2015-2018",35,-0.244866836407804,"Channel 13, Station 1 + 71 BAF","Treated"
-"175","2018-2021",35,0.493397939471462,"Channel 13, Station 1 + 71 BAF","Treated"
-"176","2012-2013",36,NA,"Channel 13, Station 1 + 77 ORD","Treated"
-"177","2013-2014",36,NA,"Channel 13, Station 1 + 77 ORD","Treated"
-"178","2014-2015",36,-0.643477956033006,"Channel 13, Station 1 + 77 ORD","Treated"
-"179","2015-2018",36,0.0888289491591829,"Channel 13, Station 1 + 77 ORD","Treated"
-"180","2018-2021",36,-0.168739551520307,"Channel 13, Station 1 + 77 ORD","Treated"
-"181","2012-2013",37,0.878188235872007,"Channel 13, Station 1 + 99 ORD","Treated"
-"182","2013-2014",37,-0.761615289028689,"Channel 13, Station 1 + 99 ORD","Treated"
-"183","2014-2015",37,-0.0655729028516846,"Channel 13, Station 1 + 99 ORD","Treated"
-"184","2015-2018",37,0.0271961804097143,"Channel 13, Station 1 + 99 ORD","Treated"
-"185","2018-2021",37,0.0802027567353858,"Channel 13, Station 1 + 99 ORD","Treated"
-"186","2012-2013",38,-0.409021333250543,"Channel 13, Station 2 + 16 BAF","Treated"
-"187","2013-2014",38,0.870800174530488,"Channel 13, Station 2 + 16 BAF","Treated"
-"188","2014-2015",38,-0.874568908771436,"Channel 13, Station 2 + 16 BAF","Treated"
-"189","2015-2018",38,-0.0197845727609271,"Channel 13, Station 2 + 16 BAF","Treated"
-"190","2018-2021",38,0.173044732452599,"Channel 13, Station 2 + 16 BAF","Treated"
-"191","2012-2013",39,0.846816768350839,"Channel 13, Station 2 + 57 ORD","Treated"
-"192","2013-2014",39,-0.688506006823289,"Channel 13, Station 2 + 57 ORD","Treated"
-"193","2014-2015",39,-0.0986822483584192,"Channel 13, Station 2 + 57 ORD","Treated"
-"194","2015-2018",39,-0.0904830084054651,"Channel 13, Station 2 + 57 ORD","Treated"
-"195","2018-2021",39,0.178595314740305,"Channel 13, Station 2 + 57 ORD","Treated"
-"196","2012-2013",40,0.153707019905899,"Channel 13, Station 2 + 67 BAF","Treated"
-"197","2013-2014",40,-0.108696157068233,"Channel 13, Station 2 + 67 BAF","Treated"
-"198","2014-2015",40,0.321753891585743,"Channel 13, Station 2 + 67 BAF","Treated"
-"199","2015-2018",40,-0.0934738487812784,"Channel 13, Station 2 + 67 BAF","Treated"
-"200","2018-2021",40,0.245508996418981,"Channel 13, Station 2 + 67 BAF","Treated"
-"201","2012-2013",41,-0.203772144212886,"Channel 13, Station 3 + 09 ORD","Treated"
-"202","2013-2014",41,0.217858450685107,"Channel 13, Station 3 + 09 ORD","Treated"
-"203","2014-2015",41,-0.105836334355546,"Channel 13, Station 3 + 09 ORD","Treated"
-"204","2015-2018",41,-0.0017120136650845,"Channel 13, Station 3 + 09 ORD","Treated"
-"205","2018-2021",41,0.20042444704398,"Channel 13, Station 3 + 09 ORD","Treated"
-"206","2012-2013",42,-0.310842946648769,"Channel 13, Station 3 + 31 BAF","Treated"
-"207","2013-2014",42,1.03319673772526,"Channel 13, Station 3 + 31 BAF","Treated"
-"208","2014-2015",42,-0.777654532469737,"Channel 13, Station 3 + 31 BAF","Treated"
-"209","2015-2018",42,-0.240116285377485,"Channel 13, Station 3 + 31 BAF","Treated"
-"210","2018-2021",42,0.128797568461953,"Channel 13, Station 3 + 31 BAF","Treated"
-"211","2012-2013",43,0.112627760876517,"Channel 13, Station 3 + 65 ORD","Treated"
-"212","2013-2014",43,0.0915417974250197,"Channel 13, Station 3 + 65 ORD","Treated"
-"213","2014-2015",43,-0.0642336257425539,"Channel 13, Station 3 + 65 ORD","Treated"
-"214","2015-2018",43,0.00188644383655262,"Channel 13, Station 3 + 65 ORD","Treated"
-"215","2018-2021",43,0.00547857619688692,"Channel 13, Station 3 + 65 ORD","Treated"
-"216","2012-2013",44,0.244898393299377,"Channel 13, Station 3 + 95.5 ORD","Treated"
-"217","2013-2014",44,-0.249865174591217,"Channel 13, Station 3 + 95.5 ORD","Treated"
-"218","2014-2015",44,-0.0251723215499291,"Channel 13, Station 3 + 95.5 ORD","Treated"
-"219","2015-2018",44,-0.0505849912239289,"Channel 13, Station 3 + 95.5 ORD","Treated"
-"220","2018-2021",44,0.0393432666975605,"Channel 13, Station 3 + 95.5 ORD","Treated"
-"221","2012-2013",45,0.43988651168115,"Channel 13, Station 4 + 14.5 BAF","Treated"
-"222","2013-2014",45,-0.34537677401659,"Channel 13, Station 4 + 14.5 BAF","Treated"
-"223","2014-2015",45,-0.129631943317724,"Channel 13, Station 4 + 14.5 BAF","Treated"
-"224","2015-2018",45,0.0690165512887008,"Channel 13, Station 4 + 14.5 BAF","Treated"
-"225","2018-2021",45,0.0581284806793875,"Channel 13, Station 4 + 14.5 BAF","Treated"
-"226","2012-2013",46,-0.293861445017858,"Channel 13, Station 4 + 36 ORD","Treated"
-"227","2013-2014",46,0.212256249738129,"Channel 13, Station 4 + 36 ORD","Treated"
-"228","2014-2015",46,-0.302618740163629,"Channel 13, Station 4 + 36 ORD","Treated"
-"229","2015-2018",46,-0.0118471435954592,"Channel 13, Station 4 + 36 ORD","Treated"
-"230","2018-2021",46,-0.0755184759608345,"Channel 13, Station 4 + 36 ORD","Treated"
-"231","2012-2013",47,0.0146236832642922,"Channel 13, Station 4 + 50 BAF","Treated"
-"232","2013-2014",47,0.102430596335742,"Channel 13, Station 4 + 50 BAF","Treated"
-"233","2014-2015",47,-0.289474336898937,"Channel 13, Station 4 + 50 BAF","Treated"
-"234","2015-2018",47,0.0481248446258247,"Channel 13, Station 4 + 50 BAF","Treated"
-"235","2018-2021",47,-0.154970256771148,"Channel 13, Station 4 + 50 BAF","Treated"
-"236","2012-2013",48,NA,"Channel 13, Station 4 + 78 ORD","Treated"
-"237","2013-2014",48,NA,"Channel 13, Station 4 + 78 ORD","Treated"
-"238","2014-2015",48,0.104675286325444,"Channel 13, Station 4 + 78 ORD","Treated"
-"239","2015-2018",48,-0.0465930560525427,"Channel 13, Station 4 + 78 ORD","Treated"
-"240","2018-2021",48,0.0809065435804751,"Channel 13, Station 4 + 78 ORD","Treated"
-"241","2012-2013",49,-0.0982230460070548,"Channel 12, Station 1 + 04","Control"
-"242","2013-2014",49,0.594887124082183,"Channel 12, Station 1 + 04","Control"
-"243","2014-2015",49,-0.114765427795408,"Channel 12, Station 1 + 04","Control"
-"244","2015-2018",49,0.0164670950044098,"Channel 12, Station 1 + 04","Control"
-"245","2018-2021",49,0.0351421003790509,"Channel 12, Station 1 + 04","Control"
-"246","2012-2013",50,-0.12153175357044,"Channel 12, Station 1 + 52","Control"
-"247","2013-2014",50,0.390848984350271,"Channel 12, Station 1 + 52","Control"
-"248","2014-2015",50,0.0233972387897717,"Channel 12, Station 1 + 52","Control"
-"249","2015-2018",50,0.0474178692593877,"Channel 12, Station 1 + 52","Control"
-"250","2018-2021",50,-0.0572175272394522,"Channel 12, Station 1 + 52","Control"
-"251","2012-2013",51,-0.322719532928048,"Channel 12, Station 1 + 83","Control"
-"252","2013-2014",51,-0.0918757165277869,"Channel 12, Station 1 + 83","Control"
-"253","2014-2015",51,0.0173882890782452,"Channel 12, Station 1 + 83","Control"
-"254","2015-2018",51,0.0248563942203731,"Channel 12, Station 1 + 83","Control"
-"255","2018-2021",51,0.125477600069737,"Channel 12, Station 1 + 83","Control"
-"256","2012-2013",52,-0.460085836715256,"Channel 12, Station 2 + 63","Control"
-"257","2013-2014",52,0.247753074312923,"Channel 12, Station 2 + 63","Control"
-"258","2014-2015",52,0.0977747448225542,"Channel 12, Station 2 + 63","Control"
-"259","2015-2018",52,-0.152846443089285,"Channel 12, Station 2 + 63","Control"
-"260","2018-2021",52,0.319454196099274,"Channel 12, Station 2 + 63","Control"
-"261","2012-2013",53,-0.0841237562773543,"Channel 12, Station 2 + 98","Control"
-"262","2013-2014",53,-0.166931092160956,"Channel 12, Station 2 + 98","Control"
-"263","2014-2015",53,0.356240372733928,"Channel 12, Station 2 + 98","Control"
-"264","2015-2018",53,0.0930107413381941,"Channel 12, Station 2 + 98","Control"
-"265","2018-2021",53,-0.136187872394201,"Channel 12, Station 2 + 98","Control"
-"266","2012-2013",54,0.0774631459211418,"Channel 12, Station 3 + 93","Control"
-"267","2013-2014",54,-0.0827322080614645,"Channel 12, Station 3 + 93","Control"
-"268","2014-2015",54,-0.126472164746888,"Channel 12, Station 3 + 93","Control"
-"269","2015-2018",54,0.00298837655302348,"Channel 12, Station 3 + 93","Control"
-"270","2018-2021",54,0.00356184537256258,"Channel 12, Station 3 + 93","Control"
-"271","2012-2013",55,-0.00173031795206219,"Channel 12, Station 4 + 00","Control"
-"272","2013-2014",55,0.423284581224733,"Channel 12, Station 4 + 00","Control"
-"273","2014-2015",55,-0.441639055310014,"Channel 12, Station 4 + 00","Control"
-"274","2015-2018",55,-0.0958107466568398,"Channel 12, Station 4 + 00","Control"
-"275","2018-2021",55,0.0891433398797611,"Channel 12, Station 4 + 00","Control"
-"276","2012-2013",56,-0.206348985928829,"Channel 12, Station 4 + 09","Control"
-"277","2013-2014",56,0.0809554996807121,"Channel 12, Station 4 + 09","Control"
-"278","2014-2015",56,-0.0724987098728385,"Channel 12, Station 4 + 09","Control"
-"279","2015-2018",56,0.0657307226461042,"Channel 12, Station 4 + 09","Control"
-"280","2018-2021",56,-0.107010125252343,"Channel 12, Station 4 + 09","Control"
-"281","2012-2013",57,-0.329768437594106,"Channel 12, Station 4 + 56","Control"
-"282","2013-2014",57,0.14800599107471,"Channel 12, Station 4 + 56","Control"
-"283","2014-2015",57,-0.0831005215720715,"Channel 12, Station 4 + 56","Control"
-"284","2015-2018",57,0.00879064405712573,"Channel 12, Station 4 + 56","Control"
-"285","2018-2021",57,0.273677721537449,"Channel 12, Station 4 + 56","Control"
-"286","2012-2013",58,NA,"Channel 12, Station 4 + 65","Control"
-"287","2013-2014",58,NA,"Channel 12, Station 4 + 65","Control"
-"288","2014-2015",58,-1.23674548200475,"Channel 12, Station 4 + 65","Control"
-"289","2015-2018",58,0.116506891597838,"Channel 12, Station 4 + 65","Control"
-"290","2018-2021",58,0.0150641109305823,"Channel 12, Station 4 + 65","Control"
-"291","2012-2013",59,-0.518603852536336,"Channel 12, Station 5 + 13","Control"
-"292","2013-2014",59,0.534702530793436,"Channel 12, Station 5 + 13","Control"
-"293","2014-2015",59,-0.394401143201755,"Channel 12, Station 5 + 13","Control"
-"294","2015-2018",59,0.104590652573466,"Channel 12, Station 5 + 13","Control"
-"295","2018-2021",59,-0.0435460502915193,"Channel 12, Station 5 + 13","Control"
-"296","2012-2013",60,-0.0756080607947513,"Channel 12, Station 5 + 48","Control"
-"297","2013-2014",60,0.450608856851138,"Channel 12, Station 5 + 48","Control"
-"298","2014-2015",60,-0.392857341955844,"Channel 12, Station 5 + 48","Control"
-"299","2015-2018",60,0.0189974242003424,"Channel 12, Station 5 + 48","Control"
-"300","2018-2021",60,0.0109285225633261,"Channel 12, Station 5 + 48","Control"
-"301","2012-2013",61,-0.0462781795106148,"Channel 12, Station 6 + 30","Control"
-"302","2013-2014",61,0.707807725795708,"Channel 12, Station 6 + 30","Control"
-"303","2014-2015",61,-0.428968230375735,"Channel 12, Station 6 + 30","Control"
-"304","2015-2018",61,-0.00275899204807252,"Channel 12, Station 6 + 30","Control"
-"305","2018-2021",61,-0.156559032072245,"Channel 12, Station 6 + 30","Control"
-"306","2012-2013",62,0.0128805184679059,"Channel 12, Station 6 + 93","Control"
-"307","2013-2014",62,-0.158122186294856,"Channel 12, Station 6 + 93","Control"
-"308","2014-2015",62,-0.427121100312883,"Channel 12, Station 6 + 93","Control"
-"309","2015-2018",62,0.127718843727174,"Channel 12, Station 6 + 93","Control"
-"310","2018-2021",62,0.0448429261192626,"Channel 12, Station 6 + 93","Control"
+Year,Sample,dShannon,Name,Treatment3
+2012-2013,1,0.452225394009805,"Channel 21, Station 01 + 07.5 BAF",Treated
+2013-2014,1,-0.3382537264870819,"Channel 21, Station 01 + 07.5 BAF",Treated
+2014-2015,1,-0.31264204211920044,"Channel 21, Station 01 + 07.5 BAF",Treated
+2015-2018,1,0.14317202382641323,"Channel 21, Station 01 + 07.5 BAF",Treated
+2018-2021,1,0.13615043689565262,"Channel 21, Station 01 + 07.5 BAF",Treated
+2012-2013,2,-0.2643896271233559,"Channel 21, Station 01 + 49 ORD",Treated
+2013-2014,2,0.5071000113449565,"Channel 21, Station 01 + 49 ORD",Treated
+2014-2015,2,0.45855396767041723,"Channel 21, Station 01 + 49 ORD",Treated
+2015-2018,2,-0.09369568260586418,"Channel 21, Station 01 + 49 ORD",Treated
+2018-2021,2,0.8405284037809841,"Channel 21, Station 01 + 49 ORD",Treated
+2012-2013,3,-0.03510790275288678,"Channel 21, Station 02 + 15 BAF",Treated
+2013-2014,3,-0.05497086202270368,"Channel 21, Station 02 + 15 BAF",Treated
+2014-2015,3,0.7485970374403427,"Channel 21, Station 02 + 15 BAF",Treated
+2015-2018,3,NA,"Channel 21, Station 02 + 15 BAF",Treated
+2018-2021,3,NA,"Channel 21, Station 02 + 15 BAF",Treated
+2012-2013,4,-0.8660497632059109,"Channel 21, Station 03 + 80 BAF",Treated
+2013-2014,4,0.3330717236756872,"Channel 21, Station 03 + 80 BAF",Treated
+2014-2015,4,2.186139309973318,"Channel 21, Station 03 + 80 BAF",Treated
+2015-2018,4,-0.8271171273563179,"Channel 21, Station 03 + 80 BAF",Treated
+2018-2021,4,-0.10422975268982197,"Channel 21, Station 03 + 80 BAF",Treated
+2012-2013,5,-0.017401454469794547,"Channel 21, Station 04 + 90 ORD",Treated
+2013-2014,5,-0.09569204430239595,"Channel 21, Station 04 + 90 ORD",Treated
+2014-2015,5,0.07373550296607823,"Channel 21, Station 04 + 90 ORD",Treated
+2015-2018,5,0.13479034765755976,"Channel 21, Station 04 + 90 ORD",Treated
+2018-2021,5,-0.01395460287080281,"Channel 21, Station 04 + 90 ORD",Treated
+2012-2013,6,0.009203718838567632,"Channel 21, Station 06 + 36 BAF",Treated
+2013-2014,6,0.1405864189943174,"Channel 21, Station 06 + 36 BAF",Treated
+2014-2015,6,-0.11927431048426479,"Channel 21, Station 06 + 36 BAF",Treated
+2015-2018,6,-0.01591132328965757,"Channel 21, Station 06 + 36 BAF",Treated
+2018-2021,6,0.12001812889964492,"Channel 21, Station 06 + 36 BAF",Treated
+2012-2013,7,-0.7905839647604372,"Channel 21, Station 07 + 49.5 ORD",Treated
+2013-2014,7,-0.08387221607610629,"Channel 21, Station 07 + 49.5 ORD",Treated
+2014-2015,7,0.4689263731054296,"Channel 21, Station 07 + 49.5 ORD",Treated
+2015-2018,7,-0.17476489909980977,"Channel 21, Station 07 + 49.5 ORD",Treated
+2018-2021,7,-0.02776012073256255,"Channel 21, Station 07 + 49.5 ORD",Treated
+2012-2013,8,0.07104096443373276,"Channel 21, Station 07 + 66 BAF",Treated
+2013-2014,8,-1.3535865474938342,"Channel 21, Station 07 + 66 BAF",Treated
+2014-2015,8,NA,"Channel 21, Station 07 + 66 BAF",Treated
+2015-2018,8,NA,"Channel 21, Station 07 + 66 BAF",Treated
+2018-2021,8,0.2812021289457538,"Channel 21, Station 07 + 66 BAF",Treated
+2012-2013,9,0.014769726943205053,"Channel 21, Station 08 + 62 BAF",Treated
+2013-2014,9,-0.15070177881144428,"Channel 21, Station 08 + 62 BAF",Treated
+2014-2015,9,-0.09428415697861936,"Channel 21, Station 08 + 62 BAF",Treated
+2015-2018,9,-0.042281117312067205,"Channel 21, Station 08 + 62 BAF",Treated
+2018-2021,9,0.13515634282225839,"Channel 21, Station 08 + 62 BAF",Treated
+2012-2013,10,-0.07941209147454917,"Channel 21, Station 09 + 99 ORD",Treated
+2013-2014,10,-0.46807405658949464,"Channel 21, Station 09 + 99 ORD",Treated
+2014-2015,10,0.11877091183662081,"Channel 21, Station 09 + 99 ORD",Treated
+2015-2018,10,-0.04430302387084162,"Channel 21, Station 09 + 99 ORD",Treated
+2018-2021,10,-0.009634802599444714,"Channel 21, Station 09 + 99 ORD",Treated
+2012-2013,11,-0.11587911512399063,"Channel 21, Station 10 + 13 BAF",Treated
+2013-2014,11,-1.1734550874900016,"Channel 21, Station 10 + 13 BAF",Treated
+2014-2015,11,0.07656716914290879,"Channel 21, Station 10 + 13 BAF",Treated
+2015-2018,11,-0.2034095868090413,"Channel 21, Station 10 + 13 BAF",Treated
+2018-2021,11,0.0970735442971889,"Channel 21, Station 10 + 13 BAF",Treated
+2012-2013,12,-0.25319640081580735,"Channel 21, Station 11 + 12 ORD",Treated
+2013-2014,12,0.1983682644530611,"Channel 21, Station 11 + 12 ORD",Treated
+2014-2015,12,0.13003376074996328,"Channel 21, Station 11 + 12 ORD",Treated
+2015-2018,12,-0.06979298239373537,"Channel 21, Station 11 + 12 ORD",Treated
+2018-2021,12,0.03403355103384811,"Channel 21, Station 11 + 12 ORD",Treated
+2012-2013,13,0.1726720305347999,"Channel 21, Station 11 + 24 BAF",Treated
+2013-2014,13,0.4209382204049977,"Channel 21, Station 11 + 24 BAF",Treated
+2014-2015,13,-0.018222759344523526,"Channel 21, Station 11 + 24 BAF",Treated
+2015-2018,13,-0.1086342392006097,"Channel 21, Station 11 + 24 BAF",Treated
+2018-2021,13,-0.11477383631704596,"Channel 21, Station 11 + 24 BAF",Treated
+2012-2013,14,-0.02747580187142562,"Channel 21, Station 11 + 63 ORD",Treated
+2013-2014,14,0.049725705818813304,"Channel 21, Station 11 + 63 ORD",Treated
+2014-2015,14,0.08861706443440143,"Channel 21, Station 11 + 63 ORD",Treated
+2015-2018,14,-0.06396135597331243,"Channel 21, Station 11 + 63 ORD",Treated
+2018-2021,14,0.34405479692631796,"Channel 21, Station 11 + 63 ORD",Treated
+2012-2013,15,-0.10455270691916174,"Channel 21, Station 11 + 73 BAF",Treated
+2013-2014,15,-0.09947492668998442,"Channel 21, Station 11 + 73 BAF",Treated
+2014-2015,15,-3.5870206067389887e-4,"Channel 21, Station 11 + 73 BAF",Treated
+2015-2018,15,0.2157538123381192,"Channel 21, Station 11 + 73 BAF",Treated
+2018-2021,15,-0.21485044571801967,"Channel 21, Station 11 + 73 BAF",Treated
+2012-2013,16,0.28178395617339647,"Channel 19, Station 01 + 04",Control
+2013-2014,16,NA,"Channel 19, Station 01 + 04",Control
+2014-2015,16,NA,"Channel 19, Station 01 + 04",Control
+2015-2018,16,0.07624466199660467,"Channel 19, Station 01 + 04",Control
+2018-2021,16,0.008246839446813453,"Channel 19, Station 01 + 04",Control
+2012-2013,17,NA,"Channel 19, Station 02 + 04",Control
+2013-2014,17,0.22249903893522316,"Channel 19, Station 02 + 04",Control
+2014-2015,17,0.016728437474155977,"Channel 19, Station 02 + 04",Control
+2015-2018,17,-5.111083061947186e-4,"Channel 19, Station 02 + 04",Control
+2018-2021,17,-0.026967050219109,"Channel 19, Station 02 + 04",Control
+2012-2013,18,0.23378759533479232,"Channel 19, Station 02 + 52",Control
+2013-2014,18,-0.28102231956945656,"Channel 19, Station 02 + 52",Control
+2014-2015,18,0.06997746329288068,"Channel 19, Station 02 + 52",Control
+2015-2018,18,-0.03464691466718003,"Channel 19, Station 02 + 52",Control
+2018-2021,18,0.005939367189785623,"Channel 19, Station 02 + 52",Control
+2012-2013,19,0.15101858513033603,"Channel 19, Station 03 + 63",Control
+2013-2014,19,0.04046204665494771,"Channel 19, Station 03 + 63",Control
+2014-2015,19,0.24727332505945057,"Channel 19, Station 03 + 63",Control
+2015-2018,19,-0.1108444361248358,"Channel 19, Station 03 + 63",Control
+2018-2021,19,0.1168743548984376,"Channel 19, Station 03 + 63",Control
+2012-2013,20,0.023280631234750437,"Channel 19, Station 03 + 98",Control
+2013-2014,20,-0.05986793688754333,"Channel 19, Station 03 + 98",Control
+2014-2015,20,0.04128285011269117,"Channel 19, Station 03 + 98",Control
+2015-2018,20,0.026930169620506095,"Channel 19, Station 03 + 98",Control
+2018-2021,20,0.05315097369246256,"Channel 19, Station 03 + 98",Control
+2012-2013,21,0.23714442247197798,"Channel 19, Station 05 + 00",Control
+2013-2014,21,-0.021827357209424914,"Channel 19, Station 05 + 00",Control
+2014-2015,21,0.18210248469904064,"Channel 19, Station 05 + 00",Control
+2015-2018,21,1.2031777571494453e-4,"Channel 19, Station 05 + 00",Control
+2018-2021,21,-0.1084788412635855,"Channel 19, Station 05 + 00",Control
+2012-2013,22,0.6467630764230088,"Channel 19, Station 05 + 09",Control
+2013-2014,22,-0.7989653059277126,"Channel 19, Station 05 + 09",Control
+2014-2015,22,-0.03246226790571341,"Channel 19, Station 05 + 09",Control
+2015-2018,22,0.14014977674730977,"Channel 19, Station 05 + 09",Control
+2018-2021,22,-0.1436838779472191,"Channel 19, Station 05 + 09",Control
+2012-2013,23,0.17491642195930895,"Channel 19, Station 05 + 62",Control
+2013-2014,23,-0.12208039116443309,"Channel 19, Station 05 + 62",Control
+2014-2015,23,0.0029620410568056976,"Channel 19, Station 05 + 62",Control
+2015-2018,23,0.21727079811083375,"Channel 19, Station 05 + 62",Control
+2018-2021,23,0.10264453688183274,"Channel 19, Station 05 + 62",Control
+2012-2013,24,0.2919614370009287,"Channel 19, Station 06 + 13",Control
+2013-2014,24,-0.23816247847237934,"Channel 19, Station 06 + 13",Control
+2014-2015,24,0.5599307306964458,"Channel 19, Station 06 + 13",Control
+2015-2018,24,-0.12665787362824157,"Channel 19, Station 06 + 13",Control
+2018-2021,24,0.3883688178687534,"Channel 19, Station 06 + 13",Control
+2012-2013,25,2.2687159977909004,"Channel 19, Station 06 + 97",Control
+2013-2014,25,-1.3867861368869219,"Channel 19, Station 06 + 97",Control
+2014-2015,25,-0.5893397285932336,"Channel 19, Station 06 + 97",Control
+2015-2018,25,0.5659027058054048,"Channel 19, Station 06 + 97",Control
+2018-2021,25,-0.6653624990989639,"Channel 19, Station 06 + 97",Control
+2012-2013,26,0.22167731924132522,"Channel 19, Station 07 + 30",Control
+2013-2014,26,-0.34149549481592717,"Channel 19, Station 07 + 30",Control
+2014-2015,26,0.23005940726662905,"Channel 19, Station 07 + 30",Control
+2015-2018,26,-0.020622914507619022,"Channel 19, Station 07 + 30",Control
+2018-2021,26,-0.18735902306236915,"Channel 19, Station 07 + 30",Control
+2012-2013,27,1.2485139885219718,"Channel 19, Station 07 + 50",Control
+2013-2014,27,-0.9779765452185004,"Channel 19, Station 07 + 50",Control
+2014-2015,27,-0.051811208364748465,"Channel 19, Station 07 + 50",Control
+2015-2018,27,-0.15039296113265854,"Channel 19, Station 07 + 50",Control
+2018-2021,27,-0.013066131447428872,"Channel 19, Station 07 + 50",Control
+2012-2013,28,0.22138294986958185,"Channel 19, Station 07 + 97",Control
+2013-2014,28,0.1567860323391225,"Channel 19, Station 07 + 97",Control
+2014-2015,28,0.11478523641073596,"Channel 19, Station 07 + 97",Control
+2015-2018,28,-0.039449042736729,"Channel 19, Station 07 + 97",Control
+2018-2021,28,-0.03960763666430625,"Channel 19, Station 07 + 97",Control
+2012-2013,29,0.1488341978863037,"Channel 19, Station 09 + 05",Control
+2013-2014,29,0.1184108344704573,"Channel 19, Station 09 + 05",Control
+2014-2015,29,-0.25193556489409097,"Channel 19, Station 09 + 05",Control
+2015-2018,29,-0.046474729968094985,"Channel 19, Station 09 + 05",Control
+2018-2021,29,0.02559233710655867,"Channel 19, Station 09 + 05",Control
+2012-2013,30,-0.05890104298063309,"Channel 19, Station 09 + 26",Control
+2013-2014,30,-0.3565141355292577,"Channel 19, Station 09 + 26",Control
+2014-2015,30,0.290744104021791,"Channel 19, Station 09 + 26",Control
+2015-2018,30,-0.0639411003065175,"Channel 19, Station 09 + 26",Control
+2018-2021,30,0.04688409802056429,"Channel 19, Station 09 + 26",Control
+2012-2013,31,-1.270737872282087,"Channel 19, Station 09 + 68",Control
+2013-2014,31,-0.04201002899166789,"Channel 19, Station 09 + 68",Control
+2014-2015,31,0.23368561729730442,"Channel 19, Station 09 + 68",Control
+2015-2018,31,-0.057164203787976396,"Channel 19, Station 09 + 68",Control
+2018-2021,31,-0.029529855200769322,"Channel 19, Station 09 + 68",Control
+2012-2013,32,-0.10566677863485269,"Channel 19, Station 10 + 98",Control
+2013-2014,32,0.4912126649159144,"Channel 19, Station 10 + 98",Control
+2014-2015,32,0.1424311746459129,"Channel 19, Station 10 + 98",Control
+2015-2018,32,0.02926855166809734,"Channel 19, Station 10 + 98",Control
+2018-2021,32,-0.25365133904668885,"Channel 19, Station 10 + 98",Control
+2012-2013,33,1.535818754381378,"Channel 13, Station 1 + 11.5 BAF",Treated
+2013-2014,33,-1.2881366883856127,"Channel 13, Station 1 + 11.5 BAF",Treated
+2014-2015,33,-0.683018110224543,"Channel 13, Station 1 + 11.5 BAF",Treated
+2015-2018,33,0.06640176371091805,"Channel 13, Station 1 + 11.5 BAF",Treated
+2018-2021,33,0.11616141658526531,"Channel 13, Station 1 + 11.5 BAF",Treated
+2012-2013,34,-0.18463111241840763,"Channel 13, Station 1 + 38.5 ORD",Treated
+2013-2014,34,0.59433211513034,"Channel 13, Station 1 + 38.5 ORD",Treated
+2014-2015,34,-0.965467264669142,"Channel 13, Station 1 + 38.5 ORD",Treated
+2015-2018,34,0.08648388704286258,"Channel 13, Station 1 + 38.5 ORD",Treated
+2018-2021,34,-0.32052886181830265,"Channel 13, Station 1 + 38.5 ORD",Treated
+2012-2013,35,-0.3421679058827012,"Channel 13, Station 1 + 71 BAF",Treated
+2013-2014,35,-0.38013026275257267,"Channel 13, Station 1 + 71 BAF",Treated
+2014-2015,35,0.29467774620092735,"Channel 13, Station 1 + 71 BAF",Treated
+2015-2018,35,-0.24486683640780385,"Channel 13, Station 1 + 71 BAF",Treated
+2018-2021,35,0.493397939471462,"Channel 13, Station 1 + 71 BAF",Treated
+2012-2013,36,NA,"Channel 13, Station 1 + 77 ORD",Treated
+2013-2014,36,NA,"Channel 13, Station 1 + 77 ORD",Treated
+2014-2015,36,-0.6434779560330072,"Channel 13, Station 1 + 77 ORD",Treated
+2015-2018,36,0.0888289491591827,"Channel 13, Station 1 + 77 ORD",Treated
+2018-2021,36,-0.16873955152030765,"Channel 13, Station 1 + 77 ORD",Treated
+2012-2013,37,0.878188235872005,"Channel 13, Station 1 + 99 ORD",Treated
+2013-2014,37,-0.7616152890286916,"Channel 13, Station 1 + 99 ORD",Treated
+2014-2015,37,-0.06557290285168066,"Channel 13, Station 1 + 99 ORD",Treated
+2015-2018,37,0.02719618040971376,"Channel 13, Station 1 + 99 ORD",Treated
+2018-2021,37,0.08020275673538586,"Channel 13, Station 1 + 99 ORD",Treated
+2012-2013,38,-0.40902133325054146,"Channel 13, Station 2 + 16 BAF",Treated
+2013-2014,38,0.8708001745304855,"Channel 13, Station 2 + 16 BAF",Treated
+2014-2015,38,-0.874568908771435,"Channel 13, Station 2 + 16 BAF",Treated
+2015-2018,38,-0.01978457276092709,"Channel 13, Station 2 + 16 BAF",Treated
+2018-2021,38,0.1730447324525983,"Channel 13, Station 2 + 16 BAF",Treated
+2012-2013,39,0.8468167683508427,"Channel 13, Station 2 + 57 ORD",Treated
+2013-2014,39,-0.6885060068232874,"Channel 13, Station 2 + 57 ORD",Treated
+2014-2015,39,-0.09868224835841971,"Channel 13, Station 2 + 57 ORD",Treated
+2015-2018,39,-0.09048300840546585,"Channel 13, Station 2 + 57 ORD",Treated
+2018-2021,39,0.1785953147403044,"Channel 13, Station 2 + 57 ORD",Treated
+2012-2013,40,0.1537070199058984,"Channel 13, Station 2 + 67 BAF",Treated
+2013-2014,40,-0.10869615706822844,"Channel 13, Station 2 + 67 BAF",Treated
+2014-2015,40,0.3217538915857382,"Channel 13, Station 2 + 67 BAF",Treated
+2015-2018,40,-0.09347384878127683,"Channel 13, Station 2 + 67 BAF",Treated
+2018-2021,40,0.24550899641898005,"Channel 13, Station 2 + 67 BAF",Treated
+2012-2013,41,-0.2037721442128885,"Channel 13, Station 3 + 09 ORD",Treated
+2013-2014,41,0.21785845068510798,"Channel 13, Station 3 + 09 ORD",Treated
+2014-2015,41,-0.1058363343555492,"Channel 13, Station 3 + 09 ORD",Treated
+2015-2018,41,-0.001712013665083223,"Channel 13, Station 3 + 09 ORD",Treated
+2018-2021,41,0.20042444704397944,"Channel 13, Station 3 + 09 ORD",Treated
+2012-2013,42,-0.31084294664876944,"Channel 13, Station 3 + 31 BAF",Treated
+2013-2014,42,1.0331967377252633,"Channel 13, Station 3 + 31 BAF",Treated
+2014-2015,42,-0.7776545324697348,"Channel 13, Station 3 + 31 BAF",Treated
+2015-2018,42,-0.24011628537748653,"Channel 13, Station 3 + 31 BAF",Treated
+2018-2021,42,0.1287975684619542,"Channel 13, Station 3 + 31 BAF",Treated
+2012-2013,43,0.11262776087650962,"Channel 13, Station 3 + 65 ORD",Treated
+2013-2014,43,0.09154179742502347,"Channel 13, Station 3 + 65 ORD",Treated
+2014-2015,43,-0.06423362574255721,"Channel 13, Station 3 + 65 ORD",Treated
+2015-2018,43,0.0018864438365554122,"Channel 13, Station 3 + 65 ORD",Treated
+2018-2021,43,0.005478576196886235,"Channel 13, Station 3 + 65 ORD",Treated
+2012-2013,44,0.24489839329937613,"Channel 13, Station 3 + 95.5 ORD",Treated
+2013-2014,44,-0.24986517459121677,"Channel 13, Station 3 + 95.5 ORD",Treated
+2014-2015,44,-0.025172321549927185,"Channel 13, Station 3 + 95.5 ORD",Treated
+2015-2018,44,-0.05058499122393036,"Channel 13, Station 3 + 95.5 ORD",Treated
+2018-2021,44,0.03934326669756156,"Channel 13, Station 3 + 95.5 ORD",Treated
+2012-2013,45,0.439886511681151,"Channel 13, Station 4 + 14.5 BAF",Treated
+2013-2014,45,-0.34537677401659167,"Channel 13, Station 4 + 14.5 BAF",Treated
+2014-2015,45,-0.12963194331772188,"Channel 13, Station 4 + 14.5 BAF",Treated
+2015-2018,45,0.06901655128870123,"Channel 13, Station 4 + 14.5 BAF",Treated
+2018-2021,45,0.05812848067938665,"Channel 13, Station 4 + 14.5 BAF",Treated
+2012-2013,46,-0.29386144501785394,"Channel 13, Station 4 + 36 ORD",Treated
+2013-2014,46,0.21225624973812862,"Channel 13, Station 4 + 36 ORD",Treated
+2014-2015,46,-0.3026187401636295,"Channel 13, Station 4 + 36 ORD",Treated
+2015-2018,46,-0.011847143595459575,"Channel 13, Station 4 + 36 ORD",Treated
+2018-2021,46,-0.07551847596083432,"Channel 13, Station 4 + 36 ORD",Treated
+2012-2013,47,0.014623683264298026,"Channel 13, Station 4 + 50 BAF",Treated
+2013-2014,47,0.102430596335736,"Channel 13, Station 4 + 50 BAF",Treated
+2014-2015,47,-0.289474336898935,"Channel 13, Station 4 + 50 BAF",Treated
+2015-2018,47,0.04812484462582416,"Channel 13, Station 4 + 50 BAF",Treated
+2018-2021,47,-0.15497025677114665,"Channel 13, Station 4 + 50 BAF",Treated
+2012-2013,48,NA,"Channel 13, Station 4 + 78 ORD",Treated
+2013-2014,48,NA,"Channel 13, Station 4 + 78 ORD",Treated
+2014-2015,48,0.1046752863254432,"Channel 13, Station 4 + 78 ORD",Treated
+2015-2018,48,-0.04659305605254164,"Channel 13, Station 4 + 78 ORD",Treated
+2018-2021,48,0.08090654358047543,"Channel 13, Station 4 + 78 ORD",Treated
+2012-2013,49,-0.098223046007059,"Channel 12, Station 1 + 04",Control
+2013-2014,49,0.5948871240821841,"Channel 12, Station 1 + 04",Control
+2014-2015,49,-0.11476542779540674,"Channel 12, Station 1 + 04",Control
+2015-2018,49,0.016467095004408492,"Channel 12, Station 1 + 04",Control
+2018-2021,49,0.03514210037905182,"Channel 12, Station 1 + 04",Control
+2012-2013,50,-0.12153175357043566,"Channel 12, Station 1 + 52",Control
+2013-2014,50,0.39084898435026694,"Channel 12, Station 1 + 52",Control
+2014-2015,50,0.023397238789777175,"Channel 12, Station 1 + 52",Control
+2015-2018,50,0.04741786925938743,"Channel 12, Station 1 + 52",Control
+2018-2021,50,-0.05721752723945179,"Channel 12, Station 1 + 52",Control
+2012-2013,51,-0.32271953292804934,"Channel 12, Station 1 + 83",Control
+2013-2014,51,-0.09187571652778216,"Channel 12, Station 1 + 83",Control
+2014-2015,51,0.017388289078244135,"Channel 12, Station 1 + 83",Control
+2015-2018,51,0.024856394220371242,"Channel 12, Station 1 + 83",Control
+2018-2021,51,0.1254776000697384,"Channel 12, Station 1 + 83",Control
+2012-2013,52,-0.46008583671525977,"Channel 12, Station 2 + 63",Control
+2013-2014,52,0.24775307431292393,"Channel 12, Station 2 + 63",Control
+2014-2015,52,0.09777474482255566,"Channel 12, Station 2 + 63",Control
+2015-2018,52,-0.15284644308928536,"Channel 12, Station 2 + 63",Control
+2018-2021,52,0.3194541960992742,"Channel 12, Station 2 + 63",Control
+2012-2013,53,-0.08412375627735061,"Channel 12, Station 2 + 98",Control
+2013-2014,53,-0.16693109216095903,"Channel 12, Station 2 + 98",Control
+2014-2015,53,0.3562403727339333,"Channel 12, Station 2 + 98",Control
+2015-2018,53,0.09301074133819315,"Channel 12, Station 2 + 98",Control
+2018-2021,53,-0.13618787239420171,"Channel 12, Station 2 + 98",Control
+2012-2013,54,0.07746314592113537,"Channel 12, Station 3 + 93",Control
+2013-2014,54,-0.08273220806146261,"Channel 12, Station 3 + 93",Control
+2014-2015,54,-0.12647216474688883,"Channel 12, Station 3 + 93",Control
+2015-2018,54,0.0029883765530240116,"Channel 12, Station 3 + 93",Control
+2018-2021,54,0.0035618453725618227,"Channel 12, Station 3 + 93",Control
+2012-2013,55,-0.001730317952066629,"Channel 12, Station 4 + 00",Control
+2013-2014,55,0.4232845812247354,"Channel 12, Station 4 + 00",Control
+2014-2015,55,-0.44163905531001285,"Channel 12, Station 4 + 00",Control
+2015-2018,55,-0.09581074665684065,"Channel 12, Station 4 + 00",Control
+2018-2021,55,0.0891433398797607,"Channel 12, Station 4 + 00",Control
+2012-2013,56,-0.20634898592883122,"Channel 12, Station 4 + 09",Control
+2013-2014,56,0.08095549968071336,"Channel 12, Station 4 + 09",Control
+2014-2015,56,-0.07249870987283813,"Channel 12, Station 4 + 09",Control
+2015-2018,56,0.0657307226461026,"Channel 12, Station 4 + 09",Control
+2018-2021,56,-0.10701012525234212,"Channel 12, Station 4 + 09",Control
+2012-2013,57,-0.32976843759410046,"Channel 12, Station 4 + 56",Control
+2013-2014,57,0.1480059910747079,"Channel 12, Station 4 + 56",Control
+2014-2015,57,-0.08310052157207531,"Channel 12, Station 4 + 56",Control
+2015-2018,57,0.00879064405712554,"Channel 12, Station 4 + 56",Control
+2018-2021,57,0.27367772153744974,"Channel 12, Station 4 + 56",Control
+2012-2013,58,NA,"Channel 12, Station 4 + 65",Control
+2013-2014,58,NA,"Channel 12, Station 4 + 65",Control
+2014-2015,58,-1.236745482004753,"Channel 12, Station 4 + 65",Control
+2015-2018,58,0.11650689159783811,"Channel 12, Station 4 + 65",Control
+2018-2021,58,0.015064110930582861,"Channel 12, Station 4 + 65",Control
+2012-2013,59,-0.5186038525363348,"Channel 12, Station 5 + 13",Control
+2013-2014,59,0.5347025307934397,"Channel 12, Station 5 + 13",Control
+2014-2015,59,-0.3944011432017591,"Channel 12, Station 5 + 13",Control
+2015-2018,59,0.10459065257346722,"Channel 12, Station 5 + 13",Control
+2018-2021,59,-0.0435460502915195,"Channel 12, Station 5 + 13",Control
+2012-2013,60,-0.0756080607947483,"Channel 12, Station 5 + 48",Control
+2013-2014,60,0.4506088568511357,"Channel 12, Station 5 + 48",Control
+2014-2015,60,-0.39285734195584554,"Channel 12, Station 5 + 48",Control
+2015-2018,60,0.018997424200343043,"Channel 12, Station 5 + 48",Control
+2018-2021,60,0.01092852256332566,"Channel 12, Station 5 + 48",Control
+2012-2013,61,-0.0462781795106155,"Channel 12, Station 6 + 30",Control
+2013-2014,61,0.7078077257957085,"Channel 12, Station 6 + 30",Control
+2014-2015,61,-0.42896823037573495,"Channel 12, Station 6 + 30",Control
+2015-2018,61,-0.0027589920480726358,"Channel 12, Station 6 + 30",Control
+2018-2021,61,-0.15655903207224425,"Channel 12, Station 6 + 30",Control
+2012-2013,62,0.012880518467905777,"Channel 12, Station 6 + 93",Control
+2013-2014,62,-0.1581221862948562,"Channel 12, Station 6 + 93",Control
+2014-2015,62,-0.42712110031288175,"Channel 12, Station 6 + 93",Control
+2015-2018,62,0.12771884372717401,"Channel 12, Station 6 + 93",Control
+2018-2021,62,0.044842926119262494,"Channel 12, Station 6 + 93",Control

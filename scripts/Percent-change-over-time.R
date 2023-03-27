@@ -2,9 +2,8 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
-total.sum <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-herb.sum <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv") |> 
-  filter(woody == "Herbaceous")
+total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv") 
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 meta.raw <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
                    sep = "\t", header = TRUE)
@@ -18,11 +17,9 @@ meta <- meta.raw |>
 
 # Total cover -------------------------------------------------------------
 
-# Remove March samples, format to join with names from meta
-total.change <- total.sum |> 
-  select(Year, Channel, Station, Cover) |> 
-  filter(!str_detect(Year, "-03")) |> 
-  mutate(Year = gsub("-.*", "", Year))
+# Format to join with names from meta
+total.change <- total.all |> 
+  select(Year, Channel, Station, Cover) 
 total.change$Name <- paste0(total.change$Channel, ", ", total.change$Station)
 total.change <- total.change |> 
   select(-Channel, -Station) |> 
@@ -35,7 +32,7 @@ total.change <- total.change |>
 total.change.long <- total.change
 
 # Pivot wider so every column is a sample and every row is a year
-  # separate 2012-2015 and 2015-2021
+  # separate 2012-2015 and 2018-2021
 total.change.wide <- total.change.long |> 
   pivot_wider(names_from = Sample, values_from = Cover)
 total.change1 <- total.change.wide[1:4, -c(1)]
@@ -66,11 +63,12 @@ total.pd <- total.pd |>
     str_detect(total.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
   arrange(Sample)
 
-write.csv(total.pd,
+write_csv(total.pd,
           file = "data/cleaned/Percent-difference_total-cover.csv")
 
 
 # Plot by Treatment3
+# All years
 ggplot(total.pd, aes(x = Treatment3, y = dCover)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
@@ -86,6 +84,7 @@ ggplot(total.pd, aes(x = Treatment3, y = dCover)) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in total cover")
 
+# By year
 ggplot(total.pd, aes(x = Year, y = dCover)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
@@ -109,11 +108,9 @@ t.test(filter(total.pd, Treatment3 == "Treated")$dCover,
 
 # Herbaceous cover --------------------------------------------------------
 
-# Remove March samples, format to join with names from meta
-herb.change <- herb.sum |> 
-  select(Year, Channel, Station, Cover) |> 
-  filter(!str_detect(Year, "-03")) |> 
-  mutate(Year = gsub("-.*", "", Year))
+# Format to join with names from meta
+herb.change <- herb.all |> 
+  select(Year, Channel, Station, Cover) 
 herb.change$Name <- paste0(herb.change$Channel, ", ", herb.change$Station)
 herb.change <- herb.change |> 
   select(-Channel, -Station) |> 
@@ -126,7 +123,7 @@ herb.change <- herb.change |>
 herb.change.long <- herb.change
 
 # Pivot wider so every column is a sample and every row is a year
-  # separate 2012-2015 and 2015-2021
+  # separate 2012-2015 and 2018-2021
 herb.change.wide <- herb.change.long |> 
   pivot_wider(names_from = Sample, values_from = Cover)
 herb.change1 <- herb.change.wide[1:4, -c(1)]
@@ -157,11 +154,12 @@ herb.pd <- herb.pd |>
     str_detect(herb.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
   arrange(Sample)
 
-write.csv(herb.pd,
+write_csv(herb.pd,
           file = "data/cleaned/Percent-difference_herb-cover.csv")
 
 
 # Plot by Treatment3
+# All years
 ggplot(herb.pd, aes(x = Year, y = dCover)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
@@ -177,6 +175,7 @@ ggplot(herb.pd, aes(x = Year, y = dCover)) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in herbaceous cover") 
 
+# By year
 ggplot(herb.pd, aes(x = Year, y = dCover)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
@@ -201,11 +200,9 @@ t.test(filter(herb.pd, Treatment3 == "Treated")$dCover,
 
 # Perennial richness ------------------------------------------------------
 
-# Remove March samples, format to join with names from meta
+# Format to join with names from meta
 rich.change <- per.div |> 
-  select(Year, Channel, Station, rich) |> 
-  filter(!str_detect(Year, "-03")) |> 
-  mutate(Year = gsub("-.*", "", Year))
+  select(Year, Channel, Station, rich) 
 rich.change$Name <- paste0(rich.change$Channel, ", ", rich.change$Station)
 rich.change <- rich.change |> 
   select(-Channel, -Station) |> 
@@ -218,7 +215,7 @@ rich.change <- rich.change |>
 rich.change.long <- rich.change
 
 # Pivot wider so every column is a sample and every row is a year
-# separate 2012-2015 and 2015-2021
+# separate 2012-2015 and 2018-2021
 rich.change.wide <- rich.change.long |> 
   pivot_wider(names_from = Sample, values_from = rich)
 rich.change1 <- rich.change.wide[1:4, -c(1)]
@@ -249,11 +246,12 @@ rich.pd <- rich.pd |>
     str_detect(rich.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
   arrange(Sample)
 
-write.csv(rich.pd,
+write_csv(rich.pd,
           file = "data/cleaned/Percent-difference_rich.csv")
 
 
 # Plot by Treatment3
+# All years
 ggplot(rich.pd, aes(x = Year, y = dRichness)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
@@ -269,6 +267,7 @@ ggplot(rich.pd, aes(x = Year, y = dRichness)) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in perennial richness")
 
+# By year
 ggplot(rich.pd, aes(x = Year, y = dRichness)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
@@ -292,11 +291,9 @@ t.test(filter(rich.pd, Treatment3 == "Treated")$dRichness,
 
 # Perennial Shannon -------------------------------------------------------
 
-# Remove March samples, format to join with names from meta
+# Format to join with names from meta
 shan.change <- per.div |> 
-  select(Year, Channel, Station, shan) |> 
-  filter(!str_detect(Year, "-03")) |> 
-  mutate(Year = gsub("-.*", "", Year))
+  select(Year, Channel, Station, shan) 
 shan.change$Name <- paste0(shan.change$Channel, ", ", shan.change$Station)
 shan.change <- shan.change |> 
   select(-Channel, -Station) |> 
@@ -309,7 +306,7 @@ shan.change <- shan.change |>
 shan.change.long <- shan.change
 
 # Pivot wider so every column is a sample and every row is a year
-  # separate 2012-2015 and 2015-2021
+  # separate 2012-2015 and 2018-2021
 shan.change.wide <- shan.change.long |> 
   pivot_wider(names_from = Sample, values_from = shan)
 shan.change1 <- shan.change.wide[1:4, -c(1)]
@@ -340,11 +337,12 @@ shan.pd <- shan.pd |>
     str_detect(shan.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
   arrange(Sample)
 
-write.csv(shan.pd,
+write_csv(shan.pd,
           file = "data/cleaned/Percent-difference_shan.csv")
 
 
 # Plot by Treatment3
+# All years
 ggplot(shan.pd, aes(x = Year, y = dShannon)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
@@ -360,6 +358,7 @@ ggplot(shan.pd, aes(x = Year, y = dShannon)) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in perennial diversity") 
 
+# By year
 ggplot(shan.pd, aes(x = Year, y = dShannon)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
