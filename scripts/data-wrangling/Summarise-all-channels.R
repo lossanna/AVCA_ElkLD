@@ -63,14 +63,14 @@ plant.all <- plant.all |>
 plant.all <- plant.all |> 
   mutate(channel.trt = case_when(
     str_detect(Channel, "12") ~ "Channel 12: No treatment",
-    str_detect(Station, "13") ~ "Channel 13: In-channel treatment",
-    str_detect(Station, "19") ~ "Channel 19: Upland treatment",
+    str_detect(Channel, "13") ~ "Channel 13: In-channel treatment",
+    str_detect(Channel, "19") ~ "Channel 19: Upland treatment",
     TRUE ~ "Channel 21: In-channel treatment"))
 
 # Add Treatment1
 plant.all <- plant.all |> 
   mutate(Treatment1 = case_when(
-    str_detect(Station, "19") ~ "Upland",
+    str_detect(Channel, "19") ~ "Upland",
     TRUE ~ station.trt)) |> 
   mutate(Treatment1 = as.factor(Treatment1))
 
@@ -80,7 +80,7 @@ plant.all$Treatment2 <- as.factor(gsub("^.*?: ", "", plant.all$channel.trt))
 # Add Treatment3
 plant.all <- plant.all |> 
   mutate(Treatment3 = case_when(
-    str_detect("In-channel treatment", channel.trt) ~ "Treated",
+    str_detect(channel.trt, "In-channel treatment") ~ "Treated",
     TRUE ~ "Control")) |> 
   mutate(Treatment3 = as.factor(Treatment3))
 
