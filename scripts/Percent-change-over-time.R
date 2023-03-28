@@ -2,6 +2,8 @@
 #   as described in Munson 2013, Ecology) to see if rock structures facilitate more or less change
 #   because the value of the response variables themselves are not as interesting as how they change
 #   in comparison to one another (rather than comparing the absolute values).
+# Includes plots of Treated vs. Control with all years combined, and by year interval,
+#   and t-test/Wilcox test for comparison.
 
 # Calculated the percent difference from year to year (5 time intervals) for each sample.
 # Found no difference in percent difference for Treated vs Control for any response variable
