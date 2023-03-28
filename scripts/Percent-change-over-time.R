@@ -1,4 +1,15 @@
+# Purpose: Compare the percent difference over time (calculated by the log response ratio per unit time,
+#   as described in Munson 2013, Ecology) to see if rock structures facilitate more or less change
+#   because the value of the response variables themselves are not as interesting as how they change
+#   in comparison to one another (rather than comparing the absolute values).
+
+# Calculated the percent difference from year to year (5 time intervals) for each sample.
+# Found no difference in percent difference for Treated vs Control for any response variable
+#   (total cover, herb cover, richness, Shannon).
+
+
 library(tidyverse)
+library(car)
 
 # Load data ---------------------------------------------------------------
 
@@ -86,6 +97,13 @@ ggplot(total.pd, aes(x = Year, y = dCover)) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in total cover") +
   facet_wrap(~Treatment3)
+
+# Comparison
+qqPlot(filter(total.pd, Treatment3 == "Treated")$dCover) # almost normal?
+qqPlot(filter(total.pd, Treatment3 == "Control")$dCover) # not really normal?
+
+wilcox.test(filter(total.pd, Treatment3 == "Treated")$dCover, 
+            filter(total.pd, Treatment3 == "Control")$dCover) # NS
   
 t.test(filter(total.pd, Treatment3 == "Treated")$dCover, 
        filter(total.pd, Treatment3 == "Control")$dCover) # NS
@@ -166,7 +184,13 @@ ggplot(herb.pd, aes(x = Year, y = dCover)) +
   ggtitle("Change in herbaceous cover") +
   facet_wrap(~Treatment3)
 
-# T-test
+# Comparison
+qqPlot(filter(herb.pd, Treatment3 == "Treated")$dCover) # not really normal?
+qqPlot(filter(herb.pd, Treatment3 == "Control")$dCover) # almost normal?
+
+wilcox.test(filter(herb.pd, Treatment3 == "Treated")$dCover, 
+            filter(herb.pd, Treatment3 == "Control")$dCover) # NS
+
 t.test(filter(herb.pd, Treatment3 == "Treated")$dCover, 
        filter(herb.pd, Treatment3 == "Control")$dCover) # NS
 
@@ -245,6 +269,13 @@ ggplot(rich.pd, aes(x = Year, y = dRichness)) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in perennial richness") +
   facet_wrap(~Treatment3)
+
+# Comparison
+qqPlot(filter(rich.pd, Treatment3 == "Treated")$dRichness) # not really normal?
+qqPlot(filter(rich.pd, Treatment3 == "Control")$dRichness) # not really normal?
+
+wilcox.test(filter(rich.pd, Treatment3 == "Treated")$dRichness, 
+            filter(rich.pd, Treatment3 == "Control")$dRichness) # NS
 
 t.test(filter(rich.pd, Treatment3 == "Treated")$dRichness, 
        filter(rich.pd, Treatment3 == "Control")$dRichness) # NS
@@ -325,7 +356,14 @@ ggplot(shan.pd, aes(x = Year, y = dShannon)) +
   ggtitle("Change in perennial diversity") +
   facet_wrap(~Treatment3)
 
-# T-test
+
+# Comparison
+qqPlot(filter(shan.pd, Treatment3 == "Treated")$dShannon) # not normal?
+qqPlot(filter(shan.pd, Treatment3 == "Control")$dShannon) # not normal?
+
+wilcox.test(filter(shan.pd, Treatment3 == "Treated")$dShannon, 
+            filter(shan.pd, Treatment3 == "Control")$dShannon) # NS
+
 t.test(filter(shan.pd, Treatment3 == "Treated")$dShannon, 
        filter(shan.pd, Treatment3 == "Control")$dShannon) # NS
 
