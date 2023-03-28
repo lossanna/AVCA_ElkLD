@@ -49,9 +49,6 @@ total.pd <- left_join(grouping.cols, total.pd) |>
   select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
          Treatment2, Treatment3, dCover)
 
-# Back-transform from log
-total.pd$backtrans.dCover <- exp(total.pd$dCover)
-
 write_csv(total.pd,
           file = "data/cleaned/Percent-difference_total-cover.csv")
 
@@ -130,9 +127,6 @@ herb.pd <- left_join(grouping.cols, herb.pd) |>
   arrange(Sample) |> 
   select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
          Treatment2, Treatment3, dCover)
-
-# Back-transform from log
-herb.pd$backtrans.dCover <- exp(herb.pd$dCover)
 
 write_csv(herb.pd,
           file = "data/cleaned/Percent-difference_herb-cover.csv")
@@ -214,9 +208,6 @@ rich.pd <- left_join(grouping.cols, rich.pd) |>
   select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
          Treatment2, Treatment3, dRichness)
 
-# Back-transform from log
-rich.pd$backtrans.dRichness <- exp(rich.pd$dRichness)
-
 write_csv(rich.pd,
           file = "data/cleaned/Percent-difference_rich.csv")
 
@@ -295,9 +286,6 @@ shan.pd <- left_join(grouping.cols, shan.pd) |>
   arrange(Sample) |> 
   select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
          Treatment2, Treatment3, dShannon)
-
-# Back-transform from log
-shan.pd$backtrans.dShannon <- exp(shan.pd$dShannon)
 
 write_csv(shan.pd,
           file = "data/cleaned/Percent-difference_shan.csv")

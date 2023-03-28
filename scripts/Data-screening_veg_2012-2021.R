@@ -343,17 +343,6 @@ qqPlot(rich.trt.pd$dRichness) # not normal?
 qqPlot(shan.ctrl.pd$dShannon) # def not normal
 qqPlot(shan.trt.pd$dShannon) # def not normal
 
-# Percent diff back-transformed is worse in terms of normality
-#   nothing is normally distributed
-qqPlot(total.ctrl.pd$backtrans.dCover)
-qqPlot(total.trt.pd$backtrans.dCover)
-qqPlot(herb.ctrl.pd$backtrans.dCover)
-qqPlot(herb.trt.pd$backtrans.dCover)
-qqPlot(rich.ctrl.pd$backtrans.dRichness)
-qqPlot(rich.trt.pd$backtrans.dRichness)
-qqPlot(shan.ctrl.pd$backtrans.dShannon)
-qqPlot(shan.trt.pd$backtrans.dShannon)
-
 
 # Check for outliers ------------------------------------------------------
 
