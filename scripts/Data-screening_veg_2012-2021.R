@@ -9,7 +9,6 @@
 library(tidyverse)
 library(agricolae)
 library(car)
-library(vegan)
 library(rstatix)
 
 # Load data ---------------------------------------------------------------
@@ -335,15 +334,17 @@ qqPlot(per.div.trt.21$shan)
 
 
 # Percent difference
-qqPlot(total.ctrl.pd$backtrans.dCover)
-qqPlot(total.trt.pd$backtrans.dCover)
-qqPlot(herb.ctrl.pd$backtrans.dCover)
-qqPlot(herb.trt.pd$backtrans.dCover)
-qqPlot(rich.ctrl.pd$backtrans.dRichness)
-qqPlot(rich.trt.pd$backtrans.dRichness)
-qqPlot(shan.ctrl.pd$backtrans.dShannon)
-qqPlot(shan.trt.pd$backtrans.dShannon)
+qqPlot(total.ctrl.pd$dCover) # not normal?
+qqPlot(total.trt.pd$dCover) # kind of not normal?
+qqPlot(herb.ctrl.pd$dCover) # almost normal?
+qqPlot(herb.trt.pd$dCover) # almost normal?
+qqPlot(rich.ctrl.pd$dRichness) # almost normal?
+qqPlot(rich.trt.pd$dRichness) # not normal?
+qqPlot(shan.ctrl.pd$dShannon) # def not normal
+qqPlot(shan.trt.pd$dShannon) # def not normal
 
+# Percent diff back-transformed is worse in terms of normality
+#   nothing is normally distributed
 qqPlot(total.ctrl.pd$backtrans.dCover)
 qqPlot(total.trt.pd$backtrans.dCover)
 qqPlot(herb.ctrl.pd$backtrans.dCover)
