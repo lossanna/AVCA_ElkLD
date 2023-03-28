@@ -1,5 +1,12 @@
 # Purpose: Compare CVs across different channel and treatment groupings to look for a
 #   resistance effect (idea is that rocks lower CV even during times of variable rainfall).
+# Looked at CV by different groupings:
+#   by Treatment3, with CV of each sample (not all samples combined)
+#   by Treatment3 to find CV of all samples combined
+#   by Treatment2
+#   by channel
+# Also looked at 2012-2015 subset to compare with precip data
+
 
 library(tidyverse)
 library(cvequality)

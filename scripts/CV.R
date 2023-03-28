@@ -6,13 +6,9 @@ library(cvequality)
 
 # Load data ---------------------------------------------------------------
 
-total.all.raw <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-per.div.raw <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
-herb.all.raw <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
-
-precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
-                     sep = "\t", header = TRUE)
-precip$year.xaxis <- as.Date(precip$year.xaxis)
+total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
+herb.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
 
 meta <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
                        sep = "\t", header = TRUE)
