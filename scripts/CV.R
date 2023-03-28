@@ -1,52 +1,37 @@
-# Purpose: Compare CVs across different channel and treatment groupings to look for a
-#   resistance effect (idea is that rocks lower CV even during times of variable rainfall).
+# Purpose: Calculate CV of each sample across all years, and compare CVs of Treated vs. Control.
+#   CV is a measure of stability and resistance to change.
+# Did not find any significant differences in CVs for total cover, herb cover, richness, or Shannon.
+
 
 library(tidyverse)
 library(cvequality)
+library(car)
 
 # Load data ---------------------------------------------------------------
 
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
-herb.all <- read.csv("data/cleaned/Summarised-all_woody-herb-cover.csv")
-
-meta <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
-                       sep = "\t", header = TRUE)
+herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv")
 
 
-# Data wrangling ----------------------------------------------------------
+# Total cover -------------------------------------------------------------
 
-total.all <- total.all.raw %>% 
-  filter(!str_detect(Year, "03-01")) |> 
-  left_join(meta) |> 
-  select(-contains("trt"), -PlotTimeID) |> 
-  mutate(Year = gsub("-.*", "", Year))
-
-herb.all <- herb.all.raw %>% 
-  filter(!str_detect(Year, "03-01")) |> 
-  filter(woody == "Herbaceous") |> 
-  left_join(meta) |> 
-  select(-contains("trt"), -PlotTimeID, -woody) |> 
-  mutate(Year = gsub("-.*", "", Year))
-
-per.div <- left_join(per.div.raw, meta)
-
-
-
-# By Treatment3 (each sample) ---------------------------------------------
-
-# Total cover
 total.sample <- total.all |> 
-  group_by(Sample, Channel, Station, Name, Treatment3) |> 
+  group_by(Sample, Channel, Station, Treatment3) |> 
   summarise(CV = sd(Cover) / mean(Cover),
             .groups = "keep")
 
 summary(filter(total.sample, Treatment3 == "Treated")$CV)
 summary(filter(total.sample, Treatment3 == "Control")$CV)
 
+qqPlot(filter(total.sample, Treatment3 == "Treated")$CV) # normal
+qqPlot(filter(total.sample, Treatment3 == "Control")$CV) # normal
+
+# Compare
 t.test(filter(total.sample, Treatment3 == "Treated")$CV,
        filter(total.sample, Treatment3 == "Control")$CV) # NS
 
+# Plot
 total.sample |> 
 ggplot(aes(x = Treatment3, y = CV)) +
   geom_boxplot() +
@@ -54,18 +39,27 @@ ggplot(aes(x = Treatment3, y = CV)) +
   ggtitle("Total cover")
 
 
-# Herbaceous cover
+# Herb cover --------------------------------------------------------------
+
 herb.sample <- herb.all |> 
-  group_by(Sample, Channel, Station, Name, Treatment3) |> 
+  group_by(Sample, Channel, Station, Treatment3) |> 
   summarise(CV = sd(Cover) / mean(Cover),
             .groups = "keep")
 
 summary(filter(herb.sample, Treatment3 == "Treated")$CV)
 summary(filter(herb.sample, Treatment3 == "Control")$CV)
 
+qqPlot(filter(herb.sample, Treatment3 == "Treated")$CV) # normal
+qqPlot(filter(herb.sample, Treatment3 == "Control")$CV) # kind of normal?
+
+# Compare
+wilcox.test(filter(herb.sample, Treatment3 == "Treated")$CV,
+            filter(herb.sample, Treatment3 == "Control")$CV) # NS
+
 t.test(filter(herb.sample, Treatment3 == "Treated")$CV,
        filter(herb.sample, Treatment3 == "Control")$CV) # NS
 
+# Plot
 herb.sample |> 
   ggplot(aes(x = Treatment3, y = CV)) +
   geom_boxplot() +
@@ -73,18 +67,25 @@ herb.sample |>
   ggtitle("Herbaceous cover")
 
 
-# Perennial richness
+
+# Richness ----------------------------------------------------------------
+
 rich.sample <- per.div |> 
-  group_by(Sample, Channel, Station, Name, Treatment3) |> 
+  group_by(Sample, Channel, Station, Treatment3) |> 
   summarise(CV = sd(rich) / mean(rich),
             .groups = "keep")
 
 summary(filter(rich.sample, Treatment3 == "Treated")$CV)
 summary(filter(rich.sample, Treatment3 == "Control")$CV)
 
+qqPlot(filter(rich.sample, Treatment3 == "Treated")$CV) # normal
+qqPlot(filter(rich.sample, Treatment3 == "Control")$CV) # normal
+
+# Compare
 t.test(filter(rich.sample, Treatment3 == "Treated")$CV,
        filter(rich.sample, Treatment3 == "Control")$CV) # NS
 
+# Plot
 rich.sample |> 
   ggplot(aes(x = Treatment3, y = CV)) +
   geom_boxplot() +
@@ -92,42 +93,30 @@ rich.sample |>
   ggtitle("Perennial richness")
 
 
-# Perennial diversity
+
+# Shannon -----------------------------------------------------------------
+
 shan.sample <- per.div |> 
-  group_by(Sample, Channel, Station, Name, Treatment3) |> 
+  group_by(Sample, Channel, Station, Treatment3) |> 
   summarise(CV = sd(shan) / mean(shan),
             .groups = "keep")
 
 summary(filter(shan.sample, Treatment3 == "Treated")$CV)
 summary(filter(shan.sample, Treatment3 == "Control")$CV)
 
+qqPlot(filter(shan.sample, Treatment3 == "Treated")$CV) # normal
+qqPlot(filter(shan.sample, Treatment3 == "Control")$CV) # almost normal
+
+# Compare
 t.test(filter(shan.sample, Treatment3 == "Treated")$CV,
        filter(shan.sample, Treatment3 == "Control")$CV) # NS
 
+# Plot
 shan.sample |> 
   ggplot(aes(x = Treatment3, y = CV)) +
   geom_boxplot() +
   geom_jitter() +
   ggtitle("Perennial Shannon")
-
-
-# By Treatment3 (all) -----------------------------------------------------
-
-## Total plant cover
-# All years
-with(total.all, asymptotic_test(Cover, Treatment3)) # NS
-
-# 2012-2015 precipitation
-(6.46 - 10.98) / 10.98 # 41% decrease
-total.12.15 <- total.all %>% 
-  filter(Year %in% c("2012", "2013", "2014", "2015"))
-with(total.12.15, asymptotic_test(Cover, Treatment3)) # NS
-
-# Richness
-with(per.div, asymptotic_test(rich, Treatment3)) # 0.03851548
-
-# Shannon
-with(per.div, asymptotic_test(shan, Treatment2)) # 0.006889485
 
 
 
