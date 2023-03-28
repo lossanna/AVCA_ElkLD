@@ -21,6 +21,9 @@ total.sample <- total.all |>
   summarise(CV = sd(Cover) / mean(Cover),
             .groups = "keep")
 
+write_csv(total.sample,
+          "data/cleaned/CV-2012-2021_total-cover.csv")
+
 summary(filter(total.sample, Treatment3 == "Treated")$CV)
 summary(filter(total.sample, Treatment3 == "Control")$CV)
 
@@ -45,6 +48,9 @@ herb.sample <- herb.all |>
   group_by(Sample, Channel, Station, Treatment3) |> 
   summarise(CV = sd(Cover) / mean(Cover),
             .groups = "keep")
+
+write_csv(herb.sample,
+          "data/cleaned/CV-2012-2021_herb-cover.csv")
 
 summary(filter(herb.sample, Treatment3 == "Treated")$CV)
 summary(filter(herb.sample, Treatment3 == "Control")$CV)
@@ -75,6 +81,9 @@ rich.sample <- per.div |>
   summarise(CV = sd(rich) / mean(rich),
             .groups = "keep")
 
+write_csv(rich.sample,
+          "data/cleaned/CV-2012-2021_richness.csv")
+
 summary(filter(rich.sample, Treatment3 == "Treated")$CV)
 summary(filter(rich.sample, Treatment3 == "Control")$CV)
 
@@ -100,6 +109,9 @@ shan.sample <- per.div |>
   group_by(Sample, Channel, Station, Treatment3) |> 
   summarise(CV = sd(shan) / mean(shan),
             .groups = "keep")
+
+write_csv(shan.sample,
+          "data/cleaned/CV-2012-2021_shannon.csv")
 
 summary(filter(shan.sample, Treatment3 == "Treated")$CV)
 summary(filter(shan.sample, Treatment3 == "Control")$CV)

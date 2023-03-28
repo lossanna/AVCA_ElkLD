@@ -1,0 +1,63 @@
+Sample,Channel,Station,Treatment3,CV
+1,Channel 21,Station 01 + 07.5 BAF,Treated,0.4820542889087027
+2,Channel 21,Station 01 + 49 ORD,Treated,0.4346564699013091
+3,Channel 21,Station 02 + 15 BAF,Treated,0.519979932043766
+4,Channel 21,Station 03 + 80 BAF,Treated,0.9181257337586791
+5,Channel 21,Station 04 + 90 ORD,Treated,0.5134888389512006
+6,Channel 21,Station 06 + 36 BAF,Treated,0.6179277723064687
+7,Channel 21,Station 07 + 49.5 ORD,Treated,0.6229152611894171
+8,Channel 21,Station 07 + 66 BAF,Treated,0.6106252925184543
+9,Channel 21,Station 08 + 62 BAF,Treated,0.42057130942916987
+10,Channel 21,Station 09 + 99 ORD,Treated,0.8115371923935114
+11,Channel 21,Station 10 + 13 BAF,Treated,0.7187622056848992
+12,Channel 21,Station 11 + 12 ORD,Treated,0.3429948785396384
+13,Channel 21,Station 11 + 24 BAF,Treated,0.2658374075613761
+14,Channel 21,Station 11 + 63 ORD,Treated,0.3352317744932752
+15,Channel 21,Station 11 + 73 BAF,Treated,0.8433970623544137
+16,Channel 19,Station 01 + 04,Control,0.4492395771658518
+17,Channel 19,Station 02 + 04,Control,0.5659612858619795
+18,Channel 19,Station 02 + 52,Control,0.3601053909480349
+19,Channel 19,Station 03 + 63,Control,0.3049653891448333
+20,Channel 19,Station 03 + 98,Control,0.5014128954964613
+21,Channel 19,Station 05 + 00,Control,0.5413132423461681
+22,Channel 19,Station 05 + 09,Control,0.5871495744928062
+23,Channel 19,Station 05 + 62,Control,0.4738910511608035
+24,Channel 19,Station 06 + 13,Control,0.30035803581805015
+25,Channel 19,Station 06 + 97,Control,0.8778416707491132
+26,Channel 19,Station 07 + 30,Control,0.7954393361596641
+27,Channel 19,Station 07 + 50,Control,0.5384916764803427
+28,Channel 19,Station 07 + 97,Control,0.5428313357392328
+29,Channel 19,Station 09 + 05,Control,0.5275451812635131
+30,Channel 19,Station 09 + 26,Control,0.49244991635372376
+31,Channel 19,Station 09 + 68,Control,0.8299286251190453
+32,Channel 19,Station 10 + 98,Control,0.7914471543749273
+33,Channel 13,Station 1 + 11.5 BAF,Treated,0.48989794855663565
+34,Channel 13,Station 1 + 38.5 ORD,Treated,1.233372008250466
+35,Channel 13,Station 1 + 71 BAF,Treated,1.0864231511525544
+36,Channel 13,Station 1 + 77 ORD,Treated,0.46695056643517857
+37,Channel 13,Station 1 + 99 ORD,Treated,0.637483172403424
+38,Channel 13,Station 2 + 16 BAF,Treated,0.24527173961438029
+39,Channel 13,Station 2 + 57 ORD,Treated,0.7844460247645821
+40,Channel 13,Station 2 + 67 BAF,Treated,0.7749732443199344
+41,Channel 13,Station 3 + 09 ORD,Treated,0.3785775306951845
+42,Channel 13,Station 3 + 31 BAF,Treated,0.7182594828320824
+43,Channel 13,Station 3 + 65 ORD,Treated,0.8276479413153516
+44,Channel 13,Station 3 + 95.5 ORD,Treated,0.6829233461822525
+45,Channel 13,Station 4 + 14.5 BAF,Treated,0.4775938241176343
+46,Channel 13,Station 4 + 36 ORD,Treated,0.6129375584625706
+47,Channel 13,Station 4 + 50 BAF,Treated,0.3498801358034386
+48,Channel 13,Station 4 + 78 ORD,Treated,0.3811787934411602
+49,Channel 12,Station 1 + 04,Control,0.23704748541184606
+50,Channel 12,Station 1 + 52,Control,0.4389679084012958
+51,Channel 12,Station 1 + 83,Control,0.3639650841588718
+52,Channel 12,Station 2 + 63,Control,0.5507863842850692
+53,Channel 12,Station 2 + 98,Control,0.42513409806677677
+54,Channel 12,Station 3 + 93,Control,0.4623775496085433
+55,Channel 12,Station 4 + 00,Control,0.36019171632652797
+56,Channel 12,Station 4 + 09,Control,0.6565034091803518
+57,Channel 12,Station 4 + 56,Control,0.2966900599542844
+58,Channel 12,Station 4 + 65,Control,0.4486396763363028
+59,Channel 12,Station 5 + 13,Control,0.4861189710573319
+60,Channel 12,Station 5 + 48,Control,0.9133068656809611
+61,Channel 12,Station 6 + 30,Control,0.569365015238701
+62,Channel 12,Station 6 + 93,Control,0.39524107858885527
