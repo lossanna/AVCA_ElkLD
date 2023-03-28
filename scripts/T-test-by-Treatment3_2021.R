@@ -1,3 +1,5 @@
+# Purpose: Compare 2021 soil and plant data by Treatment3 (Treated/Control).
+
 library(tidyverse)
 library(car)
 library(agricolae)

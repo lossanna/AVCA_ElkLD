@@ -105,7 +105,7 @@ herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
                                     color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE),  linewidth = 0.8) +
   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   facet_wrap(~Treatment3) +
   xlab(NULL) +
@@ -222,4 +222,4 @@ lm2.shan <- lme(shan ~ Treatment3, random = ~1|Year, data = per.div)
 emmeans(lm2.shan, specs = "Treatment3")
 
 
-save.image("RData/ANOVA-by-Treatment3.RData")
+save.image("RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
