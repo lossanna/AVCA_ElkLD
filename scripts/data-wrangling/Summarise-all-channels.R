@@ -127,17 +127,23 @@ plant.all <- left_join(sampling, plant.all)
 # Summarise by total and herb ---------------------------------------------
 
 total.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt,
-           Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
-  summarise(Cover = sum(Cover), .groups = "keep")
+  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3) %>% 
+  summarise(Cover = sum(Cover), .groups = "keep") |> 
+  ungroup() |> 
+  select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover)
 
 herb.all <- plant.all %>% 
-  group_by(Channel, Station, Year, station.trt, channel.trt, woody,
-           Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
+  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3, woody) %>% 
   summarise(Cover = sum(Cover), .groups = "keep") |> 
   filter(woody == "Herbaceous") |> 
   ungroup() |> 
-  select(-woody)
+  select(-woody) |> 
+  ungroup() |> 
+  select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover)
 
 
 # Richness and Shannon ----------------------------------------------------
@@ -148,14 +154,14 @@ plant.per <- plant.all |>
 
 # By treatment and station
 richness <- plant.per %>%  
-  group_by(Channel, Station, Year, station.trt, channel.trt,
-           Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
+  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3) %>% 
   summarise(rich = n_distinct(Common),
             .groups = "keep") 
 
 shannon <- plant.per %>%  
-  group_by(Channel, Station, Year, station.trt, channel.trt,
-           Treatment1, Treatment2, Treatment3, year.xaxis) %>% 
+  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3) %>% 
   summarise(shan = diversity(Cover),
             .groups = "keep")
 
@@ -176,16 +182,21 @@ all.c <- all.c %>%
   select(PlotTimeID, Year, Channel, Station)
 all.c$Year <- gsub("-.*", "", all.c$Year)
 
-# Add to ID dataframes (remove NAs because some data sheets were lost)
+# Add to ID dataframes (remove NAs because some data sheets were lost) and reorder cols
 plant.all <- left_join(all.c, plant.all) %>% 
-  filter(!is.na(Cover))
+  filter(!is.na(Cover)) 
 total.all <- left_join(all.c, total.all) %>% 
-  filter(!is.na(Cover))
+  filter(!is.na(Cover)) |> 
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover)
 herb.all <- left_join(all.c, herb.all) %>% 
-  filter(!is.na(Cover))
+  filter(!is.na(Cover)) |> 
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover)
 per.div <- left_join(all.c, per.div) |> 
-  filter(!is.na(shan))
-
+  filter(!is.na(shan)) |> 
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, rich, shan)
 
 
 # Save dataframes ---------------------------------------------------------
