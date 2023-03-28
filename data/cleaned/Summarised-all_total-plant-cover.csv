@@ -1,367 +1,367 @@
 PlotTimeID,Year,Channel,Station,station.trt,channel.trt,Treatment1,Treatment2,Treatment3,year.xaxis,Cover
-1,2012,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,18.5
-2,2012,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,49.333333333333336
-3,2012,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,59.25
-4,2012,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,28.666666666666664
-5,2012,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,28.666666666666668
-6,2012,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,93.75
-7,2012,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,41.791666666666664
-8,2012,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,55.916666666666664
-9,2012,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,39
-10,2012,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,74.33333333333333
-11,2012,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,29.333333333333332
-12,2012,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,40.083333333333336
-13,2012,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,66.41666666666667
-14,2012,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2012-01-01,97.33333333333333
-15,2012,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,69.91666666666667
-16,2012,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,55.083333333333336
-17,2012,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,42.416666666666664
-18,2012,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,46.416666666666664
-19,2012,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,42.875
-20,2012,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,81.5
-21,2012,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,22.083333333333336
-22,2012,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,71.5
-23,2012,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,95.33333333333333
-24,2012,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,52.25
-25,2012,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,35.416666666666664
-26,2012,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,38.833333333333336
-27,2012,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,45.666666666666664
-28,2012,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,59.75
-29,2012,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,83.91666666666667
-30,2012,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,74.16666666666667
-31,2012,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,92.91666666666667
-33,2012,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,101.08333333333333
-34,2012,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,110.25
-35,2012,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,51
-36,2012,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,61.66666666666667
-37,2012,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,71.41666666666667
-38,2012,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,16.666666666666668
-39,2012,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,48.416666666666664
-40,2012,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,76.16666666666666
-41,2012,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,98.83333333333333
-42,2012,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,67.83333333333334
-43,2012,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,29.5
-44,2012,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,59.416666666666664
-45,2012,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,34.083333333333336
-46,2012,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,72.91666666666666
-47,2012,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2012-01-01,63.166666666666664
-48,2012,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,37
-49,2012,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,27
-50,2012,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,26.666666666666668
-51,2012,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,27.416666666666664
-52,2012,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,8.833333333333334
-53,2012,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,21
-54,2012,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,34.416666666666664
-55,2012,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,3.25
-56,2012,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,29.416666666666668
-57,2012,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,8.416666666666666
-58,2012,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,56.25
-59,2012,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,45.166666666666664
-60,2012,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,35.416666666666664
-61,2012,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2012-01-01,30.25
-62,2012,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2012-01-01,15.166666666666666
-63,2013,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,47.75
-64,2013,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,53.333333333333336
-65,2013,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,80.75
-66,2013,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,74.5
-67,2013,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,95.41666666666667
-68,2013,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,74.16666666666667
-69,2013,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,85.29166666666667
-70,2013,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,63.16666666666667
-71,2013,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,46.833333333333336
-73,2013,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,51.166666666666664
-74,2013,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,48.833333333333336
-75,2013,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,89
-76,2013,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2013-01-01,84.83333333333334
-77,2013,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,69.25
-78,2013,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,55.5
-79,2013,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,35.5
-80,2013,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,50.25
-81,2013,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,35.5
-82,2013,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,77.25
-83,2013,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,12.916666666666666
-84,2013,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,51.58333333333333
-85,2013,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,83.41666666666666
-86,2013,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,50.75
-87,2013,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,39.75
-88,2013,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,45
-89,2013,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,37.916666666666664
-90,2013,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,62.08333333333333
-92,2013,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,83.08333333333333
-93,2013,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,44.083333333333336
-94,2013,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,77.91666666666666
-95,2013,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,111.83333333333333
-96,2013,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,61.166666666666664
-97,2013,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,14.333333333333334
-98,2013,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,89
-99,2013,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,16.666666666666668
-100,2013,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,43.25
-101,2013,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,61.08333333333333
-102,2013,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,36.5
-103,2013,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,50.5
-104,2013,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,75.25
-105,2013,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,34.416666666666664
-106,2013,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,64.58333333333333
-107,2013,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,41.5
-108,2013,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2013-01-01,34.75
-109,2013,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,23
-110,2013,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,20.5
-111,2013,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,18.916666666666668
-112,2013,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,23.416666666666668
-113,2013,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,4.25
-114,2013,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,23.75
-115,2013,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,22.083333333333336
-116,2013,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,0.8333333333333334
-117,2013,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,16.25
-118,2013,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,15.833333333333332
-119,2013,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,52.833333333333336
-120,2013,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,43.583333333333336
-121,2013,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,26
-122,2013,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2013-01-01,35.291666666666664
-123,2013,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2013-01-01,25.916666666666668
-124,2014,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,24.75
-125,2014,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,25.375
-126,2014,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,54.25
-127,2014,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,24.25
-128,2014,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,49.625
-129,2014,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,26.75
-130,2014,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,62.25
-131,2014,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,25.625
-132,2014,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,31.5
-133,2014,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,22.5
-134,2014,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,34.875
-135,2014,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,34.25
-136,2014,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,76.625
-137,2014,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2014-01-01,84.5
-138,2014,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,69.8125
-139,2014,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,79.75
-140,2014,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,62.625
-141,2014,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,67.5
-142,2014,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,40.0625
-143,2014,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,90.25
-144,2014,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,26.25
-145,2014,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,72.75
-146,2014,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,69.75
-147,2014,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,43.75
-148,2014,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,62.125
-149,2014,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,40.625
-150,2014,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,30.125
-151,2014,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,32.75
-152,2014,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,97.375
-153,2014,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,51.75
-155,2014,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,84.625
-156,2014,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,104.5
-157,2014,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,57.625
-158,2014,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,83.875
-159,2014,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,55.625
-160,2014,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,104.875
-161,2014,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,33.625
-162,2014,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,30.75
-163,2014,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,55.75
-164,2014,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,51.75
-165,2014,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,52.625
-166,2014,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,64.25
-167,2014,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,38.75
-168,2014,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,59.625
-169,2014,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,39.75
-170,2014,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2014-01-01,55.375
-171,2014,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,26.125
-172,2014,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,38.375
-173,2014,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,15.75
-174,2014,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,6.375
-175,2014,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,12.875
-176,2014,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,37.5
-177,2014,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,32.625
-178,2014,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,3.625
-179,2014,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,28.25
-180,2014,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,9
-181,2014,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,81.5
-182,2014,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,35.75
-183,2014,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,27.5
-184,2014,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2014-01-01,68.8125
-185,2014,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2014-01-01,19.125
-186,2015,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,25.625
-187,2015,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,14.875
-188,2015,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,75.75
-189,2015,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,75.625
-190,2015,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,84.375
-191,2015,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,39.125
-192,2015,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,78.875
-193,2015,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,36.75
-194,2015,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,31.25
-195,2015,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,28.5
-196,2015,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,84.375
-197,2015,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,33.125
-198,2015,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,97
-199,2015,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2015-01-01,70.5
-200,2015,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,41
-201,2015,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,62.625
-202,2015,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,73.5
-203,2015,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,70.875
-204,2015,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,49.4375
-205,2015,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,71.125
-206,2015,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,32.625
-207,2015,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,49.375
-208,2015,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,70.125
-209,2015,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,41
-210,2015,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,44.375
-211,2015,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,31.875
-212,2015,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,41.75
-213,2015,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,42
-214,2015,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,52.375
-215,2015,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,76
-216,2015,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,54.75
-217,2015,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,17.875
-218,2015,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,56.25
-219,2015,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,56.25
-220,2015,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,24.75
-221,2015,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,14.125
-222,2015,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,40.625
-223,2015,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,9.0625
-224,2015,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,17.375
-225,2015,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,16
-226,2015,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,6.25
-227,2015,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,36.875
-228,2015,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,16.75
-229,2015,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,12.5
-230,2015,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,16.125
-231,2015,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,28
-232,2015,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2015-01-01,20.625
-233,2015,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,19.125
-234,2015,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,17
-235,2015,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,10.125
-236,2015,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,8.875
-237,2015,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,11.375
-238,2015,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,27.375
-239,2015,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,28.25
-241,2015,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,30.875
-242,2015,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,6.5
-243,2015,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,48.125
-244,2015,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,27
-245,2015,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,17.25
-246,2015,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2015-01-01,48.125
-247,2015,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2015-01-01,10.375
-248,2018,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,22.625
-249,2018,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,47.125
-250,2018,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,78.25
-251,2018,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,28.125
-252,2018,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,80
-253,2018,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,50.125
-254,2018,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,69.375
-255,2018,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,40.875
-256,2018,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,49
-257,2018,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,41.125
-258,2018,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,45.625
-259,2018,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,18.375
-260,2018,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,58.875
-261,2018,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2018-01-01,66.5625
-262,2018,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,77.625
-263,2018,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,89.75
-264,2018,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,77.375
-265,2018,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,70
-266,2018,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,58.9375
-267,2018,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,72.75
-268,2018,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,67.875
-269,2018,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,75.75
-270,2018,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,109.875
-271,2018,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,66.375
-272,2018,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,62.625
-273,2018,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,55.625
-274,2018,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,56.375
-275,2018,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,82.25
-276,2018,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,123.5
-277,2018,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,67.5
-278,2018,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,104.375
-279,2018,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,8.6875
-280,2018,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,61.4375
-281,2018,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,37.5
-282,2018,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,60.25
-283,2018,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,35.75
-284,2018,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,88.375
-285,2018,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,22.3125
-286,2018,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,23.625
-287,2018,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,47.875
-288,2018,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,34.25
-289,2018,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,24.75
-290,2018,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,24.75
-291,2018,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,41.25
-292,2018,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,27.625
-293,2018,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,54
-294,2018,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2018-01-01,36
-295,2018,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,39.75
-296,2018,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,37.25
-297,2018,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,9.5
-298,2018,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,32
-299,2018,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,13.625
-300,2018,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,19.125
-301,2018,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,42.625
-302,2018,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,2.375
-303,2018,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,38.75
-304,2018,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,7.75
-305,2018,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,37.625
-306,2018,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,48.125
-307,2018,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,26.25
-308,2018,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2018-01-01,39.5
-309,2018,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2018-01-01,17.875
-310,2021,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,34.75
-311,2021,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,37.625
-312,2021,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,63.625
-313,2021,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,35.125
-314,2021,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,67.125
-315,2021,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,88.625
-316,2021,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,96.6875
-317,2021,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,23.25
-318,2021,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,49.375
-319,2021,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,46.375
-320,2021,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,36.25
-321,2021,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,44.75
-322,2021,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,43.375
-323,2021,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,2021-01-01,83.75
-324,2021,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,85.5
-325,2021,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,73.25
-326,2021,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,68.75
-327,2021,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,27.6
-328,2021,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,40.875
-329,2021,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,114.125
-330,2021,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,40.125
-331,2021,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,113.125
-332,2021,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,5.875
-333,2021,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,67.5
-334,2021,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,97.875
-335,2021,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,65
-336,2021,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,72.125
-337,2021,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,65.75
-338,2021,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,82.25
-339,2021,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,51.5
-340,2021,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,47.875
-341,2021,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,36.4375
-342,2021,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,129.5
-343,2021,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,113.75
-344,2021,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,36.875
-345,2021,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,79.25
-346,2021,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,96.375
-347,2021,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,33
-348,2021,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,20.25
-349,2021,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,72.5
-350,2021,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,55
-351,2021,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,87.25
-352,2021,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,55.5
-353,2021,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,75
-354,2021,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,76.75
-355,2021,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,102.875
-356,2021,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,2021-01-01,80.375
-357,2021,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,31.125
-358,2021,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,82.625
-359,2021,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,2.25
-360,2021,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,24
-361,2021,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,7.375
-362,2021,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,14.75
-363,2021,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,30.25
-364,2021,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,6.25
-365,2021,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,29.125
-366,2021,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,19.5
-367,2021,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,19.375
-368,2021,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,33
-369,2021,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,21.875
-370,2021,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,2021-01-01,65.375
-371,2021,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,2021-01-01,52.5
+1,2012,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,18.5
+2,2012,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,49.333333333333336
+3,2012,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,59.25
+4,2012,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,28.666666666666664
+5,2012,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,28.666666666666668
+6,2012,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,93.75
+7,2012,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,41.791666666666664
+8,2012,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,55.916666666666664
+9,2012,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,39
+10,2012,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,74.33333333333333
+11,2012,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,29.333333333333332
+12,2012,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,40.083333333333336
+13,2012,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,66.41666666666667
+14,2012,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,97.33333333333333
+15,2012,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,69.91666666666667
+16,2012,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,55.083333333333336
+17,2012,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,42.416666666666664
+18,2012,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,46.416666666666664
+19,2012,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,42.875
+20,2012,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,81.5
+21,2012,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,22.083333333333336
+22,2012,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,71.5
+23,2012,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,95.33333333333333
+24,2012,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,52.25
+25,2012,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,35.416666666666664
+26,2012,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,38.833333333333336
+27,2012,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,45.666666666666664
+28,2012,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,59.75
+29,2012,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,83.91666666666667
+30,2012,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,74.16666666666667
+31,2012,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,92.91666666666667
+33,2012,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,101.08333333333333
+34,2012,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,110.25
+35,2012,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,51
+36,2012,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,61.66666666666667
+37,2012,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,71.41666666666667
+38,2012,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,16.666666666666668
+39,2012,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,48.416666666666664
+40,2012,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,76.16666666666666
+41,2012,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,98.83333333333333
+42,2012,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,67.83333333333334
+43,2012,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,29.5
+44,2012,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,59.416666666666664
+45,2012,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,34.083333333333336
+46,2012,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,72.91666666666666
+47,2012,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,63.166666666666664
+48,2012,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,37
+49,2012,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,27
+50,2012,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,26.666666666666668
+51,2012,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,27.416666666666664
+52,2012,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,8.833333333333334
+53,2012,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,21
+54,2012,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,34.416666666666664
+55,2012,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,3.25
+56,2012,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,29.416666666666668
+57,2012,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,8.416666666666666
+58,2012,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,56.25
+59,2012,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,45.166666666666664
+60,2012,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,35.416666666666664
+61,2012,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,30.25
+62,2012,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,15.166666666666666
+63,2013,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,47.75
+64,2013,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,53.333333333333336
+65,2013,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,80.75
+66,2013,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,74.5
+67,2013,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,95.41666666666667
+68,2013,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,74.16666666666667
+69,2013,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,85.29166666666667
+70,2013,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,63.16666666666667
+71,2013,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,46.833333333333336
+73,2013,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,51.166666666666664
+74,2013,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,48.833333333333336
+75,2013,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,89
+76,2013,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,84.83333333333334
+77,2013,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,69.25
+78,2013,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,55.5
+79,2013,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,35.5
+80,2013,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,50.25
+81,2013,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,35.5
+82,2013,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,77.25
+83,2013,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,12.916666666666666
+84,2013,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,51.58333333333333
+85,2013,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,83.41666666666666
+86,2013,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,50.75
+87,2013,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,39.75
+88,2013,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,45
+89,2013,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,37.916666666666664
+90,2013,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,62.08333333333333
+92,2013,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,83.08333333333333
+93,2013,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,44.083333333333336
+94,2013,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,77.91666666666666
+95,2013,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,111.83333333333333
+96,2013,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,61.166666666666664
+97,2013,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,14.333333333333334
+98,2013,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,89
+99,2013,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,16.666666666666668
+100,2013,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,43.25
+101,2013,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,61.08333333333333
+102,2013,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,36.5
+103,2013,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,50.5
+104,2013,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,75.25
+105,2013,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,34.416666666666664
+106,2013,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,64.58333333333333
+107,2013,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,41.5
+108,2013,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,34.75
+109,2013,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,23
+110,2013,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,20.5
+111,2013,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,18.916666666666668
+112,2013,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,23.416666666666668
+113,2013,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,4.25
+114,2013,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,23.75
+115,2013,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,22.083333333333336
+116,2013,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,0.8333333333333334
+117,2013,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,16.25
+118,2013,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,15.833333333333332
+119,2013,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,52.833333333333336
+120,2013,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,43.583333333333336
+121,2013,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,26
+122,2013,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,35.291666666666664
+123,2013,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,25.916666666666668
+124,2014,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,24.75
+125,2014,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,25.375
+126,2014,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,54.25
+127,2014,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,24.25
+128,2014,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,49.625
+129,2014,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,26.75
+130,2014,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,62.25
+131,2014,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,25.625
+132,2014,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,31.5
+133,2014,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,22.5
+134,2014,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,34.875
+135,2014,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,34.25
+136,2014,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,76.625
+137,2014,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,84.5
+138,2014,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,69.8125
+139,2014,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,79.75
+140,2014,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,62.625
+141,2014,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,67.5
+142,2014,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,40.0625
+143,2014,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,90.25
+144,2014,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,26.25
+145,2014,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,72.75
+146,2014,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,69.75
+147,2014,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,43.75
+148,2014,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,62.125
+149,2014,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,40.625
+150,2014,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,30.125
+151,2014,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,32.75
+152,2014,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,97.375
+153,2014,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,51.75
+155,2014,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,84.625
+156,2014,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,104.5
+157,2014,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,57.625
+158,2014,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,83.875
+159,2014,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,55.625
+160,2014,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,104.875
+161,2014,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,33.625
+162,2014,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,30.75
+163,2014,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,55.75
+164,2014,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,51.75
+165,2014,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,52.625
+166,2014,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,64.25
+167,2014,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,38.75
+168,2014,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,59.625
+169,2014,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,39.75
+170,2014,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,55.375
+171,2014,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,26.125
+172,2014,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,38.375
+173,2014,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,15.75
+174,2014,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,6.375
+175,2014,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,12.875
+176,2014,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,37.5
+177,2014,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,32.625
+178,2014,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,3.625
+179,2014,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,28.25
+180,2014,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,9
+181,2014,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,81.5
+182,2014,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,35.75
+183,2014,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,27.5
+184,2014,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,68.8125
+185,2014,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,19.125
+186,2015,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,25.625
+187,2015,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,14.875
+188,2015,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,75.75
+189,2015,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,75.625
+190,2015,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,84.375
+191,2015,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,39.125
+192,2015,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,78.875
+193,2015,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,36.75
+194,2015,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,31.25
+195,2015,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,28.5
+196,2015,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,84.375
+197,2015,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,33.125
+198,2015,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,97
+199,2015,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,70.5
+200,2015,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,41
+201,2015,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,62.625
+202,2015,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,73.5
+203,2015,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,70.875
+204,2015,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,49.4375
+205,2015,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,71.125
+206,2015,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,32.625
+207,2015,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,49.375
+208,2015,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,70.125
+209,2015,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,41
+210,2015,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,44.375
+211,2015,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,31.875
+212,2015,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,41.75
+213,2015,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,42
+214,2015,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,52.375
+215,2015,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,76
+216,2015,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,54.75
+217,2015,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,17.875
+218,2015,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,56.25
+219,2015,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,56.25
+220,2015,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,24.75
+221,2015,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,14.125
+222,2015,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,40.625
+223,2015,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,9.0625
+224,2015,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,17.375
+225,2015,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,16
+226,2015,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,6.25
+227,2015,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,36.875
+228,2015,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,16.75
+229,2015,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,12.5
+230,2015,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,16.125
+231,2015,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,28
+232,2015,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,20.625
+233,2015,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,19.125
+234,2015,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,17
+235,2015,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,10.125
+236,2015,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,8.875
+237,2015,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,11.375
+238,2015,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,27.375
+239,2015,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,28.25
+241,2015,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,30.875
+242,2015,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,6.5
+243,2015,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,48.125
+244,2015,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,27
+245,2015,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,17.25
+246,2015,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,48.125
+247,2015,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,10.375
+248,2018,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,22.625
+249,2018,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,47.125
+250,2018,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,78.25
+251,2018,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,28.125
+252,2018,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,80
+253,2018,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,50.125
+254,2018,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,69.375
+255,2018,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,40.875
+256,2018,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,49
+257,2018,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,41.125
+258,2018,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,45.625
+259,2018,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,18.375
+260,2018,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,58.875
+261,2018,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,66.5625
+262,2018,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,77.625
+263,2018,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,89.75
+264,2018,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,77.375
+265,2018,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,70
+266,2018,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,58.9375
+267,2018,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,72.75
+268,2018,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,67.875
+269,2018,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,75.75
+270,2018,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,109.875
+271,2018,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,66.375
+272,2018,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,62.625
+273,2018,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,55.625
+274,2018,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,56.375
+275,2018,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,82.25
+276,2018,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,123.5
+277,2018,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,67.5
+278,2018,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,104.375
+279,2018,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,8.6875
+280,2018,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,61.4375
+281,2018,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,37.5
+282,2018,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,60.25
+283,2018,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,35.75
+284,2018,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,88.375
+285,2018,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,22.3125
+286,2018,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,23.625
+287,2018,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,47.875
+288,2018,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,34.25
+289,2018,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,24.75
+290,2018,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,24.75
+291,2018,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,41.25
+292,2018,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,27.625
+293,2018,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,54
+294,2018,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,36
+295,2018,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,39.75
+296,2018,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,37.25
+297,2018,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,9.5
+298,2018,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,32
+299,2018,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,13.625
+300,2018,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,19.125
+301,2018,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,42.625
+302,2018,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,2.375
+303,2018,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,38.75
+304,2018,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,7.75
+305,2018,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,37.625
+306,2018,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,48.125
+307,2018,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,26.25
+308,2018,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,39.5
+309,2018,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,17.875
+310,2021,Channel 12,Station 1 + 04,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,34.75
+311,2021,Channel 12,Station 1 + 52,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,37.625
+312,2021,Channel 12,Station 1 + 83,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,63.625
+313,2021,Channel 12,Station 2 + 63,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,35.125
+314,2021,Channel 12,Station 2 + 98,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,67.125
+315,2021,Channel 12,Station 3 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,88.625
+316,2021,Channel 12,Station 4 + 00,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,96.6875
+317,2021,Channel 12,Station 4 + 09,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,23.25
+318,2021,Channel 12,Station 4 + 56,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,49.375
+319,2021,Channel 12,Station 4 + 65,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,46.375
+320,2021,Channel 12,Station 5 + 13,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,36.25
+321,2021,Channel 12,Station 5 + 48,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,44.75
+322,2021,Channel 12,Station 6 + 30,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,43.375
+323,2021,Channel 12,Station 6 + 93,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,NA,83.75
+324,2021,Channel 13,Station 1 + 11.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,85.5
+325,2021,Channel 13,Station 1 + 38.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,73.25
+326,2021,Channel 13,Station 1 + 71 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,68.75
+327,2021,Channel 13,Station 1 + 77 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,27.6
+328,2021,Channel 13,Station 1 + 99 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,40.875
+329,2021,Channel 13,Station 2 + 16 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,114.125
+330,2021,Channel 13,Station 2 + 57 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,40.125
+331,2021,Channel 13,Station 2 + 67 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,113.125
+332,2021,Channel 13,Station 3 + 09 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,5.875
+333,2021,Channel 13,Station 3 + 31 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,67.5
+334,2021,Channel 13,Station 3 + 65 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,97.875
+335,2021,Channel 13,Station 3 + 95.5 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,65
+336,2021,Channel 13,Station 4 + 14.5 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,72.125
+337,2021,Channel 13,Station 4 + 36 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,65.75
+338,2021,Channel 13,Station 4 + 50 BAF,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,NA,82.25
+339,2021,Channel 13,Station 4 + 78 ORD,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,51.5
+340,2021,Channel 19,Station 01 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,47.875
+341,2021,Channel 19,Station 02 + 04,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,36.4375
+342,2021,Channel 19,Station 02 + 52,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,129.5
+343,2021,Channel 19,Station 03 + 63,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,113.75
+344,2021,Channel 19,Station 03 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,36.875
+345,2021,Channel 19,Station 05 + 00,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,79.25
+346,2021,Channel 19,Station 05 + 09,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,96.375
+347,2021,Channel 19,Station 05 + 62,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,33
+348,2021,Channel 19,Station 06 + 13,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,20.25
+349,2021,Channel 19,Station 06 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,72.5
+350,2021,Channel 19,Station 07 + 30,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,55
+351,2021,Channel 19,Station 07 + 50,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,87.25
+352,2021,Channel 19,Station 07 + 97,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,55.5
+353,2021,Channel 19,Station 09 + 05,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,75
+354,2021,Channel 19,Station 09 + 26,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,76.75
+355,2021,Channel 19,Station 09 + 68,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,102.875
+356,2021,Channel 19,Station 10 + 98,No treatment,Channel 19: Upland treatment,Upland,Upland treatment,Control,NA,80.375
+357,2021,Channel 21,Station 01 + 07.5 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,31.125
+358,2021,Channel 21,Station 01 + 49 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,82.625
+359,2021,Channel 21,Station 02 + 15 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,2.25
+360,2021,Channel 21,Station 03 + 80 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,24
+361,2021,Channel 21,Station 04 + 90 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,7.375
+362,2021,Channel 21,Station 06 + 36 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,14.75
+363,2021,Channel 21,Station 07 + 49.5 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,30.25
+364,2021,Channel 21,Station 07 + 66 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,6.25
+365,2021,Channel 21,Station 08 + 62 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,29.125
+366,2021,Channel 21,Station 09 + 99 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,19.5
+367,2021,Channel 21,Station 10 + 13 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,19.375
+368,2021,Channel 21,Station 11 + 12 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,33
+369,2021,Channel 21,Station 11 + 24 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,21.875
+370,2021,Channel 21,Station 11 + 63 ORD,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,NA,65.375
+371,2021,Channel 21,Station 11 + 73 BAF,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,NA,52.5

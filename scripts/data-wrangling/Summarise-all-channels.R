@@ -51,7 +51,9 @@ plant.all <- plant.all %>%
   filter(Cover > 0) %>% 
   separate(Station, c("Channel", "Station"), "_")
 
-# Add grouping cols
+
+# Add and edit grouping columns ------------------------------------------
+
 # Add station and channel treatment cols
 plant.all <- plant.all |> 
   mutate(station.trt = case_when(
@@ -107,6 +109,19 @@ plant.all <-plant.all |>
 
 # Shorten Year to 4 digits
 plant.all$Year <- as.factor(gsub("-.*", "", plant.all$Year))
+
+# Add numeric sample ID
+sampling <- bind_rows(all.c12, all.c13, all.c19, all.c21) |> 
+  select(Station) |> 
+  distinct(.keep_all = TRUE) |> 
+  arrange(Station) |> 
+  separate(Station, c("Channel", "Station"), "_") |> 
+  arrange(desc(Channel)) |> 
+  mutate(Sample = 1:62) |> 
+  select(Sample, Channel, Station)
+
+plant.all <- left_join(sampling, plant.all)
+
 
 
 # Summarise by total and herb ---------------------------------------------
