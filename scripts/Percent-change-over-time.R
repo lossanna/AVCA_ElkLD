@@ -5,38 +5,26 @@ library(tidyverse)
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv") 
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
-meta.raw <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
-                   sep = "\t", header = TRUE)
 
-# Data wrangling ----------------------------------------------------------
-
-# Format meta to connect Names with Sample no.
-meta <- meta.raw |> 
-  select(Sample, Name)
+# Create general metadata without year information for each sample
+grouping.cols <- total.all |> 
+  select(Sample, Channel, Station, station.trt, channel.trt, Treatment1, 
+         Treatment2, Treatment3) |> 
+  distinct(.keep_all = TRUE) 
 
 
 # Total cover -------------------------------------------------------------
 
-# Format to join with names from meta
-total.change <- total.all |> 
-  select(Year, Channel, Station, Cover) 
-total.change$Name <- paste0(total.change$Channel, ", ", total.change$Station)
-total.change <- total.change |> 
-  select(-Channel, -Station) |> 
-  mutate(Year = as.numeric(Year))
-
-# Add Sample no. from meta
-total.change <- left_join(total.change, meta)
-total.change <- total.change |> 
-  select(-Name)
-total.change.long <- total.change
+# Select cols to pivot
+total.long <- total.all |> 
+  select(Sample, Year, Cover) 
 
 # Pivot wider so every column is a sample and every row is a year
-  # separate 2012-2015 and 2018-2021
-total.change.wide <- total.change.long |> 
+  # and separate 2012-2015 and 2018-2021
+total.wide <- total.long |> 
   pivot_wider(names_from = Sample, values_from = Cover)
-total.change1 <- total.change.wide[1:4, -c(1)]
-total.change2 <- total.change.wide[4:6, -c(1)]
+total.change1 <- total.wide[1:4, -c(1)]
+total.change2 <- total.wide[4:6, -c(1)]
 
 # Convert to time series object
 total.change1 <- as.matrix(total.change1)
@@ -56,12 +44,10 @@ total.pd <- total.pd |>
   pivot_longer(!Year, names_to = "Sample", values_to = "dCover")
 total.pd$Sample <- gsub("^.*?\\.", "", total.pd$Sample)
 total.pd$Sample <- as.numeric(total.pd$Sample)
-total.pd <- left_join(total.pd, meta)
-total.pd <- total.pd |> 
-  mutate(Treatment3 = case_when(
-    str_detect(total.pd$Name, "Channel 12|Channel 19") ~ "Control",
-    str_detect(total.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
-  arrange(Sample)
+total.pd <- left_join(grouping.cols, total.pd) |> 
+  arrange(Sample) |> 
+  select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
+         Treatment2, Treatment3, dCover)
 
 # Back-transform from log
 total.pd$backtrans.dCover <- exp(total.pd$dCover)
@@ -111,26 +97,16 @@ t.test(filter(total.pd, Treatment3 == "Treated")$dCover,
 
 # Herbaceous cover --------------------------------------------------------
 
-# Format to join with names from meta
-herb.change <- herb.all |> 
-  select(Year, Channel, Station, Cover) 
-herb.change$Name <- paste0(herb.change$Channel, ", ", herb.change$Station)
-herb.change <- herb.change |> 
-  select(-Channel, -Station) |> 
-  mutate(Year = as.numeric(Year))
-
-# Add Sample no. from meta
-herb.change <- left_join(herb.change, meta)
-herb.change <- herb.change |> 
-  select(-Name)
-herb.change.long <- herb.change
+# Select cols to pivot
+herb.long <- herb.all |> 
+  select(Sample, Year, Cover) 
 
 # Pivot wider so every column is a sample and every row is a year
-  # separate 2012-2015 and 2018-2021
-herb.change.wide <- herb.change.long |> 
+#   and separate 2012-2015 and 2018-2021
+herb.wide <- herb.long |> 
   pivot_wider(names_from = Sample, values_from = Cover)
-herb.change1 <- herb.change.wide[1:4, -c(1)]
-herb.change2 <- herb.change.wide[4:6, -c(1)]
+herb.change1 <- herb.wide[1:4, -c(1)]
+herb.change2 <- herb.wide[4:6, -c(1)]
 
 # Convert to time series object
 herb.change1 <- as.matrix(herb.change1)
@@ -150,12 +126,10 @@ herb.pd <- herb.pd |>
   pivot_longer(!Year, names_to = "Sample", values_to = "dCover")
 herb.pd$Sample <- gsub("^.*?\\.", "", herb.pd$Sample)
 herb.pd$Sample <- as.numeric(herb.pd$Sample)
-herb.pd <- left_join(herb.pd, meta)
-herb.pd <- herb.pd |> 
-  mutate(Treatment3 = case_when(
-    str_detect(herb.pd$Name, "Channel 12|Channel 19") ~ "Control",
-    str_detect(herb.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
-  arrange(Sample)
+herb.pd <- left_join(grouping.cols, herb.pd) |> 
+  arrange(Sample) |> 
+  select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
+         Treatment2, Treatment3, dCover)
 
 # Back-transform from log
 herb.pd$backtrans.dCover <- exp(herb.pd$dCover)
@@ -206,26 +180,16 @@ t.test(filter(herb.pd, Treatment3 == "Treated")$dCover,
 
 # Perennial richness ------------------------------------------------------
 
-# Format to join with names from meta
-rich.change <- per.div |> 
-  select(Year, Channel, Station, rich) 
-rich.change$Name <- paste0(rich.change$Channel, ", ", rich.change$Station)
-rich.change <- rich.change |> 
-  select(-Channel, -Station) |> 
-  mutate(Year = as.numeric(Year))
-
-# Add Sample no. from meta
-rich.change <- left_join(rich.change, meta)
-rich.change <- rich.change |> 
-  select(-Name)
-rich.change.long <- rich.change
+# Select cols to pivot
+rich.long <- per.div |> 
+  select(Sample, Year, rich) 
 
 # Pivot wider so every column is a sample and every row is a year
-# separate 2012-2015 and 2018-2021
-rich.change.wide <- rich.change.long |> 
+#   and separate 2012-2015 and 2018-2021
+rich.wide <- rich.long |> 
   pivot_wider(names_from = Sample, values_from = rich)
-rich.change1 <- rich.change.wide[1:4, -c(1)]
-rich.change2 <- rich.change.wide[4:6, -c(1)]
+rich.change1 <- rich.wide[1:4, -c(1)]
+rich.change2 <- rich.wide[4:6, -c(1)]
 
 # Convert to time series object
 rich.change1 <- as.matrix(rich.change1)
@@ -245,12 +209,10 @@ rich.pd <- rich.pd |>
   pivot_longer(!Year, names_to = "Sample", values_to = "dRichness")
 rich.pd$Sample <- gsub("^.*?\\.", "", rich.pd$Sample)
 rich.pd$Sample <- as.numeric(rich.pd$Sample)
-rich.pd <- left_join(rich.pd, meta)
-rich.pd <- rich.pd |> 
-  mutate(Treatment3 = case_when(
-    str_detect(rich.pd$Name, "Channel 12|Channel 19") ~ "Control",
-    str_detect(rich.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
-  arrange(Sample)
+rich.pd <- left_join(grouping.cols, rich.pd) |> 
+  arrange(Sample) |> 
+  select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
+         Treatment2, Treatment3, dRichness)
 
 # Back-transform from log
 rich.pd$backtrans.dRichness <- exp(rich.pd$dRichness)
@@ -300,26 +262,16 @@ t.test(filter(rich.pd, Treatment3 == "Treated")$dRichness,
 
 # Perennial Shannon -------------------------------------------------------
 
-# Format to join with names from meta
-shan.change <- per.div |> 
-  select(Year, Channel, Station, shan) 
-shan.change$Name <- paste0(shan.change$Channel, ", ", shan.change$Station)
-shan.change <- shan.change |> 
-  select(-Channel, -Station) |> 
-  mutate(Year = as.numeric(Year))
-
-# Add Sample no. from meta
-shan.change <- left_join(shan.change, meta)
-shan.change <- shan.change |> 
-  select(-Name)
-shan.change.long <- shan.change
+# Select cols to pivot
+shan.long <- per.div |> 
+  select(Sample, Year, shan) 
 
 # Pivot wider so every column is a sample and every row is a year
-  # separate 2012-2015 and 2018-2021
-shan.change.wide <- shan.change.long |> 
+#   and separate 2012-2015 and 2018-2021
+shan.wide <- shan.long |> 
   pivot_wider(names_from = Sample, values_from = shan)
-shan.change1 <- shan.change.wide[1:4, -c(1)]
-shan.change2 <- shan.change.wide[4:6, -c(1)]
+shan.change1 <- shan.wide[1:4, -c(1)]
+shan.change2 <- shan.wide[4:6, -c(1)]
 
 # Convert to time series object
 shan.change1 <- as.matrix(shan.change1)
@@ -339,12 +291,10 @@ shan.pd <- shan.pd |>
   pivot_longer(!Year, names_to = "Sample", values_to = "dShannon")
 shan.pd$Sample <- gsub("^.*?\\.", "", shan.pd$Sample)
 shan.pd$Sample <- as.numeric(shan.pd$Sample)
-shan.pd <- left_join(shan.pd, meta)
-shan.pd <- shan.pd |> 
-  mutate(Treatment3 = case_when(
-    str_detect(shan.pd$Name, "Channel 12|Channel 19") ~ "Control",
-    str_detect(shan.pd$Name, "Channel 13|Channel 21") ~ "Treated")) |> 
-  arrange(Sample)
+shan.pd <- left_join(grouping.cols, shan.pd) |> 
+  arrange(Sample) |> 
+  select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
+         Treatment2, Treatment3, dShannon)
 
 # Back-transform from log
 shan.pd$backtrans.dShannon <- exp(shan.pd$dShannon)

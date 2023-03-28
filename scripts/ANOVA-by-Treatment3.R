@@ -19,7 +19,7 @@ per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 convert.cols <- function(x) {
   x$year.xaxis <- as.Date(x$year.xaxis)
   
-  group.cols <- c("Year", "Channel", "Station", "Treatment1", "Treatment2", "Treatment3")
+  group.cols <- c("Sample", "Year", "Channel", "Station", "Treatment1", "Treatment2", "Treatment3")
   
   x[group.cols] <- lapply(x[group.cols], factor)
   
