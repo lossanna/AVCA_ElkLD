@@ -84,6 +84,24 @@ Anova(lm.total)
 lm2.total <- lme(Cover ~ Treatment3, random = ~1|Year, data = total.all)
 emmeans(lm2.total, specs = "Treatment3") # Control > Treated
 
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Treated"))) # NS
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Control")))
+total.ctrl <- total.all |> 
+  filter(Treatment3 == "Control")
+anova.total.ctrl <- aov(total.ctrl$Cover ~ total.ctrl$Year)
+hsd.total.ctrl <- HSD.test(anova.total.ctrl, trt = "total.ctrl$Year")
+hsd.total.ctrl
+# 2021         62.87903      a
+# 2013         61.16528      a
+# 2012         59.25694      a
+# 2014         51.68333     ab
+# 2018         46.09274     ab
+# 2015         39.35282      b
+
+
 
 # Herbaceous cover --------------------------------------------------------
 
@@ -128,6 +146,35 @@ Anova(lm.herb)
 
 lm2.herb <- lme(Cover ~ Treatment3, random = ~1|Year, data = herb.all)
 emmeans(lm2.herb, specs = "Treatment3") # Control > Treated
+
+
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
+herb.trt <- herb.all |> 
+  filter(Treatment3 == "Treated")
+anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year)
+hsd.herb.trt <- HSD.test(anova.herb.trt, trt = "herb.trt$Year")
+hsd.herb.trt
+# 2018      24.489919      a
+# 2021      21.761290     ab
+# 2014      15.139113     bc
+# 2015      12.781250     cd
+# 2012      11.436828     cd
+# 2013       6.929598      d
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Control")))
+herb.ctrl <- herb.all |> 
+  filter(Treatment3 == "Control")
+anova.herb.ctrl <- aov(herb.ctrl$Cover ~ herb.ctrl$Year)
+hsd.herb.ctrl <- HSD.test(anova.herb.ctrl, trt = "herb.ctrl$Year")
+hsd.herb.ctrl
+# 2021        26.78629      a
+# 2014        22.28333     ab
+# 2012        20.03472     ab
+# 2018        19.89718     ab
+# 2013        17.41528      b
+# 2015        14.21169      b
 
 
 
@@ -175,6 +222,36 @@ Anova(lm.rich)
 lm2.rich <- lme(rich ~ Treatment3, random = ~1|Year, data = per.div)
 emmeans(lm2.rich, specs = "Treatment3") # Control > Treated
 
+# One-way ANOVA for Treated
+summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Treated"))) 
+rich.trt <- per.div |> 
+  filter(Treatment3 == "Treated")
+anova.rich.trt <- aov(rich.trt$rich ~ rich.trt$Year)
+hsd.rich.trt <- HSD.test(anova.rich.trt, trt = "rich.trt$Year")
+hsd.rich.trt
+# 2018      8.900000      a
+# 2014      7.741935     ab
+# 2015      7.466667     ab
+# 2012      7.322581     ab
+# 2013      6.827586      b
+# 2021      6.677419      b
+
+# One-way ANOVA for Control
+summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Control")))
+rich.ctrl <- per.div |> 
+  filter(Treatment3 == "Control")
+anova.rich.ctrl <- aov(rich.ctrl$rich ~ rich.ctrl$Year)
+hsd.rich.ctrl <- HSD.test(anova.rich.ctrl, trt = "rich.ctrl$Year")
+hsd.rich.ctrl
+# 2012       9.866667      a
+# 2013       9.133333     ab
+# 2018       8.645161     ab
+# 2015       8.612903     ab
+# 2014       8.200000     ab
+# 2021       7.580645      b
+
+
+
 
 # Shannon -----------------------------------------------------------------
 
@@ -220,6 +297,13 @@ Anova(lm.shan)
 
 lm2.shan <- lme(shan ~ Treatment3, random = ~1|Year, data = per.div)
 emmeans(lm2.shan, specs = "Treatment3")
+
+
+# One-way ANOVA for Treated
+summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # NS
+
+# One-way ANOVA for Control
+summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Control"))) # NS
 
 
 save.image("RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
