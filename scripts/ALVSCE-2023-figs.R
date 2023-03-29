@@ -1,22 +1,17 @@
 # Purpose: Make figures for ALVSCE poster forum (presented 2023-03-30).
 
 library(tidyverse)
+library(FactoMineR)
+library(factoextra)
+library(scales)
 
 # Load data ---------------------------------------------------------------
 
-total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
-herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv")
-
 total.avg <- read_csv("data/cleaned/Treatment3-average_total-cover.csv")
-herb.avg <- read_csv("data/cleaned/Treatment3-average_herb-cover.csv")
 rich.avg <- read_csv("data/cleaned/Treatment3-average_richness.csv")
-shan.avg <- read_csv("data/cleaned/Treatment3-average_shannon.csv")
 
 total.cv <- read_csv("data/cleaned/CV-2012-2021_total-cover.csv")
-herb.cv <- read_csv("data/cleaned/CV-2012-2021_herb-cover.csv")
 rich.cv <- read_csv("data/cleaned/CV-2012-2021_richness.csv")
-shan.cv <- read_csv("data/cleaned/CV-2012-2021_shannon.csv")
 
 dat.2021 <- read_csv("data/cleaned/Data-2021_clean.csv")
 
@@ -24,7 +19,7 @@ dat.2021 <- read_csv("data/cleaned/Data-2021_clean.csv")
 # Temporal veg data 2012-2021 ---------------------------------------------
 
 # Total cover
-tiff("output_figs/ALVSCE_2023/Total-cover_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("output_figs/ALVSCE_2023/Total-cover_2012-2021.tiff", width = 6, height = 4, units = "in", res = 300)
 ggplot(total.avg, aes(x = year.xaxis, y = mean, 
                                     group = Treatment3, 
                                     color = Treatment3)) +
@@ -63,6 +58,27 @@ ggplot(rich.avg, aes(x = year.xaxis, y = mean,
 dev.off()
 
 
+# CV for temporal veg -----------------------------------------------------
+
+# Total cover
+tiff("output_figs/ALVSCE_2023/CV_total-cover.tiff", width = 6, height = 5, units = "in", res = 300)
+total.cv |> 
+  ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Coefficient of variation for total cover, 2012-2021",
+       x = NULL) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)
+dev.off()
+  
+
+
+# Soil & plant 2021 data --------------------------------------------------
 
 # 16S NMDS
 dat.2021 %>% 
@@ -80,3 +96,38 @@ dat.2021 %>%
             size = 2.5, color = "gray30") +
   geom_text(aes(x = 0.35, y = -0.65, label = "Stress = 0.168"),
             size = 2.5, color = "gray30") # only 3% explained by Treatment3 lol
+
+
+# PCA
+# Control
+dat.pca.ctrl <- dat.2021 |> 
+  filter(Treatment3 == "Control") |> 
+  select(Cover, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
+  rename(TN = TN_log,
+         TC = TC_log,
+         OM = OM_perc,
+         Richness = rich,
+         Shannon = shan)
+pca.ctrl3 <- PCA(dat.pca.ctrl, scale.unit = TRUE, graph = FALSE)
+
+
+fviz_pca_var(pca.ctrl3,
+             repel = TRUE) +
+  labs(title = "PCA for Control")
+
+
+# Treated
+dat.pca.trt <- dat.2021 |> 
+  filter(Treatment3 == "Treated") |> 
+  select(Cover, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
+  rename(TN = TN_log,
+         TC = TC_log,
+         OM = OM_perc,
+         Richness = rich,
+         Shannon = shan)
+pca.trt3 <- PCA(dat.pca.trt, scale.unit = TRUE, graph = FALSE)
+
+
+fviz_pca_var(pca.trt3,
+             repel = TRUE) +
+  labs(title = "PCA for Treated")
