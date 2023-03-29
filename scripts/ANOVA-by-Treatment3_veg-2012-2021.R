@@ -82,7 +82,7 @@ check_model(lm.total)
 Anova(lm.total)
 
 lm2.total <- lme(Cover ~ Treatment3, random = ~1|Year, data = total.all)
-emmeans(lm2.total, specs = "Treatment3")
+emmeans(lm2.total, specs = "Treatment3") # Control > Treated
 
 
 # Herbaceous cover --------------------------------------------------------
@@ -127,7 +127,7 @@ check_model(lm.herb)
 Anova(lm.herb)
 
 lm2.herb <- lme(Cover ~ Treatment3, random = ~1|Year, data = herb.all)
-emmeans(lm2.herb, specs = "Treatment3")
+emmeans(lm2.herb, specs = "Treatment3") # Control > Treated
 
 
 
@@ -164,7 +164,7 @@ rich.plot
 
 # Repeat measures ANOVA
 anova.rich <- aov(rich ~ Treatment3 + Error(Year), data = per.div)
-summary(anova.rich)
+summary(anova.rich) # p = 7.65e-06
 summary(aov(rich ~ Treatment3, data = per.div)) # without repeat measures to compare
 
 # Year as random factor
@@ -173,7 +173,7 @@ check_model(lm.rich)
 Anova(lm.rich)
 
 lm2.rich <- lme(rich ~ Treatment3, random = ~1|Year, data = per.div)
-emmeans(lm2.rich, specs = "Treatment3")
+emmeans(lm2.rich, specs = "Treatment3") # Control > Treated
 
 
 # Shannon -----------------------------------------------------------------

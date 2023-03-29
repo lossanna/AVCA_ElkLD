@@ -19,15 +19,18 @@ rich.cv <- read_csv("data/cleaned/CV-2012-2021_richness.csv")
 shan.cv <- read_csv("data/cleaned/CV-2012-2021_shannon.csv")
 
 
-# Total cover 2012-2021 ---------------------------------------------------
+# Temporal veg data 2012-2021 ---------------------------------------------
 
+# Total cover
+tiff("output_figs/ALVSCE_2023/Total-cover_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
 ggplot(total.avg, aes(x = year.xaxis, y = mean, 
                                     group = Treatment3, 
                                     color = Treatment3)) +
   geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  geom_point(size = 2) +
+  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE),
+                width = 40) +
+  scale_x_date(date_labels = "%Y") +
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Total plant cover, 2012-2021") +
@@ -35,18 +38,25 @@ ggplot(total.avg, aes(x = year.xaxis, y = mean,
   theme_bw(base_size = 14) +
   theme(legend.position = "bottom") +
   theme(legend.title = element_blank())
+dev.off()
 
 
-ggplot(total.all, aes(x = year.xaxis, y = Cover, 
-                      fill = Treatment3, 
+# Richness
+tiff("output_figs/ALVSCE_2023/Richness_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
+ggplot(rich.avg, aes(x = year.xaxis, y = mean,
+                     group = Treatment3,
                       color = Treatment3)) +
-  geom_boxplot() +
-  geom_jitter() +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  geom_errorbar(aes(ymin = mean - SE, ymax = mean + SE),
+                width = 40) +
+  scale_x_date(date_labels = "%Y") +
   xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Total plant cover, 2012-2021") +
+  ylab("No. of species") +
+  ggtitle("Perennial plant richness, 2012-2021") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "bottom") +
   theme(legend.title = element_blank())
+dev.off()
+
