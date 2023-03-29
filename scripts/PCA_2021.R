@@ -13,7 +13,30 @@ dat.2021 <- read_csv("data/cleaned/Data-2021_clean.csv")
 
 # Narrow down variables
 dat.pca <- dat.2021 |> 
-  select(Cover, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc)
+  select(Cover, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
+  rename(TN = TN_log,
+         TC = TC_log,
+         OM = OM_perc,
+         Richness = rich,
+         Shannon = shan)
+
+dat.pca.trt <- dat.2021 |> 
+  filter(Treatment3 == "Treated") |> 
+  select(Cover, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
+  rename(TN = TN_log,
+         TC = TC_log,
+         OM = OM_perc,
+         Richness = rich,
+         Shannon = shan)
+
+dat.pca.ctrl <- dat.2021 |> 
+  filter(Treatment3 == "Control") |> 
+  select(Cover, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
+  rename(TN = TN_log,
+         TC = TC_log,
+         OM = OM_perc,
+         Richness = rich,
+         Shannon = shan)
 
 
 # PCA by Treatment3 -------------------------------------------------------
@@ -30,7 +53,8 @@ head(var.all$coord) # coordinates
 head(var.all$cos2)
 head(var.all$contrib)
 
-fviz_pca_var(pca.all)
+fviz_pca_var(pca.all,
+             repel = TRUE)
 
 ind.all <- get_pca_ind(pca.all)
 fviz_pca_ind(pca.all)
@@ -48,3 +72,19 @@ fviz_pca_ind(pca.all,
              addEllipses = TRUE)
 
 
+
+# Control
+pca.ctrl3 <- PCA(dat.pca.ctrl, scale.unit = TRUE, graph = FALSE)
+get_eigenvalue(pca.ctrl3)
+fviz_pca_var(pca.ctrl3,
+             repel = TRUE) +
+  labs(title = "PCA for Control")
+
+# Treated
+pca.trt3 <- PCA(dat.pca.trt, scale.unit = TRUE, graph = FALSE)
+get_eigenvalue(pca.trt3)
+fviz_pca_var(pca.trt3,
+             repel = TRUE) +
+  labs(title = "PCA for Treated")
+
+save.image("RData/PCA_2021.RData")

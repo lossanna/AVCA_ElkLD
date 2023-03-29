@@ -182,7 +182,7 @@ meta$NMDS2 <- barc.nmds$points[ , 2]
 adonis2(barc.dist ~ meta$Channel) # p < 0.001, 15% of variability explained by Channel
 adonis2(barc.dist ~ meta$Treatment1) # p < 0.001, 13% of variability explained by Treatment
 adonis2(barc.dist ~ meta$Treatment2) # p < 0.001, 11% of variability explained by Treatment2 (BAF and ORD combined)
-adonis2(barc.dist ~ meta$Treatment3) # p = 0.028, 3% of variability explained by Treatment3
+adonis2(barc.dist ~ meta$Treatment3) # p = 0.026, 3% of variability explained by Treatment3
 
 # Plot NMDS
 # By channel

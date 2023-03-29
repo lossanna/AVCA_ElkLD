@@ -18,6 +18,8 @@ herb.cv <- read_csv("data/cleaned/CV-2012-2021_herb-cover.csv")
 rich.cv <- read_csv("data/cleaned/CV-2012-2021_richness.csv")
 shan.cv <- read_csv("data/cleaned/CV-2012-2021_shannon.csv")
 
+dat.2021 <- read_csv("data/cleaned/Data-2021_clean.csv")
+
 
 # Temporal veg data 2012-2021 ---------------------------------------------
 
@@ -60,3 +62,21 @@ ggplot(rich.avg, aes(x = year.xaxis, y = mean,
   theme(legend.title = element_blank())
 dev.off()
 
+
+
+# 16S NMDS
+dat.2021 %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment3, shape = Treatment3)) +
+  geom_point(size = 4) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  labs(x = "Axis 1",
+       y = "Axis 2",
+       title = "Bacteria & archaea NMDS",
+       color = "Treatment",
+       shape = "Treatment") +
+  theme(legend.position = "bottom") +
+  geom_text(aes(x = 0.3, y = -0.55, label = "PERMANOVA, p < 0.05"),
+            size = 2.5, color = "gray30") +
+  geom_text(aes(x = 0.35, y = -0.65, label = "Stress = 0.168"),
+            size = 2.5, color = "gray30") # only 3% explained by Treatment3 lol
