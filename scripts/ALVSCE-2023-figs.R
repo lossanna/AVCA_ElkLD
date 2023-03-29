@@ -153,8 +153,9 @@ pca.ctrl3 <- PCA(dat.pca.ctrl, scale.unit = TRUE, graph = FALSE)
 
 tiff("output_figs/ALVSCE_2023/PCA-correlation-ctrl.tiff", width = 6, height = 5, units = "in", res = 300)
 fviz_pca_var(pca.ctrl3,
-             repel = TRUE) +
-  labs(title = "PCA for Control")
+             repel = TRUE,
+             col.var = "red") +
+  labs(title = "PCA for Control, 2021 plant & soil")
 dev.off()
 
 
@@ -171,6 +172,7 @@ pca.trt3 <- PCA(dat.pca.trt, scale.unit = TRUE, graph = FALSE)
 
 tiff("output_figs/ALVSCE_2023/PCA-correlation-trt.tiff", width = 6, height = 5, units = "in", res = 300)
 fviz_pca_var(pca.trt3,
-             repel = TRUE) +
-  labs(title = "PCA for Treated")
+             repel = TRUE,
+             col.var = "#1F78B4") +
+  labs(title = "PCA for Treated, 2021 plant & soil")
 dev.off()

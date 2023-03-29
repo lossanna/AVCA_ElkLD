@@ -136,7 +136,7 @@ herb.plot
 
 # Repeat measures ANOVA
 anova.herb <- aov(Cover ~ Treatment3 + Error(Year), data = herb.all)
-summary(anova.herb)
+summary(anova.herb) # p = 0.000221
 summary(aov(Cover ~ Treatment3, data = herb.all)) # without repeat measures to compare
 
 # Year as random factor
@@ -152,7 +152,7 @@ emmeans(lm2.herb, specs = "Treatment3") # Control > Treated
 summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
 herb.trt <- herb.all |> 
   filter(Treatment3 == "Treated")
-anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year)
+anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year) # p = 9.86e-10 ***
 hsd.herb.trt <- HSD.test(anova.herb.trt, trt = "herb.trt$Year")
 hsd.herb.trt
 # 2018      24.489919      a
@@ -237,7 +237,7 @@ hsd.rich.trt
 # 2021      6.677419      b
 
 # One-way ANOVA for Control
-summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Control")))
+summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Control"))) # 0.00881
 rich.ctrl <- per.div |> 
   filter(Treatment3 == "Control")
 anova.rich.ctrl <- aov(rich.ctrl$rich ~ rich.ctrl$Year)
