@@ -143,7 +143,7 @@ dev.off()
 # Control
 dat.pca.ctrl <- dat.2021 |> 
   filter(Treatment3 == "Control") |> 
-  select(Cover, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
+  select(Herbaceous, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
   rename(TN = TN_log,
          TC = TC_log,
          OM = OM_perc,
@@ -162,7 +162,7 @@ dev.off()
 # Treated
 dat.pca.trt <- dat.2021 |> 
   filter(Treatment3 == "Treated") |> 
-  select(Cover, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
+  select(Herbaceous, rich, shan, TN_log, TC_log, OM_perc, Richness.barc, Shannon.barc) |> 
   rename(TN = TN_log,
          TC = TC_log,
          OM = OM_perc,
@@ -170,9 +170,10 @@ dat.pca.trt <- dat.2021 |>
          Shannon = shan)
 pca.trt3 <- PCA(dat.pca.trt, scale.unit = TRUE, graph = FALSE)
 
+
 tiff("output_figs/ALVSCE_2023/PCA-correlation-trt.tiff", width = 6, height = 5, units = "in", res = 300)
 fviz_pca_var(pca.trt3,
              repel = TRUE,
-             col.var = "#1F78B4") +
+             col.var = "#006699") +
   labs(title = "PCA for Treated, 2021 plant & soil")
 dev.off()
