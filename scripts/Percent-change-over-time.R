@@ -154,7 +154,7 @@ write_csv(herb.pd,
 
 # Plot by Treatment3
 # All years
-ggplot(herb.pd, aes(x = Year, y = dCover)) +
+ggplot(herb.pd, aes(x = Treatment3, y = dCover)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
@@ -240,7 +240,7 @@ write_csv(rich.pd,
 
 # Plot by Treatment3
 # All years
-ggplot(rich.pd, aes(x = Year, y = dRichness)) +
+ggplot(rich.pd, aes(x = Treatment3, y = dRichness)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
@@ -326,7 +326,7 @@ write_csv(shan.pd,
 
 # Plot by Treatment3
 # All years
-ggplot(shan.pd, aes(x = Year, y = dShannon)) +
+ggplot(shan.pd, aes(x = Treatment3, y = dShannon)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
