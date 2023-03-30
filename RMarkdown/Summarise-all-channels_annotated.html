@@ -1640,7 +1640,18 @@ plant.all &lt;-plant.all |&gt;
   mutate(year.xaxis = as.Date(year.xaxis))
 
 # Shorten Year to 4 digits
-plant.all$Year &lt;- as.factor(gsub(&quot;-.*&quot;, &quot;&quot;, plant.all$Year))</code></pre>
+plant.all$Year &lt;- as.factor(gsub(&quot;-.*&quot;, &quot;&quot;, plant.all$Year))
+
+# Add numeric sample ID
+sampling &lt;- bind_rows(all.c12, all.c13, all.c19, all.c21) |&gt; 
+  select(Station) |&gt; 
+  distinct(.keep_all = TRUE) |&gt; 
+  arrange(Station) |&gt; 
+  separate(Station, c(&quot;Channel&quot;, &quot;Station&quot;), &quot;_&quot;) |&gt; 
+  arrange(desc(Channel)) |&gt; 
+  mutate(Sample = 1:62) |&gt; 
+  select(Sample, Channel, Station)
+plant.all &lt;- left_join(sampling, plant.all)</code></pre>
 </div>
 <div id="summarise-by-total-cover-and-herb-cover" class="section level1">
 <h1>Summarise by total cover and herb cover</h1>

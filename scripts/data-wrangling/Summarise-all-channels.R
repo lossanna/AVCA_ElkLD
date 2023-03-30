@@ -119,7 +119,6 @@ sampling <- bind_rows(all.c12, all.c13, all.c19, all.c21) |>
   arrange(desc(Channel)) |> 
   mutate(Sample = 1:62) |> 
   select(Sample, Channel, Station)
-
 plant.all <- left_join(sampling, plant.all)
 
 
