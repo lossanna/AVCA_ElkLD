@@ -92,6 +92,12 @@ plant.all <- plant.all |>
     str_detect(Functional, c("grass|forb")) ~ "Herbaceous",
     TRUE ~ "Woody")) 
 
+# Add tree/not tree
+plant.all <- plant.all |> 
+  mutate(tree = case_when(
+    Functional == "Tree" ~ "tree",
+    TRUE ~ "not tree"))
+
 # Remove March 2012 sampling
 plant.all <- plant.all |> 
   filter(Year != "2012-03-01")
@@ -144,6 +150,15 @@ herb.all <- plant.all %>%
   select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
          Treatment1, Treatment2, Treatment3, Cover)
 
+notree.all <- plant.all %>% 
+  filter(tree != "tree") %>% 
+  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3) %>% 
+  summarise(Cover = sum(Cover), .groups = "keep") |> 
+  ungroup() |> 
+  select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover)
+
 
 # Richness and Shannon ----------------------------------------------------
 
@@ -188,6 +203,10 @@ total.all <- left_join(all.c, total.all) %>%
   filter(!is.na(Cover)) |> 
   select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
          Treatment1, Treatment2, Treatment3, Cover)
+notree.all <- left_join(all.c, notree.all) |> 
+  filter(!is.na(Cover)) |> 
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover)
 herb.all <- left_join(all.c, herb.all) %>% 
   filter(!is.na(Cover)) |> 
   select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
@@ -201,13 +220,15 @@ per.div <- left_join(all.c, per.div) |>
 # Save dataframes ---------------------------------------------------------
 
 write_csv(plant.all,
-          file = "data/cleaned/Summarised-all_plant-species-cover.csv")
+          file = "data/cleaned/Summarise-all_plant-species-cover.csv")
 write_csv(total.all,
-          file = "data/cleaned/Summarised-all_total-plant-cover.csv")
+          file = "data/cleaned/Summarise-all_total-plant-cover.csv")
 write_csv(herb.all,
-          file = "data/cleaned/Summarised-all_herb-cover.csv")
+          file = "data/cleaned/Summarise-all_herb-cover.csv")
+write_csv(notree.all,
+          file = "data/cleaned/Summarise-all_notree-cover")
 write_csv(per.div,
-          file = "data/cleaned/Summarised-all_perennial-diversity.csv")
+          file = "data/cleaned/Summarise-all_perennial-diversity.csv")
 
 
 save.image("RData/Summarise-all-channels.RData")
