@@ -226,7 +226,7 @@ write_csv(total.all,
 write_csv(herb.all,
           file = "data/cleaned/Summarised-all_herb-cover.csv")
 write_csv(notree.all,
-          file = "data/cleaned/Summarised-all_notree-cover")
+          file = "data/cleaned/Summarised-all_notree-cover.csv")
 write_csv(per.div,
           file = "data/cleaned/Summarised-all_perennial-diversity.csv")
 
