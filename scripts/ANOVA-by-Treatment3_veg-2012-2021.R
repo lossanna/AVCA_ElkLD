@@ -16,6 +16,7 @@ library(emmeans)
 
 total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv") 
+notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 
@@ -37,6 +38,7 @@ convert.cols <- function(x) {
 
 total.all <- convert.cols(total.all)
 herb.all <- convert.cols(herb.all)
+notree.all <- convert.cols(notree.all)
 per.div <- convert.cols(per.div)
 
 
@@ -55,9 +57,9 @@ write.csv(total.avg,
           row.names = FALSE)
 
 # Plot
-total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean, 
-                                    group = Treatment3, 
-                                    color = Treatment3)) +
+ggplot(total.avg, aes(x = year.xaxis, y = mean, 
+                      group = Treatment3, 
+                      color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -101,6 +103,34 @@ hsd.total.ctrl
 # 2018         46.09274     ab
 # 2015         39.35282      b
 
+# Plot with one-way ANOVA letters
+total.ctrl.letters <- hsd.total.ctrl$groups
+total.ctrl.letters <- total.ctrl.letters |> 
+  mutate(Year = rownames(total.ctrl.letters)) |> 
+  arrange(Year)
+
+letters <- data.frame(x = total.avg$year.xaxis[1:6],
+                      y = rep(67, 6),
+                      label = total.ctrl.letters$groups,
+                      Treatment3 = c(rep("Control", 6)))
+ggplot(total.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Total plant cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+
 
 
 # Herbaceous cover --------------------------------------------------------
@@ -118,13 +148,12 @@ write.csv(herb.avg,
           row.names = FALSE)
 
 # Plot
-herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
-                                    group = Treatment3, 
-                                    color = Treatment3)) +
+ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE),  linewidth = 0.8) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("Cover (%)") +
@@ -132,7 +161,6 @@ herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
-herb.plot
 
 # Repeat measures ANOVA
 anova.herb <- aov(Cover ~ Treatment3 + Error(Year), data = herb.all)
@@ -176,6 +204,141 @@ hsd.herb.ctrl
 # 2013        17.41528      b
 # 2015        14.21169      b
 
+# Plot with one-way ANOVA letters
+herb.ctrl.letters <- hsd.herb.ctrl$groups
+herb.ctrl.letters <- herb.ctrl.letters |> 
+  mutate(Year = rownames(herb.ctrl.letters)) |> 
+  arrange(Year)
+herb.trt.letters <- hsd.herb.trt$groups
+herb.trt.letters <-herb.trt.letters |> 
+  mutate(Year = rownames(herb.trt.letters)) |> 
+  arrange(Year)
+
+letters <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
+                      y = rep(28, 12),
+                      label = c(herb.ctrl.letters$groups,
+                                herb.trt.letters$groups),
+                      Treatment3 = c(rep("Control", 6),
+                                     rep("Treated", 6)))
+ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+
+
+
+# Notree cover (total cover minus trees) ----------------------------------
+
+# Find averages by year
+notree.avg <- notree.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(notree.avg,
+          file = "data/cleaned/Treatment3-average_notree-cover.csv",
+          row.names = FALSE)
+
+# Plot
+ggplot(notree.avg, aes(x = year.xaxis, y = mean,
+                       group = Treatment3, 
+                       color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Grass, forb & shrub cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+
+# Repeat measures ANOVA
+anova.notree <- aov(Cover ~ Treatment3 + Error(Year), data = notree.all)
+summary(anova.notree) # NS
+summary(aov(Cover ~ Treatment3, data = notree.all)) # without repeat measures to compare
+
+# Year as random factor
+lm.notree <- lmer(Cover ~ Treatment3 + (1|Year), data = notree.all)
+check_model(lm.notree)
+Anova(lm.notree) # NS
+
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Treated"))) # p = 0.00416
+notree.trt <- notree.all |> 
+  filter(Treatment3 == "Treated")
+anova.notree.trt <- aov(notree.trt$Cover ~ notree.trt$Year)
+hsd.notree.trt <- HSD.test(anova.notree.trt, trt = "notree.trt$Year")
+hsd.notree.trt
+# 2018         41.69960      a
+# 2021         36.29758     ab
+# 2014         31.40927     ab
+# 2015         31.34792     ab
+# 2012         26.72446      b
+# 2013         21.80029      b
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Control")))
+notree.ctrl <- notree.all |> 
+  filter(Treatment3 == "Control")
+anova.notree.ctrl <- aov(notree.ctrl$Cover ~ notree.ctrl$Year)
+hsd.notree.ctrl <- HSD.test(anova.notree.ctrl, trt = "notree.ctrl$Year")
+hsd.notree.ctrl
+# 2021          42.41935      a
+# 2012          31.73194     ab
+# 2014          31.58750     ab
+# 2018          27.71774      b
+# 2013          27.71250      b
+# 2015          20.89315      b
+
+# Plot with one-way ANOVA letters
+notree.ctrl.letters <- hsd.notree.ctrl$groups
+notree.ctrl.letters <- notree.ctrl.letters |> 
+  mutate(Year = rownames(notree.ctrl.letters)) |> 
+  arrange(Year)
+notree.trt.letters <- hsd.notree.trt$groups
+notree.trt.letters <-notree.trt.letters |> 
+  mutate(Year = rownames(notree.trt.letters)) |> 
+  arrange(Year)
+
+letters <- data.frame(x = rep(notree.avg$year.xaxis[1:6], 2),
+                      y = rep(47, 12),
+                      label = c(notree.ctrl.letters$groups,
+                                notree.trt.letters$groups),
+                      Treatment3 = c(rep("Control", 6),
+                                     rep("Treated", 6)))
+ggplot(notree.avg, aes(x = year.xaxis, y = mean, 
+                       group = Treatment3, 
+                       color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Grass, forb & shrub cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
 
 
 # Richness ----------------------------------------------------------------
@@ -193,13 +356,12 @@ write.csv(rich.avg,
           row.names = FALSE)
 
 # Plot
-rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
-                                  group = Treatment3, 
-                                  color = Treatment3)) +
+ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("No. of species") +
@@ -207,7 +369,6 @@ rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
-rich.plot
 
 # Repeat measures ANOVA
 anova.rich <- aov(rich ~ Treatment3 + Error(Year), data = per.div)
@@ -250,6 +411,38 @@ hsd.rich.ctrl
 # 2014       8.200000     ab
 # 2021       7.580645      b
 
+# Plot with one-way ANOVA letters
+rich.ctrl.letters <- hsd.rich.ctrl$groups
+rich.ctrl.letters <- rich.ctrl.letters |> 
+  mutate(Year = rownames(rich.ctrl.letters)) |> 
+  arrange(Year)
+rich.trt.letters <- hsd.rich.trt$groups
+rich.trt.letters <-rich.trt.letters |> 
+  mutate(Year = rownames(rich.trt.letters)) |> 
+  arrange(Year)
+
+letters <- data.frame(x = rep(rich.avg$year.xaxis[1:6], 2),
+                      y = rep(10.3, 12),
+                      label = c(rich.ctrl.letters$groups,
+                                rich.trt.letters$groups),
+                      Treatment3 = c(rep("Control", 6),
+                                     rep("Treated", 6)))
+ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("No. of species") +
+  ggtitle("Perennial plant richness") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
 
 
 
@@ -268,9 +461,9 @@ write.csv(shan.avg,
           row.names = FALSE)
 
 # Plot
-shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
-                                  group = Treatment3, 
-                                  color = Treatment3)) +
+ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -282,7 +475,6 @@ shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
-shan.plot
 
 # Repeat measures ANOVA
 anova.shan <- aov(shan ~ Treatment3 + Error(Year), data = per.div)
