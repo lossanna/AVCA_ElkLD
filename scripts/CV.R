@@ -10,8 +10,9 @@ library(car)
 # Load data ---------------------------------------------------------------
 
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
-per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv")
+notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
+per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 
 # Total cover -------------------------------------------------------------
@@ -72,6 +73,34 @@ herb.sample |>
   geom_jitter() +
   ggtitle("Herbaceous cover")
 
+
+
+# Notree cover ------------------------------------------------------------
+
+notree.sample <- notree.all |> 
+  group_by(Sample, Channel, Station, Treatment3) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep")
+
+write_csv(notree.sample,
+          "data/cleaned/CV-2012-2021_notree-cover.csv")
+
+summary(filter(notree.sample, Treatment3 == "Treated")$CV)
+summary(filter(notree.sample, Treatment3 == "Control")$CV)
+
+qqPlot(filter(notree.sample, Treatment3 == "Treated")$CV) # normal
+qqPlot(filter(notree.sample, Treatment3 == "Control")$CV) # normal
+
+# Compare
+t.test(filter(notree.sample, Treatment3 == "Treated")$CV,
+       filter(notree.sample, Treatment3 == "Control")$CV) # NS
+
+# Plot
+notree.sample |> 
+  ggplot(aes(x = Treatment3, y = CV)) +
+  geom_boxplot() +
+  geom_jitter() +
+  ggtitle("Grass, forb & shrub cover")
 
 
 # Richness ----------------------------------------------------------------
