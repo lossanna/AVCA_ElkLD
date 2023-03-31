@@ -17,6 +17,7 @@ library(car)
 
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv") 
+notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 # Create general metadata without year information for each sample
@@ -195,6 +196,88 @@ wilcox.test(filter(herb.pd, Treatment3 == "Treated")$dCover,
 
 t.test(filter(herb.pd, Treatment3 == "Treated")$dCover, 
        filter(herb.pd, Treatment3 == "Control")$dCover) # NS
+
+
+# Notree cover -------------------------------------------------------------
+
+# Select cols to pivot
+notree.long <- notree.all |> 
+  select(Sample, Year, Cover) 
+
+# Pivot wider so every column is a sample and every row is a year
+# and separate 2012-2015 and 2018-2021
+notree.wide <- notree.long |> 
+  pivot_wider(names_from = Sample, values_from = Cover)
+notree.change1 <- notree.wide[1:4, -c(1)]
+notree.change2 <- notree.wide[4:6, -c(1)]
+
+# Convert to time series object
+notree.change1 <- as.matrix(notree.change1)
+notreets1 <- ts(notree.change1, 1, 4, frequency = 1)
+notree.change2 <- as.matrix(notree.change2)
+notreets2 <- ts(notree.change2, 1, 3, frequency = 1)
+
+# Calculate percent change 
+notree.pd1 <- log(notreets1) - log(stats::lag(notreets1)) # 1-year interval for 2012-2015
+notree.pd2 <- (log(notreets2) - log(stats::lag(notreets2))) / 3 # 3-year interval for 2015-2021
+
+# Reformat as dataframe, add years, names & Treatment3
+notree.pd <- rbind(notree.pd1, notree.pd2)
+notree.pd <- as.data.frame(notree.pd)
+notree.pd$Year <- c("2012-2013", "2013-2014", "2014-2015", "2015-2018", "2018-2021")
+notree.pd <- notree.pd |> 
+  pivot_longer(!Year, names_to = "Sample", values_to = "dCover")
+notree.pd$Sample <- gsub("^.*?\\.", "", notree.pd$Sample)
+notree.pd$Sample <- as.numeric(notree.pd$Sample)
+notree.pd <- left_join(grouping.cols, notree.pd) |> 
+  arrange(Sample) |> 
+  select(Sample, Year, Channel, Station, station.trt, channel.trt, Treatment1,
+         Treatment2, Treatment3, dCover)
+
+write_csv(notree.pd,
+          file = "data/cleaned/Percent-difference_notree-cover.csv")
+
+
+# Plot by Treatment3
+# All years
+ggplot(notree.pd, aes(x = Treatment3, y = dCover)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in notree cover")
+
+# By year
+ggplot(notree.pd, aes(x = Year, y = dCover)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in notree cover") +
+  facet_wrap(~Treatment3)
+
+# Comparison
+qqPlot(filter(notree.pd, Treatment3 == "Treated")$dCover) # not normal
+qqPlot(filter(notree.pd, Treatment3 == "Control")$dCover) # not normal?
+
+wilcox.test(filter(notree.pd, Treatment3 == "Treated")$dCover, 
+            filter(notree.pd, Treatment3 == "Control")$dCover) # NS
 
 
 
