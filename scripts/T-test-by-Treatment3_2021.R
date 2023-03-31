@@ -91,6 +91,12 @@ ggplot(dat.2021, aes(x = Treatment3, y = Herbaceous)) +
   geom_jitter()
 
 
+# Notree cover ------------------------------------------------------------
+
+t.test(filter(dat.2021, Treatment3 == "Control")$notree,
+       filter(dat.2021, Treatment3 == "Treated")$notree) # NS
+
+
 # Perennial plant richness ------------------------------------------------
 
 t.test(filter(dat.2021, Treatment3 == "Control")$rich,
