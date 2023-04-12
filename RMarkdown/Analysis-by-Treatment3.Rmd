@@ -39,26 +39,17 @@ library(agricolae)
 # Averages over time
 total.avg <- read.csv("../data/cleaned/Treatment3-average_total-cover.csv") |> 
   mutate(year.xaxis = as.Date(year.xaxis))
-total.all <- read.csv("../data/cleaned/Summarised-all_total-plant-cover.csv") |> 
-  filter(!str_detect(Year, "03-01")) |> 
-  mutate(Treatment3 = case_when(
-    str_detect(station.trt, "No treatment") ~ "Control",
-    str_detect(station.trt, c("Baffle|One")) ~ "Treated"))
+total.all <- read.csv("../data/cleaned/Summarised-all_total-plant-cover.csv") 
 
 herb.avg <- read.csv("../data/cleaned/Treatment3-average_herb-cover.csv") |> 
   mutate(year.xaxis = as.Date(year.xaxis))
-herb.all <- read.csv("../data/cleaned/Summarised-all_woody-herb-cover.csv") |> 
-  filter(!str_detect(Year, "03-01")) |> 
-  filter(woody == "Herbaceous") |> 
-  mutate(Treatment3 = case_when(
-    str_detect(station.trt, "No treatment") ~ "Control",
-    str_detect(station.trt, c("Baffle|One")) ~ "Treated"))
+herb.all <- read.csv("../data/cleaned/Summarised-all_herb-cover.csv") 
 
 # Change over time
 total.pd <- read.csv("../data/cleaned/Percent-difference_total-cover.csv")
 herb.pd <- read.csv("../data/cleaned/Percent-difference_herb-cover.csv")
-rich.pd <- read.csv("../data/cleaned/Percent-difference_rich-cover.csv")
-shan.pd <- read.csv("../data/cleaned/Percent-difference_shan-cover.csv")
+rich.pd <- read.csv("../data/cleaned/Percent-difference_rich.csv")
+shan.pd <- read.csv("../data/cleaned/Percent-difference_shan.csv")
 ```
 
   
