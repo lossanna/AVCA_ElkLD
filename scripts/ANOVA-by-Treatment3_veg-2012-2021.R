@@ -11,6 +11,7 @@ library(nlme)
 library(rstatix)
 library(performance)
 library(emmeans)
+library(ggpubr)
 
 # Load data ---------------------------------------------------------------
 
@@ -70,8 +71,7 @@ ggplot(total.avg, aes(x = year.xaxis, y = mean,
   ggtitle("Total plant cover") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
-total.plot
+  theme(legend.position = "none")
 
 # Repeat measures ANOVA
 anova.total <- aov(Cover ~ Treatment3 + Error(Year), data = total.all)
@@ -109,17 +109,16 @@ total.ctrl.letters <- total.ctrl.letters |>
   mutate(Year = rownames(total.ctrl.letters)) |> 
   arrange(Year)
 
-letters <- data.frame(x = total.avg$year.xaxis[1:6],
+letters.total <- data.frame(x = total.avg$year.xaxis[1:6],
                       y = rep(67, 6),
                       label = total.ctrl.letters$groups,
                       Treatment3 = c(rep("Control", 6)))
-ggplot(total.avg, aes(x = year.xaxis, y = mean, 
+total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean, 
                      group = Treatment3, 
                      color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("Cover (%)") +
@@ -127,9 +126,10 @@ ggplot(total.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
-  geom_text(data = letters,
+  geom_text(data = letters.total,
             mapping = aes(x = x, y = y, label = label),
             color = "black")
+total.plot
 
 
 
@@ -214,19 +214,18 @@ herb.trt.letters <-herb.trt.letters |>
   mutate(Year = rownames(herb.trt.letters)) |> 
   arrange(Year)
 
-letters <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
+letters.herb <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
                       y = rep(28, 12),
                       label = c(herb.ctrl.letters$groups,
                                 herb.trt.letters$groups),
                       Treatment3 = c(rep("Control", 6),
                                      rep("Treated", 6)))
-ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
                      group = Treatment3, 
                      color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("Cover (%)") +
@@ -234,9 +233,10 @@ ggplot(herb.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
-  geom_text(data = letters,
+  geom_text(data = letters.herb,
             mapping = aes(x = x, y = y, label = label),
             color = "black")
+herb.plot
 
 
 
@@ -317,13 +317,13 @@ notree.trt.letters <-notree.trt.letters |>
   mutate(Year = rownames(notree.trt.letters)) |> 
   arrange(Year)
 
-letters <- data.frame(x = rep(notree.avg$year.xaxis[1:6], 2),
+letters.notree <- data.frame(x = rep(notree.avg$year.xaxis[1:6], 2),
                       y = rep(47, 12),
                       label = c(notree.ctrl.letters$groups,
                                 notree.trt.letters$groups),
                       Treatment3 = c(rep("Control", 6),
                                      rep("Treated", 6)))
-ggplot(notree.avg, aes(x = year.xaxis, y = mean, 
+notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean, 
                        group = Treatment3, 
                        color = Treatment3)) +
   geom_line(linewidth = 1) +
@@ -336,9 +336,17 @@ ggplot(notree.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
-  geom_text(data = letters,
+  geom_text(data = letters.notree,
             mapping = aes(x = x, y = y, label = label),
             color = "black")
+notree.plot
+
+
+
+# Compare veg cover change ------------------------------------------------
+
+ggarrange(total.plot, herb.plot, notree.plot,
+          ncol = 2, nrow = 2)
 
 
 # Richness ----------------------------------------------------------------
@@ -421,13 +429,13 @@ rich.trt.letters <-rich.trt.letters |>
   mutate(Year = rownames(rich.trt.letters)) |> 
   arrange(Year)
 
-letters <- data.frame(x = rep(rich.avg$year.xaxis[1:6], 2),
+letters.rich <- data.frame(x = rep(rich.avg$year.xaxis[1:6], 2),
                       y = rep(10.3, 12),
                       label = c(rich.ctrl.letters$groups,
                                 rich.trt.letters$groups),
                       Treatment3 = c(rep("Control", 6),
                                      rep("Treated", 6)))
-ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
+rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
                      group = Treatment3, 
                      color = Treatment3)) +
   geom_line(linewidth = 1) +
@@ -440,9 +448,10 @@ ggplot(rich.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
-  geom_text(data = letters,
+  geom_text(data = letters.rich,
             mapping = aes(x = x, y = y, label = label),
             color = "black")
+rich.plot
 
 
 
@@ -461,7 +470,7 @@ write.csv(shan.avg,
           row.names = FALSE)
 
 # Plot
-ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
+shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
                      group = Treatment3, 
                      color = Treatment3)) +
   geom_line(linewidth = 1) +
@@ -475,6 +484,7 @@ ggplot(shan.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
+shan.plot
 
 # Repeat measures ANOVA
 anova.shan <- aov(shan ~ Treatment3 + Error(Year), data = per.div)

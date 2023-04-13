@@ -4,8 +4,8 @@
 
 
 library(tidyverse)
-library(cvequality)
 library(car)
+library(scales)
 
 # Load data ---------------------------------------------------------------
 
@@ -36,11 +36,19 @@ t.test(filter(total.sample, Treatment3 == "Treated")$CV,
        filter(total.sample, Treatment3 == "Control")$CV) # NS
 
 # Plot
-total.sample |> 
-ggplot(aes(x = Treatment3, y = CV)) +
-  geom_boxplot() +
-  geom_jitter() +
-  ggtitle("Total cover")
+total.plot.cv <- total.sample |> 
+  ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Total cover CV",
+       x = NULL) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)
+total.plot.cv
 
 
 # Herb cover --------------------------------------------------------------
@@ -67,11 +75,19 @@ t.test(filter(herb.sample, Treatment3 == "Treated")$CV,
        filter(herb.sample, Treatment3 == "Control")$CV) # NS
 
 # Plot
-herb.sample |> 
-  ggplot(aes(x = Treatment3, y = CV)) +
-  geom_boxplot() +
-  geom_jitter() +
-  ggtitle("Herbaceous cover")
+herb.plot.cv <- herb.sample |> 
+  ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Herbaceous cover CV",
+       x = NULL) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)
+herb.plot.cv
 
 
 
@@ -96,11 +112,20 @@ t.test(filter(notree.sample, Treatment3 == "Treated")$CV,
        filter(notree.sample, Treatment3 == "Control")$CV) # NS
 
 # Plot
-notree.sample |> 
-  ggplot(aes(x = Treatment3, y = CV)) +
-  geom_boxplot() +
-  geom_jitter() +
-  ggtitle("Grass, forb & shrub cover")
+notree.plot.cv <- notree.sample |> 
+  ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Grass/forb/shrub CV",
+       x = NULL) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)
+notree.plot.cv
+
 
 
 # Richness ----------------------------------------------------------------
@@ -124,11 +149,19 @@ t.test(filter(rich.sample, Treatment3 == "Treated")$CV,
        filter(rich.sample, Treatment3 == "Control")$CV) # NS
 
 # Plot
-rich.sample |> 
-  ggplot(aes(x = Treatment3, y = CV)) +
-  geom_boxplot() +
-  geom_jitter() +
-  ggtitle("Perennial richness")
+rich.plot.cv <- rich.sample |> 
+  ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Richness CV",
+       x = NULL) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)
+rich.plot.cv
 
 
 
@@ -153,12 +186,19 @@ t.test(filter(shan.sample, Treatment3 == "Treated")$CV,
        filter(shan.sample, Treatment3 == "Control")$CV) # NS
 
 # Plot
-shan.sample |> 
-  ggplot(aes(x = Treatment3, y = CV)) +
-  geom_boxplot() +
-  geom_jitter() +
-  ggtitle("Perennial Shannon")
-
+shan.plot.cv <- shan.sample |> 
+  ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Shannon diversity CV",
+       x = NULL) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)
+shan.plot.cv
 
 
 save.image("RData/CV.RData")

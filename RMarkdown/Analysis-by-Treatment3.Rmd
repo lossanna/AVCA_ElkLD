@@ -1,7 +1,7 @@
 ---
 title: "Analysis by Treatment3 (Treated/Control)"
 author: "Lia Ossanna"
-date: "2023-03-15"
+date: "2023-04-12"
 output: 
   html_document:
     toc: true
@@ -10,6 +10,13 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(agricolae)
+library(lme4)
+library(nlme)
+library(ggpubr)
+load("../RData/CV.RData")
+load("../RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
 ```
 
 # Introduction
@@ -18,16 +25,30 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
   - `Control` = Channel 12 & Channel 19
   
 # Summary
-- Averages over time
-  - Total cover
-    - `Treatment*Year` interaction is significant.
-    - Significant decrease over time for `Control` (2012-2021).
-    - No significant increase over time for `Treated` (2012-2021).
-  - Herbaceous cover
-    - `Treatment*Year` interaction is significant.
-    - No significant increase over time for `Control` (2012-2021).
-    -  Significant increase over time for `Treated` (2012-2021).
-    
+## Temporal veg cover and diversity
+- Letters represent one-way ANOVA and Tukey HSD.
+- In comparing means from linear models with `Year` as a random factor, Control > Treated for total cover and herbaceous cover, and there was no significant difference for grass/forb/shrub cover. Control > Treated for perennial richness, and something weird happened with the Shannon diversity linear model.
+```{r, echo=FALSE, fig.dim=c(11,7)}
+ggarrange(total.plot, herb.plot, notree.plot,
+          ncol = 2, nrow = 2)
+```
+```{r, echo=FALSE, fig.dim=c(11,3.5)}
+ggarrange(rich.plot, shan.plot,
+          ncol = 2, nrow = 1)
+```
+
+## CV
+- T-test for normally distributed and Wilcoxon test for non-normally distributed CV values. No significant differences between Control and Treated for any.
+```{r, echo=FALSE, fig.dim=c(11,7)}
+ggarrange(total.plot.cv, herb.plot.cv, notree.plot.cv,
+          ncol = 2, nrow = 2)
+```
+```{r, echo=FALSE, fig.dim=c(11,3.5)}
+ggarrange(rich.plot.cv, shan.plot.cv,
+          ncol = 2, nrow = 1)
+```
+
+
     
 # Setup
 ```{r}
