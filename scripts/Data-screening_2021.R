@@ -139,6 +139,11 @@ hist(dat.2021$TC_log, breaks = 10)
 qqPlot(dat.2021$TN_log)
 qqPlot(dat.2021$TC_log)
 
+# Add TN & TC as ppt
+dat.2021 <- dat.2021 |> 
+  mutate(TN_ppt = TN_perc * 10,
+         TC_ppt = TC_perc * 10)
+
 
 # Bivariate scatterplot matrix --------------------------------------------
 
@@ -149,12 +154,12 @@ pairs(~ rich + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
 pairs(~ shan + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
 
 
-# Add treatments and rename cols ------------------------------------------
+# Reorder cols ------------------------------------------------------------
 
 dat.2021 <- dat.2021 |> 
   select(Sample, Channel, Station, Treatment1, Treatment2, Treatment3,
          Cover, herb, notree, rich, shan,
-         TN_log, TN_perc, TC_log, TC_perc, CN_ratio, OM_perc,
+         TN_log, TN_perc, TN_ppt, TC_log, TC_perc, TC_ppt, CN_ratio, OM_perc,
          Elev_Diff, Richness.barc, Shannon.barc, NMDS1, NMDS2, betadisper.channel,
          betadisper.treatment1, betadisper.treatment2, betadisper.treatment3)
 
