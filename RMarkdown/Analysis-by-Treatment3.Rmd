@@ -17,6 +17,7 @@ library(nlme)
 library(ggpubr)
 load("../RData/CV.RData")
 load("../RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
+load("../RData/T-test-by-Treatment3_2021.RData")
 ```
 
 # Introduction
@@ -25,7 +26,8 @@ load("../RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
   - `Control` = Channel 12 & Channel 19
   
 # Summary
-## Temporal veg cover and diversity
+## Temporal veg, 2012-2021
+### Cover and diversity
 - Letters represent one-way ANOVA and Tukey HSD.
 - In comparing means from linear models with `Year` as a random factor, Control > Treated for total cover and herbaceous cover, and there was no significant difference for grass/forb/shrub cover. Control > Treated for perennial richness, and something weird happened with the Shannon diversity linear model.
 ```{r, echo=FALSE, fig.dim=c(11,7)}
@@ -37,7 +39,7 @@ ggarrange(rich.plot, shan.plot,
           ncol = 2, nrow = 1)
 ```
 
-## CV
+### CV
 - T-test for normally distributed and Wilcoxon test for non-normally distributed CV values. No significant differences between Control and Treated for any.
 ```{r, echo=FALSE, fig.dim=c(11,7)}
 ggarrange(total.plot.cv, herb.plot.cv, notree.plot.cv,
@@ -47,6 +49,27 @@ ggarrange(total.plot.cv, herb.plot.cv, notree.plot.cv,
 ggarrange(rich.plot.cv, shan.plot.cv,
           ncol = 2, nrow = 1)
 ```
+
+## 2021 soil & plant
+- T-test between Control and Treatment showed no significant differences for any.
+```{r, fig.dim=c(11,7)}
+ggarrange(tn.plot.21, tc.plot.21, cn.plot.21, om.plot.21,
+          ncol = 2, nrow = 2)
+```
+```{r, echo=FALSE, fig.dim=c(11,3.5)}
+ggarrange(barcrich.plot.21, barcshan.plot.21,
+          ncol = 2, nrow = 1)
+```
+```{r, echo=FALSE, fig.dim=c(11,7)}
+ggarrange(total.plot.21, herb.plot.21, notree.plot.21,
+          ncol = 2, nrow = 2)
+```
+```{r, echo=FALSE, fig.dim=c(11,3.5)}
+ggarrange(rich.plot.21, shan.plot.21,
+          ncol = 2, nrow = 1)
+```
+
+
 
 
     

@@ -143,6 +143,27 @@ barcshan.plot.21 <- dat.2021 |>
 barcshan.plot.21
 
 
+# Soil bac arc beta dispersion --------------------------------------------
+
+# T-test
+t.test(filter(dat.2021, Treatment3 == "Control")$betadisper.treatment3,
+       filter(dat.2021, Treatment3 == "Treated")$betadisper.treatment3) # NS
+
+# Plot
+barcbetadisp.plot.21 <- dat.2021 |> 
+  ggplot(aes(x = Treatment3, y = betadisper.treatment3, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Bacteria & archaea beta dispersion",
+       x = NULL,
+       y = "Beta dispersion") +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none")
+barcbetadisp.plot.21
+
 
 # Total plant cover -------------------------------------------------------
 
