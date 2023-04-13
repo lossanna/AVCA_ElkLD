@@ -1,5 +1,6 @@
-library(tidyverse)
+# Purpose: Format tables for FAPROTAX input
 
+library(tidyverse)
 
 # load data ---------------------------------------------------------------
 
@@ -51,5 +52,3 @@ write.table(fapro,
             quote = F, 
             sep = "\t", 
             row.names = F)
-
-save.image("RData/FAPROTAX-tables.RData")
