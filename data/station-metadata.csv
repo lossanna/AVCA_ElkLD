@@ -1,0 +1,63 @@
+﻿Sample,Name,Channel,Station,Treatment1,Treatment2,Treatment3
+1,"Channel 21, Station 01 + 07.5 BAF",Channel 21,Station 01 + 07.5 BAF,Baffle,In-channel treatment,Treated
+2,"Channel 21, Station 01 + 49 ORD",Channel 21,Station 01 + 49 ORD,One rock dam,In-channel treatment,Treated
+3,"Channel 21, Station 02 + 15 BAF",Channel 21,Station 02 + 15 BAF,Baffle,In-channel treatment,Treated
+4,"Channel 21, Station 03 + 80 BAF",Channel 21,Station 03 + 80 BAF,Baffle,In-channel treatment,Treated
+5,"Channel 21, Station 04 + 90 ORD",Channel 21,Station 04 + 90 ORD,One rock dam,In-channel treatment,Treated
+6,"Channel 21, Station 06 + 36 BAF",Channel 21,Station 06 + 36 BAF,Baffle,In-channel treatment,Treated
+7,"Channel 21, Station 07 + 49.5 ORD",Channel 21,Station 07 + 49.5 ORD,One rock dam,In-channel treatment,Treated
+8,"Channel 21, Station 07 + 66 BAF",Channel 21,Station 07 + 66 BAF,Baffle,In-channel treatment,Treated
+9,"Channel 21, Station 08 + 62 BAF",Channel 21,Station 08 + 62 BAF,Baffle,In-channel treatment,Treated
+10,"Channel 21, Station 09 + 99 ORD",Channel 21,Station 09 + 99 ORD,One rock dam,In-channel treatment,Treated
+11,"Channel 21, Station 10 + 13 BAF",Channel 21,Station 10 + 13 BAF,Baffle,In-channel treatment,Treated
+12,"Channel 21, Station 11 + 12 ORD",Channel 21,Station 11 + 12 ORD,One rock dam,In-channel treatment,Treated
+13,"Channel 21, Station 11 + 24 BAF",Channel 21,Station 11 + 24 BAF,Baffle,In-channel treatment,Treated
+14,"Channel 21, Station 11 + 63 ORD",Channel 21,Station 11 + 63 ORD,One rock dam,In-channel treatment,Treated
+15,"Channel 21, Station 11 + 73 BAF",Channel 21,Station 11 + 73 BAF,Baffle,In-channel treatment,Treated
+16,"Channel 19, Station 01 + 04",Channel 19,Station 01 + 04,Upland treatment,Upland treatment,Control
+17,"Channel 19, Station 02 + 04",Channel 19,Station 02 + 04,Upland treatment,Upland treatment,Control
+18,"Channel 19, Station 02 + 52",Channel 19,Station 02 + 52,Upland treatment,Upland treatment,Control
+19,"Channel 19, Station 03 + 63",Channel 19,Station 03 + 63,Upland treatment,Upland treatment,Control
+20,"Channel 19, Station 03 + 98",Channel 19,Station 03 + 98,Upland treatment,Upland treatment,Control
+21,"Channel 19, Station 05 + 00",Channel 19,Station 05 + 00,Upland treatment,Upland treatment,Control
+22,"Channel 19, Station 05 + 09",Channel 19,Station 05 + 09,Upland treatment,Upland treatment,Control
+23,"Channel 19, Station 05 + 62",Channel 19,Station 05 + 62,Upland treatment,Upland treatment,Control
+24,"Channel 19, Station 06 + 13",Channel 19,Station 06 + 13,Upland treatment,Upland treatment,Control
+25,"Channel 19, Station 06 + 97",Channel 19,Station 06 + 97,Upland treatment,Upland treatment,Control
+26,"Channel 19, Station 07 + 30",Channel 19,Station 07 + 30,Upland treatment,Upland treatment,Control
+27,"Channel 19, Station 07 + 50",Channel 19,Station 07 + 50,Upland treatment,Upland treatment,Control
+28,"Channel 19, Station 07 + 97",Channel 19,Station 07 + 97,Upland treatment,Upland treatment,Control
+29,"Channel 19, Station 09 + 05",Channel 19,Station 09 + 05,Upland treatment,Upland treatment,Control
+30,"Channel 19, Station 09 + 26",Channel 19,Station 09 + 26,Upland treatment,Upland treatment,Control
+31,"Channel 19, Station 09 + 68",Channel 19,Station 09 + 68,Upland treatment,Upland treatment,Control
+32,"Channel 19, Station 10 + 98",Channel 19,Station 10 + 98,Upland treatment,Upland treatment,Control
+33,"Channel 13, Station 1 + 11.5 BAF",Channel 13,Station 1 + 11.5 BAF,Baffle,In-channel treatment,Treated
+34,"Channel 13, Station 1 + 38.5 ORD",Channel 13,Station 1 + 38.5 ORD,One rock dam,In-channel treatment,Treated
+35,"Channel 13, Station 1 + 71 BAF",Channel 13,Station 1 + 71 BAF,Baffle,In-channel treatment,Treated
+36,"Channel 13, Station 1 + 77 ORD",Channel 13,Station 1 + 77 ORD,One rock dam,In-channel treatment,Treated
+37,"Channel 13, Station 1 + 99 ORD",Channel 13,Station 1 + 99 ORD,One rock dam,In-channel treatment,Treated
+38,"Channel 13, Station 2 + 16 BAF",Channel 13,Station 2 + 16 BAF,Baffle,In-channel treatment,Treated
+39,"Channel 13, Station 2 + 57 ORD",Channel 13,Station 2 + 57 ORD,One rock dam,In-channel treatment,Treated
+40,"Channel 13, Station 2 + 67 BAF",Channel 13,Station 2 + 67 BAF,Baffle,In-channel treatment,Treated
+41,"Channel 13, Station 3 + 09 ORD",Channel 13,Station 3 + 09 ORD,One rock dam,In-channel treatment,Treated
+42,"Channel 13, Station 3 + 31 BAF",Channel 13,Station 3 + 31 BAF,Baffle,In-channel treatment,Treated
+43,"Channel 13, Station 3 + 65 ORD",Channel 13,Station 3 + 65 ORD,One rock dam,In-channel treatment,Treated
+44,"Channel 13, Station 3 + 95.5 ORD",Channel 13,Station 3 + 95.5 ORD,One rock dam,In-channel treatment,Treated
+45,"Channel 13, Station 4 + 14.5 BAF",Channel 13,Station 4 + 14.5 BAF,Baffle,In-channel treatment,Treated
+46,"Channel 13, Station 4 + 36 ORD",Channel 13,Station 4 + 36 ORD,One rock dam,In-channel treatment,Treated
+47,"Channel 13, Station 4 + 50 BAF",Channel 13,Station 4 + 50 BAF,Baffle,In-channel treatment,Treated
+48,"Channel 13, Station 4 + 78 ORD",Channel 13,Station 4 + 78 ORD,One rock dam,In-channel treatment,Treated
+49,"Channel 12, Station 1 + 04",Channel 12,Station 1 + 04,No treatment,Control,Control
+50,"Channel 12, Station 1 + 52",Channel 12,Station 1 + 52,No treatment,Control,Control
+51,"Channel 12, Station 1 + 83",Channel 12,Station 1 + 83,No treatment,Control,Control
+52,"Channel 12, Station 2 + 63",Channel 12,Station 2 + 63,No treatment,Control,Control
+53,"Channel 12, Station 2 + 98",Channel 12,Station 2 + 98,No treatment,Control,Control
+54,"Channel 12, Station 3 + 93",Channel 12,Station 3 + 93,No treatment,Control,Control
+55,"Channel 12, Station 4 + 00",Channel 12,Station 4 + 00,No treatment,Control,Control
+56,"Channel 12, Station 4 + 09",Channel 12,Station 4 + 09,No treatment,Control,Control
+57,"Channel 12, Station 4 + 56",Channel 12,Station 4 + 56,No treatment,Control,Control
+58,"Channel 12, Station 4 + 65",Channel 12,Station 4 + 65,No treatment,Control,Control
+59,"Channel 12, Station 5 + 13",Channel 12,Station 5 + 13,No treatment,Control,Control
+60,"Channel 12, Station 5 + 48",Channel 12,Station 5 + 48,No treatment,Control,Control
+61,"Channel 12, Station 6 + 30",Channel 12,Station 6 + 30,No treatment,Control,Control
+62,"Channel 12, Station 6 + 93",Channel 12,Station 6 + 93,No treatment,Control,Control
