@@ -1,0 +1,51 @@
+Sample,Name,Channel,Station,Treatment1,Treatment2,Treatment3,elev2011,elev2019,dElev,dElev_corrected
+1,"Channel 21, Station 01 + 07.5 BAF",Channel 21,Station 01 + 07.5 BAF,Baffle,In-channel treatment,Treated,1025.3875731428573,1025.923270142857,0.5356969999998,0.5356969999998
+2,"Channel 21, Station 01 + 49 ORD",Channel 21,Station 01 + 49 ORD,One rock dam,In-channel treatment,Treated,1025.682878857143,1026.0494382857144,0.3665594285714633,0.3665594285714633
+3,"Channel 21, Station 02 + 15 BAF",Channel 21,Station 02 + 15 BAF,Baffle,In-channel treatment,Treated,1026.0620467142858,1026.2378105714286,0.1757638571427833,0.1757638571427833
+4,"Channel 21, Station 03 + 80 BAF",Channel 21,Station 03 + 80 BAF,Baffle,In-channel treatment,Treated,1027.216361142857,1027.417253857143,0.20089271428582833,0.20089271428582833
+5,"Channel 21, Station 04 + 90 ORD",Channel 21,Station 04 + 90 ORD,One rock dam,In-channel treatment,Treated,1028.109008857143,1028.208409,0.09940014285712095,0.09940014285712095
+6,"Channel 21, Station 06 + 36 BAF",Channel 21,Station 06 + 36 BAF,Baffle,In-channel treatment,Treated,1029.065517142857,1029.2069267142858,0.14140957142876687,0.14140957142876687
+7,"Channel 21, Station 07 + 49.5 ORD",Channel 21,Station 07 + 49.5 ORD,One rock dam,In-channel treatment,Treated,1029.7861504285715,1029.9827358571429,0.19658542857132488,0.19658542857132488
+8,"Channel 21, Station 07 + 66 BAF",Channel 21,Station 07 + 66 BAF,Baffle,In-channel treatment,Treated,1029.9293388571427,1030.119594,0.19025514285726786,0.19025514285726786
+9,"Channel 21, Station 08 + 62 BAF",Channel 21,Station 08 + 62 BAF,Baffle,In-channel treatment,Treated,1030.6509137142857,1030.7765241428572,0.12561042857146276,0.12561042857146276
+11,"Channel 21, Station 10 + 13 BAF",Channel 21,Station 10 + 13 BAF,Baffle,In-channel treatment,Treated,1032.171439,1032.2084787142858,0.03703971428581099,0
+13,"Channel 21, Station 11 + 24 BAF",Channel 21,Station 11 + 24 BAF,Baffle,In-channel treatment,Treated,1033.018833857143,1033.157435857143,0.13860199999999168,0.13860199999999168
+15,"Channel 21, Station 11 + 73 BAF",Channel 21,Station 11 + 73 BAF,Baffle,In-channel treatment,Treated,1033.3228585714285,1033.479876,0.1570174285716348,0.1570174285716348
+16,"Channel 19, Station 01 + 04",Channel 19,Station 01 + 04,Upland treatment,Upland treatment,Control,1023.043689,1022.9853514,-0.05833759999995891,-0.05833759999995891
+17,"Channel 19, Station 02 + 04",Channel 19,Station 02 + 04,Upland treatment,Upland treatment,Control,1023.6556276,1023.6750978,0.01947020000000066,0
+18,"Channel 19, Station 02 + 52",Channel 19,Station 02 + 52,Upland treatment,Upland treatment,Control,1024.1331910000001,1024.0821778,-0.0510132000001704,0
+19,"Channel 19, Station 03 + 63",Channel 19,Station 03 + 63,Upland treatment,Upland treatment,Control,1024.610547,1024.6573732,0.04682619999994131,0
+20,"Channel 19, Station 03 + 98",Channel 19,Station 03 + 98,Upland treatment,Upland treatment,Control,1024.8894044,1024.9432862,0.0538817999999992,0.0538817999999992
+21,"Channel 19, Station 05 + 00",Channel 19,Station 05 + 00,Upland treatment,Upland treatment,Control,1025.5293457999999,1025.5443602,0.015014400000154637,0
+22,"Channel 19, Station 05 + 09",Channel 19,Station 05 + 09,Upland treatment,Upland treatment,Control,1025.6164794000001,1025.6577394,0.04125999999996566,0
+23,"Channel 19, Station 05 + 62",Channel 19,Station 05 + 62,Upland treatment,Upland treatment,Control,1026.1833008,1026.1707032,-0.012597600000162856,0
+24,"Channel 19, Station 06 + 13",Channel 19,Station 06 + 13,Upland treatment,Upland treatment,Control,1026.2815674,1026.3051028,0.02353539999990062,0
+25,"Channel 19, Station 06 + 97",Channel 19,Station 06 + 97,Upland treatment,Upland treatment,Control,1026.8847902,1026.917627,0.03283680000004097,0
+26,"Channel 19, Station 07 + 30",Channel 19,Station 07 + 30,Upland treatment,Upland treatment,Control,1027.133325,1027.1481446,0.014819600000009814,0
+27,"Channel 19, Station 07 + 50",Channel 19,Station 07 + 50,Upland treatment,Upland treatment,Control,1027.3177002,1027.2730468,-0.04465340000001561,0
+28,"Channel 19, Station 07 + 97",Channel 19,Station 07 + 97,Upland treatment,Upland treatment,Control,1027.4904786,1027.555786,0.06530739999993784,0.06530739999993784
+29,"Channel 19, Station 09 + 05",Channel 19,Station 09 + 05,Upland treatment,Upland treatment,Control,1028.1686280000001,1028.2769042,0.10827619999986382,0.10827619999986382
+30,"Channel 19, Station 09 + 26",Channel 19,Station 09 + 26,Upland treatment,Upland treatment,Control,1028.3177494,1028.4021242,0.08437479999997777,0.08437479999997777
+31,"Channel 19, Station 09 + 68",Channel 19,Station 09 + 68,Upland treatment,Upland treatment,Control,1028.6208738,1028.6581298,0.037256000000070344,0
+32,"Channel 19, Station 10 + 98",Channel 19,Station 10 + 98,Upland treatment,Upland treatment,Control,1029.5891114,1029.6235352,0.034423800000013216,0
+33,"Channel 13, Station 1 + 11.5 BAF",Channel 13,Station 1 + 11.5 BAF,Baffle,In-channel treatment,Treated,1019.3875326666667,1019.459737,0.07220433333327492,0.07220433333327492
+35,"Channel 13, Station 1 + 71 BAF",Channel 13,Station 1 + 71 BAF,Baffle,In-channel treatment,Treated,1019.962443,1020.0570476666667,0.09460466666666889,0.09460466666666889
+38,"Channel 13, Station 2 + 16 BAF",Channel 13,Station 2 + 16 BAF,Baffle,In-channel treatment,Treated,1020.3909506666666,1020.4437866666667,0.05283600000007027,0.05283600000007027
+40,"Channel 13, Station 2 + 67 BAF",Channel 13,Station 2 + 67 BAF,Baffle,In-channel treatment,Treated,1020.804891,1020.8210043333333,0.016113333333350965,0
+42,"Channel 13, Station 3 + 31 BAF",Channel 13,Station 3 + 31 BAF,Baffle,In-channel treatment,Treated,1021.1949463333333,1021.401408,0.20646166666665522,0.20646166666665522
+46,"Channel 13, Station 4 + 36 ORD",Channel 13,Station 4 + 36 ORD,One rock dam,In-channel treatment,Treated,1021.9045816666667,1021.9059043333334,0.0013226666667378595,0
+47,"Channel 13, Station 4 + 50 BAF",Channel 13,Station 4 + 50 BAF,Baffle,In-channel treatment,Treated,1021.933533,1022.0868123333333,0.15327933333333021,0.15327933333333021
+49,"Channel 12, Station 1 + 04",Channel 12,Station 1 + 04,No treatment,Control,Control,1018.8878906,1018.878076,-0.009814600000026985,0
+50,"Channel 12, Station 1 + 52",Channel 12,Station 1 + 52,No treatment,Control,Control,1019.029773,1019.056067,0.026294000000007145,0
+51,"Channel 12, Station 1 + 83",Channel 12,Station 1 + 83,No treatment,Control,Control,1019.2778076,1019.3191894,0.041381800000067415,0
+52,"Channel 12, Station 2 + 63",Channel 12,Station 2 + 63,No treatment,Control,Control,1019.882825,1019.9099732,0.027148199999942335,0
+53,"Channel 12, Station 2 + 98",Channel 12,Station 2 + 98,No treatment,Control,Control,1019.838086,1020.0096678,0.17158180000001266,0.17158180000001266
+54,"Channel 12, Station 3 + 93",Channel 12,Station 3 + 93,No treatment,Control,Control,1020.3427124,1020.4586548,0.11594239999999445,0.11594239999999445
+55,"Channel 12, Station 4 + 00",Channel 12,Station 4 + 00,No treatment,Control,Control,1020.454016,1020.5542358,0.10021979999999076,0.10021979999999076
+56,"Channel 12, Station 4 + 09",Channel 12,Station 4 + 09,No treatment,Control,Control,1020.4852416,1020.5573852,0.07214360000000397,0.07214360000000397
+57,"Channel 12, Station 4 + 56",Channel 12,Station 4 + 56,No treatment,Control,Control,1020.6999876,1020.8267088,0.12672120000001996,0.12672120000001996
+58,"Channel 12, Station 4 + 65",Channel 12,Station 4 + 65,No treatment,Control,Control,1020.7443848,1020.8303466,0.08596179999995002,0.08596179999995002
+59,"Channel 12, Station 5 + 13",Channel 12,Station 5 + 13,No treatment,Control,Control,1021.1202148,1021.179358,0.05914319999999407,0.05914319999999407
+60,"Channel 12, Station 5 + 48",Channel 12,Station 5 + 48,No treatment,Control,Control,1021.2430542,1021.3313964,0.08834220000005644,0.08834220000005644
+61,"Channel 12, Station 6 + 30",Channel 12,Station 6 + 30,No treatment,Control,Control,1021.637085,1021.7228884,0.08580340000003162,0.08580340000003162
+62,"Channel 12, Station 6 + 93",Channel 12,Station 6 + 93,No treatment,Control,Control,1021.9785402,1022.0402346,0.061694399999964844,0.061694399999964844
