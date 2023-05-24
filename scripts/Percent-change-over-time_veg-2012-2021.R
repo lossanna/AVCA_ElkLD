@@ -478,6 +478,17 @@ herblast <- herb.all |>
   select(Sample, Cover) |> 
   rename(last_herb = Cover)
 
+# Notree cover
+notreefirst <- notree.all |> 
+  filter(Year == 2012) |> 
+  select(Sample, Cover) |> 
+  rename(first_notree = Cover) |> 
+  rbind(c(Sample = 17, first_notree = NA)) # add missing sample
+notreelast <- notree.all |> 
+  filter(Year == 2021) |> 
+  select(Sample, Cover) |> 
+  rename(last_notree = Cover)
+
 # Perennial richness
 richfirst <- per.div |> 
   filter(Year == 2012) |> 
@@ -504,6 +515,8 @@ shanlast <- per.div |>
 firstlast <- left_join(totalfirst, totallast) |> 
   left_join(herbfirst) |> 
   left_join(herblast) |> 
+  left_join(notreefirst) |> 
+  left_join(notreelast) |> 
   left_join(richfirst) |> 
   left_join(richlast) |> 
   left_join(shanfirst) |> 
@@ -512,6 +525,7 @@ firstlast <- left_join(totalfirst, totallast) |>
 # Find difference (subtract 2021 - 2012)
 firstlast <- firstlast |> 
   mutate(total = last_total / first_total,
+         notree = last_notree / first_notree,
          herb = last_herb / first_herb,
          rich = last_rich / first_rich,
          shan = last_shan / first_shan)
@@ -520,9 +534,10 @@ firstlast <- firstlast |>
 firstlast <- firstlast |> 
   mutate(total.pd = log(total) / (2021 - 2012),
          herb.pd = log(herb) / (2021 - 2012),
+         notree.pd = log(notree) / (2021 - 2012),
          rich.pd = log(rich) / (2021 - 2012),
          shan.pd = log(shan) / (2021 - 2012)) |> 
-  select(Sample, total.pd, herb.pd, rich.pd, shan.pd)
+  select(Sample, total.pd, herb.pd, notree.pd, rich.pd, shan.pd)
 
 
 # Write to csv
