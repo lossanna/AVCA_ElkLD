@@ -26,10 +26,7 @@ barc.div <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
 soil.chem <- read_xlsx("data/Excel_LO_edited/Blankinship-soil-chemistry_TN-TC-OM_LO.xlsx", 
                        sheet = "R_LO") |> 
   select(-Year, -Treatment)
-elevation <- read_xlsx("data/Excel_LO_edited/Vegetation monitoring point elevation change data_LO.xlsx",
-                       sheet = "R_LO")
-elevation$Elev_Diff[elevation$Elev_Diff == 9999] <- NA # values of 9999 indicate measurement was not possible
-
+elev <- read_csv("data/cleaned/Cross-section-elevation_clean.csv")
 
 
 # Compile 2021 data -------------------------------------------------------
@@ -81,6 +78,8 @@ hist(dat.2021$rich)
 hist(dat.2021$shan, breaks = 10)
 hist(dat.2021$Richness.barc)
 hist(dat.2021$Shannon.barc)
+hist(elev$dElev, breaks = 10) # not normal - right tail skew?
+hist(elev$dElev_corrected, breaks = 10)
 
 # Boxplot
 dat.2021$Channel <- factor(dat.2021$Channel)

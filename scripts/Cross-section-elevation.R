@@ -148,8 +148,25 @@ elev <- elev |>
     TRUE ~ dElev))
 
 
+# Visualization -----------------------------------------------------------
+
+elev |> 
+ggplot(aes(x = Channel, y = dElev)) +
+  geom_boxplot()
+
+elev |> 
+  ggplot(aes(Channel, dElev_corrected)) +
+  geom_boxplot()
+
+elev |> 
+  ggplot(aes(Treatment3, dElev)) +
+  geom_boxplot()
+  
+
 # Write to csv ------------------------------------------------------------
 
 write_csv(elev,
           file = "data/cleaned/Cross-section-elevation_clean.csv")
 
+
+save.image("RData/Cross-section-elevation.RData")
