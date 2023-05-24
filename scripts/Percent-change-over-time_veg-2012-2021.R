@@ -524,5 +524,10 @@ firstlast <- firstlast |>
          shan.pd = log(shan) / (2021 - 2012)) |> 
   select(Sample, total.pd, herb.pd, rich.pd, shan.pd)
 
+
+# Write to csv
+write.csv(firstlast,
+          file = "data/cleaned/Percent-difference_first-last.csv")
+
 save.image("RData/Percent-change-over-time.RData")
 
