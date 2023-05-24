@@ -1,3 +1,8 @@
+# Created: 2023-05-24
+# Purpose: Wrangle raw cross section elevation data from Robert Davis, and write out clean data.
+#   Found minimum elevation (lowest point of channel), and averaged this with surrounding points,
+#     where the number of points depends on the channel (look at Excel graphs from Robert)
+
 library(tidyverse)
 
 # Load data ---------------------------------------------------------------
