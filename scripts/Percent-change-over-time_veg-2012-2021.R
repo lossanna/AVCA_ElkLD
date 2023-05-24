@@ -112,7 +112,6 @@ t.test(filter(total.pd, Treatment3 == "Treated")$dCover,
        filter(total.pd, Treatment3 == "Control")$dCover) # NS
 
 
-
 # Herbaceous cover --------------------------------------------------------
 
 # Select cols to pivot
@@ -453,6 +452,77 @@ t.test(filter(shan.pd, Treatment3 == "Treated")$dShannon,
        filter(shan.pd, Treatment3 == "Control")$dShannon) # NS
 
 
+
+# First/last comparison (2012, 2021), all res vars ------------------------
+
+# Extract out 2012 and 2021, set up cols for finding difference (subtraction)
+# Total cover
+totalfirst <- total.all |> 
+  filter(Year == 2012) |> 
+  select(Sample, Cover) |> 
+  rename(first_total = Cover) |> 
+  rbind(c(Sample = 17, first_total = NA)) # add missing sample
+totallast <- total.all |> 
+  filter(Year == 2021) |> 
+  select(Sample, Cover) |> 
+  rename(last_total = Cover)
+
+# Herb cover
+herbfirst <- herb.all |> 
+  filter(Year == 2012) |> 
+  select(Sample, Cover) |> 
+  rename(first_herb = Cover) |> 
+  rbind(c(Sample = 17, first_herb = NA)) # add missing sample
+herblast <- herb.all |> 
+  filter(Year == 2021) |> 
+  select(Sample, Cover) |> 
+  rename(last_herb = Cover)
+
+# Perennial richness
+richfirst <- per.div |> 
+  filter(Year == 2012) |> 
+  select(Sample, rich) |> 
+  rename(first_rich = rich) |> 
+  rbind(c(Sample = 17, first_rich = NA)) # add missing sample
+richlast <- per.div |> 
+  filter(Year == 2021) |> 
+  select(Sample, rich) |> 
+  rename(last_rich = rich)
+
+# Perennial Shannon
+shanfirst <- per.div |> 
+  filter(Year == 2012) |> 
+  select(Sample, shan) |> 
+  rename(first_shan = shan) |> 
+  rbind(c(Sample = 17, first_shan = NA)) # add missing sample
+shanlast <- per.div |> 
+  filter(Year == 2021) |> 
+  select(Sample, shan) |> 
+  rename(last_shan = shan)
+
+# Combine all cols
+firstlast <- left_join(totalfirst, totallast) |> 
+  left_join(herbfirst) |> 
+  left_join(herblast) |> 
+  left_join(richfirst) |> 
+  left_join(richlast) |> 
+  left_join(shanfirst) |> 
+  left_join(shanlast)
+
+# Find difference (subtract 2021 - 2012)
+firstlast <- firstlast |> 
+  mutate(total = last_total / first_total,
+         herb = last_herb / first_herb,
+         rich = last_rich / first_rich,
+         shan = last_shan / first_shan)
+
+# Calculate change in cover
+firstlast <- firstlast |> 
+  mutate(total.pd = log(total) / (2021 - 2012),
+         herb.pd = log(herb) / (2021 - 2012),
+         rich.pd = log(rich) / (2021 - 2012),
+         shan.pd = log(shan) / (2021 - 2012)) |> 
+  select(Sample, total.pd, herb.pd, rich.pd, shan.pd)
 
 save.image("RData/Percent-change-over-time.RData")
 
