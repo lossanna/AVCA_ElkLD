@@ -537,12 +537,15 @@ firstlast <- firstlast |>
          notree.pd = log(notree) / (2021 - 2012),
          rich.pd = log(rich) / (2021 - 2012),
          shan.pd = log(shan) / (2021 - 2012)) |> 
-  select(Sample, total.pd, herb.pd, notree.pd, rich.pd, shan.pd)
+  select(Sample, total.pd, herb.pd, notree.pd, rich.pd, shan.pd) |> 
+  arrange(Sample)
 
 
 # Write to csv
 write.csv(firstlast,
           file = "data/cleaned/Percent-difference_first-last.csv")
+
+
 
 save.image("RData/Percent-change-over-time.RData")
 
