@@ -543,9 +543,10 @@ firstlast <- firstlast |>
 
 # Write to csv
 write.csv(firstlast,
-          file = "data/cleaned/Percent-difference_first-last.csv")
+          file = "data/cleaned/Percent-difference_first-last.csv",
+          row.names = FALSE)
 
 
 
-save.image("RData/Percent-change-over-time.RData")
+save.image("RData/Percent-change-over-time_veg-2012-2021.RData")
 
