@@ -119,7 +119,7 @@ notree.plot.cv <- notree.sample |>
   geom_jitter(size = 2) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Grass/forb/shrub CV",
+  labs(title = "Grass, forb & shrub CV",
        x = NULL) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
@@ -201,4 +201,4 @@ shan.plot.cv <- shan.sample |>
 shan.plot.cv
 
 
-save.image("RData/CV.RData")
+save.image("RData/CV_veg-2023-2021.RData")

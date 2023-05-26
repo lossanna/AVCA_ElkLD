@@ -1,7 +1,7 @@
 ---
 title: "Analysis by Treatment3 (Treated/Control)"
 author: "Lia Ossanna"
-date: "2023-04-12"
+date: "2023-05-26"
 output: 
   html_document:
     toc: true
@@ -12,47 +12,49 @@ output:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 library(tidyverse)
 library(agricolae)
-library(lme4)
-library(nlme)
 library(ggpubr)
-load("../RData/CV.RData")
+load("../RData/CV_veg-2012-2021.RData")
 load("../RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
 load("../RData/T-test-by-Treatment3_2021.RData")
+load("../RData/Percent-change-over-time_veg-2012-2021.RData")
 ```
 
 # Introduction
 - `Treatment3` has only two categories, `Treated`, and `Control`. It is a measure of the local effect of rock structures.
   - `Treated` = Channel 13 & Channel 21
   - `Control` = Channel 12 & Channel 19
+- Presented here are figures and results, but not code.
+- See other documents for code and analysis:
+  - Temporal veg cover and diversity: `ANOVA-by-Treatment3_veg-2012-2021.html`.
   
-# Summary
-## Temporal veg, 2012-2021
-### Cover and diversity
+# Temporal veg, 2012-2021
+
+## Averages over time
 - Letters represent one-way ANOVA and Tukey HSD.
-- In comparing means from linear models with `Year` as a random factor, Control > Treated for total cover and herbaceous cover, and there was no significant difference for grass/forb/shrub cover. Control > Treated for perennial richness, and something weird happened with the Shannon diversity linear model.
+- In comparing means from linear models with `Year` as a random factor, there was no significant difference for notree cover. Control > Treated for perennial richness, and something weird happened with the Shannon diversity linear model.
+
 ```{r, echo=FALSE, fig.dim=c(11,7)}
-ggarrange(total.plot, herb.plot, notree.plot,
+ggarrange(notree.plot, rich.plot, shan.plot,
           ncol = 2, nrow = 2)
-```
-```{r, echo=FALSE, fig.dim=c(11,3.5)}
-ggarrange(rich.plot, shan.plot,
-          ncol = 2, nrow = 1)
 ```
 
-### CV
-- T-test for normally distributed and Wilcoxon test for non-normally distributed CV values. No significant differences between Control and Treated for any.
-```{r, echo=FALSE, fig.dim=c(11,7)}
-ggarrange(total.plot.cv, herb.plot.cv, notree.plot.cv,
+## CV
+- Ran T-test for normally distributed and Wilcoxon test for non-normally distributed CV values. No significant differences between Control and Treated.
+```{r, echo=FALSE, fig.dim=c(9,7)}
+ggarrange(notree.plot.cv, rich.plot.cv, shan.plot.cv,
           ncol = 2, nrow = 2)
 ```
-```{r, echo=FALSE, fig.dim=c(11,3.5)}
-ggarrange(rich.plot.cv, shan.plot.cv,
-          ncol = 2, nrow = 1)
+
+## Percent difference
+```{r, echo=FALSE, fig.dim=c(9,7)}
+ggarrange(notree.plot.pd1, rich.plot.pd1, shan.plot.pd1,
+          ncol = 2, nrow = 2)
 ```
+
 
 ## 2021 soil & plant
 - T-test between Control and Treatment showed no significant differences for any.
-```{r, fig.dim=c(11,7)}
+```{r, fig.dim=c(11,7), echo=FALSE}
 ggarrange(tn.plot.21, tc.plot.21, cn.plot.21, om.plot.21,
           ncol = 2, nrow = 2)
 ```
@@ -61,366 +63,8 @@ ggarrange(barcrich.plot.21, barcshan.plot.21,
           ncol = 2, nrow = 1)
 ```
 ```{r, echo=FALSE, fig.dim=c(11,7)}
-ggarrange(total.plot.21, herb.plot.21, notree.plot.21,
+ggarrange(notree.plot.21, rich.plot.21, shan.plot.21,
           ncol = 2, nrow = 2)
 ```
-```{r, echo=FALSE, fig.dim=c(11,3.5)}
-ggarrange(rich.plot.21, shan.plot.21,
-          ncol = 2, nrow = 1)
-```
 
 
-
-
-    
-# Setup
-```{r}
-library(tidyverse)
-library(agricolae)
-
-# Load data ---------------------------------------------------------------
-
-# Averages over time
-total.avg <- read.csv("../data/cleaned/Treatment3-average_total-cover.csv") |> 
-  mutate(year.xaxis = as.Date(year.xaxis))
-total.all <- read.csv("../data/cleaned/Summarised-all_total-plant-cover.csv") 
-
-herb.avg <- read.csv("../data/cleaned/Treatment3-average_herb-cover.csv") |> 
-  mutate(year.xaxis = as.Date(year.xaxis))
-herb.all <- read.csv("../data/cleaned/Summarised-all_herb-cover.csv") 
-
-# Change over time
-total.pd <- read.csv("../data/cleaned/Percent-difference_total-cover.csv")
-herb.pd <- read.csv("../data/cleaned/Percent-difference_herb-cover.csv")
-rich.pd <- read.csv("../data/cleaned/Percent-difference_rich.csv")
-shan.pd <- read.csv("../data/cleaned/Percent-difference_shan.csv")
-```
-
-  
-# Averages over time
-## Total plant cover
-### Plot
-```{r, fig.dim=c(9, 4)}
-ggplot(total.avg, aes(x = year.xaxis, y = mean, 
-                                    group = Treatment3, 
-                                    color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Total plant cover") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none")
-```
-
-### Two-factor ANOVA
-```{r}
-summary(aov(Cover ~ Treatment3 * Year, data = total.all))
-anova.total <- aov(Cover ~ Treatment3 * Year, data = total.all)
-TukeyHSD(anova.total, which = "Treatment3")
-```
-
-### One-way ANOVA for `Control`
-```{r}
-summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Control")))
-total.ctrl <- total.all |> 
-  filter(Treatment3 == "Control")
-anova.total.ctrl <- aov(total.ctrl$Cover ~ total.ctrl$Year)
-hsd.total.ctrl <- HSD.test(anova.total.ctrl, trt = "total.ctrl$Year")
-hsd.total.ctrl$groups
-```
-
-### One-way ANOVA for `Treated`
-```{r}
-summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Treated")))
-```
-
-
-### Plot with one-way ANOVA letters
-```{r, fig.dim=c(9, 4)}
-total.ctrl.letters <- hsd.total.ctrl$groups
-total.ctrl.letters <- total.ctrl.letters |> 
-  mutate(Year = rownames(total.ctrl.letters)) |> 
-  arrange(Year)
-letters <- data.frame(x = total.avg$year.xaxis[1:6],
-                      y = rep(67, 6),
-                      label = total.ctrl.letters$groups,
-                      Treatment3 = c(rep("Control", 6)))
-
-ggplot(total.avg, aes(x = year.xaxis, y = mean, 
-                      group = Treatment3, 
-                      color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Total plant cover") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") +
-  geom_text(data = letters,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black")
-```
-
-
-## Herbaceous cover
-### Plot
-```{r, fig.dim=c(9, 4)}
-ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
-                                  group = Treatment3, 
-                                  color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Herbaceous cover") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
-```
-
-### Two-factor ANOVA
-```{r}
-summary(aov(Cover ~ Treatment3 * Year, data = herb.all))
-anova.herb <- aov(Cover ~ Treatment3 * Year, data = herb.all)
-TukeyHSD(anova.herb, which = "Treatment3")
-```
-
-### One-way ANOVA for `Control`
-```{r}
-summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Control")))
-herb.ctrl <- herb.all |> 
-  filter(Treatment3 == "Control")
-anova.herb.ctrl <- aov(herb.ctrl$Cover ~ herb.ctrl$Year)
-hsd.herb.ctrl <- HSD.test(anova.herb.ctrl, trt = "herb.ctrl$Year")
-hsd.herb.ctrl$groups
-```
-
-### One-way ANOVA for `Treated`
-```{r}
-summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
-herb.trt <- herb.all |> 
-  filter(Treatment3 == "Treated")
-anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year)
-hsd.herb.trt <- HSD.test(anova.herb.trt, trt = "herb.trt$Year")
-hsd.herb.trt$groups
-```
-
-### Plot with one-way ANOVA letters
-```{r, fig.dim=c(9, 4)}
-herb.ctrl.letters <- hsd.herb.ctrl$groups
-herb.ctrl.letters <- herb.ctrl.letters |> 
-  mutate(Year = rownames(herb.ctrl.letters)) |> 
-  arrange(Year)
-herb.trt.letters <- hsd.herb.trt$groups
-herb.trt.letters <-herb.trt.letters |> 
-  mutate(Year = rownames(herb.trt.letters)) |> 
-  arrange(Year)
-letters <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
-                      y = rep(29, 12),
-                      label = c(herb.ctrl.letters$groups,
-                                herb.trt.letters$groups),
-                      Treatment3 = c(rep("Control", 6),
-                                     rep("Treated", 6)))
-
-ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
-                     group = Treatment3, 
-                     color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Herbaceous cover") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") +
-  geom_text(data = letters,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black")
-```
-
-
-
-# Change over time
-## Total cover
-### Plot
-```{r}
-ggplot(total.pd, aes(x = Treatment3, y = dCover)) +
- geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Log ratio per unit time") +
-  ggtitle("Change in total cover")
-```
-```{r, fig.dim=c(9, 5)}
-ggplot(total.pd, aes(x = Year, y = dCover)) +
- geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Log ratio per unit time") +
-  ggtitle("Change in total cover") +
-  facet_wrap(~Treatment3)
-```
-
-### T-test
-```{r}
-t.test(filter(total.pd, Treatment3 == "Treated")$dCover, 
-       filter(total.pd, Treatment3 == "Control")$dCover)
-```
-
-## Herbaceous cover
-### Plot
-```{r}
-ggplot(herb.pd, aes(x = Treatment3, y = dCover)) +
- geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Log ratio per unit time") +
-  ggtitle("Change in herbaceous cover")
-```
-```{r, fig.dim=c(9, 5)}
-ggplot(herb.pd, aes(x = Year, y = dCover)) +
- geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Log ratio per unit time") +
-  ggtitle("Change in herbaceous cover") +
-  facet_wrap(~Treatment3)
-```
-
-### T-test
-```{r}
-t.test(filter(herb.pd, Treatment3 == "Treated")$dCover, 
-       filter(herb.pd, Treatment3 == "Control")$dCover)
-```
-
-## Perennial richness
-### Plot
-```{r}
-ggplot(rich.pd, aes(x = Treatment3, y = dRichness)) +
- geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Log ratio per unit time") +
-  ggtitle("Change in perennial richness")
-```
-```{r, fig.dim=c(9, 5)}
-ggplot(rich.pd, aes(x = Year, y = dRichness)) +
- geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Log ratio per unit time") +
-  ggtitle("Change in perennial richness") +
-  facet_wrap(~Treatment3)
-```
-
-### T-test
-```{r}
-t.test(filter(rich.pd, Treatment3 == "Treated")$dRichness, 
-       filter(rich.pd, Treatment3 == "Control")$dRichness)
-```
-
-
-## Perennial diversity
-### Plot
-```{r}
-ggplot(shan.pd, aes(x = Treatment3, y = dShannon)) +
- geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Log ratio per unit time") + 
-  ggtitle("Change in perennial diversity")
-```
-```{r, fig.dim=c(9, 5)}
-ggplot(shan.pd, aes(x = Year, y = dShannon)) +
- geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.4,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              alpha = 0.9,
-              size = 2) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  xlab(NULL) +
-  ylab("Log ratio per unit time") +
-  ggtitle("Change in perennial diversity") +
-  facet_wrap(~Treatment3)
-```
-
-### T-test
-```{r}
-t.test(filter(shan.pd, Treatment3 == "Treated")$dShannon, 
-       filter(shan.pd, Treatment3 == "Control")$dShannon)
-```

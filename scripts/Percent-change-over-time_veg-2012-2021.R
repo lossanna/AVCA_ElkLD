@@ -19,6 +19,7 @@ total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv") 
 notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
+station.meta <- read.csv("data/station-metadata.csv")
 
 # Create general metadata without year information for each sample
 grouping.cols <- total.all |> 
@@ -239,7 +240,7 @@ write_csv(notree.pd,
 
 # Plot by Treatment3
 # All years
-ggplot(notree.pd, aes(x = Treatment3, y = dCover)) +
+notree.plot.pd1 <- ggplot(notree.pd, aes(x = Treatment3, y = dCover)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
@@ -252,10 +253,11 @@ ggplot(notree.pd, aes(x = Treatment3, y = dCover)) +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("Log ratio per unit time") +
-  ggtitle("Change in notree cover")
+  ggtitle("Change in grass/forb/shrub cover")
+notree.plot.pd1
 
 # By year
-ggplot(notree.pd, aes(x = Year, y = dCover)) +
+notree.plot.pd2 <- ggplot(notree.pd, aes(x = Year, y = dCover)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
@@ -268,8 +270,9 @@ ggplot(notree.pd, aes(x = Year, y = dCover)) +
   theme(legend.position = "none") +
   xlab(NULL) +
   ylab("Log ratio per unit time") +
-  ggtitle("Change in notree cover") +
+  ggtitle("Change in grass, forb & shrub cover") +
   facet_wrap(~Treatment3)
+notree.plot.pd2
 
 # Comparison
 qqPlot(filter(notree.pd, Treatment3 == "Treated")$dCover) # not normal
@@ -322,7 +325,7 @@ write_csv(rich.pd,
 
 # Plot by Treatment3
 # All years
-ggplot(rich.pd, aes(x = Treatment3, y = dRichness)) +
+rich.plot.pd1 <- ggplot(rich.pd, aes(x = Treatment3, y = dRichness)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
@@ -336,9 +339,10 @@ ggplot(rich.pd, aes(x = Treatment3, y = dRichness)) +
   xlab(NULL) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in perennial richness")
+rich.plot.pd1
 
 # By year
-ggplot(rich.pd, aes(x = Year, y = dRichness)) +
+rich.plot.pd2 <- ggplot(rich.pd, aes(x = Year, y = dRichness)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
@@ -353,6 +357,8 @@ ggplot(rich.pd, aes(x = Year, y = dRichness)) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in perennial richness") +
   facet_wrap(~Treatment3)
+rich.plot.pd2
+
 
 # Comparison
 qqPlot(filter(rich.pd, Treatment3 == "Treated")$dRichness) # not really normal?
@@ -408,7 +414,7 @@ write_csv(shan.pd,
 
 # Plot by Treatment3
 # All years
-ggplot(shan.pd, aes(x = Treatment3, y = dShannon)) +
+shan.plot.pd1 <- ggplot(shan.pd, aes(x = Treatment3, y = dShannon)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
@@ -422,9 +428,10 @@ ggplot(shan.pd, aes(x = Treatment3, y = dShannon)) +
   xlab(NULL) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in perennial diversity") 
+shan.plot.pd1
 
 # By year
-ggplot(shan.pd, aes(x = Year, y = dShannon)) +
+shan.plot.pd2 <- ggplot(shan.pd, aes(x = Year, y = dShannon)) +
   geom_boxplot(aes(fill = Treatment3),
                alpha = 0.4,
                outlier.shape = NA) +
@@ -439,6 +446,7 @@ ggplot(shan.pd, aes(x = Year, y = dShannon)) +
   ylab("Log ratio per unit time") +
   ggtitle("Change in perennial diversity") +
   facet_wrap(~Treatment3)
+shan.plot.pd2
 
 
 # Comparison
@@ -530,7 +538,7 @@ firstlast <- firstlast |>
          rich = last_rich / first_rich,
          shan = last_shan / first_shan)
 
-# Calculate change in cover
+# Calculate change in cover according to Munson 2013
 firstlast <- firstlast |> 
   mutate(total.pd = log(total) / (2021 - 2012),
          herb.pd = log(herb) / (2021 - 2012),
@@ -540,13 +548,32 @@ firstlast <- firstlast |>
   select(Sample, total.pd, herb.pd, notree.pd, rich.pd, shan.pd) |> 
   arrange(Sample)
 
+firstlast <- left_join(firstlast, station.meta) |> 
+  select(Sample, Name, Channel, Station, Treatment3, total.pd,
+         herb.pd, notree.pd, rich.pd, shan.pd)
+  
 
 # Write to csv
 write.csv(firstlast,
           file = "data/cleaned/Percent-difference_first-last.csv",
           row.names = FALSE)
 
-
+# Plot
+notree.plot.pd3 <- ggplot(firstlast, aes(x = Treatment3, y = notree.pd)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.4,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              alpha = 0.9,
+              size = 2) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  xlab(NULL) +
+  ylab("Log ratio per unit time") +
+  ggtitle("Change in grass, forb & shrub cover from 2012 to 2021") 
+notree.plot.pd3
 
 save.image("RData/Percent-change-over-time_veg-2012-2021.RData")
 
