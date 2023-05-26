@@ -15,7 +15,6 @@ library(agricolae)
 library(ggpubr)
 load("../RData/CV_veg-2012-2021.RData")
 load("../RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
-load("../RData/T-test-by-Treatment3_2021.RData")
 load("../RData/Percent-change-over-time_veg-2012-2021.RData")
 ```
 
@@ -27,7 +26,6 @@ load("../RData/Percent-change-over-time_veg-2012-2021.RData")
 - See other documents for code and analysis:
   - Temporal veg cover and diversity: `ANOVA-by-Treatment3_veg-2012-2021.html`.
   
-# Temporal veg, 2012-2021
 
 ## Averages over time
 - Letters represent one-way ANOVA and Tukey HSD.
@@ -51,20 +49,5 @@ ggarrange(notree.plot.pd1, rich.plot.pd1, shan.plot.pd1,
           ncol = 2, nrow = 2)
 ```
 
-
-## 2021 soil & plant
-- T-test between Control and Treatment showed no significant differences for any.
-```{r, fig.dim=c(11,7), echo=FALSE}
-ggarrange(tn.plot.21, tc.plot.21, cn.plot.21, om.plot.21,
-          ncol = 2, nrow = 2)
-```
-```{r, echo=FALSE, fig.dim=c(11,3.5)}
-ggarrange(barcrich.plot.21, barcshan.plot.21,
-          ncol = 2, nrow = 1)
-```
-```{r, echo=FALSE, fig.dim=c(11,7)}
-ggarrange(notree.plot.21, rich.plot.21, shan.plot.21,
-          ncol = 2, nrow = 2)
-```
 
 
