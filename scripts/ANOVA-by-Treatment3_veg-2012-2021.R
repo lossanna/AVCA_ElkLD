@@ -279,6 +279,9 @@ lm.notree <- lmer(Cover ~ Treatment3 + (1|Year), data = notree.all)
 check_model(lm.notree)
 Anova(lm.notree) # NS
 
+lm2.notree <- lme(Cover ~ Treatment3, random = ~1|Year, data = notree.all)
+emmeans(lm2.total, specs = "Treatment3") 
+
 # One-way ANOVA for Treated
 summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Treated"))) # p = 0.00416
 notree.trt <- notree.all |> 
@@ -476,7 +479,6 @@ shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean,
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("Shannon diversity index") +

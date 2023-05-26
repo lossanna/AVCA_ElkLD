@@ -1,5 +1,5 @@
 ---
-title: "ANOVA for temporal veg"
+title: "ANOVA for temporal vegatation data"
 author: "Lia Ossanna"
 date: "2023-05-26"
 output: 
@@ -22,14 +22,43 @@ library(emmeans)
 library(ggpubr)
 ```
 
+
 # Introduction
 - This is the code and results of plotting temporal veg data over time, with response variables of total cover, herbaceous cover, notree cover (shrubs, grasses, forbs), perennial richness (includes trees), and perennial diversity (includes trees).
+- We are using `Treatment3` which is a grouping of `Control` (Channels 12 & 19) and `Treated` (Channels 13 & 21), because this is the best way to look at the local effects of rock structures.
 - Repeat measures ANOVA is used to compare overall means between Control & Treated.
   - Because all the channels are different, these results are less relevant because what matters is how the channels change over time, not their overall inherent conditions.
+  - We look at repeat measures ANOVA in three ways:
+    1. Using `aov()`.
+    2. Using `lme4` package, with `Year` as a random factor. Then use `performance` package to check the model, and `car` package to run the ANOVA on the linear model.
+    3. Using `nlme` package, with `Year` as a random factor. Then use `emmeans` package to compare the means.
+
+
+# Previous iterations of analysis
+- The iterations here concern the temporal veg data collected from 2012 to 2021, not the additional soil data collected in the last year only (2021).
+- Presentations:
+  - AVCA data sharing event, Jan 2022
+  - National SRM, Feb 2022
+  - AZ SRM, Feb 2023
+  - National SRM, Feb 2023
+  - ALVSCE research poster forum, Mar 2023
+- Response variables for cover included total cover and herbaceous cover (presentations up through ALVSCE in March 2023). Have not presented results of notree data anywhere yet.
+- Treatments:
+  - Treatments are numbered more or less according to how I went through stages of analysis. `Treatment1` groups by the local station as `No treatment` (Channels 12 & 19), `Baffle`, and `One rock dam`. I never really used this for anything, because I decided that I didn't want to look at differences between baffles & ORD (study wasn't really set up that way and getting into those details is too much).
+  - Initially had used `Channel` for grouping (looked at each channel individually), which was better for presentation to AVCA, who are very familiar with the study area and project. Presented results grouped by `Channel` to AVCA data sharing meeting, and SRM 2022. Concluded that herbaceous cover increased over time for Channels 13 & 21, but also went with this conflicting sort of message that in-channel treatments promoted resiliency because total cover did not change over time.
+  - Then switched to grouping by `Treatment2`, which was `No treatment` (Channel 12), `Upland treatment` (Channel 19), and `In-channel treatment` (Channels 13 & 21). I was worried that Channels 12 & 19 couldn't be considered to be of the same treatment, since technically they weren't. But this made weird grouping (unbalanced sample sizes, which I accounted for, but still), and I couldn't determine the effect of the upland structures because we didn't have like "distance to nearest structure" measured, or something like that. I presented with this grouping at AZ SRM 2023 and national SRM 2023. Saw strong differences between treatments because Channel 19 is very different than Channel 12, but ultimately couldn't defend why I was grouping things like this, and it made the narrative more complicated.
+  - Now have settled on `Treatment3` grouping, which is simply `Control` and `Treated`. Presented these results at the ALVSCE poster forum in March 2023, and will stick with this grouping from now on. Sample sizes are more balanced, and this is best for looking at the local effect of the rocks. 
 
 
 # Summary
-- 
+- Will use notree cover for publication because conceptually, this is the best measurement of what we want to capture. The influence of tree cover (only trees are palo verde and mesquite) is not really what we're getting at, because we want to look at the local effect of the rock structures, and we don't think tree cover will chnage much over time, but it could obscure changes from other plants. Not using herbaceous cover, because based on monitoring photos, there are shrubs that are growing near rock structures that likely contribute to erosion control and sediment deposition.
+
+## Relevant figures
+```{r, fig.dim=c(11,9), echo=FALSE}
+ggarrange(notree.plot, rich.plot, shan.plot,
+          ncol = 2, nrow = 2)
+```
+
 
 # Setup
 ```{r, eval=FALSE}
@@ -115,6 +144,7 @@ anova.total <- aov(Cover ~ Treatment3 + Error(Year), data = total.all)
 summary(anova.total)
 summary(aov(Cover ~ Treatment3, data = total.all)) # without repeat measures to compare
 ```
+- Significant difference between channels.
 
 ### Year as random factor
 ```{r, fig.dim=c(8,8)}
@@ -127,6 +157,7 @@ Anova(lm.total)
 lm2.total <- lme(Cover ~ Treatment3, random = ~1|Year, data = total.all)
 emmeans(lm2.total, specs = "Treatment3") # Control > Treated
 ```
+- Significant difference between channels.
 
 ## Temporal one-way ANOVA
 ```{r}
@@ -172,3 +203,412 @@ total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean,
 total.plot
 ```
 
+
+
+# Herbaceous plant cover
+## Find averages by year
+```{r, eval=FALSE}
+# Find averages by year
+herb.avg <- herb.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(herb.avg,
+          file = "data/cleaned/Treatment3-average_herb-cover.csv",
+          row.names = FALSE)
+```
+
+## Plot
+```{r}
+ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE),  linewidth = 0.8) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none")
+```
+
+## Compare overall Control & Treated
+### Repeat measures ANOVA
+```{r}
+anova.herb <- aov(Cover ~ Treatment3 + Error(Year), data = herb.all)
+summary(anova.herb)
+summary(aov(Cover ~ Treatment3, data = herb.all)) # without repeat measures to compare
+```
+- Significant difference between channels.
+
+### Year as random factor
+```{r, fig.dim=c(8,8)}
+# Using lme4 & car
+lm.herb <- lmer(Cover ~ Treatment3 + (1|Year), data = herb.all)
+check_model(lm.herb)
+Anova(lm.herb)
+
+# Using nlme & emmeans
+lm2.herb <- lme(Cover ~ Treatment3, random = ~1|Year, data = herb.all)
+emmeans(lm2.herb, specs = "Treatment3") # Control > Treated
+```
+- Significant difference between channels.
+
+## Temporal one-way ANOVA
+```{r}
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
+herb.trt <- herb.all |> 
+  filter(Treatment3 == "Treated")
+anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year) # p = 9.86e-10 ***
+hsd.herb.trt <- HSD.test(anova.herb.trt, trt = "herb.trt$Year")
+hsd.herb.trt
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Control")))
+herb.ctrl <- herb.all |> 
+  filter(Treatment3 == "Control")
+anova.herb.ctrl <- aov(herb.ctrl$Cover ~ herb.ctrl$Year)
+hsd.herb.ctrl <- HSD.test(anova.herb.ctrl, trt = "herb.ctrl$Year")
+hsd.herb.ctrl
+```
+
+## Plot with one-way ANOVA letters
+```{r}
+herb.ctrl.letters <- hsd.herb.ctrl$groups
+herb.ctrl.letters <- herb.ctrl.letters |> 
+  mutate(Year = rownames(herb.ctrl.letters)) |> 
+  arrange(Year)
+herb.trt.letters <- hsd.herb.trt$groups
+herb.trt.letters <-herb.trt.letters |> 
+  mutate(Year = rownames(herb.trt.letters)) |> 
+  arrange(Year)
+
+letters.herb <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
+                      y = rep(28, 12),
+                      label = c(herb.ctrl.letters$groups,
+                                herb.trt.letters$groups),
+                      Treatment3 = c(rep("Control", 6),
+                                     rep("Treated", 6)))
+herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters.herb,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+herb.plot
+```
+
+
+
+# Notree cover
+## Find averages by year
+```{r, eval=FALSE}
+# Find averages by year
+notree.avg <- notree.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(notree.avg,
+          file = "data/cleaned/Treatment3-average_notree-cover.csv",
+          row.names = FALSE)
+```
+
+## Plot
+```{r}
+ggplot(notree.avg, aes(x = year.xaxis, y = mean,
+                       group = Treatment3, 
+                       color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Grass, forb & shrub cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+```
+
+## Compare overall Control & Treated
+### Repeat measures ANOVA
+```{r}
+anova.notree <- aov(Cover ~ Treatment3 + Error(Year), data = notree.all)
+summary(anova.notree) # NS
+summary(aov(Cover ~ Treatment3, data = notree.all)) # without repeat measures to compare
+```
+- No significant difference between Control & Treated.
+
+### Year as random factor
+```{r, fig.dim=c(8,8)}
+# Using lme4 & car
+lm.notree <- lmer(Cover ~ Treatment3 + (1|Year), data = notree.all)
+check_model(lm.notree)
+Anova(lm.notree) # NS
+
+# Using nlme & emmeans
+lm2.notree <- lme(Cover ~ Treatment3, random = ~1|Year, data = notree.all)
+emmeans(lm2.total, specs = "Treatment3") 
+```
+- No significant difference between channels.
+
+## Temporal one-way ANOVA
+```{r}
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Treated"))) # p = 0.00416
+notree.trt <- notree.all |> 
+  filter(Treatment3 == "Treated")
+anova.notree.trt <- aov(notree.trt$Cover ~ notree.trt$Year)
+hsd.notree.trt <- HSD.test(anova.notree.trt, trt = "notree.trt$Year")
+hsd.notree.trt
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Control")))
+notree.ctrl <- notree.all |> 
+  filter(Treatment3 == "Control")
+anova.notree.ctrl <- aov(notree.ctrl$Cover ~ notree.ctrl$Year)
+hsd.notree.ctrl <- HSD.test(anova.notree.ctrl, trt = "notree.ctrl$Year")
+hsd.notree.ctrl
+```
+
+## Plot with one-way ANOVA letters
+```{r}
+notree.ctrl.letters <- hsd.notree.ctrl$groups
+notree.ctrl.letters <- notree.ctrl.letters |> 
+  mutate(Year = rownames(notree.ctrl.letters)) |> 
+  arrange(Year)
+notree.trt.letters <- hsd.notree.trt$groups
+notree.trt.letters <- notree.trt.letters |> 
+  mutate(Year = rownames(notree.trt.letters)) |> 
+  arrange(Year)
+
+letters.notree <- data.frame(x = rep(notree.avg$year.xaxis[1:6], 2),
+                      y = rep(47, 12),
+                      label = c(notree.ctrl.letters$groups,
+                                notree.trt.letters$groups),
+                      Treatment3 = c(rep("Control", 6),
+                                     rep("Treated", 6)))
+notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean, 
+                       group = Treatment3, 
+                       color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Grass, forb & shrub cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters.notree,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+notree.plot
+```
+
+# Compare veg cover change
+```{r, fig.dim=c(11,9)}
+ggarrange(total.plot, herb.plot, notree.plot,
+          ncol = 2, nrow = 2)
+```
+
+
+
+# Perennial richness
+## Find averages by year
+```{r, eval=FALSE}
+# Find averages by year
+rich.avg <- per.div %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(rich),
+            SD = sd(rich),
+            SE = std.error(rich),
+            .groups = "keep")
+
+write.csv(rich.avg,
+          file = "data/cleaned/Treatment3-average_richness.csv",
+          row.names = FALSE)
+```
+
+## Plot
+```{r}
+ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("No. of species") +
+  ggtitle("Perennial richness") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+```
+
+## Compare overall Control & Treated
+### Repeat measures ANOVA
+```{r}
+anova.rich <- aov(rich ~ Treatment3 + Error(Year), data = per.div)
+summary(anova.rich)
+summary(aov(rich ~ Treatment3, data = per.div)) # without repeat measures to compare
+```
+- Significant difference between channels.
+
+### Year as random factor
+```{r, fig.dim=c(8,8)}
+# Using lme4 & car
+lm.rich <- lmer(rich ~ Treatment3 + (1|Year), data = per.div)
+check_model(lm.rich)
+Anova(lm.rich)
+
+# Using nlme & emmeans
+lm2.rich <- lme(rich ~ Treatment3, random = ~1|Year, data = per.div)
+emmeans(lm2.rich, specs = "Treatment3") # Control > Treated
+```
+- Significant difference between channels.
+
+## Temporal one-way ANOVA
+```{r}
+# One-way ANOVA for Treated
+summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Treated"))) 
+rich.trt <- per.div |> 
+  filter(Treatment3 == "Treated")
+anova.rich.trt <- aov(rich.trt$rich ~ rich.trt$Year)
+hsd.rich.trt <- HSD.test(anova.rich.trt, trt = "rich.trt$Year")
+hsd.rich.trt
+
+# One-way ANOVA for Control
+summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Control"))) # 0.00881
+rich.ctrl <- per.div |> 
+  filter(Treatment3 == "Control")
+anova.rich.ctrl <- aov(rich.ctrl$rich ~ rich.ctrl$Year)
+hsd.rich.ctrl <- HSD.test(anova.rich.ctrl, trt = "rich.ctrl$Year")
+hsd.rich.ctrl
+```
+
+## Plot with one-way ANOVA letters
+```{r}
+rich.ctrl.letters <- hsd.rich.ctrl$groups
+rich.ctrl.letters <- rich.ctrl.letters |> 
+  mutate(Year = rownames(rich.ctrl.letters)) |> 
+  arrange(Year)
+rich.trt.letters <- hsd.rich.trt$groups
+rich.trt.letters <-rich.trt.letters |> 
+  mutate(Year = rownames(rich.trt.letters)) |> 
+  arrange(Year)
+
+letters.rich <- data.frame(x = rep(rich.avg$year.xaxis[1:6], 2),
+                      y = rep(10.3, 12),
+                      label = c(rich.ctrl.letters$groups,
+                                rich.trt.letters$groups),
+                      Treatment3 = c(rep("Control", 6),
+                                     rep("Treated", 6)))
+rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("No. of species") +
+  ggtitle("Perennial plant richness") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters.rich,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+rich.plot
+```
+
+
+
+# Perennial diversity
+## Find averages by year
+```{r, eval=FALSE}
+# Find averages by year
+shan.avg <- per.div %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(shan),
+            SD = sd(shan),
+            SE = std.error(shan),
+            .groups = "keep")
+
+write.csv(shan.avg,
+          file = "data/cleaned/Treatment3-average_shannon.csv",
+          row.names = FALSE)
+```
+
+## Plot
+```{r}
+shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Shannon diversity index") +
+  ggtitle("Perennial diversity") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+shan.plot
+```
+
+## Compare overall Control & Treated
+### Repeat measures ANOVA
+```{r}
+anova.shan <- aov(shan ~ Treatment3 + Error(Year), data = per.div)
+summary(anova.shan)
+summary(aov(shan ~ Treatment3, data = per.div)) # without repeat measures to compare
+```
+- Significant difference between channels.
+
+### Year as random factor
+```{r, fig.dim=c(8,8)}
+# Using lme4 & car
+lm.shan <- lmer(shan ~ Treatment3 + (1|Year), data = per.div) # something weird is happening here
+check_model(lm.shan) # something is def not right
+summary(lm.shan) # why is there no variance? idk
+Anova(lm.shan)
+
+# Using nlme & emmeans
+lm2.shan <- lme(shan ~ Treatment3, random = ~1|Year, data = per.div)
+emmeans(lm2.shan, specs = "Treatment3")
+```
+- Significant difference between channels.
+
+## Temporal one-way ANOVA
+```{r}
+# One-way ANOVA for Treated
+summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # NS
+
+# One-way ANOVA for Control
+summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Control"))) # NS
+```
