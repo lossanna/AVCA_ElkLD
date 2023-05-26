@@ -7,8 +7,10 @@ firstlast <- read.csv("data/cleaned/Percent-difference_first-last.csv", )
 
 dat <- left_join(elev, firstlast)
 
+
 # Visualization -----------------------------------------------------------
 
+# Percent difference and elevation change
 dat |> 
   ggplot(aes(x = dElev, y = notree.pd, color = Treatment3)) +
   geom_point() +
