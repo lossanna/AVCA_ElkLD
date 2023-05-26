@@ -1,0 +1,174 @@
+---
+title: "ANOVA for temporal veg"
+author: "Lia Ossanna"
+date: "2023-05-26"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+load("../RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
+library(tidyverse)
+library(agricolae)
+library(plotrix)
+library(car)
+library(lme4)
+library(nlme)
+library(performance)
+library(emmeans)
+library(ggpubr)
+```
+
+# Introduction
+- This is the code and results of plotting temporal veg data over time, with response variables of total cover, herbaceous cover, notree cover (shrubs, grasses, forbs), perennial richness (includes trees), and perennial diversity (includes trees).
+- Repeat measures ANOVA is used to compare overall means between Control & Treated.
+  - Because all the channels are different, these results are less relevant because what matters is how the channels change over time, not their overall inherent conditions.
+
+
+# Summary
+- 
+
+# Setup
+```{r, eval=FALSE}
+library(tidyverse)
+library(agricolae)
+library(plotrix)
+library(car)
+library(lme4)
+library(nlme)
+library(performance)
+library(emmeans)
+library(ggpubr)
+
+# Load data ---------------------------------------------------------------
+
+total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
+herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv") 
+notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
+per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
+
+
+# Functions ---------------------------------------------------------------
+
+# Convert columns to factor or date as needed
+convert.cols <- function(x) {
+  x$year.xaxis <- as.Date(x$year.xaxis)
+  
+  group.cols <- c("Sample", "Year", "Channel", "Station", "Treatment1", "Treatment2", "Treatment3")
+  
+  x[group.cols] <- lapply(x[group.cols], factor)
+  
+  return(x)
+}
+
+
+# Data wrangling ----------------------------------------------------------
+
+total.all <- convert.cols(total.all)
+herb.all <- convert.cols(herb.all)
+notree.all <- convert.cols(notree.all)
+per.div <- convert.cols(per.div)
+```
+
+
+# Total plant cover
+## Find averages by year
+```{r, eval=FALSE}
+# Find averages by year
+total.avg <- total.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(total.avg,
+          file = "data/cleaned/Treatment3-average_total-cover.csv",
+          row.names = FALSE)
+```
+
+## Plot
+```{r}
+ggplot(total.avg, aes(x = year.xaxis, y = mean, 
+                      group = Treatment3, 
+                      color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Total plant cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none")
+```
+
+## Compare overall Control & Treated
+### Repeat measures ANOVA
+```{r}
+anova.total <- aov(Cover ~ Treatment3 + Error(Year), data = total.all)
+summary(anova.total)
+summary(aov(Cover ~ Treatment3, data = total.all)) # without repeat measures to compare
+```
+
+### Year as random factor
+```{r, fig.dim=c(8,8)}
+# Using lme4 & car
+lm.total <- lmer(Cover ~ Treatment3 + (1|Year), data = total.all)
+check_model(lm.total)
+Anova(lm.total)
+
+# Using nlme & emmeans
+lm2.total <- lme(Cover ~ Treatment3, random = ~1|Year, data = total.all)
+emmeans(lm2.total, specs = "Treatment3") # Control > Treated
+```
+
+## Temporal one-way ANOVA
+```{r}
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Treated"))) # NS
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Control")))
+total.ctrl <- total.all |> 
+  filter(Treatment3 == "Control")
+anova.total.ctrl <- aov(total.ctrl$Cover ~ total.ctrl$Year)
+hsd.total.ctrl <- HSD.test(anova.total.ctrl, trt = "total.ctrl$Year")
+hsd.total.ctrl
+```
+
+## Plot with one-way ANOVA letters
+```{r}
+total.ctrl.letters <- hsd.total.ctrl$groups
+total.ctrl.letters <- total.ctrl.letters |> 
+  mutate(Year = rownames(total.ctrl.letters)) |> 
+  arrange(Year)
+
+letters.total <- data.frame(x = total.avg$year.xaxis[1:6],
+                      y = rep(67, 6),
+                      label = total.ctrl.letters$groups,
+                      Treatment3 = c(rep("Control", 6)))
+total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Total plant cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters.total,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")
+total.plot
+```
+

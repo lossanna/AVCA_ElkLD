@@ -8,7 +8,6 @@ library(plotrix)
 library(car)
 library(lme4)
 library(nlme)
-library(rstatix)
 library(performance)
 library(emmeans)
 library(ggpubr)
@@ -171,6 +170,7 @@ summary(aov(Cover ~ Treatment3, data = herb.all)) # without repeat measures to c
 lm.herb <- lmer(Cover ~ Treatment3 + (1|Year), data = herb.all)
 check_model(lm.herb)
 Anova(lm.herb)
+summary(lm.herb)
 
 lm2.herb <- lme(Cover ~ Treatment3, random = ~1|Year, data = herb.all)
 emmeans(lm2.herb, specs = "Treatment3") # Control > Treated
@@ -313,7 +313,7 @@ notree.ctrl.letters <- notree.ctrl.letters |>
   mutate(Year = rownames(notree.ctrl.letters)) |> 
   arrange(Year)
 notree.trt.letters <- hsd.notree.trt$groups
-notree.trt.letters <-notree.trt.letters |> 
+notree.trt.letters <- notree.trt.letters |> 
   mutate(Year = rownames(notree.trt.letters)) |> 
   arrange(Year)
 
