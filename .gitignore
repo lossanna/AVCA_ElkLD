@@ -3,3 +3,4 @@
 .Ruserdata
 *.RData
 hpc-amplicon-sequencing/
+.Rproj
