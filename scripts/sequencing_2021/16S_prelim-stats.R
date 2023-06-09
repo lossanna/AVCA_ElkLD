@@ -1,7 +1,7 @@
 # Purpose: Run 16S stats - create clean ASV tables, look at NMDS and beta dispersion,
 #   calculate richness and diversity, create stacked bar charts of dominant phyla & families.
 #   Post 2023-03-34 analysis only includes grouping by Treatment3 (and sometimes Channel to compare).
-# Created: ~2023-01-10
+# Created: 2023-01-10
 # Last updated: 2023-06-09
 
 library(metagenomeSeq)
