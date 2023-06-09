@@ -1,4 +1,5 @@
 # Created: 2023-05-24
+# Last updated: 2023-06-07
 # Purpose: Wrangle raw cross section elevation data from Robert Davis, and write out clean data.
 #   Found minimum elevation (lowest point of channel), and averaged this with surrounding points,
 #     where the number of points depends on the channel (look at Excel graphs from Robert)
@@ -148,8 +149,9 @@ elev <- elev |>
     TRUE ~ dElev))
 
 
-# Visualization -----------------------------------------------------------
+# Visualization and t-test ------------------------------------------------
 
+# Channel
 elev |> 
 ggplot(aes(x = Channel, y = dElev)) +
   geom_boxplot()
@@ -158,9 +160,27 @@ elev |>
   ggplot(aes(Channel, dElev_corrected)) +
   geom_boxplot()
 
+# Treatment3
 elev |> 
   ggplot(aes(Treatment3, dElev)) +
-  geom_boxplot()
+  geom_boxplot() +
+  geom_jitter()
+
+hist(elev$dElev, breaks = 10)
+
+t.test(filter(elev, Treatment3 == "Treated")$dElev,
+       filter(elev, Treatment3 == "Control")$dElev) # p-value = 0.001562
+
+
+elev |> 
+  ggplot(aes(Treatment3, dElev_corrected)) +
+  geom_boxplot() +
+  geom_jitter()
+
+hist(elev$dElev_corrected, breaks = 10)
+
+kruskal.test(dElev_corrected ~ Treatment3, data = elev) # p-value = 9.793e-05
+
   
 
 # Write to csv ------------------------------------------------------------
