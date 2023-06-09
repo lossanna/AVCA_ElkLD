@@ -5,7 +5,8 @@
 #   and found that OM & TC were collinear
 # Produced a clean data sheet for 2021 data (Data-2021_clean.csv).
 #   Previously had created data for SEM input, but then later decided SEM was not the right tool.
-
+# Created: 2022-04-18
+# Last updated: 2023-05-24
 
 library(tidyverse)
 library(readxl)

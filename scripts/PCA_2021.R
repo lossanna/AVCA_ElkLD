@@ -1,6 +1,8 @@
 # Purpose: Conduct PCA for 2021 soil and plant data to see what is driving variation.
 # One version uses total cover, another uses herbaceous cover.
 # Other variables: perennial richness & Shannon, TN_log, TC_log, OM, bac/arc richness & Shannon.
+# Created: 2023-03-28
+# Last updated: 2023-03-29
 
 library(tidyverse)
 library(FactoMineR)

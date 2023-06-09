@@ -1,6 +1,7 @@
 # Purpose: Standardize scientific and common names, lifeform, date; address trace values; 
 #   and resolve problems noted in Excel sheet in terms of other values.
-
+# Created: 2022-01-07 (pre-GitHub)
+# Last updated: 2023-03-17
 
 library(readxl)
 library(tidyverse)

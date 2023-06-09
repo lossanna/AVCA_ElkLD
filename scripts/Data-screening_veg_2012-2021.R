@@ -4,6 +4,8 @@
 #   Herb cover was normally distributed by year, but not really for all years combined.
 # Checked for outliers:
 #   There were a few outliers, but none of them were extreme (all years combined).
+# Created: 2023-02-01
+# Last updated: 2023-03-31
 
 
 library(tidyverse)

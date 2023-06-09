@@ -8,6 +8,8 @@
 # Calculated the percent difference from year to year (5 time intervals) for each sample.
 # Found no difference in percent difference for Treated vs Control for any response variable
 #   (total cover, herb cover, richness, Shannon).
+# Created: 2023-02-23
+# Last updated: 2023-05-26
 
 
 library(tidyverse)

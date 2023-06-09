@@ -32,5 +32,9 @@ The order scripts should be run in to recreate the current/most recent version o
     - `old_pre-2023-03-24/`
         - Created 2023-03-24 as a place for prior analysis that has since been discontinued (have been replaced by better grouping and statistical models); usually uses data from `data/cleaned/old-summarised/` folder.
         - Lines of code to write out figures have been deleted (unless for SRM 2022 & SRM 2023), so figures won't accidentally be overwritten by old analysis (no need to save old figures in their own folder to write out separately again).
+        - Not intended to run - some paths may not work, as files and folders may have changed names.
 - `.gitignore`
 - `AVCA_ElkLD.Rproj`
+
+# Notes
+- GitHub repository created for project 2022-01-31. Project began Dec 2021.

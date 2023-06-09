@@ -1,6 +1,8 @@
 # Purpose: Run one-way repeated measures ANOVA to compare Treated vs. Control for response variables
 #   (total cover, herb cover, richness, Shannon).
 # Includes plots and ANOVA tests.
+# Created: 2023-03-27
+# Last updated: 2023-05-26
 
 library(tidyverse)
 library(agricolae)

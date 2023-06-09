@@ -1,5 +1,7 @@
 # Purpose: Make figures for ALVSCE poster forum (presented 2023-03-30).
 #   Ended up using herbaceous cover and not total cover for all figs
+# Created: 2023-03-28
+# Last updated: 2023-03-29
 
 library(tidyverse)
 library(FactoMineR)

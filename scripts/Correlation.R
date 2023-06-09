@@ -1,3 +1,8 @@
+# Purpose: Maybe look at relationship between elevation difference and percent difference,
+#   but not sure this will really work.
+# Created: 2023-05-24
+# Last updated: 2023-05-24
+
 library(tidyverse)
 
 # Load data ---------------------------------------------------------------

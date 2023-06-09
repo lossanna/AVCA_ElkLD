@@ -1,6 +1,8 @@
 # Purpose: Calculate CV of each sample across all years, and compare CVs of Treated vs. Control.
 #   CV is a measure of stability and resistance to change.
 # Did not find any significant differences in CVs for total cover, herb cover, richness, or Shannon.
+# Created: 2022-02-15
+# Last updated: 2023-05-26
 
 
 library(tidyverse)

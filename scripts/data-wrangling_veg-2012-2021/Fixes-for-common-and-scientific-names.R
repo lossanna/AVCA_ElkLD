@@ -1,5 +1,8 @@
+# Purpose: Do not run.
 # List of all corrections for plant names, with a generic "ch.station" object.
 #   Intended as a comprehensive list of changes, but individual changes were all documented in scripts.
+# Created: 2021-12-05 (pre-GitHub)
+# Last updated: 2023-03-17
 
 # Add missing common names
 ch.station$Common[ch.station$Scientific == "Ambrosia psylotachya"] <- "Cuman ragweed"
