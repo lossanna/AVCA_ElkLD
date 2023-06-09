@@ -1,6 +1,8 @@
 # Purpose: Run 16S stats - create clean ASV tables, look at NMDS and beta dispersion,
 #   calculate richness and diversity, create stacked bar charts of dominant phyla & families.
 #   Post 2023-03-34 analysis only includes grouping by Treatment3 (and sometimes Channel to compare).
+# Created: ~2023-01-10
+# Last updated: 2023-06-09
 
 library(metagenomeSeq)
 library(vegan)
@@ -88,17 +90,17 @@ barc.rep <- subset(barc.rep.raw,
 
 # Save the clean asv table, taxonomy table and ASV.rep
 write.table(barc.asv, 
-            file = "data/cleaned/sequencing/bac_arc_clean_asv.txt", 
+            file = "data/cleaned/sequencing/bac-arc_clean_asv.txt", 
             quote = FALSE, 
             sep = "\t", 
             col.names = NA)
 write.table(barc.tax, 
-            file = "data/cleaned/sequencing/bac_arc_clean_tax.txt", 
+            file = "data/cleaned/sequencing/bac-arc_clean_tax.txt", 
             quote = FALSE, 
             sep = "\t", 
             col.names = NA)
 write.table(barc.rep, 
-            file = "data/cleaned/sequencing/bac_arc_clean_rep.txt", 
+            file = "data/cleaned/sequencing/bac-arc_clean_rep.txt", 
             quote = FALSE, 
             sep = "\t", 
             row.names = FALSE)
@@ -126,7 +128,7 @@ rownames(barc.tax.unique) <- c()
 barc.tax.unique <- unique(barc.tax.unique)
 
 write.table(barc.tax.unique,
-            file = "data/cleaned/sequencing/bac_arc_clean_tax_unique.txt",
+            file = "data/cleaned/sequencing/bac-arc_clean_tax_unique.txt",
             quote = FALSE, 
             sep = "\t", 
             row.names = FALSE)
@@ -262,7 +264,7 @@ meta %>%
   
 # Write table with beta dispersion distances
 write.table(meta, 
-            file = "data/cleaned/sequencing/bac_arc_diversity.txt", 
+            file = "data/cleaned/sequencing/bac-arc_diversity.txt", 
             quote = FALSE, 
             sep = "\t", 
             row.names = FALSE)
@@ -393,14 +395,14 @@ barc.phylum <- as.data.frame(t(barc.phylum))
 barc.phylum$Unclassified = 100 - rowSums(barc.phylum)
 
 write.table(barc.phylum,
-            file = "data/cleaned/sequencing/bac_arc_phylum.txt",
+            file = "data/cleaned/sequencing/bac-arc_phylum.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA)
 
 
 # Average proportions by Channel (all phyla)
-barc.phylum <- read.table("data/cleaned/sequencing/bac_arc_phylum.txt", 
+barc.phylum <- read.table("data/cleaned/sequencing/bac-arc_phylum.txt", 
                              sep = "\t", header = T, row.names = 1)
 barc.phylum <- as.data.frame(t(barc.phylum))
 colnames(barc.phylum) <- meta$Channel
@@ -413,14 +415,14 @@ barc.phylum <- barc.phylum[ , -c(1:62)]
 barc.phylum <- as.data.frame(t(barc.phylum))
 
 write.table(barc.phylum,
-            file = "data/cleaned/sequencing/bac_arc_phyla_avg-ch.txt",
+            file = "data/cleaned/sequencing/bac-arc_phylum_avg-ch.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA)
 
 
 # Average proportions by Treatment3 (all phyla)
-barc.phylum <- read.table("data/cleaned/sequencing/bac_arc_phylum.txt", 
+barc.phylum <- read.table("data/cleaned/sequencing/bac-arc_phylum.txt", 
                           sep = "\t", header = T, row.names = 1)
 barc.phylum <- as.data.frame(t(barc.phylum))
 colnames(barc.phylum) <- meta$Treatment3
@@ -432,13 +434,13 @@ colnames(barc.phylum) <- c("Control", "Treated")
 barc.phylum <- as.data.frame(t(barc.phylum))
 
 write.table(barc.phylum,
-            file = "data/cleaned/sequencing/bac_arc_phyla_avg-t3.txt",
+            file = "data/cleaned/sequencing/bac-arc_phylum_avg-t3.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA)
 
 # Create dominant phyla table
-barc.phylum <- read.table("data/cleaned/sequencing/bac_arc_phylum.txt", 
+barc.phylum <- read.table("data/cleaned/sequencing/bac-arc_phylum.txt", 
                           sep = "\t", header = T, row.names = 1)
 barc.phylum.d <- as.data.frame(t(barc.phylum))
 unclassified.row <- c("Unclassified")
@@ -457,7 +459,7 @@ barc.phylum.d <- rbind(barc.phylum.d, barc.phylum.un)
 barc.phylum.d <- as.data.frame(t(barc.phylum.d))
 
 write.table(barc.phylum.d,
-            file = "data/cleaned/sequencing/bac_arc_dominant_phyla_sample.txt",
+            file = "data/cleaned/sequencing/bac-arc_phylum-dominant_sample.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
@@ -470,7 +472,7 @@ rm(barc.phylum.nd,
 
 # By Channel
 # Average proportions for dominant phyla
-barc.phylum.dc <- read.table("data/cleaned/sequencing/bac_arc_dominant_phyla_sample.txt", 
+barc.phylum.dc <- read.table("data/cleaned/sequencing/bac-arc_phylum-dominant_sample.txt", 
                                 sep = "\t", header = T, row.names = 1)
 barc.phylum.dc <- as.data.frame(t(barc.phylum.dc))
 colnames(barc.phylum.dc) <- meta$Channel
@@ -483,7 +485,7 @@ barc.phylum.dc <- barc.phylum.dc[ , -c(1:62)]
 barc.phylum.dc <- as.data.frame(t(barc.phylum.dc))
 
 write.table(barc.phylum.dc,
-            file = "data/cleaned/sequencing/bac_arc_dominant_phyla_avg-ch.txt",
+            file = "data/cleaned/sequencing/bac-arc_phylum-dominant_avg-ch.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
@@ -501,7 +503,7 @@ barc.phylum.bar$Channel <- rep(c("Channel 12",
                                      times = 13)
 
 write.table(barc.phylum.bar,
-            file = "data/cleaned/sequencing/bac_arc_dominant_phyla_avg-ch_barplot.txt",
+            file = "data/cleaned/sequencing/bac-arc_phylum-dominant_avg-ch_barplot.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
@@ -521,7 +523,7 @@ ggplot(aes(x = Channel, y = proportion, fill = phylum)) +
 
 # By Treatment3
 # Average proportions for dominant phyla
-barc.phylum.dt3 <- read.table("data/cleaned/sequencing/bac_arc_dominant_phyla_sample.txt", 
+barc.phylum.dt3 <- read.table("data/cleaned/sequencing/bac-arc_phylum-dominant_sample.txt", 
                              sep = "\t", header = T, row.names = 1)
 barc.phylum.dt3 <- as.data.frame(t(barc.phylum.dt3))
 colnames(barc.phylum.dt3) <- meta$Treatment3
@@ -533,7 +535,7 @@ colnames(barc.phylum.dt3) <- c("Control", "Treated")
 barc.phylum.dt3 <- as.data.frame(t(barc.phylum.dt3))
 
 write.table(barc.phylum.dt3,
-            file = "data/cleaned/sequencing/bac_arc_dominant_phyla_avg-t3.txt",
+            file = "data/cleaned/sequencing/bac-arc_phylum-dominant_avg-t3.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
@@ -549,7 +551,7 @@ barc.phylum.bar.t3$Treatment3 <- rep(c("Control",
                                   times = 13)
 
 write.table(barc.phylum.bar.t3,
-            file = "data/cleaned/sequencing/bac_arc_dominant_phyla_avg-t3_barplot.txt",
+            file = "data/cleaned/sequencing/bac-arc_phylum-dominant_avg-t3_barplot.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 1% abundance
@@ -581,14 +583,14 @@ barc.family <- as.data.frame(t(barc.family))
 barc.family$Unclassified = 100 - rowSums(barc.family)
 
 write.table(barc.family,
-            file = "data/cleaned/sequencing/bac_arc_family.txt",
+            file = "data/cleaned/sequencing/bac-arc_family.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA)
 
 
 # Average proportions by Channel (all families)
-barc.family <- read.table("data/cleaned/sequencing/bac_arc_family.txt", 
+barc.family <- read.table("data/cleaned/sequencing/bac-arc_family.txt", 
                              sep = "\t", header = T, row.names = 1)
 barc.family <- as.data.frame(t(barc.family))
 colnames(barc.family) <- meta$Channel
@@ -601,14 +603,14 @@ barc.family <- barc.family[ , -c(1:62)]
 barc.family <- as.data.frame(t(barc.family))
 
 write.table(barc.family,
-            file = "data/cleaned/sequencing/bac_arc_family_avg-ch.txt",
+            file = "data/cleaned/sequencing/bac-arc_family_avg-ch.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA)
 
 
 # Average proportions by Treatment3 (all families)
-barc.family <- read.table("data/cleaned/sequencing/bac_arc_family.txt", 
+barc.family <- read.table("data/cleaned/sequencing/bac-arc_family.txt", 
                           sep = "\t", header = T, row.names = 1)
 barc.family <- as.data.frame(t(barc.family))
 colnames(barc.family) <- meta$Treatment3
@@ -620,14 +622,14 @@ colnames(barc.family) <- c("Control", "Treated")
 barc.family <- as.data.frame(t(barc.family))
 
 write.table(barc.family,
-            file = "data/cleaned/sequencing/bac_arc_family_avg-t3.txt",
+            file = "data/cleaned/sequencing/bac-arc_family_avg-t3.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA)
 
 
 # Create dominant family table
-barc.family <- read.table("data/cleaned/sequencing/bac_arc_family.txt", 
+barc.family <- read.table("data/cleaned/sequencing/bac-arc_family.txt", 
                              sep = "\t", header = T, row.names = 1)
 barc.family.d <- as.data.frame(t(barc.family))
 unclassified.row <- c("Unclassified")
@@ -646,7 +648,7 @@ barc.family.d <- rbind(barc.family.d, barc.family.un)
 barc.family.d <- as.data.frame(t(barc.family.d))
 
 write.table(barc.family.d,
-            file = "data/cleaned/sequencing/bac_arc_dominant_family_sample.txt",
+            file = "data/cleaned/sequencing/bac-arc_family-dominant_sample.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 2% abundance
@@ -659,7 +661,7 @@ rm(barc.family.nd,
 
 # By Channel
 # Average proportions for dominant families
-barc.family.dc <- read.table("data/cleaned/sequencing/bac_arc_dominant_family_sample.txt", 
+barc.family.dc <- read.table("data/cleaned/sequencing/bac-arc_family-dominant_sample.txt", 
                                 sep = "\t", header = T, row.names = 1)
 barc.family.dc <- as.data.frame(t(barc.family.dc))
 colnames(barc.family.dc) <- meta$Channel
@@ -672,7 +674,7 @@ barc.family.dc <- barc.family.dc[ , -c(1:62)]
 barc.family.dc <- as.data.frame(t(barc.family.dc))
 
 write.table(barc.family.dc,
-            file = "data/cleaned/sequencing/bac_arc_dominant_family_avg-ch.txt",
+            file = "data/cleaned/sequencing/bac-arc_family-dominant_avg-ch.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 2% abundance
@@ -690,7 +692,7 @@ barc.family.bar$Channel <- rep(c("Channel 12",
                                   times = 16)
 
 write.table(barc.family.bar,
-            file = "data/cleaned/sequencing/bac_arc_dominant_family_avg-ch_barplot.txt",
+            file = "data/cleaned/sequencing/bac-arc_family-dominant_avg-ch_barplot.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 2% abundance
@@ -707,7 +709,7 @@ barc.family.bar %>%
 
 # By Treatment3
 # Average proportions for dominant phyla
-barc.family.dt3 <- read.table("data/cleaned/sequencing/bac_arc_dominant_family_sample.txt", 
+barc.family.dt3 <- read.table("data/cleaned/sequencing/bac-arc_family-dominant_sample.txt", 
                              sep = "\t", header = T, row.names = 1)
 barc.family.dt3 <- as.data.frame(t(barc.family.dt3))
 colnames(barc.family.dt3) <- meta$Treatment3
@@ -719,7 +721,7 @@ colnames(barc.family.dt3) <- c("Control", "Treated")
 barc.family.dt3 <- as.data.frame(t(barc.family.dt3))
 
 write.table(barc.family.dt3,
-            file = "data/cleaned/sequencing/bac_arc_dominant_family_avg-t3.txt",
+            file = "data/cleaned/sequencing/bac-arc_family-dominant_avg-t3.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 2% abundance
@@ -735,7 +737,7 @@ barc.family.bar.t3$Treatment3 <- rep(c("Control",
                                  times = 16)
 
 write.table(barc.family.bar.t3,
-            file = "data/cleaned/sequencing/bac_arc_dominant_family_avg-t3_barplot.txt",
+            file = "data/cleaned/sequencing/bac-arc_family-dominant_avg-t3_barplot.txt",
             quote = FALSE,
             sep ="\t",
             col.names = NA) # > 2% abundance
