@@ -9,7 +9,7 @@ fapro.raw <- read.table("data/cleaned/sequencing/faprotax-output.tsv",
 meta <- read.table("data/cleaned/sequencing/sequencing_metadata.txt",
                    sep = "\t", header = TRUE)
 
-barc.asv <- read.table("data/cleaned/sequencing/bac_arc_clean_asv.txt",
+barc.asv <- read.table("data/cleaned/sequencing/bac-arc_clean_asv.txt",
                        sep = "\t", header = TRUE, row.names = 1)
 
 
