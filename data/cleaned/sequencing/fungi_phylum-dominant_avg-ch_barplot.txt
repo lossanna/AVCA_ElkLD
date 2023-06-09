@@ -1,0 +1,21 @@
+	phylum	proportion	Channel
+1	Ascomycota	76.4612683899967	Channel 12
+2	Ascomycota	78.323410788321	Channel 13
+3	Ascomycota	80.8459026503782	Channel 19
+4	Ascomycota	82.6373276588029	Channel 21
+5	Basidiomycota	17.9414551539413	Channel 12
+6	Basidiomycota	13.5123288455873	Channel 13
+7	Basidiomycota	11.3176848647576	Channel 19
+8	Basidiomycota	10.9068106351236	Channel 21
+9	Blastocladiomycota	1.66383592043716	Channel 12
+10	Blastocladiomycota	2.27457160514633	Channel 13
+11	Blastocladiomycota	1.815109347839	Channel 19
+12	Blastocladiomycota	1.11694294052237	Channel 21
+13	Others	1.78464106422426	Channel 12
+14	Others	2.87874320204097	Channel 13
+15	Others	2.55669548014634	Channel 19
+16	Others	2.45270900731253	Channel 21
+17	Unclassified	2.14879947140061	Channel 12
+18	Unclassified	3.01094555890438	Channel 13
+19	Unclassified	3.46460765687888	Channel 19
+20	Unclassified	2.88620975823861	Channel 21

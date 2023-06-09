@@ -1,3 +1,9 @@
+# Purpose: Run ITS stats - create clean ASV tables, look at NMDS and beta dispersion,
+#   calculate richness and diversity, create stacked bar charts of dominant phyla.
+#   Post-2023-03-34 analysis only includes grouping by Channel and Treatment3.
+# Created: 2023-01-12
+# Last updated: 2023-06-09
+
 library(metagenomeSeq)
 library(vegan)
 library(agricolae)
@@ -6,18 +12,19 @@ library(rcompanion)
 library(tidyverse)
 library(ggpubr)
 library(reshape2)
+library(car)
 
 
 # Load data ---------------------------------------------------------------
 
 # Read ASV table, taxonomy table and ASV_rep
-fungi.asv.raw <- read.table("amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_asv_table.txt", 
+fungi.asv.raw <- read.table("hpc-amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_asv_table.txt", 
                            sep = "\t", header = TRUE, row.names = 1)
-fungi.tax.raw <- read.table("amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_taxa_table.txt", 
+fungi.tax.raw <- read.table("hpc-amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_taxa_table.txt", 
                            sep = "\t", header = TRUE, row.names = 1)
-fungi.rep.raw <- read.table("amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_ASV_rep.txt", 
+fungi.rep.raw <- read.table("hpc-amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_ASV_rep.txt", 
                            sep = "\t", header = TRUE, row.names = 1)
-pipeline.stats <- read.table("amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_sequence_pipeline_stats.txt",
+pipeline.stats <- read.table("hpc-amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_sequence_pipeline_stats.txt",
                              sep = "\t", header = TRUE, row.names = 1)
 
 
@@ -27,7 +34,7 @@ summary(pipeline.stats$InputRetained)
 
 # Less than 50% retained:
 pipeline.stats %>% 
-  filter(InputRetained < 50) 
+  filter(InputRetained < 50) # all of them
 
 # Less than 50% retained after filtering:
 pipeline.stats %>% 
@@ -53,7 +60,7 @@ rm.contaminants <- unique(c(which(fungi.ext01.control > 0.01 * sum(fungi.ext01.c
                             which(fungi.ext04.control > 0.01 * sum(fungi.ext04.control)),
                             which(fungi.ext05.control > 0.01 * sum(fungi.ext05.control)),
                             which(fungi.ext06.control > 0.01 * sum(fungi.ext06.control))))
-length(rm.contaminants)
+length(rm.contaminants) # 10
 
 # Remove contaminants from ASV table and taxonomy table
 fungi.asv <- fungi.asv.raw[ , -rm.contaminants]
@@ -141,7 +148,6 @@ summary(rowSums(fungi.asv))
 meta <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
                    header = TRUE,
                    sep = "\t")
-meta <- meta[-63, ] # remove "unsigned" row; see other script for analysis including "unsigned"
 
 # Check number of sequences per sample
 hist(rowSums(fungi.asv))
@@ -157,11 +163,6 @@ fungi.norm <- t(MRcounts(fungi.MR, norm = T, log = F))
 meta$Richness <- specnumber(fungi.norm)
 meta$Shannon <- diversity(fungi.norm, index = "shannon")
 
-write.table(meta, 
-            file = "data/cleaned/sequencing/fungi_richness_Shannon.txt", 
-            quote = F, 
-            sep = "\t", 
-            col.names = NA)
 
 
 # NMDS & beta dispersion --------------------------------------------------
@@ -169,7 +170,7 @@ write.table(meta,
 # NMDS ordination
 fungi.dist <- vegdist(fungi.norm, method = "bray")
 fungi.nmds <- metaMDS(fungi.dist, k = 2)
-fungi.nmds$stress # 0.2369334 
+fungi.nmds$stress # ~0.2369334 (varies)
 
 meta$NMDS1 <- fungi.nmds$points[ , 1]
 meta$NMDS2 <- fungi.nmds$points[ , 2]
@@ -177,40 +178,56 @@ meta$NMDS2 <- fungi.nmds$points[ , 2]
 
 # Test community similarity differences
 adonis2(fungi.dist ~ meta$Channel) # p < 0.001, 9% of variability explained by Channel
-adonis2(fungi.dist ~ meta$Treatment) # p < 0.001, 8% of variability explained by Treatment
+adonis2(fungi.dist ~ meta$Treatment3) # p = 0.008, 2% of variability explained by Treatment
 
 # Plot NMDS
+# By Channel
 meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2)) +
   geom_point(aes(color = Channel)) +
   stat_ellipse(aes(color = Channel))
 
 meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Channel, shape = Channel)) +
+  geom_point(size = 4) +
+  scale_shape_manual(values = c(15:18)) +
+  scale_color_manual(values = c("red", "#33A02C", "#1F78B4", "#33A02C")) +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+
+
+# By Treatment3
+meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2)) +
-  geom_point(aes(color = Treatment)) +
-  stat_ellipse(aes(color = Treatment))
+  geom_point(aes(color = Treatment3)) +
+  stat_ellipse(aes(color = Treatment3))
+
+meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment3, shape = Treatment3)) +
+  geom_point(size = 4) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_minimal() 
 
 
 # Beta dispersion 
-fungi.betadisper <- betadisper(fungi.dist, 
+# By Channel
+fungi.betadisper.c <- betadisper(fungi.dist, 
                               group = meta$Channel, 
                               type = "centroid")
 
-anova(fungi.betadisper) # p = 0.0002724 
+anova(fungi.betadisper.c) # p = 0.0002724 
 
-meta$betadisper <- fungi.betadisper$distances
+meta$betadisper.channel <- fungi.betadisper.c$distances
 
-betadisper.hsd <- HSD.test(aov(betadisper ~ Channel, data = meta), trt = "Channel")
+betadisper.c.hsd <- HSD.test(aov(betadisper.channel ~ Channel, data = meta), trt = "Channel")
 betadisper.hsd
 # Channel 19  0.5667671      a
 # Channel 21  0.5361576     ab
 # Channel 13  0.5076694     bc
 # Channel 12  0.4803405      c
 
-
-# Plot beta dispersion boxplot
 meta %>% 
-  ggplot(aes(Channel, betadisper), color = Channel) +
+  ggplot(aes(Channel, betadisper.channel), color = Channel) +
   geom_jitter(aes(color = Channel), 
               alpha = 0.8, 
               size = 4) +
@@ -221,10 +238,48 @@ meta %>%
   ylab("Beta dispersion") 
 
 
+# Beta dispersion by Treatment3
+fungi.betadisper.t3 <- betadisper(fungi.dist, 
+                                 group = meta$Treatment3, 
+                                 type = "centroid")
+
+anova(fungi.betadisper.t3) # NS 
+
+meta$betadisper.treatment3 <- fungi.betadisper.t3$distances
+
+meta %>% 
+  ggplot(aes(Treatment3, betadisper.treatment3)) +
+  geom_jitter(aes(color = Treatment3), 
+              alpha = 0.8, 
+              size = 4) +
+  geom_boxplot(aes(fill = Treatment3), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  xlab(NULL) +
+  ylab("Beta dispersion") +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+
+
+# Write table with beta dispersion distances
+write.table(meta, 
+            file = "data/cleaned/sequencing/fungi_diversity.txt", 
+            quote = FALSE, 
+            sep = "\t", 
+            row.names = FALSE)
+
+
 
 # Shannon diversity -------------------------------------------------------
 
+# By Channel
+# Explore distribution
+boxplot(Shannon ~ Channel, data = meta)
+qqPlot(meta$Shannon) # not normal?
 shapiro.test(meta$Shannon) # p-value = 0.0004526
+
 kruskal.test(Shannon ~ Channel, data = meta) # p-value = 0.01909
 dt <- dunnTest(Shannon ~ Channel, data = meta, method = "bh")
 dt <- dt$res
@@ -249,13 +304,40 @@ meta %>%
                alpha = 0.3, 
                outlier.shape = NA) +
   xlab(NULL) +
-  ylab("Bacteria & archaea Shannon diversity")
+  ylab("Fungi Shannon diversity")
+
+
+# By Treatment3
+qqplot(meta$Shannon)
+shapiro.test(meta$Shannon) # p-value = 0.0004526
+
+kruskal.test(Shannon ~ Treatment3, data = meta) # NS
+
+# Plot Shannon diversity
+meta %>% 
+  ggplot(aes(Treatment3, Shannon), color = Treatment3) +
+  geom_jitter(aes(color = Treatment3), 
+              alpha = 0.8, 
+              size = 4) +
+  geom_boxplot(aes(fill = Treatment3), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("Shannon diversity index") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
 
 
 
 # Richness ----------------------------------------------------------------
 
+# By Channel
+# Explore distribution
+qqPlot(meta$Richness) # looks normal
 shapiro.test(meta$Richness) # p-value = 0.9629
+
 richness.anova <- aov(meta$Richness ~ meta$Channel, data = meta) 
 summary(richness.anova) # p = 0.00171
 richness.hsd <- HSD.test(richness.anova, trt = "meta$Channel")
@@ -275,7 +357,32 @@ meta %>%
                alpha = 0.3, 
                outlier.shape = NA) +
   xlab(NULL) +
-  ylab("Bacteria & archaea richness")
+  ylab("Fungi richness")
+
+
+# By Treatment3
+# Explore distribution
+boxplot(Richness ~ Treatment3, data = meta)
+qqPlot(meta$Richness)
+
+t.test(filter(meta, Treatment3 == "Control")$Richness,
+       filter(meta, Treatment3 == "Treated")$Richness) # NS
+
+# Plot 
+meta %>% 
+  ggplot(aes(Treatment3, Richness), color = Treatment3) +
+  geom_jitter(aes(color = Treatment3), 
+              alpha = 0.8, 
+              size = 4) +
+  geom_boxplot(aes(fill = Treatment3), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("Richness") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
 
 
 
@@ -312,10 +419,29 @@ fungi.phylum <- fungi.phylum[ , -c(1:62)]
 fungi.phylum <- as.data.frame(t(fungi.phylum))
 
 write.table(fungi.phylum,
-            file = "data/cleaned/sequencing/fungi_phyla_avg-ch.txt",
+            file = "data/cleaned/sequencing/fungi_phylum_avg-ch.txt",
             quote = F,
             sep ="\t",
             col.names = NA)
+
+# Average proportions by Treatment3 (all phyla)
+fungi.phylum <- read.table("data/cleaned/sequencing/fungi_phylum.txt", 
+                           sep = "\t", header = T, row.names = 1)
+fungi.phylum <- as.data.frame(t(fungi.phylum))
+colnames(fungi.phylum) <- meta$Treatment3
+fungi.phylum <- fungi.phylum[ , order(names(fungi.phylum))]
+fungi.phylum$Control_avg <- rowMeans(fungi.phylum[ , 1:31])
+fungi.phylum$Treated_avg <- rowMeans(fungi.phylum[ , 32:62])
+fungi.phylum <- fungi.phylum[ , -c(1:62)]
+colnames(fungi.phylum) <- c("Control", "Treated")
+fungi.phylum <- as.data.frame(t(fungi.phylum))
+
+write.table(fungi.phylum,
+            file = "data/cleaned/sequencing/fungi_phylum_avg-t3.txt",
+            quote = F,
+            sep ="\t",
+            col.names = NA)
+
 
 # Create dominant phyla table
 fungi.phylum <- read.table("data/cleaned/sequencing/fungi_phylum.txt", 
@@ -337,7 +463,7 @@ fungi.phylum.d <- rbind(fungi.phylum.d, fungi.phylum.un)
 fungi.phylum.d <- as.data.frame(t(fungi.phylum.d))
 
 write.table(fungi.phylum.d,
-            file = "data/cleaned/sequencing/fungi_dominant_phyla_sample.txt",
+            file = "data/cleaned/sequencing/fungi_phylum-dominant_sample.txt",
             quote = F,
             sep ="\t",
             col.names = NA) # > 1% abundance
@@ -347,8 +473,10 @@ rm(fungi.phylum.nd,
    fungi.phylum.un,
    unclassified.row)
 
+
+# By Channel
 # Average proportions by Channel (dominant phyla)
-fungi.phylum.dc <- read.table("data/cleaned/sequencing/fungi_dominant_phyla_sample.txt", 
+fungi.phylum.dc <- read.table("data/cleaned/sequencing/fungi_phylum-dominant_sample.txt", 
                              sep = "\t", header = T, row.names = 1)
 fungi.phylum.dc <- as.data.frame(t(fungi.phylum.dc))
 colnames(fungi.phylum.dc) <- meta$Channel
@@ -361,7 +489,7 @@ fungi.phylum.dc <- fungi.phylum.dc[ , -c(1:62)]
 fungi.phylum.dc <- as.data.frame(t(fungi.phylum.dc))
 
 write.table(fungi.phylum.dc,
-            file = "data/cleaned/sequencing/fungi_dominant_phyla_avg-ch.txt",
+            file = "data/cleaned/sequencing/fungi_phylum-dominant_avg-ch.txt",
             quote = F,
             sep ="\t",
             col.names = NA) # > 1% abundance
@@ -378,6 +506,12 @@ fungi.phylum.bar$Channel <- rep(c("Channel 12",
                                  "Channel 21"), 
                                times = 5)
 
+write.table(fungi.phylum.bar,
+            file = "data/cleaned/sequencing/fungi_phylum-dominant_avg-ch_barplot.txt",
+            quote = FALSE,
+            sep ="\t",
+            col.names = NA) # > 1% abundance
+
 fungi.phylum.bar %>% 
   ggplot(aes(x = Channel, y = proportion, fill = phylum)) +
   geom_bar(stat = "identity") +
@@ -385,117 +519,54 @@ fungi.phylum.bar %>%
   ylab("Relative abundance (%)") +
   theme_bw(base_size = 15)+
   theme(legend.title = element_blank()) +
-  scale_fill_manual(values = c(brewer.pal("Set1"),
+  scale_fill_manual(values = c(brewer.pal(n = 4, "Set1"), 
                                "#999999"))
-                               
 
+# By Treatment3
+# Average proportions by Treatment3 (dominant phyla)
+fungi.phylum.dt3 <- read.table("data/cleaned/sequencing/fungi_phylum-dominant_sample.txt", 
+                              sep = "\t", header = T, row.names = 1)
+fungi.phylum.dt3 <- as.data.frame(t(fungi.phylum.dt3))
+colnames(fungi.phylum.dt3) <- meta$Channel
+fungi.phylum.dt3 <- fungi.phylum.dt3[ , order(names(fungi.phylum.dt3))]
+fungi.phylum.dt3$Control_avg <- rowMeans(fungi.phylum.dt3[ , 1:31])
+fungi.phylum.dt3$Treated_avg <- rowMeans(fungi.phylum.dt3[ , 32:62])
+fungi.phylum.dt3 <- fungi.phylum.dt3[ , -c(1:62)]
+colnames(fungi.phylum.dt3) <- c("Control", "Treated")
+fungi.phylum.dt3 <- as.data.frame(t(fungi.phylum.dt3))
 
-# Family ------------------------------------------------------------------
-
-# Generate family level profile
-fungi.family <- as.data.frame(t(fungi.asv))
-fungi.family$family <- fungi.tax$Family
-fungi.family <- aggregate(. ~ family, data = fungi.family, sum) # group ASVs of same family and sum reads
-rownames(fungi.family) <- fungi.family$family
-fungi.family <- fungi.family[ , -1]
-fungi.family <- (sweep(as.matrix(fungi.family), 2, rowSums(fungi.asv), "/")) * 100 # change reads to relative proportions
-fungi.family <- as.data.frame(t(fungi.family))
-fungi.family$Unclassified = 100 - rowSums(fungi.family)
-
-write.table(fungi.family,
-            file = "data/cleaned/sequencing/fungi_family.txt",
-            quote = F,
-            sep ="\t",
-            col.names = NA)
-
-
-# Average proportions by Channel (all phyla)
-fungi.family <- read.table("data/cleaned/sequencing/fungi_family.txt", 
-                          sep = "\t", header = T, row.names = 1)
-fungi.family <- as.data.frame(t(fungi.family))
-colnames(fungi.family) <- meta$Channel
-fungi.family <- fungi.family[ , order(names(fungi.family))]
-fungi.family$Channel_12 <- rowMeans(fungi.family[ , 1:14])
-fungi.family$Channel_13 <- rowMeans(fungi.family[ , 15:30])
-fungi.family$Channel_19 <- rowMeans(fungi.family[ , 31:47])
-fungi.family$Channel_21 <- rowMeans(fungi.family[ , 48:62])
-fungi.family <- fungi.family[ , -c(1:62)]
-fungi.family <- as.data.frame(t(fungi.family))
-
-write.table(fungi.family,
-            file = "data/cleaned/sequencing/fungi_phyla_avg-ch.txt",
-            quote = F,
-            sep ="\t",
-            col.names = NA)
-
-# Create dominant phyla table
-fungi.family <- read.table("data/cleaned/sequencing/fungi_family.txt", 
-                          sep = "\t", header = T, row.names = 1)
-fungi.family.d <- as.data.frame(t(fungi.family))
-unclassified.row <- c("Unclassified")
-fungi.family.un <- fungi.family.d[unclassified.row, ]
-fungi.family.d$avg <- rowMeans(fungi.family.d)
-fungi.family.d <- fungi.family.d[rownames(fungi.family.d) != "Unclassified", ]
-fungi.family.nd <- fungi.family.d[which(fungi.family.d$avg < 1), ]
-fungi.family.d <- fungi.family.d[-which(fungi.family.d$avg < 1), ]
-fungi.family.d <- fungi.family.d[order(fungi.family.d$avg, decreasing = T), ]
-fungi.family.nd.sum <- colSums(fungi.family.nd) 
-fungi.family.nd.sum <- as.data.frame(t(fungi.family.nd.sum))
-rownames(fungi.family.nd.sum) <- c("Others")
-fungi.family.d <- rbind(fungi.family.d, fungi.family.nd.sum)
-fungi.family.d <- select(fungi.family.d, -avg)
-fungi.family.d <- rbind(fungi.family.d, fungi.family.un)
-fungi.family.d <- as.data.frame(t(fungi.family.d))
-
-write.table(fungi.family.d,
-            file = "data/cleaned/sequencing/fungi_dominant_phyla_sample.txt",
-            quote = F,
-            sep ="\t",
-            col.names = NA) # > 1% abundance
-
-rm(fungi.family.nd,
-   fungi.family.nd.sum,
-   fungi.family.un,
-   unclassified.row)
-
-# Average proportions by Channel (dominant phyla)
-fungi.family.dc <- read.table("data/cleaned/sequencing/fungi_dominant_phyla_sample.txt", 
-                             sep = "\t", header = T, row.names = 1)
-fungi.family.dc <- as.data.frame(t(fungi.family.dc))
-colnames(fungi.family.dc) <- meta$Channel
-fungi.family.dc <- fungi.family.dc[ , order(names(fungi.family.dc))]
-fungi.family.dc$Channel_12 <- rowMeans(fungi.family.dc[ , 1:14])
-fungi.family.dc$Channel_13 <- rowMeans(fungi.family.dc[ , 15:30])
-fungi.family.dc$Channel_19 <- rowMeans(fungi.family.dc[ , 31:47])
-fungi.family.dc$Channel_21 <- rowMeans(fungi.family.dc[ , 48:62])
-fungi.family.dc <- fungi.family.dc[ , -c(1:62)]
-fungi.family.dc <- as.data.frame(t(fungi.family.dc))
-
-write.table(fungi.family.dc,
-            file = "data/cleaned/sequencing/fungi_dominant_phyla_avg-ch.txt",
+write.table(fungi.phylum.dt3,
+            file = "data/cleaned/sequencing/fungi_phylum-dominant_avg-t3.txt",
             quote = F,
             sep ="\t",
             col.names = NA) # > 1% abundance
 
 # Reshape data for stacked bar plot
-fungi.family.bar <- melt(fungi.family.dc)
-names(fungi.family.bar) <- c("family", "proportion")
+fungi.phylum.bar.t3 <- melt(fungi.phylum.dt3)
+names(fungi.phylum.bar.t3) <- c("phylum", "proportion")
 
 # Change rep() parameters based on number of cols
-dim(fungi.family.dc) # times = col number
-fungi.family.bar$Channel <- rep(c("Channel 12", 
-                                 "Channel 13", 
-                                 "Channel 19", 
-                                 "Channel 21"), 
-                               times = 25)
+dim(fungi.phylum.dt3) # times = col number
+fungi.phylum.bar.t3$Treatment3 <- rep(c("Control",
+                                  "Treated"), 
+                                times = 5)
 
-fungi.family.bar %>% 
-  ggplot(aes(x = Channel, y = proportion, fill = family)) +
+write.table(fungi.phylum.bar.t3,
+            file = "data/cleaned/sequencing/fungi_phylum-dominant_avg-t3_barplot.txt",
+            quote = FALSE,
+            sep ="\t",
+            col.names = NA) # > 1% abundance
+
+fungi.phylum.bar.t3 %>% 
+  ggplot(aes(x = Treatment3, y = proportion, fill = phylum)) +
   geom_bar(stat = "identity") +
   xlab(NULL) +
   ylab("Relative abundance (%)") +
   theme_bw(base_size = 15)+
-  theme(legend.title = element_blank()) 
+  theme(legend.title = element_blank()) +
+  scale_fill_manual(values = c(brewer.pal(n = 4, "Set1"), 
+                               "#999999"))
+                               
 
 
 save.image("RData/ITS_prelim-stats.RData")
