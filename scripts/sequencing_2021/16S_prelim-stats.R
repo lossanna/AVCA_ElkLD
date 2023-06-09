@@ -206,6 +206,11 @@ meta %>%
 
 # By Treatment3
 meta %>% 
+  ggplot(aes(x = NMDS1, y = NMDS2)) +
+  geom_point(aes(color = Treatment3)) +
+  stat_ellipse(aes(color = Treatment3))
+
+meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment3, shape = Treatment3)) +
   geom_point(size = 4) +
   scale_color_manual(values = c("red", "#1F78B4")) +
