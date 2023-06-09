@@ -8,7 +8,7 @@
 #   year formatted for x-axis when graphing (20XX-01-01).
 # These are the cleaned data sheets for plant cover and diversity from 2012-2021.
 
-# Created: ~2022-01-26 (pre-GitHub)
+# Created: ~2022-01 (pre-GitHub; probably created in early Jan)
 # Last updated: 2023-03-31
 
 
