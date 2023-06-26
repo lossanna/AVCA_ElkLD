@@ -49,7 +49,7 @@ write.table(fapro,
             row.names = F)
 
 write.table(fapro, 
-            file = "amplicon-sequencing/FAPROTAX_1.2.6/faprotax-input.tsv",
+            file = "hpc-amplicon-sequencing/FAPROTAX_1.2.6/faprotax-input.tsv",
             quote = F, 
             sep = "\t", 
             row.names = F)
