@@ -1534,7 +1534,7 @@ the sample names from what I had provided them.</li>
 
 # Read in a CSV with the barcodes in the first column 
   # and the corresponding sample names in the second column
-barcode &lt;- read.table(&quot;amplicon-sequencing/demultiplexing/16S_barcodes.txt&quot;, header = TRUE) # change to your file name
+barcode &lt;- read.table(&quot;hpc-amplicon-sequencing/demultiplexing/16S_barcodes.txt&quot;, header = TRUE) # change to your file name
 
 # Get reverse complement of barcodes 
 barcode$Barcode_revcomp &lt;- sapply(barcode[ , 1], 
@@ -1549,7 +1549,7 @@ barcode_revcomp &lt;- data.frame(&quot;Barcode&quot; = barcode$Barcode_revcomp,
 
 # Write dataframe to table 
 write.txt(barcode_revcomp, 
-          &quot;amplicon-sequencing/demultiplexing/16S_barcodes_rev.txt&quot;, 
+          &quot;hpc-amplicon-sequencing/demultiplexing/16S_barcodes_rev.txt&quot;, 
           sep = &quot;\t&quot;, 
           quote = FALSE, 
           row.names = FALSE)
@@ -1561,7 +1561,7 @@ write.txt(barcode_revcomp,
 
 # Read in a CSV with the barcodes in the first column 
   # and the corresponding sample names in the second column
-barcode &lt;- read.csv(&quot;amplicon-sequencing/demultiplexing/ITS_barcodes.csv&quot;, header = TRUE) # change to your file name
+barcode &lt;- read.csv(&quot;hpc-amplicon-sequencing/demultiplexing/ITS_barcodes.csv&quot;, header = TRUE) # change to your file name
 
 # Get reverse complement of barcodes 
 barcode$Barcode_revcomp &lt;- sapply(barcode[ , 1], 
@@ -1576,7 +1576,7 @@ barcode_revcomp &lt;- data.frame(&quot;Barcode&quot; = barcode$Barcode_revcomp,
 
 # Write dataframe to table 
 write.csv(barcode_revcomp, 
-            &quot;amplicon-sequencing/demultiplexing/ITS_barcodes_rev.csv&quot;,
+            &quot;hpc-amplicon-sequencing/demultiplexing/ITS_barcodes_rev.csv&quot;,
           row.names = FALSE)</code></pre>
 </div>
 <div id="create-directories-in-ua-hpc" class="section level1">

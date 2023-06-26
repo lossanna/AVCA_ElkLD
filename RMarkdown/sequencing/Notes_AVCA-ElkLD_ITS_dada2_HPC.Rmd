@@ -12,8 +12,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 
 # Load RData 
-load("C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_dada2_HPC_small.RData")
-path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed" 
+load("C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/hpc-amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed/ITS_dada2_HPC_small.RData")
+path <- "C:/Users/liaos/OneDrive - University of Arizona/grad school/Gornish lab/02_AVCA Elkhorn-Las Delicias/AVCA_ElkLD/hpc-amplicon-sequencing/FASTQ_ITS_raw/ITS_demultiplexed" 
 ```
 
 

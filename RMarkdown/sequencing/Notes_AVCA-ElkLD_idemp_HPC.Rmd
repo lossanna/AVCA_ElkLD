@@ -36,7 +36,7 @@ library(seqinr)
 
 # Read in a CSV with the barcodes in the first column 
   # and the corresponding sample names in the second column
-barcode <- read.table("amplicon-sequencing/demultiplexing/16S_barcodes.txt", header = TRUE) # change to your file name
+barcode <- read.table("hpc-amplicon-sequencing/demultiplexing/16S_barcodes.txt", header = TRUE) # change to your file name
 
 # Get reverse complement of barcodes 
 barcode$Barcode_revcomp <- sapply(barcode[ , 1], 
@@ -51,7 +51,7 @@ barcode_revcomp <- data.frame("Barcode" = barcode$Barcode_revcomp,
 
 # Write dataframe to table 
 write.txt(barcode_revcomp, 
-          "amplicon-sequencing/demultiplexing/16S_barcodes_rev.txt", 
+          "hpc-amplicon-sequencing/demultiplexing/16S_barcodes_rev.txt", 
           sep = "\t", 
           quote = FALSE, 
           row.names = FALSE)
@@ -63,7 +63,7 @@ write.txt(barcode_revcomp,
 
 # Read in a CSV with the barcodes in the first column 
   # and the corresponding sample names in the second column
-barcode <- read.csv("amplicon-sequencing/demultiplexing/ITS_barcodes.csv", header = TRUE) # change to your file name
+barcode <- read.csv("hpc-amplicon-sequencing/demultiplexing/ITS_barcodes.csv", header = TRUE) # change to your file name
 
 # Get reverse complement of barcodes 
 barcode$Barcode_revcomp <- sapply(barcode[ , 1], 
@@ -78,7 +78,7 @@ barcode_revcomp <- data.frame("Barcode" = barcode$Barcode_revcomp,
 
 # Write dataframe to table 
 write.csv(barcode_revcomp, 
-            "amplicon-sequencing/demultiplexing/ITS_barcodes_rev.csv",
+            "hpc-amplicon-sequencing/demultiplexing/ITS_barcodes_rev.csv",
           row.names = FALSE)
 ```
 
