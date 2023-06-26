@@ -10,7 +10,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-load("../../RData/FAPROTAX-tables.RData")
+load("../../RData/FAPROTAX-input.RData")
 ```
 
 ### Background 
@@ -44,7 +44,7 @@ library(tidyverse)
 
 # load data ---------------------------------------------------------------
 
-ex <- read_tsv("amplicon-sequencing/FAPROTAX_1.2.6/example_otu_faprotax.tsv") # example
+ex <- read_tsv("hpc-amplicon-sequencing/FAPROTAX_1.2.6/example_otu_faprotax.tsv") # example
 barc.asv.raw <- read.table("data/cleaned/sequencing/bac_arc_clean_asv.txt")
 barc.tax <- read.table("data/cleaned/sequencing/bac_arc_clean_tax.txt", 
                        sep = "\t", header = T, row.names = 1)
@@ -88,18 +88,13 @@ write.table(fapro,
             row.names = F)
 
 write.table(fapro, 
-            file = "amplicon-sequencing/FAPROTAX_1.2.6/faprotax-input.tsv",
+            file = "hpc-amplicon-sequencing/FAPROTAX_1.2.6/faprotax-input.tsv",
             quote = F, 
             sep = "\t", 
             row.names = F)
 ```
 
-Completed table:
-```{r}
-head(fapro)
-```
-
-Condensed:
+Condensed version of what the table should look like:
 ```{r}
 fapro[1:3, c(1:3, 64)]
 ```

@@ -11,9 +11,9 @@
 
 <meta name="author" content="Lia Ossanna" />
 
-<meta name="date" content="2023-02-03" />
+<meta name="date" content="2023-06-26" />
 
-<title>Notes for FAPROTAX using HPC</title>
+<title>Notes for FUNGuild using HPC</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1485,9 +1485,9 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">Notes for FAPROTAX using HPC</h1>
+<h1 class="title toc-ignore">Notes for FUNGuild using HPC</h1>
 <h4 class="author">Lia Ossanna</h4>
-<h4 class="date">2023-02-03</h4>
+<h4 class="date">2023-06-26</h4>
 
 </div>
 
@@ -1495,11 +1495,10 @@ border-radius: 0px;
 <div id="background" class="section level3">
 <h3>Background</h3>
 <ul>
-<li>FAPROTAX assigns putative functions based on taxonomy for 16S data:
-<a href="http://www.loucalab.com/archive/FAPROTAX" class="uri">http://www.loucalab.com/archive/FAPROTAX</a>
+<li>FUNGuild assigns guilds based on taxonomy for ITS data: <a href="https://github.com/UMNFuN/FUNGuild" class="uri">https://github.com/UMNFuN/FUNGuild</a>
 <ul>
 <li>I downloaded the most recent version, which was
-<code>FAPROTAX 1.2.6</code>.</li>
+<code>FUNGuild 1.2</code>.</li>
 </ul></li>
 <li>Analysis requires cleaned ASV and taxonomy tables (DADA2 pipeline
 completed and contaminants removed).
@@ -1522,45 +1521,49 @@ to UA HPC servers.</a></li>
 <li>Submitted job to the Puma server via <code>SLURM</code> script.</li>
 </ul>
 </div>
-<div id="create-input-table-for-faprotax" class="section level3">
-<h3>Create input table for FAPROTAX</h3>
+<div id="create-input-table-for-funguild" class="section level3">
+<h3>Create input table for FUNGuild</h3>
 <ul>
-<li>FAPROTAX needs the ASV table, but with all the taxonomy information
+<li>FUNGuild needs the ASV table, but with all the taxonomy information
 included in a separate column.</li>
 </ul>
 <p>Example input table:<br />
-- First column (<code>#OTU ID</code>): OTU identifier, equivalent to
+- First column (<code>OTU.ID</code>): OTU identifier, equivalent to
 <code>asv</code> column in our input.<br />
-- Next four columns: sample names.<br />
+- Next two columns: sample names.<br />
 - Last column (<code>taxonomy</code>, wrapped around to its own line):
-how taxonomy information be formatted for FAPROTAX input.</p>
-<pre class="r"><code>ex[1, c(1, 16:20)]</code></pre>
-<pre><code>##   #OTU ID BG.feces.7920 BG.rumen.6882 BG.feces.6803 BG.rumen.6803
-## 1       0             0             0             0             0
-##                                                                                                                                                            taxonomy
-## 1 D_0__Bacteria; D_1__Proteobacteria; D_2__Betaproteobacteria; D_3__Nitrosomonadales; D_4__Nitrosomonadaceae; D_5__uncultured; D_6__uncultured beta proteobacterium</code></pre>
+how taxonomy information be formatted for FUNGuild input. The initial
+part separated by <code>|</code> relates to OTUs and isn’t relevant
+here.</p>
+<pre class="r"><code>ex[1:3, c(1:3, 6)]</code></pre>
+<pre><code>##     OTU.ID sample1 sample2 sample5
+## 1  OTU_100       0       1       0
+## 2 OTU_1002      95     127     121
+## 3 OTU_1003       1       0       0</code></pre>
 <p>Script:</p>
 <pre class="r"><code>library(tidyverse)
 
-
 # load data ---------------------------------------------------------------
 
-ex &lt;- read_tsv(&quot;hpc-amplicon-sequencing/FAPROTAX_1.2.6/example_otu_faprotax.tsv&quot;) # example
-barc.asv.raw &lt;- read.table(&quot;data/cleaned/sequencing/bac_arc_clean_asv.txt&quot;)
-barc.tax &lt;- read.table(&quot;data/cleaned/sequencing/bac_arc_clean_tax.txt&quot;, 
-                       sep = &quot;\t&quot;, header = T, row.names = 1)
+ex &lt;- read.table(&quot;hpc-amplicon-sequencing/FUNGuild_1.2/Download/example/otu_table.txt&quot;,
+                 sep = &quot;\t&quot;, header = T)
+fungi.asv.raw &lt;- read.table(&quot;data/cleaned/sequencing/fungi_clean_asv.txt&quot;,
+                            sep = &quot;\t&quot;, header = T, row.names = 1)
+fungi.tax &lt;- read.table(&quot;data/cleaned/sequencing/fungi_clean_tax.txt&quot;,
+                        sep = &quot;\t&quot;, header = T, row.names = 1)
 
-# Format data for FAPROTAX ------------------------------------------------
+
+# Format data for FUNGuild ------------------------------------------------
 
 # Collapse taxonomy info into single column
-tax &lt;- barc.tax %&gt;% 
-  mutate(D0 = rep(&quot;D_0__&quot;, nrow(barc.tax)),
-         D1 = rep(&quot;D_1__&quot;, nrow(barc.tax)),
-         D2 = rep(&quot;D_2__&quot;, nrow(barc.tax)),
-         D3 = rep(&quot;D_3__&quot;, nrow(barc.tax)),
-         D4 = rep(&quot;D_4__&quot;, nrow(barc.tax)),
-         D5 = rep(&quot;D_5__&quot;, nrow(barc.tax)),
-         D6 = rep(&quot;D_6__&quot;, nrow(barc.tax))) %&gt;% 
+tax &lt;- fungi.tax %&gt;% 
+  mutate(D0 = rep(&quot;k__&quot;, nrow(fungi.tax)),
+         D1 = rep(&quot;p__&quot;, nrow(fungi.tax)),
+         D2 = rep(&quot;c__&quot;, nrow(fungi.tax)),
+         D3 = rep(&quot;o__&quot;, nrow(fungi.tax)),
+         D4 = rep(&quot;f__&quot;, nrow(fungi.tax)),
+         D5 = rep(&quot;g__&quot;, nrow(fungi.tax)),
+         D6 = rep(&quot;s__&quot;, nrow(fungi.tax))) %&gt;% 
   mutate(Kingdom = paste0(D0, Kingdom),
          Phylum = paste0(D1, Phylum),
          Class = paste0(D2, Class),
@@ -1569,48 +1572,47 @@ tax &lt;- barc.tax %&gt;%
          Genus = paste0(D5, Genus),
          Species = paste0(D6, Species)) %&gt;% 
   select(-starts_with(&quot;D&quot;)) %&gt;% 
-  mutate(taxonomy = paste(Kingdom, Phylum, Class, Order, Family, Genus, Species, sep = &quot;; &quot;)) %&gt;% 
+  mutate(taxonomy = paste(Kingdom, Phylum, Class, Order, Family, Genus, Species, sep = &quot;;&quot;)) %&gt;% 
   select(taxonomy)
 
 # Each row is an ASV/OTU, and each col is a sample
-barc.asv &lt;- t(barc.asv.raw)
+fungi.asv &lt;- t(fungi.asv.raw)
 
 # Add taxonomy col
-fapro &lt;- bind_cols(barc.asv, tax)
-fapro$asv &lt;- row.names(fapro)
-fapro &lt;- fapro[ , c(64, 1:63)]
-rownames(fapro) &lt;- c()
+funguild &lt;- bind_cols(fungi.asv, tax)
+funguild$asv &lt;- row.names(funguild)
+funguild &lt;- funguild[ , c(64, 1:63)]
+rownames(funguild) &lt;- c()
 
 # Write table
-write.table(fapro, 
-            file = &quot;data/cleaned/sequencing/faprotax-input.tsv&quot;,
+write.table(funguild, 
+            file = &quot;data/cleaned/sequencing/FUNGuild-input.tsv&quot;,
             quote = F, 
             sep = &quot;\t&quot;, 
             row.names = F)
 
-write.table(fapro, 
-            file = &quot;hpc-amplicon-sequencing/FAPROTAX_1.2.6/faprotax-input.tsv&quot;,
+write.table(funguild, 
+            file = &quot;hpc-amplicon-sequencing/FUNGuild_1.2/FUNGuild-input.tsv&quot;,
             quote = F, 
             sep = &quot;\t&quot;, 
             row.names = F)</code></pre>
 <p>Condensed version of what the table should look like:</p>
-<pre class="r"><code>fapro[1:3, c(1:3, 64)]</code></pre>
+<pre class="r"><code>funguild[1:3, c(1:3, 64)]</code></pre>
 <pre><code>##     asv avca-elkld_01_c21 avca-elkld_02_c21
-## 1 ASV_1              1118              3492
-## 2 ASV_2              1307              1470
-## 3 ASV_4               116              1066
-##                                                                                                                                  taxonomy
-## 1     D_0__Bacteria; D_1__Actinobacteriota; D_2__Actinobacteria; D_3__Micrococcales; D_4__Micrococcaceae; D_5__Pseudarthrobacter; D_6__NA
-## 2 D_0__Bacteria; D_1__Proteobacteria; D_2__Alphaproteobacteria; D_3__Sphingomonadales; D_4__Sphingomonadaceae; D_5__Sphingomonas; D_6__NA
-## 3       D_0__Bacteria; D_1__Proteobacteria; D_2__Gammaproteobacteria; D_3__Burkholderiales; D_4__Oxalobacteraceae; D_5__Massilia; D_6__NA</code></pre>
+## 1 ASV_1               650              1442
+## 2 ASV_2               125                98
+## 3 ASV_4                 0              1963
+##                                                                                                       taxonomy
+## 1             k__Fungi;p__Ascomycota;c__Dothideomycetes;o__Mycosphaerellales;f__Mycosphaerellaceae;g__NA;s__NA
+## 2 k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Filobasidiales;f__Filobasidiaceae;g__Naganishia;s__diffluens
+## 3   k__Fungi;p__Basidiomycota;c__Tremellomycetes;o__Filobasidiales;f__Filobasidiaceae;g__Naganishia;s__globosa</code></pre>
 </div>
 <div id="upload-files-to-hpc" class="section level3">
 <h3>Upload files to HPC</h3>
 <ul>
-<li><a href="http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Download">Download
-the latest release here</a>.</li>
+<li><code>git clone</code> the repository for the latest version from <a href="https://github.com/UMNFuN/FUNGuild">here</a>.</li>
 <li>Upload to HPC:
-<code>/groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6</code></li>
+<code>/groups/egornish/lossanna/AVCA-ElkLD_I6S/FUNGuild_1.2</code></li>
 </ul>
 </div>
 <div id="write-the-slurm-script" class="section level3">
@@ -1621,7 +1623,7 @@ the latest release here</a>.</li>
 <p><code>SLURM</code> script:</p>
 <pre class="r"><code>#!/bin/bash
 
-#SBATCH --job-name=FAPROTAX
+#SBATCH --job-name=FUNGuild
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --time=00:5:00
@@ -1631,29 +1633,32 @@ the latest release here</a>.</li>
 #SBATCH --mail-user=lossanna@arizona.edu
 
 # Set working directory
-cd /groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6
+cd /groups/egornish/lossanna/AVCA-ElkLD_ITS/FUNGuild_1.2
 
 # Load python
 module load python/3.8
 
-# FAPROTAX
-python3 collapse_table.py -i faprotax-input.tsv -o faprotax-output.tsv -r faprotax-report.txt -g FAPROTAX.txt -d &quot;taxonomy&quot; -v</code></pre>
+# FUNGuild
+python3 FUNGuild.py taxa -otu FUNGuild-input.tsv -format tsv -column taxonomy -classifier unite
+python3 FUNGuild.py guild -taxa FUNGuild-input.taxa.tsv</code></pre>
 </div>
 <div id="run-the-job" class="section level3">
 <h3>Run the job</h3>
 <ul>
 <li>Access UA servers at <a href="https://ood.hpc.arizona.edu/" class="uri">https://ood.hpc.arizona.edu/</a>.</li>
 <li>Run command:
-<code>sbatch /groups/egornish/lossanna/AVCA-ElkLD_16S/FAPROTAX_1.2.6/faprotax.slurm</code>
+<code>sbatch /groups/egornish/lossanna/AVCA-ElkLD_ITS/FUNGuild_1.2/funguild.slurm</code>
 <ul>
 <li><code>sbatch</code>: submit a job</li>
 <li><code>/groups/...</code>: path to <code>SLURM</code> script.</li>
 </ul></li>
-<li>Note: if rerunning FAPROTAX, delete the
-<code>faprotax-output.tsv</code> file first (it cannot overwrite the
-existing file).</li>
-<li>See the <a href="http://www.loucalab.com/archive/FAPROTAX/lib/php/index.php?section=Instructions">FAPROTAX
-instructions</a> for more details.</li>
+<li>There are two output files, one that is the taxonomy table, and one
+that is the guild assignments. The guild assignment table is
+automatically named <code>FUNGuild-input.taxa.guilds.txt</code>.
+<ul>
+<li>I copied the guild table into my working <code>data/</code> folder
+and manually renamed it <code>FUNGuild-output.txt</code>.</li>
+</ul></li>
 </ul>
 </div>
 

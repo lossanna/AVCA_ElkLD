@@ -1,0 +1,143 @@
+---
+title: "Notes for FUNGuild using HPC"
+author: "Lia Ossanna"
+date: "2023-06-26"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+load("../../RData/FUNGuild-input.RData")
+```
+
+### Background 
+- FUNGuild assigns guilds based on taxonomy for ITS data: <https://github.com/UMNFuN/FUNGuild> 
+  - I downloaded the most recent version, which was `FUNGuild 1.2`.
+- Analysis requires cleaned ASV and taxonomy tables (DADA2 pipeline completed and contaminants removed).
+  - ASV table: each row is a sample, each column is is an ASV.
+  - Taxonomy table: each row is an ASV, and the columns are taxonomy classifications (kingdom, phylum, etc.).
+
+### HPC
+- I ran this on the UA HPC server submitting it as a job. Computationally, this is not necessary, but I'm using Windows and don't have Python installed, so it's easier to use the server.
+- [Guide to UA HPC servers.](https://public.confluence.arizona.edu/display/UAHPC/User+Guide)
+- Accessed UA HPC servers at <https://ood.hpc.arizona.edu/>.
+- Submitted job to the Puma server via `SLURM` script.
+
+### Create input table for FUNGuild
+- FUNGuild needs the ASV table, but with all the taxonomy information included in a separate column.  
+  
+Example input table:  
+- First column (`OTU.ID`): OTU identifier, equivalent to `asv` column in our input.  
+- Next two columns: sample names.  
+- Last column (`taxonomy`, wrapped around to its own line): how taxonomy information be formatted for FUNGuild input. The initial part separated by `|` relates to OTUs and isn't relevant here.
+```{r}
+ex[1:3, c(1:3, 6)]
+```
+
+Script:
+```{r, eval=FALSE}
+library(tidyverse)
+
+# load data ---------------------------------------------------------------
+
+ex <- read.table("hpc-amplicon-sequencing/FUNGuild_1.2/Download/example/otu_table.txt",
+                 sep = "\t", header = T)
+fungi.asv.raw <- read.table("data/cleaned/sequencing/fungi_clean_asv.txt",
+                            sep = "\t", header = T, row.names = 1)
+fungi.tax <- read.table("data/cleaned/sequencing/fungi_clean_tax.txt",
+                        sep = "\t", header = T, row.names = 1)
+
+
+# Format data for FUNGuild ------------------------------------------------
+
+# Collapse taxonomy info into single column
+tax <- fungi.tax %>% 
+  mutate(D0 = rep("k__", nrow(fungi.tax)),
+         D1 = rep("p__", nrow(fungi.tax)),
+         D2 = rep("c__", nrow(fungi.tax)),
+         D3 = rep("o__", nrow(fungi.tax)),
+         D4 = rep("f__", nrow(fungi.tax)),
+         D5 = rep("g__", nrow(fungi.tax)),
+         D6 = rep("s__", nrow(fungi.tax))) %>% 
+  mutate(Kingdom = paste0(D0, Kingdom),
+         Phylum = paste0(D1, Phylum),
+         Class = paste0(D2, Class),
+         Order = paste0(D3, Order),
+         Family = paste0(D4, Family),
+         Genus = paste0(D5, Genus),
+         Species = paste0(D6, Species)) %>% 
+  select(-starts_with("D")) %>% 
+  mutate(taxonomy = paste(Kingdom, Phylum, Class, Order, Family, Genus, Species, sep = ";")) %>% 
+  select(taxonomy)
+
+# Each row is an ASV/OTU, and each col is a sample
+fungi.asv <- t(fungi.asv.raw)
+
+# Add taxonomy col
+funguild <- bind_cols(fungi.asv, tax)
+funguild$asv <- row.names(funguild)
+funguild <- funguild[ , c(64, 1:63)]
+rownames(funguild) <- c()
+
+# Write table
+write.table(funguild, 
+            file = "data/cleaned/sequencing/FUNGuild-input.tsv",
+            quote = F, 
+            sep = "\t", 
+            row.names = F)
+
+write.table(funguild, 
+            file = "hpc-amplicon-sequencing/FUNGuild_1.2/FUNGuild-input.tsv",
+            quote = F, 
+            sep = "\t", 
+            row.names = F)
+```
+
+Condensed version of what the table should look like:
+```{r}
+funguild[1:3, c(1:3, 64)]
+```
+
+
+### Upload files to HPC
+- `git clone` the repository for the latest version from [here](https://github.com/UMNFuN/FUNGuild).
+- Upload to HPC: `/groups/egornish/lossanna/AVCA-ElkLD_I6S/FUNGuild_1.2`
+
+### Write the `SLURM` script
+- Create script in desired folder.
+
+`SLURM` script:
+```{r, eval=FALSE}
+#!/bin/bash
+
+#SBATCH --job-name=FUNGuild
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=00:5:00
+#SBATCH --account=barberan
+#SBATCH --partition=standard
+#SBATCH --mail-type=END
+#SBATCH --mail-user=lossanna@arizona.edu
+
+# Set working directory
+cd /groups/egornish/lossanna/AVCA-ElkLD_ITS/FUNGuild_1.2
+
+# Load python
+module load python/3.8
+
+# FUNGuild
+python3 FUNGuild.py taxa -otu FUNGuild-input.tsv -format tsv -column taxonomy -classifier unite
+python3 FUNGuild.py guild -taxa FUNGuild-input.taxa.tsv
+```
+
+
+### Run the job
+- Access UA servers at <https://ood.hpc.arizona.edu/>.
+- Run command: `sbatch /groups/egornish/lossanna/AVCA-ElkLD_ITS/FUNGuild_1.2/funguild.slurm`
+  - `sbatch`: submit a job
+  - `/groups/...`: path to `SLURM` script.
+- There are two output files, one that is the taxonomy table, and one that is the guild assignments. The guild assignment table is automatically named `FUNGuild-input.taxa.guilds.txt`.
+  - I copied the guild table into my working `data/` folder and manually renamed it `FUNGuild-output.txt`.

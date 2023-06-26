@@ -6,6 +6,8 @@ library(tidyverse)
 
 # Load data ---------------------------------------------------------------
 
+ex <- read.table("hpc-amplicon-sequencing/FUNGuild_1.2/Download/example/otu_table.txt",
+                 sep = "\t", header = T)
 fungi.asv.raw <- read.table("data/cleaned/sequencing/fungi_clean_asv.txt",
                             sep = "\t", header = T, row.names = 1)
 fungi.tax <- read.table("data/cleaned/sequencing/fungi_clean_tax.txt",
@@ -54,3 +56,5 @@ write.table(funguild,
             quote = F, 
             sep = "\t", 
             row.names = F)
+
+save.image("RData/FUNGuild-input.RData")
