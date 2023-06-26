@@ -1,8 +1,8 @@
 # Purpose: Format tables for FUNGuild input
 # Created: 2023-06-26
+# Updated: 2023-06-26
 
 library(tidyverse)
-
 
 # Load data ---------------------------------------------------------------
 
@@ -50,7 +50,7 @@ write.table(funguild,
             row.names = F)
 
 write.table(funguild, 
-            file = "hpc-amplicon-sequencing/FUNGuild/FUNGuild-input.tsv",
+            file = "hpc-amplicon-sequencing/FUNGuild_1.2/FUNGuild-input.tsv",
             quote = F, 
             sep = "\t", 
             row.names = F)
