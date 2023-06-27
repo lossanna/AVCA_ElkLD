@@ -1,0 +1,76 @@
+"guild","trophicMode","count"
+"Algal Parasite-Bryophyte Parasite-Fungal Parasite-Undefined Saprotroph","Pathotroph-Saprotroph",9
+"Animal Endosymbiont-Animal Pathogen-Endophyte-Plant Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph",8
+"Animal Endosymbiont-Animal Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph-Symbiotroph",3
+"Animal Parasite-Fungal Parasite","Pathotroph",1
+"Animal Pathogen","Pathotroph",16
+"Animal Pathogen-Endophyte-Endosymbiont-Epiphyte-Soil Saprotroph-Undefined Saprotroph","Pathotroph-Saprotroph-Symbiotroph",1
+"Animal Pathogen-Endophyte-Epiphyte-Fungal Parasite-Plant Pathogen-Wood Saprotroph","Pathotroph-Saprotroph-Symbiotroph",13
+"Animal Pathogen-Fungal Parasite-Undefined Saprotroph","Pathotroph-Saprotroph",37
+"Animal Pathogen-Plant Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph",47
+"Animal Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph",54
+"Arbuscular Mycorrhizal","Symbiotroph",195
+"Dung Saprotroph","Saprotroph",29
+"Dung Saprotroph-Endophyte-Plant Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph-Symbiotroph",12
+"Dung Saprotroph-Endophyte-Undefined Saprotroph","Saprotroph-Symbiotroph",4
+"Dung Saprotroph-Ericoid Mycorrhizal-Lichenized","Saprotroph-Symbiotroph",1
+"Dung Saprotroph-Nematophagous","Saprotroph",4
+"Dung Saprotroph-Plant Parasite-Soil Saprotroph-Undefined Saprotroph-Wood Saprotroph","Saprotroph",10
+"Dung Saprotroph-Plant Pathogen","Pathotroph-Saprotroph",3
+"Dung Saprotroph-Plant Saprotroph","Saprotroph",33
+"Dung Saprotroph-Plant Saprotroph-Wood Saprotroph","Saprotroph",14
+"Dung Saprotroph-Soil Saprotroph","Saprotroph",20
+"Dung Saprotroph-Soil Saprotroph-Undefined Saprotroph","Saprotroph",3
+"Dung Saprotroph-Undefined Saprotroph","Saprotroph",45
+"Dung Saprotroph-Undefined Saprotroph-Wood Saprotroph","Saprotroph",3
+"Dung Saprotroph-Wood Saprotroph","Saprotroph",9
+"Ectomycorrhizal","Symbiotroph",5
+"Ectomycorrhizal-Fungal Parasite","Pathotroph-Symbiotroph",2
+"Ectomycorrhizal-Undefined Saprotroph","Saprotroph-Symbiotroph",2
+"Ectomycorrhizal-Wood Saprotroph","Saprotroph-Symbiotroph",9
+"Endophyte","Symbiotroph",22
+"Endophyte-Fungal Parasite-Lichen Parasite-Plant Pathogen-Wood Saprotroph","Pathotroph-Saprotroph-Symbiotroph",6
+"Endophyte-Insect Pathogen","Pathotroph-Symbiotroph",1
+"Endophyte-Lichen Parasite-Plant Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph",21
+"Endophyte-Lichen Parasite-Plant Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph-Symbiotroph",62
+"Endophyte-Litter Saprotroph-Soil Saprotroph-Undefined Saprotroph","Saprotroph-Symbiotroph",24
+"Endophyte-Plant Pathogen","Pathotroph-Symbiotroph",3
+"Endophyte-Plant Pathogen-Plant Saprotroph","Pathotroph-Saprotroph-Symbiotroph",7
+"Endophyte-Plant Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph-Symbiotroph",16
+"Endophyte-Plant Pathogen-Wood Saprotroph","Pathotroph-Saprotroph",17
+"Endophyte-Plant Pathogen-Wood Saprotroph","Pathotroph-Saprotroph-Symbiotroph",20
+"Endophyte-Undefined Saprotroph","Saprotroph-Symbiotroph",1
+"Endophyte-Undefined Saprotroph-Wood Saprotroph","Saprotroph-Symbiotroph",11
+"Epiphyte","Symbiotroph",3
+"Epiphyte-Litter Saprotroph","Saprotroph-Symbiotroph",1
+"Epiphyte-Undefined Saprotroph","Saprotroph-Symbiotroph",3
+"Ericoid Mycorrhizal","Pathotroph-Symbiotroph",3
+"Fungal Parasite","Pathotroph",23
+"Fungal Parasite-Litter Saprotroph","Pathotroph-Saprotroph",3
+"Fungal Parasite-Litter Saprotroph-Undefined Saprotroph","Pathotroph-Saprotroph",2
+"Fungal Parasite-Plant Pathogen-Plant Saprotroph","Pathotroph-Saprotroph",125
+"Fungal Parasite-Soil Saprotroph-Undefined Saprotroph-Wood Saprotroph","Pathotroph-Saprotroph",4
+"Fungal Parasite-Undefined Saprotroph","Pathotroph-Saprotroph",2
+"Lichen Parasite","Pathotroph",3
+"Lichen Parasite-Lichenized","Pathotroph-Symbiotroph",1
+"Lichen Parasite-Wood Saprotroph","Pathotroph-Saprotroph",1
+"Lichenized","Symbiotroph",24
+"Lichenized-Wood Saprotroph","Symbiotroph",1
+"Litter Saprotroph","Saprotroph",2
+"Litter Saprotroph-Soil Saprotroph-Wood Saprotroph","Saprotroph",3
+"Litter Saprotroph-Wood Saprotroph","Saprotroph",2
+"NULL","Pathotroph-Saprotroph",1
+"Orchid Mycorrhizal","Symbiotroph",24
+"Plant Pathogen","Pathotroph",294
+"Plant Pathogen","Pathotroph-Saprotroph",2
+"Plant Pathogen-Plant Saprotroph","Pathotroph-Saprotroph",2
+"Plant Pathogen-Undefined Saprotroph","Pathotroph-Saprotroph",70
+"Plant Pathogen-Wood Saprotroph","Pathotroph-Saprotroph",71
+"Plant Saprotroph","Saprotroph",3
+"Plant Saprotroph-Wood Saprotroph","Saprotroph",4
+"Soil Saprotroph","Saprotroph",91
+"Soil Saprotroph-Undefined Saprotroph","Saprotroph",21
+"Undefined Saprotroph","Saprotroph",999
+"Undefined Saprotroph-Undefined Symbiotroph","Saprotroph-Symbiotroph",7
+"Undefined Saprotroph-Wood Saprotroph","Saprotroph",2
+"Wood Saprotroph","Saprotroph",172

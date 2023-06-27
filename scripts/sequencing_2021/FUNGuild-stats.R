@@ -49,11 +49,13 @@ fungi.trophic <- fungi.trophic[ , -1]
 fungi.trophic <- (sweep(as.matrix(fungi.trophic), 2, rowSums(fungi.asv), "/")) * 100 # change reads to relative proportions
 fungi.trophic <- as.data.frame(t(fungi.trophic))
 
-write.table(fungi.trophic,
-            file = "data/cleaned/sequencing/FUNGuild_trophic-proportions.txt",
-            quote = F,
-            sep ="\t",
-            col.names = NA)
+# Add metadata
+fungi.trophic <- bind_cols(meta, fungi.trophic)
+rownames(fungi.trophic) <- c()
+
+write.csv(fungi.trophic,
+          file = "data/cleaned/sequencing/FUNGuild-proportions-trophic_clean.csv",
+          row.names = F)
 
 
 # By guild ----------------------------------------------------------------
@@ -76,14 +78,42 @@ fungi.guilds <- fungi.guilds[ , -1]
 fungi.guilds <- (sweep(as.matrix(fungi.guilds), 2, rowSums(fungi.asv), "/")) * 100 # change reads to relative proportions
 fungi.guilds <- as.data.frame(t(fungi.guilds))
 
-write.table(fungi.guilds,
-            file = "data/cleaned/sequencing/FUNGuild_guild-proportions.txt",
-            quote = F,
-            sep ="\t",
-            col.names = NA)
+# Add metadata
+fungi.guilds <- bind_cols(meta, fungi.guilds)
+rownames(fungi.guilds) <- c()
+
+write.csv(fungi.guilds,
+          file = "data/cleaned/sequencing/FUNGuild-proportions-guild_clean.csv",
+          row.names = F)
 
 # Write list of guilds
-guilds <- unique(funguild.prob$guild)
+guilds <- funguild.prob |> 
+  group_by(guild, trophicMode) |> 
+  summarise(count = n(),
+            .groups = "keep")
 write.csv(guilds,
-          file = "data/cleaned/sequencing/FUNGuild_guild-categories.csv",
+          file = "data/cleaned/sequencing/FUNGuild-guild-categories.csv",
           row.names = F)
+
+
+# Saprotrophs -------------------------------------------------------------
+
+qqPlot(fungi.trophic$Saprotroph) # normal
+
+t.test(filter(fungi.trophic, Treatment3 == "Control")$Saprotroph,
+       filter(fungi.trophic, Treatment3 == "Treated")$Saprotroph) # NS
+
+# Plot
+fungi.trophic |> 
+  ggplot(aes(x = Treatment3, y = Saprotroph, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Proportion of saprotrophic fungi",
+       x = NULL,
+       y = "Relative abundance (%)") +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none")
+
