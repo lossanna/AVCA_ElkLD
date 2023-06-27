@@ -1,5 +1,7 @@
-# Purpose:
+# Purpose: Write clean table translating ASV reads into relative proportions for FAPROTAX categories, 
+#   and explore groups of potential interest.
 # Created: 2023-01-19
+# Updated: 2023-06-09
 
 library(tidyverse)
 library(car)
