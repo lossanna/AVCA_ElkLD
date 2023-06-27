@@ -4,9 +4,9 @@
 # Determined all were normally distributed except TN_perc & TC_perc, which were log-transformed,
 #   and found that OM & TC were collinear
 # Produced a clean data sheet for 2021 data (Data-2021_clean.csv).
-#   Previously had created data for SEM input, but then later decided SEM was not the right tool.
+#  This is also to be used for SEM 2.0 input.
 # Created: 2022-04-18
-# Last updated: 2023-05-24
+# Last updated: 2023-06-26
 
 library(tidyverse)
 library(readxl)
@@ -22,122 +22,164 @@ herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
-barc.div <- read.table("data/cleaned/sequencing/bac_arc_diversity.txt",
+barc.div <- read.table("data/cleaned/sequencing/bac-arc_diversity.txt",
                      sep = "\t", header = TRUE)
+fungi.div <- read.table("data/cleaned/sequencing/fungi_diversity.txt",
+                        sep = "\t", header = TRUE)
 soil.chem <- read_xlsx("data/Excel_LO_edited/Blankinship-soil-chemistry_TN-TC-OM_LO.xlsx", 
-                       sheet = "R_LO") |> 
-  select(-Year, -Treatment)
+                       sheet = "R_LO")
 elev <- read_csv("data/cleaned/Cross-section-elevation_clean.csv")
+fapro <- read.csv("data/cleaned/sequencing/faprotax-proportions_clean.csv")
+funguild.trophic <- read.csv("data/cleaned/sequencing/FUNGuild-proportions-trophic_clean.csv")
 
 
 # Compile 2021 data -------------------------------------------------------
 
-# Filter out to 2021 only
+# Filter out to 2021 only from temporal veg data
 total.2021 <- total.all %>% 
-  filter(Year == "2021")
+  filter(Year == "2021") |> 
+  rename(total = Cover)
 herb.2021 <- herb.all %>% 
   filter(Year == "2021") |> 
   rename(herb = Cover)
 notree.2021 <- notree.all |> 
   filter(Year == "2021") |> 
   rename(notree = Cover)
-rich.2021 <- per.div %>% 
-  filter(Year == "2021") 
-shan.2021 <- per.div %>% 
-  filter(Year == "2021")
-
-# Remove some sequencing cols
-barc.div <- barc.div |> 
-  select(-Name, -Treatment1, -Treatment2)
+perdiv.2021 <- per.div %>% 
+  filter(Year == "2021") |> 
+  rename(perveg.richness = rich,
+         perveg.shannon = shan)
 
 # Compile variables
 dat.2021 <- total.2021 %>% 
   left_join(herb.2021) %>% 
   left_join(notree.2021) |> 
+  left_join(perdiv.2021) |> 
+  select(-PlotTimeID, -Year, -year.xaxis, -station.trt, -channel.trt, -Treatment1, -Treatment2) |> 
   left_join(soil.chem) %>% 
-  left_join(elevation) %>% 
-  left_join(rich.2021) %>% 
-  left_join(shan.2021) |> 
-  left_join(barc.div)
-dat.2021 <- dat.2021 |> 
-  mutate(CN_ratio = TC_perc / TN_perc) |> 
-  rename(Richness.barc = Richness,
-         Shannon.barc = Shannon)
+  mutate(
+    CN_ratio = TC_perc / TN_perc) |> 
+  left_join(barc.div) |> 
+  rename(barc.richness = Richness,
+         barc.shannon = Shannon,
+         barc.betadisp.chan = betadisper.channel,
+         barc.betadisp.3 = betadisper.treatment3,
+         barc.NMDS1 = NMDS1,
+         barc.NMDS2 = NMDS2) |> 
+  left_join(fungi.div) |> 
+  rename(fungi.richness = Richness,
+         fungi.shannon = Shannon,
+         fungi.betadisp.chan = betadisper.channel,
+         fungi.betadisp.3 = betadisper.treatment3,
+         fungi.NMDS1 = NMDS1,
+         fungi.NMDS2 = NMDS2) |> 
+  arrange(Sample) |> 
+  mutate(chemoheterotrophy = fapro$chemoheterotrophy,
+         n.cycler = fapro$n_cyclers,
+         saprotroph = funguild.trophic$Saprotroph) |> 
+  left_join(elev) |> 
+  select(Sample, Name, Channel, Station, Treatment3,
+         total, herb, notree, perveg.richness, perveg.shannon,
+         TN_perc, TC_perc, CN_ratio, OM_perc,
+         barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
+         fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
+         chemoheterotrophy, n.cycler, saprotroph, dElev, dElev_corrected)
+
 
 
 # Visualize distribution --------------------------------------------------
 
 # Histogram
-hist(dat.2021$Cover, breaks = 10)
+hist(dat.2021$total, breaks = 10)
 hist(dat.2021$herb, breaks = 10)
 hist(dat.2021$notree, breaks = 10)
-hist(dat.2021$TN_perc, breaks = 10)
-hist(dat.2021$TC_perc, breaks = 10)
+hist(dat.2021$perveg.richness)
+hist(dat.2021$perveg.shannon, breaks = 10)
+hist(dat.2021$TN_perc, breaks = 10) # not normal
+hist(dat.2021$TC_perc, breaks = 10) # not normal
+hist(dat.2021$CN_ratio)
 hist(dat.2021$OM_perc, breaks = 10)
-hist(dat.2021$Elev_Diff)
-hist(dat.2021$rich)
-hist(dat.2021$shan, breaks = 10)
-hist(dat.2021$Richness.barc)
-hist(dat.2021$Shannon.barc)
+hist(dat.2021$barc.richness)
+hist(dat.2021$barc.shannon)
+hist(dat.2021$fungi.richness, breaks = 10)
+hist(dat.2021$fungi.shannon, breaks = 10)
+hist(dat.2021$chemoheterotrophy, breaks = 15)
+hist(dat.2021$n.cycler, breaks = 10)
+hist(dat.2021$saprotroph)
 hist(elev$dElev, breaks = 10) # not normal - right tail skew?
 hist(elev$dElev_corrected, breaks = 10)
 
 # Boxplot
-dat.2021$Channel <- factor(dat.2021$Channel)
-
 vis.boxplot <- function(dat, y, ylab) {
   ggplot(dat,
-         aes(x = Channel,
+         aes(x = Treatment3,
              y = y,
-             fill = Channel)) +
-    geom_boxplot(outlier.shape = NA) +
-    
-    geom_jitter() +
+             fill = Treatment3,
+             color = Treatment3)) +
+    geom_boxplot(outlier.shape = NA,
+                 alpha = 0.3) +
+    geom_jitter(alpha = 0.8,
+                size = 3) +
     theme_bw() +
     xlab(NULL) +
     ylab(ylab) +
     theme(legend.position = "none") +
-    scale_fill_brewer(palette = "Dark2")
+    scale_fill_manual(values = c("red", "#1F78B4")) +
+    scale_color_manual(values = c("red", "#1F78B4"))
 }
 
-vis.boxplot(dat.2021, dat.2021$Cover, "Total plant cover (%)")
+vis.boxplot(dat.2021, dat.2021$total, "Total plant cover (%)")
 vis.boxplot(dat.2021, dat.2021$herb, "Herbaceous cover (%)")
 vis.boxplot(dat.2021, dat.2021$notree, "Grass, forb & shrub cover (%)")
-vis.boxplot(dat.2021, dat.2021$TN_perc, "Soil N (%)") # Appears to be outlier
-vis.boxplot(dat.2021, dat.2021$TC_perc, "Soil C (%)") # Appears to be outlier
+vis.boxplot(dat.2021, dat.2021$perveg.richness, "Perennial plant richness")
+vis.boxplot(dat.2021, dat.2021$perveg.shannon, "Perennial plant Shannon diversity")
+vis.boxplot(dat.2021, dat.2021$TN_perc, "Soil N (%)") # Appears to be outlier, but I checked it and nothing is obviously wrong
+vis.boxplot(dat.2021, dat.2021$TC_perc, "Soil C (%)") # Appears to be outlier, but I checked it and nothing is obviously wrong
+vis.boxplot(dat.2021, dat.2021$CN_ratio, "C:N ratio")
 vis.boxplot(dat.2021, dat.2021$OM_perc, "Organic matter (%)")
-vis.boxplot(dat.2021, dat.2021$Elev_Diff, "Elevation difference, 2011-2019 (m)")
-vis.boxplot(dat.2021, dat.2021$rich, "Perennial plant richness")
-vis.boxplot(dat.2021, dat.2021$shan, "Perennial plant Shannon diversity")
-vis.boxplot(dat.2021, dat.2021$Richness.barc, "Bacteria & archea richness")
-vis.boxplot(dat.2021, dat.2021$Shannon.barc, "Bacteria & archea Shannon diversity")
+vis.boxplot(dat.2021, dat.2021$barc.richness, "Bacteria & archea richness")
+vis.boxplot(dat.2021, dat.2021$barc.shannon, "Bacteria & archea Shannon diversity") # appears to be low outlier
+vis.boxplot(dat.2021, dat.2021$fungi.richness, "Fungi richness") 
+vis.boxplot(dat.2021, dat.2021$fungi.shannon, "Fungi Shannon diversity") # appears to be low outlier
+vis.boxplot(dat.2021, dat.2021$chemoheterotrophy, "Chemoheterotrophs (%)")
+vis.boxplot(dat.2021, dat.2021$n.cycler, "N-cycling bacteria & archea (%)") # appears to be an outlier
+vis.boxplot(dat.2021, dat.2021$saprotroph, "Fungi saprotrophs (%)")
+vis.boxplot(dat.2021, dat.2021$dElev_corrected, "Elevation difference, 2011-2019 (m)")
 
 # Quantile-quantile plots
-qqPlot(dat.2021$Cover)
+qqPlot(dat.2021$total)
 qqPlot(dat.2021$herb)
 qqPlot(dat.2021$notree)
-qqPlot(dat.2021$TN_perc) # not normal?
-qqPlot(dat.2021$TC_perc) # not normal?
+qqPlot(dat.2021$perveg.richness)
+qqPlot(dat.2021$perveg.shannon)
+qqPlot(dat.2021$TN_perc) # not normal
+qqPlot(dat.2021$TC_perc) # not normal
 qqPlot(dat.2021$CN_ratio)
-qqPlot(dat.2021$OM_perc)
-qqPlot(dat.2021$Elev_Diff)
-qqPlot(dat.2021$rich)
-qqPlot(dat.2021$shan)
-qqPlot(dat.2021$Richness.barc)
-qqPlot(dat.2021$Shannon.barc)
+qqPlot(dat.2021$OM_perc) # outlier?
+qqPlot(dat.2021$barc.richness)
+qqPlot(dat.2021$barc.shannon) # not normal?
+qqPlot(dat.2021$fungi.richness)
+qqPlot(dat.2021$fungi.shannon) # not normal?
+qqPlot(dat.2021$barc.richness)
+qqPlot(dat.2021$chemoheterotrophy) # possibly not normal?
+qqPlot(dat.2021$n.cycler) # outlier?
+qqPlot(dat.2021$saprotroph)
+qqPlot(dat.2021$dElev) # outliers
+qqPlot(dat.2021$dElev_corrected) # cannot be log-transformed because of 0 values
 
 
 # Log transformation ------------------------------------------------------
 
+# TN & TC
 dat.2021 <- dat.2021 %>% 
-  mutate(TN_log = log(TN_perc * 1000),
-         TC_log = log(TC_perc * 1000))
+  mutate(TN_log = log(TN_perc),
+         TC_log = log(TC_perc))
 
 hist(dat.2021$TN_log, breaks = 10)
 hist(dat.2021$TC_log, breaks = 10)
 
-qqPlot(dat.2021$TN_log)
-qqPlot(dat.2021$TC_log)
+qqPlot(dat.2021$TN_log) # log-transformation has fixed normality issue
+qqPlot(dat.2021$TC_log) # log-transformation has fixed normality issue
 
 # Add TN & TC as ppt
 dat.2021 <- dat.2021 |> 
@@ -145,23 +187,70 @@ dat.2021 <- dat.2021 |>
          TC_ppt = TC_perc * 10)
 
 
+# OM
+qqPlot(log(dat.2021$OM_perc)) # log-transformation has fixed outlier
+dat.2021 <- dat.2021 |> 
+  mutate(OM_log = log(OM_perc))
+
+# Barc & fungi Shannon
+qqPlot(log(dat.2021$barc.shannon)) # log-transformation does not help
+qqPlot(log(dat.2021$fungi.shannon)) # log-transformation does not help
+
+# Chemoheterotrophs & N-cyclers
+qqPlot(log(dat.2021$chemoheterotrophy)) # log-transformation helps a little
+qqPlot(log(dat.2021$n.cycler)) # log-transformation has fixed outlier
+dat.2021 <- dat.2021 |> 
+  mutate(chemoheterotrophy_log = log(chemoheterotrophy),
+         n.cycler_log = log(n.cycler)) |> 
+  rename(chemoheterotrophy_perc = chemoheterotrophy,
+         n.cycler_perc = n.cycler)
+
+# dElev
+qqPlot(log(dat.2021$dElev)) # log-transformation does not really help
+
+
+# Variables that have been log-transformed: 
+#   TN, TC, OM, chemoheterotrophs, n-cyclers
+
+
+
 # Bivariate scatterplot matrix --------------------------------------------
 
-pairs(~ Cover + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
-pairs(~ herb + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
-pairs(~ notree + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
-pairs(~ rich + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
-pairs(~ shan + TN_log + TC_log + OM_perc + Elev_Diff, data = dat.2021)
+# All
+pairs(~ notree + perveg.richness + perveg.shannon + TN_log + TC_log + OM_log + CN_ratio + barc.richness + barc.shannon +
+        fungi.richness + fungi.shannon + chemoheterotrophy_log + n.cycler_log, data = dat.2021)
+
+
+
+# TN, TC, OM
+pairs(~ TN_log + TC_log + OM_log + CN_ratio, data = dat.2021) 
+#   TN & TC highly correlated; TC & OM kind of correlated; CN & TC/TN kind of correlated
+#   conclusion: drop TC from analysis, or just use CN_ratio
+#     but TN better relates to N-cycling
+
+# TN, N-cyclers
+pairs(~ TN_log + n.cycler_log, data = dat.2021) 
+
+# Bacteria, archaea & fungi richness and Shannon
+pairs(~ barc.richness + barc.shannon +
+        fungi.richness + fungi.shannon, data = dat.2021)
+#   barc richness & shannon pretty correlated
+#   conclusion: just use barc richness, because barc shannon was possibly not normal
+#     to be even, probably drop fungi shannon as well
+
 
 
 # Reorder cols ------------------------------------------------------------
 
 dat.2021 <- dat.2021 |> 
-  select(Sample, Channel, Station, Treatment1, Treatment2, Treatment3,
-         Cover, herb, notree, rich, shan,
-         TN_log, TN_perc, TN_ppt, TC_log, TC_perc, TC_ppt, CN_ratio, OM_perc,
-         Elev_Diff, Richness.barc, Shannon.barc, NMDS1, NMDS2, betadisper.channel,
-         betadisper.treatment1, betadisper.treatment2, betadisper.treatment3)
+  select(Sample, Name, Channel, Station, Treatment3,
+         total, herb, notree, perveg.richness, perveg.shannon,
+         TN_perc, TN_ppt, TN_log, TC_perc, TC_ppt, TC_log, CN_ratio, OM_perc, OM_log,
+         barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
+         fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
+         chemoheterotrophy_perc, chemoheterotrophy_log, n.cycler_perc, n.cycler_log, 
+         saprotroph, dElev, dElev_corrected)
+
 
 
 # Save --------------------------------------------------------------------
