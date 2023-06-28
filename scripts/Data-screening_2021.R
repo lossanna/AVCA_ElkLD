@@ -19,6 +19,7 @@ library(caret)
 library(performance)
 library(ggpubr)
 library(car)
+library(Hmisc)
 
 # Load data ---------------------------------------------------------------
 
@@ -243,6 +244,29 @@ pairs(~ barc.richness + barc.shannon +
 #   conclusion: just use barc richness, because barc shannon was possibly not normal
 #     to be even, probably drop fungi shannon as well
 
+
+
+# Correlation table -------------------------------------------------------
+
+# All data
+corr.dat <- dat.2021 |> 
+  select(notree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
+         barc.richness, fungi.richness, chemoheterotrophy_log, n.cycler_log, saprotroph)
+corr.all <- rcorr(as.matrix(corr.dat))[["r"]]
+
+# Treated
+corr.dat.trt <- dat.2021 |> 
+  filter(Treatment3 == "Treated") |> 
+  select(notree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
+         barc.richness, fungi.richness, chemoheterotrophy_log, n.cycler_log, saprotroph)
+corr.trt <- rcorr(as.matrix(corr.dat.trt))[["r"]]
+
+# Control
+corr.dat.ctrl <- dat.2021 |> 
+  filter(Treatment3 == "Control") |> 
+  select(notree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
+         barc.richness, fungi.richness, chemoheterotrophy_log, n.cycler_log, saprotroph)
+corr.ctrl <- rcorr(as.matrix(corr.dat.ctrl))[["r"]]
 
 
 # Reorder cols ------------------------------------------------------------
