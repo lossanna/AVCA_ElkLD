@@ -25,7 +25,8 @@ sem.dat.unscaled <- dat.2021 |>
 sem.dat <- sem.dat.unscaled |> 
   mutate(rocks = as.factor(rocks),
          Sample = as.factor(Sample)) |> 
-  mutate_if(is.numeric, scale)
+  mutate_if(is.numeric, scale) |> 
+  mutate(rocks = as.numeric(rocks))
 
 
 # SEM, plants as latent variable ------------------------------------------
@@ -42,8 +43,8 @@ mod1.0 <- '
   soil_chem ~ rocks + soil_microbe
   soil_microbe ~ rocks
 '
-fit <- sem(mod1.0, data = sem.dat) # lavaan WARNING: some estimated ov variances are negative
-summary(fit) 
+fit1.0 <- sem(mod1.0, data = sem.dat) # lavaan WARNING: some estimated ov variances are negative
+summary(fit1.0) 
 #   possibly this is because some variables are collinear
 
 
@@ -60,8 +61,8 @@ mod1.1 <- '
   soil_chem ~ rocks + soil_microbe
   soil_microbe ~ rocks
 '
-fit <- sem(mod1.1, data = sem.dat)
-summary(fit) # removing TN solves negative variance warning
+fit1.1 <- sem(mod1.1, data = sem.dat)
+summary(fit1.1) # removing TN solves negative variance warning
 
 
 # Change OM_log to OM_perc
@@ -77,8 +78,8 @@ mod1.2 <- '
   soil_chem ~ rocks + soil_microbe
   soil_microbe ~ rocks
 '
-fit <- sem(mod1.2, data = sem.dat) # lavaan WARNING: some estimated ov variances are negative
-summary(fit) # using OM_perc doesn't solve variance issue
+fit1.2 <- sem(mod1.2, data = sem.dat) # lavaan WARNING: some estimated ov variances are negative
+summary(fit1.2) # using OM_perc doesn't solve variance issue
 
 
 # Remove OM_log
@@ -94,8 +95,8 @@ mod1.3 <- '
   soil_chem ~ rocks + soil_microbe
   soil_microbe ~ rocks
 '
-fit <- sem(mod1.3, data = sem.dat) # lavaan WARNING: some estimated ov variances are negative
-summary(fit) # removing OM_log solves negative variance issue
+fit1.3 <- sem(mod1.3, data = sem.dat)
+summary(fit1.3) # removing OM_log solves negative variance issue
 
 
 # Break include OM & TN as separate indicator variables, no latent
@@ -111,5 +112,24 @@ mod1.4 <- '
   OM_log ~ soil_microbe + rocks
   soil_microbe ~ rocks
 '
-fit <- sem(mod1.4, data = sem.dat) # lavaan WARNING: some estimated ov variances are negative
-summary(fit) # removing soil_chem as latent variable does not solve variance issue
+fit1.4 <- sem(mod1.4, data = sem.dat) # lavaan WARNING: some estimated ov variances are negative
+summary(fit1.4) # removing soil_chem as latent variable does not solve variance issue
+
+
+# Allow OM & TN to covary
+mod1.5 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  soil_chem =~ TN_log + OM_log
+  plants =~ notree + perveg.richness + perveg.shannon
+  
+  # structure
+  plants ~ rocks + soil_chem 
+  soil_chem ~ rocks + soil_microbe
+  soil_microbe ~ rocks
+  
+  # covariance
+  TN_log ~~ OM_log
+'
+fit1.5 <- sem(mod1.5, data = sem.dat) # lavaan WARNING: some estimated ov variances are negative
+summary(fit1.5) 
