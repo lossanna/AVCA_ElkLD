@@ -1,18 +1,18 @@
 PlotTimeID,Sample,Channel,Station,Year,year.xaxis,station.trt,channel.trt,Treatment1,Treatment2,Treatment3,Cover
-1,49,Channel 12,Station 1 + 04,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,17.666666666666668
-2,50,Channel 12,Station 1 + 52,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,35.166666666666664
-3,51,Channel 12,Station 1 + 83,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,13.333333333333334
-4,52,Channel 12,Station 2 + 63,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,28.583333333333332
-5,53,Channel 12,Station 2 + 98,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,11.166666666666666
-6,54,Channel 12,Station 3 + 93,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,47.083333333333336
-7,55,Channel 12,Station 4 + 00,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,17.208333333333332
-8,56,Channel 12,Station 4 + 09,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,41.75
-9,57,Channel 12,Station 4 + 56,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,39
-10,58,Channel 12,Station 4 + 65,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,29.333333333333332
-11,59,Channel 12,Station 5 + 13,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,29.333333333333332
-12,60,Channel 12,Station 5 + 48,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,25.5
-13,61,Channel 12,Station 6 + 30,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,15.166666666666666
-14,62,Channel 12,Station 6 + 93,2012,2012-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,16
+1,49,Channel 12,Station 1 + 04,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,17.666666666666668
+2,50,Channel 12,Station 1 + 52,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,35.166666666666664
+3,51,Channel 12,Station 1 + 83,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,13.333333333333334
+4,52,Channel 12,Station 2 + 63,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,28.583333333333332
+5,53,Channel 12,Station 2 + 98,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,11.166666666666666
+6,54,Channel 12,Station 3 + 93,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,47.083333333333336
+7,55,Channel 12,Station 4 + 00,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,17.208333333333332
+8,56,Channel 12,Station 4 + 09,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,41.75
+9,57,Channel 12,Station 4 + 56,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,39
+10,58,Channel 12,Station 4 + 65,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,29.333333333333332
+11,59,Channel 12,Station 5 + 13,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,29.333333333333332
+12,60,Channel 12,Station 5 + 48,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,25.5
+13,61,Channel 12,Station 6 + 30,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,15.166666666666666
+14,62,Channel 12,Station 6 + 93,2012,2012-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,16
 15,33,Channel 13,Station 1 + 11.5 BAF,2012,2012-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,17.833333333333332
 16,34,Channel 13,Station 1 + 38.5 ORD,2012,2012-01-01,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,48.75
 17,35,Channel 13,Station 1 + 71 BAF,2012,2012-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,42.416666666666664
@@ -60,19 +60,19 @@ PlotTimeID,Sample,Channel,Station,Year,year.xaxis,station.trt,channel.trt,Treatm
 60,13,Channel 21,Station 11 + 24 BAF,2012,2012-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,35
 61,14,Channel 21,Station 11 + 63 ORD,2012,2012-01-01,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,27.333333333333332
 62,15,Channel 21,Station 11 + 73 BAF,2012,2012-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,8.916666666666666
-63,49,Channel 12,Station 1 + 04,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,34
-64,50,Channel 12,Station 1 + 52,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,40.416666666666664
-65,51,Channel 12,Station 1 + 83,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,24.5
-66,52,Channel 12,Station 2 + 63,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,34.916666666666664
-67,53,Channel 12,Station 2 + 98,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,31.666666666666668
-68,54,Channel 12,Station 3 + 93,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,36.16666666666667
-69,55,Channel 12,Station 4 + 00,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,34.458333333333336
-70,56,Channel 12,Station 4 + 09,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,46.41666666666667
-71,57,Channel 12,Station 4 + 56,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,33.5
-73,59,Channel 12,Station 5 + 13,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,44.916666666666664
-74,60,Channel 12,Station 5 + 48,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,32.16666666666667
-75,61,Channel 12,Station 6 + 30,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,23.583333333333332
-76,62,Channel 12,Station 6 + 93,2013,2013-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,15.666666666666666
+63,49,Channel 12,Station 1 + 04,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,34
+64,50,Channel 12,Station 1 + 52,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,40.416666666666664
+65,51,Channel 12,Station 1 + 83,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,24.5
+66,52,Channel 12,Station 2 + 63,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,34.916666666666664
+67,53,Channel 12,Station 2 + 98,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,31.666666666666668
+68,54,Channel 12,Station 3 + 93,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,36.16666666666667
+69,55,Channel 12,Station 4 + 00,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,34.458333333333336
+70,56,Channel 12,Station 4 + 09,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,46.41666666666667
+71,57,Channel 12,Station 4 + 56,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,33.5
+73,59,Channel 12,Station 5 + 13,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,44.916666666666664
+74,60,Channel 12,Station 5 + 48,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,32.16666666666667
+75,61,Channel 12,Station 6 + 30,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,23.583333333333332
+76,62,Channel 12,Station 6 + 93,2013,2013-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,15.666666666666666
 77,33,Channel 13,Station 1 + 11.5 BAF,2013,2013-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,3.4166666666666665
 78,34,Channel 13,Station 1 + 38.5 ORD,2013,2013-01-01,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,49.25
 79,35,Channel 13,Station 1 + 71 BAF,2013,2013-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,35.5
@@ -119,20 +119,20 @@ PlotTimeID,Sample,Channel,Station,Year,year.xaxis,station.trt,channel.trt,Treatm
 121,13,Channel 21,Station 11 + 24 BAF,2013,2013-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,26
 122,14,Channel 21,Station 11 + 63 ORD,2013,2013-01-01,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,26.125
 123,15,Channel 21,Station 11 + 73 BAF,2013,2013-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,11.75
-124,49,Channel 12,Station 1 + 04,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,24.625
-125,50,Channel 12,Station 1 + 52,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,25.375
-126,51,Channel 12,Station 1 + 83,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,22.375
-127,52,Channel 12,Station 2 + 63,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,16.125
-128,53,Channel 12,Station 2 + 98,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,30.75
-129,54,Channel 12,Station 3 + 93,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,23
-130,55,Channel 12,Station 4 + 00,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,16
-131,56,Channel 12,Station 4 + 09,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,21.875
-132,57,Channel 12,Station 4 + 56,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,31.5
-133,58,Channel 12,Station 4 + 65,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,22.5
-134,59,Channel 12,Station 5 + 13,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,34.875
-135,60,Channel 12,Station 5 + 48,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,33.625
-136,61,Channel 12,Station 6 + 30,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,8.5
-137,62,Channel 12,Station 6 + 93,2014,2014-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,19.5
+124,49,Channel 12,Station 1 + 04,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,24.625
+125,50,Channel 12,Station 1 + 52,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,25.375
+126,51,Channel 12,Station 1 + 83,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,22.375
+127,52,Channel 12,Station 2 + 63,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,16.125
+128,53,Channel 12,Station 2 + 98,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,30.75
+129,54,Channel 12,Station 3 + 93,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,23
+130,55,Channel 12,Station 4 + 00,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,16
+131,56,Channel 12,Station 4 + 09,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,21.875
+132,57,Channel 12,Station 4 + 56,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,31.5
+133,58,Channel 12,Station 4 + 65,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,22.5
+134,59,Channel 12,Station 5 + 13,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,34.875
+135,60,Channel 12,Station 5 + 48,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,33.625
+136,61,Channel 12,Station 6 + 30,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,8.5
+137,62,Channel 12,Station 6 + 93,2014,2014-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,19.5
 138,33,Channel 13,Station 1 + 11.5 BAF,2014,2014-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,14.1875
 139,34,Channel 13,Station 1 + 38.5 ORD,2014,2014-01-01,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,79.75
 140,35,Channel 13,Station 1 + 71 BAF,2014,2014-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,62.625
@@ -180,20 +180,20 @@ PlotTimeID,Sample,Channel,Station,Year,year.xaxis,station.trt,channel.trt,Treatm
 183,13,Channel 21,Station 11 + 24 BAF,2014,2014-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,27.5
 184,14,Channel 21,Station 11 + 63 ORD,2014,2014-01-01,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,43.8125
 185,15,Channel 21,Station 11 + 73 BAF,2014,2014-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,19.125
-186,49,Channel 12,Station 1 + 04,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,25.625
-187,50,Channel 12,Station 1 + 52,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,14.125
-188,51,Channel 12,Station 1 + 83,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,25.75
-189,52,Channel 12,Station 2 + 63,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,25.625
-190,53,Channel 12,Station 2 + 98,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,25.625
-191,54,Channel 12,Station 3 + 93,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,29.5
-192,55,Channel 12,Station 4 + 00,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,28.875
-193,56,Channel 12,Station 4 + 09,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,32.875
-194,57,Channel 12,Station 4 + 56,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,31.25
-195,58,Channel 12,Station 4 + 65,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,28.5
-196,59,Channel 12,Station 5 + 13,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,59.375
-197,60,Channel 12,Station 5 + 48,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,33
-198,61,Channel 12,Station 6 + 30,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,20.125
-199,62,Channel 12,Station 6 + 93,2015,2015-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,29.875
+186,49,Channel 12,Station 1 + 04,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,25.625
+187,50,Channel 12,Station 1 + 52,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,14.125
+188,51,Channel 12,Station 1 + 83,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,25.75
+189,52,Channel 12,Station 2 + 63,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,25.625
+190,53,Channel 12,Station 2 + 98,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,25.625
+191,54,Channel 12,Station 3 + 93,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,29.5
+192,55,Channel 12,Station 4 + 00,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,28.875
+193,56,Channel 12,Station 4 + 09,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,32.875
+194,57,Channel 12,Station 4 + 56,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,31.25
+195,58,Channel 12,Station 4 + 65,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,28.5
+196,59,Channel 12,Station 5 + 13,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,59.375
+197,60,Channel 12,Station 5 + 48,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,33
+198,61,Channel 12,Station 6 + 30,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,20.125
+199,62,Channel 12,Station 6 + 93,2015,2015-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,29.875
 200,33,Channel 13,Station 1 + 11.5 BAF,2015,2015-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,27.75
 201,34,Channel 13,Station 1 + 38.5 ORD,2015,2015-01-01,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,62.625
 202,35,Channel 13,Station 1 + 71 BAF,2015,2015-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,73.5
@@ -241,20 +241,20 @@ PlotTimeID,Sample,Channel,Station,Year,year.xaxis,station.trt,channel.trt,Treatm
 245,13,Channel 21,Station 11 + 24 BAF,2015,2015-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,17.25
 246,14,Channel 21,Station 11 + 63 ORD,2015,2015-01-01,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,28.75
 247,15,Channel 21,Station 11 + 73 BAF,2015,2015-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,10.375
-248,49,Channel 12,Station 1 + 04,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,21.875
-249,50,Channel 12,Station 1 + 52,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,43.25
-250,51,Channel 12,Station 1 + 83,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,29.375
-251,52,Channel 12,Station 2 + 63,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,27.75
-252,53,Channel 12,Station 2 + 98,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,21.25
-253,54,Channel 12,Station 3 + 93,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,30.625
-254,55,Channel 12,Station 4 + 00,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,38.75
-255,56,Channel 12,Station 4 + 09,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,37.125
-256,57,Channel 12,Station 4 + 56,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,45.25
-257,58,Channel 12,Station 4 + 65,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,40.5
-258,59,Channel 12,Station 5 + 13,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,45.625
-259,60,Channel 12,Station 5 + 48,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,18.375
-260,61,Channel 12,Station 6 + 30,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,10.125
-261,62,Channel 12,Station 6 + 93,2018,2018-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,17.1875
+248,49,Channel 12,Station 1 + 04,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,21.875
+249,50,Channel 12,Station 1 + 52,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,43.25
+250,51,Channel 12,Station 1 + 83,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,29.375
+251,52,Channel 12,Station 2 + 63,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,27.75
+252,53,Channel 12,Station 2 + 98,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,21.25
+253,54,Channel 12,Station 3 + 93,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,30.625
+254,55,Channel 12,Station 4 + 00,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,38.75
+255,56,Channel 12,Station 4 + 09,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,37.125
+256,57,Channel 12,Station 4 + 56,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,45.25
+257,58,Channel 12,Station 4 + 65,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,40.5
+258,59,Channel 12,Station 5 + 13,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,45.625
+259,60,Channel 12,Station 5 + 48,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,18.375
+260,61,Channel 12,Station 6 + 30,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,10.125
+261,62,Channel 12,Station 6 + 93,2018,2018-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,17.1875
 262,33,Channel 13,Station 1 + 11.5 BAF,2018,2018-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,37.5
 263,34,Channel 13,Station 1 + 38.5 ORD,2018,2018-01-01,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,89.75
 264,35,Channel 13,Station 1 + 71 BAF,2018,2018-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,77.375
@@ -303,20 +303,20 @@ PlotTimeID,Sample,Channel,Station,Year,year.xaxis,station.trt,channel.trt,Treatm
 307,13,Channel 21,Station 11 + 24 BAF,2018,2018-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,26.25
 308,14,Channel 21,Station 11 + 63 ORD,2018,2018-01-01,One rock dam,Channel 21: In-channel treatment,One rock dam,In-channel treatment,Treated,39.25
 309,15,Channel 21,Station 11 + 73 BAF,2018,2018-01-01,Baffle,Channel 21: In-channel treatment,Baffle,In-channel treatment,Treated,17.75
-310,49,Channel 12,Station 1 + 04,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,34.75
-311,50,Channel 12,Station 1 + 52,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,37.625
-312,51,Channel 12,Station 1 + 83,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,11.125
-313,52,Channel 12,Station 2 + 63,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,35.125
-314,53,Channel 12,Station 2 + 98,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,32.75
-315,54,Channel 12,Station 3 + 93,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,54.75
-316,55,Channel 12,Station 4 + 00,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,50.4375
-317,56,Channel 12,Station 4 + 09,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,19.5
-318,57,Channel 12,Station 4 + 56,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,49.375
-319,58,Channel 12,Station 4 + 65,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,45.625
-320,59,Channel 12,Station 5 + 13,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,36.25
-321,60,Channel 12,Station 5 + 48,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,31.625
-322,61,Channel 12,Station 6 + 30,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,18.375
-323,62,Channel 12,Station 6 + 93,2021,2021-01-01,No treatment,Channel 12: No treatment,No treatment,No treatment,Control,16.25
+310,49,Channel 12,Station 1 + 04,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,34.75
+311,50,Channel 12,Station 1 + 52,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,37.625
+312,51,Channel 12,Station 1 + 83,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,11.125
+313,52,Channel 12,Station 2 + 63,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,35.125
+314,53,Channel 12,Station 2 + 98,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,32.75
+315,54,Channel 12,Station 3 + 93,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,54.75
+316,55,Channel 12,Station 4 + 00,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,50.4375
+317,56,Channel 12,Station 4 + 09,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,19.5
+318,57,Channel 12,Station 4 + 56,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,49.375
+319,58,Channel 12,Station 4 + 65,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,45.625
+320,59,Channel 12,Station 5 + 13,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,36.25
+321,60,Channel 12,Station 5 + 48,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,31.625
+322,61,Channel 12,Station 6 + 30,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,18.375
+323,62,Channel 12,Station 6 + 93,2021,2021-01-01,No treatment,Channel 12: Control,No treatment,Control,Control,16.25
 324,33,Channel 13,Station 1 + 11.5 BAF,2021,2021-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,33.5
 325,34,Channel 13,Station 1 + 38.5 ORD,2021,2021-01-01,One rock dam,Channel 13: In-channel treatment,One rock dam,In-channel treatment,Treated,55.75
 326,35,Channel 13,Station 1 + 71 BAF,2021,2021-01-01,Baffle,Channel 13: In-channel treatment,Baffle,In-channel treatment,Treated,68.75
