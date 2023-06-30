@@ -52,8 +52,8 @@ herb.2021 <- herb.all %>%
 notree.2021 <- notree.all |> 
   filter(Year == "2021") |> 
   rename(notree = Cover)
-notree.2018 <- tree.all |> 
-  filter(Year == "2021") |> 
+notree.2018 <- notree.all |> 
+  filter(Year == "2018") |> 
   rename(notree.18 = Cover)
 tree.2021 <- tree.all |> 
   filter(Year == "2021") |> 
@@ -67,7 +67,9 @@ perdiv.2021 <- per.div %>%
 dat.2021 <- total.2021 %>% 
   left_join(herb.2021) %>% 
   left_join(notree.2021) |> 
+  select(-PlotTimeID, -Year, -year.xaxis) |> 
   left_join(notree.2018) |> 
+  select(-PlotTimeID, -Year, -year.xaxis) |> 
   left_join(tree.2021) |> 
   left_join(perdiv.2021) |> 
   select(-PlotTimeID, -Year, -year.xaxis, -station.trt, -channel.trt, -Treatment1, -Treatment2) |> 
