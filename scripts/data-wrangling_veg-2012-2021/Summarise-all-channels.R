@@ -132,7 +132,7 @@ plant.all <- left_join(sampling, plant.all)
 
 
 
-# Summarise by total and herb ---------------------------------------------
+# Summarise total, herb, notree, and tree ---------------------------------
 
 total.all <- plant.all %>% 
   group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
@@ -154,7 +154,16 @@ herb.all <- plant.all %>%
          Treatment1, Treatment2, Treatment3, Cover)
 
 notree.all <- plant.all %>% 
-  filter(tree != "tree") %>% 
+  filter(tree == "not tree") %>% 
+  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3) %>% 
+  summarise(Cover = sum(Cover), .groups = "keep") |> 
+  ungroup() |> 
+  select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover)
+
+tree.all <- plant.all |> 
+  filter(tree == "tree") |> 
   group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3) %>% 
   summarise(Cover = sum(Cover), .groups = "keep") |> 
@@ -214,6 +223,10 @@ herb.all <- left_join(all.c, herb.all) %>%
   filter(!is.na(Cover)) |> 
   select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
          Treatment1, Treatment2, Treatment3, Cover)
+tree.all <- left_join(all.c, notree.all) |> 
+  filter(!is.na(Cover)) |> 
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover)
 per.div <- left_join(all.c, per.div) |> 
   filter(!is.na(shan)) |> 
   select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
@@ -230,6 +243,8 @@ write_csv(herb.all,
           file = "data/cleaned/Summarised-all_herb-cover.csv")
 write_csv(notree.all,
           file = "data/cleaned/Summarised-all_notree-cover.csv")
+write_csv(tree.all,
+          file = "data/cleaned/Summarised-all_tree-cover.csv")
 write_csv(per.div,
           file = "data/cleaned/Summarised-all_perennial-diversity.csv")
 
