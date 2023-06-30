@@ -529,6 +529,8 @@ for(i in 1:nrow(c13.1_77)) {
     c13.1_77$Year[i] <- "2012-03-01"
   } else if(c13.1_77$Year[i] == "Nov12") {
     c13.1_77$Year[i] <- "2012-11-01"
+  } else if (c13.1_77$Year[i] == "Nov13") {
+    c13.1_77$Year[i] <- "2013-11-01"
   } else if(c13.1_77$Year[i] == "Nov14") {
     c13.1_77$Year[i] <- "2014-11-01"
   } else if(c13.1_77$Year[i] == "Nov15") {
