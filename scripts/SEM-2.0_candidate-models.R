@@ -1,9 +1,18 @@
-# Purpose: SEM analysis
+# Purpose: Test candidate models for SEM analysis
+
+# Findings:
+#   OM & TN covary too much; have to pick just one
+#   CN ratio not good indicator (low chi-sq p-value)
+#   plant diversity and cover cannot be a single endogenous latent variable - creates
+#     low chi-sq p-value
+
 # Created: 2023-06-27
-# Updated: 2023-06-27
+# Updated: 2023-06-29
 
 library(lavaan)
 library(tidyverse)
+library(semPlot)
+
 
 # Load data ---------------------------------------------------------------
 
@@ -29,7 +38,7 @@ sem.dat <- sem.dat.unscaled |>
   mutate(rocks = as.numeric(rocks))
 
 
-# Plants as latent variable (cover & div) ---------------------------------
+# 1 Plants as latent variable (cover & div) -------------------------------
 
 # Initial attempt
 mod01.0 <- '
@@ -136,8 +145,28 @@ fit01.5 <- sem(mod01.5, data = sem.dat) # lavaan WARNING: some estimated ov vari
 summary(fit01.5) 
 
 
+# ***TN as single observed, soil microbe as direct causal, TN & soil microbe covary***
+#   no neg variance issue but has bad chi-sq p-value
+mod01.6 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  plants =~ notree + perveg.richness + perveg.shannon
+  
+  # structure
+  plants ~ rocks + TN_log + soil_microbe
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  
+  # covariance
+  soil_microbe ~~ TN_log
+'
+fit01.6 <- sem(mod01.6, data = sem.dat)
+summary(fit01.6) # poor chi-sq p-value
 
-# Composite indicator variables -------------------------------------------
+
+
+
+# 2 Composite indicator variables -----------------------------------------
 
 # Initial attempt
 mod02.0 <- '
@@ -157,7 +186,7 @@ fit02.0 <- sem(mod02.0, data = sem.dat) # lavaan WARNING: Could not compute stan
 
 
 
-# Cover as single endogenous ----------------------------------------------
+# 3 Cover as single endogenous --------------------------------------------
 
 # Initial attempt
 mod03.0 <- '
@@ -238,8 +267,55 @@ fit03.4<- sem(mod03.4, data = sem.dat)
 summary(fit03.4) # not great chi-sq p-value
 
 
+# ***TN as single observed & soil microbe as direct causal***
+#   no neg variance issue and has good chi-sq p-value
+mod03.5 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + TN_log + soil_microbe
+  TN_log ~ rocks + soil_microbe
+  soil_microbe ~ rocks
+'
+fit03.5 <- sem(mod03.5, data = sem.dat)
+summary(fit03.5) # good chi-sq p-value
 
-# Plant diversity as latent endogenous ------------------------------------
+
+# ***TN as single observed, soil microbe as direct causal, TN & soil microbe covary***
+#   no neg variance issue and has good chi-sq p-value
+mod03.6 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + TN_log + soil_microbe
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  
+  # covariance
+  soil_microbe ~~ TN_log
+'
+fit03.6 <- sem(mod03.6, data = sem.dat)
+summary(fit03.6) # good chi-sq p-value
+
+ly <- matrix(c(0.5, 0,
+               0, 2.5,
+               0, -2.5,
+               -0.4, -0.3,
+               -0.35, -0.3,
+               -0.3, -0.3,
+               -0.25, -0.3,
+               -0.2, -0.3,
+               -0.5, 0),
+             byrow = FALSE,
+             ncol = 2)
+semPaths(fit03.6, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "circle2")
+
+
+
+# 4 Plant diversity as latent endogenous ----------------------------------
 
 # Initial attempt
 mod04.0 <- '
