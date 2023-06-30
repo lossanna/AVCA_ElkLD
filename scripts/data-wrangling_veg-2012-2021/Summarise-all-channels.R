@@ -23,9 +23,37 @@ all.c19 <- read.csv("data/cleaned/C19-cover.csv")
 all.c21 <- read.csv("data/cleaned/C21-cover.csv")
 
 
+# Create PlotTimeID -------------------------------------------------------
+
+# PlotTimeID is a unique ID for each sample (station) each year
+#   There are 372 sampling events (62 samples x 6 years)
+all.c <- bind_rows(all.c12, all.c13, all.c19, all.c21) %>% 
+  select(Year, Station) %>% 
+  distinct(.keep_all = TRUE) %>% 
+  arrange(Year) |> 
+  filter(Year != "2012-03-01") 
+all.c$PlotTimeID <- c(1:nrow(all.c)) 
+all.c <- all.c %>% 
+  separate(Station, c("Channel", "Station"), "_") %>% 
+  select(PlotTimeID, Year, Channel, Station)
+all.c$Year <- gsub("-.*", "", all.c$Year)
+
+# There was a total of 372 sampling events, but 5 data sheets were lost:
+#   Sample 58 from 2013 (Channel 12 Station 4 + 65); PlotTimeID 72
+#   Sample 48 from 2013 (Channel 13 Station 4 + 78); PlotTimeID 92
+#   Sample 36 from 2013 (Channel 13 Station 1 + 77); PlotTimeID 80
+#   Sample 16 from 2014 (Channel 19 Station 1 + 4); PlotTimeID 155
+#   Sample 17 from 2012 (Channel 19 Station 2 + 4); PlotTimeID 32
+# And for one event, there was 0 plant cover (this row needs to be added back in):
+#     Sample 8 from 2015 (Channel 21 Station 7 + 66); PlotTimeID 241 
+
+# Hence, summarised dataframes should have 367 rows
+
+
+
 # Summarise by plant species ----------------------------------------------
 
-# Remove ground cover data for all channels
+# Remove ground cover data for all channels and average cover across quadrats
 plant.c13 <- all.c13 %>% 
   filter(!Common %in% c("Rock", "Gravel", "Soil", "Litter", "Biocrust")) %>% 
   group_by(Station, Year, Functional, Native, Common, Scientific) %>% 
@@ -53,6 +81,7 @@ plant.all <- rbind(plant.c12, plant.c13, plant.c19, plant.c21)
 plant.all <- plant.all %>% 
   filter(Cover > 0) %>% 
   separate(Station, c("Channel", "Station"), "_")
+
 
 
 # Add and edit grouping columns ------------------------------------------
@@ -130,46 +159,90 @@ sampling <- bind_rows(all.c12, all.c13, all.c19, all.c21) |>
   select(Sample, Channel, Station)
 plant.all <- left_join(sampling, plant.all)
 
+# Add PlotTimeID
+plant.all <- left_join(all.c, plant.all)
+plant.all |> 
+  filter(is.na(Cover)) # inspect NAs 
+#                       (they are the missing data sheet and 0 plant cover event; can be removed)
+plant.all <- plant.all |> 
+  filter(!is.na(Cover))
 
 
-# Summarise total, herb, notree, and tree ---------------------------------
 
+# Summarise by total, herb, notree, and tree cover ------------------------
+
+# Create row for PlotTimeID 241 that must be added back in manually
+plottime.241.plant <- data.frame(PlotTimeID = 241,
+                        Sample = 8,
+                        Channel = "Channel 21",
+                        Station = "Station 07 + 66 BAF",
+                        Year = "2015",
+                        year.xaxis = as.Date("2015-01-01"),
+                        station.trt = "Baffle",
+                        channel.trt = "Channel 21: In-channel treatment",
+                        Treatment1 = "Baffle",
+                        Treatment2 = "In-channel treatment",
+                        Treatment3 = "Treated",
+                        Cover = 0)
+  
+# Summarise and add PlotTimeID 241 row
 total.all <- plant.all %>% 
-  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3) %>% 
   summarise(Cover = sum(Cover), .groups = "keep") |> 
   ungroup() |> 
-  select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, Cover)
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover) |> 
+  bind_rows(plottime.241.plant) |> 
+  arrange(PlotTimeID)
+
 
 herb.all <- plant.all %>% 
-  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3, woody) %>% 
   summarise(Cover = sum(Cover), .groups = "keep") |> 
   filter(woody == "Herbaceous") |> 
   ungroup() |> 
   select(-woody) |> 
   ungroup() |> 
-  select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, Cover)
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover) |> 
+  bind_rows(plottime.241.plant) |> 
+  arrange(PlotTimeID)
+
 
 notree.all <- plant.all %>% 
   filter(tree == "not tree") %>% 
-  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3) %>% 
   summarise(Cover = sum(Cover), .groups = "keep") |> 
   ungroup() |> 
-  select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, Cover)
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover) |> 
+  bind_rows(plottime.241.plant) |> 
+  arrange(PlotTimeID)
+
 
 tree.all <- plant.all |> 
   filter(tree == "tree") |> 
-  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3) %>% 
   summarise(Cover = sum(Cover), .groups = "keep") |> 
   ungroup() |> 
-  select(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, Cover)
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover) |> 
+  bind_rows(plottime.241.plant) |> 
+  arrange(PlotTimeID)# only 260 rows; sometimes there were no trees
+
+tree.missing.plottimeid <- setdiff(total.all$PlotTimeID, tree.all$PlotTimeID)
+tree.missing <- total.all |> 
+  filter(PlotTimeID %in% tree.missing.plottimeid) |> 
+  select(-Cover) # add back missing rows based on sampling info from total.all df
+tree.missing$Cover <- rep(0, nrow(tree.missing))
+tree.all <- tree.all |> 
+  bind_rows(tree.missing) |> 
+  arrange(PlotTimeID)
+
 
 
 # Richness and Shannon ----------------------------------------------------
@@ -180,57 +253,42 @@ plant.per <- plant.all |>
 
 # By treatment and station
 richness <- plant.per %>%  
-  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3) %>% 
   summarise(rich = n_distinct(Common),
             .groups = "keep") 
 
 shannon <- plant.per %>%  
-  group_by(Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3) %>% 
   summarise(shan = diversity(Cover),
             .groups = "keep")
 
-per.div <- left_join(richness, shannon)
+per.div <- left_join(richness, shannon) # 365 rows; missing PlotTimeID 241 and one other
+setdiff(total.all$PlotTimeID, per.div$PlotTimeID) # also missing PlotTimeID 298
+filter(plant.all, PlotTimeID == 298) # no perennial species measured for 298
 
+# Add row for PlotTimeID 241 & 298 
+add.plottime.div <- data.frame(PlotTimeID = c(241, 298),
+                               Sample = c(8, 3),
+                               Channel = rep("Channel 21", 2),
+                               Station = c("Station 07 + 66 BAF",
+                                           "Station 02 + 15 BAF"),
+                               Year = c("2015", "2018"),
+                               year.xaxis = c(as.Date("2015-01-01"),
+                                              as.Date("2018-01-01")),
+                               station.trt = rep("Baffle", 2),
+                               channel.trt = rep("Channel 21: In-channel treatment", 2),
+                               Treatment1 = rep("Baffle", 2),
+                               Treatment2 = rep("In-channel treatment", 2),
+                               Treatment3 = rep("Treated", 2),
+                               rich = c(0, 0),
+                               shan = c(0, 0))
 
-# Assign record number for each sampling event ----------------------------
+per.div <- per.div |> 
+  rbind(add.plottime.div) |> 
+  arrange(PlotTimeID)
 
-# Create ID
-all.c <- bind_rows(all.c12, all.c13, all.c19, all.c21) %>% 
-  select(Year, Station) %>% 
-  distinct(.keep_all = TRUE) %>% 
-  arrange(Year) |> 
-  filter(Year != "2012-03-01") 
-all.c$PlotTimeID <- c(1:nrow(all.c)) 
-all.c <- all.c %>% 
-  separate(Station, c("Channel", "Station"), "_") %>% 
-  select(PlotTimeID, Year, Channel, Station)
-all.c$Year <- gsub("-.*", "", all.c$Year)
-
-# Add to ID dataframes (remove NAs because some data sheets were lost) and reorder cols
-plant.all <- left_join(all.c, plant.all) %>% 
-  filter(!is.na(Cover)) 
-total.all <- left_join(all.c, total.all) %>% 
-  filter(!is.na(Cover)) |> 
-  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, Cover)
-notree.all <- left_join(all.c, notree.all) |> 
-  filter(!is.na(Cover)) |> 
-  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, Cover)
-herb.all <- left_join(all.c, herb.all) %>% 
-  filter(!is.na(Cover)) |> 
-  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, Cover)
-tree.all <- left_join(all.c, tree.all) |> 
-  filter(!is.na(Cover)) |> 
-  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, Cover)
-per.div <- left_join(all.c, per.div) |> 
-  filter(!is.na(shan)) |> 
-  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
-         Treatment1, Treatment2, Treatment3, rich, shan)
 
 
 # Save dataframes ---------------------------------------------------------
@@ -247,6 +305,17 @@ write_csv(tree.all,
           file = "data/cleaned/Summarised-all_tree-cover.csv")
 write_csv(per.div,
           file = "data/cleaned/Summarised-all_perennial-diversity.csv")
+
+
+
+# Check sums --------------------------------------------------------------
+
+check.sum <- total.all |> 
+  select(PlotTimeID, Sample, Cover) |> 
+  rename(total = Cover)
+check.sum$herb <- herb.all$Cover
+check.sum$notree <- notree.all$Cover
+check.sum$notreeGTtotal <- check.sum$total - ch
 
 
 save.image("RData/Summarise-all-channels.RData")
