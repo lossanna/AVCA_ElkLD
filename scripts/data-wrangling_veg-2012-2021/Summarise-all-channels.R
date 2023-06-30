@@ -223,7 +223,7 @@ herb.all <- left_join(all.c, herb.all) %>%
   filter(!is.na(Cover)) |> 
   select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
          Treatment1, Treatment2, Treatment3, Cover)
-tree.all <- left_join(all.c, notree.all) |> 
+tree.all <- left_join(all.c, tree.all) |> 
   filter(!is.na(Cover)) |> 
   select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
          Treatment1, Treatment2, Treatment3, Cover)

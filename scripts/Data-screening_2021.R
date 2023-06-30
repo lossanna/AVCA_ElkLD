@@ -11,7 +11,7 @@
 # Produced a clean data sheet for 2021 data (Data-2021_clean.csv).
 #  This is also to be used for SEM 2.0 input.
 # Created: 2022-04-18
-# Last updated: 2023-06-27
+# Last updated: 2023-06-30
 
 library(tidyverse)
 library(readxl)
@@ -26,6 +26,7 @@ library(Hmisc)
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
+tree.all <- read.csv("data/cleaned/Summarised-all_tree-cover.csv")
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 barc.div <- read.table("data/cleaned/sequencing/bac-arc_diversity.txt",
@@ -51,6 +52,12 @@ herb.2021 <- herb.all %>%
 notree.2021 <- notree.all |> 
   filter(Year == "2021") |> 
   rename(notree = Cover)
+notree.2018 <- tree.all |> 
+  filter(Year == "2021") |> 
+  rename(notree.18 = Cover)
+tree.2021 <- tree.all |> 
+  filter(Year == "2021") |> 
+  rename(tree = Cover)
 perdiv.2021 <- per.div %>% 
   filter(Year == "2021") |> 
   rename(perveg.richness = rich,
@@ -60,6 +67,8 @@ perdiv.2021 <- per.div %>%
 dat.2021 <- total.2021 %>% 
   left_join(herb.2021) %>% 
   left_join(notree.2021) |> 
+  left_join(notree.2018) |> 
+  left_join(tree.2021) |> 
   left_join(perdiv.2021) |> 
   select(-PlotTimeID, -Year, -year.xaxis, -station.trt, -channel.trt, -Treatment1, -Treatment2) |> 
   left_join(soil.chem) %>% 
@@ -85,7 +94,7 @@ dat.2021 <- total.2021 %>%
          saprotroph = funguild.trophic$Saprotroph) |> 
   left_join(elev) |> 
   select(Sample, Name, Channel, Station, Treatment3,
-         total, herb, notree, perveg.richness, perveg.shannon,
+         total, herb, notree, notree.18, tree, perveg.richness, perveg.shannon,
          TN_perc, TC_perc, CN_ratio, OM_perc,
          barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
          fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
@@ -98,7 +107,9 @@ dat.2021 <- total.2021 %>%
 # Histogram
 hist(dat.2021$total, breaks = 10)
 hist(dat.2021$herb, breaks = 10)
-hist(dat.2021$notree, breaks = 10)
+hist(dat.2021$notree, breaks = 15)
+hist(dat.2021$notree.18, breaks = 15)
+hist(dat.2021$tree, breaks = 15)
 hist(dat.2021$perveg.richness)
 hist(dat.2021$perveg.shannon, breaks = 10)
 hist(dat.2021$TN_perc, breaks = 10) # not normal
@@ -137,6 +148,8 @@ vis.boxplot <- function(dat, y, ylab) {
 vis.boxplot(dat.2021, dat.2021$total, "Total plant cover (%)")
 vis.boxplot(dat.2021, dat.2021$herb, "Herbaceous cover (%)")
 vis.boxplot(dat.2021, dat.2021$notree, "Grass, forb & shrub cover (%)")
+vis.boxplot(dat.2021, dat.2021$notree.18, "Grass, forb & shrub cover, 2018 (%)")
+vis.boxplot(dat.2021, dat.2021$tree, "Tree cover (%)")
 vis.boxplot(dat.2021, dat.2021$perveg.richness, "Perennial plant richness")
 vis.boxplot(dat.2021, dat.2021$perveg.shannon, "Perennial plant Shannon diversity")
 vis.boxplot(dat.2021, dat.2021$TN_perc, "Soil N (%)") # Appears to be outlier, but I checked it and nothing is obviously wrong
@@ -156,6 +169,8 @@ vis.boxplot(dat.2021, dat.2021$dElev_corrected, "Elevation difference, 2011-2019
 qqPlot(dat.2021$total)
 qqPlot(dat.2021$herb)
 qqPlot(dat.2021$notree)
+qqPlot(dat.2021$notree.18)
+qqPlot(dat.2021$tree)
 qqPlot(dat.2021$perveg.richness)
 qqPlot(dat.2021$perveg.shannon)
 qqPlot(dat.2021$TN_perc) # not normal
