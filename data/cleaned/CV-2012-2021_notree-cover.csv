@@ -6,7 +6,7 @@ Sample,Channel,Station,Treatment3,CV
 5,Channel 21,Station 04 + 90 ORD,Treated,0.5134888389512006
 6,Channel 21,Station 06 + 36 BAF,Treated,0.4426584034567274
 7,Channel 21,Station 07 + 49.5 ORD,Treated,0.8861797134602629
-8,Channel 21,Station 07 + 66 BAF,Treated,0.6106252925184543
+8,Channel 21,Station 07 + 66 BAF,Treated,0.818253299130814
 9,Channel 21,Station 08 + 62 BAF,Treated,0.3225395629401645
 10,Channel 21,Station 09 + 99 ORD,Treated,0.709216151686581
 11,Channel 21,Station 10 + 13 BAF,Treated,0.7109114272757587
@@ -34,7 +34,7 @@ Sample,Channel,Station,Treatment3,CV
 33,Channel 13,Station 1 + 11.5 BAF,Treated,0.5755735670685719
 34,Channel 13,Station 1 + 38.5 ORD,Treated,0.2630154890229009
 35,Channel 13,Station 1 + 71 BAF,Treated,0.28632208711323626
-36,Channel 13,Station 1 + 77 ORD,Treated,0.3630153679739529
+36,Channel 13,Station 1 + 77 ORD,Treated,0.16049934657513612
 37,Channel 13,Station 1 + 99 ORD,Treated,0.17363845696988722
 38,Channel 13,Station 2 + 16 BAF,Treated,0.45603930416282673
 39,Channel 13,Station 2 + 57 ORD,Treated,0.5799464987583028

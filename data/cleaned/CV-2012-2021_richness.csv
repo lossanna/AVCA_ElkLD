@@ -1,12 +1,12 @@
 Sample,Channel,Station,Treatment3,CV
 1,Channel 21,Station 01 + 07.5 BAF,Treated,0.29526881560603
 2,Channel 21,Station 01 + 49 ORD,Treated,0.2656844656620286
-3,Channel 21,Station 02 + 15 BAF,Treated,0.3946002313234923
+3,Channel 21,Station 02 + 15 BAF,Treated,0.6475933620951946
 4,Channel 21,Station 03 + 80 BAF,Treated,0.3346640106136302
 5,Channel 21,Station 04 + 90 ORD,Treated,0.07901579815429606
 6,Channel 21,Station 06 + 36 BAF,Treated,0.23764778168179002
 7,Channel 21,Station 07 + 49.5 ORD,Treated,0.2746426249302381
-8,Channel 21,Station 07 + 66 BAF,Treated,0.2882750302658769
+8,Channel 21,Station 07 + 66 BAF,Treated,0.5794256397693847
 9,Channel 21,Station 08 + 62 BAF,Treated,0.42028561717003826
 10,Channel 21,Station 09 + 99 ORD,Treated,0.25229456076146084
 11,Channel 21,Station 10 + 13 BAF,Treated,0.6128811211793532
