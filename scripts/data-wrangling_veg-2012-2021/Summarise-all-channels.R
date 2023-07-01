@@ -315,7 +315,16 @@ check.sum <- total.all |>
   rename(total = Cover)
 check.sum$herb <- herb.all$Cover
 check.sum$notree <- notree.all$Cover
-check.sum$notreeGTtotal <- check.sum$total - ch
+check.sum$tree <- tree.all$Cover
+
+# Total - notree 
+check.sum$totalMnotree <- check.sum$total - check.sum$notree
+range(check.sum$totalMnotree) # total always greater
+
+# notree + tree difference with total
+check.sum$notreePtreeDiff <- (check.sum$notree + check.sum$tree) - check.sum$total
+range(check.sum$notreePtreeDiff) # only differ by very small amounts due to rounding
+
 
 
 save.image("RData/Summarise-all-channels.RData")
