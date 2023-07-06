@@ -275,8 +275,8 @@ hist(total.trt.21$Cover, breaks = 15)
 
 
 # Herb cover
-hist(herb.ctrl$Cover, breaks = 10)
-hist(herb.trt$Cover, breaks = 10)
+hist(herb.ctrl$Cover, breaks = 10) # seems not normal
+hist(herb.trt$Cover, breaks = 10) # seems not normal
 
 
 
