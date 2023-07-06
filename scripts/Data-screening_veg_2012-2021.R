@@ -4,11 +4,18 @@
 #   Total cover, richness, and Shannon were normally distributed for all years, and by year.
 #   Herb cover was normally distributed by year, but not really for all years combined.
 #   Notree cover was normally distributed by year, and mostly for all years combined.
-#   Tree cover was not normally distributed (by year or combined, or average of 2012-2014).
+#   Tree cover was not really normally distributed by year or combined;
+#     kind of normally distributed for average of 2012-2014 of control but not treated,
+#     but cannot log-transform because of 0 values.
 #   Percent difference is not normally distributed.
 
 # Checked for outliers:
 #   There were a few outliers, but none of them were extreme (all years combined).
+
+# Added notes about row numbers because the 5 missing data sheets make the numbers uneven.
+#   Missing sheets (5): 3 control from 2012, 2013, 2014; 2 treated from 2013.
+#   If nothing was missing: 372 sampling events in total; 186 control and samples each in total;
+#     62 samples each year; 31 control and treated samples for each year.
 
 # Created: 2023-02-01
 # Last updated: 2023-07-06
@@ -21,6 +28,7 @@ library(rstatix)
 
 # Load data ---------------------------------------------------------------
 
+# ".all" cover CSVs have 367 rows (372 events - 5 lost sheets)
 total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
@@ -47,6 +55,7 @@ per.div[group.cols] <- lapply(per.div[group.cols], factor)
 
 # All years, separate out control and treated
 # Control
+#   183 rows: 186 events, but 3 sheets from control samples were missing
 total.ctrl <- total.all |> 
   filter(Treatment3 == "Control")
 herb.ctrl <- herb.all |> 
@@ -71,6 +80,7 @@ shan.ctrl.pd <- shan.pd |>
 
 
 # Treated
+#   184 rows: 186 events, but 2 sheets from treated samples were missing
 total.trt <- total.all |> 
   filter(Treatment3 == "Treated")
 herb.trt <- herb.all |> 
@@ -96,6 +106,7 @@ shan.trt.pd <- shan.pd |>
 
 # Separate out by year
 # 2012
+#   30 rows: 31 samples, but 1 control sheet missing
 total.ctrl.12 <- total.all |> 
   filter(Treatment3 == "Control",
          Year == "2012")
@@ -129,6 +140,7 @@ per.div.trt.12 <- per.div |>
          Year == "2012")
 
 # 2013
+#   30 rows: 31 samples, but 1 control sheet missing
 total.ctrl.13 <- total.all |> 
   filter(Treatment3 == "Control",
          Year == "2013")
@@ -142,6 +154,7 @@ per.div.ctrl.13 <- per.div |>
   filter(Treatment3 == "Control",
          Year == "2013")
 
+# 29 rows: 31 samples, but 2 treated sheets missing
 total.trt.13 <- total.all |> 
   filter(Treatment3 == "Treated",
          Year == "2013")
@@ -156,6 +169,7 @@ per.div.trt.13 <- per.div |>
          Year == "2013")
 
 # 2014
+#   30 rows: 31 samples but 1 control sheet missing
 total.ctrl.14 <- total.all |> 
   filter(Treatment3 == "Control",
          Year == "2014")
@@ -285,6 +299,12 @@ tree.trt.avg1214 <- tree.all |>
   summarise(Cover = mean(Cover),
             .groups = "keep")
 
+tree.avg1214 <- tree.all |> 
+  filter(Year %in% c("2012", "2013", "2014")) |> 
+  group_by(Sample, Channel, Station, Treatment3) |> 
+  summarise(Cover = mean(Cover),
+            .groups = "keep")
+
 # Compare tree cover from different times
 summary(tree.ctrl.avg1214$Cover)
 summary(tree.ctrl.12$Cover)
@@ -296,6 +316,22 @@ tree.ctrl.compare <- bind_rows(tree.ctrl.12, tree.ctrl.21) |>
   mutate(year = c(rep("2012", 30),
                   rep("2021", 31),
                   rep("2012-2014 avg", 31)))
+tree.ctrl.compare |> 
+  ggplot(aes(x = year, y = Cover)) +
+  geom_boxplot() +
+  geom_jitter()
+
+tree.trt.compare <- bind_rows(tree.trt.12, tree.trt.21) |> 
+  select(Sample, Channel, Station, Cover) |> 
+  bind_rows(tree.trt.avg1214) |> 
+  mutate(year = c(rep("2012", 31),
+                  rep("2021", 31),
+                  rep("2012-2014 avg", 31)))
+tree.trt.compare |> 
+  ggplot(aes(x = year, y = Cover)) +
+  geom_boxplot() +
+  geom_jitter()
+
 
 
 
@@ -421,8 +457,10 @@ qqPlot(tree.ctrl.21$Cover) # kind of normal?
 qqPlot(tree.trt.21$Cover) # not normal
 
 # Average 2012-2014
-qqPlot(tree.ctrl.avg1214$Cover) # not normal
+qqPlot(tree.ctrl.avg1214$Cover) # mostly normal
 qqPlot(tree.trt.avg1214$Cover) # not normal
+#                                   but cannot log transform because of 0s
+qqPlot(c(tree.ctrl.avg1214$Cover, tree.trt.avg1214$Cover)) # not that normal
 
 
 # Richness
@@ -501,6 +539,11 @@ herb.all |>
   identify_outliers(Cover)
 
 notree.all |> 
+  select(Cover, Treatment3) |> 
+  group_by(Treatment3) |> 
+  identify_outliers(Cover)
+
+tree.avg1214 |> 
   select(Cover, Treatment3, Year) |> 
   group_by(Treatment3, Year) |> 
   identify_outliers(Cover)
