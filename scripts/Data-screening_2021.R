@@ -52,25 +52,30 @@ herb.2021 <- herb.all %>%
 notree.2021 <- notree.all |> 
   filter(Year == "2021") |> 
   rename(notree = Cover)
-notree.2018 <- notree.all |> 
-  filter(Year == "2018") |> 
-  rename(notree.18 = Cover)
-tree.2021 <- tree.all |> 
-  filter(Year == "2021") |> 
-  rename(tree = Cover)
 perdiv.2021 <- per.div %>% 
   filter(Year == "2021") |> 
   rename(perveg.richness = rich,
          perveg.shannon = shan)
 
+# Filter out other variables for SEM input
+notree.2018 <- notree.all |> 
+  filter(Year == "2018") |> 
+  rename(notree.18 = Cover)
+
+tree.avg1214 <- tree.all |> 
+  filter(Year %in% c("2012", "2013", "2014")) |> 
+  group_by(Sample, Channel, Station, Treatment3) |> 
+  summarise(tree = mean(Cover),
+            .groups = "keep")
+
 # Compile variables
 dat.2021 <- total.2021 %>% 
   left_join(herb.2021) %>% 
   left_join(notree.2021) |> 
-  select(-PlotTimeID, -Year, -year.xaxis) |> 
+  select(-PlotTimeID, -Year, -year.xaxis) |> # remove year cols; left_join() will not work in joining 2018 values
   left_join(notree.2018) |> 
   select(-PlotTimeID, -Year, -year.xaxis) |> 
-  left_join(tree.2021) |> 
+  left_join(tree.avg1214) |> 
   left_join(perdiv.2021) |> 
   select(-PlotTimeID, -Year, -year.xaxis, -station.trt, -channel.trt, -Treatment1, -Treatment2) |> 
   left_join(soil.chem) %>% 
@@ -111,7 +116,7 @@ hist(dat.2021$total, breaks = 10)
 hist(dat.2021$herb, breaks = 10)
 hist(dat.2021$notree, breaks = 15)
 hist(dat.2021$notree.18, breaks = 15)
-hist(dat.2021$tree, breaks = 15)
+hist(dat.2021$tree, breaks = 15) # not normal
 hist(dat.2021$perveg.richness)
 hist(dat.2021$perveg.shannon, breaks = 10)
 hist(dat.2021$TN_perc, breaks = 10) # not normal
@@ -151,7 +156,7 @@ vis.boxplot(dat.2021, dat.2021$total, "Total plant cover (%)")
 vis.boxplot(dat.2021, dat.2021$herb, "Herbaceous cover (%)")
 vis.boxplot(dat.2021, dat.2021$notree, "Grass, forb & shrub cover (%)")
 vis.boxplot(dat.2021, dat.2021$notree.18, "Grass, forb & shrub cover, 2018 (%)")
-vis.boxplot(dat.2021, dat.2021$tree, "Tree cover (%)")
+vis.boxplot(dat.2021, dat.2021$tree, "Tree cover, 2012-2014 (%)")
 vis.boxplot(dat.2021, dat.2021$perveg.richness, "Perennial plant richness")
 vis.boxplot(dat.2021, dat.2021$perveg.shannon, "Perennial plant Shannon diversity")
 vis.boxplot(dat.2021, dat.2021$TN_perc, "Soil N (%)") # Appears to be outlier, but I checked it and nothing is obviously wrong
@@ -172,7 +177,7 @@ qqPlot(dat.2021$total)
 qqPlot(dat.2021$herb)
 qqPlot(dat.2021$notree)
 qqPlot(dat.2021$notree.18)
-qqPlot(dat.2021$tree)
+qqPlot(dat.2021$tree) # almost normal?
 qqPlot(dat.2021$perveg.richness)
 qqPlot(dat.2021$perveg.shannon)
 qqPlot(dat.2021$TN_perc) # not normal
@@ -240,7 +245,8 @@ qqPlot(log(dat.2021$dElev)) # log-transformation does not really help
 # Bivariate scatterplot matrix --------------------------------------------
 
 # All
-pairs(~ notree + perveg.richness + perveg.shannon + TN_log + TC_log + OM_log + CN_ratio + barc.richness + barc.shannon +
+pairs(~ notree + notree.18 + tree + perveg.richness + perveg.shannon + TN_log + 
+        TC_log + OM_log + CN_ratio + barc.richness + barc.shannon +
         fungi.richness + fungi.shannon + chemoheterotrophy_log + n.cycler_log, data = dat.2021)
 
 
@@ -267,21 +273,21 @@ pairs(~ barc.richness + barc.shannon +
 
 # All data
 corr.dat <- dat.2021 |> 
-  select(notree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
+  select(notree, notree.18, tree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
          barc.richness, fungi.richness, chemoheterotrophy_log, n.cycler_log, saprotroph)
 corr.all <- rcorr(as.matrix(corr.dat))[["r"]]
 
 # Treated
 corr.dat.trt <- dat.2021 |> 
   filter(Treatment3 == "Treated") |> 
-  select(notree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
+  select(notree, notree.18, tree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
          barc.richness, fungi.richness, chemoheterotrophy_log, n.cycler_log, saprotroph)
 corr.trt <- rcorr(as.matrix(corr.dat.trt))[["r"]]
 
 # Control
 corr.dat.ctrl <- dat.2021 |> 
   filter(Treatment3 == "Control") |> 
-  select(notree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
+  select(notree, notree.18, tree, perveg.richness, perveg.shannon, TN_log, TC_log, CN_ratio, OM_log,
          barc.richness, fungi.richness, chemoheterotrophy_log, n.cycler_log, saprotroph)
 corr.ctrl <- rcorr(as.matrix(corr.dat.ctrl))[["r"]]
 
@@ -290,7 +296,7 @@ corr.ctrl <- rcorr(as.matrix(corr.dat.ctrl))[["r"]]
 
 dat.2021 <- dat.2021 |> 
   select(Sample, Name, Channel, Station, Treatment3,
-         total, herb, notree, perveg.richness, perveg.shannon,
+         total, herb, notree, notree.18, tree, perveg.richness, perveg.shannon,
          TN_perc, TN_ppt, TN_log, TC_perc, TC_ppt, TC_log, CN_ratio, OM_perc, OM_log,
          barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
          fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
