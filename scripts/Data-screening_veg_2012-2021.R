@@ -1,11 +1,17 @@
 # Purpose: Data screening for temporal 2012-2021 plant data (cover & diversity).
+
 # Checked for normality:
 #   Total cover, richness, and Shannon were normally distributed for all years, and by year.
 #   Herb cover was normally distributed by year, but not really for all years combined.
+#   Notree cover was normally distributed by year, and mostly for all years combined.
+#   Tree cover was not normally distributed (by year or combined, or average of 2012-2014).
+#   Percent difference is not normally distributed.
+
 # Checked for outliers:
 #   There were a few outliers, but none of them were extreme (all years combined).
+
 # Created: 2023-02-01
-# Last updated: 2023-03-31
+# Last updated: 2023-07-06
 
 
 library(tidyverse)
@@ -18,6 +24,7 @@ library(rstatix)
 total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
+tree.all <- read_csv("data/cleaned/Summarised-all_tree-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 total.pd <- read_csv("data/cleaned/Percent-difference_total-cover.csv")
@@ -35,6 +42,7 @@ group.cols <- c("Year", "Channel", "Station", "Treatment1", "Treatment2", "Treat
 total.all[group.cols] <- lapply(total.all[group.cols], factor)
 herb.all[group.cols] <- lapply(herb.all[group.cols], factor)
 notree.all[group.cols] <- lapply(notree.all[group.cols], factor)
+tree.all[group.cols] <- lapply(tree.all[group.cols], factor)
 per.div[group.cols] <- lapply(per.div[group.cols], factor)
 
 # All years, separate out control and treated
@@ -44,6 +52,8 @@ total.ctrl <- total.all |>
 herb.ctrl <- herb.all |> 
   filter(Treatment3 == "Control")
 notree.ctrl <- notree.all |> 
+  filter(Treatment3 == "Control")
+tree.ctrl <- tree.all |> 
   filter(Treatment3 == "Control")
 per.div.ctrl <- per.div |> 
   filter(Treatment3 == "Control")
@@ -66,6 +76,8 @@ total.trt <- total.all |>
 herb.trt <- herb.all |> 
   filter(Treatment3 == "Treated")
 notree.trt <- notree.all |> 
+  filter(Treatment3 == "Treated")
+tree.trt <- tree.all |> 
   filter(Treatment3 == "Treated")
 per.div.trt <- per.div |> 
   filter(Treatment3 == "Treated")
@@ -93,6 +105,9 @@ herb.ctrl.12 <- herb.all |>
 notree.ctrl.12 <- notree.all |> 
   filter(Treatment3 == "Control",
          Year == "2012")
+tree.ctrl.12 <- tree.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2012")
 per.div.ctrl.12 <- per.div |> 
   filter(Treatment3 == "Control",
          Year == "2012")
@@ -104,6 +119,9 @@ herb.trt.12 <- herb.all |>
   filter(Treatment3 == "Treated",
          Year == "2012")
 notree.trt.12 <- notree.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2012")
+tree.trt.12 <- tree.all |> 
   filter(Treatment3 == "Treated",
          Year == "2012")
 per.div.trt.12 <- per.div |> 
@@ -228,6 +246,9 @@ herb.ctrl.21 <- herb.all |>
 notree.ctrl.21 <- notree.all |> 
   filter(Treatment3 == "Control",
          Year == "2021")
+tree.ctrl.21 <- tree.all |> 
+  filter(Treatment3 == "Control",
+         Year == "2021")
 per.div.ctrl.21 <- per.div |> 
   filter(Treatment3 == "Control",
          Year == "2021")
@@ -241,9 +262,40 @@ herb.trt.21 <- herb.all |>
 notree.trt.21 <- notree.all |> 
   filter(Treatment3 == "Treated",
          Year == "2021")
+tree.trt.21 <- tree.all |> 
+  filter(Treatment3 == "Treated",
+         Year == "2021")
 per.div.trt.21 <- per.div |> 
   filter(Treatment3 == "Treated",
          Year == "2021")
+
+
+# Average tree cover of first 3 years
+tree.ctrl.avg1214 <- tree.all |> 
+  filter(Treatment3 == "Control") |> 
+  filter(Year %in% c("2012", "2013", "2014")) |> 
+  group_by(Sample, Channel, Station) |> 
+  summarise(Cover = mean(Cover),
+            .groups = "keep")
+
+tree.trt.avg1214 <- tree.all |> 
+  filter(Treatment3 == "Treated") |> 
+  filter(Year %in% c("2012", "2013", "2014")) |> 
+  group_by(Sample, Channel, Station) |> 
+  summarise(Cover = mean(Cover),
+            .groups = "keep")
+
+# Compare tree cover from different times
+summary(tree.ctrl.avg1214$Cover)
+summary(tree.ctrl.12$Cover)
+summary(tree.ctrl.21$Cover) # not good representation
+
+tree.ctrl.compare <- bind_rows(tree.ctrl.12, tree.ctrl.21) |> 
+  select(Sample, Channel, Station, Cover) |> 
+  bind_rows(tree.ctrl.avg1214) |> 
+  mutate(year = c(rep("2012", 30),
+                  rep("2021", 31),
+                  rep("2012-2014 avg", 31)))
 
 
 
@@ -357,6 +409,22 @@ qqPlot(notree.ctrl.21$Cover)
 qqPlot(notree.trt.21$Cover)
 
 
+# Tree cover
+# All years
+qqPlot(tree.ctrl$Cover) # not normal
+qqPlot(tree.trt$Cover) # not normal
+
+# First and last year
+qqPlot(tree.ctrl.12$Cover) # not normal
+qqPlot(tree.trt.12$Cover) # not normal
+qqPlot(tree.ctrl.21$Cover) # kind of normal?
+qqPlot(tree.trt.21$Cover) # not normal
+
+# Average 2012-2014
+qqPlot(tree.ctrl.avg1214$Cover) # not normal
+qqPlot(tree.trt.avg1214$Cover) # not normal
+
+
 # Richness
 # All years
 qqPlot(per.div.ctrl$rich)
@@ -446,6 +514,7 @@ per.div |>
   select(shan, Treatment3, Year) |> 
   group_by(Treatment3, Year) |> 
   identify_outliers(shan)
+
 
 
 save.image("RData/Data-screening_veg_2012-2021.RData")
