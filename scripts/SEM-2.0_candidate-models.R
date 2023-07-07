@@ -7,7 +7,7 @@
 #     low chi-sq p-value
 
 # Created: 2023-06-27
-# Updated: 2023-06-29
+# Updated: 2023-07-06
 
 library(lavaan)
 library(tidyverse)
@@ -26,7 +26,7 @@ sem.dat.unscaled <- dat.2021 |>
   mutate(rocks = case_when(
     Treatment3 == "Control" ~ 0,
     Treatment3 == "Treated" ~ 1)) |> 
-  select(Sample, rocks, notree, perveg.richness, perveg.shannon,
+  select(Sample, rocks, notree, notree.18, tree, perveg.richness, perveg.shannon,
          TN_log, CN_ratio, OM_log, OM_perc, barc.richness, fungi.richness,
          chemoheterotrophy_log, n.cycler_log, saprotroph) 
 
@@ -372,6 +372,52 @@ summary(fit04.2) # richness & Shannon might covary
 
 
 
+# 5 With 2018 cover and initial tree cover --------------------------------
+
+# Initial attempt
+mod05.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # regressions
+  notree ~ rocks + notree.18 + tree 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  notree.18 ~ rocks + tree
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ notree
+  soil_microbe ~~ notree
+'
+fit05.0 <- sem(mod05.0, data = sem.dat)
+summary(fit05.0)
+
+semPaths(fit05.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2")
+
+
+# Without tree cover
+mod05.1 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # regressions
+  notree ~ rocks + notree.18 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  notree.18 ~ rocks
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ notree
+  soil_microbe ~~ notree
+'
+fit05.1 <- sem(mod05.1, data = sem.dat)
+summary(fit05.1)
+
+semPaths(fit05.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2")
 
 
 save.image("RData/SEM-2.0_candidate-models.RData")
