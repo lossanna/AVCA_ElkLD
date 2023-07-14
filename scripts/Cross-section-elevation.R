@@ -2,9 +2,10 @@
 #   Found minimum elevation (lowest point of channel), and averaged this with surrounding points,
 #     where the number of points depends on the channel (look at Excel graphs from Robert)
 # Created: 2023-05-24
-# Last updated: 2023-06-07
+# Last updated: 2023-07-14
 
 library(tidyverse)
+library(car)
 
 # Load data ---------------------------------------------------------------
 
@@ -149,9 +150,15 @@ elev <- elev |>
     TRUE ~ dElev))
 
 
+# Write to csv ------------------------------------------------------------
+
+write_csv(elev,
+          file = "data/cleaned/Cross-section-elevation_clean.csv")
+
+
 # Visualization and t-test ------------------------------------------------
 
-# Channel
+# By Channel
 elev |> 
 ggplot(aes(x = Channel, y = dElev)) +
   geom_boxplot()
@@ -160,7 +167,9 @@ elev |>
   ggplot(aes(Channel, dElev_corrected)) +
   geom_boxplot()
 
-# Treatment3
+
+# By Treatment3
+# Uncorrected
 elev |> 
   ggplot(aes(Treatment3, dElev)) +
   geom_boxplot() +
@@ -171,22 +180,45 @@ hist(elev$dElev, breaks = 10)
 t.test(filter(elev, Treatment3 == "Treated")$dElev,
        filter(elev, Treatment3 == "Control")$dElev) # p-value = 0.001562
 
-
+# Corrected
 elev |> 
   ggplot(aes(Treatment3, dElev_corrected)) +
   geom_boxplot() +
   geom_jitter()
 
-hist(elev$dElev_corrected, breaks = 10)
+hist(elev$dElev_corrected, breaks = 10) # seems not normal
+qqPlot(elev$dElev_corrected)
+qqPlot(elev$dElev)
 
 kruskal.test(dElev_corrected ~ Treatment3, data = elev) # p-value = 9.793e-05
 
-  
+# Write out plot
+letters <- data.frame(x = c(1, 2),
+                      y = c(0.45, 0.45),
+                      label = c("b", "a"),
+                      Treatment3 = c("Control", "Treated"))
+dElev.corrected.plot <- elev |> 
+  ggplot(aes(x = Treatment3, y = dElev_corrected, fill = Treatment3, color = Treatment3)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(size = 2) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Change in channel elevation, 2011-2019",
+       x = NULL,
+       y = "Elevation change (m)") +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(axis.text.x = element_text(color = "black"))
+dElev.corrected.plot
 
-# Write to csv ------------------------------------------------------------
+tiff("figures/2023-07_draft-figures/Change-in-elevation.tiff", width = 6, height = 4, units = "in", res = 150)
+dElev.corrected.plot
+dev.off()
 
-write_csv(elev,
-          file = "data/cleaned/Cross-section-elevation_clean.csv")
 
 
 save.image("RData/Cross-section-elevation.RData")
