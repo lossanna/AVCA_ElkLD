@@ -1,6 +1,7 @@
 # Purpose: Run ITS stats - create clean ASV tables, look at NMDS and beta dispersion,
 #   calculate richness and diversity, create stacked bar charts of dominant phyla.
-#   Post-2023-03-34 analysis only includes grouping by Channel and Treatment3.
+#   Write out clean data tables. NMDS & richness figures written out in T-test-by-Treatment3_2021.R.
+# Post-2023-03-34 analysis only includes grouping by Channel and Treatment3.
 # Created: 2023-01-12
 # Last updated: 2023-07-14
 
@@ -202,7 +203,6 @@ meta %>%
   geom_point(aes(color = Treatment3)) +
   stat_ellipse(aes(color = Treatment3))
 
-tiff("figures/2023-07_draft-figures/NMDS-fungi.tiff", height = 5, width = 6, units = "in", res = 150)
 meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment3, shape = Treatment3)) +
   geom_point(size = 3) +
@@ -219,7 +219,6 @@ meta %>%
             size = 3, color = "gray30") +
   geom_text(aes(x = 0.78, y = -0.8, label = "Stress = 0.237"),
             size = 3, color = "gray30") # only 2% explained by Treatment3 lol
-dev.off()
 
 
 # Beta dispersion 
@@ -382,7 +381,6 @@ t.test(filter(meta, Treatment3 == "Control")$Richness,
        filter(meta, Treatment3 == "Treated")$Richness) # NS
 
 # Plot 
-tiff("figures/2023-07_draft-figures/Richness-fungi.tiff", width = 6, height = 4, units = "in", res = 150)
 meta %>% 
   ggplot(aes(Treatment3, Richness), color = Treatment3) +
   geom_jitter(aes(color = Treatment3), 
@@ -399,7 +397,6 @@ meta %>%
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))
-dev.off()
 
 
 
