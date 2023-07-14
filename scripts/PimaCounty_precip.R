@@ -30,7 +30,7 @@ ggplot(precip, aes(x = year.xaxis, y = Precip_cum)) +
   xlab(NULL) +
   ylab("Precipitation (in.)") +
   ggtitle("Cumulative summer precipitation (June-October)") +
-  theme_bw() +
+  theme_bw(base_size = 14) +
   scale_y_continuous(limits = c(0, 14)) +
   theme(axis.text.x = element_text(color = "black"))
 dev.off()
