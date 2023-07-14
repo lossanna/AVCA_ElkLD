@@ -1,8 +1,24 @@
-# Purpose: Run one-way repeated measures ANOVA to compare Treated vs. Control for response variables
-#   (total cover, herb cover, richness, Shannon).
+# Purpose: Run for all response variables (total cover, herb cover, notree cover, richness, Shannon):
+#   (1) one-way repeated measures ANOVA to compare Treated vs. Control,
+#   (2) two-factor ANOVA with a Treatment3*Year interaction term to compare overall change over time,
+#   (3) one-way ANOVA for Control and Treated separately to compare year-to-year change.
+
 # Includes plots and ANOVA tests.
+#   Repeat-measures ANOVA compares Control vs. Treated directly, and accounts for repeat measures
+#     on the same plots over multiple years. This is more methodologically correct, but doesn't quite
+#     answer as interesting of a question (it doesn't matter so much inherently how the channels started
+#     out, but rather how they react to change over time).
+#   Two-way ANOVA with Treatment*Year interaction compares how Treated vs. Control changed over time,
+#     and does not account for repeat measures on the same plots.
+#   One-way ANOVA for Control & Treated separately shows change over time, and does not them directly
+#     or account for repeat measures on same plots. This is probably the most inuitive interpretation of line graphs.
+
+# Will probably go with two-way ANOVA because it answers a more interesting/relevant question, even though
+#   it doesn't account for repeat measures.
+# check_model() for all two-way ANOVAs look good.
+
 # Created: 2023-03-27
-# Last updated: 2023-05-26
+# Last updated: 2023-07-14
 
 library(tidyverse)
 library(agricolae)
@@ -74,6 +90,7 @@ ggplot(total.avg, aes(x = year.xaxis, y = mean,
   theme_bw(base_size = 14) +
   theme(legend.position = "none")
 
+
 # Repeat measures ANOVA
 anova.total <- aov(Cover ~ Treatment3 + Error(Year), data = total.all)
 summary(anova.total)
@@ -86,6 +103,15 @@ Anova(lm.total)
 
 lm2.total <- lme(Cover ~ Treatment3, random = ~1|Year, data = total.all)
 emmeans(lm2.total, specs = "Treatment3") # Control > Treated
+
+
+# Two-factor ANOVA
+summary(aov(Cover ~ Treatment3 * Year, data = total.all))
+#                  Df Sum Sq Mean Sq F value   Pr(>F) 
+# Treatment3:Year   5   9193    1839   2.817 0.016465 *  
+# Based on visual estimate, Control > Treated for change over time (Treatment3:Year)
+check_model(aov(Cover ~ Treatment3 * Year, data = total.all))
+
 
 # One-way ANOVA for Treated
 summary(aov(Cover ~ Year, data = filter(total.all, Treatment3 == "Treated"))) # NS
@@ -163,6 +189,7 @@ ggplot(herb.avg, aes(x = year.xaxis, y = mean,
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
 
+
 # Repeat measures ANOVA
 anova.herb <- aov(Cover ~ Treatment3 + Error(Year), data = herb.all)
 summary(anova.herb) # p = 0.000221
@@ -176,6 +203,13 @@ summary(lm.herb)
 
 lm2.herb <- lme(Cover ~ Treatment3, random = ~1|Year, data = herb.all)
 emmeans(lm2.herb, specs = "Treatment3") # Control > Treated
+
+
+# Two-factor ANOVA
+summary(aov(Cover ~ Treatment3 * Year, data = herb.all))
+# Treatment3:Year   5   2281   456.2   3.366 0.005529 ** 
+# Based on visual estimate, Treated probably changed more over time than Control?
+check_model(aov(Cover ~ Treatment3 * Year, data = herb.all))
 
 
 # One-way ANOVA for Treated
@@ -271,6 +305,7 @@ ggplot(notree.avg, aes(x = year.xaxis, y = mean,
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
 
+
 # Repeat measures ANOVA
 anova.notree <- aov(Cover ~ Treatment3 + Error(Year), data = notree.all)
 summary(anova.notree) # NS
@@ -283,6 +318,14 @@ Anova(lm.notree) # NS
 
 lm2.notree <- lme(Cover ~ Treatment3, random = ~1|Year, data = notree.all)
 emmeans(lm2.total, specs = "Treatment3") 
+
+
+# Two-factor ANOVA
+summary(aov(Cover ~ Treatment3 * Year, data = notree.all))
+# Treatment3:Year   5   5532  1106.4   3.471  0.00447 ** 
+# Based on visual estimate, Control probably changed more over time than Treated?
+check_model(aov(Cover ~ Treatment3 * Year, data = notree.all))
+
 
 # One-way ANOVA for Treated
 summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Treated"))) # p = 0.00304
@@ -337,14 +380,19 @@ notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Grass, forb & shrub cover") +
+  ggtitle("Grass, forb & shrub cover, 2012-2021") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
   geom_text(data = letters.notree,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black")  +
+  theme(axis.text.x = element_text(color = "black"))
 notree.plot
+
+tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-cover.tiff", width = 8, height = 4, units = "in", res = 150)
+notree.plot
+dev.off()
 
 
 
@@ -383,6 +431,7 @@ ggplot(rich.avg, aes(x = year.xaxis, y = mean,
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
 
+
 # Repeat measures ANOVA
 anova.rich <- aov(rich ~ Treatment3 + Error(Year), data = per.div)
 summary(anova.rich) # p = 7.65e-06
@@ -395,6 +444,14 @@ Anova(lm.rich)
 
 lm2.rich <- lme(rich ~ Treatment3, random = ~1|Year, data = per.div)
 emmeans(lm2.rich, specs = "Treatment3") # Control > Treated
+
+
+# Two-factor ANOVA
+summary(aov(rich ~ Treatment3 * Year, data = per.div))
+# Treatment3:Year   5   76.7   15.33   2.434   0.0346 *   
+# Based on visual estimate, Control probably changed more over time than Treated?
+check_model(aov(rich ~ Treatment3 * Year, data = per.div))
+
 
 # One-way ANOVA for Treated
 summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # p = 0.0516
@@ -420,7 +477,7 @@ rich.ctrl.letters <- rich.ctrl.letters |>
   arrange(Year)
 
 letters.rich <- data.frame(x = rich.avg$year.xaxis[1:6],
-                      y = rep(10.3, 6),
+                      y = rep(10.4, 6),
                       label = rich.ctrl.letters$groups,
                       Treatment3 = rep("Control", 6))
 rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
@@ -432,14 +489,19 @@ rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean,
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("No. of species") +
-  ggtitle("Perennial plant richness") +
+  ggtitle("Perennial plant species richness, 2012-2021") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
   geom_text(data = letters.rich,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black") +
+  theme(axis.text.x = element_text(color = "black"))
 rich.plot
+
+tiff("figures/2023-07_draft-figures/temporal-ANOVA_richness.tiff", width = 8, height = 4, units = "in", res = 150)
+rich.plot
+dev.off()
 
 
 
@@ -467,11 +529,13 @@ shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean,
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("Shannon diversity index") +
-  ggtitle("Perennial diversity") +
+  ggtitle("Perennial plant diversity, 2012-2021") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "black"))
 shan.plot
+
 
 # Repeat measures ANOVA
 anova.shan <- aov(shan ~ Treatment3 + Error(Year), data = per.div)
@@ -488,11 +552,24 @@ lm2.shan <- lme(shan ~ Treatment3, random = ~1|Year, data = per.div)
 emmeans(lm2.shan, specs = "Treatment3")
 
 
+# Two-factor ANOVA
+summary(aov(shan ~ Treatment3 * Year, data = per.div))
+# Treatment3:Year   5   0.61  0.1214   0.690 0.63137 
+# No significant difference
+check_model(aov(shan ~ Treatment3 * Year, data = per.div))
+
+
 # One-way ANOVA for Treated
 summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # NS
 
 # One-way ANOVA for Control
 summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Control"))) # NS
+
+
+# No letters needed, write out previous plot
+tiff("figures/2023-07_draft-figures/temporal-ANOVA_Shannon.tiff", width = 8, height = 4, units = "in", res = 150)
+shan.plot
+dev.off()
 
 
 save.image("RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
