@@ -1,7 +1,7 @@
 # Purpose: Graph precipitation data from Pima County ALERT system, sensor #6380,
 #   sourced from https://webcms.pima.gov/government/flood_control/services/precipitation_and_streamflow_data/.
 # Created: 2023-02-02
-# Last updated: 2023-03-27
+# Last updated: 2023-07-14
 
 library(tidyverse)
 library(plotrix)
