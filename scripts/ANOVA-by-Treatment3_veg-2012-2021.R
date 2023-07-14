@@ -9,9 +9,11 @@
 #     answer as interesting of a question (it doesn't matter so much inherently how the channels started
 #     out, but rather how they react to change over time).
 #   Two-way ANOVA with Treatment*Year interaction compares how Treated vs. Control changed over time,
-#     and does not account for repeat measures on the same plots.
+#     and does not account for repeat measures on the same plots. Cannot run check_model() on repeat ANOVA,
+#     but can for linear models with Year as random factor. Ran linear models with Year as random factor
+#     with two packages, because lme4 allows you to use check_model(), and nlme allows you to use emmeans().
 #   One-way ANOVA for Control & Treated separately shows change over time, and does not them directly
-#     or account for repeat measures on same plots. This is probably the most inuitive interpretation of line graphs.
+#     or account for repeat measures on same plots. This is probably the most intuitive interpretation of line graphs.
 
 # Will probably go with two-way ANOVA because it answers a more interesting/relevant question, even though
 #   it doesn't account for repeat measures.
@@ -94,8 +96,7 @@ ggplot(total.avg, aes(x = year.xaxis, y = mean,
 
 
 # Repeat measures ANOVA
-anova.total <- aov(Cover ~ Treatment3 + Error(Year), data = total.all)
-summary(anova.total)
+summary(aov(Cover ~ Treatment3 + Error(Year), data = total.all))
 summary(aov(Cover ~ Treatment3, data = total.all)) # without repeat measures to compare
 
 # Year as random factor
@@ -193,8 +194,7 @@ ggplot(herb.avg, aes(x = year.xaxis, y = mean,
 
 
 # Repeat measures ANOVA
-anova.herb <- aov(Cover ~ Treatment3 + Error(Year), data = herb.all)
-summary(anova.herb) # p = 0.000221
+summary(aov(Cover ~ Treatment3 + Error(Year), data = herb.all)) # p = 0.000221
 summary(aov(Cover ~ Treatment3, data = herb.all)) # without repeat measures to compare
 
 # Year as random factor
@@ -309,8 +309,7 @@ ggplot(notree.avg, aes(x = year.xaxis, y = mean,
 
 
 # Repeat measures ANOVA
-anova.notree <- aov(Cover ~ Treatment3 + Error(Year), data = notree.all)
-summary(anova.notree) # NS
+summary(aov(Cover ~ Treatment3 + Error(Year), data = notree.all)) # NS
 summary(aov(Cover ~ Treatment3, data = notree.all)) # without repeat measures to compare
 
 # Year as random factor
@@ -448,7 +447,7 @@ check_model(aov(Cover ~ Treatment3 * Year, data = annual.all)) # this looks awfu
 
 
 # One-way ANOVA for Treated
-summary(aov(Cover ~ Year, data = filter(annual.all, Treatment3 == "Treated"))) # p = 0.00304
+summary(aov(Cover ~ Year, data = filter(annual.all, Treatment3 == "Treated"))) # p = 6.23e-11
 check_model(aov(Cover ~ Year, data = filter(annual.all, Treatment3 == "Treated")))
 
 annual.trt <- annual.all |> 
@@ -555,8 +554,7 @@ ggplot(rich.avg, aes(x = year.xaxis, y = mean,
 
 
 # Repeat measures ANOVA
-anova.rich <- aov(rich ~ Treatment3 + Error(Year), data = per.div)
-summary(anova.rich) # p = 7.65e-06
+summary(aov(rich ~ Treatment3 + Error(Year), data = per.div)) # p = 7.65e-06
 summary(aov(rich ~ Treatment3, data = per.div)) # without repeat measures to compare
 
 # Year as random factor
@@ -660,8 +658,7 @@ shan.plot
 
 
 # Repeat measures ANOVA
-anova.shan <- aov(shan ~ Treatment3 + Error(Year), data = per.div)
-summary(anova.shan)
+summary(aov(shan ~ Treatment3 + Error(Year), data = per.div))
 summary(aov(shan ~ Treatment3, data = per.div)) # without repeat measures to compare
 
 # Year as random factor
