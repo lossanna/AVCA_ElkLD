@@ -2,7 +2,7 @@
 #   calculate richness and diversity, create stacked bar charts of dominant phyla.
 #   Post-2023-03-34 analysis only includes grouping by Channel and Treatment3.
 # Created: 2023-01-12
-# Last updated: 2023-06-09
+# Last updated: 2023-07-14
 
 library(metagenomeSeq)
 library(vegan)
@@ -202,11 +202,24 @@ meta %>%
   geom_point(aes(color = Treatment3)) +
   stat_ellipse(aes(color = Treatment3))
 
+tiff("figures/2023-07_draft-figures/NMDS-fungi.tiff", height = 5, width = 6, units = "in", res = 150)
 meta %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment3, shape = Treatment3)) +
-  geom_point(size = 4) +
+  geom_point(size = 3) +
   scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_minimal() 
+  theme_bw(base_size = 14) +
+  labs(x = "Axis 1",
+       y = "Axis 2",
+       title = "Fungi NMDS",
+       color = "Treatment",
+       shape = "Treatment") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank()) +
+  geom_text(aes(x = 0.7, y = -0.7, label = "PERMANOVA, p = 0.008"),
+            size = 3, color = "gray30") +
+  geom_text(aes(x = 0.78, y = -0.8, label = "Stress = 0.237"),
+            size = 3, color = "gray30") # only 2% explained by Treatment3 lol
+dev.off()
 
 
 # Beta dispersion 
@@ -369,20 +382,25 @@ t.test(filter(meta, Treatment3 == "Control")$Richness,
        filter(meta, Treatment3 == "Treated")$Richness) # NS
 
 # Plot 
+tiff("figures/2023-07_draft-figures/Richness-fungi.tiff", width = 6, height = 4, units = "in", res = 150)
 meta %>% 
   ggplot(aes(Treatment3, Richness), color = Treatment3) +
   geom_jitter(aes(color = Treatment3), 
               alpha = 0.8, 
-              size = 4) +
+              size = 3) +
   geom_boxplot(aes(fill = Treatment3), 
                alpha = 0.3, 
                outlier.shape = NA) +
   xlab(NULL) +
-  ylab("Richness") +
+  ylab("No. of ASVs") +
+  ggtitle("Fungi richness") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))
+dev.off()
+
 
 
 
