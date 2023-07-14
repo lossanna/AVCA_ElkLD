@@ -8,7 +8,7 @@
 library(tidyverse)
 library(car)
 library(agricolae)
-library(metagenomeSeq)
+library(ggpubr)
 
 # Load data ---------------------------------------------------------------
 
@@ -23,17 +23,21 @@ t.test(filter(dat.2021, Treatment3 == "Control")$TN_log,
 
 # Plot
 tn.plot.21 <- dat.2021 |> 
-  ggplot(aes(x = Treatment3, y = TN_ppt, fill = Treatment3, color = Treatment3)) +
+  ggplot(aes(x = Treatment3, y = TN_ppt)) +
   geom_boxplot(alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(size = 2) +
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Total soil nitrogen",
        x = NULL,
        y = "Total N (mg/g)") +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none")
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))  +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 tn.plot.21
 
 
@@ -45,17 +49,21 @@ t.test(filter(dat.2021, Treatment3 == "Control")$TC_log,
 
 # Plot
 tc.plot.21 <- dat.2021 |> 
-  ggplot(aes(x = Treatment3, y = TC_ppt, fill = Treatment3, color = Treatment3)) +
+  ggplot(aes(x = Treatment3, y = TC_ppt)) +
   geom_boxplot(alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(size = 2) +
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Total soil carbon",
        x = NULL,
        y = "Total C (mg/g)") +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none")
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))  +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 tc.plot.21
 
 
@@ -68,17 +76,20 @@ t.test(filter(dat.2021, Treatment3 == "Control")$CN_ratio,
 
 # Plot
 cn.plot.21 <- dat.2021 |> 
-  ggplot(aes(x = Treatment3, y = CN_ratio, fill = Treatment3, color = Treatment3)) +
+  ggplot(aes(x = Treatment3, y = CN_ratio)) +
   geom_boxplot(alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(size = 2) +
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Carbon:Nitrogen ratio",
        x = NULL,
        y = "C:N") +
   theme_bw(base_size = 14) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))
 cn.plot.21
 
 
@@ -90,18 +101,34 @@ t.test(filter(dat.2021, Treatment3 == "Control")$OM_log,
 
 # Plot
 om.plot.21 <- dat.2021 |> 
-  ggplot(aes(x = Treatment3, y = OM_perc, fill = Treatment3, color = Treatment3)) +
+  ggplot(aes(x = Treatment3, y = OM_perc)) +
   geom_boxplot(alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(size = 2) +
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Soil organic matter",
        x = NULL,
        y = "Organic matter (%)") +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))  +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 om.plot.21
+
+
+
+# Combine soil chem -------------------------------------------------------
+
+# TN, TC, OM
+tiff("figures/2023-07_draft-figures/Soil-chem-2021.tiff", units = "in", height = 4.7, width = 8, res = 150)
+ggarrange(tn.plot.21, tc.plot.21, om.plot.21, 
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
 
 
 
@@ -113,10 +140,10 @@ t.test(filter(dat.2021, Treatment3 == "Control")$barc.richness,
 
 # Plot
 barc.rich.plot.21 <- dat.2021 |> 
-  ggplot(aes(Treatment3, barc.richness), color = Treatment3) +
+  ggplot(aes(Treatment3, barc.richness)) +
   geom_jitter(aes(color = Treatment3), 
               alpha = 0.8, 
-              size = 3) +
+              size = 2) +
   geom_boxplot(aes(fill = Treatment3), 
                alpha = 0.3, 
                outlier.shape = NA) +
@@ -125,13 +152,46 @@ barc.rich.plot.21 <- dat.2021 |>
   ggtitle("Bacteria & archaea richness") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))
 barc.rich.plot.21
 
-tiff("figures/2023-07_draft-figures/Richness-barc.tiff", width = 6, height = 4, units = "in", res = 150)
-barcrich.plot.21
+
+
+# Fungi richness ----------------------------------------------------------
+
+# T-test
+t.test(filter(dat.2021, Treatment3 == "Control")$fungi.richness,
+       filter(dat.2021, Treatment3 == "Treated")$fungi.richness) # NS, p = 0.94
+
+# Plot
+fungi.rich.plot.21 <- dat.2021 %>% 
+  ggplot(aes(Treatment3, fungi.richness)) +
+  geom_jitter(aes(color = Treatment3), 
+              alpha = 0.8, 
+              size = 2) +
+  geom_boxplot(aes(fill = Treatment3), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("No. of ASVs") +
+  ggtitle("Fungi richness") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))
+fungi.rich.plot.21
+
+
+# Combine soil richness ---------------------------------------------------
+
+tiff("figures/2023-07_draft-figures/Soil-richness-2021.tiff", units = "in", height = 4.7, width = 7, res = 150)
+ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)"))
+
 dev.off()
 
 
@@ -145,7 +205,7 @@ barc.nmds.plot.21 <- dat.2021 %>%
   ggplot(aes(x = barc.NMDS1, y = barc.NMDS2, color = Treatment3, shape = Treatment3)) +
   geom_point(size = 3) +
   scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   labs(x = "Axis 1",
        y = "Axis 2",
        title = "Bacteria & archaea NMDS",
@@ -159,43 +219,6 @@ barc.nmds.plot.21 <- dat.2021 %>%
             size = 3, color = "gray30") # only 3% explained by Treatment3 lol
 barc.nmds.plot.21
 
-tiff("figures/2023-07_draft-figures/NMDS-barc.tiff", height = 5, width = 6, units = "in", res = 150)
-barc.nmds.plot.21
-dev.off()
-
-
-
-
-# Fungi richness ----------------------------------------------------------
-
-# T-test
-t.test(filter(dat.2021, Treatment3 == "Control")$fungi.richness,
-       filter(dat.2021, Treatment3 == "Treated")$fungi.richness) # NS, p = 0.94
-
-# Plot
-fungi.rich.plot.21 <- dat.2021 %>% 
-  ggplot(aes(Treatment3, fungi.richness), color = Treatment3) +
-  geom_jitter(aes(color = Treatment3), 
-              alpha = 0.8, 
-              size = 3) +
-  geom_boxplot(aes(fill = Treatment3), 
-               alpha = 0.3, 
-               outlier.shape = NA) +
-  xlab(NULL) +
-  ylab("No. of ASVs") +
-  ggtitle("Fungi richness") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") +
-  theme(axis.text.x = element_text(color = "#000000"))
-fungi.rich.plot.21
-
-tiff("figures/2023-07_draft-figures/Richness-fungi.tiff", width = 6, height = 4, units = "in", res = 150)
-fungi.rich.plot.21
-dev.off()
-
-
 
 # Fungi NMDS --------------------------------------------------------------
 
@@ -206,7 +229,7 @@ fungi.nmds.plot.21 <- dat.2021 %>%
   ggplot(aes(x = fungi.NMDS1, y = fungi.NMDS2, color = Treatment3, shape = Treatment3)) +
   geom_point(size = 3) +
   scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   labs(x = "Axis 1",
        y = "Axis 2",
        title = "Fungi NMDS",
@@ -220,9 +243,16 @@ fungi.nmds.plot.21 <- dat.2021 %>%
             size = 3, color = "gray30") # only 2% explained by Treatment3 lol
 fungi.nmds.plot.21
 
-tiff("figures/2023-07_draft-figures/NMDS-fungi.tiff", height = 5, width = 6, units = "in", res = 150)
-fungi.nmds.plot.21
+
+# Combine NMDS ------------------------------------------------------------
+
+tiff("figures/2023-07_draft-figures/Soil-NMDS.tiff", height = 5, width = 11, units = "in", res = 150)
+ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
+          nrow = 1, ncol = 2,
+          labels = c("(A)", "(B)"),
+          common.legend = TRUE, legend = "bottom")
 dev.off()
+
 
 
 # Total plant cover -------------------------------------------------------
