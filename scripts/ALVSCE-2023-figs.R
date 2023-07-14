@@ -24,7 +24,7 @@ dat.2021 <- read_csv("data/cleaned/Data-2021_clean.csv")
 # Temporal veg data 2012-2021 ---------------------------------------------
 
 # Total cover
-tiff("output_figs/ALVSCE_2023/Total-cover_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("figures/2023-03-30_ALVSCE-poster-forum/Total-cover_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
 ggplot(total.avg, aes(x = year.xaxis, y = mean, 
                                     group = Treatment3, 
                                     color = Treatment3)) +
@@ -44,7 +44,7 @@ dev.off()
 
 
 # Herbaceous cover
-tiff("output_figs/ALVSCE_2023/Herb-cover_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("figures/2023-03-30_ALVSCE-poster-forum/Herb-cover_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
 ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
                       group = Treatment3, 
                       color = Treatment3)) +
@@ -64,7 +64,7 @@ dev.off()
 
 
 # Richness
-tiff("output_figs/ALVSCE_2023/Richness_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("figures/2023-03-30_ALVSCE-poster-forum/Richness_2012-2021.tiff", width = 6, height = 5, units = "in", res = 300)
 ggplot(rich.avg, aes(x = year.xaxis, y = mean,
                      group = Treatment3,
                       color = Treatment3)) +
@@ -86,7 +86,7 @@ dev.off()
 # CV for temporal veg -----------------------------------------------------
 
 # Total cover
-tiff("output_figs/ALVSCE_2023/CV_total-cover.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("figures/2023-03-30_ALVSCE-poster-forum/CV_total-cover.tiff", width = 6, height = 5, units = "in", res = 300)
 total.cv |> 
   ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
   geom_boxplot(alpha = 0.3,
@@ -103,7 +103,7 @@ dev.off()
 
 
 # Herbaceous  
-tiff("output_figs/ALVSCE_2023/CV_herb-cover.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("figures/2023-03-30_ALVSCE-poster-forum/CV_herb-cover.tiff", width = 6, height = 5, units = "in", res = 300)
 herb.cv |> 
   ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
   geom_boxplot(alpha = 0.3,
@@ -122,7 +122,7 @@ dev.off()
 # Soil & plant 2021 data --------------------------------------------------
 
 # 16S NMDS
-tiff("output_figs/ALVSCE_2023/NMDS.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("figures/2023-03-30_ALVSCE-poster-forum/NMDS.tiff", width = 6, height = 5, units = "in", res = 300)
 dat.2021 %>% 
   ggplot(aes(x = NMDS1, y = NMDS2, color = Treatment3, shape = Treatment3)) +
   geom_point(size = 4) +
@@ -154,7 +154,7 @@ dat.pca.ctrl <- dat.2021 |>
          Shannon = shan)
 pca.ctrl3 <- PCA(dat.pca.ctrl, scale.unit = TRUE, graph = FALSE)
 
-tiff("output_figs/ALVSCE_2023/PCA-correlation-ctrl.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("figures/2023-03-30_ALVSCE-poster-forum/PCA-correlation-ctrl.tiff", width = 6, height = 5, units = "in", res = 300)
 fviz_pca_var(pca.ctrl3,
              repel = TRUE,
              col.var = "red") +
@@ -174,7 +174,7 @@ dat.pca.trt <- dat.2021 |>
 pca.trt3 <- PCA(dat.pca.trt, scale.unit = TRUE, graph = FALSE)
 
 
-tiff("output_figs/ALVSCE_2023/PCA-correlation-trt.tiff", width = 6, height = 5, units = "in", res = 300)
+tiff("figures/2023-03-30_ALVSCE-poster-forum/PCA-correlation-trt.tiff", width = 6, height = 5, units = "in", res = 300)
 fviz_pca_var(pca.trt3,
              repel = TRUE,
              col.var = "#006699") +
