@@ -3,7 +3,7 @@
 # Checked for normality:
 #   Total cover, richness, and Shannon were normally distributed for all years, and by year.
 #   Herb cover was normally distributed by year, but not really for all years combined.
-#   Notree cover was normally distributed by year, and mostly for all years combined.
+#   Notree cover was normally distributed by year, and slightly skewed for all years combined.
 #   Tree cover was not really normally distributed by year or combined;
 #     kind of normally distributed for average of 2012-2014 of control but not treated,
 #     but cannot log-transform because of 0 values.
@@ -18,8 +18,7 @@
 #     62 samples each year; 31 control and treated samples for each year.
 
 # Created: 2023-02-01
-# Last updated: 2023-07-06
-
+# Last updated: 2023-07-14
 
 library(tidyverse)
 library(agricolae)
@@ -33,6 +32,7 @@ total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
 tree.all <- read_csv("data/cleaned/Summarised-all_tree-cover.csv")
+annual.all <- read_csv("data/cleaned/Summarised-all_annual-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 total.pd <- read_csv("data/cleaned/Percent-difference_total-cover.csv")
@@ -51,6 +51,7 @@ total.all[group.cols] <- lapply(total.all[group.cols], factor)
 herb.all[group.cols] <- lapply(herb.all[group.cols], factor)
 notree.all[group.cols] <- lapply(notree.all[group.cols], factor)
 tree.all[group.cols] <- lapply(tree.all[group.cols], factor)
+annual.all[group.cols] <- lapply(annual.all[group.cols], factor)
 per.div[group.cols] <- lapply(per.div[group.cols], factor)
 
 # All years, separate out control and treated
@@ -63,6 +64,8 @@ herb.ctrl <- herb.all |>
 notree.ctrl <- notree.all |> 
   filter(Treatment3 == "Control")
 tree.ctrl <- tree.all |> 
+  filter(Treatment3 == "Control")
+annual.ctrl <- annual.all |> 
   filter(Treatment3 == "Control")
 per.div.ctrl <- per.div |> 
   filter(Treatment3 == "Control")
@@ -88,6 +91,8 @@ herb.trt <- herb.all |>
 notree.trt <- notree.all |> 
   filter(Treatment3 == "Treated")
 tree.trt <- tree.all |> 
+  filter(Treatment3 == "Treated")
+annual.trt <- annual.all |> 
   filter(Treatment3 == "Treated")
 per.div.trt <- per.div |> 
   filter(Treatment3 == "Treated")
@@ -363,8 +368,18 @@ hist(total.trt.21$Cover, breaks = 15)
 
 
 # Herb cover
-hist(herb.ctrl$Cover, breaks = 10) # seems not normal
+hist(herb.ctrl$Cover, breaks = 15) # seems not normal
 hist(herb.trt$Cover, breaks = 10) # seems not normal
+
+
+# Notree cover
+hist(notree.ctrl$Cover, breaks = 15) # slightly skewed?
+hist(notree.trt$Cover, breaks = 10) # right tail?
+
+
+# Annual cover
+hist(annual.ctrl$Cover, breaks = 15) # definitely not normal
+hist(annual.trt$Cover, breaks = 15) # definitely not normal
 
 
 
@@ -462,6 +477,10 @@ qqPlot(tree.trt.avg1214$Cover) # not normal
 #                                   but cannot log transform because of 0s
 qqPlot(c(tree.ctrl.avg1214$Cover, tree.trt.avg1214$Cover)) # not that normal
 
+
+# Annual
+qqPlot(annual.ctrl$Cover) # super not normal
+qqPlot(annual.trt$Cover) # super not normal
 
 # Richness
 # All years
