@@ -1,10 +1,11 @@
 # Purpose: Test candidate models for SEM analysis
 
 # Findings:
-#   OM & TN covary too much; have to pick just one
-#   CN ratio not good indicator (low chi-sq p-value)
-#   plant diversity and cover cannot be a single endogenous latent variable - creates
-#     low chi-sq p-value
+#   OM & TN covary too much; have to pick just one.
+#   CN ratio not good indicator (low chi-sq p-value).
+#   Plant diversity and cover cannot be a single endogenous latent variable - creates
+#     low chi-sq p-value.
+#   Best model is probably 5.1
 
 # Created: 2023-06-27
 # Updated: 2023-07-06
