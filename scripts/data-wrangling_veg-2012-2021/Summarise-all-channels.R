@@ -186,6 +186,7 @@ plottime.241.plant <- data.frame(PlotTimeID = 241,
                         Cover = 0)
   
 # Summarise and add PlotTimeID 241 row
+# Total
 total.all <- plant.all %>% 
   group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3) %>% 
@@ -196,7 +197,7 @@ total.all <- plant.all %>%
   bind_rows(plottime.241.plant) |> 
   arrange(PlotTimeID)
 
-
+# Herb
 herb.all <- plant.all %>% 
   group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
            Treatment1, Treatment2, Treatment3, woody) %>% 
@@ -210,7 +211,7 @@ herb.all <- plant.all %>%
   bind_rows(plottime.241.plant) |> 
   arrange(PlotTimeID)
 
-
+# Notree
 notree.all <- plant.all %>% 
   filter(tree == "not tree") %>% 
   group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
@@ -222,7 +223,7 @@ notree.all <- plant.all %>%
   bind_rows(plottime.241.plant) |> 
   arrange(PlotTimeID)
 
-
+# Tree
 tree.all <- plant.all |> 
   filter(tree == "tree") |> 
   group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
@@ -232,7 +233,7 @@ tree.all <- plant.all |>
   select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
          Treatment1, Treatment2, Treatment3, Cover) |> 
   bind_rows(plottime.241.plant) |> 
-  arrange(PlotTimeID)# only 260 rows; sometimes there were no trees
+  arrange(PlotTimeID) # only 260 rows; sometimes there were no trees
 
 tree.missing.plottimeid <- setdiff(total.all$PlotTimeID, tree.all$PlotTimeID)
 tree.missing <- total.all |> 
@@ -241,6 +242,27 @@ tree.missing <- total.all |>
 tree.missing$Cover <- rep(0, nrow(tree.missing))
 tree.all <- tree.all |> 
   bind_rows(tree.missing) |> 
+  arrange(PlotTimeID)
+
+# Annual
+annual.all <- plant.all |> 
+  filter(Functional %in% c("Annual grass", "Annual forb")) |> 
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3) %>% 
+  summarise(Cover = sum(Cover), .groups = "keep") |> 
+  ungroup() |> 
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover) |> 
+  bind_rows(plottime.241.plant) |> 
+  arrange(PlotTimeID) # only 286 rows; sometimes there were no annuals
+
+annual.missing.plottimeid <- setdiff(total.all$PlotTimeID, annual.all$PlotTimeID)
+annual.missing <- total.all |> 
+  filter(PlotTimeID %in% annual.missing.plottimeid) |> 
+  select(-Cover) # add back missing rows based on sampling info from total.all df
+annual.missing$Cover <- rep(0, nrow(annual.missing))
+annual.all <- annual.all |> 
+  bind_rows(annual.missing) |> 
   arrange(PlotTimeID)
 
 
@@ -303,6 +325,8 @@ write_csv(notree.all,
           file = "data/cleaned/Summarised-all_notree-cover.csv")
 write_csv(tree.all,
           file = "data/cleaned/Summarised-all_tree-cover.csv")
+write_csv(annual.all,
+          file = "data/cleaned/Summarised-all_annual-cover.csv")
 write_csv(per.div,
           file = "data/cleaned/Summarised-all_perennial-diversity.csv")
 
