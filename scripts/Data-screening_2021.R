@@ -5,7 +5,7 @@
 #   chemoheterotrophy, n-cyclers. All of these were were log-transformed.
 # Determined that TN, TC, OM and C:N ratio are collinear (especially TN & TC).
 #   As a result, will only use TN & OM in analysis.
-# Also found that bacteria/archeae richness & shannon are kind of correlated,
+# Also found that bacteria/archaea richness & shannon are kind of correlated,
 #   so will just use richness for both barc and fungi.
 
 # Produced a clean data sheet for 2021 data (Data-2021_clean.csv).

@@ -416,7 +416,7 @@ mod05.1 <- '
 fit05.1 <- sem(mod05.1, data = sem.dat)
 summary(fit05.1)
 
-semPaths(fit05.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+semPaths(fit05.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
 
 
