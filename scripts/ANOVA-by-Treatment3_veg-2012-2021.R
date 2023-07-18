@@ -343,7 +343,7 @@ hsd.notree.trt
 # 2013         21.80029      c
 
 # One-way ANOVA for Control
-summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Control")))
+summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Control"))) # p = 4.3e-06
 notree.ctrl <- notree.all |> 
   filter(Treatment3 == "Control")
 anova.notree.ctrl <- aov(notree.ctrl$Cover ~ notree.ctrl$Year)
@@ -372,6 +372,10 @@ letters.notree <- data.frame(x = rep(notree.avg$year.xaxis[1:6], 2),
                                 notree.trt.letters$groups),
                       Treatment3 = c(rep("Control", 6),
                                      rep("Treated", 6)))
+ptext.notree <- data.frame(x = rep(as.Date("2020-01-01"), 2),
+                           y = c(22, 22),
+                           label = c("ANOVA, p < 0.001", "ANOVA, p = 0.003"),
+                           Treatment3 = c("Control", "Treated"))
 notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean, 
                        group = Treatment3, 
                        color = Treatment3)) +
@@ -388,8 +392,12 @@ notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
   geom_text(data = letters.notree,
             mapping = aes(x = x, y = y, label = label),
             color = "black")  +
+  geom_text(data = ptext.notree,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(0.1, 0, 0.25, 0, "in")) 
+  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
 notree.plot
 
 tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-cover.tiff", width = 8, height = 4, units = "in", res = 150)
@@ -512,6 +520,10 @@ letters.rich <- data.frame(x = rich.avg$year.xaxis[1:6],
                       y = rep(10.4, 6),
                       label = rich.ctrl.letters$groups,
                       Treatment3 = rep("Control", 6))
+ptext.rich <- data.frame(x = rep(as.Date("2020-01-01"), 2),
+                           y = c(6.7, 10.3),
+                           label = c("ANOVA, p = 0.009", "ANOVA, p = 0.052"),
+                           Treatment3 = c("Control", "Treated"))
 rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
                      group = Treatment3, 
                      color = Treatment3)) +
@@ -528,8 +540,12 @@ rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean,
   geom_text(data = letters.rich,
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
+  geom_text(data = ptext.rich,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(0, 0, 0.25, 0, "in")) 
+  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
 rich.plot
 
 tiff("figures/2023-07_draft-figures/temporal-ANOVA_richness.tiff", width = 8, height = 4, units = "in", res = 150)
@@ -553,6 +569,10 @@ write.csv(shan.avg,
           row.names = FALSE)
 
 # Plot
+ptext.shan <- data.frame(x = rep(as.Date("2020-01-01"), 2),
+                         y = c(1.33, 1.33),
+                         label = c("ANOVA, p < 0.001", "ANOVA, p = 0.003"),
+                         Treatment3 = c("Control", "Treated"))
 shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
                      group = Treatment3, 
                      color = Treatment3)) +
@@ -566,7 +586,11 @@ shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(data = ptext.shan,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) 
 shan.plot
 
 
@@ -607,7 +631,7 @@ dev.off()
 
 # Combine notree, richness & Shannon plots --------------------------------
 
-tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-richness-Shannon.tiff", units = "in", height = 12.6, width = 8, res = 150)
+tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-richness-Shannon.tiff", units = "in", height = 12, width = 8, res = 150)
 ggarrange(notree.plot, rich.plot, shan.plot,
           ncol = 1, nrow = 3,
           labels = c("(A)", "(B)", "(C)")) 
