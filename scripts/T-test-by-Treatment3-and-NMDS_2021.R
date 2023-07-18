@@ -278,7 +278,8 @@ chemohet.plot.21 <- dat.2021 %>%
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
-  theme(axis.text.x = element_text(color = "#000000"))
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 chemohet.plot.21
 
 
@@ -305,7 +306,8 @@ ncycler.plot.21 <- dat.2021 %>%
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
-  theme(axis.text.x = element_text(color = "#000000"))
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 ncycler.plot.21
 
 
@@ -332,7 +334,8 @@ sapro.plot.21 <- dat.2021 %>%
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
-  theme(axis.text.x = element_text(color = "#000000")) 
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
 sapro.plot.21
 
 
