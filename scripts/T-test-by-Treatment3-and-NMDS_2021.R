@@ -20,7 +20,7 @@ dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv")
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$TN_log,
-       filter(dat.2021, Treatment3 == "Treated")$TN_log) # NS, p = 0.49
+       filter(dat.2021, Treatment3 == "Treated")$TN_log) # NS, p = 0.490
 
 # Plot
 tn.plot.21 <- dat.2021 |> 
@@ -38,7 +38,10 @@ tn.plot.21 <- dat.2021 |>
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2.05, y = 63, label = "ANOVA, p = 0.490"),
+            color = "gray30",
+            size = 2.5)
 tn.plot.21
 
 
@@ -46,7 +49,7 @@ tn.plot.21
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$TC_log,
-       filter(dat.2021, Treatment3 == "Treated")$TC_log) # NS, p = 0.5
+       filter(dat.2021, Treatment3 == "Treated")$TC_log) # NS, p = 0.500
 
 # Plot
 tc.plot.21 <- dat.2021 |> 
@@ -64,7 +67,10 @@ tc.plot.21 <- dat.2021 |>
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2.05, y = 670, label = "ANOVA, p = 0.500"),
+            color = "gray30",
+            size = 2.5)
 tc.plot.21
 
 
@@ -98,7 +104,7 @@ cn.plot.21
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$OM_log,
-       filter(dat.2021, Treatment3 == "Treated")$OM_log) # NS, p = 0.33
+       filter(dat.2021, Treatment3 == "Treated")$OM_log) # NS, p = 0.332
 
 # Plot
 om.plot.21 <- dat.2021 |> 
@@ -116,7 +122,10 @@ om.plot.21 <- dat.2021 |>
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2.05, y = 2.14, label = "ANOVA, p = 0.332"),
+            color = "gray30",
+            size = 2.5)
 om.plot.21
 
 
@@ -137,7 +146,7 @@ dev.off()
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$barc.richness,
-       filter(dat.2021, Treatment3 == "Treated")$barc.richness) # NS, p = 0.69
+       filter(dat.2021, Treatment3 == "Treated")$barc.richness) # NS, p = 0.686
 
 # Plot
 barc.rich.plot.21 <- dat.2021 |> 
@@ -155,7 +164,11 @@ barc.rich.plot.21 <- dat.2021 |>
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
-  theme(axis.text.x = element_text(color = "#000000"))
+  theme(axis.text.x = element_text(color = "#000000")) +
+  geom_text(aes(x = 2.03, y = 2400, label = "ANOVA, p = 0.686"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
 barc.rich.plot.21
 
 
@@ -164,7 +177,7 @@ barc.rich.plot.21
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$fungi.richness,
-       filter(dat.2021, Treatment3 == "Treated")$fungi.richness) # NS, p = 0.94
+       filter(dat.2021, Treatment3 == "Treated")$fungi.richness) # NS, p = 0.938
 
 # Plot
 fungi.rich.plot.21 <- dat.2021 %>% 
@@ -182,7 +195,11 @@ fungi.rich.plot.21 <- dat.2021 %>%
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
-  theme(axis.text.x = element_text(color = "#000000"))
+  theme(axis.text.x = element_text(color = "#000000")) +
+  geom_text(aes(x = 2.03, y = 70, label = "ANOVA, p = 0.938"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
 fungi.rich.plot.21
 
 
@@ -213,6 +230,7 @@ barc.nmds.plot.21 <- dat.2021 %>%
        color = "Treatment",
        shape = "Treatment") +
   theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   theme(legend.title = element_blank()) +
   geom_text(aes(x = 0.3, y = -0.55, label = "PERMANOVA, p = 0.026"),
             size = 3, color = "gray30") +
@@ -238,9 +256,10 @@ fungi.nmds.plot.21 <- dat.2021 %>%
        shape = "Treatment") +
   theme(legend.position = "bottom") +
   theme(legend.title = element_blank()) +
-  geom_text(aes(x = 0.7, y = -0.7, label = "PERMANOVA, p = 0.008"),
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 0.83, y = -0.7, label = "PERMANOVA, p = 0.008"),
             size = 3, color = "gray30") +
-  geom_text(aes(x = 0.78, y = -0.8, label = "Stress = 0.237"),
+  geom_text(aes(x = 0.92, y = -0.8, label = "Stress = 0.237"),
             size = 3, color = "gray30") # only 2% explained by Treatment3 lol
 fungi.nmds.plot.21
 
@@ -260,7 +279,7 @@ dev.off()
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$chemoheterotrophy_log,
-       filter(dat.2021, Treatment3 == "Treated")$chemoheterotrophy_log) # NS, p = 0.93
+       filter(dat.2021, Treatment3 == "Treated")$chemoheterotrophy_log) # NS, p = 0.931
 
 # Plot
 chemohet.plot.21 <- dat.2021 %>% 
@@ -279,7 +298,10 @@ chemohet.plot.21 <- dat.2021 %>%
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2.03, y = 28.7, label = "ANOVA, p = 0.931"),
+            color = "gray30",
+            size = 2.5)
 chemohet.plot.21
 
 
@@ -307,7 +329,10 @@ ncycler.plot.21 <- dat.2021 %>%
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2.03, y = 13.6, label = "ANOVA, p = 0.490"),
+            color = "gray30",
+            size = 2.5)
 ncycler.plot.21
 
 
@@ -335,7 +360,10 @@ sapro.plot.21 <- dat.2021 %>%
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) 
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2.03, y = 42, label = "ANOVA, p = 0.272"),
+            color = "gray30",
+            size = 2.5)
 sapro.plot.21
 
 
