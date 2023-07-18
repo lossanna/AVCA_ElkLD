@@ -20,7 +20,7 @@
 # check_model() for all two-way ANOVAs look good.
 
 # Created: 2023-03-27
-# Last updated: 2023-07-14
+# Last updated: 2023-07-18
 
 library(tidyverse)
 library(agricolae)
