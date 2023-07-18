@@ -372,7 +372,7 @@ letters.notree <- data.frame(x = rep(notree.avg$year.xaxis[1:6], 2),
                                 notree.trt.letters$groups),
                       Treatment3 = c(rep("Control", 6),
                                      rep("Treated", 6)))
-ptext.notree <- data.frame(x = rep(as.Date("2020-01-01"), 2),
+ptext.notree <- data.frame(x = rep(as.Date("2020-02-01"), 2),
                            y = c(22, 22),
                            label = c("ANOVA, p < 0.001", "ANOVA, p = 0.003"),
                            Treatment3 = c("Control", "Treated"))
@@ -520,7 +520,7 @@ letters.rich <- data.frame(x = rich.avg$year.xaxis[1:6],
                       y = rep(10.4, 6),
                       label = rich.ctrl.letters$groups,
                       Treatment3 = rep("Control", 6))
-ptext.rich <- data.frame(x = rep(as.Date("2020-01-01"), 2),
+ptext.rich <- data.frame(x = rep(as.Date("2020-02-01"), 2),
                            y = c(6.7, 10.3),
                            label = c("ANOVA, p = 0.009", "ANOVA, p = 0.052"),
                            Treatment3 = c("Control", "Treated"))
@@ -569,7 +569,7 @@ write.csv(shan.avg,
           row.names = FALSE)
 
 # Plot
-ptext.shan <- data.frame(x = rep(as.Date("2020-01-01"), 2),
+ptext.shan <- data.frame(x = rep(as.Date("2020-02-01"), 2),
                          y = c(1.33, 1.33),
                          label = c("ANOVA, p < 0.001", "ANOVA, p = 0.003"),
                          Treatment3 = c("Control", "Treated"))
