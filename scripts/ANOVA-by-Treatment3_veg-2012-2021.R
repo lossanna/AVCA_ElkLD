@@ -388,7 +388,8 @@ notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
   geom_text(data = letters.notree,
             mapping = aes(x = x, y = y, label = label),
             color = "black")  +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0, 0.25, 0, "in")) 
 notree.plot
 
 tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-cover.tiff", width = 8, height = 4, units = "in", res = 150)
@@ -527,7 +528,8 @@ rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean,
   geom_text(data = letters.rich,
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0, 0, 0.25, 0, "in")) 
 rich.plot
 
 tiff("figures/2023-07_draft-figures/temporal-ANOVA_richness.tiff", width = 8, height = 4, units = "in", res = 150)
@@ -600,6 +602,18 @@ summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Control"))) # NS
 tiff("figures/2023-07_draft-figures/temporal-ANOVA_Shannon.tiff", width = 8, height = 4, units = "in", res = 150)
 shan.plot
 dev.off()
+
+
+
+# Combine notree, richness & Shannon plots --------------------------------
+
+tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-richness-Shannon.tiff", units = "in", height = 12.6, width = 8, res = 150)
+ggarrange(notree.plot, rich.plot, shan.plot,
+          ncol = 1, nrow = 3,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+
 
 
 save.image("RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
