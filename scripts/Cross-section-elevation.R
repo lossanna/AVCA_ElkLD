@@ -198,10 +198,12 @@ letters <- data.frame(x = c(1, 2),
                       label = c("b", "a"),
                       Treatment3 = c("Control", "Treated"))
 dElev.corrected.plot <- elev |> 
-  ggplot(aes(x = Treatment3, y = dElev_corrected, fill = Treatment3, color = Treatment3)) +
-  geom_boxplot(alpha = 0.3,
+  ggplot(aes(x = Treatment3, y = dElev_corrected)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.3,
                outlier.shape = NA) +
-  geom_jitter(size = 2) +
+  geom_jitter(aes(color = Treatment3),
+              size = 2) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Change in channel elevation, 2011-2019",
@@ -212,7 +214,10 @@ dElev.corrected.plot <- elev |>
   geom_text(data = letters,
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
-  theme(axis.text.x = element_text(color = "black"))
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 2.3, y = -0.05, label = "ANOVA, p < 0.001"),
+            color = "gray30",
+            size = 2.5)
 dElev.corrected.plot
 
 tiff("figures/2023-07_draft-figures/Change-in-elevation.tiff", width = 6, height = 4, units = "in", res = 150)
