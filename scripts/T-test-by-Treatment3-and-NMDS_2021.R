@@ -29,6 +29,7 @@ tn.plot.21 <- dat.2021 |>
                outlier.shape = NA,
                aes(fill = Treatment3)) +
   geom_jitter(size = 2,
+              alpha = 0.8,
               aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
@@ -58,6 +59,7 @@ tc.plot.21 <- dat.2021 |>
                outlier.shape = NA,
                aes(fill = Treatment3)) +
   geom_jitter(size = 2,
+              alpha = 0.8,
               aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
@@ -88,6 +90,7 @@ cn.plot.21 <- dat.2021 |>
                outlier.shape = NA,
                aes(fill = Treatment3)) +
   geom_jitter(size = 2,
+              alpha = 0.8,
               aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
@@ -113,6 +116,7 @@ om.plot.21 <- dat.2021 |>
                outlier.shape = NA,
                aes(fill = Treatment3)) +
   geom_jitter(size = 2,
+              alpha = 0.8,
               aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +

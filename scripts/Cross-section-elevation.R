@@ -203,7 +203,8 @@ dElev.corrected.plot <- elev |>
                alpha = 0.3,
                outlier.shape = NA) +
   geom_jitter(aes(color = Treatment3),
-              size = 2) +
+              size = 2,
+              alpha = 0.8) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Change in channel elevation, 2011-2019",
