@@ -9,6 +9,7 @@ library(tidyverse)
 library(car)
 library(agricolae)
 library(ggpubr)
+library(scales)
 
 # Load data ---------------------------------------------------------------
 
@@ -253,6 +254,97 @@ ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
           common.legend = TRUE, legend = "bottom")
 dev.off()
 
+
+
+# Chemoheterotrophs -------------------------------------------------------
+
+# T-test
+t.test(filter(dat.2021, Treatment3 == "Control")$chemoheterotrophy_log,
+       filter(dat.2021, Treatment3 == "Treated")$chemoheterotrophy_log) # NS, p = 0.93
+
+# Plot
+chemohet.plot.21 <- dat.2021 %>% 
+  ggplot(aes(Treatment3, chemoheterotrophy_perc)) +
+  geom_jitter(aes(color = Treatment3), 
+              alpha = 0.8, 
+              size = 2) +
+  geom_boxplot(aes(fill = Treatment3), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("Relative abundance (%)") +
+  ggtitle("Chemoheterotrophic \nbacteria & archaea") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))
+chemohet.plot.21
+
+
+
+# N-cyclers ---------------------------------------------------------------
+
+# T-test
+t.test(filter(dat.2021, Treatment3 == "Control")$n.cycler_log,
+       filter(dat.2021, Treatment3 == "Treated")$n.cycler_log) # NS, p = 0.490
+
+# Plot
+ncycler.plot.21 <- dat.2021 %>% 
+  ggplot(aes(Treatment3, n.cycler_perc)) +
+  geom_jitter(aes(color = Treatment3), 
+              alpha = 0.8, 
+              size = 2) +
+  geom_boxplot(aes(fill = Treatment3), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("Relative abundance (%)") +
+  ggtitle("Nitrogen-cycling \nbacteria & archaea") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))
+ncycler.plot.21
+
+
+
+# Saprotrophs -------------------------------------------------------------
+
+# T-test
+t.test(filter(dat.2021, Treatment3 == "Control")$saprotroph,
+       filter(dat.2021, Treatment3 == "Treated")$saprotroph) # NS, p = 0.272
+
+# Plot
+sapro.plot.21 <- dat.2021 %>% 
+  ggplot(aes(Treatment3, saprotroph)) +
+  geom_jitter(aes(color = Treatment3), 
+              alpha = 0.8, 
+              size = 2) +
+  geom_boxplot(aes(fill = Treatment3), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("Relative abundance (%)") +
+  ggtitle("Saprotrophic fungi") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) 
+sapro.plot.21
+
+
+
+# Combine FAPROTAX and FUNGuild -------------------------------------------
+
+tiff("figures/2023-07_draft-figures/FAPROTAX-FUNGuild.tiff", units = "in", height = 4.7, width = 8, res = 150)
+ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21, 
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
 
 
 # Total plant cover -------------------------------------------------------
