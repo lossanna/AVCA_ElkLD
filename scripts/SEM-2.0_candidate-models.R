@@ -405,14 +405,14 @@ mod05.1 <- '
   
   # regressions
   notree ~ rocks + notree.18 
-  TN_log ~ rocks
-  soil_microbe ~ rocks
   notree.18 ~ rocks
+  soil_microbe ~ rocks
+  TN_log ~ rocks
   
   # covariance
-  TN_log ~~ soil_microbe
-  TN_log ~~ notree
+  soil_microbe ~~ TN_log
   soil_microbe ~~ notree
+  TN_log ~~ notree
 '
 fit05.1 <- sem(mod05.1, data = sem.dat)
 summary(fit05.1)
