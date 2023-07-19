@@ -53,5 +53,8 @@ write.table(fapro,
             quote = F, 
             sep = "\t", 
             row.names = F)
+write.csv(fapro,
+          file = "data/cleaned/sequencing/faprotax-input.csv",
+          row.names = FALSE)
 
 save.image("RData/FAPROTAX-input.RData")
