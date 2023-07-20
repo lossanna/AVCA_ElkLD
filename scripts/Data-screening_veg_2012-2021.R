@@ -7,7 +7,6 @@
 #   Tree cover was not really normally distributed by year or combined;
 #     kind of normally distributed for average of 2012-2014 of control but not treated,
 #     but cannot log-transform because of 0 values.
-#   Percent difference is not normally distributed.
 
 # Checked for outliers:
 #   There were a few outliers, but none of them were extreme (all years combined).
@@ -27,19 +26,13 @@ library(rstatix)
 
 # Load data ---------------------------------------------------------------
 
-# ".all" cover CSVs have 367 rows (372 events - 5 lost sheets)
+# CSVs have 367 rows (372 events - 5 lost sheets)
 total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
 tree.all <- read_csv("data/cleaned/Summarised-all_tree-cover.csv")
 annual.all <- read_csv("data/cleaned/Summarised-all_annual-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
-
-total.pd <- read_csv("data/cleaned/Percent-difference_total-cover.csv")
-herb.pd <- read_csv("data/cleaned/Percent-difference_herb-cover.csv")
-notree.pd <- read_csv("data/cleaned/Percent-difference_notree-cover.csv")
-rich.pd <- read_csv("data/cleaned/Percent-difference_rich.csv")
-shan.pd <- read_csv("data/cleaned/Percent-difference_shan.csv")
 
 
 # Data wrangling ----------------------------------------------------------
@@ -70,17 +63,6 @@ annual.ctrl <- annual.all |>
 per.div.ctrl <- per.div |> 
   filter(Treatment3 == "Control")
 
-total.ctrl.pd <- total.pd |> 
-  filter(Treatment3 == "Control")
-herb.ctrl.pd <- herb.pd |> 
-  filter(Treatment3 == "Control")
-notree.ctrl.pd <- notree.pd |> 
-  filter(Treatment3 == "Control")
-rich.ctrl.pd <- rich.pd |> 
-  filter(Treatment3 == "Control")
-shan.ctrl.pd <- shan.pd |> 
-  filter(Treatment3 == "Control")
-
 
 # Treated
 #   184 rows: 186 events, but 2 sheets from treated samples were missing
@@ -95,17 +77,6 @@ tree.trt <- tree.all |>
 annual.trt <- annual.all |> 
   filter(Treatment3 == "Treated")
 per.div.trt <- per.div |> 
-  filter(Treatment3 == "Treated")
-
-total.trt.pd <- total.pd |> 
-  filter(Treatment3 == "Treated")
-herb.trt.pd <- herb.pd |> 
-  filter(Treatment3 == "Treated")
-notree.trt.pd <- notree.pd |> 
-  filter(Treatment3 == "Treated")
-rich.trt.pd <- rich.pd |> 
-  filter(Treatment3 == "Treated")
-shan.trt.pd <- shan.pd |> 
   filter(Treatment3 == "Treated")
 
 
@@ -530,19 +501,6 @@ qqPlot(per.div.trt.18$shan)
 
 qqPlot(per.div.ctrl.21$shan)
 qqPlot(per.div.trt.21$shan)
-
-
-# Percent difference
-qqPlot(total.ctrl.pd$dCover) # not normal?
-qqPlot(total.trt.pd$dCover) # kind of not normal?
-qqPlot(herb.ctrl.pd$dCover) # almost normal?
-qqPlot(herb.trt.pd$dCover) # almost normal?
-qqPlot(notree.ctrl.pd$dCover) # not normal
-qqPlot(notree.trt.pd$dCover) # not normal
-qqPlot(rich.ctrl.pd$dRichness) # almost normal?
-qqPlot(rich.trt.pd$dRichness) # not normal?
-qqPlot(shan.ctrl.pd$dShannon) # def not normal
-qqPlot(shan.trt.pd$dShannon) # def not normal
 
 
 # Check for outliers ------------------------------------------------------
