@@ -57,7 +57,7 @@ totalts1 <- ts(total.change1, 1, 4, frequency = 1)
 total.change2 <- as.matrix(total.change2)
 totalts2 <- ts(total.change2, 1, 3, frequency = 1)
 
-# Calculate percent change 
+# Calculate log change 
 total.lc1 <- log(totalts1) - log(stats::lag(totalts1)) # 1-year interval for 2012-2015
 total.lc2 <- (log(totalts2) - log(stats::lag(totalts2))) / 3 # 3-year interval for 2015-2021
 
@@ -142,7 +142,7 @@ herbts1 <- ts(herb.change1, 1, 4, frequency = 1)
 herb.change2 <- as.matrix(herb.change2)
 herbts2 <- ts(herb.change2, 1, 3, frequency = 1)
 
-# Calculate percent change 
+# Calculate log change 
 herb.lc1 <- log(herbts1) - log(stats::lag(herbts1)) # 1-year interval for 2012-2015
 herb.lc2 <- (log(herbts2) - log(stats::lag(herbts2))) / 3 # 3-year interval for 2015-2021
 
@@ -227,7 +227,7 @@ notreets1 <- ts(notree.change1, 1, 4, frequency = 1)
 notree.change2 <- as.matrix(notree.change2)
 notreets2 <- ts(notree.change2, 1, 3, frequency = 1)
 
-# Calculate percent change 
+# Calculate log change 
 notree.lc1 <- log(notreets1) - log(stats::lag(notreets1)) # 1-year interval for 2012-2015
 notree.lc2 <- (log(notreets2) - log(stats::lag(notreets2))) / 3 # 3-year interval for 2015-2021
 
@@ -312,7 +312,7 @@ richts1 <- ts(rich.change1, 1, 4, frequency = 1)
 rich.change2 <- as.matrix(rich.change2)
 richts2 <- ts(rich.change2, 1, 3, frequency = 1)
 
-# Calculate percent change 
+# Calculate log change 
 rich.lc1 <- log(richts1) - log(stats::lag(richts1)) # 1-year interval for 2012-2015
 rich.lc2 <- (log(richts2) - log(stats::lag(richts2))) / 3 # 3-year interval for 2015-2021
 
@@ -401,7 +401,7 @@ shants1 <- ts(shan.change1, 1, 4, frequency = 1)
 shan.change2 <- as.matrix(shan.change2)
 shants2 <- ts(shan.change2, 1, 3, frequency = 1)
 
-# Calculate percent change 
+# Calculate log change 
 shan.lc1 <- log(shants1) - log(stats::lag(shants1)) # 1-year interval for 2012-2015
 shan.lc2 <- (log(shants2) - log(stats::lag(shants2))) / 3 # 3-year interval for 2015-2021
 
