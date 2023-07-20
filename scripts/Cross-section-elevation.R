@@ -192,6 +192,15 @@ qqPlot(elev$dElev)
 
 kruskal.test(dElev_corrected ~ Treatment3, data = elev) # p-value = 9.793e-05
 
+elev.ctrl <- elev |> 
+  filter(Treatment3 == "Control") |> 
+  arrange(dElev_corrected)
+elev.trt <- elev |> 
+  filter(Treatment3 == "Treated") |> 
+  arrange(dElev_corrected)
+summary(elev.ctrl$dElev_corrected)
+summary(elev.trt$dElev_corrected)
+
 # Write out plot
 letters <- data.frame(x = c(1, 2),
                       y = c(0.45, 0.45),
@@ -216,7 +225,7 @@ dElev.corrected.plot <- elev |>
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 2.3, y = -0.05, label = "ANOVA, p < 0.001"),
+  geom_text(aes(x = 2.3, y = -0.05, label = "Kruskal-Wallis, p < 0.001"),
             color = "gray30",
             size = 2.5)
 dElev.corrected.plot
