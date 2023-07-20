@@ -385,7 +385,7 @@ notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Grass, forb & shrub cover, 2012-2021") +
+  ggtitle("Vegetation cover, 2012-2021") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
