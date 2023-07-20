@@ -8,7 +8,7 @@
 #   Best model is probably 5.1
 
 # Created: 2023-06-27
-# Updated: 2023-07-06
+# Updated: 2023-07-19
 
 library(lavaan)
 library(tidyverse)
@@ -419,6 +419,15 @@ summary(fit05.1)
 
 semPaths(fit05.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
+
+
+labels <- c("BAR", "FR", "Chet", "Ncyc", "Sap", "Veg", "TN",
+            "Veg 18", "Rocks", "SoMic")
+tiff("figures/2023-07_draft-figures/SEM.tiff", width = 7, height = 5, units = "in", res = 150)
+semPaths(fit05.1, "std", edge.label.cex = 0.9, residuals = FALSE, sizeMan = 6,
+         nCharNodes = 0, nodeLabels = labels, node.width = 1.1, layout = "tree2")
+dev.off()
+
 
 
 save.image("RData/SEM-2.0_candidate-models.RData")
