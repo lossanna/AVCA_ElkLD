@@ -52,9 +52,9 @@ notree.ctrl.plot <- notree.ctrl |>
        title = "Control") +
   theme_bw() +
   stat_regline_equation(label.x = 7.5, label.y = 46.5) +
-  stat_cor(label.x = 7.5, label.y = 43.5) 
+  stat_cor(label.x = 7.5, label.y = 43.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
 notree.ctrl.plot
-  
 
 notree.trt.plot <- notree.trt |> 
   ggplot(aes(x = Precip_cum, y = mean)) +
@@ -65,7 +65,8 @@ notree.trt.plot <- notree.trt |>
        title = "Treated") +
   theme_bw() +
   stat_regline_equation(label.x = 7.5, label.y = 46.5) +
-  stat_cor(label.x = 7.5, label.y = 43.5) 
+  stat_cor(label.x = 7.5, label.y = 43.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in"))
 notree.trt.plot
 
 tiff("figures/2023-07_draft-figures/Corr-precip-veg.tiff", height = 5, width = 11, units = "in", res = 150)
