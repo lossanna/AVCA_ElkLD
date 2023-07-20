@@ -13,6 +13,7 @@ library(tidyverse)
 library(car)
 library(scales)
 library(ggpubr)
+library(agricolae)
 
 # Load data ---------------------------------------------------------------
 
@@ -265,6 +266,49 @@ ggarrange(notree.plot.cv, rich.plot.cv, shan.plot.cv,
           labels = c("(A)", "(B)", "(C)")) 
 
 dev.off()
+
+
+
+# Within-channel variation over time --------------------------------------
+
+# Notree
+# Find CV of each channel by year
+notree.channel <- notree.all |> 
+  group_by(Channel, Year, year.xaxis, Treatment3) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep") |> 
+  mutate(Year = as.character(Year),
+         year.xaxis = as.Date(year.xaxis))
+
+# Plot over time
+notree.channel |> 
+  ggplot(aes(x = year.xaxis, y = CV, group = Channel, color = Treatment3))  +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  facet_wrap(~Channel) +
+  xlab(NULL) +
+  ylab("Coefficient of variation") +
+  ggtitle("Within-channel variation over time") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_y_continuous(labels = percent) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none")
+
+# Explore distribution
+qqPlot(notree.channel$CV) # normal
+
+# Compare channels
+summary(aov(CV ~ Channel, data = notree.channel))
+anova.notree.channel <- aov(notree.channel$CV ~ notree.channel$Channel)
+hsd.notree.channel <- HSD.test(anova.notree.channel, trt = "notree.channel$Channel")
+hsd.notree.channel
+# Channel 21         0.6500014      a
+# Channel 19         0.5093929     ab
+# Channel 13         0.3871000     bc
+# Channel 12         0.3545642      c
+#   Interpretation: Channels 21 & 19 were initially more variable
+#     but we are interested in how in-channel variation changes over time
+
 
 save.image("RData/CV_veg-2012-2021.RData")
 
