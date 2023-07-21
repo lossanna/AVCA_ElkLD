@@ -1,7 +1,7 @@
 # Purpose: Graph precipitation data from Pima County ALERT system, sensor #6380,
 #   sourced from https://webcms.pima.gov/government/flood_control/services/precipitation_and_streamflow_data/.
 # Created: 2023-02-02
-# Last updated: 2023-07-14
+# Last updated: 2023-07-20
 
 library(tidyverse)
 library(plotrix)
@@ -15,15 +15,22 @@ precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
 # Data wrangling ----------------------------------------------------------
 
 precip$year.xaxis <- as.Date(precip$year.xaxis)
+precip$Precip_cum_cm <- precip$Precip_cum * 2.54
 
 precip.sample <- precip |> 
   filter(!str_detect(year.xaxis, c("2020|2016|2017|2019")))
 
 
+# Averages ----------------------------------------------------------------
+
+summary(precip$Precip_cum)
+summary(precip$Precip_cum_cm)
+
+
 # Graph -------------------------------------------------------------------
 
 # Every year
-tiff("figures/2023-07_draft-figures/Precipitation-line-graph.tiff", width = 6, height = 4, units = "in", res = 150)
+# Inches
 ggplot(precip, aes(x = year.xaxis, y = Precip_cum)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
@@ -32,6 +39,18 @@ ggplot(precip, aes(x = year.xaxis, y = Precip_cum)) +
   ggtitle("Cumulative summer precipitation (June-October)") +
   theme_bw(base_size = 14) +
   scale_y_continuous(limits = c(0, 14)) +
+  theme(axis.text.x = element_text(color = "black")) 
+
+# Centimeters
+tiff("figures/2023-07_draft-figures/Precipitation-line-graph.tiff", width = 6, height = 4, units = "in", res = 150)
+ggplot(precip, aes(x = year.xaxis, y = Precip_cum_cm)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  xlab(NULL) +
+  ylab("Precipitation (cm)") +
+  ggtitle("Cumulative summer precipitation (June-October)") +
+  theme_bw(base_size = 14) +
+  scale_y_continuous(limits = c(0, 35)) +
   theme(axis.text.x = element_text(color = "black")) 
 dev.off()
 
