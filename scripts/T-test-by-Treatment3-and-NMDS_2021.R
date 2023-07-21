@@ -169,7 +169,7 @@ barc.rich.plot.21 <- dat.2021 |>
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
-  geom_text(aes(x = 2.3, y = 2400, label = "t-test, p = 0.686"),
+  geom_text(aes(x = 2.3, y = 1100, label = "t-test, p = 0.686"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
