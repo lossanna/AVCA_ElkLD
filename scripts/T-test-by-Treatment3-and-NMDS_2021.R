@@ -3,7 +3,7 @@
 #     (although some were log-transformed; t-test is on log-transformation, plot back-transformed).
 # 
 # Created: 2023-02-02
-# Last updated: 2023-07-18
+# Last updated: 2023-07-21
 
 library(tidyverse)
 library(car)
@@ -40,7 +40,7 @@ tn.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.05, y = 63, label = "ANOVA, p = 0.490"),
+  geom_text(aes(x = 2.16, y = 63, label = "t-test, p = 0.490"),
             color = "gray30",
             size = 2.5)
 tn.plot.21
@@ -70,7 +70,7 @@ tc.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.05, y = 670, label = "ANOVA, p = 0.500"),
+  geom_text(aes(x = 2.16, y = 670, label = "t-test, p = 0.500"),
             color = "gray30",
             size = 2.5)
 tc.plot.21
@@ -127,7 +127,7 @@ om.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.05, y = 2.14, label = "ANOVA, p = 0.332"),
+  geom_text(aes(x = 2.16, y = 2.14, label = "t-test, p = 0.332"),
             color = "gray30",
             size = 2.5)
 om.plot.21
@@ -169,7 +169,7 @@ barc.rich.plot.21 <- dat.2021 |>
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
-  geom_text(aes(x = 2.03, y = 2400, label = "ANOVA, p = 0.686"),
+  geom_text(aes(x = 2.3, y = 2400, label = "t-test, p = 0.686"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
@@ -200,7 +200,7 @@ fungi.rich.plot.21 <- dat.2021 %>%
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
-  geom_text(aes(x = 2.03, y = 70, label = "ANOVA, p = 0.938"),
+  geom_text(aes(x = 2.3, y = 70, label = "t-test, p = 0.938"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
@@ -303,7 +303,7 @@ chemohet.plot.21 <- dat.2021 %>%
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.03, y = 28.7, label = "ANOVA, p = 0.931"),
+  geom_text(aes(x = 2.16, y = 28.7, label = "t-test, p = 0.931"),
             color = "gray30",
             size = 2.5)
 chemohet.plot.21
@@ -334,7 +334,7 @@ ncycler.plot.21 <- dat.2021 %>%
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.03, y = 13.6, label = "ANOVA, p = 0.490"),
+  geom_text(aes(x = 2.16, y = 13.6, label = "t-test, p = 0.490"),
             color = "gray30",
             size = 2.5)
 ncycler.plot.21
@@ -365,7 +365,7 @@ sapro.plot.21 <- dat.2021 %>%
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.03, y = 42, label = "ANOVA, p = 0.272"),
+  geom_text(aes(x = 2.16, y = 42, label = "t-test, p = 0.272"),
             color = "gray30",
             size = 2.5)
 sapro.plot.21

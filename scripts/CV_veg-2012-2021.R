@@ -144,7 +144,7 @@ notree.plot.cv <- notree.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 1.5, y = 0.8, label = "ANOVA, p = 0.882"),
+  geom_text(aes(x = 0.9, y = 0.95, label = "t-test, p = 0.882"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
@@ -197,7 +197,7 @@ rich.plot.cv <- rich.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 1.03, y = 0.55, label = "ANOVA, p = 0.093"),
+  geom_text(aes(x = 0.9, y = 0.65, label = "t-test, p = 0.093"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
@@ -250,7 +250,7 @@ shan.plot.cv <- shan.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 1.03, y = 0.75, label = "ANOVA, p = 0.075"),
+  geom_text(aes(x = 0.9, y = 0.83, label = "t-test, p = 0.075"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
