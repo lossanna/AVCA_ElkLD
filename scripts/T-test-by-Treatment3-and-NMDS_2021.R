@@ -45,6 +45,19 @@ tn.plot.21 <- dat.2021 |>
             size = 2.5)
 tn.plot.21
 
+# Correlation with n-cyclers
+summary(lm(dat.2021$n.cycler_log ~ dat.2021$TN_log))
+
+ggplot(dat.2021, aes(x = TN_log, y = n.cycler_log)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  xlab("TN (log)") +
+  ylab("N-cycler (log)") +
+  theme_bw() +
+  theme(axis.text.x = element_text(color = "black")) +
+  stat_regline_equation(label.x = 1.2, label.y = 0.6) +
+  stat_cor(label.x = 1.2, label.y = 0.4)
+
 
 # Total C -----------------------------------------------------------------
 
