@@ -30,7 +30,7 @@ sem.dat.unscaled <- dat.2021 |>
   mutate(wide = case_when(
     str_detect(Channel, "21|19") ~ 1,
     str_detect(Channel, "13|12") ~ 0)) |> 
-  select(Sample, rocks, wide, notree, notree.18, tree, perveg.richness, perveg.shannon,
+  select(Sample, rocks, wide, herb, herb.18, notree, notree.18, tree, perveg.richness, perveg.shannon,
          TN_log, CN_ratio, OM_log, OM_perc, barc.richness, fungi.richness,
          chemoheterotrophy_log, n.cycler_log, saprotroph) 
 
@@ -500,6 +500,52 @@ fit07.0 <- sem(mod07.0, data = sem.dat)
 summary(fit07.0) # poor chi-sq p-value
 
 
+# 8 Herb cover ------------------------------------------------------------
+
+# notree replaced with herb, tree cover added
+mod08.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # regressions
+  herb ~ rocks + herb.18 + tree 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  herb.18 ~ rocks + tree
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ herb
+  soil_microbe ~~ herb
+'
+fit08.0 <- sem(mod08.0, data = sem.dat)
+summary(fit08.0)
+
+semPaths(fit08.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2")
+
+
+# notree replaced with herb, tree cover removed
+mod08.1 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # regressions
+  herb ~ rocks + herb.18 
+  herb.18 ~ rocks
+  soil_microbe ~ rocks
+  TN_log ~ rocks
+  
+  # covariance
+  soil_microbe ~~ TN_log
+  soil_microbe ~~ herb
+  TN_log ~~ herb
+'
+fit08.1 <- sem(mod08.1, data = sem.dat)
+summary(fit08.1)
+
+semPaths(fit08.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2")
 
 save.image("RData/SEM-2.0_candidate-models.RData")
 
