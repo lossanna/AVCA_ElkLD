@@ -293,6 +293,7 @@ notree.channel |>
   scale_y_continuous(labels = percent) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none")
+#   Interpretation: I think we would want to see treated channels becoming more uniform over time?
 
 # Explore distribution
 qqPlot(notree.channel$CV) # normal
