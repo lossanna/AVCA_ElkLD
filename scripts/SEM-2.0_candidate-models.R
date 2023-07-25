@@ -8,7 +8,7 @@
 #   Best model is probably 5.1
 
 # Created: 2023-06-27
-# Updated: 2023-07-19
+# Updated: 2023-07-25
 
 library(lavaan)
 library(tidyverse)
@@ -26,17 +26,22 @@ dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv")
 sem.dat.unscaled <- dat.2021 |> 
   mutate(rocks = case_when(
     Treatment3 == "Control" ~ 0,
-    Treatment3 == "Treated" ~ 1)) |> 
-  select(Sample, rocks, notree, notree.18, tree, perveg.richness, perveg.shannon,
+    Treatment3 == "Treated" ~ 1)) |>
+  mutate(wide = case_when(
+    str_detect(Channel, "21|19") ~ 1,
+    str_detect(Channel, "13|12") ~ 0)) |> 
+  select(Sample, rocks, wide, notree, notree.18, tree, perveg.richness, perveg.shannon,
          TN_log, CN_ratio, OM_log, OM_perc, barc.richness, fungi.richness,
          chemoheterotrophy_log, n.cycler_log, saprotroph) 
 
 # Center and scale variables
 sem.dat <- sem.dat.unscaled |> 
-  mutate(rocks = as.factor(rocks),
-         Sample = as.factor(Sample)) |> 
+  mutate(rocks = as.character(rocks),
+         Sample = as.character(Sample),
+         wide = as.character(wide)) |> 
   mutate_if(is.numeric, scale) |> 
-  mutate(rocks = as.numeric(rocks))
+  mutate(rocks = as.numeric(rocks),
+         wide = as.numeric(wide))
 
 
 # 1 Plants as latent variable (cover & div) -------------------------------
@@ -427,6 +432,72 @@ tiff("figures/2023-07_draft-figures/SEM.tiff", width = 7, height = 5, units = "i
 semPaths(fit05.1, "std", edge.label.cex = 0.9, residuals = FALSE, sizeMan = 6,
          nCharNodes = 0, nodeLabels = labels, node.width = 1.1, layout = "tree2")
 dev.off()
+
+
+
+# 6 Width as binary variable ----------------------------------------------
+
+# Width & rocks as latent variable (does not work at all)
+mod06.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  channel =~ rocks + wide
+  
+  # regressions
+  notree ~ channel + notree.18 
+  notree.18 ~ channel
+  soil_microbe ~ channel
+  TN_log ~ channel
+  
+  # covariance
+  soil_microbe ~~ TN_log
+  soil_microbe ~~ notree
+  TN_log ~~ notree
+'
+fit06.0 <- sem(mod06.0, data = sem.dat)
+summary(fit06.0) # does not work at all
+
+
+# Wide as separate exogenous
+mod06.1 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # regressions
+  notree ~ rocks + wide + notree.18 
+  notree.18 ~ rocks + wide
+  soil_microbe ~ rocks + wide
+  TN_log ~ rocks + wide
+  
+  # covariance
+  soil_microbe ~~ TN_log
+  soil_microbe ~~ notree
+  TN_log ~~ notree
+'
+fit06.1 <- sem(mod06.1, data = sem.dat)
+summary(fit06.1) # poor chi-sq p-value
+
+
+# 7 Without rocks, only width ---------------------------------------------
+
+# rocks replaced with wide
+mod07.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # regressions
+  notree ~ wide + notree.18 
+  notree.18 ~ wide
+  soil_microbe ~ wide
+  TN_log ~ wide
+  
+  # covariance
+  soil_microbe ~~ TN_log
+  soil_microbe ~~ notree
+  TN_log ~~ notree
+'
+fit07.0 <- sem(mod07.0, data = sem.dat)
+summary(fit07.0) # poor chi-sq p-value
 
 
 
