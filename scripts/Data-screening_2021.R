@@ -11,7 +11,7 @@
 # Produced a clean data sheet for 2021 data (Data-2021_clean.csv).
 #  This is also to be used for SEM 2.0 input.
 # Created: 2022-04-18
-# Last updated: 2023-07-06
+# Last updated: 2023-07-25
 
 library(tidyverse)
 library(readxl)
@@ -68,11 +68,18 @@ tree.avg1214 <- tree.all |>
   summarise(tree = mean(Cover),
             .groups = "keep")
 
+herb.2018 <- herb.all |> 
+  filter(Year == "2018") |> 
+  rename(herb.18 = Cover)
+
 # Compile variables
 dat.2021 <- total.2021 %>% 
   left_join(herb.2021) %>% 
-  left_join(notree.2021) |> 
   select(-PlotTimeID, -Year, -year.xaxis) |> # remove year cols; left_join() will not work in joining 2018 values
+  left_join(herb.2018) |> 
+  select(-PlotTimeID, -Year, -year.xaxis) |> 
+  left_join(notree.2021) |> 
+  select(-PlotTimeID, -Year, -year.xaxis) |> 
   left_join(notree.2018) |> 
   select(-PlotTimeID, -Year, -year.xaxis) |> 
   left_join(tree.avg1214) |> 
@@ -101,7 +108,7 @@ dat.2021 <- total.2021 %>%
          saprotroph = funguild.trophic$Saprotroph) |> 
   left_join(elev) |> 
   select(Sample, Name, Channel, Station, Treatment3,
-         total, herb, notree, notree.18, tree, perveg.richness, perveg.shannon,
+         total, herb, herb.18, notree, notree.18, tree, perveg.richness, perveg.shannon,
          TN_perc, TC_perc, CN_ratio, OM_perc,
          barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
          fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
@@ -114,6 +121,7 @@ dat.2021 <- total.2021 %>%
 # Histogram
 hist(dat.2021$total, breaks = 10)
 hist(dat.2021$herb, breaks = 10)
+hist(dat.2021$herb.18, breaks = 10)
 hist(dat.2021$notree, breaks = 15)
 hist(dat.2021$notree.18, breaks = 15)
 hist(dat.2021$tree, breaks = 15) # not normal
@@ -137,13 +145,13 @@ hist(elev$dElev_corrected, breaks = 10)
 vis.boxplot <- function(dat, y, ylab) {
   ggplot(dat,
          aes(x = Treatment3,
-             y = y,
-             fill = Treatment3,
-             color = Treatment3)) +
+             y = y)) +
     geom_boxplot(outlier.shape = NA,
-                 alpha = 0.3) +
+                 alpha = 0.3,
+                 aes(fill = Treatment3)) +
     geom_jitter(alpha = 0.8,
-                size = 3) +
+                size = 3,
+                aes(color = Treatment3)) +
     theme_bw() +
     xlab(NULL) +
     ylab(ylab) +
@@ -154,6 +162,7 @@ vis.boxplot <- function(dat, y, ylab) {
 
 vis.boxplot(dat.2021, dat.2021$total, "Total plant cover (%)")
 vis.boxplot(dat.2021, dat.2021$herb, "Herbaceous cover (%)")
+vis.boxplot(dat.2021, dat.2021$herb.18, "Herbaceous cover, 2018 (%)")
 vis.boxplot(dat.2021, dat.2021$notree, "Grass, forb & shrub cover (%)")
 vis.boxplot(dat.2021, dat.2021$notree.18, "Grass, forb & shrub cover, 2018 (%)")
 vis.boxplot(dat.2021, dat.2021$tree, "Tree cover, 2012-2014 (%)")
@@ -175,6 +184,7 @@ vis.boxplot(dat.2021, dat.2021$dElev_corrected, "Elevation difference, 2011-2019
 # Quantile-quantile plots
 qqPlot(dat.2021$total)
 qqPlot(dat.2021$herb)
+qqPlot(dat.2021$herb.18)
 qqPlot(dat.2021$notree)
 qqPlot(dat.2021$notree.18)
 qqPlot(dat.2021$tree) # almost normal?
@@ -244,11 +254,15 @@ qqPlot(log(dat.2021$dElev)) # log-transformation does not really help
 
 # Bivariate scatterplot matrix --------------------------------------------
 
-# All
+# All, notree
 pairs(~ notree + notree.18 + tree + perveg.richness + perveg.shannon + TN_log + 
         TC_log + OM_log + CN_ratio + barc.richness + barc.shannon +
         fungi.richness + fungi.shannon + chemoheterotrophy_log + n.cycler_log, data = dat.2021)
 
+# All, herb
+pairs(~ herb + herb.18 + tree + perveg.richness + perveg.shannon + TN_log + 
+        TC_log + OM_log + CN_ratio + barc.richness + barc.shannon +
+        fungi.richness + fungi.shannon + chemoheterotrophy_log + n.cycler_log, data = dat.2021)
 
 
 # TN, TC, OM
@@ -296,7 +310,7 @@ corr.ctrl <- rcorr(as.matrix(corr.dat.ctrl))[["r"]]
 
 dat.2021 <- dat.2021 |> 
   select(Sample, Name, Channel, Station, Treatment3,
-         total, herb, notree, notree.18, tree, perveg.richness, perveg.shannon,
+         total, herb, herb.18, notree, notree.18, tree, perveg.richness, perveg.shannon,
          TN_perc, TN_ppt, TN_log, TC_perc, TC_ppt, TC_log, CN_ratio, OM_perc, OM_log,
          barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
          fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
