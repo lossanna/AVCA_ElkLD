@@ -283,7 +283,7 @@ fungi.nmds.plot.21
 
 # Combine NMDS ------------------------------------------------------------
 
-tiff("figures/2023-07_draft-figures/Soil-NMDS.tiff", height = 5, width = 11, units = "in", res = 150)
+tiff("figures/2023-07_draft-figures/Soil-NMDS-2021.tiff", height = 5, width = 11, units = "in", res = 150)
 ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
           nrow = 1, ncol = 2,
           labels = c("(A)", "(B)"),
@@ -387,7 +387,7 @@ sapro.plot.21
 
 # Combine FAPROTAX and FUNGuild -------------------------------------------
 
-tiff("figures/2023-07_draft-figures/FAPROTAX-FUNGuild.tiff", units = "in", height = 4.7, width = 8, res = 150)
+tiff("figures/2023-07_draft-figures/FAPROTAX-FUNGuild-2021.tiff", units = "in", height = 4.7, width = 8, res = 150)
 ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21, 
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 
@@ -435,7 +435,7 @@ herb.plot.21 <- dat.2021 |>
   labs(title = "Herbaceous cover",
        x = NULL,
        y = "Cover (%)") +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") 
 herb.plot.21
 
@@ -448,17 +448,24 @@ t.test(filter(dat.2021, Treatment3 == "Control")$notree,
 
 # Plot
 notree.plot.21 <- dat.2021 |> 
-  ggplot(aes(x = Treatment3, y = notree, fill = Treatment3, color = Treatment3)) +
+  ggplot(aes(x = Treatment3, y = notree)) +
   geom_boxplot(alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(size = 2) +
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Grass, forb & shrub cover",
+  labs(title = "Vegetation cover",
        x = NULL,
        y = "Cover (%)") +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 0.9, y = 95, label = "t-test, p = 0.368"),
+            color = "gray30",
+            size = 2.5)
 notree.plot.21
 
 
@@ -466,21 +473,28 @@ notree.plot.21
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$perveg.richness,
-       filter(dat.2021, Treatment3 == "Treated")$perveg.richness) # NS, p = 0.13
+       filter(dat.2021, Treatment3 == "Treated")$perveg.richness) # NS, p = 0.135
 
 # Plot
 rich.plot.21 <- dat.2021 |> 
-  ggplot(aes(x = Treatment3, y = perveg.richness, fill = Treatment3, color = Treatment3)) +
+  ggplot(aes(x = Treatment3, y = perveg.richness)) +
   geom_boxplot(alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(size = 2) +
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Perennial plant richness",
+  labs(title = "Perennial plant species \nrichness",
        x = NULL,
        y = "No. of species") +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 0.9, y = 12.8, label = "t-test, p = 0.135"),
+            color = "gray30",
+            size = 2.5) 
 rich.plot.21
 
 
@@ -488,22 +502,40 @@ rich.plot.21
 # Perennial plant diversity -----------------------------------------------
 
 t.test(filter(dat.2021, Treatment3 == "Control")$perveg.shannon,
-       filter(dat.2021, Treatment3 == "Treated")$perveg.shannon) # NS, p = 0.22
+       filter(dat.2021, Treatment3 == "Treated")$perveg.shannon) # NS, p = 0.221
 
 # Plot
 shan.plot.21 <- dat.2021 |> 
-  ggplot(aes(x = Treatment3, y = perveg.shannon, fill = Treatment3, color = Treatment3)) +
+  ggplot(aes(x = Treatment3, y = perveg.shannon)) +
   geom_boxplot(alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(size = 2) +
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Perennial plant diversity",
        x = NULL,
        y = "Shannon diversity index") +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 0.9, y = 2.2, label = "t-test, p = 0.221"),
+            color = "gray30",
+            size = 2.5) 
 shan.plot.21
+
+
+
+# Combine 2021 veg  -------------------------------------------------------
+
+tiff("figures/2023-07_draft-figures/Notree-2021.tiff", units = "in", height = 4.7, width = 8, res = 150)
+ggarrange(notree.plot.21, rich.plot.21, shan.plot.21, 
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
 
 
 save.image("RData/T-test-by-Treatment3-and-NMDS_2021.RData")
