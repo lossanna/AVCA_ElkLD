@@ -6,9 +6,10 @@
 #   Plant diversity and cover cannot be a single endogenous latent variable - creates
 #     low chi-sq p-value.
 #   Best model is probably 5.1
+#   The rocks really don't have an effect on plants or soil
 
 # Created: 2023-06-27
-# Updated: 2023-07-25
+# Updated: 2023-08-07
 
 library(lavaan)
 library(tidyverse)
@@ -420,7 +421,7 @@ mod05.1 <- '
   TN_log ~~ notree
 '
 fit05.1 <- sem(mod05.1, data = sem.dat)
-summary(fit05.1)
+summary(fit05.1, standardized = TRUE)
 
 semPaths(fit05.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
@@ -545,6 +546,42 @@ fit08.1 <- sem(mod08.1, data = sem.dat)
 summary(fit08.1)
 
 semPaths(fit08.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2")
+
+
+
+# 9 Soil only (no veg) ----------------------------------------------------
+
+# Initial attempt
+mod09.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  soil_chem =~ TN_log + OM_log
+  
+  # regressions
+  soil_microbe ~ rocks
+  soil_chem ~ rocks
+'
+fit09.0 <- sem(mod09.0, data = sem.dat)
+summary(fit09.0, standardized = TRUE) # lavaan WARNING: some estimated ov variances are negative
+#   OM & TN are probably too closely correlated
+
+semPaths(fit09.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2")
+
+# Without OM
+mod09.1 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # regressions
+  soil_microbe ~ rocks
+  TN_log ~ rocks
+'
+fit09.1 <- sem(mod09.1, data = sem.dat)
+summary(fit09.1, standardized = TRUE)
+
+semPaths(fit09.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
 
 save.image("RData/SEM-2.0_candidate-models.RData")
