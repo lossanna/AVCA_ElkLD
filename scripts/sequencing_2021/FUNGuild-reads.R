@@ -1,6 +1,6 @@
-# Purpose: Calculate how many reads were assigned FUNGuild guilds.
+# Purpose: Calculate how many reads were assigned FUNGuild trophic groups.
 
-# The output results table tells what percentage of ASVs were assigned a FUNGuild guild,
+# The output results table tells what percentage of ASVs were assigned a FUNGuild trophic group,
 #   but most of the reads come from a small group of ASVs, so considering the weight of
 #   each ASV via its reads is a better for determining how much of the soil microbiome
 #   was categorized.
@@ -42,4 +42,4 @@ sum(asv.counts$perc[1:1000]) # 92% of reads from 1000 ASVs
 asv.assigned.counts <- asv.counts |> 
   mutate(asv = rownames(asv.counts)) |> 
   filter(asv %in% asv.assigned)
-sum(asv.assigned.counts$perc) # ~ 40.7% of reads assigned a FAPROTAX group
+sum(asv.assigned.counts$perc) # ~ 40.7% of reads assigned a FUNGuild tophic group
