@@ -14,6 +14,7 @@
 library(lavaan)
 library(tidyverse)
 library(semPlot)
+library(AICcmodavg)
 
 
 # Load data ---------------------------------------------------------------
@@ -433,6 +434,11 @@ tiff("figures/2023-07_draft-figures/SEM.tiff", width = 7, height = 5, units = "i
 semPaths(fit05.1, "std", edge.label.cex = 0.9, residuals = FALSE, sizeMan = 6,
          nCharNodes = 0, nodeLabels = labels, node.width = 1.1, layout = "tree2")
 dev.off()
+
+
+# Compare AIC (unsuccessful)
+aictab(list(fit05.0, fit05.1), c("mod05.0", "mod05.1")) # Error: Models with different sets of observed variables are not directly comparable
+#   I think I should just use chi-sq as indicator of model fit
 
 
 
