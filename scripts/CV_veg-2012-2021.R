@@ -151,6 +151,18 @@ notree.plot.cv <- notree.sample |>
 notree.plot.cv
 
 
+# Compare by each channel
+summary(aov(notree.sample$CV ~ notree.sample$Channel))
+anova.notree.bychannel <- aov(notree.sample$CV ~ notree.sample$Channel)
+hsd.notree.bychannel <- HSD.test(anova.notree.bychannel, trt = "notree.sample$Channel")
+hsd.notree.bychannel
+
+notree.sample |> 
+  ggplot(aes(x = Channel, y = CV)) +
+  geom_boxplot() +
+  geom_jitter()
+
+
 
 # Richness ----------------------------------------------------------------
 
