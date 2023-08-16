@@ -42,4 +42,4 @@ sum(asv.counts$perc[1:1000]) # 92% of reads from 1000 ASVs
 asv.assigned.counts <- asv.counts |> 
   mutate(asv = rownames(asv.counts)) |> 
   filter(asv %in% asv.assigned)
-sum(asv.assigned.counts$perc) # ~ 40.7% of reads assigned a FUNGuild tophic group
+sum(asv.assigned.counts$perc) # ~ 40.7% of reads assigned a FUNGuild trophic group
