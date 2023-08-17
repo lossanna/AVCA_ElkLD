@@ -1,4 +1,8 @@
-# Purpose: Test candidate models for SEM analysis
+# Purpose: Test candidate models for SEM analysis.
+#   SEM 1.0 was previous attempt with Upland and In-channel treatment separated, and without soil seq data 
+#     (Exploratory-SEM.R, part of old_pre-2023-03-24/).
+#   SEM 2.0 incorporates soil seq data, tries things as composite variables,
+#     and adds previous veg & tree cover as exogenous variables.
 
 # Findings:
 #   OM & TN covary too much; have to pick just one.
@@ -9,13 +13,13 @@
 #   The rocks really don't have an effect on plants or soil
 
 # Created: 2023-06-27
-# Updated: 2023-08-16
+# Updated: 2023-08-17
+
 
 library(lavaan)
 library(tidyverse)
 library(semPlot)
 library(AICcmodavg)
-
 
 # Load data ---------------------------------------------------------------
 
@@ -399,7 +403,7 @@ mod05.0 <- '
   soil_microbe ~~ notree
 '
 fit05.0 <- sem(mod05.0, data = sem.dat)
-summary(fit05.0)
+summary(fit05.0, fit.measures = TRUE)
 
 semPaths(fit05.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
@@ -422,7 +426,7 @@ mod05.1 <- '
   TN_log ~~ notree
 '
 fit05.1 <- sem(mod05.1, data = sem.dat)
-summary(fit05.1, standardized = TRUE)
+summary(fit05.1, standardized = TRUE, fit.measures = TRUE)
 
 semPaths(fit05.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
