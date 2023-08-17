@@ -434,7 +434,7 @@ semPaths(fit05.1, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
 
 labels <- c("BAR", "FR", "Chet", "Ncyc", "Sap", "Veg", "TN",
             "Veg18", "Rocks", "SoMic")
-tiff("figures/2023-07_draft-figures/SEM.tiff", width = 7, height = 5, units = "in", res = 150)
+tiff("figures/2023-07_draft-figures/SEM-2.0.tiff", width = 7, height = 5, units = "in", res = 150)
 semPaths(fit05.1, "std", edge.label.cex = 0.9, residuals = FALSE, sizeMan = 6,
          nCharNodes = 0, nodeLabels = labels, node.width = 1.1, layout = "tree2")
 dev.off()

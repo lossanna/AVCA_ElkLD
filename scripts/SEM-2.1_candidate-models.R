@@ -3,6 +3,8 @@
 #     and there are meta-models drawn for each in the PowerPoint (Writing/SEM meta model.pptx).
 
 # Findings:
+#   Remove OM to improve model fit
+#   Removing tree cover does not improve model fit
 
 # Created: 2023-08-17
 # Updated: 2023-08-17
@@ -67,9 +69,11 @@ summary(fit1.0, fit.measures = TRUE)
 #   Figured out from SEM-2.0 that OM & TN were collinear 
 
 
-# 2 Soil mic as latent endogenous, TN; Veg18 & tree included --------------
 
-# Remove OM_log
+
+# 2 Soil mic latent, TN; Veg18 & tree included ----------------------------
+
+# Initial attempt
 mod2.0 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
@@ -85,10 +89,47 @@ mod2.0 <- '
   soil_microbe ~~ notree
 '
 fit2.0 <- sem(mod2.0, data = sem.dat) 
-summary(fit2.0, fit.measures = TRUE)
+summary(fit2.0, fit.measures = TRUE, standardized = TRUE)
 # Mod2.0 diagnostics:
 # Global fit:
-#   chi-sq p-value is good, but chi-sq statistic is pretty high
+#   chi-sq p-value is good (>0.05)
 #   CFI is okay (>0.95)
 #   RMSEA is okay (<0.1, lower CI is 0)
 #   SRMR is okay (<0.1)
+modindices(fit2.0, sort = TRUE)
+
+semPaths(fit2.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2")
+
+
+
+# 3 Soil mic latent, TN; Veg18 included -----------------------------------
+
+# Remove tree
+mod3.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # regressions
+  notree ~ rocks + notree.18 
+  notree.18 ~ rocks
+  soil_microbe ~ rocks
+  TN_log ~ rocks
+  
+  # covariance
+  soil_microbe ~~ TN_log
+  soil_microbe ~~ notree
+  TN_log ~~ notree
+'
+fit3.0 <- sem(mod3.0, data = sem.dat)
+summary(fit3.0, standardized = TRUE, fit.measures = TRUE)
+# Mod2.1 diagnostics:
+# Global fit:
+#   chi-sq p-value is good (>0.05)
+#   CFI is okay (>0.95)
+#   RMSEA is okay (<0.1, lower CI is 0)
+#   SRMR is okay (<0.1)
+
+semPaths(fit3.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2")
+
