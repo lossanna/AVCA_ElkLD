@@ -97,9 +97,66 @@ summary(fit2.0, fit.measures = TRUE, standardized = TRUE)
 #   RMSEA is okay (<0.1, lower CI is 0)
 #   SRMR is okay (<0.1)
 modindices(fit2.0, sort = TRUE)
+#  Adding covariance with TN_log: there could be an unmeasured factor that affects these together
+#   (i.e. it seems scientifically plausible), but the pathways do not end up significant, and
+#   it seems weird to randomly allow those things to covary when they are part of the larger soil microbiome,
+#   so I am going to stick with this one
 
 semPaths(fit2.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
-         nCharNodes = 6, node.width = 1.3, layout = "tree2")
+         nCharNodes = 6, node.width = 1.3, layout = "tree2", reorder = FALSE)
+
+
+# Add covariances based on MI (modification indices)
+mod2.1 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + notree.18 + tree 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ notree
+  soil_microbe ~~ notree
+  chemoheterotrophy_log ~~ TN_log
+  barc.richness ~~ n.cycler_log
+  fungi.richness ~~ TN_log
+'
+fit2.1 <- sem(mod2.1, data = sem.dat) 
+summary(fit2.1, fit.measures = TRUE, standardized = TRUE)
+# Mod2.1 diagnostics:
+#   Improved chi-sq stat and p-value
+#   Not much change in AIC
+#   Other global fit metrics remain okay
+modindices(fit2.1, sort = TRUE, minimum.value = 3.5)
+#   Covariance between notree.18 and tree doesn't make sense scientifically
+#   TN & chemmohet are the only significant path of the ones added based on MI
+#     are N-cyclers chemoheterotrophs? Why isn't there a correlation between TN & N-cyclers?
+
+
+# Chemohet~~TN only
+mod2.2 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + notree.18 + tree 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ notree
+  soil_microbe ~~ notree
+  chemoheterotrophy_log ~~ TN_log
+'
+fit2.2 <- sem(mod2.2, data = sem.dat) 
+summary(fit2.2, fit.measures = TRUE, standardized = TRUE)
+# This doesn't really seem that different from mod2.0 or 2.1, and the scientific justification isn't great
+#   Will probably just go with  mod2.0
+
 
 
 
@@ -123,12 +180,13 @@ mod3.0 <- '
 '
 fit3.0 <- sem(mod3.0, data = sem.dat)
 summary(fit3.0, standardized = TRUE, fit.measures = TRUE)
-# Mod2.1 diagnostics:
+# Mod3.0 diagnostics:
 # Global fit:
 #   chi-sq p-value is good (>0.05)
 #   CFI is okay (>0.95)
 #   RMSEA is okay (<0.1, lower CI is 0)
 #   SRMR is okay (<0.1)
+# But removing tree does not actually improve global fit (it actually gets worse)
 
 semPaths(fit3.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
