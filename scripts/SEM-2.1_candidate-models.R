@@ -56,7 +56,7 @@ mod1.0 <- '
   notree ~ rocks + notree.18 + tree 
   soil_chem ~ rocks
   soil_microbe ~ rocks
-  notree.18 ~ rocks + tree
+  notree.18 ~ rocks
   
   # covariance
   soil_chem ~~ soil_microbe
@@ -82,6 +82,7 @@ mod2.0 <- '
   notree ~ rocks + notree.18 + tree 
   TN_log ~ rocks
   soil_microbe ~ rocks
+  notree.18 ~ rocks
   
   # covariance
   TN_log ~~ soil_microbe
@@ -115,6 +116,7 @@ mod2.1 <- '
   notree ~ rocks + notree.18 + tree 
   TN_log ~ rocks
   soil_microbe ~ rocks
+  notree.18 ~ rocks
   
   # covariance
   TN_log ~~ soil_microbe
@@ -145,6 +147,7 @@ mod2.2 <- '
   notree ~ rocks + notree.18 + tree 
   TN_log ~ rocks
   soil_microbe ~ rocks
+  notree.18 ~ rocks
   
   # covariance
   TN_log ~~ soil_microbe
@@ -191,3 +194,5 @@ summary(fit3.0, standardized = TRUE, fit.measures = TRUE)
 semPaths(fit3.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
 
+
+save.image("RData/SEM-2.1_candidate-models.RData")
