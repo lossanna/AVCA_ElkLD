@@ -10,7 +10,7 @@
 #   TC_log does not produce good model fit.
 
 # Created: 2023-08-17
-# Updated: 2023-08-22
+# Updated: 2023-08-23
 
 
 library(lavaan)
@@ -46,8 +46,8 @@ sem.dat <- sem.dat.unscaled |>
          wide = as.numeric(wide))
 
 
+# Latent variables only ---------------------------------------------------
 
-# 1 Soil mic & soil chem as latent; Veg18 & tree included -----------------
 
 # Model latent variable separately - soil microbe
 lvmod.soimic <- '
@@ -55,12 +55,17 @@ lvmod.soimic <- '
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
 '
 fit.soimic <- sem(lvmod.soimic, data = sem.dat)
-summary(fit.soimic)
-# Latent variable model diagnostics:
+summary(fit.soimic, fit.measures = TRUE, standardized = TRUE)
+# Latent variable model diagnostics (soil microbiome):
 #   chi-sq p-value: 0.743 (good, >0.05)
 #   ratio of test statistic to df: 2.723/5 = 0.5446 (good, <2)
+#   CFI: 1.000 (good, >0.95)
+#   RMSEA: 0.000 (okay, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.044 (good, <0.1)
 modindices(fit.soimic, sort = TRUE)
 #   No paths need to be added based on MI
+
 
 # Model latent variable separately - soil chemistry
 lvmod.soichem <- '
@@ -68,8 +73,22 @@ lvmod.soichem <- '
   soil_chem =~ TN_log + OM_log
 '
 fit.soichem <- sem(lvmod.soichem, data = sem.dat) # lavaan WARNING: Could not compute standard errors!
+summary(fit.soichem)
 #   something is wrong with soil chem as latent variable
 
+
+# Model latent variable separately - plants
+lvmod.plants <- '
+  # latent variable model
+  plants =~ notree + perveg.richness + perveg.shannon
+'
+fit.plants <- sem(lvmod.plants, data = sem.dat)
+summary(fit.plants, fit.measures = TRUE, standardized = TRUE)
+# for some reason there are 0 degrees of freedom? idk what's going on
+
+
+
+# 1 Soil mic & soil chem as latent; Veg18 & tree included -----------------
 
 # Full model, initial attempt
 #   (this initial attempt is kind of moot based on the soil chem latent variable turning out so badly)
@@ -136,10 +155,10 @@ summary(fit2.0, fit.measures = TRUE, standardized = TRUE)
 #   chi-sq statistic: 31.847
 #   chi-sq stat to df ratio: 1.06 (good; <2)
 #   chi-sq p-value: 0.375 (good, >0.05)
-#   CFI: 0.985 (okay, >0.95)
-#   RMSEA: 0.032 (okay, <0.1)
+#   CFI: 0.985 (good, >0.95)
+#   RMSEA: 0.032 (good, <0.1)
 #   RMSEA lower CI: 0.000 (good)
-#   SRMR: 0.079 (okay, <0.1)
+#   SRMR: 0.079 (good, <0.1)
 #   AIC: 1310.762
 modindices(fit2.0, sort = TRUE)
 #  Adding covariance with TN_log: there could be an unmeasured factor that affects these together
@@ -152,6 +171,7 @@ semPaths(fit2.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
 
 
 # Add covariances based on MI (modification indices)
+#   (am leaving this here just to have, but Kline 2016 says not to add paths based on MI; Grace 2020 says to do so)
 mod2.1 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
@@ -232,10 +252,10 @@ summary(fit3.0, fit.measures = TRUE, standardized = TRUE)
 #   chi-sq statistic: 26.242
 #   chi-sq stat to df ratio: 0.87 (good; <2)
 #   chi-sq p-value: 0.663 (good, >0.05)
-#   CFI: 1.000 (okay, >0.95)
-#   RMSEA: 0.000 (okay, <0.1)
+#   CFI: 1.000 (good, >0.95)
+#   RMSEA: 0.000 (good, <0.1)
 #   RMSEA lower CI: 0.000 (good)
-#   SRMR: 0.076 (okay, <0.1)
+#   SRMR: 0.076 (good, <0.1)
 #   Akaike (AIC): 1345.448
 modindices(fit3.0, sort = TRUE)
 #  Adding covariance saprotrophs~~OM_log: could be scientifically plausible to have more decomposers
@@ -247,7 +267,7 @@ semPaths(fit3.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
 
 
 
-# 4 Soil mic as latent, OM; Veg18 & tree included -------------------------
+# 4 Soil mic as latent, TC; Veg18 & tree included -------------------------
 
 # Full model, initial attempt
 mod4.0 <- '
@@ -326,6 +346,42 @@ summary(fit5.0, standardized = TRUE, fit.measures = TRUE)
 
 semPaths(fit5.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
+
+
+
+# 6 Soil mic as latent, OM; Veg18 & tree included; wide (no rocks) --------
+
+# Full model, initial attempt
+#   Groups Channels 13 & 12 (narrow), and Channels 19 & 21 (wide)
+mod6.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ wide + notree.18 + tree 
+  OM_log ~ wide
+  soil_microbe ~ wide
+  notree.18 ~ wide
+  
+  # covariance
+  OM_log ~~ soil_microbe
+  OM_log ~~ notree
+  soil_microbe ~~ notree
+'
+fit6.0 <- sem(mod6.0, data = sem.dat) 
+summary(fit6.0, fit.measures = TRUE, standardized = TRUE)
+# Mod6.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 57.561
+#   chi-sq stat to df ratio: 1.9187 (okay; <2)
+#   chi-sq p-value: 0.002 (bad, <0.05)
+#   CFI: 0.776 (bad, <0.95)
+#   RMSEA: 0.122 (bad, >0.1)
+#   RMSEA lower CI: 0.073 (bad)
+#   SRMR: 0.108 (bad, >0.1)
+# I mean at least the width of the channel makes a worse fit than the actual treatment?
+#   This was just messing around to see what would happen, this analysis won't be included
+
 
 
 save.image("RData/SEM-2.1_candidate-models.RData")
