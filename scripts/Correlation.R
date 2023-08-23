@@ -1,7 +1,7 @@
 # Purpose: Explore correlation between notree averages and precip, and 
 #   elevation difference and percent difference (but not sure this will really work).
 # Created: 2023-05-24
-# Last updated: 2023-07-20
+# Last updated: 2023-08-22
 
 library(tidyverse)
 library(ggpubr)
@@ -44,6 +44,9 @@ dat.elev <- left_join(elev, firstlast)
 # Visualization -----------------------------------------------------------
 
 # Precip & veg cover
+cor.test(notree.ctrl$mean, notree.ctrl$Precip_cum_mm)
+cor.test(notree.trt$mean, notree.trt$Precip_cum_mm)
+
 notree.ctrl.plot <- notree.ctrl |> 
   ggplot(aes(x = Precip_cum_mm, y = mean)) +
   geom_point() +
