@@ -255,7 +255,7 @@ shan.plot.cv <- shan.sample |>
               aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Shannon diversity index",
+  labs(title = "Perennial plant diversity",
        x = NULL,
        y = "Coefficient of variation") +
   theme_bw() +
