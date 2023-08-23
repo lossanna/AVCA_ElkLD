@@ -1,13 +1,16 @@
 # Purpose: Test candidate models for SEM analysis.
 #   SEM 2.1 incorporates better assessment of model fit, according to procedure from Grace 2020 "WOE",
-#     and there are meta-models drawn for each in the PowerPoint (Writing/SEM meta model.pptx).
+#     and there are meta-models drawn for each in the PowerPoint (Writing/SEM metamodel and path diagrams.pptx).
+#     SEM 2.1 also graphs the path diagrams in PPT because semPaths is not flexible enough.
 
 # Findings:
-#   Remove OM to improve model fit
-#   Removing tree cover does not improve model fit
+#   Soil chem cannot be a latent variable because TN & OM are also too collinear.
+#   Removing tree cover does not improve model fit (and removing non-significant paths is not good practice).
+#   OM_log performs better than TN_log, but both are okay models (good model fit).
+#   TC_log does not produce good model fit.
 
 # Created: 2023-08-17
-# Updated: 2023-08-17
+# Updated: 2023-08-22
 
 
 library(lavaan)
@@ -29,8 +32,8 @@ sem.dat.unscaled <- dat.2021 |>
   mutate(wide = case_when(
     str_detect(Channel, "21|19") ~ 1,
     str_detect(Channel, "13|12") ~ 0)) |> 
-  select(Sample, rocks, wide, herb, herb.18, notree, notree.18, tree, perveg.richness, perveg.shannon,
-         TN_log, CN_ratio, OM_log, OM_perc, barc.richness, fungi.richness,
+  select(Sample, rocks, wide, notree, notree.18, tree, perveg.richness, perveg.shannon,
+         TN_log, TC_log, CN_ratio, OM_log, barc.richness, fungi.richness,
          chemoheterotrophy_log, n.cycler_log, saprotroph) 
 
 # Center and scale variables
@@ -69,6 +72,7 @@ fit.soichem <- sem(lvmod.soichem, data = sem.dat) # lavaan WARNING: Could not co
 
 
 # Full model, initial attempt
+#   (this initial attempt is kind of moot based on the soil chem latent variable turning out so badly)
 mod1.0 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
@@ -95,7 +99,7 @@ summary(fit1.0, fit.measures = TRUE)
 
 # 2 Soil mic latent, TN; Veg18 & tree included ----------------------------
 
-# Model latent variable separately - soil microbe
+# Model latent variable separately - soil microbe (this is the same as Section 1)
 lvmod.soimic <- '
   # latent variable model
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
@@ -202,10 +206,99 @@ summary(fit2.2, fit.measures = TRUE, standardized = TRUE)
 
 
 
-# 3 Soil mic latent, TN; Veg18 included -----------------------------------
+# 3 Soil mic as latent, OM; Veg18 & tree included -------------------------
+
+# Full model, initial attempt
+mod3.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + notree.18 + tree 
+  OM_log ~ rocks
+  soil_microbe ~ rocks
+  notree.18 ~ rocks
+  
+  # covariance
+  OM_log ~~ soil_microbe
+  OM_log ~~ notree
+  soil_microbe ~~ notree
+'
+fit3.0 <- sem(mod3.0, data = sem.dat) 
+summary(fit3.0, fit.measures = TRUE, standardized = TRUE)
+# Mod3.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 26.242
+#   chi-sq stat to df ratio: 0.87 (good; <2)
+#   chi-sq p-value: 0.663 (good, >0.05)
+#   CFI: 1.000 (okay, >0.95)
+#   RMSEA: 0.000 (okay, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.076 (okay, <0.1)
+#   Akaike (AIC): 1345.448
+modindices(fit3.0, sort = TRUE)
+#  Adding covariance saprotrophs~~OM_log: could be scientifically plausible to have more decomposers
+#   with more OM, but I am just going to leave the path between OM & soil_microbe as enough
+
+semPaths(fit3.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2", reorder = FALSE)
+
+
+
+
+# 4 Soil mic as latent, OM; Veg18 & tree included -------------------------
+
+# Full model, initial attempt
+mod4.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + notree.18 + tree 
+  TC_log ~ rocks
+  soil_microbe ~ rocks
+  notree.18 ~ rocks
+  
+  # covariance
+  TC_log ~~ soil_microbe
+  TC_log ~~ notree
+  soil_microbe ~~ notree
+'
+fit4.0 <- sem(mod4.0, data = sem.dat) 
+summary(fit4.0, fit.measures = TRUE, standardized = TRUE)
+# Mod4.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 44.782
+#   chi-sq stat to df ratio: 1.49 (good; <2)
+#   chi-sq p-value: 0.040 (not good, <0.05)
+#   CFI: 0.885 (not good, <0.95)
+#   RMSEA: 0.089 (okay, <0.1)
+#   RMSEA lower CI: 0.019 (not great - should be 0)
+#   SRMR: 0.082 (okay, <0.1)
+#   Akaike (AIC): 1315.527
+modindices(fit4.0, sort = TRUE)
+#  There are a lot of paths that could be added because this isn't a great model to start with,
+#   but I will just use the OM or TN model instead, so no need to test more models.
+
+semPaths(fit3.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2", reorder = FALSE)
+
+
+
+# Compare 2 & 3 (TN vs OM) ------------------------------------------------
+
+summary(fit2.0, fit.measures = TRUE, standardized = TRUE)
+summary(fit3.0, fit.measures = TRUE, standardized = TRUE)
+
+
+# 5 Soil mic latent, TN; Veg18 included -----------------------------------
+
+# Overall, there really is no good justification for removing tree because you shouldn't just drop
+#   non-significant paths purely because they are not significant (Goodboy & Kline 2017),
+#   and this shows that removing tree makes model fit worse, anyway.
 
 # Remove tree
-mod3.0 <- '
+mod5.0 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
   
@@ -220,9 +313,9 @@ mod3.0 <- '
   soil_microbe ~~ notree
   TN_log ~~ notree
 '
-fit3.0 <- sem(mod3.0, data = sem.dat)
-summary(fit3.0, standardized = TRUE, fit.measures = TRUE)
-# Mod3.0 diagnostics:
+fit5.0 <- sem(mod5.0, data = sem.dat)
+summary(fit5.0, standardized = TRUE, fit.measures = TRUE)
+# Mod5.0 diagnostics:
 # Global fit:
 #   chi-sq p-value is good (>0.05)
 #   CFI is okay (>0.95)
@@ -230,7 +323,7 @@ summary(fit3.0, standardized = TRUE, fit.measures = TRUE)
 #   SRMR is okay (<0.1)
 # But removing tree does not actually improve global fit (it actually gets worse)
 
-semPaths(fit3.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
+semPaths(fit5.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 6,
          nCharNodes = 6, node.width = 1.3, layout = "tree2")
 
 
