@@ -46,7 +46,29 @@ sem.dat <- sem.dat.unscaled |>
 
 # 1 Soil mic & soil chem as latent; Veg18 & tree included -----------------
 
-# Initial attempt
+# Model latent variable separately - soil microbe
+lvmod.soimic <- '
+  # latent variable model
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+'
+fit.soimic <- sem(lvmod.soimic, data = sem.dat)
+summary(fit.soimic)
+# Latent variable model diagnostics:
+#   chi-sq p-value: 0.743 (good, >0.05)
+#   ratio of test statistic to df: 2.723/5 = 0.5446 (good, <2)
+modindices(fit.soimic, sort = TRUE)
+#   No paths need to be added based on MI
+
+# Model latent variable separately - soil chemistry
+lvmod.soichem <- '
+  # latent variable model
+  soil_chem =~ TN_log + OM_log
+'
+fit.soichem <- sem(lvmod.soichem, data = sem.dat) # lavaan WARNING: Could not compute standard errors!
+#   something is wrong with soil chem as latent variable
+
+
+# Full model, initial attempt
 mod1.0 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
@@ -73,7 +95,21 @@ summary(fit1.0, fit.measures = TRUE)
 
 # 2 Soil mic latent, TN; Veg18 & tree included ----------------------------
 
-# Initial attempt
+# Model latent variable separately - soil microbe
+lvmod.soimic <- '
+  # latent variable model
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+'
+fit.soimic <- sem(lvmod.soimic, data = sem.dat)
+summary(fit.soimic)
+# Latent variable model diagnostics:
+#   chi-sq p-value: 0.743 (good, >0.05)
+#   ratio of test statistic to df: 2.723/5 = 0.5446 (good, <2)
+modindices(fit.soimic, sort = TRUE)
+#   No paths need to be added based on MI
+
+
+# Full model, initial attempt
 mod2.0 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
@@ -93,10 +129,13 @@ fit2.0 <- sem(mod2.0, data = sem.dat)
 summary(fit2.0, fit.measures = TRUE, standardized = TRUE)
 # Mod2.0 diagnostics:
 # Global fit:
-#   chi-sq p-value is good (>0.05)
-#   CFI is okay (>0.95)
-#   RMSEA is okay (<0.1, lower CI is 0)
-#   SRMR is okay (<0.1)
+#   chi-sq statistic: 31.847
+#   chi-sq stat to df ratio: 1.06 (good; <2)
+#   chi-sq p-value: 0.375 (good, >0.05)
+#   CFI: 0.985 (okay, >0.95)
+#   RMSEA: 0.032 (okay, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.079 (okay, <0.1)
 modindices(fit2.0, sort = TRUE)
 #  Adding covariance with TN_log: there could be an unmeasured factor that affects these together
 #   (i.e. it seems scientifically plausible), but the pathways do not end up significant, and
