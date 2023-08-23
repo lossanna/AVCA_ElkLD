@@ -22,8 +22,8 @@ dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv")
 t.test(filter(dat.2021, Treatment3 == "Control")$TN_log,
        filter(dat.2021, Treatment3 == "Treated")$TN_log) # NS, p = 0.490
 
-summary(filter(dat.2021, Treatment3 == "Control")$TN_log)
-summary(filter(dat.2021, Treatment3 == "Treated")$TN_log)
+summary(filter(dat.2021, Treatment3 == "Control")$TN_ppt)
+summary(filter(dat.2021, Treatment3 == "Treated")$TN_ppt)
 
 # Plot
 tn.plot.21 <- dat.2021 |> 
@@ -69,6 +69,9 @@ ggplot(dat.2021, aes(x = TN_log, y = n.cycler_log)) +
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$TC_log,
        filter(dat.2021, Treatment3 == "Treated")$TC_log) # NS, p = 0.500
+
+summary(filter(dat.2021, Treatment3 == "Control")$TC_ppt)
+summary(filter(dat.2021, Treatment3 == "Treated")$TC_ppt)
 
 # Plot
 tc.plot.21 <- dat.2021 |> 
@@ -128,6 +131,9 @@ cn.plot.21
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$OM_log,
        filter(dat.2021, Treatment3 == "Treated")$OM_log) # NS, p = 0.332
+
+summary(filter(dat.2021, Treatment3 == "Control")$OM_perc)
+summary(filter(dat.2021, Treatment3 == "Treated")$OM_perc)
 
 # Plot
 om.plot.21 <- dat.2021 |> 

@@ -20,7 +20,7 @@
 # check_model() for all two-way ANOVAs look good.
 
 # Created: 2023-03-27
-# Last updated: 2023-07-18
+# Last updated: 2023-08-23
 
 library(tidyverse)
 library(agricolae)
@@ -571,7 +571,7 @@ write.csv(shan.avg,
 # Plot
 ptext.shan <- data.frame(x = rep(as.Date("2020-02-01"), 2),
                          y = c(1.33, 1.33),
-                         label = c("ANOVA, p < 0.001", "ANOVA, p = 0.003"),
+                         label = c("ANOVA, p = 0.725", "ANOVA, p = 0.934"),
                          Treatment3 = c("Control", "Treated"))
 shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
                      group = Treatment3, 
@@ -616,10 +616,10 @@ check_model(aov(shan ~ Treatment3 * Year, data = per.div))
 
 
 # One-way ANOVA for Treated
-summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # NS
+summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # p = 0.725
 
 # One-way ANOVA for Control
-summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Control"))) # NS
+summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Control"))) # p = 0.934
 
 
 # No letters needed, write out previous plot
