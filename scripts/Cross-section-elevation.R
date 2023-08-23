@@ -227,7 +227,9 @@ dElev.corrected.plot <- elev |>
   theme(axis.text.x = element_text(color = "black")) +
   geom_text(aes(x = 2.3, y = -0.05, label = "Kruskal-Wallis, p < 0.001"),
             color = "gray30",
-            size = 2.5)
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 dElev.corrected.plot
 
 tiff("figures/2023-07_draft-figures/Change-in-elevation.tiff", width = 6, height = 4, units = "in", res = 150)

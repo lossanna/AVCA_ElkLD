@@ -22,6 +22,9 @@ dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv")
 t.test(filter(dat.2021, Treatment3 == "Control")$TN_log,
        filter(dat.2021, Treatment3 == "Treated")$TN_log) # NS, p = 0.490
 
+summary(filter(dat.2021, Treatment3 == "Control")$TN_log)
+summary(filter(dat.2021, Treatment3 == "Treated")$TN_log)
+
 # Plot
 tn.plot.21 <- dat.2021 |> 
   ggplot(aes(x = Treatment3, y = TN_ppt)) +
@@ -42,7 +45,9 @@ tn.plot.21 <- dat.2021 |>
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 2.16, y = 63, label = "t-test, p = 0.490"),
             color = "gray30",
-            size = 2.5)
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 tn.plot.21
 
 # Correlation with n-cyclers
@@ -85,7 +90,9 @@ tc.plot.21 <- dat.2021 |>
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 2.16, y = 670, label = "t-test, p = 0.500"),
             color = "gray30",
-            size = 2.5)
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 tc.plot.21
 
 
@@ -142,7 +149,9 @@ om.plot.21 <- dat.2021 |>
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 2.16, y = 2.14, label = "t-test, p = 0.332"),
             color = "gray30",
-            size = 2.5)
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 om.plot.21
 
 
@@ -185,7 +194,9 @@ barc.rich.plot.21 <- dat.2021 |>
   geom_text(aes(x = 2.3, y = 1100, label = "t-test, p = 0.686"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 barc.rich.plot.21
 
 
@@ -216,7 +227,9 @@ fungi.rich.plot.21 <- dat.2021 %>%
   geom_text(aes(x = 2.3, y = 70, label = "t-test, p = 0.938"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 fungi.rich.plot.21
 
 
@@ -318,7 +331,9 @@ chemohet.plot.21 <- dat.2021 %>%
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 2.16, y = 28.7, label = "t-test, p = 0.931"),
             color = "gray30",
-            size = 2.5)
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 chemohet.plot.21
 
 
@@ -349,7 +364,9 @@ ncycler.plot.21 <- dat.2021 %>%
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 2.16, y = 13.6, label = "t-test, p = 0.490"),
             color = "gray30",
-            size = 2.5)
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 ncycler.plot.21
 
 
@@ -380,7 +397,9 @@ sapro.plot.21 <- dat.2021 %>%
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 2.16, y = 42, label = "t-test, p = 0.272"),
             color = "gray30",
-            size = 2.5)
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 sapro.plot.21
 
 
@@ -465,7 +484,9 @@ notree.plot.21 <- dat.2021 |>
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 0.9, y = 95, label = "t-test, p = 0.368"),
             color = "gray30",
-            size = 2.5)
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 notree.plot.21
 
 
@@ -494,7 +515,9 @@ rich.plot.21 <- dat.2021 |>
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 0.9, y = 12.8, label = "t-test, p = 0.135"),
             color = "gray30",
-            size = 2.5) 
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 rich.plot.21
 
 
@@ -523,7 +546,9 @@ shan.plot.21 <- dat.2021 |>
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   geom_text(aes(x = 0.9, y = 2.2, label = "t-test, p = 0.221"),
             color = "gray30",
-            size = 2.5) 
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 shan.plot.21
 
 

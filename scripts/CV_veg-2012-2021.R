@@ -7,7 +7,7 @@
 # Did not find any significant differences in CVs for total, herb, notree, richness, or Shannon.
 
 # Created: 2022-02-15
-# Last updated: 2023-07-20
+# Last updated: 2023-08-23
 
 library(tidyverse)
 library(car)
@@ -147,7 +147,9 @@ notree.plot.cv <- notree.sample |>
   geom_text(aes(x = 0.9, y = 0.95, label = "t-test, p = 0.882"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 notree.plot.cv
 
 
@@ -212,7 +214,9 @@ rich.plot.cv <- rich.sample |>
   geom_text(aes(x = 0.9, y = 0.65, label = "t-test, p = 0.093"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 rich.plot.cv
 
 
@@ -265,7 +269,9 @@ shan.plot.cv <- shan.sample |>
   geom_text(aes(x = 0.9, y = 0.83, label = "t-test, p = 0.075"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 shan.plot.cv
 
 
