@@ -140,6 +140,7 @@ summary(fit2.0, fit.measures = TRUE, standardized = TRUE)
 #   RMSEA: 0.032 (okay, <0.1)
 #   RMSEA lower CI: 0.000 (good)
 #   SRMR: 0.079 (okay, <0.1)
+#   AIC: 1310.762
 modindices(fit2.0, sort = TRUE)
 #  Adding covariance with TN_log: there could be an unmeasured factor that affects these together
 #   (i.e. it seems scientifically plausible), but the pathways do not end up significant, and
