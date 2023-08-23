@@ -15,7 +15,7 @@ precip <- read.table("data/PimaCounty_precip/PimaCounty_precip_2012-2021.txt",
 
 # Percent change & elevation
 elev <- read.csv("data/cleaned/Cross-section-elevation_clean.csv")
-firstlast <- read.csv("data/cleaned/Percent-difference_first-last.csv", )
+firstlast <- read.csv("data/cleaned/Log-change_first-last.csv", )
 
 
 # Data wrangling ----------------------------------------------------------
@@ -24,7 +24,8 @@ firstlast <- read.csv("data/cleaned/Percent-difference_first-last.csv", )
 precip.sample <- precip |> 
   filter(!str_detect(year.xaxis, c("2020|2016|2017|2019"))) |> 
   mutate(Year = gsub("-.*", "", year.xaxis)) |> 
-  select(Year, Precip_cum)
+  select(Year, Precip_cum) |> 
+  mutate(Precip_cum_mm = Precip_cum * 25.4)
 
 notree.ctrl <- notree.avg |> 
   mutate(Year = as.character(Year)) |> 
@@ -44,38 +45,35 @@ dat.elev <- left_join(elev, firstlast)
 
 # Precip & veg cover
 notree.ctrl.plot <- notree.ctrl |> 
-  ggplot(aes(x = Precip_cum, y = mean)) +
+  ggplot(aes(x = Precip_cum_mm, y = mean)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  labs(x = "Cummulative summer precipitation (in.)",
-       y = "Grass, forb & shrub cover (%)",
+  labs(x = "Cummulative summer precipitation (mm)",
+       y = "Vegetation cover (%)",
        title = "Control") +
   theme_bw() +
-  stat_regline_equation(label.x = 7.5, label.y = 46.5) +
-  stat_cor(label.x = 7.5, label.y = 43.5) +
+  stat_regline_equation(label.x = 180, label.y = 46.5) +
+  stat_cor(label.x = 180, label.y = 43.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in"))
 notree.ctrl.plot
 
 notree.trt.plot <- notree.trt |> 
-  ggplot(aes(x = Precip_cum, y = mean)) +
+  ggplot(aes(x = Precip_cum_mm, y = mean)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  labs(x = "Cummulative summer precipitation (in.)",
-       y = "Grass, forb & shrub cover (%)",
+  labs(x = "Cummulative summer precipitation (mm)",
+       y = "Vegetation cover (%)",
        title = "Treated") +
   theme_bw() +
-  stat_regline_equation(label.x = 7.5, label.y = 46.5) +
-  stat_cor(label.x = 7.5, label.y = 43.5) +
+  stat_regline_equation(label.x = 180, label.y = 46.5) +
+  stat_cor(label.x = 180, label.y = 43.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in"))
 notree.trt.plot
 
 tiff("figures/2023-07_draft-figures/Corr-precip-veg.tiff", height = 5, width = 11, units = "in", res = 150)
 annotate_figure(ggarrange(notree.ctrl.plot, notree.trt.plot,
                           nrow = 1, ncol = 2,
-                          labels = c("(A)", "(B)")),
-                top = text_grob("Correlation between precipitation and vegetation cover \n",
-                                size = 15,
-                                hjust = 1.1))
+                          labels = c("(A)", "(B)")))
 dev.off()
 
 
