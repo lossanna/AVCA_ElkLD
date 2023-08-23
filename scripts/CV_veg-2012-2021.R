@@ -137,7 +137,7 @@ notree.plot.cv <- notree.sample |>
               aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Grass, forb & shrub \ncover",
+  labs(title = " Vegetation cover",
        x = NULL,
        y = "Coefficient of variation") +
   theme_bw() +
