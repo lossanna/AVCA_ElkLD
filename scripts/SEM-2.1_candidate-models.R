@@ -85,6 +85,7 @@ lvmod.plants <- '
 fit.plants <- sem(lvmod.plants, data = sem.dat)
 summary(fit.plants, fit.measures = TRUE, standardized = TRUE)
 # for some reason there are 0 degrees of freedom? idk what's going on
+# this might be because there are not enough indicator variables
 
 
 
@@ -309,7 +310,29 @@ semPaths(fit3.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
 # Compare 2 & 3 (TN vs OM) ------------------------------------------------
 
 summary(fit2.0, fit.measures = TRUE, standardized = TRUE)
+# Mod2.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 31.847
+#   chi-sq stat to df ratio: 1.06 (good; <2)
+#   chi-sq p-value: 0.375 (good, >0.05)
+#   CFI: 0.985 (good, >0.95)
+#   RMSEA: 0.032 (good, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.079 (good, <0.1)
+#   AIC: 1310.762
+
 summary(fit3.0, fit.measures = TRUE, standardized = TRUE)
+# Mod3.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 26.242
+#   chi-sq stat to df ratio: 0.87 (good; <2)
+#   chi-sq p-value: 0.663 (good, >0.05)
+#   CFI: 1.000 (good, >0.95)
+#   RMSEA: 0.000 (good, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.076 (good, <0.1)
+#   Akaike (AIC): 1345.448
+
 
 
 # 5 Soil mic latent, TN; Veg18 included -----------------------------------
