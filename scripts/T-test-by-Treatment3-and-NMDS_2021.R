@@ -176,7 +176,7 @@ barc.rich.plot.21 <- dat.2021 |>
                outlier.shape = NA) +
   xlab(NULL) +
   ylab("No. of ASVs") +
-  ggtitle("Bacteria & archaea richness") +
+  ggtitle("Bacterial & archaeal richness") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
@@ -207,7 +207,7 @@ fungi.rich.plot.21 <- dat.2021 %>%
                outlier.shape = NA) +
   xlab(NULL) +
   ylab("No. of ASVs") +
-  ggtitle("Fungi richness") +
+  ggtitle("Fungal richness") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
@@ -243,7 +243,7 @@ barc.nmds.plot.21 <- dat.2021 %>%
   theme_bw() +
   labs(x = "Axis 1",
        y = "Axis 2",
-       title = "Bacteria & archaea NMDS",
+       title = "Bacteria & archaea",
        color = "Treatment",
        shape = "Treatment") +
   theme(legend.position = "bottom") +
@@ -268,7 +268,7 @@ fungi.nmds.plot.21 <- dat.2021 %>%
   theme_bw() +
   labs(x = "Axis 1",
        y = "Axis 2",
-       title = "Fungi NMDS",
+       title = "Fungi",
        color = "Treatment",
        shape = "Treatment") +
   theme(legend.position = "bottom") +
