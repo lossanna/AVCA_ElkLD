@@ -10,7 +10,7 @@
 #   TC_log does not produce good model fit.
 
 # Created: 2023-08-17
-# Updated: 2023-08-23
+# Updated: 2023-08-24
 
 
 library(lavaan)
@@ -32,7 +32,7 @@ sem.dat.unscaled <- dat.2021 |>
   mutate(wide = case_when(
     str_detect(Channel, "21|19") ~ 1,
     str_detect(Channel, "13|12") ~ 0)) |> 
-  select(Sample, rocks, wide, notree, notree.18, tree, perveg.richness, perveg.shannon,
+  select(Sample, rocks, wide, notree, notree.18, herb, herb.18, tree, perveg.richness, perveg.shannon,
          TN_log, TC_log, CN_ratio, OM_log, barc.richness, fungi.richness,
          chemoheterotrophy_log, n.cycler_log, saprotroph) 
 
@@ -404,6 +404,84 @@ summary(fit6.0, fit.measures = TRUE, standardized = TRUE)
 #   SRMR: 0.108 (bad, >0.1)
 # I mean at least the width of the channel makes a worse fit than the actual treatment?
 #   This was just messing around to see what would happen, this analysis won't be included
+
+
+
+# 7 Herb, OM, SoMic, herb18, tree -----------------------------------------
+
+# Full model, initial attempt
+mod7.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  herb ~ rocks + herb.18 + tree 
+  OM_log ~ rocks
+  soil_microbe ~ rocks
+  herb.18 ~ rocks
+  
+  # covariance
+  OM_log ~~ soil_microbe
+  OM_log ~~ herb
+  soil_microbe ~~ herb
+'
+fit7.0 <- sem(mod7.0, data = sem.dat) 
+summary(fit7.0, fit.measures = TRUE, standardized = TRUE)
+# Mod7.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 21.703
+#   chi-sq stat to df ratio: 0.72 (good; <2)
+#   chi-sq p-value: 0.865 (good, >0.05)
+#   CFI: 1.000 (good, >0.95)
+#   RMSEA: 0.000 (good, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.069 (good, <0.1)
+#   Akaike (AIC): 1351.278
+modindices(fit7.0, sort = TRUE)
+#   Again is suggesting saprotrophs & OM, but I already have the OM-SoMic relationship
+#     So at this point I don't really add anything or remove anything, but I have the
+#     code here anyway for fun, I guess
+
+semPaths(fit7.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2", reorder = FALSE)
+
+
+
+# 8 Herb, OM, SoMic, herb18, tree -----------------------------------------
+
+# Full model, initial attempt
+mod8.0 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  herb ~ rocks + herb.18 + tree 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  herb.18 ~ rocks
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ herb
+  soil_microbe ~~ herb
+'
+fit8.0 <- sem(mod8.0, data = sem.dat) 
+summary(fit8.0, fit.measures = TRUE, standardized = TRUE)
+# Mod8.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 25.702
+#   chi-sq stat to df ratio: 0.86 (good; <2)
+#   chi-sq p-value: 0.690 (good, >0.05)
+#   CFI: 1.000 (good, >0.95)
+#   RMSEA: 0.000 (good, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.066 (good, <0.1)
+#   Akaike (AIC): 1320.884
+modindices(fit8.0, sort = TRUE)
+#   Suggests fungi.rich ~~ TN_log, barc.rich ~~ n.cycler, chemohet ~~ n.cycler 
+
+semPaths(fit8.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
+         nCharNodes = 6, node.width = 1.3, layout = "tree2", reorder = FALSE)
 
 
 
