@@ -6,8 +6,9 @@
 # Findings:
 #   Soil chem cannot be a latent variable because TN & OM are also too collinear.
 #   Removing tree cover does not improve model fit (and removing non-significant paths is not good practice).
-#   OM_log performs better than TN_log, but both are okay models (good model fit).
-#   TC_log does not produce good model fit.
+#   OM_log performs better than TN_log for notree, but both are okay models (good model fit).
+#   TC_log does not produce good model fit (for notree).
+#   OOM_log and TN_log produce very similar fit for herb.
 
 # Created: 2023-08-17
 # Updated: 2023-08-24
