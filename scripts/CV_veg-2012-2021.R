@@ -111,7 +111,7 @@ herb.plot.cv <- herb.sample |>
   geom_text(aes(x = 0.8, y = 1.15, label = "Wilcox test, \np = 0.148"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
                width = .75, linetype = "dashed")
 herb.plot.cv
@@ -249,7 +249,7 @@ shrub.plot.cv <- shrub.sample |>
   geom_text(data = letters.shrub,
             aes(x = x, y = y, label = label),
             color = "black") +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
                width = .75, linetype = "dashed")
 shrub.plot.cv
@@ -315,7 +315,7 @@ rich.plot.cv <- rich.sample |>
   geom_text(aes(x = 0.9, y = 0.65, label = "t-test, p = 0.093"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
                width = .75, linetype = "dashed")
 rich.plot.cv
@@ -370,7 +370,7 @@ shan.plot.cv <- shan.sample |>
   geom_text(aes(x = 0.9, y = 0.83, label = "t-test, p = 0.075"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
                width = .75, linetype = "dashed")
 shan.plot.cv

@@ -223,7 +223,7 @@ fungi.rich.plot.21 <- dat.2021 %>%
                alpha = 0.3, 
                outlier.shape = NA) +
   xlab(NULL) +
-  ylab("No. of ASVs") +
+  ylab(NULL) +
   ggtitle("Fungal richness") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
@@ -233,7 +233,7 @@ fungi.rich.plot.21 <- dat.2021 %>%
   geom_text(aes(x = 2.3, y = 70, label = "t-test, p = 0.938"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.3, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
                width = .75, linetype = "dashed")
 fungi.rich.plot.21
@@ -360,14 +360,14 @@ ncycler.plot.21 <- dat.2021 %>%
                alpha = 0.3, 
                outlier.shape = NA) +
   xlab(NULL) +
-  ylab("Relative abundance (%)") +
+  ylab(NULL) +
   ggtitle("Nitrogen-cycling \nbacteria & archaea") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.3, "in")) +
   geom_text(aes(x = 2.16, y = 13.6, label = "t-test, p = 0.490"),
             color = "gray30",
             size = 2.5) +
@@ -393,14 +393,14 @@ sapro.plot.21 <- dat.2021 %>%
                alpha = 0.3, 
                outlier.shape = NA) +
   xlab(NULL) +
-  ylab("Relative abundance (%)") +
+  ylab(NULL) +
   ggtitle("Saprotrophic fungi") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
-  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.3, "in")) +
   geom_text(aes(x = 2.16, y = 42, label = "t-test, p = 0.272"),
             color = "gray30",
             size = 2.5) +
