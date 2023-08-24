@@ -9,7 +9,7 @@
 # These are the cleaned data sheets for plant cover and diversity from 2012-2021.
 
 # Created: ~2022-01 (pre-GitHub; probably created in early Jan)
-# Last updated: 2023-06-30
+# Last updated: 2023-08-24
 
 
 library(tidyverse)
@@ -169,7 +169,7 @@ plant.all <- plant.all |>
 
 
 
-# Summarise by total, herb, notree, and tree cover ------------------------
+# Summarise by total, herb, notree, tree, shrub, invasive, annual ---------
 
 # Create row for PlotTimeID 241 that must be added back in manually
 plottime.241.plant <- data.frame(PlotTimeID = 241,
@@ -287,6 +287,30 @@ invasive.all <- invasive.all |>
   arrange(PlotTimeID)
 
 
+# Shrub
+shrub.all <- plant.all %>% 
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3, Functional) %>% 
+  summarise(Cover = sum(Cover), .groups = "keep") |> 
+  filter(Functional == "Shrub") |> 
+  ungroup() |> 
+  select(-Functional) |> 
+  ungroup() |> 
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover) |> 
+  bind_rows(plottime.241.plant) |> 
+  arrange(PlotTimeID)  # only 325 rows; sometimes there were no shrubs
+
+shrub.missing.plottimeid <- setdiff(total.all$PlotTimeID, shrub.all$PlotTimeID)
+shrub.missing <- total.all |> 
+  filter(PlotTimeID %in% shrub.missing.plottimeid) |> 
+  select(-Cover) # add back missing rows based on sampling info from total.all df
+shrub.missing$Cover <- rep(0, nrow(shrub.missing))
+shrub.all <- shrub.all |> 
+  bind_rows(shrub.missing) |> 
+  arrange(PlotTimeID)
+
+
 
 # Richness and Shannon ----------------------------------------------------
 
@@ -350,6 +374,8 @@ write_csv(annual.all,
           file = "data/cleaned/Summarised-all_annual-cover.csv")
 write_csv(invasive.all,
           file = "data/cleaned/Summarised-all_invasive-cover.csv")
+write_csv(shrub.all,
+          file = "data/cleaned/Summarised-all_shrub-cover.csv")
 write_csv(per.div,
           file = "data/cleaned/Summarised-all_perennial-diversity.csv")
 
@@ -363,6 +389,7 @@ check.sum <- total.all |>
 check.sum$herb <- herb.all$Cover
 check.sum$notree <- notree.all$Cover
 check.sum$tree <- tree.all$Cover
+check.sum$shrub <- shrub.all$Cover
 
 # Total - notree 
 check.sum$totalMnotree <- check.sum$total - check.sum$notree
@@ -372,7 +399,9 @@ range(check.sum$totalMnotree) # total always greater
 check.sum$notreePtreeDiff <- (check.sum$notree + check.sum$tree) - check.sum$total
 range(check.sum$notreePtreeDiff) # only differ by very small amounts due to rounding
 
-
+# herb + shrub difference with notree
+check.sum$herbPshrubDiff <- (check.sum$herb + check.sum$shrub) - check.sum$notree
+range(check.sum$herbPshrubDiff) # only differ by very small amounts due to rounding
 
 save.image("RData/Summarise-all-channels.RData")
 
