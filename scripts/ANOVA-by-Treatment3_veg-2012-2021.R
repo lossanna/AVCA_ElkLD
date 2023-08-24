@@ -38,6 +38,7 @@ total.all <- read_csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv") 
 notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
 annual.all <- read_csv("data/cleaned/Summarised-all_annual-cover.csv")
+invasive.all <- read_csv("data/cleaned/Summarised-all_invasive-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 
@@ -61,6 +62,7 @@ total.all <- convert.cols(total.all)
 herb.all <- convert.cols(herb.all)
 notree.all <- convert.cols(notree.all)
 annual.all <- convert.cols(annual.all)
+invasive.all <- convert.cols(invasive.all)
 per.div <- convert.cols(per.div)
 
 
@@ -253,7 +255,7 @@ herb.trt.letters <-herb.trt.letters |>
   arrange(Year)
 
 letters.herb <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
-                      y = rep(28, 12),
+                      y = rep(32, 12),
                       label = c(herb.ctrl.letters$groups,
                                 herb.trt.letters$groups),
                       Treatment3 = c(rep("Control", 6),
@@ -434,6 +436,82 @@ ggplot(annual.avg, aes(x = year.xaxis, y = mean,
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") 
+
+
+# Plot with notree
+annual.notree.avg <- annual.avg |> 
+  bind_rows(notree.avg) |> 
+  ungroup() |> 
+  mutate(type = c(rep("annual", 12),
+                  rep("notree", 12)))
+
+ggplot(annual.notree.avg, aes(x = year.xaxis, y = mean,
+                       group = type, 
+                       color = type)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Annual and notree cover") +
+  theme_bw(base_size = 14) 
+#   There was an increase in annuals in Treated from 2018 to 2021, but a decrease in overall notree cover.
+#     Annual cover increased and notree cover increased for Control (increase seems roughly proportional).
+
+
+
+# Invasive cover ----------------------------------------------------------
+
+# Find averages by year
+invasive.avg <- invasive.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(invasive.avg,
+          file = "data/cleaned/Treatment3-average_invasive-cover.csv",
+          row.names = FALSE)
+
+# Plot
+ggplot(invasive.avg, aes(x = year.xaxis, y = mean,
+                       group = Treatment3, 
+                       color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Invasive cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+
+
+# Plot with notree
+invasive.notree.avg <- invasive.avg |> 
+  bind_rows(notree.avg) |> 
+  ungroup() |> 
+  mutate(type = c(rep("invasive", 12),
+                  rep("notree", 12)))
+
+ggplot(invasive.notree.avg, aes(x = year.xaxis, y = mean,
+                              group = type, 
+                              color = type)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Invasive and notree cover") +
+  theme_bw(base_size = 14) 
+#   The native cover is driving the increase in Treated, but invasives are contributing to increase
+#     in Control (although only 2% increase in invasive cover).
+#   Invasive cover increased from about 5% in Control and about 1.5% in Treated
 
 
 
