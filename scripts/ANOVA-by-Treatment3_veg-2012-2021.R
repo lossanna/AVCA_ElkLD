@@ -687,8 +687,12 @@ shrub.plot
 ggarrange(total.plot, herb.plot, notree.plot,
           ncol = 2, nrow = 2)
 
+ggarrange(notree.plot, herb.plot, shrub.plot,
+          ncol = 2, nrow = 2) 
 
-# Richness ----------------------------------------------------------------
+
+
+ # Richness ----------------------------------------------------------------
 
 # Find averages by year
 rich.avg <- per.div %>% 
