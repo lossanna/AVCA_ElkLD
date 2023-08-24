@@ -102,7 +102,8 @@ herb.plot.cv <- herb.sample |>
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Herbaceous cover",
-       x = NULL) +
+       x = NULL, 
+       y = NULL) +
   theme_bw() +
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
@@ -222,6 +223,9 @@ wilcox.test(filter(shrub.sample0, Treatment3 == "Treated")$CV,
 
 
 # Plot
+letters.shrub <- data.frame(x = c(1, 2),
+                            y = c(2.5, 2.5),
+                            label = c("a", "b"))
 shrub.plot.cv <- shrub.sample |> 
   ggplot(aes(x = Treatment3, y = CV0)) +
   geom_boxplot(alpha = 0.3,
@@ -234,7 +238,7 @@ shrub.plot.cv <- shrub.sample |>
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Shrub cover",
        x = NULL,
-       y = "Coefficient of variation") +
+       y = NULL) +
   theme_bw() +
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
@@ -242,6 +246,9 @@ shrub.plot.cv <- shrub.sample |>
   geom_text(aes(x = 0.8, y = 0.1, label = "Wilcox test, \np = 0.014"),
             color = "gray30",
             size = 2.5) +
+  geom_text(data = letters.shrub,
+            aes(x = x, y = y, label = label),
+            color = "black") +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
                width = .75, linetype = "dashed")
@@ -300,7 +307,7 @@ rich.plot.cv <- rich.sample |>
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Perennial plant species \nrichness",
        x = NULL,
-       y = "Coefficient of variation") +
+       y = NULL) +
   theme_bw() +
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
@@ -355,7 +362,7 @@ shan.plot.cv <- shan.sample |>
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Perennial plant diversity",
        x = NULL,
-       y = "Coefficient of variation") +
+       y = NULL) +
   theme_bw() +
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
