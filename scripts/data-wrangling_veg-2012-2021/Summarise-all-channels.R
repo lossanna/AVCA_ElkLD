@@ -265,6 +265,27 @@ annual.all <- annual.all |>
   bind_rows(annual.missing) |> 
   arrange(PlotTimeID)
 
+# Invasive
+invasive.all <- plant.all |> 
+  filter(Native == "Invasive") |> 
+  group_by(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+           Treatment1, Treatment2, Treatment3) %>% 
+  summarise(Cover = sum(Cover), .groups = "keep") |> 
+  ungroup() |> 
+  select(PlotTimeID, Sample, Channel, Station, Year, year.xaxis, station.trt, channel.trt,
+         Treatment1, Treatment2, Treatment3, Cover) |> 
+  bind_rows(plottime.241.plant) |> 
+  arrange(PlotTimeID) # only 325 rows; sometimes there were no invasives
+
+invasive.missing.plottimeid <- setdiff(total.all$PlotTimeID, invasive.all$PlotTimeID)
+invasive.missing <- total.all |> 
+  filter(PlotTimeID %in% invasive.missing.plottimeid) |> 
+  select(-Cover) # add back missing rows based on sampling info from total.all df
+invasive.missing$Cover <- rep(0, nrow(invasive.missing))
+invasive.all <- invasive.all |> 
+  bind_rows(invasive.missing) |> 
+  arrange(PlotTimeID)
+
 
 
 # Richness and Shannon ----------------------------------------------------
@@ -327,6 +348,8 @@ write_csv(tree.all,
           file = "data/cleaned/Summarised-all_tree-cover.csv")
 write_csv(annual.all,
           file = "data/cleaned/Summarised-all_annual-cover.csv")
+write_csv(invasive.all,
+          file = "data/cleaned/Summarised-all_invasive-cover.csv")
 write_csv(per.div,
           file = "data/cleaned/Summarised-all_perennial-diversity.csv")
 
