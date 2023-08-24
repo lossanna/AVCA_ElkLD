@@ -7,7 +7,7 @@
 # Did not find any significant differences in CVs for total, herb, notree, richness, or Shannon.
 
 # Created: 2022-02-15
-# Last updated: 2023-08-23
+# Last updated: 2023-08-24
 
 library(tidyverse)
 library(car)
@@ -20,6 +20,7 @@ library(agricolae)
 total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
+shrub.all <- read.csv("data/cleaned/Summarised-all_shrub-cover.csv")
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 
@@ -91,17 +92,27 @@ t.test(filter(herb.sample, Treatment3 == "Treated")$CV_log,
 
 # Plot
 herb.plot.cv <- herb.sample |> 
-  ggplot(aes(x = Treatment3, y = CV, fill = Treatment3, color = Treatment3)) +
+  ggplot(aes(x = Treatment3, y = CV)) +
   geom_boxplot(alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(size = 2) +
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              alpha = 0.8,
+              aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Herbaceous cover CV",
+  labs(title = "Herbaceous cover",
        x = NULL) +
-  theme_bw(base_size = 14) +
+  theme_bw() +
   theme(legend.position = "none") +
-  scale_y_continuous(labels = percent)
+  scale_y_continuous(labels = percent)  +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.8, y = 1.15, label = "Wilcox test, \np = 0.148"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
 herb.plot.cv
 
 
@@ -137,7 +148,7 @@ notree.plot.cv <- notree.sample |>
               aes(color = Treatment3)) +
   scale_color_manual(values = c("red", "#1F78B4")) +
   scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = " Vegetation cover",
+  labs(title = "Vegetation cover",
        x = NULL,
        y = "Coefficient of variation") +
   theme_bw() +
@@ -163,6 +174,89 @@ notree.sample |>
   ggplot(aes(x = Channel, y = CV)) +
   geom_boxplot() +
   geom_jitter()
+
+
+
+# Shrub cover -------------------------------------------------------------
+
+# Find CV for each sample over time
+shrub.sample <- shrub.all |> 
+  group_by(Sample, Channel, Station, Treatment3) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep") # NaNs produced because some have 0 cover
+
+# Replace NaNs with 0
+shrub.sample0 <- shrub.sample
+shrub.sample0[1, 5] <- 0
+shrub.sample0[5, 5] <- 0
+shrub.sample0[8, 5] <- 0
+
+# Explore distribution
+qqPlot(filter(shrub.sample, Treatment3 == "Treated")$CV) # normal
+qqPlot(filter(shrub.sample, Treatment3 == "Control")$CV) # not normal?
+qqPlot(filter(shrub.sample0, Treatment3 == "Treated")$CV) # not normal
+#   but the version with added 0s cannot be log-transformed, so only nonparametric tests will work 
+
+# Log transformation sort of helps Control
+qqPlot(log(filter(shrub.sample, Treatment3 == "Control")$CV)) # more normal?
+qqPlot(log(filter(shrub.sample, Treatment3 == "Treated")$CV)) # normal
+
+shrub.sample$CV_log <- log(shrub.sample$CV)
+shrub.sample$CV0 <- shrub.sample0$CV
+
+# Write to csv
+write_csv(shrub.sample,
+          "data/cleaned/CV-2012-2021_shrub-cover.csv")
+
+# Compare
+wilcox.test(filter(shrub.sample, Treatment3 == "Treated")$CV,
+            filter(shrub.sample, Treatment3 == "Control")$CV) # NS, p = 0.05247
+
+t.test(filter(shrub.sample, Treatment3 == "Treated")$CV_log,
+       filter(shrub.sample, Treatment3 == "Control")$CV_log) # NS, p = 0.05269
+
+wilcox.test(filter(shrub.sample0, Treatment3 == "Treated")$CV,
+            filter(shrub.sample0, Treatment3 == "Control")$CV) # p = 0.01429
+#   Warning: cannot compute exact p-value with ties
+#   Will go with this one because it includes more samples/more imformation
+
+
+# Plot
+shrub.plot.cv <- shrub.sample |> 
+  ggplot(aes(x = Treatment3, y = CV0)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              alpha = 0.8,
+              aes(color = Treatment3)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Shrub cover",
+       x = NULL,
+       y = "Coefficient of variation") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)  +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.8, y = 0.1, label = "Wilcox test, \np = 0.014"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
+shrub.plot.cv
+
+
+
+# Combine notree, herb & shrub --------------------------------------------
+
+tiff("figures/2023-07_draft-figures/CV_notree-herb-shrub.tiff", units = "in", height = 4.7, width = 8, res = 150)
+ggarrange(notree.plot.cv, herb.plot.cv, shrub.plot.cv,
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
 
 
 
@@ -278,7 +372,7 @@ shan.plot.cv
 
 # Combine notree, richness & Shannon --------------------------------------
 
-tiff("figures/2023-07_draft-figures/CV.tiff", units = "in", height = 4.7, width = 8, res = 150)
+tiff("figures/2023-07_draft-figures/CV_notree-rich-shan.tiff", units = "in", height = 4.7, width = 8, res = 150)
 ggarrange(notree.plot.cv, rich.plot.cv, shan.plot.cv,
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 
