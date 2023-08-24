@@ -20,7 +20,7 @@
 # check_model() for all two-way ANOVAs look good.
 
 # Created: 2023-03-27
-# Last updated: 2023-08-23
+# Last updated: 2023-08-24
 
 library(tidyverse)
 library(agricolae)
@@ -39,6 +39,7 @@ herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
 annual.all <- read_csv("data/cleaned/Summarised-all_annual-cover.csv")
 invasive.all <- read_csv("data/cleaned/Summarised-all_invasive-cover.csv")
+shrub.all <- read_csv("data/cleaned/Summarised-all_shrub-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 
@@ -63,6 +64,7 @@ herb.all <- convert.cols(herb.all)
 notree.all <- convert.cols(notree.all)
 annual.all <- convert.cols(annual.all)
 invasive.all <- convert.cols(invasive.all)
+shrub.all <- convert.cols(shrub.all)
 per.div <- convert.cols(per.div)
 
 
@@ -438,6 +440,82 @@ ggplot(annual.avg, aes(x = year.xaxis, y = mean,
   theme(legend.position = "none") 
 
 
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(annual.all, Treatment3 == "Treated"))) # p = 6.23e-11
+annual.trt <- annual.all |> 
+  filter(Treatment3 == "Treated")
+anova.annual.trt <- aov(annual.trt$Cover ~ annual.trt$Year)
+hsd.annual.trt <- HSD.test(anova.annual.trt, trt = "annual.trt$Year")
+hsd.annual.trt
+# 2021        8.2137097      a
+# 2018        3.2580645      b
+# 2014        3.2258065      b
+# 2013        0.8477011      b
+# 2015        0.8064516      b
+# 2012        0.6075269      b
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(annual.all, Treatment3 == "Control"))) # p = 1.76e-07
+annual.ctrl <- annual.all |> 
+  filter(Treatment3 == "Control")
+anova.annual.ctrl <- aov(annual.ctrl$Cover ~ annual.ctrl$Year)
+hsd.annual.ctrl <- HSD.test(anova.annual.ctrl, trt = "annual.ctrl$Year")
+hsd.annual.ctrl
+# 2021        6.89112903      a
+# 2014        4.30000000     ab
+# 2012        2.17916667     bc
+# 2013        1.92083333     bc
+# 2018        0.35887097      c
+# 2015        0.09072581      c
+
+
+# Plot with one-way ANOVA letters
+annual.ctrl.letters <- hsd.annual.ctrl$groups
+annual.ctrl.letters <- annual.ctrl.letters |> 
+  mutate(Year = rownames(annual.ctrl.letters)) |> 
+  arrange(Year)
+annual.trt.letters <- hsd.annual.trt$groups
+annual.trt.letters <- annual.trt.letters |> 
+  mutate(Year = rownames(annual.trt.letters)) |> 
+  arrange(Year)
+
+letters.annual <- data.frame(x = rep(annual.avg$year.xaxis[1:6], 2),
+                             y = rep(10, 12),
+                             label = c(annual.ctrl.letters$groups,
+                                       annual.trt.letters$groups),
+                             Treatment3 = c(rep("Control", 6),
+                                            rep("Treated", 6)))
+ptext.annual <- data.frame(x = rep(as.Date("2020-02-01"), 2),
+                           y = c(1, 1),
+                           label = c("ANOVA, p < 0.001", "ANOVA, p < 0.001"),
+                           Treatment3 = c("Control", "Treated"))
+annual.plot <- ggplot(annual.avg, aes(x = year.xaxis, y = mean, 
+                                      group = Treatment3, 
+                                      color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Annual cover, 2012-2021") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters.annual,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")  +
+  geom_text(data = ptext.annual,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
+annual.plot
+#   Significant increase in annual cover for both Control and Treated from 2012-2021
+
+
+
 # Plot with notree
 annual.notree.avg <- annual.avg |> 
   bind_rows(notree.avg) |> 
@@ -446,8 +524,8 @@ annual.notree.avg <- annual.avg |>
                   rep("notree", 12)))
 
 ggplot(annual.notree.avg, aes(x = year.xaxis, y = mean,
-                       group = type, 
-                       color = type)) +
+                              group = type, 
+                              color = type)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -512,6 +590,95 @@ ggplot(invasive.notree.avg, aes(x = year.xaxis, y = mean,
 #   The native cover is driving the increase in Treated, but invasives are contributing to increase
 #     in Control (although only 2% increase in invasive cover).
 #   Invasive cover increased from about 5% in Control and about 1.5% in Treated
+
+
+
+# Shrub cover -------------------------------------------------------------
+
+# Find averages by year
+shrub.avg <- shrub.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(shrub.avg,
+          file = "data/cleaned/Treatment3-average_shrub-cover.csv",
+          row.names = FALSE)
+
+# Plot
+ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE),  linewidth = 0.8) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Shrub cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+
+
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Treated"))) # NS, p = 0.982
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Control"))) # p = 0.0112
+shrub.ctrl <- shrub.all |> 
+  filter(Treatment3 == "Control")
+anova.shrub.ctrl <- aov(shrub.ctrl$Cover ~ shrub.ctrl$Year)
+hsd.shrub.ctrl <- HSD.test(anova.shrub.ctrl, trt = "shrub.ctrl$Year")
+hsd.shrub.ctrl
+# 2021        15.633065      a
+# 2012        11.697222     ab
+# 2013        10.297222     ab
+# 2014         9.304167     ab
+# 2018         7.820565      b
+# 2015         6.681452      b
+
+
+# Plot with one-way ANOVA letters
+shrub.ctrl.letters <- hsd.shrub.ctrl$groups
+shrub.ctrl.letters <- shrub.ctrl.letters |> 
+  mutate(Year = rownames(shrub.ctrl.letters)) |> 
+  arrange(Year)
+
+letters.shrub <- data.frame(x = shrub.avg$year.xaxis[1:6],
+                           y = rep(19, 6),
+                           label = shrub.ctrl.letters$groups,
+                           Treatment3 = rep("Control", 6))
+ptext.shrub <- data.frame(x = rep(as.Date("2020-02-01"), 2),
+                           y = c(6.5, 6.5),
+                           label = c("ANOVA, p = 0.011", "ANOVA, p = 0.982"),
+                           Treatment3 = c("Control", "Treated"))
+shrub.plot <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
+                                      group = Treatment3, 
+                                      color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Shrub cover, 2012-2021") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters.shrub,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")  +
+  geom_text(data = ptext.shrub,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
+shrub.plot
+#   Increase in Control notree from 2018-2021 is driven by shrubs
 
 
 
