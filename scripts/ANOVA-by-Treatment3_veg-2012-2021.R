@@ -218,6 +218,20 @@ summary(aov(Cover ~ Treatment3 * Year, data = herb.all))
 check_model(aov(Cover ~ Treatment3 * Year, data = herb.all))
 
 
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Control"))) # 0.00434
+herb.ctrl <- herb.all |> 
+  filter(Treatment3 == "Control")
+anova.herb.ctrl <- aov(herb.ctrl$Cover ~ herb.ctrl$Year)
+hsd.herb.ctrl <- HSD.test(anova.herb.ctrl, trt = "herb.ctrl$Year")
+hsd.herb.ctrl
+# 2021        26.78629      a
+# 2014        22.28333     ab
+# 2012        20.03472     ab
+# 2018        19.89718     ab
+# 2013        17.41528      b
+# 2015        14.21169      b
+
 # One-way ANOVA for Treated
 summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
 herb.trt <- herb.all |> 
@@ -232,19 +246,6 @@ hsd.herb.trt
 # 2012      11.436828     cd
 # 2013       6.929598      d
 
-# One-way ANOVA for Control
-summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Control")))
-herb.ctrl <- herb.all |> 
-  filter(Treatment3 == "Control")
-anova.herb.ctrl <- aov(herb.ctrl$Cover ~ herb.ctrl$Year)
-hsd.herb.ctrl <- HSD.test(anova.herb.ctrl, trt = "herb.ctrl$Year")
-hsd.herb.ctrl
-# 2021        26.78629      a
-# 2014        22.28333     ab
-# 2012        20.03472     ab
-# 2018        19.89718     ab
-# 2013        17.41528      b
-# 2015        14.21169      b
 
 # Plot with one-way ANOVA letters
 herb.ctrl.letters <- hsd.herb.ctrl$groups
@@ -262,6 +263,10 @@ letters.herb <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
                                 herb.trt.letters$groups),
                       Treatment3 = c(rep("Control", 6),
                                      rep("Treated", 6)))
+ptext.herb <- data.frame(x = rep(as.Date("2020-02-01"), 2),
+                           y = c(8, 8),
+                           label = c("ANOVA, p = 0.004", "ANOVA, p < 0.001"),
+                           Treatment3 = c("Control", "Treated"))
 herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
                      group = Treatment3, 
                      color = Treatment3)) +
@@ -271,13 +276,19 @@ herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
   facet_wrap(~Treatment3) +
   xlab(NULL) +
   ylab("Cover (%)") +
-  ggtitle("Herbaceous cover") +
+  ggtitle("Herbaceous cover, 2012-2021") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw(base_size = 14) +
   theme(legend.position = "none") +
   geom_text(data = letters.herb,
             mapping = aes(x = x, y = y, label = label),
-            color = "black")
+            color = "black")  +
+  geom_text(data = ptext.herb,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
 herb.plot
 
 
@@ -332,6 +343,20 @@ summary(aov(Cover ~ Treatment3 * Year, data = notree.all))
 check_model(aov(Cover ~ Treatment3 * Year, data = notree.all))
 
 
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Control"))) # p = 4.3e-06
+notree.ctrl <- notree.all |> 
+  filter(Treatment3 == "Control")
+anova.notree.ctrl <- aov(notree.ctrl$Cover ~ notree.ctrl$Year)
+hsd.notree.ctrl <- HSD.test(anova.notree.ctrl, trt = "notree.ctrl$Year")
+hsd.notree.ctrl
+# 2021          42.41935      a
+# 2012          31.73194     ab
+# 2014          31.58750     ab
+# 2018          27.71774      b
+# 2013          27.71250      b
+# 2015          20.89315      b
+
 # One-way ANOVA for Treated
 summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Treated"))) # p = 0.00304
 notree.trt <- notree.all |> 
@@ -346,19 +371,6 @@ hsd.notree.trt
 # 2012         26.72446     bc
 # 2013         21.80029      c
 
-# One-way ANOVA for Control
-summary(aov(Cover ~ Year, data = filter(notree.all, Treatment3 == "Control"))) # p = 4.3e-06
-notree.ctrl <- notree.all |> 
-  filter(Treatment3 == "Control")
-anova.notree.ctrl <- aov(notree.ctrl$Cover ~ notree.ctrl$Year)
-hsd.notree.ctrl <- HSD.test(anova.notree.ctrl, trt = "notree.ctrl$Year")
-hsd.notree.ctrl
-# 2021          42.41935      a
-# 2012          31.73194     ab
-# 2014          31.58750     ab
-# 2018          27.71774      b
-# 2013          27.71250      b
-# 2015          20.89315      b
 
 # Plot with one-way ANOVA letters
 notree.ctrl.letters <- hsd.notree.ctrl$groups
@@ -623,9 +635,6 @@ ggplot(shrub.avg, aes(x = year.xaxis, y = mean,
   theme(legend.position = "none") 
 
 
-# One-way ANOVA for Treated
-summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Treated"))) # NS, p = 0.982
-
 # One-way ANOVA for Control
 summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Control"))) # p = 0.0112
 shrub.ctrl <- shrub.all |> 
@@ -640,6 +649,9 @@ hsd.shrub.ctrl
 # 2018         7.820565      b
 # 2015         6.681452      b
 
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Treated"))) # NS, p = 0.982
+
 
 # Plot with one-way ANOVA letters
 shrub.ctrl.letters <- hsd.shrub.ctrl$groups
@@ -648,7 +660,7 @@ shrub.ctrl.letters <- shrub.ctrl.letters |>
   arrange(Year)
 
 letters.shrub <- data.frame(x = shrub.avg$year.xaxis[1:6],
-                           y = rep(19, 6),
+                           y = rep(21, 6),
                            label = shrub.ctrl.letters$groups,
                            Treatment3 = rep("Control", 6))
 ptext.shrub <- data.frame(x = rep(as.Date("2020-02-01"), 2),
@@ -690,6 +702,15 @@ ggarrange(total.plot, herb.plot, notree.plot,
 ggarrange(notree.plot, herb.plot, shrub.plot,
           ncol = 2, nrow = 2) 
 
+
+# Combine notree, herb & shrub --------------------------------------------
+
+tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-herb-shrub.tiff", units = "in", height = 12, width = 8, res = 150)
+ggarrange(notree.plot, herb.plot, shrub.plot,
+          ncol = 1, nrow = 3,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
 
 
  # Richness ----------------------------------------------------------------
@@ -839,7 +860,8 @@ shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean,
   geom_text(data = ptext.shan,
             aes(x = x, y = y, label = label),
             color = "gray30",
-            size = 2.5) 
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
 shan.plot
 
 
@@ -887,6 +909,16 @@ ggarrange(notree.plot, rich.plot, shan.plot,
 
 dev.off()
 
+
+
+# Combine richness & Shannon ----------------------------------------------
+
+tiff("figures/2023-07_draft-figures/temporal-ANOVA_richness-Shannon.tiff", units = "in", height = 8, width = 8, res = 150)
+ggarrange( rich.plot, shan.plot,
+          ncol = 1, nrow = 2,
+          labels = c("(A)", "(B)")) 
+
+dev.off()
 
 
 save.image("RData/ANOVA-by-Treatment3_veg-2012-2021.RData")
