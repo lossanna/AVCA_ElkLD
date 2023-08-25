@@ -1,9 +1,13 @@
-# Purpose: Run for all response variables (total cover, herb cover, notree cover, richness, Shannon):
+# Purpose: Run for all response variables (total cover, herb cover, notree cover, annual cover,
+#     invasive cover, shrub cover, richness, Shannon):
 #   (1) one-way repeated measures ANOVA to compare Treated vs. Control,
 #   (2) two-factor ANOVA with a Treatment3*Year interaction term to compare overall change over time,
 #   (3) one-way ANOVA for Control and Treated separately to compare year-to-year change.
 
-# Includes plots and ANOVA tests.
+# There are lots of different groupings for how I looked at cover, but I have a note explaining why I
+#   grouped things that way and if it contributed to the manuscript analysis/narrative for each
+#   cover section.
+# Script includes plots and ANOVA tests.
 #   Repeat-measures ANOVA compares Control vs. Treated directly, and accounts for repeat measures
 #     on the same plots over multiple years. This is more methodologically correct, but doesn't quite
 #     answer as interesting of a question (it doesn't matter so much inherently how the channels started
@@ -12,15 +16,16 @@
 #     and does not account for repeat measures on the same plots. Cannot run check_model() on repeat ANOVA,
 #     but can for linear models with Year as random factor. Ran linear models with Year as random factor
 #     with two packages, because lme4 allows you to use check_model(), and nlme allows you to use emmeans().
+#     check_model() for all two-way ANOVAs look good.
 #   One-way ANOVA for Control & Treated separately shows change over time, and does not them directly
 #     or account for repeat measures on same plots. This is probably the most intuitive interpretation of line graphs.
-
-# Will probably go with two-way ANOVA because it answers a more interesting/relevant question, even though
-#   it doesn't account for repeat measures.
-# check_model() for all two-way ANOVAs look good.
+#     Will probably go with one-way ANOVA because it answers a more interesting/relevant question, even though
+#     it doesn't account for repeat measures.
+# Also includes list of most common species (by percent cover), grouped by functional type for notree,
+#   herbaceous, invasive, and shrub.
 
 # Created: 2023-03-27
-# Last updated: 2023-08-24
+# Last updated: 2023-08-25
 
 library(tidyverse)
 library(agricolae)
@@ -40,6 +45,7 @@ notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
 annual.all <- read_csv("data/cleaned/Summarised-all_annual-cover.csv")
 invasive.all <- read_csv("data/cleaned/Summarised-all_invasive-cover.csv")
 shrub.all <- read_csv("data/cleaned/Summarised-all_shrub-cover.csv")
+plant.all <- read_csv("data/cleaned/Summarised-all_plant-species-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 
@@ -69,6 +75,11 @@ per.div <- convert.cols(per.div)
 
 
 # Total plant cover -------------------------------------------------------
+
+# Note: total plant cover no longer used for analysis (post 2023-04) because I decided
+#   that herbaceous cover responded faster, but also that shrubs were important, and that 
+#   trees were not the focus (hence notree). Total cover includes everything (grass, forb, shrub, tree).
+#   Analysis is still here just for show.
 
 # Find averages by year
 total.avg <- total.all %>% 
@@ -167,133 +178,13 @@ total.plot
 
 
 
-# Herbaceous cover --------------------------------------------------------
-
-# Find averages by year
-herb.avg <- herb.all %>% 
-  group_by(Treatment3, Year, year.xaxis) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-write.csv(herb.avg,
-          file = "data/cleaned/Treatment3-average_herb-cover.csv",
-          row.names = FALSE)
-
-# Plot
-ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
-                     group = Treatment3, 
-                     color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE),  linewidth = 0.8) +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Herbaceous cover") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
-
-
-# Repeat measures ANOVA
-summary(aov(Cover ~ Treatment3 + Error(Year), data = herb.all)) # p = 0.000221
-summary(aov(Cover ~ Treatment3, data = herb.all)) # without repeat measures to compare
-
-# Year as random factor
-lm.herb <- lmer(Cover ~ Treatment3 + (1|Year), data = herb.all)
-check_model(lm.herb)
-Anova(lm.herb)
-summary(lm.herb)
-
-lm2.herb <- lme(Cover ~ Treatment3, random = ~1|Year, data = herb.all)
-emmeans(lm2.herb, specs = "Treatment3") # Control > Treated
-
-
-# Two-factor ANOVA
-summary(aov(Cover ~ Treatment3 * Year, data = herb.all))
-# Treatment3:Year   5   2281   456.2   3.366 0.005529 ** 
-# Based on visual estimate, Treated probably changed more over time than Control?
-check_model(aov(Cover ~ Treatment3 * Year, data = herb.all))
-
-
-# One-way ANOVA for Control
-summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Control"))) # 0.00434
-herb.ctrl <- herb.all |> 
-  filter(Treatment3 == "Control")
-anova.herb.ctrl <- aov(herb.ctrl$Cover ~ herb.ctrl$Year)
-hsd.herb.ctrl <- HSD.test(anova.herb.ctrl, trt = "herb.ctrl$Year")
-hsd.herb.ctrl
-# 2021        26.78629      a
-# 2014        22.28333     ab
-# 2012        20.03472     ab
-# 2018        19.89718     ab
-# 2013        17.41528      b
-# 2015        14.21169      b
-
-# One-way ANOVA for Treated
-summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
-herb.trt <- herb.all |> 
-  filter(Treatment3 == "Treated")
-anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year) # p = 9.86e-10 ***
-hsd.herb.trt <- HSD.test(anova.herb.trt, trt = "herb.trt$Year")
-hsd.herb.trt
-# 2018      24.489919      a
-# 2021      22.201613     ab
-# 2014      15.139113     bc
-# 2015      12.368952     cd
-# 2012      11.436828     cd
-# 2013       6.929598      d
-
-
-# Plot with one-way ANOVA letters
-herb.ctrl.letters <- hsd.herb.ctrl$groups
-herb.ctrl.letters <- herb.ctrl.letters |> 
-  mutate(Year = rownames(herb.ctrl.letters)) |> 
-  arrange(Year)
-herb.trt.letters <- hsd.herb.trt$groups
-herb.trt.letters <-herb.trt.letters |> 
-  mutate(Year = rownames(herb.trt.letters)) |> 
-  arrange(Year)
-
-letters.herb <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
-                      y = rep(32, 12),
-                      label = c(herb.ctrl.letters$groups,
-                                herb.trt.letters$groups),
-                      Treatment3 = c(rep("Control", 6),
-                                     rep("Treated", 6)))
-ptext.herb <- data.frame(x = rep(as.Date("2020-02-01"), 2),
-                           y = c(8, 8),
-                           label = c("ANOVA, p = 0.004", "ANOVA, p < 0.001"),
-                           Treatment3 = c("Control", "Treated"))
-herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
-                     group = Treatment3, 
-                     color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Herbaceous cover, 2012-2021") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") +
-  geom_text(data = letters.herb,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black")  +
-  geom_text(data = ptext.herb,
-            aes(x = x, y = y, label = label),
-            color = "gray30",
-            size = 2.5) +
-  theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
-herb.plot
-
-
-
 # Notree cover (total cover minus trees) ----------------------------------
+
+# Note: As per manuscript narrative, we first looked at notree cover, because we thought
+#   shrubs, grasses, and forbs would respond to RDS (rocks). Trees were excluded because
+#   most trees were not rooted in the plots, but rather had overhanging branches. Trees might
+#   have had a shading effect (hence inclusion in SEM), but we didn't think trees were 
+#   responding to RDS over time.
 
 # Find averages by year
 notree.avg <- notree.all %>% 
@@ -422,7 +313,352 @@ dev.off()
 
 
 
+# Herbaceous cover --------------------------------------------------------
+
+# Note: As per manuscript narrative, we thought herbaceous plants might respond faster to RDS
+#   so we looked at them separately, because 10 years is still a relatively short time in the desert.
+
+# Most common species
+most.herb.ctrl <- plant.all |> 
+  filter(woody == "Herbaceous",
+         Treatment3 == "Control") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean))
+most.herb.ctrl$Treatment3 <- rep("Control", nrow(most.herb.ctrl))
+most.herb.ctrl <- most.herb.ctrl[1:10, ]
+most.herb.ctrl$rank <- c(1:10)
+
+most.herb.trt <- plant.all |> 
+  filter(woody == "Herbaceous",
+         Treatment3 == "Treated") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean)) 
+most.herb.trt$Treatment3 <- rep("Treated", nrow(most.herb.trt))
+most.herb.trt <- most.herb.trt[1:10, ]
+
+
+# Find averages by year
+herb.avg <- herb.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(herb.avg,
+          file = "data/cleaned/Treatment3-average_herb-cover.csv",
+          row.names = FALSE)
+
+# Plot
+ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                     group = Treatment3, 
+                     color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE),  linewidth = 0.8) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+
+
+# Repeat measures ANOVA
+summary(aov(Cover ~ Treatment3 + Error(Year), data = herb.all)) # p = 0.000221
+summary(aov(Cover ~ Treatment3, data = herb.all)) # without repeat measures to compare
+
+# Year as random factor
+lm.herb <- lmer(Cover ~ Treatment3 + (1|Year), data = herb.all)
+check_model(lm.herb)
+Anova(lm.herb)
+summary(lm.herb)
+
+lm2.herb <- lme(Cover ~ Treatment3, random = ~1|Year, data = herb.all)
+emmeans(lm2.herb, specs = "Treatment3") # Control > Treated
+
+
+# Two-factor ANOVA
+summary(aov(Cover ~ Treatment3 * Year, data = herb.all))
+# Treatment3:Year   5   2281   456.2   3.366 0.005529 ** 
+# Based on visual estimate, Treated probably changed more over time than Control?
+check_model(aov(Cover ~ Treatment3 * Year, data = herb.all))
+
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Control"))) # 0.00434
+herb.ctrl <- herb.all |> 
+  filter(Treatment3 == "Control")
+anova.herb.ctrl <- aov(herb.ctrl$Cover ~ herb.ctrl$Year)
+hsd.herb.ctrl <- HSD.test(anova.herb.ctrl, trt = "herb.ctrl$Year")
+hsd.herb.ctrl
+# 2021        26.78629      a
+# 2014        22.28333     ab
+# 2012        20.03472     ab
+# 2018        19.89718     ab
+# 2013        17.41528      b
+# 2015        14.21169      b
+
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
+herb.trt <- herb.all |> 
+  filter(Treatment3 == "Treated")
+anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year) # p = 9.86e-10 ***
+hsd.herb.trt <- HSD.test(anova.herb.trt, trt = "herb.trt$Year")
+hsd.herb.trt
+# 2018      24.489919      a
+# 2021      22.201613     ab
+# 2014      15.139113     bc
+# 2015      12.368952     cd
+# 2012      11.436828     cd
+# 2013       6.929598      d
+
+
+# Plot with one-way ANOVA letters
+herb.ctrl.letters <- hsd.herb.ctrl$groups
+herb.ctrl.letters <- herb.ctrl.letters |> 
+  mutate(Year = rownames(herb.ctrl.letters)) |> 
+  arrange(Year)
+herb.trt.letters <- hsd.herb.trt$groups
+herb.trt.letters <-herb.trt.letters |> 
+  mutate(Year = rownames(herb.trt.letters)) |> 
+  arrange(Year)
+
+letters.herb <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
+                           y = rep(32, 12),
+                           label = c(herb.ctrl.letters$groups,
+                                     herb.trt.letters$groups),
+                           Treatment3 = c(rep("Control", 6),
+                                          rep("Treated", 6)))
+ptext.herb <- data.frame(x = rep(as.Date("2020-02-01"), 2),
+                         y = c(8, 8),
+                         label = c("ANOVA, p = 0.004", "ANOVA, p < 0.001"),
+                         Treatment3 = c("Control", "Treated"))
+herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                                  group = Treatment3, 
+                                  color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover, 2012-2021") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters.herb,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")  +
+  geom_text(data = ptext.herb,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
+herb.plot
+
+
+
+# Shrub cover -------------------------------------------------------------
+
+# Note: As per manuscript narrative, we thought shrubs might respond slower than herbaceous plants,
+#   so we looked at them separately to see if we could discern what was driving the
+#   confusing notree trends.
+
+# Find averages by year
+shrub.avg <- shrub.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(shrub.avg,
+          file = "data/cleaned/Treatment3-average_shrub-cover.csv",
+          row.names = FALSE)
+
+# Plot
+ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
+                      group = Treatment3, 
+                      color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE),  linewidth = 0.8) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Shrub cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Control"))) # p = 0.0112
+shrub.ctrl <- shrub.all |> 
+  filter(Treatment3 == "Control")
+anova.shrub.ctrl <- aov(shrub.ctrl$Cover ~ shrub.ctrl$Year)
+hsd.shrub.ctrl <- HSD.test(anova.shrub.ctrl, trt = "shrub.ctrl$Year")
+hsd.shrub.ctrl
+# 2021        15.633065      a
+# 2012        11.697222     ab
+# 2013        10.297222     ab
+# 2014         9.304167     ab
+# 2018         7.820565      b
+# 2015         6.681452      b
+
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Treated"))) # NS, p = 0.982
+
+
+# Plot with one-way ANOVA letters
+shrub.ctrl.letters <- hsd.shrub.ctrl$groups
+shrub.ctrl.letters <- shrub.ctrl.letters |> 
+  mutate(Year = rownames(shrub.ctrl.letters)) |> 
+  arrange(Year)
+
+letters.shrub <- data.frame(x = shrub.avg$year.xaxis[1:6],
+                            y = rep(21, 6),
+                            label = shrub.ctrl.letters$groups,
+                            Treatment3 = rep("Control", 6))
+ptext.shrub <- data.frame(x = rep(as.Date("2020-02-01"), 2),
+                          y = c(6.5, 6.5),
+                          label = c("ANOVA, p = 0.011", "ANOVA, p = 0.982"),
+                          Treatment3 = c("Control", "Treated"))
+shrub.plot <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
+                                    group = Treatment3, 
+                                    color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Shrub cover, 2012-2021") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") +
+  geom_text(data = letters.shrub,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black")  +
+  geom_text(data = ptext.shrub,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
+shrub.plot
+#   Increase in Control notree from 2018-2021 is driven by shrubs
+
+
+
+# Compare veg cover change ------------------------------------------------
+
+ggarrange(total.plot, herb.plot, notree.plot,
+          ncol = 2, nrow = 2)
+
+ggarrange(notree.plot, herb.plot, shrub.plot,
+          ncol = 2, nrow = 2) 
+
+
+# Combine notree, herb & shrub --------------------------------------------
+
+tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-herb-shrub.tiff", units = "in", height = 12, width = 8, res = 150)
+ggarrange(notree.plot, herb.plot, shrub.plot,
+          ncol = 1, nrow = 3,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+
+
+
+# Invasive cover ----------------------------------------------------------
+
+# Note: I wanted to look at invasive cover because other papers had shown that RDS
+#   increased veg, but that it mostly came from non-natives.
+
+# Find averages by year
+invasive.avg <- invasive.all %>% 
+  group_by(Treatment3, Year, year.xaxis) %>% 
+  summarise(mean = mean(Cover),
+            SD = sd(Cover),
+            SE = std.error(Cover),
+            .groups = "keep")
+
+write.csv(invasive.avg,
+          file = "data/cleaned/Treatment3-average_invasive-cover.csv",
+          row.names = FALSE)
+
+# Plot
+ggplot(invasive.avg, aes(x = year.xaxis, y = mean,
+                         group = Treatment3, 
+                         color = Treatment3)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Invasive cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none") 
+
+# One-way ANOVA for Treated
+summary(aov(Cover ~ Year, data = filter(invasive.all, Treatment3 == "Treated"))) # p = 6.23e-11
+invasive.trt <- invasive.all |> 
+  filter(Treatment3 == "Treated")
+anova.invasive.trt <- aov(invasive.trt$Cover ~ invasive.trt$Year)
+hsd.invasive.trt <- HSD.test(anova.invasive.trt, trt = "invasive.trt$Year")
+hsd.invasive.trt
+# 2021        8.2137097      a
+# 2018        3.2580645      b
+# 2014        3.2258065      b
+# 2013        0.8477011      b
+# 2015        0.8064516      b
+# 2012        0.6075269      b
+
+# One-way ANOVA for Control
+summary(aov(Cover ~ Year, data = filter(invasive.all, Treatment3 == "Control"))) # p = 1.76e-07
+invasive.ctrl <- invasive.all |> 
+  filter(Treatment3 == "Control")
+anova.invasive.ctrl <- aov(invasive.ctrl$Cover ~ invasive.ctrl$Year)
+hsd.invasive.ctrl <- HSD.test(anova.invasive.ctrl, trt = "invasive.ctrl$Year")
+hsd.invasive.ctrl
+
+
+# Plot with notree
+invasive.notree.avg <- invasive.avg |> 
+  bind_rows(notree.avg) |> 
+  ungroup() |> 
+  mutate(type = c(rep("invasive", 12),
+                  rep("notree", 12)))
+
+ggplot(invasive.notree.avg, aes(x = year.xaxis, y = mean,
+                                group = type, 
+                                color = type)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 3) +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment3) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Invasive and notree cover") +
+  theme_bw(base_size = 14) 
+#   The native cover is driving the increase in Treated, but invasives are contributing to increase
+#     in Control (although only 2% increase in invasive cover).
+#   Invasive cover increased from about 5% in Control and about 1.5% in Treated
+
+
+
 # Annual cover ------------------------------------------------------------
+
+# Note: I thought maybe annuals could explain what was driving notree trends, but they weren't really
+#   helpful, so this analysis is excluded from manuscript.
 
 # Find averages by year
 annual.avg <- annual.all %>% 
@@ -549,168 +785,6 @@ ggplot(annual.notree.avg, aes(x = year.xaxis, y = mean,
 #   There was an increase in annuals in Treated from 2018 to 2021, but a decrease in overall notree cover.
 #     Annual cover increased and notree cover increased for Control (increase seems roughly proportional).
 
-
-
-# Invasive cover ----------------------------------------------------------
-
-# Find averages by year
-invasive.avg <- invasive.all %>% 
-  group_by(Treatment3, Year, year.xaxis) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-write.csv(invasive.avg,
-          file = "data/cleaned/Treatment3-average_invasive-cover.csv",
-          row.names = FALSE)
-
-# Plot
-ggplot(invasive.avg, aes(x = year.xaxis, y = mean,
-                       group = Treatment3, 
-                       color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Invasive cover") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
-
-
-# Plot with notree
-invasive.notree.avg <- invasive.avg |> 
-  bind_rows(notree.avg) |> 
-  ungroup() |> 
-  mutate(type = c(rep("invasive", 12),
-                  rep("notree", 12)))
-
-ggplot(invasive.notree.avg, aes(x = year.xaxis, y = mean,
-                              group = type, 
-                              color = type)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Invasive and notree cover") +
-  theme_bw(base_size = 14) 
-#   The native cover is driving the increase in Treated, but invasives are contributing to increase
-#     in Control (although only 2% increase in invasive cover).
-#   Invasive cover increased from about 5% in Control and about 1.5% in Treated
-
-
-
-# Shrub cover -------------------------------------------------------------
-
-# Find averages by year
-shrub.avg <- shrub.all %>% 
-  group_by(Treatment3, Year, year.xaxis) %>% 
-  summarise(mean = mean(Cover),
-            SD = sd(Cover),
-            SE = std.error(Cover),
-            .groups = "keep")
-
-write.csv(shrub.avg,
-          file = "data/cleaned/Treatment3-average_shrub-cover.csv",
-          row.names = FALSE)
-
-# Plot
-ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
-                     group = Treatment3, 
-                     color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE),  linewidth = 0.8) +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Shrub cover") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") 
-
-
-# One-way ANOVA for Control
-summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Control"))) # p = 0.0112
-shrub.ctrl <- shrub.all |> 
-  filter(Treatment3 == "Control")
-anova.shrub.ctrl <- aov(shrub.ctrl$Cover ~ shrub.ctrl$Year)
-hsd.shrub.ctrl <- HSD.test(anova.shrub.ctrl, trt = "shrub.ctrl$Year")
-hsd.shrub.ctrl
-# 2021        15.633065      a
-# 2012        11.697222     ab
-# 2013        10.297222     ab
-# 2014         9.304167     ab
-# 2018         7.820565      b
-# 2015         6.681452      b
-
-# One-way ANOVA for Treated
-summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Treated"))) # NS, p = 0.982
-
-
-# Plot with one-way ANOVA letters
-shrub.ctrl.letters <- hsd.shrub.ctrl$groups
-shrub.ctrl.letters <- shrub.ctrl.letters |> 
-  mutate(Year = rownames(shrub.ctrl.letters)) |> 
-  arrange(Year)
-
-letters.shrub <- data.frame(x = shrub.avg$year.xaxis[1:6],
-                           y = rep(21, 6),
-                           label = shrub.ctrl.letters$groups,
-                           Treatment3 = rep("Control", 6))
-ptext.shrub <- data.frame(x = rep(as.Date("2020-02-01"), 2),
-                           y = c(6.5, 6.5),
-                           label = c("ANOVA, p = 0.011", "ANOVA, p = 0.982"),
-                           Treatment3 = c("Control", "Treated"))
-shrub.plot <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
-                                      group = Treatment3, 
-                                      color = Treatment3)) +
-  geom_line(linewidth = 1) +
-  geom_point(size = 3) +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment3) +
-  xlab(NULL) +
-  ylab("Cover (%)") +
-  ggtitle("Shrub cover, 2012-2021") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") +
-  geom_text(data = letters.shrub,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black")  +
-  geom_text(data = ptext.shrub,
-            aes(x = x, y = y, label = label),
-            color = "gray30",
-            size = 2.5) +
-  theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
-shrub.plot
-#   Increase in Control notree from 2018-2021 is driven by shrubs
-
-
-
-# Compare veg cover change ------------------------------------------------
-
-ggarrange(total.plot, herb.plot, notree.plot,
-          ncol = 2, nrow = 2)
-
-ggarrange(notree.plot, herb.plot, shrub.plot,
-          ncol = 2, nrow = 2) 
-
-
-# Combine notree, herb & shrub --------------------------------------------
-
-tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-herb-shrub.tiff", units = "in", height = 12, width = 8, res = 150)
-ggarrange(notree.plot, herb.plot, shrub.plot,
-          ncol = 1, nrow = 3,
-          labels = c("(A)", "(B)", "(C)")) 
-
-dev.off()
 
 
  # Richness ----------------------------------------------------------------
