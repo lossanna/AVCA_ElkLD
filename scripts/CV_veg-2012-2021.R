@@ -113,7 +113,7 @@ herb.plot.cv <- herb.sample |>
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
-               width = .75, linetype = "dashed")
+               width = 0.75, linetype = "dashed")
 herb.plot.cv
 
 
@@ -161,7 +161,7 @@ notree.plot.cv <- notree.sample |>
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
-               width = .75, linetype = "dashed")
+               width = 0.75, linetype = "dashed")
 notree.plot.cv
 
 
@@ -251,8 +251,36 @@ shrub.plot.cv <- shrub.sample |>
             color = "black") +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
-               width = .75, linetype = "dashed")
+               width = 0.75, linetype = "dashed")
 shrub.plot.cv
+
+shrub.plot.cv2 <- shrub.sample |> 
+  ggplot(aes(x = Treatment3, y = CV0)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              alpha = 0.8,
+              aes(color = Treatment3)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Shrub cover",
+       x = NULL,
+       y = "Coefficient of variation") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)  +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.8, y = 0.1, label = "Wilcox test, \np = 0.014"),
+            color = "gray30",
+            size = 2.5) +
+  geom_text(data = letters.shrub,
+            aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed")
+shrub.plot.cv2
 
 
 
@@ -317,7 +345,7 @@ rich.plot.cv <- rich.sample |>
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
-               width = .75, linetype = "dashed")
+               width = 0.75, linetype = "dashed")
 rich.plot.cv
 
 
@@ -372,7 +400,7 @@ shan.plot.cv <- shan.sample |>
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
-               width = .75, linetype = "dashed")
+               width = 0.75, linetype = "dashed")
 shan.plot.cv
 
 
@@ -386,6 +414,16 @@ ggarrange(notree.plot.cv, rich.plot.cv, shan.plot.cv,
 
 dev.off()
 
+
+
+# Combine shrub, richness & Shannon ---------------------------------------
+
+tiff("figures/2023-07_draft-figures/CV_shrub-rich-shan.tiff", units = "in", height = 4.7, width = 8, res = 150)
+ggarrange(shrub.plot.cv2, rich.plot.cv, shan.plot.cv,
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
 
 
 # Within-channel variation over time --------------------------------------
