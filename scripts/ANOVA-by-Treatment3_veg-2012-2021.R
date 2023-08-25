@@ -369,6 +369,28 @@ most.herb.trt <- most.herb.trt |>
          rank = 1:10,
          group = rep("herb", 10))
 
+# Top 3 species by year
+most3.herb.ctrl <- plant.all |> 
+  filter(woody == "Herbaceous",
+         Treatment3 == "Control") |> 
+  group_by(Common, Year) |> 
+  summarise(mean = mean(Cover),
+            .groups = "keep") |> 
+  arrange(desc(mean)) |> 
+  arrange(Year) |> 
+  group_by(Year) |> 
+  filter(row_number() %in% 1:3)
+
+most3.herb.trt <- plant.all |> 
+  filter(woody == "Herbaceous",
+         Treatment3 == "Treated") |> 
+  group_by(Common, Year) |> 
+  summarise(mean = mean(Cover),
+            .groups = "keep") |> 
+  arrange(desc(mean)) |> 
+  arrange(Year) |> 
+  group_by(Year) |> 
+  filter(row_number() %in% 1:3)
 
 # Find averages by year
 herb.avg <- herb.all %>% 
@@ -692,26 +714,21 @@ ggplot(invasive.avg, aes(x = year.xaxis, y = mean,
   theme(legend.position = "none") 
 
 # One-way ANOVA for Treated
-summary(aov(Cover ~ Year, data = filter(invasive.all, Treatment3 == "Treated"))) # p = 6.23e-11
-invasive.trt <- invasive.all |> 
-  filter(Treatment3 == "Treated")
-anova.invasive.trt <- aov(invasive.trt$Cover ~ invasive.trt$Year)
-hsd.invasive.trt <- HSD.test(anova.invasive.trt, trt = "invasive.trt$Year")
-hsd.invasive.trt
-# 2021        8.2137097      a
-# 2018        3.2580645      b
-# 2014        3.2258065      b
-# 2013        0.8477011      b
-# 2015        0.8064516      b
-# 2012        0.6075269      b
+summary(aov(Cover ~ Year, data = filter(invasive.all, Treatment3 == "Treated"))) # p = 0.145
 
 # One-way ANOVA for Control
-summary(aov(Cover ~ Year, data = filter(invasive.all, Treatment3 == "Control"))) # p = 1.76e-07
+summary(aov(Cover ~ Year, data = filter(invasive.all, Treatment3 == "Control"))) # p = 0.000977
 invasive.ctrl <- invasive.all |> 
   filter(Treatment3 == "Control")
 anova.invasive.ctrl <- aov(invasive.ctrl$Cover ~ invasive.ctrl$Year)
 hsd.invasive.ctrl <- HSD.test(anova.invasive.ctrl, trt = "invasive.ctrl$Year")
 hsd.invasive.ctrl
+# 2021            7.375000      a
+# 2018            5.104839     ab
+# 2012            3.338889      b
+# 2015            2.955645      b
+# 2013            2.575000      b
+# 2014            2.462500      b
 
 
 # Plot with notree
