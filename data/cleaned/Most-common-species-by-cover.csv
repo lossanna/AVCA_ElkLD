@@ -1,0 +1,81 @@
+Common,mean,Treatment3,rank,group
+Shortleaf baccharis,22.083333333333336,Control,1,notree
+False mesquite,9.367424242424242,Control,2,notree
+Brickellia,8.597222222222223,Control,3,notree
+Sideoats grama,7.614864864864865,Control,4,notree
+Tanglehead,7.164930555555555,Control,5,notree
+Slender grama,7.095370370370371,Control,6,notree
+"Unknown annual grass, C19",6.595,Control,7,notree
+Desert broom,4.75,Control,8,notree
+Bastardsage,4.625,Control,9,notree
+Lehmann lovegrass,4.491438356164384,Control,10,notree
+False mesquite,17.47997416020672,Treated,1,notree
+AAGG,10.425,Treated,2,notree
+Bracted bedstraw,9.375,Treated,3,notree
+Desert broom,8.75,Treated,4,notree
+"Unknown dentata shrub, C13",8.75,Treated,5,notree
+Rabbitbrush,6.666666666666667,Treated,6,notree
+"Unknown annual grass, C21",6.535714285714286,Treated,7,notree
+Bush muhly,6.481060606060606,Treated,8,notree
+Brickellia,5.732142857142857,Treated,9,notree
+Snakeweed,5.282738095238095,Treated,10,notree
+Sideoats grama,7.614864864864865,Control,1,herb
+Tanglehead,7.164930555555555,Control,2,herb
+Slender grama,7.095370370370371,Control,3,herb
+"Unknown annual grass, C19",6.595,Control,4,herb
+Lehmann lovegrass,4.491438356164384,Control,5,herb
+Annual grass (year summed),3.61790780141844,Control,6,herb
+Sprucetop grama,2.4479166666666665,Control,7,herb
+Green sprangletop,2.25,Control,8,herb
+Spidergrass,1.9973753280839894,Control,9,herb
+Cane beardgrass,1.9931592039800996,Control,10,herb
+AAGG,10.425,Treated,1,herb
+Bracted bedstraw,9.375,Treated,2,herb
+"Unknown annual grass, C21",6.535714285714286,Treated,3,herb
+Bush muhly,6.481060606060606,Treated,4,herb
+Lehmann lovegrass,4.745386904761904,Treated,5,herb
+Sideoats grama,4.498742816091954,Treated,6,herb
+AAFF,3.7875,Treated,7,herb
+AA,3.5833333333333335,Treated,8,herb
+Cane beardgrass,3.4683098591549295,Treated,9,herb
+Buffelgrass,3.4097222222222223,Treated,10,herb
+Shortleaf baccharis,22.083333333333336,Control,1,shrub
+False mesquite,9.367424242424242,Control,2,shrub
+Brickellia,8.597222222222223,Control,3,shrub
+Desert broom,4.75,Control,4,shrub
+Bastardsage,4.625,Control,5,shrub
+Brittlebush,4.05,Control,6,shrub
+Snakeweed,3.7581615120274914,Control,7,shrub
+Shrubby buckwheat,3.75,Control,8,shrub
+Ocotillo,3.3645833333333335,Control,9,shrub
+Staghorn cholla,2.9166666666666665,Control,10,shrub
+False mesquite,17.47997416020672,Treated,1,shrub
+Desert broom,8.75,Treated,2,shrub
+"Unknown dentata shrub, C13",8.75,Treated,3,shrub
+Rabbitbrush,6.666666666666667,Treated,4,shrub
+Brickellia,5.732142857142857,Treated,5,shrub
+Snakeweed,5.282738095238095,Treated,6,shrub
+Burroweed,5.025,Treated,7,shrub
+Cholla,3.75,Treated,8,shrub
+Shortleaf baccharis,3.6538461538461537,Treated,9,shrub
+Desert zinnia,2.3146929824561404,Treated,10,shrub
+Lehmann lovegrass,4.491438356164384,Control,1,invasive
+Stinkgrass,0.8333333333333334,Control,2,invasive
+Spreading fantails,0.769298245614035,Control,3,invasive
+African lovegrass,0.125,Control,4,invasive
+NA,NA,Control,5,invasive
+NA,NA,Control,6,invasive
+NA,NA,Control,7,invasive
+NA,NA,Control,8,invasive
+NA,NA,Control,9,invasive
+NA,NA,Control,10,invasive
+Lehmann lovegrass,4.745386904761904,Treated,1,invasive
+Buffelgrass,3.4097222222222223,Treated,2,invasive
+Boer lovegrass,0.625,Treated,3,invasive
+African lovegrass,0.53125,Treated,4,invasive
+Spreading fantails,0.36676356589147285,Treated,5,invasive
+Barnyard,0.225,Treated,6,invasive
+Rose Natal grass,0.125,Treated,7,invasive
+Stinkgrass,0.125,Treated,8,invasive
+NA,NA,Treated,9,invasive
+NA,NA,Treated,10,invasive

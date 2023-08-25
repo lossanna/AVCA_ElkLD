@@ -186,6 +186,32 @@ total.plot
 #   have had a shading effect (hence inclusion in SEM), but we didn't think trees were 
 #   responding to RDS over time.
 
+# Most common species
+most.notree.ctrl <- plant.all |> 
+  filter(tree == "not tree",
+         Treatment3 == "Control") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean))
+most.notree.ctrl <- most.notree.ctrl[1:10, ]
+most.notree.ctrl <- most.notree.ctrl |> 
+  mutate(Treatment3 = rep("Control", 10),
+         rank = 1:10,
+         group = rep("notree", 10))
+
+most.notree.trt <- plant.all |> 
+  filter(tree == "not tree",
+         Treatment3 == "Treated") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean)) 
+most.notree.trt <- most.notree.trt[1:10, ]
+most.notree.trt <- most.notree.trt |> 
+  mutate(Treatment3 = rep("Treated", 10),
+         rank = 1:10,
+         group = rep("notree", 10))
+
+
 # Find averages by year
 notree.avg <- notree.all %>% 
   group_by(Treatment3, Year, year.xaxis) %>% 
@@ -325,9 +351,11 @@ most.herb.ctrl <- plant.all |>
   group_by(Common) |> 
   summarise(mean = mean(Cover)) |> 
   arrange(desc(mean))
-most.herb.ctrl$Treatment3 <- rep("Control", nrow(most.herb.ctrl))
 most.herb.ctrl <- most.herb.ctrl[1:10, ]
-most.herb.ctrl$rank <- c(1:10)
+most.herb.ctrl <- most.herb.ctrl |> 
+  mutate(Treatment3 = rep("Control", 10),
+         rank = 1:10,
+         group = rep("herb", 10))
 
 most.herb.trt <- plant.all |> 
   filter(woody == "Herbaceous",
@@ -335,8 +363,11 @@ most.herb.trt <- plant.all |>
   group_by(Common) |> 
   summarise(mean = mean(Cover)) |> 
   arrange(desc(mean)) 
-most.herb.trt$Treatment3 <- rep("Treated", nrow(most.herb.trt))
 most.herb.trt <- most.herb.trt[1:10, ]
+most.herb.trt <- most.herb.trt |> 
+  mutate(Treatment3 = rep("Treated", 10),
+         rank = 1:10,
+         group = rep("herb", 10))
 
 
 # Find averages by year
@@ -469,6 +500,32 @@ herb.plot
 #   so we looked at them separately to see if we could discern what was driving the
 #   confusing notree trends.
 
+# Most common species
+most.shrub.ctrl <- plant.all |> 
+  filter(Functional == "Shrub",
+         Treatment3 == "Control") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean))
+most.shrub.ctrl <- most.shrub.ctrl[1:10, ]
+most.shrub.ctrl <- most.shrub.ctrl |> 
+  mutate(Treatment3 = rep("Control", 10),
+         rank = 1:10,
+         group = rep("shrub", 10))
+
+most.shrub.trt <- plant.all |> 
+  filter(Functional == "Shrub",
+         Treatment3 == "Treated") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean)) 
+most.shrub.trt <- most.shrub.trt[1:10, ]
+most.shrub.trt <- most.shrub.trt |> 
+  mutate(Treatment3 = rep("Treated", 10),
+         rank = 1:10,
+         group = rep("shrub", 10))
+
+
 # Find averages by year
 shrub.avg <- shrub.all %>% 
   group_by(Treatment3, Year, year.xaxis) %>% 
@@ -580,6 +637,32 @@ dev.off()
 
 # Note: I wanted to look at invasive cover because other papers had shown that RDS
 #   increased veg, but that it mostly came from non-natives.
+
+# Most common species
+most.invasive.ctrl <- plant.all |> 
+  filter(Native == "Invasive",
+         Treatment3 == "Control") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean))
+most.invasive.ctrl <- most.invasive.ctrl[1:10, ]
+most.invasive.ctrl <- most.invasive.ctrl |> 
+  mutate(Treatment3 = rep("Control", 10),
+         rank = 1:10,
+         group = rep("invasive", 10))
+
+most.invasive.trt <- plant.all |> 
+  filter(Native == "Invasive",
+         Treatment3 == "Treated") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean)) 
+most.invasive.trt <- most.invasive.trt[1:10, ]
+most.invasive.trt <- most.invasive.trt |> 
+  mutate(Treatment3 = rep("Treated", 10),
+         rank = 1:10,
+         group = rep("invasive", 10))
+
 
 # Find averages by year
 invasive.avg <- invasive.all %>% 
@@ -787,7 +870,19 @@ ggplot(annual.notree.avg, aes(x = year.xaxis, y = mean,
 
 
 
- # Richness ----------------------------------------------------------------
+# Most common species by cover --------------------------------------------
+
+most.species <- rbind(most.notree.ctrl, most.notree.trt,
+                      most.herb.ctrl, most.herb.trt,
+                      most.shrub.ctrl, most.shrub.trt,
+                      most.invasive.ctrl, most.invasive.trt)
+
+write_csv(most.species,
+          file = "data/cleaned/Most-common-species-by-cover.csv")
+
+
+ 
+# Richness ----------------------------------------------------------------
 
 # Find averages by year
 rich.avg <- per.div %>% 
