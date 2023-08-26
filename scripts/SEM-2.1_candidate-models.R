@@ -8,10 +8,12 @@
 #   Removing tree cover does not improve model fit (and removing non-significant paths is not good practice).
 #   OM_log performs better than TN_log for notree, but both are okay models (good model fit).
 #   TC_log does not produce good model fit (for notree).
-#   OOM_log and TN_log produce very similar fit for herb.
+#   OM_log and TN_log produce very similar fit for herb. Will probably go with this one, because
+#     temporal ANOVA results showed that shrubs responded differently than herbs to RDS. Will not do
+#     SEM for shrubs because cover was not normally distributed.
 
 # Created: 2023-08-17
-# Updated: 2023-08-24
+# Updated: 2023-08-26
 
 
 library(lavaan)
@@ -485,5 +487,34 @@ semPaths(fit8.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
          nCharNodes = 6, node.width = 1.3, layout = "tree2", reorder = FALSE)
 
 
+# Compare 7 & 8 (OM vs TN with herb) --------------------------------------
+
+# Both models are fine.
+
+# With OM
+summary(fit7.0, fit.measures = TRUE, standardized = TRUE)
+# Mod7.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 21.703
+#   chi-sq stat to df ratio: 0.72 (good; <2)
+#   chi-sq p-value: 0.865 (good, >0.05)
+#   CFI: 1.000 (good, >0.95)
+#   RMSEA: 0.000 (good, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.069 (good, <0.1)
+#   Akaike (AIC): 1351.278
+
+# With TN
+summary(fit8.0, fit.measures = TRUE, standardized = TRUE)
+# Mod8.0 diagnostics:
+# Global fit:
+#   chi-sq statistic: 25.702
+#   chi-sq stat to df ratio: 0.86 (good; <2)
+#   chi-sq p-value: 0.690 (good, >0.05)
+#   CFI: 1.000 (good, >0.95)
+#   RMSEA: 0.000 (good, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.066 (good, <0.1)
+#   Akaike (AIC): 1320.884
 
 save.image("RData/SEM-2.1_candidate-models.RData")
