@@ -3,6 +3,7 @@
 # Checked for normality, visualized distribution, checked collinearity:
 # Determined all were normally distributed except TN_perc, TC_perc, OM_perc,
 #   chemoheterotrophy, n-cyclers. All of these were were log-transformed.
+#   Also shrub cover (2021 and 2018) were not normal, and so it will just be left out of SEM.
 # Determined that TN, TC, OM and C:N ratio are collinear (especially TN & TC).
 #   As a result, will only use TN & OM in analysis.
 # Also found that bacteria/archaea richness & shannon are kind of correlated,
@@ -126,9 +127,8 @@ dat.2021 <- total.2021 %>%
 
 
 
-# Visualize distribution --------------------------------------------------
+# Histograms --------------------------------------------------------------
 
-# Histogram
 hist(dat.2021$total, breaks = 10)
 hist(dat.2021$herb, breaks = 10)
 hist(dat.2021$herb.18, breaks = 10)
@@ -153,7 +153,9 @@ hist(dat.2021$saprotroph)
 hist(elev$dElev, breaks = 10) # not normal - right tail skew?
 hist(elev$dElev_corrected, breaks = 10)
 
-# Boxplot
+
+# Boxplots ----------------------------------------------------------------
+
 vis.boxplot <- function(dat, y, ylab) {
   ggplot(dat,
          aes(x = Treatment3,
@@ -195,12 +197,18 @@ vis.boxplot(dat.2021, dat.2021$n.cycler, "N-cycling bacteria & archea (%)") # ap
 vis.boxplot(dat.2021, dat.2021$saprotroph, "Fungi saprotrophs (%)")
 vis.boxplot(dat.2021, dat.2021$dElev_corrected, "Elevation difference, 2011-2019 (m)")
 
-# Quantile-quantile plots
+
+# Quantile-quantile plots -------------------------------------------------
+
 qqPlot(dat.2021$total)
 qqPlot(dat.2021$herb)
 qqPlot(dat.2021$herb.18)
 qqPlot(dat.2021$shrub) # not normal
+qqPlot(filter(dat.2021, Treatment3 == "Control")$shrub)
+qqPlot(filter(dat.2021, Treatment3 == "Treated")$shrub)
 qqPlot(dat.2021$shrub.18) # not normal
+qqPlot(filter(dat.2021, Treatment3 == "Control")$shrub.18) # almost normal
+qqPlot(filter(dat.2021, Treatment3 == "Treated")$shrub.18)
 qqPlot(dat.2021$notree)
 qqPlot(dat.2021$notree.18)
 qqPlot(dat.2021$tree) # almost normal?
