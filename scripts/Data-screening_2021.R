@@ -11,7 +11,7 @@
 # Produced a clean data sheet for 2021 data (Data-2021_clean.csv).
 #  This is also to be used for SEM 2.0 input.
 # Created: 2022-04-18
-# Last updated: 2023-07-25
+# Last updated: 2023-08-26
 
 library(tidyverse)
 library(readxl)
@@ -27,6 +27,7 @@ total.all <- read.csv("data/cleaned/Summarised-all_total-plant-cover.csv")
 herb.all <- read.csv("data/cleaned/Summarised-all_herb-cover.csv")
 notree.all <- read.csv("data/cleaned/Summarised-all_notree-cover.csv")
 tree.all <- read.csv("data/cleaned/Summarised-all_tree-cover.csv")
+shrub.all <- read.csv("data/cleaned/Summarised-all_shrub-cover.csv")
 per.div <- read.csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 barc.div <- read.table("data/cleaned/sequencing/bac-arc_diversity.txt",
@@ -52,6 +53,9 @@ herb.2021 <- herb.all %>%
 notree.2021 <- notree.all |> 
   filter(Year == "2021") |> 
   rename(notree = Cover)
+shrub.2021 <- shrub.all |> 
+  filter(Year == "2021") |> 
+  rename(shrub = Cover)
 perdiv.2021 <- per.div %>% 
   filter(Year == "2021") |> 
   rename(perveg.richness = rich,
@@ -61,16 +65,17 @@ perdiv.2021 <- per.div %>%
 notree.2018 <- notree.all |> 
   filter(Year == "2018") |> 
   rename(notree.18 = Cover)
-
 tree.avg1214 <- tree.all |> 
   filter(Year %in% c("2012", "2013", "2014")) |> 
   group_by(Sample, Channel, Station, Treatment3) |> 
   summarise(tree = mean(Cover),
             .groups = "keep")
-
 herb.2018 <- herb.all |> 
   filter(Year == "2018") |> 
   rename(herb.18 = Cover)
+shrub.2018 <- shrub.all |> 
+  filter(Year == "2018") |> 
+  rename(shrub.18 = Cover)
 
 # Compile variables
 dat.2021 <- total.2021 %>% 
@@ -81,6 +86,10 @@ dat.2021 <- total.2021 %>%
   left_join(notree.2021) |> 
   select(-PlotTimeID, -Year, -year.xaxis) |> 
   left_join(notree.2018) |> 
+  select(-PlotTimeID, -Year, -year.xaxis) |> 
+  left_join(shrub.2021) |> 
+  select(-PlotTimeID, -Year, -year.xaxis) |> 
+  left_join(shrub.2018) |> 
   select(-PlotTimeID, -Year, -year.xaxis) |> 
   left_join(tree.avg1214) |> 
   left_join(perdiv.2021) |> 
@@ -108,7 +117,8 @@ dat.2021 <- total.2021 %>%
          saprotroph = funguild.trophic$Saprotroph) |> 
   left_join(elev) |> 
   select(Sample, Name, Channel, Station, Treatment3,
-         total, herb, herb.18, notree, notree.18, tree, perveg.richness, perveg.shannon,
+         total, herb, herb.18, notree, notree.18, shrub, shrub.18, tree, 
+         perveg.richness, perveg.shannon,
          TN_perc, TC_perc, CN_ratio, OM_perc,
          barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
          fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
@@ -122,6 +132,8 @@ dat.2021 <- total.2021 %>%
 hist(dat.2021$total, breaks = 10)
 hist(dat.2021$herb, breaks = 10)
 hist(dat.2021$herb.18, breaks = 10)
+hist(dat.2021$shrub, breaks = 10) # not normal
+hist(dat.2021$shrub.18, breaks = 10) # not normal
 hist(dat.2021$notree, breaks = 15)
 hist(dat.2021$notree.18, breaks = 15)
 hist(dat.2021$tree, breaks = 15) # not normal
@@ -163,6 +175,8 @@ vis.boxplot <- function(dat, y, ylab) {
 vis.boxplot(dat.2021, dat.2021$total, "Total plant cover (%)")
 vis.boxplot(dat.2021, dat.2021$herb, "Herbaceous cover (%)")
 vis.boxplot(dat.2021, dat.2021$herb.18, "Herbaceous cover, 2018 (%)")
+vis.boxplot(dat.2021, dat.2021$shrub, "Shrub cover (%)")
+vis.boxplot(dat.2021, dat.2021$shrub.18, "Shrub cover, 2018 (%)")
 vis.boxplot(dat.2021, dat.2021$notree, "Grass, forb & shrub cover (%)")
 vis.boxplot(dat.2021, dat.2021$notree.18, "Grass, forb & shrub cover, 2018 (%)")
 vis.boxplot(dat.2021, dat.2021$tree, "Tree cover, 2012-2014 (%)")
@@ -185,6 +199,8 @@ vis.boxplot(dat.2021, dat.2021$dElev_corrected, "Elevation difference, 2011-2019
 qqPlot(dat.2021$total)
 qqPlot(dat.2021$herb)
 qqPlot(dat.2021$herb.18)
+qqPlot(dat.2021$shrub) # not normal
+qqPlot(dat.2021$shrub.18) # not normal
 qqPlot(dat.2021$notree)
 qqPlot(dat.2021$notree.18)
 qqPlot(dat.2021$tree) # almost normal?
@@ -310,7 +326,8 @@ corr.ctrl <- rcorr(as.matrix(corr.dat.ctrl))[["r"]]
 
 dat.2021 <- dat.2021 |> 
   select(Sample, Name, Channel, Station, Treatment3,
-         total, herb, herb.18, notree, notree.18, tree, perveg.richness, perveg.shannon,
+         total, herb, herb.18, notree, notree.18, tree, 
+         perveg.richness, perveg.shannon,
          TN_perc, TN_ppt, TN_log, TC_perc, TC_ppt, TC_log, CN_ratio, OM_perc, OM_log,
          barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
          fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
