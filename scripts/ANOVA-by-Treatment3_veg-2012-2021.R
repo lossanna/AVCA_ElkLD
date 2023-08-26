@@ -6,7 +6,8 @@
 
 # There are lots of different groupings for how I looked at cover, but I have a note explaining why I
 #   grouped things that way and if it contributed to the manuscript analysis/narrative for each
-#   cover section.
+#   cover section. ANOVAs are also fairly robust to non-normality, so even though shrub cover by year was 
+#   kind of not normal (see Data-screening_veg_2012-2021.R), I still did ANOVA anyway.
 # Script includes plots and ANOVA tests.
 #   Repeat-measures ANOVA compares Control vs. Treated directly, and accounts for repeat measures
 #     on the same plots over multiple years. This is more methodologically correct, but doesn't quite
@@ -25,7 +26,7 @@
 #   herbaceous, invasive, and shrub.
 
 # Created: 2023-03-27
-# Last updated: 2023-08-25
+# Last updated: 2023-08-26
 
 library(tidyverse)
 library(agricolae)
@@ -758,7 +759,8 @@ ggplot(invasive.notree.avg, aes(x = year.xaxis, y = mean,
 # Annual cover ------------------------------------------------------------
 
 # Note: I thought maybe annuals could explain what was driving notree trends, but they weren't really
-#   helpful, so this analysis is excluded from manuscript.
+#   helpful, so this analysis is excluded from manuscript. Also, annual cover was not that
+#   normally distributed, so interpret with caution.
 
 # Find averages by year
 annual.avg <- annual.all %>% 
