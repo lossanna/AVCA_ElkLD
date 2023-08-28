@@ -1,7 +1,7 @@
 # Purpose: Graph precipitation data from Pima County ALERT system, sensor #6380,
 #   sourced from https://webcms.pima.gov/government/flood_control/services/precipitation_and_streamflow_data/.
 # Created: 2023-02-02
-# Last updated: 2023-07-20
+# Last updated: 2023-08-27
 
 library(tidyverse)
 library(plotrix)
@@ -20,11 +20,30 @@ precip$Precip_cum_cm <- precip$Precip_cum * 2.54
 precip.sample <- precip |> 
   filter(!str_detect(year.xaxis, c("2020|2016|2017|2019")))
 
+precip <- precip |> 
+  arrange(Date0)
+
 
 # Averages ----------------------------------------------------------------
 
 summary(precip$Precip_cum)
 summary(precip$Precip_cum_cm)
+
+
+# Percent change of extreme years -----------------------------------------
+
+# 2018-2019
+(precip[8, 9] - precip[7, 9]) / precip[7, 9] * 100 # -74.6826
+
+# 2019-2020
+(precip[9, 9] - precip[8, 9]) / precip[8, 9] * 100 # 79.941
+
+# 2020-2021
+(precip[10, 9] - precip[9, 9]) / precip[9, 9] * 100 # 87.86885
+
+# 2019-2021
+(precip[10, 9] - precip[8, 9]) / precip[8, 9] * 100 # 238.0531
+
 
 
 # Graph -------------------------------------------------------------------
