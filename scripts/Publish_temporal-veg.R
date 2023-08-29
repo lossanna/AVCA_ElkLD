@@ -1,15 +1,18 @@
 # Purpose: Create temporal veg figures for publication, and code for published R Markdown.
-#   Figures: temporal cover & diversity
+#   Main figures: combined temporal cover 
+#   Supp figures: temporal diversity
 #   Code: ANOVA and plots for notree, herb, shrub, rich, shan; average table for invasive
 #     and list of most common invasive
 
 # Created: 2023-08-28
-# Last updated: 2023-08-28
+# Last updated: 2023-08-29
 
 library(tidyverse)
 library(agricolae)
 library(plotrix)
 library(ggpubr)
+library(rstatix)
+library(performance)
 
 # Load data ---------------------------------------------------------------
 
@@ -403,12 +406,27 @@ shan.plot
 
 # Combine richness & Shannon ----------------------------------------------
 
-tiff("figures/2023-09_publish-figures/temporal-ANOVA_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 1000)
+tiff("figures/2023-09_publish-figures/temporal-ANOVA_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
 ggarrange( rich.plot, shan.plot,
            ncol = 1, nrow = 2,
            labels = c("(A)", "(B)")) 
 
 dev.off()
 
+
+
+# Make ANOVA results table ------------------------------------------------
+
+# Notree
+summary_fit <- summary(anova.notree.ctrl)
+anova_table <- data.frame(
+  Source = rownames(summary_fit[[1]]),
+  DF1 = summary_fit[[1]][, "Df"],
+  DF2 = summary_fit[[1]][, "Df"][2],
+  F = summary_fit[[1]][, "F value"],
+  p_value = summary_fit[[1]][, "Pr(>F)"]
+)
+anova_table <- anova_summary(anova.notree.ctrl, detailed = TRUE)
+check_model(aov(Cover ~ Year, data = filter(notree.all, Treatment == "Control")))
 
 save.image("RData/Publish_temporal-veg.RData")
