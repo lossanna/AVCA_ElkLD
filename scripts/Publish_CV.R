@@ -1,10 +1,10 @@
 # Purpose: Create veg CV figures for publication, and code for published R Markdown.
-#   Figures: combined shrub, richness, Shannon; 
-#            combined notree & herb (supplemental)
+#   Main figures: combined notree, herb, shrub
+#   Supp figures: combined richness & Shannon
 #   Code: calculate CV, qq-plots, t-test/Wilcox, plot
 
 # Created: 2023-08-28
-# Last updated: 2023-08-28
+# Last updated: 2023-08-2
 
 library(tidyverse)
 library(car)
@@ -17,6 +17,102 @@ notree.all <- read_csv("data/publish/Herb-and-shrub-cover_2012-2021.csv")
 herb.all <- read_csv("data/publish/Herb-cover_2012-2021.csv") 
 shrub.all <- read_csv("data/publish/Shrub-cover_2012-2021.csv")
 per.div <- read_csv("data/publish/Perennial-plant-diversity_2012-2021.csv")
+
+
+# Notree cover ------------------------------------------------------------
+
+# Find CV for each sample over time
+notree.sample <- notree.all |> 
+  group_by(Sample, Treatment) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(notree.sample, Treatment == "Treated")$CV) # normal
+qqPlot(filter(notree.sample, Treatment == "Control")$CV) # normal
+
+# Compare means
+t.test(filter(notree.sample, Treatment == "Treated")$CV,
+       filter(notree.sample, Treatment == "Control")$CV) # NS, p = 0.882
+
+# Plot
+notree.plot.cv <- notree.sample |> 
+  ggplot(aes(x = Treatment, y = CV)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Vegetation cover",
+       x = NULL,
+       y = NULL) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent) +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.9, y = 0.95, label = "t-test, p = 0.882"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+notree.plot.cv
+
+
+
+# Herb cover --------------------------------------------------------------
+
+# Find CV for each sample over time
+herb.sample <- herb.all |> 
+  group_by(Sample, Treatment) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(herb.sample, Treatment == "Treated")$CV) # normal
+qqPlot(filter(herb.sample, Treatment == "Control")$CV) # not quite normal?
+
+# Log transformation sort of helps Control
+qqPlot(log(filter(herb.sample, Treatment == "Control")$CV)) # more normal?
+qqPlot(log(filter(herb.sample, Treatment == "Treated")$CV)) # normal
+
+herb.sample <- herb.sample |> 
+  mutate(CV_log = log(CV))
+
+# Compare means
+t.test(filter(herb.sample, Treatment == "Treated")$CV_log,
+       filter(herb.sample, Treatment == "Control")$CV_log) # NS, p = 0.122
+
+# Plot
+herb.plot.cv <- herb.sample |> 
+  ggplot(aes(x = Treatment, y = CV)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Herbaceous cover",
+       x = NULL, 
+       y = NULL) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)  +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.9, y = 1.18, label = "t-test, p = 0.122"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+herb.plot.cv
 
 
 # Shrub cover -------------------------------------------------------------
@@ -78,6 +174,15 @@ shrub.plot.cv <- shrub.sample |>
 shrub.plot.cv
 
 
+# Combine notree, herb, shrub ---------------------------------------------
+
+tiff("figures/2023-09_publish-figures/CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
+ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+
 
 # Richness ----------------------------------------------------------------
 
@@ -115,7 +220,7 @@ rich.plot.cv <- rich.sample |>
   scale_fill_manual(values = c("red", "#1F78B4")) +
   labs(title = "Perennial plant species \nrichness",
        x = NULL,
-       y = NULL) +
+       y = "Coefficient of variation") +
   theme_bw() +
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
@@ -123,7 +228,7 @@ rich.plot.cv <- rich.sample |>
   geom_text(aes(x = 0.95, y = 0.65, label = "t-test, p = 0.062"),
             color = "gray30",
             size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
                width = 0.75, linetype = "dashed") +
   theme(plot.title = element_text(size = 12))
@@ -175,118 +280,11 @@ shan.plot.cv
 
 
 
-# Combine shrub, richness & Shannon ---------------------------------------
-
-tiff("figures/2023-09_publish-figures/CV_shrub-rich-shan.tiff", units = "in", height = 4, width = 7, res = 1000)
-ggarrange(shrub.plot.cv, rich.plot.cv, shan.plot.cv,
-          ncol = 3, nrow = 1,
-          labels = c("(A)", "(B)", "(C)")) 
-
-dev.off()
-
-
-
-# Notree cover ------------------------------------------------------------
-
-# Find CV for each sample over time
-notree.sample <- notree.all |> 
-  group_by(Sample, Treatment) |> 
-  summarise(CV = sd(Cover) / mean(Cover),
-            .groups = "keep")
-
-# Explore distribution
-qqPlot(filter(notree.sample, Treatment == "Treated")$CV) # normal
-qqPlot(filter(notree.sample, Treatment == "Control")$CV) # normal
-
-# Compare means
-t.test(filter(notree.sample, Treatment == "Treated")$CV,
-       filter(notree.sample, Treatment == "Control")$CV) # NS, p = 0.882
-
-# Plot
-notree.plot.cv <- notree.sample |> 
-  ggplot(aes(x = Treatment, y = CV)) +
-  geom_boxplot(alpha = 0.3,
-               outlier.shape = NA,
-               aes(fill = Treatment)) +
-  geom_jitter(size = 1,
-              alpha = 0.8,
-              aes(color = Treatment)) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Vegetation cover",
-       x = NULL,
-       y = "Coefficient of variation") +
-  theme_bw() +
-  theme(legend.position = "none") +
-  scale_y_continuous(labels = percent) +
-  theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.9, y = 0.95, label = "t-test, p = 0.882"),
-            color = "gray30",
-            size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
-  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
-               width = 0.75, linetype = "dashed") +
-  theme(plot.title = element_text(size = 12))
-notree.plot.cv
-
-
-
-# Herb cover --------------------------------------------------------------
-
-# Find CV for each sample over time
-herb.sample <- herb.all |> 
-  group_by(Sample, Treatment) |> 
-  summarise(CV = sd(Cover) / mean(Cover),
-            .groups = "keep")
-
-# Explore distribution
-qqPlot(filter(herb.sample, Treatment == "Treated")$CV) # normal
-qqPlot(filter(herb.sample, Treatment == "Control")$CV) # not quite normal?
-
-# Log transformation sort of helps Control
-qqPlot(log(filter(herb.sample, Treatment == "Control")$CV)) # more normal?
-qqPlot(log(filter(herb.sample, Treatment == "Treated")$CV)) # normal
-
-herb.sample <- herb.sample |> 
-  mutate(CV_log = log(CV))
-
-# Compare means
-t.test(filter(herb.sample, Treatment == "Treated")$CV_log,
-       filter(herb.sample, Treatment == "Control")$CV_log) # NS, p = 0.122
-
-# Plot
-herb.plot.cv <- herb.sample |> 
-  ggplot(aes(x = Treatment, y = CV)) +
-  geom_boxplot(alpha = 0.3,
-               outlier.shape = NA,
-               aes(fill = Treatment)) +
-  geom_jitter(size = 1,
-              alpha = 0.8,
-              aes(color = Treatment)) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Herbaceous cover",
-       x = NULL, 
-       y = NULL) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  scale_y_continuous(labels = percent)  +
-  theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.9, y = 1.18, label = "t-test, p = 0.122"),
-            color = "gray30",
-            size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.15, "in")) +
-  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
-               width = 0.75, linetype = "dashed") +
-  theme(plot.title = element_text(size = 12))
-herb.plot.cv
-
-
-# Combine notree & herb ---------------------------------------------------
+# Combine richness & Shannon ----------------------------------------------
 
 # Supplemental figure
-tiff("figures/2023-09_publish-figures/CV_notree-herb.tiff", units = "in", height = 4, width = 5.5, res = 300)
-ggarrange(notree.plot.cv, herb.plot.cv,
+tiff("figures/2023-09_publish-figures/CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
+ggarrange(rich.plot.cv, shan.plot.cv,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)")) 
 
