@@ -12,7 +12,6 @@ library(agricolae)
 library(plotrix)
 library(ggpubr)
 library(rstatix)
-library(performance)
 
 # Load data ---------------------------------------------------------------
 
@@ -413,20 +412,5 @@ ggarrange( rich.plot, shan.plot,
 
 dev.off()
 
-
-
-# Make ANOVA results table ------------------------------------------------
-
-# Notree
-summary_fit <- summary(anova.notree.ctrl)
-anova_table <- data.frame(
-  Source = rownames(summary_fit[[1]]),
-  DF1 = summary_fit[[1]][, "Df"],
-  DF2 = summary_fit[[1]][, "Df"][2],
-  F = summary_fit[[1]][, "F value"],
-  p_value = summary_fit[[1]][, "Pr(>F)"]
-)
-anova_table <- anova_summary(anova.notree.ctrl, detailed = TRUE)
-check_model(aov(Cover ~ Year, data = filter(notree.all, Treatment == "Control")))
 
 save.image("RData/Publish_temporal-veg.RData")
