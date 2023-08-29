@@ -156,12 +156,12 @@ total.ctrl.letters <- total.ctrl.letters |>
   arrange(Year)
 
 letters.total <- data.frame(x = total.avg$year.xaxis[1:6],
-                      y = rep(67, 6),
-                      label = total.ctrl.letters$groups,
-                      Treatment3 = c(rep("Control", 6)))
+                            y = rep(67, 6),
+                            label = total.ctrl.letters$groups,
+                            Treatment3 = c(rep("Control", 6)))
 total.plot <- ggplot(total.avg, aes(x = year.xaxis, y = mean, 
-                     group = Treatment3, 
-                     color = Treatment3)) +
+                                    group = Treatment3, 
+                                    color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -301,18 +301,18 @@ notree.trt.letters <- notree.trt.letters |>
   arrange(Year)
 
 letters.notree <- data.frame(x = rep(notree.avg$year.xaxis[1:6], 2),
-                      y = rep(47, 12),
-                      label = c(notree.ctrl.letters$groups,
-                                notree.trt.letters$groups),
-                      Treatment3 = c(rep("Control", 6),
-                                     rep("Treated", 6)))
+                             y = rep(47, 12),
+                             label = c(notree.ctrl.letters$groups,
+                                       notree.trt.letters$groups),
+                             Treatment3 = c(rep("Control", 6),
+                                            rep("Treated", 6)))
 ptext.notree <- data.frame(x = rep(as.Date("2020-02-01"), 2),
                            y = c(22, 22),
                            label = c("ANOVA, p < 0.001", "ANOVA, p = 0.003"),
                            Treatment3 = c("Control", "Treated"))
 notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean, 
-                       group = Treatment3, 
-                       color = Treatment3)) +
+                                      group = Treatment3, 
+                                      color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -457,10 +457,10 @@ hsd.herb.ctrl
 # 2015        14.21169      b
 
 # One-way ANOVA for Treated
-summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) 
+summary(aov(Cover ~ Year, data = filter(herb.all, Treatment3 == "Treated"))) # p = 3.77e-10
 herb.trt <- herb.all |> 
   filter(Treatment3 == "Treated")
-anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year) # p = 9.86e-10 ***
+anova.herb.trt <- aov(herb.trt$Cover ~ herb.trt$Year)
 hsd.herb.trt <- HSD.test(anova.herb.trt, trt = "herb.trt$Year")
 hsd.herb.trt
 # 2018      24.489919      a
@@ -900,7 +900,7 @@ write_csv(most.species,
           file = "data/cleaned/Most-common-species-by-cover.csv")
 
 
- 
+
 # Richness ----------------------------------------------------------------
 
 # Find averages by year
@@ -951,9 +951,6 @@ summary(aov(rich ~ Treatment3 * Year, data = per.div))
 check_model(aov(rich ~ Treatment3 * Year, data = per.div))
 
 
-# One-way ANOVA for Treated
-summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # p = 0.0516
-
 # One-way ANOVA for Control
 summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Control"))) # 0.00881
 rich.ctrl <- per.div |> 
@@ -968,6 +965,10 @@ hsd.rich.ctrl
 # 2014       8.200000     ab
 # 2021       7.580645      b
 
+# One-way ANOVA for Treated
+summary(aov(rich ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # p = 0.0516
+
+
 # Plot with one-way ANOVA letters
 rich.ctrl.letters <- hsd.rich.ctrl$groups
 rich.ctrl.letters <- rich.ctrl.letters |> 
@@ -975,16 +976,16 @@ rich.ctrl.letters <- rich.ctrl.letters |>
   arrange(Year)
 
 letters.rich <- data.frame(x = rich.avg$year.xaxis[1:6],
-                      y = rep(10.4, 6),
-                      label = rich.ctrl.letters$groups,
-                      Treatment3 = rep("Control", 6))
+                           y = rep(10.4, 6),
+                           label = rich.ctrl.letters$groups,
+                           Treatment3 = rep("Control", 6))
 ptext.rich <- data.frame(x = rep(as.Date("2020-02-01"), 2),
-                           y = c(6.7, 10.3),
-                           label = c("ANOVA, p = 0.009", "ANOVA, p = 0.052"),
-                           Treatment3 = c("Control", "Treated"))
+                         y = c(6.7, 10.3),
+                         label = c("ANOVA, p = 0.009", "ANOVA, p = 0.052"),
+                         Treatment3 = c("Control", "Treated"))
 rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
-                     group = Treatment3, 
-                     color = Treatment3)) +
+                                  group = Treatment3, 
+                                  color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -1029,11 +1030,11 @@ write.csv(shan.avg,
 # Plot
 ptext.shan <- data.frame(x = rep(as.Date("2020-02-01"), 2),
                          y = c(1.33, 1.33),
-                         label = c("ANOVA, p = 0.725", "ANOVA, p = 0.934"),
+                         label = c("ANOVA, p = 0.934", "ANOVA, p = 0.725"),
                          Treatment3 = c("Control", "Treated"))
 shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
-                     group = Treatment3, 
-                     color = Treatment3)) +
+                                  group = Treatment3, 
+                                  color = Treatment3)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -1074,11 +1075,11 @@ summary(aov(shan ~ Treatment3 * Year, data = per.div))
 check_model(aov(shan ~ Treatment3 * Year, data = per.div))
 
 
-# One-way ANOVA for Treated
-summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # p = 0.725
-
 # One-way ANOVA for Control
 summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Control"))) # p = 0.934
+
+# One-way ANOVA for Treated
+summary(aov(shan ~ Year, data = filter(per.div, Treatment3 == "Treated"))) # p = 0.725
 
 
 # No letters needed, write out previous plot
@@ -1103,8 +1104,8 @@ dev.off()
 
 tiff("figures/2023-07_draft-figures/temporal-ANOVA_richness-Shannon.tiff", units = "in", height = 8, width = 8, res = 150)
 ggarrange( rich.plot, shan.plot,
-          ncol = 1, nrow = 2,
-          labels = c("(A)", "(B)")) 
+           ncol = 1, nrow = 2,
+           labels = c("(A)", "(B)")) 
 
 dev.off()
 
