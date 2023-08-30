@@ -59,7 +59,8 @@ perdiv.pub <- per.div |>
 
 # 2021 data
 dat.2021.pub <- dat.2021 |> 
-  select(-Name, -Channel, -Station) |> 
+  select(-Name, -Channel, -Station, -CN_ratio, -barc.shannon, -barc.betadisp.3,
+         -fungi.shannon, -fungi.betadisp.3, -dElev) |> 
   rename(Treatment = Treatment3)
 
 
