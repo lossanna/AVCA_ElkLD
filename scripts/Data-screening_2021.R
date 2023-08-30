@@ -1,9 +1,11 @@
 # Purpose: Data screening for 2021 plant and soil data, and write cleaned data table.
 
 # Checked for normality, visualized distribution, checked collinearity:
-# Determined all were normally distributed except TN_perc, TC_perc, OM_perc,
-#   chemoheterotrophy, n-cyclers. All of these were were log-transformed.
+# Determined all veg & soil were normally distributed except TN_perc, TC_perc, OM_perc,
+#     chemoheterotrophy, n-cyclers. All of these were were log-transformed.
 #   Also shrub cover (2021 and 2018) were not normal, and so it will just be left out of SEM.
+#   Elevation change is not normally distributed but cannot be log-transformed, so it needs
+#     non-parametric test.
 # Determined that TN, TC, OM and C:N ratio are collinear (especially TN & TC).
 #   As a result, will only use TN & OM in analysis.
 # Also found that bacteria/archaea richness & shannon are kind of correlated,
@@ -12,7 +14,7 @@
 # Produced a clean data sheet for 2021 data (Data-2021_clean.csv).
 #  This is also to be used for SEM 2.0 input.
 # Created: 2022-04-18
-# Last updated: 2023-08-26
+# Last updated: 2023-08-29
 
 library(tidyverse)
 library(readxl)

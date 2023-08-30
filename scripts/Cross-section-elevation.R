@@ -2,7 +2,7 @@
 #   Found minimum elevation (lowest point of channel), and averaged this with surrounding points,
 #     where the number of points depends on the channel (look at Excel graphs from Robert)
 # Created: 2023-05-24
-# Last updated: 2023-07-14
+# Last updated: 2023-08-29
 
 library(tidyverse)
 library(car)
@@ -200,42 +200,6 @@ elev.trt <- elev |>
   arrange(dElev_corrected)
 summary(elev.ctrl$dElev_corrected)
 summary(elev.trt$dElev_corrected)
-
-# Write out plot
-letters <- data.frame(x = c(1, 2),
-                      y = c(0.45, 0.45),
-                      label = c("b", "a"),
-                      Treatment3 = c("Control", "Treated"))
-dElev.corrected.plot <- elev |> 
-  ggplot(aes(x = Treatment3, y = dElev_corrected)) +
-  geom_boxplot(aes(fill = Treatment3),
-               alpha = 0.3,
-               outlier.shape = NA) +
-  geom_jitter(aes(color = Treatment3),
-              size = 2,
-              alpha = 0.8) +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  scale_fill_manual(values = c("red", "#1F78B4")) +
-  labs(title = "Change in channel elevation, 2011-2019",
-       x = NULL,
-       y = "Elevation change (m)") +
-  theme_bw(base_size = 14) +
-  theme(legend.position = "none") +
-  geom_text(data = letters,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black") +
-  theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 2.3, y = -0.05, label = "Kruskal-Wallis, p < 0.001"),
-            color = "gray30",
-            size = 2.5) +
-  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
-               width = .75, linetype = "dashed")
-dElev.corrected.plot
-
-tiff("figures/2023-07_draft-figures/Change-in-elevation.tiff", width = 6, height = 4, units = "in", res = 150)
-dElev.corrected.plot
-dev.off()
-
 
 
 save.image("RData/Cross-section-elevation.RData")

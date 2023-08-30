@@ -1,19 +1,63 @@
 # Purpose: Compare 2021 soil and plant data by Treatment3 (Treated/Control) and write out figures.
-#   Used t-test because determined all were normally distributed in Data-screening_2021.R
+#   Used t-test because determined all veg & soil were normally distributed in Data-screening_2021.R
 #     (although some were log-transformed; t-test is on log-transformation, plot back-transformed).
-# 
+#   All normally distributed except dElev, which cannot be log-transformed and needs non-parametric.
+
 # Created: 2023-02-02
-# Last updated: 2023-07-21
+# Last updated: 2023-08-29
 
 library(tidyverse)
 library(car)
-library(agricolae)
 library(ggpubr)
-library(scales)
 
 # Load data ---------------------------------------------------------------
 
 dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv")
+
+
+# Channel elevation change ------------------------------------------------
+
+elev <- dat.2021 |> 
+  filter(!is.na(dElev_corrected))
+
+# Kruskal-Wallis
+kruskal.test(dElev_corrected ~ Treatment3, data = elev) # p-value = 9.793e-05
+
+# Plot
+letters <- data.frame(x = c(1, 2),
+                      y = c(0.45, 0.45),
+                      label = c("b", "a"),
+                      Treatment3 = c("Control", "Treated"))
+dElev.corrected.plot <- elev |> 
+  ggplot(aes(x = Treatment3, y = dElev_corrected)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              size = 2,
+              alpha = 0.8) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Change in channel elevation, 2011-2019",
+       x = NULL,
+       y = "Elevation change (m)") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 2.3, y = -0.05, label = "Kruskal-Wallis, p < 0.001"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
+dElev.corrected.plot
+
+tiff("figures/2023-07_draft-figures/Change-in-elevation.tiff", width = 6, height = 4, units = "in", res = 150)
+dElev.corrected.plot
+dev.off()
+
 
 
 # Total N -----------------------------------------------------------------
