@@ -16,10 +16,6 @@ per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv") 
 
-elev <- read_csv("data/cleaned/Cross-section-elevation_clean.csv")
-
-meta <- read_csv("data/station-metadata.csv")
-
 
 # Data wrangling ----------------------------------------------------------
 
@@ -81,3 +77,5 @@ write_csv(plant.pub,
           file = "data/publish/Species-cover_2012-2021.csv")
 write_csv(perdiv.pub,
           file = "data/publish/Perennial-plant-diversity_2012-2021.csv")
+write_csv(dat.2021.pub,
+          file = "data/publish/Veg-soil-elev_2021.csv")
