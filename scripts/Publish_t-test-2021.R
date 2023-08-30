@@ -19,8 +19,8 @@ elev <- dat.2021 |>
   filter(!is.na(dElev_corrected))
 
 # Mann-Whitney
-wilcox.test(filter(dat.2021, Treatment3 == "Control")$dElev_corrected,
-            filter(dat.2021, Treatment3 == "Treated")$dElev_corrected,
+wilcox.test(filter(dat.2021, Treatment == "Control")$dElev_corrected,
+            filter(dat.2021, Treatment == "Treated")$dElev_corrected,
             paired = FALSE, exact = FALSE) # p-value = 0.0001022
 
 # Plot
@@ -63,9 +63,10 @@ dev.off()
 
 # Total N -----------------------------------------------------------------
 
-# T-test
-t.test(filter(dat.2021, Treatment == "Control")$TN_log,
-       filter(dat.2021, Treatment == "Treated")$TN_log) # NS, p = 0.490
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$TN_ppt,
+            filter(dat.2021, Treatment == "Treated")$TN_ppt,
+            exact = FALSE) # p-value = 0.1731
 
 # Plot
 tn.plot.21 <- dat.2021 |> 
@@ -85,7 +86,7 @@ tn.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2, y = 63, label = "t-test, p = 0.490"),
+  geom_text(aes(x = 2, y = 63, label = "Mann-Whitney, \np = 0.173"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
@@ -96,9 +97,10 @@ tn.plot.21
 
 # Total C -----------------------------------------------------------------
 
-# T-test
-t.test(filter(dat.2021, Treatment == "Control")$TC_log,
-       filter(dat.2021, Treatment == "Treated")$TC_log) # NS, p = 0.500
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$TC_ppt,
+            filter(dat.2021, Treatment == "Treated")$TC_ppt,
+            exact = FALSE) # p-value = 0.2397
 
 # Plot
 tc.plot.21 <- dat.2021 |> 
@@ -118,7 +120,7 @@ tc.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2, y = 670, label = "t-test, p = 0.500"),
+  geom_text(aes(x = 2, y = 670, label = "Mann-Whitney, \np = 0.240"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
@@ -130,9 +132,9 @@ tc.plot.21
 
 # Organic matter ----------------------------------------------------------
 
-# T-test
-t.test(filter(dat.2021, Treatment == "Control")$OM_log,
-       filter(dat.2021, Treatment == "Treated")$OM_log) # NS, p = 0.332
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$OM_perc,
+            filter(dat.2021, Treatment == "Treated")$OM_perc) # p-value = 0.4332
 
 # Plot
 om.plot.21 <- dat.2021 |> 
@@ -152,7 +154,7 @@ om.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2, y = 2.14, label = "t-test, p = 0.332"),
+  geom_text(aes(x = 2, y = 2.14, label = "Mann-Whitney, \np = 0.433"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
@@ -253,9 +255,9 @@ dev.off()
 
 # Chemoheterotrophs -------------------------------------------------------
 
-# T-test
-t.test(filter(dat.2021, Treatment == "Control")$chemoheterotrophy_log,
-       filter(dat.2021, Treatment == "Treated")$chemoheterotrophy_log) # NS, p = 0.931
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$chemoheterotrophy_perc,
+            filter(dat.2021, Treatment == "Treated")$chemoheterotrophy_perc) # p = 0.8449
 
 # Plot
 chemohet.plot.21 <- dat.2021 %>% 
@@ -275,7 +277,7 @@ chemohet.plot.21 <- dat.2021 %>%
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2, y = 28.7, label = "t-test, p = 0.931"),
+  geom_text(aes(x = 2, y = 28.7, label = "Mann-Whitney, \np = 0.845"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
@@ -287,9 +289,9 @@ chemohet.plot.21
 
 # N-cyclers ---------------------------------------------------------------
 
-# T-test
-t.test(filter(dat.2021, Treatment == "Control")$n.cycler_log,
-       filter(dat.2021, Treatment == "Treated")$n.cycler_log) # NS, p = 0.490
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$n.cycler_perc,
+            filter(dat.2021, Treatment == "Treated")$n.cycler_perc) # p-value = 0.5854
 
 # Plot
 ncycler.plot.21 <- dat.2021 %>% 
@@ -309,7 +311,7 @@ ncycler.plot.21 <- dat.2021 %>%
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.25, "in")) +
-  geom_text(aes(x = 2, y = 13.6, label = "t-test, p = 0.490"),
+  geom_text(aes(x = 2, y = 13.6, label = "Mann-Whitney, \np = 0.585"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),

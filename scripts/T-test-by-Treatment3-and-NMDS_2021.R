@@ -1,7 +1,7 @@
 # Purpose: Compare 2021 soil and plant data by Treatment3 (Treated/Control) and write out figures.
-#   Used t-test because determined all veg & soil were normally distributed in Data-screening_2021.R
-#     (although some were log-transformed; t-test is on log-transformation, plot back-transformed).
-#   All normally distributed except dElev, which cannot be log-transformed and needs non-parametric.
+#   Tried t-test and Mann-Whitney for non-normally distributed variables (see Data-screening_2021.R),
+#     with t-test on log-transformed data if needed.
+#   Will go with nonparametric test because it is easier to interpret.
 
 # Created: 2023-02-02
 # Last updated: 2023-08-29
@@ -71,6 +71,11 @@ t.test(filter(dat.2021, Treatment3 == "Control")$TN_log,
 summary(filter(dat.2021, Treatment3 == "Control")$TN_ppt)
 summary(filter(dat.2021, Treatment3 == "Treated")$TN_ppt)
 
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment3 == "Control")$TN_ppt,
+            filter(dat.2021, Treatment3 == "Treated")$TN_ppt,
+            exact = FALSE) # p-value = 0.1731
+
 # Plot
 tn.plot.21 <- dat.2021 |> 
   ggplot(aes(x = Treatment3, y = TN_ppt)) +
@@ -89,7 +94,7 @@ tn.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.16, y = 63, label = "t-test, p = 0.490"),
+  geom_text(aes(x = 2, y = 63, label = "Mann-Whitney, \np = 0.173"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
@@ -119,6 +124,11 @@ t.test(filter(dat.2021, Treatment3 == "Control")$TC_log,
 summary(filter(dat.2021, Treatment3 == "Control")$TC_ppt)
 summary(filter(dat.2021, Treatment3 == "Treated")$TC_ppt)
 
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment3 == "Control")$TC_ppt,
+            filter(dat.2021, Treatment3 == "Treated")$TC_ppt,
+            exact = FALSE) # p-value = 0.2397
+
 # Plot
 tc.plot.21 <- dat.2021 |> 
   ggplot(aes(x = Treatment3, y = TC_ppt)) +
@@ -137,7 +147,7 @@ tc.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.16, y = 670, label = "t-test, p = 0.500"),
+  geom_text(aes(x = 2, y = 670, label = "Mann-Whitney, \np = 0.240"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
@@ -178,8 +188,13 @@ cn.plot.21
 t.test(filter(dat.2021, Treatment3 == "Control")$OM_log,
        filter(dat.2021, Treatment3 == "Treated")$OM_log) # NS, p = 0.332
 
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment3 == "Control")$OM_perc,
+       filter(dat.2021, Treatment3 == "Treated")$OM_perc) # p-value = 0.4332
+
 summary(filter(dat.2021, Treatment3 == "Control")$OM_perc)
 summary(filter(dat.2021, Treatment3 == "Treated")$OM_perc)
+
 
 # Plot
 om.plot.21 <- dat.2021 |> 
@@ -199,7 +214,7 @@ om.plot.21 <- dat.2021 |>
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))  +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.16, y = 2.14, label = "t-test, p = 0.332"),
+  geom_text(aes(x = 2, y = 2.14, label = "Mann-Whitney, \np = 0.433"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
@@ -363,6 +378,10 @@ dev.off()
 t.test(filter(dat.2021, Treatment3 == "Control")$chemoheterotrophy_log,
        filter(dat.2021, Treatment3 == "Treated")$chemoheterotrophy_log) # NS, p = 0.931
 
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment3 == "Control")$chemoheterotrophy_perc,
+       filter(dat.2021, Treatment3 == "Treated")$chemoheterotrophy_perc) # p = 0.8449
+
 # Plot
 chemohet.plot.21 <- dat.2021 %>% 
   ggplot(aes(Treatment3, chemoheterotrophy_perc)) +
@@ -381,7 +400,7 @@ chemohet.plot.21 <- dat.2021 %>%
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 2.16, y = 28.7, label = "t-test, p = 0.931"),
+  geom_text(aes(x = 2, y = 28.7, label = "Mann-Whitney, \np = 0.845"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
@@ -395,6 +414,10 @@ chemohet.plot.21
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$n.cycler_log,
        filter(dat.2021, Treatment3 == "Treated")$n.cycler_log) # NS, p = 0.490
+
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment3 == "Control")$n.cycler_perc,
+       filter(dat.2021, Treatment3 == "Treated")$n.cycler_perc) # p-value = 0.5854
 
 # Plot
 ncycler.plot.21 <- dat.2021 %>% 
@@ -414,7 +437,7 @@ ncycler.plot.21 <- dat.2021 %>%
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000")) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.3, "in")) +
-  geom_text(aes(x = 2.16, y = 13.6, label = "t-test, p = 0.490"),
+  geom_text(aes(x = 2.16, y = 13.6, label = "Mann-Whitney, \np = 0.585"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
