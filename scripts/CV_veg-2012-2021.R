@@ -108,7 +108,7 @@ herb.plot.cv <- herb.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.8, y = 1.15, label = "Wilcox test, \np = 0.148"),
+  geom_text(aes(x = 0.9, y = 1.15, label = "Mann-Whitney, \np = 0.148"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
@@ -217,9 +217,9 @@ t.test(filter(shrub.sample, Treatment3 == "Treated")$CV_log,
        filter(shrub.sample, Treatment3 == "Control")$CV_log) # NS, p = 0.05269
 
 wilcox.test(filter(shrub.sample0, Treatment3 == "Treated")$CV,
-            filter(shrub.sample0, Treatment3 == "Control")$CV) # p = 0.01429
-#   Warning: cannot compute exact p-value with ties
-#   Will go with this one because it includes more samples/more imformation
+            filter(shrub.sample0, Treatment3 == "Control")$CV,
+            exact = FALSE) # p = 0.01429
+#   Will go with this one because it includes more samples/more information
 
 
 # Plot
@@ -243,7 +243,7 @@ shrub.plot.cv <- shrub.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.8, y = 0.1, label = "Wilcox test, \np = 0.014"),
+  geom_text(aes(x = 0.9, y = 0.1, label = "Mann-Whitney, \np = 0.014"),
             color = "gray30",
             size = 2.5) +
   geom_text(data = letters.shrub,
@@ -271,7 +271,7 @@ shrub.plot.cv2 <- shrub.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.8, y = 0.1, label = "Wilcox test, \np = 0.014"),
+  geom_text(aes(x = 0.9, y = 0.1, label = "Mann-Whitney, \np = 0.014"),
             color = "gray30",
             size = 2.5) +
   geom_text(data = letters.shrub,

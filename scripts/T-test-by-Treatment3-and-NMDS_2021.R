@@ -20,8 +20,10 @@ dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv")
 elev <- dat.2021 |> 
   filter(!is.na(dElev_corrected))
 
-# Kruskal-Wallis
-kruskal.test(dElev_corrected ~ Treatment3, data = elev) # p-value = 9.793e-05
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment3 == "Control")$dElev_corrected,
+            filter(dat.2021, Treatment3 == "Treated")$dElev_corrected,
+            paired = FALSE, exact = FALSE) # p-value = 0.0001022
 
 # Plot
 letters <- data.frame(x = c(1, 2),
@@ -47,7 +49,7 @@ dElev.corrected.plot <- elev |>
             mapping = aes(x = x, y = y, label = label),
             color = "black") +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 2.3, y = -0.05, label = "Kruskal-Wallis, p < 0.001"),
+  geom_text(aes(x = 2.3, y = -0.05, label = "Mann-Whitney, p < 0.001"),
             color = "gray30",
             size = 2.5) +
   stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),

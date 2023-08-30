@@ -1,7 +1,7 @@
 # Purpose: Create veg CV figures for publication, and code for published R Markdown.
 #   Main figures: combined notree, herb, shrub
 #   Supp figures: combined richness & Shannon
-#   Code: calculate CV, qq-plots, t-test/Wilcox, plot
+#   Code: calculate CV, qq-plots, t-test/Mann-Whitney, plot
 
 # Created: 2023-08-28
 # Last updated: 2023-08-2
@@ -84,8 +84,8 @@ herb.sample <- herb.sample |>
   mutate(CV_log = log(CV))
 
 # Compare means
-t.test(filter(herb.sample, Treatment == "Treated")$CV_log,
-       filter(herb.sample, Treatment == "Control")$CV_log) # NS, p = 0.122
+wilcox.test(filter(herb.sample, Treatment == "Treated")$CV,
+            filter(herb.sample, Treatment == "Control")$CV) # NS, p = 0.148
 
 # Plot
 herb.plot.cv <- herb.sample |> 
@@ -105,7 +105,7 @@ herb.plot.cv <- herb.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.9, y = 1.18, label = "t-test, p = 0.122"),
+  geom_text(aes(x = 0.95, y = 1.18, label = "Mann-Whitney, \np = 0.122"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in")) +
@@ -134,9 +134,8 @@ qqPlot(filter(shrub.sample, Treatment == "Treated")$CV) # not normal
 
 # Compare means (cannot log transform with 0s)
 wilcox.test(filter(shrub.sample, Treatment == "Treated")$CV,
-            filter(shrub.sample, Treatment == "Control")$CV) # p = 0.01429
-#   Warning: cannot compute exact p-value with ties
-#     Warning is fine
+            filter(shrub.sample, Treatment == "Control")$CV,
+            exact = FALSE) # p = 0.01429
 
 
 # Plot
@@ -161,7 +160,7 @@ shrub.plot.cv <- shrub.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.9, y = 2.75, label = "Wilcox test, \np = 0.014"),
+  geom_text(aes(x = 0.95, y = 2.75, label = "Mann-Whitney, \np = 0.014"),
             color = "gray30",
             size = 2.5) +
   geom_text(data = letters.shrub,
