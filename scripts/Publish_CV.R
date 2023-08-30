@@ -3,8 +3,10 @@
 #   Supp figures: combined richness & Shannon
 #   Code: calculate CV, qq-plots, t-test/Mann-Whitney, plot
 
+# Will use Mann-Whitney rather than log transformation for ease of interpretation.
+
 # Created: 2023-08-28
-# Last updated: 2023-08-2
+# Last updated: 2023-08-29
 
 library(tidyverse)
 library(car)
@@ -76,13 +78,6 @@ herb.sample <- herb.all |>
 qqPlot(filter(herb.sample, Treatment == "Treated")$CV) # normal
 qqPlot(filter(herb.sample, Treatment == "Control")$CV) # not quite normal?
 
-# Log transformation sort of helps Control
-qqPlot(log(filter(herb.sample, Treatment == "Control")$CV)) # more normal?
-qqPlot(log(filter(herb.sample, Treatment == "Treated")$CV)) # normal
-
-herb.sample <- herb.sample |> 
-  mutate(CV_log = log(CV))
-
 # Compare means
 wilcox.test(filter(herb.sample, Treatment == "Treated")$CV,
             filter(herb.sample, Treatment == "Control")$CV) # NS, p = 0.148
@@ -132,7 +127,7 @@ shrub.sample[8, 3] <- 0
 qqPlot(filter(shrub.sample, Treatment == "Control")$CV) # not normal
 qqPlot(filter(shrub.sample, Treatment == "Treated")$CV) # not normal
 
-# Compare means (cannot log transform with 0s)
+# Compare means
 wilcox.test(filter(shrub.sample, Treatment == "Treated")$CV,
             filter(shrub.sample, Treatment == "Control")$CV,
             exact = FALSE) # p = 0.01429
@@ -195,16 +190,9 @@ rich.sample <- per.div |>
 qqPlot(filter(rich.sample, Treatment3 == "Treated")$CV) # not quite normal
 qqPlot(filter(rich.sample, Treatment3 == "Control")$CV) # normal
 
-# Log transformation improves Treated 
-qqPlot(log(filter(rich.sample, Treatment3 == "Treated")$CV)) # normal now
-qqPlot(log(filter(rich.sample, Treatment3 == "Control")$CV)) # normal
-
-rich.sample <- rich.sample |> 
-  mutate(CV_log = log(CV))
-
 # Compare means
-t.test(filter(rich.sample, Treatment3 == "Treated")$CV_log,
-       filter(rich.sample, Treatment3 == "Control")$CV_log) # NS, p = 0.093
+wilcox.test(filter(rich.sample, Treatment3 == "Treated")$CV,
+            filter(rich.sample, Treatment3 == "Control")$CV) # NS, p = 0.093
 
 # Plot
 rich.plot.cv <- rich.sample |> 
@@ -224,7 +212,7 @@ rich.plot.cv <- rich.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.95, y = 0.65, label = "t-test, p = 0.062"),
+  geom_text(aes(x = 0.95, y = 0.65, label = "Mann-Whitney, \np = 0.062"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
