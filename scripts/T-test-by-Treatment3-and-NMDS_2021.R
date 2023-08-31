@@ -4,7 +4,7 @@
 #   Will go with nonparametric test because it is easier to interpret.
 
 # Created: 2023-02-02
-# Last updated: 2023-08-29
+# Last updated: 2023-08-30
 
 library(tidyverse)
 library(car)
@@ -354,9 +354,9 @@ fungi.nmds.plot.21 <- dat.2021 %>%
   theme(legend.position = "bottom") +
   theme(legend.title = element_blank()) +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
-  geom_text(aes(x = 0.83, y = -0.7, label = "PERMANOVA, p = 0.008"),
+  geom_text(aes(x = 0.83, y = -0.7, label = "PERMANOVA, p = 0.011"),
             size = 3, color = "gray30") +
-  geom_text(aes(x = 0.92, y = -0.8, label = "Stress = 0.237"),
+  geom_text(aes(x = 0.92, y = -0.8, label = "Stress = 0.236"),
             size = 3, color = "gray30") # only 2% explained by Treatment3 lol
 fungi.nmds.plot.21
 

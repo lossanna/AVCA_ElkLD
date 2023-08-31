@@ -2,6 +2,7 @@
 #   calculate richness and diversity, create stacked bar charts of dominant phyla & families.
 #   Write out clean data tables. NMDS & richness figures written out in T-test-by-Treatment3_2021.R.
 # Post-2023-03-34 analysis only includes grouping by Channel and Treatment3.
+
 # Bray-Curtis distance and NMDS should not be run again, because values differ slightly every time.
 #   The current version saved in 16S_prelim-stats.RData is the "official" version that is then used for 
 #   downstream analysis/model output/plots.

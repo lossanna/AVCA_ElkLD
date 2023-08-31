@@ -2,6 +2,11 @@
 #   calculate richness and diversity, create stacked bar charts of dominant phyla.
 #   Write out clean data tables. NMDS & richness figures written out in T-test-by-Treatment3_2021.R.
 # Post-2023-03-34 analysis only includes grouping by Channel and Treatment3.
+
+# Bray-Curtis distance and NMDS should not be run again, because values differ slightly every time.
+#   The current version saved in ITS_prelim-stats.RData is the "official" version that is then used for 
+#   downstream analysis/model output/plots.
+
 # Created: 2023-01-12
 # Last updated: 2023-07-14
 
@@ -171,7 +176,7 @@ meta$Shannon <- diversity(fungi.norm, index = "shannon")
 # NMDS ordination
 fungi.dist <- vegdist(fungi.norm, method = "bray")
 fungi.nmds <- metaMDS(fungi.dist, k = 2)
-fungi.nmds$stress # ~0.2369334 (varies)
+fungi.nmds$stress # ~0.2359848 (varies)
 
 meta$NMDS1 <- fungi.nmds$points[ , 1]
 meta$NMDS2 <- fungi.nmds$points[ , 2]
@@ -179,7 +184,7 @@ meta$NMDS2 <- fungi.nmds$points[ , 2]
 
 # Test community similarity differences
 adonis2(fungi.dist ~ meta$Channel) # p < 0.001, 9% of variability explained by Channel
-adonis2(fungi.dist ~ meta$Treatment3) # p = 0.008, 2% of variability explained by Treatment
+adonis2(fungi.dist ~ meta$Treatment3) # p = 0.011, 2% of variability explained by Treatment
 
 # Plot NMDS
 # By Channel
