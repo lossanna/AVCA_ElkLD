@@ -65,6 +65,7 @@ summary(fit.soichem)
 #   something is wrong with soil chem as latent variable
 
 
+
 # 1 Soil mic as latent, OM; Veg18 & tree included -------------------------
 
 # Full model, initial attempt
@@ -95,6 +96,8 @@ summary(fit1, fit.measures = TRUE, standardized = TRUE)
 #   RMSEA lower CI: 0.000 (good)
 #   SRMR: 0.076 (good, <0.1)
 #   Akaike (AIC): 1345.448
+
+modindices(fit1, sort = TRUE, minimum.value = 3.5)
 
 
 
@@ -128,6 +131,8 @@ summary(fit2, fit.measures = TRUE, standardized = TRUE)
 #   SRMR: 0.079 (good, <0.1)
 #   AIC: 1310.762
 
+modindices(fit2, sort = TRUE, minimum.value = 3.5)
+
 
 # 3 Herb, OM, SoMic, herb18, tree -----------------------------------------
 
@@ -160,6 +165,7 @@ summary(fit3, fit.measures = TRUE, standardized = TRUE)
 #   SRMR: 0.069 (good, <0.1)
 #   Akaike (AIC): 1351.278
 
+modindices(fit3, sort = TRUE, minimum.value = 3.5)
 
 
 # 4 Herb, OM, SoMic, herb18, tree -----------------------------------------
@@ -193,4 +199,4 @@ summary(fit4, fit.measures = TRUE, standardized = TRUE)
 #   SRMR: 0.066 (good, <0.1)
 #   Akaike (AIC): 1320.884
 
-
+modindices(fit4, sort = TRUE, minimum.value = 3.5)
