@@ -8,7 +8,7 @@
 #   SEM-2.1 mod8 = manuscript mod4
 
 # Created: 2023-08-29
-# Updated: 2023-08-29
+# Updated: 2023-08-30
 
 library(lavaan)
 library(tidyverse)
@@ -65,46 +65,10 @@ summary(fit.soichem)
 #   something is wrong with soil chem as latent variable
 
 
-
-# 2 Soil mic latent, TN; Veg18 & tree included ----------------------------
-
-mod2.0 <- '
-  # latent variables
-  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
-  
-  # structure
-  notree ~ rocks + notree.18 + tree 
-  TN_log ~ rocks
-  soil_microbe ~ rocks
-  notree.18 ~ rocks
-  
-  # covariance
-  TN_log ~~ soil_microbe
-  TN_log ~~ notree
-  soil_microbe ~~ notree
-'
-fit2.0 <- sem(mod2.0, data = sem.dat) 
-summary(fit2.0, fit.measures = TRUE, standardized = TRUE)
-# Mod2.0 diagnostics:
-# Global fit:
-#   chi-sq statistic: 31.847
-#   chi-sq stat to df ratio: 1.06 (good; <2)
-#   chi-sq p-value: 0.375 (good, >0.05)
-#   CFI: 0.985 (good, >0.95)
-#   RMSEA: 0.032 (good, <0.1)
-#   RMSEA lower CI: 0.000 (good)
-#   SRMR: 0.079 (good, <0.1)
-#   AIC: 1310.762
-modindices(fit2.0, sort = TRUE)
-#  Adding covariance with TN_log: there could be an unmeasured factor that affects these together
-#   (i.e. it seems scientifically plausible), but the pathways do not end up significant, and
-#   it seems weird to randomly allow those things to covary when they are part of the larger soil microbiome,
-#   so I am going to stick with this one
-
-# 3 Soil mic as latent, OM; Veg18 & tree included -------------------------
+# 1 Soil mic as latent, OM; Veg18 & tree included -------------------------
 
 # Full model, initial attempt
-mod3.0 <- '
+mod1 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
   
@@ -119,9 +83,9 @@ mod3.0 <- '
   OM_log ~~ notree
   soil_microbe ~~ notree
 '
-fit3.0 <- sem(mod3.0, data = sem.dat) 
-summary(fit3.0, fit.measures = TRUE, standardized = TRUE)
-# Mod3.0 diagnostics:
+fit1 <- sem(mod1, data = sem.dat) 
+summary(fit1, fit.measures = TRUE, standardized = TRUE)
+# Mod1 diagnostics:
 # Global fit:
 #   chi-sq statistic: 26.242
 #   chi-sq stat to df ratio: 0.87 (good; <2)
@@ -131,14 +95,44 @@ summary(fit3.0, fit.measures = TRUE, standardized = TRUE)
 #   RMSEA lower CI: 0.000 (good)
 #   SRMR: 0.076 (good, <0.1)
 #   Akaike (AIC): 1345.448
-modindices(fit3.0, sort = TRUE)
-#  Adding covariance saprotrophs~~OM_log: could be scientifically plausible to have more decomposers
-#   with more OM, but I am just going to leave the path between OM & soil_microbe as enough
 
-# 7 Herb, OM, SoMic, herb18, tree -----------------------------------------
+
+
+# 2 Soil mic latent, TN; Veg18 & tree included ----------------------------
+
+mod2 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + notree.18 + tree 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  notree.18 ~ rocks
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ notree
+  soil_microbe ~~ notree
+'
+fit2 <- sem(mod2, data = sem.dat) 
+summary(fit2, fit.measures = TRUE, standardized = TRUE)
+# Mod2 diagnostics:
+# Global fit:
+#   chi-sq statistic: 31.847
+#   chi-sq stat to df ratio: 1.06 (good; <2)
+#   chi-sq p-value: 0.375 (good, >0.05)
+#   CFI: 0.985 (good, >0.95)
+#   RMSEA: 0.032 (good, <0.1)
+#   RMSEA lower CI: 0.000 (good)
+#   SRMR: 0.079 (good, <0.1)
+#   AIC: 1310.762
+
+
+# 3 Herb, OM, SoMic, herb18, tree -----------------------------------------
 
 # Full model, initial attempt
-mod7.0 <- '
+mod3 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
   
@@ -153,9 +147,9 @@ mod7.0 <- '
   OM_log ~~ herb
   soil_microbe ~~ herb
 '
-fit7.0 <- sem(mod7.0, data = sem.dat) 
-summary(fit7.0, fit.measures = TRUE, standardized = TRUE)
-# Mod7.0 diagnostics:
+fit3 <- sem(mod3, data = sem.dat) 
+summary(fit3, fit.measures = TRUE, standardized = TRUE)
+# Mod3 diagnostics:
 # Global fit:
 #   chi-sq statistic: 21.703
 #   chi-sq stat to df ratio: 0.72 (good; <2)
@@ -165,20 +159,13 @@ summary(fit7.0, fit.measures = TRUE, standardized = TRUE)
 #   RMSEA lower CI: 0.000 (good)
 #   SRMR: 0.069 (good, <0.1)
 #   Akaike (AIC): 1351.278
-modindices(fit7.0, sort = TRUE)
-#   Again is suggesting saprotrophs & OM, but I already have the OM-SoMic relationship
-#     So at this point I don't really add anything or remove anything, but I have the
-#     code here anyway for fun, I guess
-
-semPaths(fit7.0, "std", edge.label.cex = 1.3, residuals = FALSE, sizeMan = 7,
-         nCharNodes = 6, node.width = 1.3, layout = "tree2", reorder = FALSE)
 
 
 
-# 8 Herb, OM, SoMic, herb18, tree -----------------------------------------
+# 4 Herb, OM, SoMic, herb18, tree -----------------------------------------
 
 # Full model, initial attempt
-mod8.0 <- '
+mod4 <- '
   # latent variables
   soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
   
@@ -193,9 +180,9 @@ mod8.0 <- '
   TN_log ~~ herb
   soil_microbe ~~ herb
 '
-fit8.0 <- sem(mod8.0, data = sem.dat) 
-summary(fit8.0, fit.measures = TRUE, standardized = TRUE)
-# Mod8.0 diagnostics:
+fit4 <- sem(mod4, data = sem.dat) 
+summary(fit4, fit.measures = TRUE, standardized = TRUE)
+# Mod4 diagnostics:
 # Global fit:
 #   chi-sq statistic: 25.702
 #   chi-sq stat to df ratio: 0.86 (good; <2)
@@ -205,3 +192,5 @@ summary(fit8.0, fit.measures = TRUE, standardized = TRUE)
 #   RMSEA lower CI: 0.000 (good)
 #   SRMR: 0.066 (good, <0.1)
 #   Akaike (AIC): 1320.884
+
+
