@@ -1,5 +1,9 @@
 # Purpose: Create cleaned data that can be published.
-#   Remove extra cols (like station.trt and Treatment1-2) and have record of removing them.
+#   Remove extra cols (like station.trt and Treatment1-2) and have record of removing them,
+#   and note data that has not changed (but will put all data for publishing in one folder).
+
+# Created: 2023-08-29
+# Last updated: 2023-08-30
 
 
 library(tidyverse)
@@ -7,6 +11,7 @@ library(readxl)
 
 # Load data ---------------------------------------------------------------
 
+# Data that needs changing
 herb.all <- read_csv("data/cleaned/Summarised-all_herb-cover.csv") 
 shrub.all <- read_csv("data/cleaned/Summarised-all_shrub-cover.csv")
 notree.all <- read_csv("data/cleaned/Summarised-all_notree-cover.csv")
@@ -15,6 +20,13 @@ plant.all <- read_csv("data/cleaned/Summarised-all_plant-species-cover.csv")
 per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv") 
+
+# Data that can be used as is (just needs to be converted to CSV)
+barc.asv <- read.table("data/cleaned/sequencing/bac-arc_clean_asv.txt", header = T,
+                       sep = "\t", row.names = 1)
+fungi.asv <- read.table("data/cleaned/sequencing/fungi_clean_asv.txt", header = T,
+                       sep = "\t", row.names = 1)
+
 
 
 # Data wrangling ----------------------------------------------------------
@@ -66,6 +78,7 @@ dat.2021.pub <- dat.2021 |>
 
 # Write to CSV ------------------------------------------------------------
 
+# Altered data
 write_csv(herb.pub,
           file = "data/publish/Herb-cover_2012-2021.csv")
 write_csv(shrub.pub,
@@ -80,3 +93,9 @@ write_csv(perdiv.pub,
           file = "data/publish/Perennial-plant-diversity_2012-2021.csv")
 write_csv(dat.2021.pub,
           file = "data/publish/Veg-soil-elev_2021.csv")
+
+# Data that can be used is
+write_csv(barc.asv,
+          file = "data/publish/bac-arc_clean_asv.csv")
+write_csv(fungi.asv,
+          file = "data/publish/fungi_clean_asv.csv")
