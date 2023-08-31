@@ -1,10 +1,10 @@
 # Purpose: Create 2021 figures for publication, and code for published R Markdown.
 #   Main figures: none
 #   Supp figures: elevation, TN/TC/OM, barc richness/fungi richness, chet/ncycler/sapro
-#   Code: t-test/Mann-Whitney, plot
+#   Code: t-test/Mann-Whitney and plot for soil chem & microbial (not elevation)
 
 # Created: 2023-08-28
-# Last updated: 2023-08-29
+# Last updated: 2023-08-31
 
 library(tidyverse)
 library(ggpubr)
