@@ -184,7 +184,8 @@ barc.nmds$stress # ~0.1684425 (varies)
 meta$NMDS1 <- barc.nmds$points[ , 1]
 meta$NMDS2 <- barc.nmds$points[ , 2]
 
-# Save specific NMDS object, because running changes a little every time
+# Save specific barc.dist and barc.nmds objects, because running them changes a little every time
+save(barc.dist, file = "RData/barc.dist.RData")
 save(barc.nmds, file = "RData/barc.nmds.RData")
 
 # Test community similarity differences
