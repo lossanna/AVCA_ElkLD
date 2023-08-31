@@ -3,7 +3,7 @@
 #   Write out clean data tables. NMDS & richness figures written out in T-test-by-Treatment3_2021.R.
 # Post-2023-03-34 analysis only includes grouping by Channel and Treatment3.
 # Created: 2023-01-10
-# Last updated: 2023-07-14
+# Last updated: 2023-09-30
 
 library(metagenomeSeq)
 library(vegan)
@@ -179,15 +179,17 @@ meta$Shannon <- diversity(barc.norm, index = "shannon")
 # NMDS ordination
 barc.dist <- vegdist(barc.norm, method = "bray")
 barc.nmds <- metaMDS(barc.dist, k = 2)
-barc.nmds$stress # ~0.1680364 (varies)
+barc.nmds$stress # ~0.1684425 (varies)
 
 meta$NMDS1 <- barc.nmds$points[ , 1]
 meta$NMDS2 <- barc.nmds$points[ , 2]
 
+# Save specific NMDS object, because running changes a little every time
+save(barc.nmds, file = "RData/barc.nmds.RData")
 
 # Test community similarity differences
 adonis2(barc.dist ~ meta$Channel) # p < 0.001, 15% of variability explained by Channel
-adonis2(barc.dist ~ meta$Treatment3) # p = 0.026, 3% of variability explained by Treatment3
+adonis2(barc.dist ~ meta$Treatment3) # p = 0.029 (varies), 3% of variability explained by Treatment3
 
 # Plot NMDS
 # By Channel
