@@ -1,28 +1,53 @@
-# Purpose: Create temporal veg figures for publication, and code for published R Markdown.
-#   Main figures: combined temporal cover 
-#   Supp figures: temporal diversity
-#   Code: ANOVA and plots for notree, herb, shrub, rich, shan; average table for invasive
-#     and list of most common invasive
+---
+title: "Appendices: R code"
+output: pdf_document
+---
 
-# Created: 2023-08-28
-# Last updated: 2023-08-29
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 
+# Load data ---------------------------------------------------------------
+
+# Temporal veg
+notree.all <- read.csv("../data/publish/Herb-and-shrub-cover_2012-2021.csv")
+herb.all <- read.csv("../data/publish/Herb-cover_2012-2021.csv") 
+shrub.all <- read.csv("../data/publish/Shrub-cover_2012-2021.csv")
+invasive.all <- read.csv("../data/publish/Invasive-cover_2012-2021.csv")
+plant.all <- read.csv("../data/publish/Species-cover_2012-2021.csv")
+per.div <- read.csv("../data/publish/Perennial-plant-diversity_2012-2021.csv")
+
+
+```
+
+Appendices for "Dryland rock detention structures increase herbaceous vegetation cover and stabilize shrub cover over 10 years but do not directly affect soil fertility" by Ossanna et al. (2023).  
+Contact: Lia Ossanna, <lossanna@arizona.edu>  
+Last updated: 2023-08-31  
+  
+```{r}
+sessionInfo()
+```
+
+
+# Appendix A: Temporal vegetation trends
+## Setup
+```{r}
 library(tidyverse)
 library(agricolae)
 library(plotrix)
 library(ggpubr)
 library(rstatix)
-
+```
+```{r, eval=FALSE}
 # Load data ---------------------------------------------------------------
 
-notree.all <- read.csv("data/publish/Herb-and-shrub-cover_2012-2021.csv")
-herb.all <- read.csv("data/publish/Herb-cover_2012-2021.csv") 
-shrub.all <- read.csv("data/publish/Shrub-cover_2012-2021.csv")
-invasive.all <- read.csv("data/publish/Invasive-cover_2012-2021.csv")
-plant.all <- read.csv("data/publish/Species-cover_2012-2021.csv")
-per.div <- read.csv("data/publish/Perennial-plant-diversity_2012-2021.csv")
-
-
+notree.all <- read.csv("data/Herb-and-shrub-cover_2012-2021.csv")
+herb.all <- read.csv("data/Herb-cover_2012-2021.csv") 
+shrub.all <- read.csv("data/Shrub-cover_2012-2021.csv")
+invasive.all <- read.csv("data/Invasive-cover_2012-2021.csv")
+plant.all <- read.csv("data/Species-cover_2012-2021.csv")
+per.div <- read.csv("data/Perennial-plant-diversity_2012-2021.csv")
+```
+```{r}
 # Functions ---------------------------------------------------------------
 
 # Convert columns to factor or date as needed
@@ -44,8 +69,10 @@ herb.all <- convert.cols(herb.all)
 shrub.all <- convert.cols(shrub.all)
 invasive.all <- convert.cols(invasive.all)
 per.div <- convert.cols(per.div)
+```
 
-
+## Fig 2A: Grass, forb & shrub cover
+```{r, fig.height=3, fig.width=6}
 # Grass, forb, and shrub cover (notree) -----------------------------------
 
 # Find averages by year
@@ -117,9 +144,10 @@ notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
   theme(axis.text.x = element_text(color = "black")) +
   theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) 
 notree.plot
+```
 
-
-
+## Fig 2B: Herbaceous (grass & forb) cover
+```{r, fig.height=3, fig.width=6}
 # Herbaceous cover --------------------------------------------------------
 
 # Find averages by year
@@ -191,8 +219,10 @@ herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
   theme(axis.text.x = element_text(color = "black")) +
   theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) 
 herb.plot
+```
 
-
+## Fig 2C: Shrub cover
+```{r, fig.height=3, fig.width=6}
 # Shrub cover -------------------------------------------------------------
 
 # Find averages by year
@@ -254,39 +284,12 @@ shrub.plot <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean,
   theme(axis.text.x = element_text(color = "black")) +
   theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) 
 shrub.plot
+```
 
-
-# Combine notree, herb & shrub --------------------------------------------
-
-tiff("figures/2023-09_publish-figures/temporal-ANOVA_notree-herb-shrub.tiff", units = "in", height = 8, width = 6, res = 1000)
-ggarrange(notree.plot, herb.plot, shrub.plot,
-          ncol = 1, nrow = 3,
-          labels = c("(A)", "(B)", "(C)")) 
-
-dev.off()
-
-
-
-
-# Invasive cover ----------------------------------------------------------
-
-# Most common species
-most.invasive.ctrl <- plant.all |> 
-  filter(Native == "Invasive",
-         Treatment == "Control") |> 
-  group_by(Common) |> 
-  summarise(mean = mean(Cover)) |> 
-  arrange(desc(mean))
-
-most.invasive.trt <- plant.all |> 
-  filter(Native == "Invasive",
-         Treatment == "Treated") |> 
-  group_by(Common) |> 
-  summarise(mean = mean(Cover)) |> 
-  arrange(desc(mean)) 
-
-# Find averages by year
-invasive.avg <- invasive.all %>% 
+## Invasive cover and most common species
+```{r}
+# Average cover by year
+invasive.all %>% 
   select(-year.xaxis) |> 
   group_by(Treatment, Year) %>% 
   summarise(mean = mean(Cover),
@@ -294,124 +297,40 @@ invasive.avg <- invasive.all %>%
             .groups = "keep") |> 
   mutate_if(is.numeric, round, digits = 2)
 
+# Most common species in Control
+plant.all |> 
+  filter(Native == "Invasive",
+         Treatment == "Control") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean))
+
+# Most common species in Treated
+plant.all |> 
+  filter(Native == "Invasive",
+         Treatment == "Treated") |> 
+  group_by(Common) |> 
+  summarise(mean = mean(Cover)) |> 
+  arrange(desc(mean)) 
+```
+
+## Supp Fig 4A: Perennial plant species richness
+
+## Supp Fig 4B: Perennial plant diversity
 
 
-# Perennial plant richness ------------------------------------------------
+# Appendix B: Coefficient of variation
+## Fig 3A: CV of shrub cover
 
-# Find averages by year
-rich.avg <- per.div %>% 
-  group_by(Treatment, Year, year.xaxis) %>% 
-  summarise(mean = mean(rich),
-            SD = sd(rich),
-            SE = std.error(rich),
-            .groups = "keep")
+## Fig 3B: CV of herbaceous cover
 
-# One-way ANOVA for Control
-summary(aov(rich ~ Year, data = filter(per.div, Treatment == "Control"))) # 0.00881
-rich.ctrl <- per.div |> 
-  filter(Treatment == "Control")
-anova.rich.ctrl <- aov(rich.ctrl$rich ~ rich.ctrl$Year)
-hsd.rich.ctrl <- HSD.test(anova.rich.ctrl, trt = "rich.ctrl$Year")
-hsd.rich.ctrl$groups
+## Fig 3C: CV of overall veg cover
 
-# One-way ANOVA for Treated
-summary(aov(rich ~ Year, data = filter(per.div, Treatment == "Treated"))) # p = 0.0516
+## Supp Fig 5A: CV of perennial richness
 
-# Plot with one-way ANOVA letters
-rich.ctrl.letters <- hsd.rich.ctrl$groups
-rich.ctrl.letters <- rich.ctrl.letters |> 
-  mutate(Year = rownames(rich.ctrl.letters)) |> 
-  arrange(Year)
-
-letters.rich <- data.frame(x = rich.avg$year.xaxis[1:6],
-                           y = rep(10.4, 6),
-                           label = rich.ctrl.letters$groups,
-                           Treatment = rep("Control", 6))
-ptext.rich <- data.frame(x = rep(as.Date("2019-09-01"), 2),
-                         y = c(6.7, 10.3),
-                         label = c("ANOVA, p = 0.009", "ANOVA, p = 0.052"),
-                         Treatment = c("Control", "Treated"))
-
-rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
-                                  group = Treatment, 
-                                  color = Treatment)) +
-  geom_line() +
-  geom_point() +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment) +
-  xlab(NULL) +
-  ylab("No. of species") +
-  ggtitle("Perennial plant species richness, 2012-2021") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  geom_text(data = letters.rich,
-            mapping = aes(x = x, y = y, label = label),
-            color = "black",
-            size = 3.5) +
-  geom_text(data = ptext.rich,
-            aes(x = x, y = y, label = label),
-            color = "gray30",
-            size = 2.5) +
-  theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
-rich.plot
+## Supp Fig 5B: CV of perennial diversity
 
 
-
-# Perennial plant diversity (Shannon) -------------------------------------
-
-# Find averages by year
-shan.avg <- per.div %>% 
-  group_by(Treatment, Year, year.xaxis) %>% 
-  summarise(mean = mean(shan),
-            SD = sd(shan),
-            SE = std.error(shan),
-            .groups = "keep")
-
-# One-way ANOVA for Control
-summary(aov(shan ~ Year, data = filter(per.div, Treatment == "Control"))) # p = 0.934
-
-# One-way ANOVA for Treated
-summary(aov(shan ~ Year, data = filter(per.div, Treatment == "Treated"))) # p = 0.725
+# Appendix C: Soil fertility
 
 
-# Plot with one-way ANOVA
-ptext.shan <- data.frame(x = rep(as.Date("2019-09-01"), 2),
-                         y = c(1.33, 1.33),
-                         label = c("ANOVA, p = 0.934", "ANOVA, p = 0.725"),
-                         Treatment = c("Control", "Treated"))
-
-shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
-                                  group = Treatment, 
-                                  color = Treatment)) +
-  geom_line() +
-  geom_point() +
-  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment) +
-  xlab(NULL) +
-  ylab("Shannon diversity index") +
-  ggtitle("Perennial plant diversity") +
-  scale_color_manual(values = c("red", "#1F78B4")) +
-  theme_bw() +
-  theme(legend.position = "none") +
-  theme(axis.text.x = element_text(color = "black")) +
-  geom_text(data = ptext.shan,
-            aes(x = x, y = y, label = label),
-            color = "gray30",
-            size = 2.5) +
-  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
-shan.plot
-
-
-# Combine richness & Shannon ----------------------------------------------
-
-tiff("figures/2023-09_publish-figures/temporal-ANOVA_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
-ggarrange( rich.plot, shan.plot,
-           ncol = 1, nrow = 2,
-           labels = c("(A)", "(B)")) 
-
-dev.off()
-
-
-save.image("RData/Publish_temporal-veg.RData")
