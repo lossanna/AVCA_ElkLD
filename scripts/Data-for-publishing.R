@@ -24,6 +24,10 @@ per.div <- read_csv("data/cleaned/Summarised-all_perennial-diversity.csv")
 
 dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv") 
 
+meta <- read.table(file = "data/cleaned/sequencing/sequencing_metadata.txt",
+                   header = TRUE,
+                   sep = "\t")
+
 
 
 # Data wrangling ----------------------------------------------------------
@@ -73,9 +77,14 @@ dat.2021.pub <- dat.2021 |>
   rename(Treatment = Treatment3)
 
 
+# Sequencing
+meta <- meta |> 
+  select(Sample, Treatment3) |> 
+  rename(Treatment = Treatment3)
+
+
 # Write to CSV ------------------------------------------------------------
 
-# Altered data
 write_csv(herb.pub,
           file = "data/publish/Herb-cover_2012-2021.csv")
 write_csv(shrub.pub,
@@ -88,5 +97,9 @@ write_csv(plant.pub,
           file = "data/publish/Species-cover_2012-2021.csv")
 write_csv(perdiv.pub,
           file = "data/publish/Perennial-plant-diversity_2012-2021.csv")
+
 write_csv(dat.2021.pub,
           file = "data/publish/Veg-soil-elev_2021.csv")
+
+write_csv(meta,
+          file = "data/publish/sequencing_metadata.csv")
