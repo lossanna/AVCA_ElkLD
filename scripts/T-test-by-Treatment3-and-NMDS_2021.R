@@ -329,7 +329,7 @@ barc.nmds.plot.21 <- dat.2021 %>%
   theme(legend.position = "bottom") +
   theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
   theme(legend.title = element_blank()) +
-  geom_text(aes(x = 0.3, y = -0.55, label = "PERMANOVA, p = 0.026"),
+  geom_text(aes(x = 0.3, y = -0.55, label = "PERMANOVA, p = 0.029"),
             size = 3, color = "gray30") +
   geom_text(aes(x = 0.35, y = -0.65, label = "Stress = 0.168"),
             size = 3, color = "gray30") # only 3% explained by Treatment3 lol

@@ -2,6 +2,10 @@
 #   calculate richness and diversity, create stacked bar charts of dominant phyla & families.
 #   Write out clean data tables. NMDS & richness figures written out in T-test-by-Treatment3_2021.R.
 # Post-2023-03-34 analysis only includes grouping by Channel and Treatment3.
+# Bray-Curtis distance and NMDS should not be run again, because values differ slightly every time.
+#   The current version saved in 16S_prelim-stats.RData is the "official" version that is then used for 
+#   downstream analysis/model output/plots.
+
 # Created: 2023-01-10
 # Last updated: 2023-09-30
 
@@ -183,10 +187,6 @@ barc.nmds$stress # ~0.1684425 (varies)
 
 meta$NMDS1 <- barc.nmds$points[ , 1]
 meta$NMDS2 <- barc.nmds$points[ , 2]
-
-# Save specific barc.dist and barc.nmds objects, because running them changes a little every time
-save(barc.dist, file = "RData/barc.dist.RData")
-save(barc.nmds, file = "RData/barc.nmds.RData")
 
 # Test community similarity differences
 adonis2(barc.dist ~ meta$Channel) # p < 0.001, 15% of variability explained by Channel
