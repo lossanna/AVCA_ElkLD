@@ -500,7 +500,7 @@ per.div <- read_csv("data/Perennial-plant-diversity_2012-2021.csv")
 ```
 
 ## Fig 3a: CV of shrub cover
-```{r, fig.height=4.5, fig.width=4.5}
+```{r, fig.height=4, fig.width=3}
 # Shrub cover -------------------------------------------------------------
 
 # Find CV for each sample over time
@@ -514,9 +514,6 @@ shrub.sample[1, 3] <- 0
 shrub.sample[5, 3] <- 0
 shrub.sample[8, 3] <- 0
 
-# Explore distribution
-qqPlot(filter(shrub.sample, Treatment == "Control")$CV) # not normal
-qqPlot(filter(shrub.sample, Treatment == "Treated")$CV) # not normal
 
 # Compare means
 wilcox.test(filter(shrub.sample, Treatment == "Treated")$CV,
@@ -561,7 +558,7 @@ shrub.plot.cv
 
 
 ## Fig 3b: CV of herbaceous cover
-```{r, fig.height=4.5, fig.width=4.5}
+```{r, fig.height=4, fig.width=3}
 # Herb cover --------------------------------------------------------------
 
 # Find CV for each sample over time
@@ -570,9 +567,6 @@ herb.sample <- herb.all |>
   summarise(CV = sd(Cover) / mean(Cover),
             .groups = "keep")
 
-# Explore distribution
-qqPlot(filter(herb.sample, Treatment == "Treated")$CV) # normal
-qqPlot(filter(herb.sample, Treatment == "Control")$CV) # not quite normal?
 
 # Compare means
 wilcox.test(filter(herb.sample, Treatment == "Treated")$CV,
@@ -608,7 +602,7 @@ herb.plot.cv
 
 
 ## Fig 3c: CV of overall veg cover
-```{r, fig.height=4.5, fig.width=4.5}
+```{r, fig.height=4, fig.width=3}
 # Notree cover ------------------------------------------------------------
 
 # Find CV for each sample over time
@@ -616,10 +610,6 @@ notree.sample <- notree.all |>
   group_by(Sample, Treatment) |> 
   summarise(CV = sd(Cover) / mean(Cover),
             .groups = "keep")
-
-# Explore distribution
-qqPlot(filter(notree.sample, Treatment == "Treated")$CV) # normal
-qqPlot(filter(notree.sample, Treatment == "Control")$CV) # normal
 
 # Compare means
 t.test(filter(notree.sample, Treatment == "Treated")$CV,
@@ -667,7 +657,7 @@ dev.off()
 
 
 ## Supp Fig 5a: CV of perennial richness
-```{r, fig.height=4.5, fig.width=4.5}
+```{r, fig.height=4, fig.width=3}
 # Richness ----------------------------------------------------------------
 
 # Find CV for each sample over time
@@ -675,10 +665,6 @@ rich.sample <- per.div |>
   group_by(Sample, Treatment) |> 
   summarise(CV = sd(rich) / mean(rich),
             .groups = "keep")
-
-# Explore distribution
-qqPlot(filter(rich.sample, Treatment == "Treated")$CV) # not quite normal
-qqPlot(filter(rich.sample, Treatment == "Control")$CV) # normal
 
 # Compare means
 wilcox.test(filter(rich.sample, Treatment == "Treated")$CV,
@@ -714,7 +700,7 @@ rich.plot.cv
 
 
 ## Supp Fig 5b: CV of perennial diversity
-```{r, fig.height=4.5, fig.width=4.5}
+```{r, fig.height=4, fig.width=3}
 # Shannon -----------------------------------------------------------------
 
 # Find CV for each sample over time
@@ -722,10 +708,6 @@ shan.sample <- per.div |>
   group_by(Sample, Treatment) |> 
   summarise(CV = sd(shan) / mean(shan),
             .groups = "keep")
-
-# Explore distribution
-qqPlot(filter(shan.sample, Treatment == "Treated")$CV) # normal
-qqPlot(filter(shan.sample, Treatment == "Control")$CV) # almost normal
 
 # Compare
 t.test(filter(shan.sample, Treatment == "Treated")$CV,
