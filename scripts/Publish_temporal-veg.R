@@ -258,7 +258,7 @@ shrub.plot
 
 # Combine notree, herb & shrub --------------------------------------------
 
-tiff("figures/2023-09_publish-figures/temporal-ANOVA_notree-herb-shrub.tiff", units = "in", height = 8, width = 6, res = 1000)
+tiff("figures/2023-09_publish-figures/Fig2_temporal_notree-herb-shrub.tiff", units = "in", height = 8, width = 6, res = 1000)
 ggarrange(notree.plot, herb.plot, shrub.plot,
           ncol = 1, nrow = 3,
           labels = c("(A)", "(B)", "(C)")) 
@@ -406,7 +406,7 @@ shan.plot
 
 # Combine richness & Shannon ----------------------------------------------
 
-tiff("figures/2023-09_publish-figures/temporal-ANOVA_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
+tiff("figures/2023-09_publish-figures/FigS4_temporal_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
 ggarrange( rich.plot, shan.plot,
            ncol = 1, nrow = 2,
            labels = c("(A)", "(B)")) 

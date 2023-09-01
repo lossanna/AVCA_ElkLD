@@ -75,7 +75,7 @@ ggplot(precip, aes(x = year.xaxis, y = Precip_cum_cm)) +
   theme(axis.text.x = element_text(color = "black")) 
 dev.off()
 
-tiff("figures/2023-09_publish-figures/Precipitation.tiff", width = 6, height = 4, units = "in", res = 300)
+tiff("figures/2023-09_publish-figures/FigS1_Precipitation.tiff", width = 6, height = 4, units = "in", res = 300)
 ggplot(precip, aes(x = year.xaxis, y = Precip_cum_cm)) +
   geom_line(linewidth = 1) +
   geom_point(size = 3) +

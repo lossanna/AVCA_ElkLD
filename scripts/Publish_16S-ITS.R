@@ -140,9 +140,11 @@ fungi.nmds.plot.21
 
 # Combine NMDS ------------------------------------------------------------
 
-tiff("figures/2023-09_publish-figures/Soil-NMDS.tiff", height = 4, width = 7, units = "in", res = 1000)
+tiff("figures/2023-09_publish-figures/Fig4_Soil-NMDS.tiff", height = 4, width = 7, units = "in", res = 1000)
 ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
           nrow = 1, ncol = 2,
           labels = c("(A)", "(B)"),
           common.legend = TRUE, legend = "bottom")
 dev.off()
+
+save.image("RData/Publish_16S-ITS.RData")

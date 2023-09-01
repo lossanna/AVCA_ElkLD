@@ -171,7 +171,7 @@ shrub.plot.cv
 
 # Combine notree, herb, shrub ---------------------------------------------
 
-tiff("figures/2023-09_publish-figures/CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
+tiff("figures/2023-09_publish-figures/Fig3_CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
 ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 
@@ -271,7 +271,7 @@ shan.plot.cv
 # Combine richness & Shannon ----------------------------------------------
 
 # Supplemental figure
-tiff("figures/2023-09_publish-figures/CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
+tiff("figures/2023-09_publish-figures/FigS5_CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
 ggarrange(rich.plot.cv, shan.plot.cv,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)")) 

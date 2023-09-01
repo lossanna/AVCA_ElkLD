@@ -55,7 +55,7 @@ dElev.corrected.plot <- elev |>
                width = 0.75, linetype = "dashed")
 dElev.corrected.plot
 
-tiff("figures/2023-09_publish-figures/Elevation.tiff", width = 6, height = 4, units = "in", res = 300)
+tiff("figures/2023-09_publish-figures/FigS3_Elevation.tiff", width = 6, height = 4, units = "in", res = 300)
 dElev.corrected.plot
 dev.off()
 
@@ -167,7 +167,7 @@ om.plot.21
 # Combine soil chem -------------------------------------------------------
 
 # TN, TC, OM
-tiff("figures/2023-09_publish-figures/Soil-chem.tiff", units = "in", height = 4, width = 7, res = 300)
+tiff("figures/2023-09_publish-figures/FigS6_Soil-chem.tiff", units = "in", height = 4, width = 7, res = 300)
 ggarrange(tn.plot.21, tc.plot.21, om.plot.21, 
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 
@@ -245,7 +245,7 @@ fungi.rich.plot.21
 
 # Combine soil richness ---------------------------------------------------
 
-tiff("figures/2023-09_publish-figures/Soil-richness.tiff", units = "in", height = 4, width = 5.5, res = 300)
+tiff("figures/2023-09_publish-figures/FigS7_Soil-richness.tiff", units = "in", height = 4, width = 5.5, res = 300)
 ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)"))
@@ -357,7 +357,7 @@ sapro.plot.21
 
 # Combine FAPROTAX and FUNGuild -------------------------------------------
 
-tiff("figures/2023-09_publish-figures/Soil-functional.tiff", units = "in", height = 4, width = 7, res = 300)
+tiff("figures/2023-09_publish-figures/FigS8_Soil-functional.tiff", units = "in", height = 4, width = 7, res = 300)
 ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21, 
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 

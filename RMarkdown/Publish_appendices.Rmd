@@ -326,7 +326,7 @@ shrub.plot
 ```{r, eval=FALSE}
 # Combine notree, herb & shrub --------------------------------------------
 
-tiff("figures/2023-09_publish-figures/temporal-ANOVA_notree-herb-shrub.tiff", units = "in", height = 8, width = 6, res = 1000)
+tiff("Fig2_temporal_notree-herb-shrub.tiff", units = "in", height = 8, width = 6, res = 1000)
 ggarrange(notree.plot, herb.plot, shrub.plot,
           ncol = 1, nrow = 3,
           labels = c("(A)", "(B)", "(C)")) 
@@ -452,7 +452,7 @@ shan.plot
 ```{r, eval=FALSE}
 # Combine richness & Shannon ----------------------------------------------
 
-tiff("figures/2023-09_publish-figures/temporal-ANOVA_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
+tiff("FigS4_temporal_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
 ggarrange( rich.plot, shan.plot,
            ncol = 1, nrow = 2,
            labels = c("(A)", "(B)")) 
@@ -657,7 +657,7 @@ notree.plot.cv
 ```{r, eval=FALSE}
 # Combine notree, herb, shrub ---------------------------------------------
 
-tiff("figures/2023-09_publish-figures/CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
+tiff("Fig3_CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
 ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 
@@ -757,7 +757,7 @@ shan.plot.cv
 # Combine richness & Shannon ----------------------------------------------
 
 # Supplemental figure
-tiff("figures/2023-09_publish-figures/CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
+tiff("FigS5_CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
 ggarrange(rich.plot.cv, shan.plot.cv,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)")) 
@@ -895,7 +895,7 @@ fungi.nmds.plot.21
 ```{r, eval=FALSE}
 # Combine NMDS ------------------------------------------------------------
 
-tiff("figures/2023-09_publish-figures/Soil-NMDS.tiff", height = 4, width = 7, units = "in", res = 1000)
+tiff("Fig4_Soil-NMDS.tiff", height = 4, width = 7, units = "in", res = 1000)
 ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
           nrow = 1, ncol = 2,
           labels = c("(A)", "(B)"),
@@ -1017,7 +1017,7 @@ om.plot.21
 # Combine soil chem -------------------------------------------------------
 
 # TN, TC, OM
-tiff("figures/2023-09_publish-figures/Soil-chem.tiff", units = "in", height = 4, width = 7, res = 300)
+tiff("FigS6_Soil-chem.tiff", units = "in", height = 4, width = 7, res = 300)
 ggarrange(tn.plot.21, tc.plot.21, om.plot.21, 
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 
@@ -1101,7 +1101,7 @@ fungi.rich.plot.21
 ```{r, eval=FALSE}
 # Combine soil richness ---------------------------------------------------
 
-tiff("figures/2023-09_publish-figures/Soil-richness.tiff", units = "in", height = 4, width = 5.5, res = 300)
+tiff("FigS7_Soil-richness.tiff", units = "in", height = 4, width = 5.5, res = 300)
 ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
           ncol = 2, nrow = 1,
           labels = c("(A)", "(B)"))
@@ -1221,7 +1221,7 @@ sapro.plot.21
 ```{r}
 # Combine FAPROTAX and FUNGuild -------------------------------------------
 
-tiff("figures/Soil-functional.tiff", units = "in", height = 4, width = 7, res = 300)
+tiff("FigS8_Soil-functional.tiff", units = "in", height = 4, width = 7, res = 300)
 ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21, 
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 
