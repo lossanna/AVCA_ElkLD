@@ -164,6 +164,31 @@ notree.plot.cv <- notree.sample |>
                width = 0.75, linetype = "dashed")
 notree.plot.cv
 
+notree.plot.cv2 <- notree.sample |> 
+  ggplot(aes(x = Treatment3, y = CV)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment3)) +
+  geom_jitter(size = 2,
+              alpha = 0.8,
+              aes(color = Treatment3)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Vegetation cover",
+       x = NULL,
+       y = NULL) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent) +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.9, y = 0.95, label = "t-test, p = 0.882"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.2, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed")
+notree.plot.cv2
+
 
 # Compare by each channel
 summary(aov(notree.sample$CV ~ notree.sample$Channel))
@@ -288,6 +313,13 @@ shrub.plot.cv2
 
 tiff("figures/2023-07_draft-figures/CV_notree-herb-shrub.tiff", units = "in", height = 4.7, width = 8, res = 150)
 ggarrange(notree.plot.cv, herb.plot.cv, shrub.plot.cv,
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+
+tiff("figures/2023-07_draft-figures/CV_shrub-herb-notree.tiff", units = "in", height = 4.7, width = 8, res = 150)
+ggarrange(shrub.plot.cv2, herb.plot.cv, notree.plot.cv2,
           ncol = 3, nrow = 1,
           labels = c("(A)", "(B)", "(C)")) 
 
