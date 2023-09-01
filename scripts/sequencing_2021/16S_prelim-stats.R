@@ -8,17 +8,17 @@
 #   downstream analysis/model output/plots.
 
 # Created: 2023-01-10
-# Last updated: 2023-09-30
+# Last updated: 2023-09-01
 
-library(metagenomeSeq)
+library(metagenomeSeq) # version 1.42.0
 library(vegan)
 library(agricolae)
-library(FSA)
-library(rcompanion)
+library(FSA) # version 0.9.5
+library(rcompanion) # version 2.4.30
 library(tidyverse)
 library(ggpubr)
-library(reshape2)
-library(car)
+library(reshape2) # version 1.4.4
+library(car) # version 3.1-2
 
 
 # Load data ---------------------------------------------------------------

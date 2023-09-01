@@ -4,14 +4,13 @@
 #   Code: calculate CV, t-test/Mann-Whitney, plot
 
 # Will use Mann-Whitney rather than log transformation for ease of interpretation.
-# Have taken out code to look at normality distribution because I am not including for
-#   anything else (ANOVA or t-test).
+# Am including distribution and qq-plots here, but will not in R Markdown.
 
 # Created: 2023-08-28
 # Last updated: 2023-08-29
 
 library(tidyverse)
-library(car)
+library(car) # version 3.1-2
 library(scales)
 library(ggpubr)
 
@@ -30,6 +29,10 @@ notree.sample <- notree.all |>
   group_by(Sample, Treatment) |> 
   summarise(CV = sd(Cover) / mean(Cover),
             .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(notree.sample, Treatment == "Treated")$CV) # normal
+qqPlot(filter(notree.sample, Treatment == "Control")$CV) # normal
 
 # Compare means
 t.test(filter(notree.sample, Treatment == "Treated")$CV,
@@ -71,6 +74,10 @@ herb.sample <- herb.all |>
   group_by(Sample, Treatment) |> 
   summarise(CV = sd(Cover) / mean(Cover),
             .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(herb.sample, Treatment == "Treated")$CV) # normal
+qqPlot(filter(herb.sample, Treatment == "Control")$CV) # not quite normal?
 
 # Compare means
 wilcox.test(filter(herb.sample, Treatment == "Treated")$CV,
@@ -116,6 +123,10 @@ shrub.sample <- shrub.all |>
 shrub.sample[1, 3] <- 0
 shrub.sample[5, 3] <- 0
 shrub.sample[8, 3] <- 0
+
+# Explore distribution
+qqPlot(filter(shrub.sample, Treatment == "Control")$CV) # not normal
+qqPlot(filter(shrub.sample, Treatment == "Treated")$CV) # not normal
 
 # Compare means
 wilcox.test(filter(shrub.sample, Treatment == "Treated")$CV,
@@ -176,6 +187,10 @@ rich.sample <- per.div |>
   summarise(CV = sd(rich) / mean(rich),
             .groups = "keep")
 
+# Explore distribution
+qqPlot(filter(rich.sample, Treatment == "Treated")$CV) # not quite normal
+qqPlot(filter(rich.sample, Treatment == "Control")$CV) # normal
+
 # Compare means
 wilcox.test(filter(rich.sample, Treatment == "Treated")$CV,
             filter(rich.sample, Treatment == "Control")$CV) # NS, p = 0.093
@@ -215,6 +230,10 @@ shan.sample <- per.div |>
   group_by(Sample, Treatment) |> 
   summarise(CV = sd(shan) / mean(shan),
             .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(shan.sample, Treatment == "Treated")$CV) # normal
+qqPlot(filter(shan.sample, Treatment == "Control")$CV) # almost normal
 
 # Compare
 t.test(filter(shan.sample, Treatment == "Treated")$CV,
