@@ -28,7 +28,7 @@ dat.2021 <- read.csv("data/publish/Veg-soil-elev_2021.csv")
 #   so NMDS values and stress and adonis2() output will vary.
 
 # "Official" output from 16S_prelim-stats:
-#   NMDS stres = 0.1684425
+#   NMDS stress = 0.1684425
 #   adonis2(formula = barc.dist ~ meta$Treatment3)
 #                   Df SumOfSqs      R2      F Pr(>F)  
 #   meta$Treatment3  1   0.2559 0.02881 1.7799  0.029 *
@@ -51,7 +51,7 @@ barc.dist <- vegdist(barc.norm, method = "bray")
 barc.nmds <- metaMDS(barc.dist, k = 2)
 barc.nmds$stress
 
-meta0$barc.NMDS1 <- barc.nmds$points[ , 1]
+meta$barc.NMDS1 <- barc.nmds$points[ , 1]
 meta$barc.NMDS2 <- barc.nmds$points[ , 2]
 
 # Test community similarity differences

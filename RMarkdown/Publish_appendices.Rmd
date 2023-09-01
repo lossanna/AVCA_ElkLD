@@ -16,7 +16,15 @@ invasive.all <- read.csv("../data/publish/Invasive-cover_2012-2021.csv")
 plant.all <- read.csv("../data/publish/Species-cover_2012-2021.csv")
 per.div <- read.csv("../data/publish/Perennial-plant-diversity_2012-2021.csv")
 
+# 2021 data
+dat.2021 <- read.csv("../data/publish/Veg-soil-elev_2021.csv")
 
+# Sequencing
+barc.asv <- read.table("../data/publish/bac-arc_clean_asv.txt", sep = "\t",
+                       header = T, row.names = 1)
+fungi.asv <- read.table("../data/publish/fungi_clean_asv.txt",
+                        sep = "\t", header = T, row.names = 1)
+meta <- read.csv("../data/publish/sequencing_metadata.csv")
 ```
 
 Appendices for "Dryland rock detention structures increase herbaceous vegetation cover and stabilize shrub cover over 10 years but do not directly affect soil fertility" by Ossanna et al. (2023). Included are code and analysis used to make figures and full model output.  
@@ -49,7 +57,10 @@ Package versions:
 - `ggpubr 0.6.0`
 - `rstatix 0.7.2`
 - `scales 1.2.1`
-
+- `metagenomeSeq 1.42.0`, `Biobase 2.60.0`, `BiocGenerics 0.46.0`
+- `vegan 2.6-4`
+- `dada2 1.28.0`, `ShortRead 1.58.0`, `Biostrings 2.68.1` used for DADA2 pipeline (code not included here)
+- `lavaan 0.6-16`
 
 
 \newpage
@@ -65,12 +76,12 @@ library(rstatix)
 ```{r, eval=FALSE}
 # Load data ---------------------------------------------------------------
 
-notree.all <- read.csv("data/Herb-and-shrub-cover_2012-2021.csv")
-herb.all <- read.csv("data/Herb-cover_2012-2021.csv") 
-shrub.all <- read.csv("data/Shrub-cover_2012-2021.csv")
-invasive.all <- read.csv("data/Invasive-cover_2012-2021.csv")
-plant.all <- read.csv("data/Species-cover_2012-2021.csv")
-per.div <- read.csv("data/Perennial-plant-diversity_2012-2021.csv")
+notree.all <- read.csv("Herb-and-shrub-cover_2012-2021.csv")
+herb.all <- read.csv("Herb-cover_2012-2021.csv") 
+shrub.all <- read.csv("Shrub-cover_2012-2021.csv")
+invasive.all <- read.csv("Invasive-cover_2012-2021.csv")
+plant.all <- read.csv("Species-cover_2012-2021.csv")
+per.div <- read.csv("Perennial-plant-diversity_2012-2021.csv")
 ```
 ```{r}
 # Functions ---------------------------------------------------------------
@@ -492,10 +503,10 @@ library(ggpubr)
 ```{r, eval=FALSE}
 # Load data ---------------------------------------------------------------
 
-notree.all <- read_csv("data/Herb-and-shrub-cover_2012-2021.csv")
-herb.all <- read_csv("data/Herb-cover_2012-2021.csv") 
-shrub.all <- read_csv("data/Shrub-cover_2012-2021.csv")
-per.div <- read_csv("data/Perennial-plant-diversity_2012-2021.csv")
+notree.all <- read_csv("Herb-and-shrub-cover_2012-2021.csv")
+herb.all <- read_csv("Herb-cover_2012-2021.csv") 
+shrub.all <- read_csv("Shrub-cover_2012-2021.csv")
+per.div <- read_csv("Perennial-plant-diversity_2012-2021.csv")
 ```
 
 ## Fig 3a: CV of shrub cover
@@ -758,27 +769,479 @@ dev.off()
 \newpage
 # Appendix C: Soil fertility
 ## Setup
+```{r, message=FALSE}
+library(tidyverse)
+library(ggpubr)
+library(metagenomeSeq)
+library(vegan)
+```
+```{r, eval=FALSE}
+# Load data ---------------------------------------------------------------
+
+barc.asv <- read.table("bac-arc_clean_asv.txt", sep = "\t",
+                       header = T, row.names = 1)
+fungi.asv <- read.table("fungi_clean_asv.txt",
+                      sep = "\t", header = T, row.names = 1)
+meta <- read.csv("sequencing_metadata.csv")
+
+dat.2021 <- read.csv("Veg-soil-elev_2021.csv")
+```
+```{r}
+# 16S ---------------------------------------------------------------------
+
+# Normalization
+barc.MR <- newMRexperiment(t(barc.asv))
+p <- cumNormStat(barc.MR)
+barc.MR <- cumNorm(barc.MR, p = p)
+barc.norm <- t(MRcounts(barc.MR, norm = T, log = F))
+
+# Richness and Shannon
+meta$barc.richness <- specnumber(barc.norm)
+meta$barc.shannon <- diversity(barc.norm, index = "shannon")
+
+# Bray-Curtis distance
+barc.dist <- vegdist(barc.norm, method = "bray")
+
+
+# ITS ---------------------------------------------------------------------
+
+# Normalization 
+fungi.MR <- newMRexperiment(t(fungi.asv))
+p <- cumNormStat(fungi.MR)
+fungi.MR <- cumNorm(fungi.MR, p = p)
+fungi.norm <- t(MRcounts(fungi.MR, norm = T, log = F))
+
+# Richness and Shannon
+meta$fungi.richness <- specnumber(fungi.norm)
+meta$fungi.shannon <- diversity(fungi.norm, index = "shannon")
+
+# Bray-Curtis distance
+fungi.dist <- vegdist(fungi.norm, method = "bray")
+```
+
+
+## Fig 4a: Bacteria & archaea NMDS ordination
+Note that PERMANOVA model results (`adonis2`) will vary slightly each time and will not exactly match values published in the paper.
+```{r, fig.height=4, fig.width=4}
+# NMDS ordination
+barc.nmds <- metaMDS(barc.dist, k = 2)
+barc.nmds$stress
+
+meta$barc.NMDS1 <- barc.nmds$points[ , 1]
+meta$barc.NMDS2 <- barc.nmds$points[ , 2]
+
+# PERMANOVA
+adonis2(barc.dist ~ meta$Treatment) 
+
+# Plot (using dat.2021 for same NMDS values presented in paper):
+barc.nmds.plot.21 <- dat.2021 %>% 
+  ggplot(aes(x = barc.NMDS1, y = barc.NMDS2, color = Treatment, shape = Treatment)) +
+  geom_point() +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  labs(x = "Axis 1",
+       y = "Axis 2",
+       title = "Bacteria & archaea",
+       color = "Treatment",
+       shape = "Treatment") +
+  theme(legend.position = "bottom") +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  theme(legend.title = element_blank()) +
+  geom_text(aes(x = 0.2, y = -0.55, label = "PERMANOVA, p = 0.029"),
+            size = 2.5, color = "gray30") +
+  geom_text(aes(x = 0.25, y = -0.65, label = "Stress = 0.168"),
+            size = 2.5, color = "gray30") +
+  theme(plot.title = element_text(size = 12))
+barc.nmds.plot.21
+```
+
+## Fig 4b: Fungi NMDS ordination
+Note that PERMANOVA model results (`adonis2`) will vary slightly each time and will not exactly match values published in the paper.
+```{r, fig.height=4, fig.width=4}
+# NMDS ordination
+fungi.nmds <- metaMDS(fungi.dist, k = 2)
+fungi.nmds$stress
+
+meta$fungi.NMDS1 <- fungi.nmds$points[ , 1]
+meta$fungi.NMDS2 <- fungi.nmds$points[ , 2]
+
+# PERMANOVA
+adonis2(fungi.dist ~ meta$Treatment)
+
+
+# Plot (using dat.2021 for same NMDS values presented in paper):
+fungi.nmds.plot.21 <- dat.2021 %>% 
+  ggplot(aes(x = fungi.NMDS1, y = fungi.NMDS2, color = Treatment, shape = Treatment)) +
+  geom_point() +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  labs(x = "Axis 1",
+       y = "Axis 2",
+       title = "Fungi",
+       color = "Treatment",
+       shape = "Treatment") +
+  theme(legend.position = "bottom") +
+  theme(legend.title = element_blank()) +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 0.73, y = -0.7, label = "PERMANOVA, p = 0.011"),
+            size = 2.5, color = "gray30") +
+  geom_text(aes(x = 0.82, y = -0.8, label = "Stress = 0.236"),
+            size = 2.5, color = "gray30") +
+  theme(plot.title = element_text(size = 12))
+fungi.nmds.plot.21
+```
+
+## Combine plots for Fig 4
+```{r, eval=FALSE}
+# Combine NMDS ------------------------------------------------------------
+
+tiff("figures/2023-09_publish-figures/Soil-NMDS.tiff", height = 4, width = 7, units = "in", res = 1000)
+ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
+          nrow = 1, ncol = 2,
+          labels = c("(A)", "(B)"),
+          common.legend = TRUE, legend = "bottom")
+dev.off()
+```
 
 
 ## Supp Fig 6a: Total soil nitrogen
+```{r, fig.height=4, fig.width=3}
+# Total N -----------------------------------------------------------------
+
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$TN_ppt,
+            filter(dat.2021, Treatment == "Treated")$TN_ppt,
+            exact = FALSE) # p-value = 0.1731
+
+# Plot
+tn.plot.21 <- dat.2021 |> 
+  ggplot(aes(x = Treatment, y = TN_ppt)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Total soil nitrogen",
+       x = NULL,
+       y = "Total N (mg/g)") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))  +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2, y = 63, label = "Mann-Whitney, \np = 0.173"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+tn.plot.21
+```
 
 ## Supp Fig 6b: Total soil carbon
+```{r, fig.height=4, fig.width=3}
+# Total C -----------------------------------------------------------------
+
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$TC_ppt,
+            filter(dat.2021, Treatment == "Treated")$TC_ppt,
+            exact = FALSE) # p-value = 0.2397
+
+# Plot
+tc.plot.21 <- dat.2021 |> 
+  ggplot(aes(x = Treatment, y = TC_ppt)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Total soil carbon",
+       x = NULL,
+       y = "Total C (mg/g)") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))  +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2, y = 670, label = "Mann-Whitney, \np = 0.240"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+tc.plot.21
+```
+
 
 ## Supp Fig 6c: Soil organic matter
+```{r, fig.height=4, fig.width=3}
+# Organic matter ----------------------------------------------------------
+
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$OM_perc,
+            filter(dat.2021, Treatment == "Treated")$OM_perc) # p-value = 0.4332
+
+# Plot
+om.plot.21 <- dat.2021 |> 
+  ggplot(aes(x = Treatment, y = OM_perc)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Soil organic matter",
+       x = NULL,
+       y = "Organic matter (%)") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000"))  +
+  theme(plot.margin = margin(0.1, 0.2, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2, y = 2.14, label = "Mann-Whitney, \np = 0.433"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+om.plot.21
+```
+
+## Combine plots for Supp Fig 6
+```{r, eval=FALSE}
+# Combine soil chem -------------------------------------------------------
+
+# TN, TC, OM
+tiff("figures/2023-09_publish-figures/Soil-chem.tiff", units = "in", height = 4, width = 7, res = 300)
+ggarrange(tn.plot.21, tc.plot.21, om.plot.21, 
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+```
+
 
 ## Supp Fig 7a: Bacterial & archaeal richness
+```{r, fig.height=4, fig.width=3}
+# Barc richness -----------------------------------------------------------
+
+# T-test
+t.test(filter(dat.2021, Treatment == "Control")$barc.richness,
+       filter(dat.2021, Treatment == "Treated")$barc.richness) # NS, p = 0.686
+
+# Plot
+barc.rich.plot.21 <- dat.2021 |> 
+  ggplot(aes(Treatment, barc.richness)) +
+  geom_jitter(aes(color = Treatment), 
+              alpha = 0.8, 
+              size = 1) +
+  geom_boxplot(aes(fill = Treatment), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("No. of ASVs") +
+  ggtitle("Bacterial & archaeal richness") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  geom_text(aes(x = 2.1, y = 1100, label = "t-test, p = 0.686"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 11.5))
+barc.rich.plot.21
+```
+
 
 ## Supp Fig 7b: Fungal richness
+```{r, fig.height=4, fig.width=3}
+# Fungi richness ----------------------------------------------------------
+
+# T-test
+t.test(filter(dat.2021, Treatment == "Control")$fungi.richness,
+       filter(dat.2021, Treatment == "Treated")$fungi.richness) # NS, p = 0.938
+
+# Plot
+fungi.rich.plot.21 <- dat.2021 %>% 
+  ggplot(aes(Treatment, fungi.richness)) +
+  geom_jitter(aes(color = Treatment), 
+              alpha = 0.8, 
+              size = 1) +
+  geom_boxplot(aes(fill = Treatment), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab(NULL) +
+  ggtitle("Fungal richness") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  geom_text(aes(x = 2.1, y = 70, label = "t-test, p = 0.938"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+fungi.rich.plot.21
+```
+
+## Combine plots for Supp Fig 7
+```{r, eval=FALSE}
+# Combine soil richness ---------------------------------------------------
+
+tiff("figures/2023-09_publish-figures/Soil-richness.tiff", units = "in", height = 4, width = 5.5, res = 300)
+ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)"))
+
+dev.off()
+```
+
 
 ## Supp Fig 8a: Chemoheterotrophic bacteria & archaea
+```{r, fig.height=4, fig.width=3}
+# Chemoheterotrophs -------------------------------------------------------
+
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$chemoheterotrophy_perc,
+            filter(dat.2021, Treatment == "Treated")$chemoheterotrophy_perc) # p = 0.8449
+
+# Plot
+chemohet.plot.21 <- dat.2021 %>% 
+  ggplot(aes(Treatment, chemoheterotrophy_perc)) +
+  geom_jitter(aes(color = Treatment), 
+              alpha = 0.8, 
+              size = 1) +
+  geom_boxplot(aes(fill = Treatment), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab("Relative abundance (%)") +
+  ggtitle("Chemoheterotrophic \nbacteria & archaea") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
+  geom_text(aes(x = 2, y = 28.7, label = "Mann-Whitney, \np = 0.845"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+chemohet.plot.21
+```
+
 
 ## Supp Fig 8b: Nitrogen-cycling bacteria & archaea
+```{r, fig.height=4, fig.width=3}
+# N-cyclers ---------------------------------------------------------------
+
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment == "Control")$n.cycler_perc,
+            filter(dat.2021, Treatment == "Treated")$n.cycler_perc) # p-value = 0.5854
+
+# Plot
+ncycler.plot.21 <- dat.2021 %>% 
+  ggplot(aes(Treatment, n.cycler_perc)) +
+  geom_jitter(aes(color = Treatment), 
+              alpha = 0.8, 
+              size = 1) +
+  geom_boxplot(aes(fill = Treatment), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab(NULL) +
+  ggtitle("Nitrogen-cycling \nbacteria & archaea") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.25, "in")) +
+  geom_text(aes(x = 2, y = 13.6, label = "Mann-Whitney, \np = 0.585"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+ncycler.plot.21
+```
+
 
 ## Supp Fig 8c: Saprotrophic fungi
+```{r, fig.height=4, fig.width=3}
+# Saprotrophs -------------------------------------------------------------
+
+# T-test
+t.test(filter(dat.2021, Treatment == "Control")$saprotroph,
+       filter(dat.2021, Treatment == "Treated")$saprotroph) # NS, p = 0.272
+
+# Plot
+sapro.plot.21 <- dat.2021 %>% 
+  ggplot(aes(Treatment, saprotroph)) +
+  geom_jitter(aes(color = Treatment), 
+              alpha = 0.8, 
+              size = 1) +
+  geom_boxplot(aes(fill = Treatment), 
+               alpha = 0.3, 
+               outlier.shape = NA) +
+  xlab(NULL) +
+  ylab(NULL) +
+  ggtitle("Saprotrophic fungi") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "#000000")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.25, "in")) +
+  geom_text(aes(x = 2, y = 42, label = "t-test, p = 0.272"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+sapro.plot.21
+```
+
+## Combine plots for Supp Fig 8
+```{r}
+# Combine FAPROTAX and FUNGuild -------------------------------------------
+
+tiff("figures/Soil-functional.tiff", units = "in", height = 4, width = 7, res = 300)
+ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21, 
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+```
 
 
 # Appendix D: Structural equation modeling
 ## Setup
+```{r, message=FALSE}
+library(lavaan)
+library(tidyverse)
+```
+```{r, eval=FALSE}
+# Load data ---------------------------------------------------------------
+
+dat.2021 <- read.csv("Veg-soil-elev_2021.csv") 
+```
+
 
 ## Latent variables
 
