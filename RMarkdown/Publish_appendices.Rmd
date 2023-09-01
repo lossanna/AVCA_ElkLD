@@ -19,18 +19,44 @@ per.div <- read.csv("../data/publish/Perennial-plant-diversity_2012-2021.csv")
 
 ```
 
-Appendices for "Dryland rock detention structures increase herbaceous vegetation cover and stabilize shrub cover over 10 years but do not directly affect soil fertility" by Ossanna et al. (2023).  
-Contact: Lia Ossanna, <lossanna@arizona.edu>  
-Last updated: 2023-08-31  
+Appendices for "Dryland rock detention structures increase herbaceous vegetation cover and stabilize shrub cover over 10 years but do not directly affect soil fertility" by Ossanna et al. (2023). Included are code and analysis used to make figures and full model output.  
   
-```{r}
-sessionInfo()
-```
+Contact: Lia Ossanna, <lossanna@arizona.edu>  
+Last updated: 2023-09-01  
+\
+\
+\
+
+Appendices: 
+
+- Appendix A: Temporal vegetation trends, Figs 2 & S4
+- Appendix B: Coefficient of variation, Figs 3 & S5
+- Appendix C: Soil fertility, Figs S6-S8
+- Appendix D: Structural equation modeling, models 1-4
+\
+\
+
+Package versions:
+
+- `R version 4.3.1`
+- `tidyverse 2.0.0`
+  - `dplyr 1.1.2`
+  - `stringr 1.5.0`
+  - `ggplot 3.4.3`
+  - `tidyr 3.2.1`
+- `agricolae 1.3-6`
+- `plotrix 3.8-2`
+- `ggpubr 0.6.0`
+- `rstatix 0.7.2`
+- `scales 1.2.1`
+- `car 3.1-2`
 
 
+
+\newpage
 # Appendix A: Temporal vegetation trends
 ## Setup
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 library(agricolae)
 library(plotrix)
@@ -71,7 +97,7 @@ invasive.all <- convert.cols(invasive.all)
 per.div <- convert.cols(per.div)
 ```
 
-## Fig 2A: Grass, forb & shrub cover
+## Fig 2a: Grass, forb & shrub cover
 ```{r, fig.height=3, fig.width=6}
 # Grass, forb, and shrub cover (notree) -----------------------------------
 
@@ -146,7 +172,7 @@ notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
 notree.plot
 ```
 
-## Fig 2B: Herbaceous (grass & forb) cover
+## Fig 2b: Herbaceous (grass & forb) cover
 ```{r, fig.height=3, fig.width=6}
 # Herbaceous cover --------------------------------------------------------
 
@@ -221,7 +247,7 @@ herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
 herb.plot
 ```
 
-## Fig 2C: Shrub cover
+## Fig 2c: Shrub cover
 ```{r, fig.height=3, fig.width=6}
 # Shrub cover -------------------------------------------------------------
 
@@ -286,6 +312,145 @@ shrub.plot <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean,
 shrub.plot
 ```
 
+## Combine plots for Fig 2
+```{r, eval=FALSE}
+# Combine notree, herb & shrub --------------------------------------------
+
+tiff("figures/2023-09_publish-figures/temporal-ANOVA_notree-herb-shrub.tiff", units = "in", height = 8, width = 6, res = 1000)
+ggarrange(notree.plot, herb.plot, shrub.plot,
+          ncol = 1, nrow = 3,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+```
+
+
+
+## Supp Fig 4a: Perennial plant species richness
+```{r, fig.height=3, fig.width=6}
+# Perennial plant richness ------------------------------------------------
+
+# Find averages by year
+rich.avg <- per.div %>% 
+  group_by(Treatment, Year, year.xaxis) %>% 
+  summarise(mean = mean(rich),
+            SD = sd(rich),
+            SE = std.error(rich),
+            .groups = "keep")
+
+# One-way ANOVA for Control
+summary(aov(rich ~ Year, data = filter(per.div, Treatment == "Control"))) # 0.00881
+rich.ctrl <- per.div |> 
+  filter(Treatment == "Control")
+anova.rich.ctrl <- aov(rich.ctrl$rich ~ rich.ctrl$Year)
+hsd.rich.ctrl <- HSD.test(anova.rich.ctrl, trt = "rich.ctrl$Year")
+hsd.rich.ctrl$groups
+
+# One-way ANOVA for Treated
+summary(aov(rich ~ Year, data = filter(per.div, Treatment == "Treated"))) # p = 0.0516
+
+# Plot with one-way ANOVA letters
+rich.ctrl.letters <- hsd.rich.ctrl$groups
+rich.ctrl.letters <- rich.ctrl.letters |> 
+  mutate(Year = rownames(rich.ctrl.letters)) |> 
+  arrange(Year)
+
+letters.rich <- data.frame(x = rich.avg$year.xaxis[1:6],
+                           y = rep(10.4, 6),
+                           label = rich.ctrl.letters$groups,
+                           Treatment = rep("Control", 6))
+ptext.rich <- data.frame(x = rep(as.Date("2019-09-01"), 2),
+                         y = c(6.7, 10.3),
+                         label = c("ANOVA, p = 0.009", "ANOVA, p = 0.052"),
+                         Treatment = c("Control", "Treated"))
+
+rich.plot <- ggplot(rich.avg, aes(x = year.xaxis, y = mean, 
+                                  group = Treatment, 
+                                  color = Treatment)) +
+  geom_line() +
+  geom_point() +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment) +
+  xlab(NULL) +
+  ylab("No. of species") +
+  ggtitle("Perennial plant species richness, 2012-2021") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  geom_text(data = letters.rich,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black",
+            size = 3.5) +
+  geom_text(data = ptext.rich,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
+rich.plot
+```
+
+
+## Supp Fig 4b: Perennial plant diversity
+```{r, fig.height=3, fig.width=6}
+# Perennial plant diversity (Shannon) -------------------------------------
+
+# Find averages by year
+shan.avg <- per.div %>% 
+  group_by(Treatment, Year, year.xaxis) %>% 
+  summarise(mean = mean(shan),
+            SD = sd(shan),
+            SE = std.error(shan),
+            .groups = "keep")
+
+# One-way ANOVA for Control
+summary(aov(shan ~ Year, data = filter(per.div, Treatment == "Control"))) # p = 0.934
+
+# One-way ANOVA for Treated
+summary(aov(shan ~ Year, data = filter(per.div, Treatment == "Treated"))) # p = 0.725
+
+
+# Plot with one-way ANOVA
+ptext.shan <- data.frame(x = rep(as.Date("2019-09-01"), 2),
+                         y = c(1.33, 1.33),
+                         label = c("ANOVA, p = 0.934", "ANOVA, p = 0.725"),
+                         Treatment = c("Control", "Treated"))
+
+shan.plot <- ggplot(shan.avg, aes(x = year.xaxis, y = mean, 
+                                  group = Treatment, 
+                                  color = Treatment)) +
+  geom_line() +
+  geom_point() +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  facet_wrap(~Treatment) +
+  xlab(NULL) +
+  ylab("Shannon diversity index") +
+  ggtitle("Perennial plant diversity") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(data = ptext.shan,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.2, 0.1, "in")) 
+shan.plot
+```
+
+## Combine plots for Supp Fig 4
+```{r, eval=FALSE}
+# Combine richness & Shannon ----------------------------------------------
+
+tiff("figures/2023-09_publish-figures/temporal-ANOVA_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
+ggarrange( rich.plot, shan.plot,
+           ncol = 1, nrow = 2,
+           labels = c("(A)", "(B)")) 
+
+dev.off()
+```
+
+
 ## Invasive cover and most common species
 ```{r}
 # Average cover by year
@@ -314,23 +479,332 @@ plant.all |>
   arrange(desc(mean)) 
 ```
 
-## Supp Fig 4A: Perennial plant species richness
-
-## Supp Fig 4B: Perennial plant diversity
 
 
+\newpage
 # Appendix B: Coefficient of variation
-## Fig 3A: CV of shrub cover
+## Setup
+```{r, message=FALSE}
+library(tidyverse)
+library(car)
+library(scales)
+library(ggpubr)
+```
+```{r, eval=FALSE}
+# Load data ---------------------------------------------------------------
 
-## Fig 3B: CV of herbaceous cover
+notree.all <- read_csv("data/Herb-and-shrub-cover_2012-2021.csv")
+herb.all <- read_csv("data/Herb-cover_2012-2021.csv") 
+shrub.all <- read_csv("data/Shrub-cover_2012-2021.csv")
+per.div <- read_csv("data/Perennial-plant-diversity_2012-2021.csv")
+```
 
-## Fig 3C: CV of overall veg cover
+## Fig 3a: CV of shrub cover
+```{r, fig.height=4.5, fig.width=4.5}
+# Shrub cover -------------------------------------------------------------
 
-## Supp Fig 5A: CV of perennial richness
+# Find CV for each sample over time
+shrub.sample <- shrub.all |> 
+  group_by(Sample, Treatment) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep") # NaNs produced because some have 0 cover and can't divide by 0
 
-## Supp Fig 5B: CV of perennial diversity
+# Replace NaNs with 0
+shrub.sample[1, 3] <- 0
+shrub.sample[5, 3] <- 0
+shrub.sample[8, 3] <- 0
+
+# Explore distribution
+qqPlot(filter(shrub.sample, Treatment == "Control")$CV) # not normal
+qqPlot(filter(shrub.sample, Treatment == "Treated")$CV) # not normal
+
+# Compare means
+wilcox.test(filter(shrub.sample, Treatment == "Treated")$CV,
+            filter(shrub.sample, Treatment == "Control")$CV,
+            exact = FALSE) # p = 0.01429
 
 
+# Plot
+letters.shrub <- data.frame(x = c(1, 2),
+                            y = c(2.5, 2.5),
+                            label = c("a", "b"))
+
+shrub.plot.cv <- shrub.sample |> 
+  ggplot(aes(x = Treatment, y = CV)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Shrub cover",
+       x = NULL,
+       y = "Coefficient of variation") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)  +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.95, y = 2.75, label = "Mann-Whitney, \np = 0.014"),
+            color = "gray30",
+            size = 2.5) +
+  geom_text(data = letters.shrub,
+            aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(plot.margin = margin(0.1, 0, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+shrub.plot.cv
+```
+
+
+## Fig 3b: CV of herbaceous cover
+```{r, fig.height=4.5, fig.width=4.5}
+# Herb cover --------------------------------------------------------------
+
+# Find CV for each sample over time
+herb.sample <- herb.all |> 
+  group_by(Sample, Treatment) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(herb.sample, Treatment == "Treated")$CV) # normal
+qqPlot(filter(herb.sample, Treatment == "Control")$CV) # not quite normal?
+
+# Compare means
+wilcox.test(filter(herb.sample, Treatment == "Treated")$CV,
+            filter(herb.sample, Treatment == "Control")$CV) # NS, p = 0.148
+
+# Plot
+herb.plot.cv <- herb.sample |> 
+  ggplot(aes(x = Treatment, y = CV)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Herbaceous cover",
+       x = NULL, 
+       y = NULL) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent)  +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.95, y = 1.18, label = "Mann-Whitney, \np = 0.122"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+herb.plot.cv
+```
+
+
+## Fig 3c: CV of overall veg cover
+```{r, fig.height=4.5, fig.width=4.5}
+# Notree cover ------------------------------------------------------------
+
+# Find CV for each sample over time
+notree.sample <- notree.all |> 
+  group_by(Sample, Treatment) |> 
+  summarise(CV = sd(Cover) / mean(Cover),
+            .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(notree.sample, Treatment == "Treated")$CV) # normal
+qqPlot(filter(notree.sample, Treatment == "Control")$CV) # normal
+
+# Compare means
+t.test(filter(notree.sample, Treatment == "Treated")$CV,
+       filter(notree.sample, Treatment == "Control")$CV) # NS, p = 0.882
+
+# Plot
+notree.plot.cv <- notree.sample |> 
+  ggplot(aes(x = Treatment, y = CV)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Vegetation cover",
+       x = NULL,
+       y = NULL) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent) +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.9, y = 0.95, label = "t-test, p = 0.882"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+notree.plot.cv
+```
+
+## Combine plots for Fig 3
+```{r, eval=FALSE}
+# Combine notree, herb, shrub ---------------------------------------------
+
+tiff("figures/2023-09_publish-figures/CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
+ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+```
+
+
+## Supp Fig 5a: CV of perennial richness
+```{r, fig.height=4.5, fig.width=4.5}
+# Richness ----------------------------------------------------------------
+
+# Find CV for each sample over time
+rich.sample <- per.div |> 
+  group_by(Sample, Treatment) |> 
+  summarise(CV = sd(rich) / mean(rich),
+            .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(rich.sample, Treatment == "Treated")$CV) # not quite normal
+qqPlot(filter(rich.sample, Treatment == "Control")$CV) # normal
+
+# Compare means
+wilcox.test(filter(rich.sample, Treatment == "Treated")$CV,
+            filter(rich.sample, Treatment == "Control")$CV) # NS, p = 0.093
+
+# Plot
+rich.plot.cv <- rich.sample |> 
+  ggplot(aes(x = Treatment, y = CV)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Perennial plant species \nrichness",
+       x = NULL,
+       y = "Coefficient of variation") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent) +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.95, y = 0.65, label = "Mann-Whitney, \np = 0.062"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+rich.plot.cv
+```
+
+
+## Supp Fig 5b: CV of perennial diversity
+```{r, fig.height=4.5, fig.width=4.5}
+# Shannon -----------------------------------------------------------------
+
+# Find CV for each sample over time
+shan.sample <- per.div |> 
+  group_by(Sample, Treatment) |> 
+  summarise(CV = sd(shan) / mean(shan),
+            .groups = "keep")
+
+# Explore distribution
+qqPlot(filter(shan.sample, Treatment == "Treated")$CV) # normal
+qqPlot(filter(shan.sample, Treatment == "Control")$CV) # almost normal
+
+# Compare
+t.test(filter(shan.sample, Treatment == "Treated")$CV,
+       filter(shan.sample, Treatment == "Control")$CV) # NS, p = 0.075
+
+# Plot
+shan.plot.cv <- shan.sample |> 
+  ggplot(aes(x = Treatment, y = CV)) +
+  geom_boxplot(alpha = 0.3,
+               outlier.shape = NA,
+               aes(fill = Treatment)) +
+  geom_jitter(size = 1,
+              alpha = 0.8,
+              aes(color = Treatment)) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Perennial plant diversity",
+       x = NULL,
+       y = NULL) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  scale_y_continuous(labels = percent) +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 0.95, y = 0.83, label = "t-test, p = 0.075"),
+            color = "gray30",
+            size = 2.5) +
+  theme(plot.margin = margin(0.1, 0.1, 0.1, 0.15, "in")) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed") +
+  theme(plot.title = element_text(size = 12))
+shan.plot.cv
+```
+
+
+## Combine plots for Supp Fig 5
+```{r, eval=FALSE}
+# Combine richness & Shannon ----------------------------------------------
+
+# Supplemental figure
+tiff("figures/2023-09_publish-figures/CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
+ggarrange(rich.plot.cv, shan.plot.cv,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)")) 
+
+dev.off()
+```
+
+
+\newpage
 # Appendix C: Soil fertility
+## Setup
 
 
+## Supp Fig 6a: Total soil nitrogen
+
+## Supp Fig 6b: Total soil carbon
+
+## Supp Fig 6c: Soil organic matter
+
+## Supp Fig 7a: Bacterial & archaeal richness
+
+## Supp Fig 7b: Fungal richness
+
+## Supp Fig 8a: Chemoheterotrophic bacteria & archaea
+
+## Supp Fig 8b: Nitrogen-cycling bacteria & archaea
+
+## Supp Fig 8c: Saprotrophic fungi
+
+
+# Appendix D: Structural equation modeling
+## Setup
+
+## Latent variables
+
+## Model 1
+
+## Model 2
+
+## Model 3
+
+## Model 4

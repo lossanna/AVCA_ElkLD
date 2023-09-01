@@ -187,12 +187,12 @@ rich.sample <- per.div |>
             .groups = "keep")
 
 # Explore distribution
-qqPlot(filter(rich.sample, Treatment3 == "Treated")$CV) # not quite normal
-qqPlot(filter(rich.sample, Treatment3 == "Control")$CV) # normal
+qqPlot(filter(rich.sample, Treatment == "Treated")$CV) # not quite normal
+qqPlot(filter(rich.sample, Treatment == "Control")$CV) # normal
 
 # Compare means
-wilcox.test(filter(rich.sample, Treatment3 == "Treated")$CV,
-            filter(rich.sample, Treatment3 == "Control")$CV) # NS, p = 0.093
+wilcox.test(filter(rich.sample, Treatment == "Treated")$CV,
+            filter(rich.sample, Treatment == "Control")$CV) # NS, p = 0.093
 
 # Plot
 rich.plot.cv <- rich.sample |> 
