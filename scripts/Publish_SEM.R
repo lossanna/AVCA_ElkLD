@@ -200,3 +200,6 @@ summary(fit4, fit.measures = TRUE, standardized = TRUE)
 #   Akaike (AIC): 1320.884
 
 modindices(fit4, sort = TRUE, minimum.value = 3.5)
+
+
+save.image("RData/Publish_SEM.RData")
