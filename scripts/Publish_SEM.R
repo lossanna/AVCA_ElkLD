@@ -53,6 +53,7 @@ summary(fit.soimic, fit.measures = TRUE, standardized = TRUE)
 #   RMSEA: 0.000 (okay, <0.1)
 #   RMSEA lower CI: 0.000 (good)
 #   SRMR: 0.044 (good, <0.1)
+modindices(fit.soimic, sort = TRUE, minimum.value = 3.5) # No paths to add.
 
 
 # Model latent variable separately - soil chemistry
@@ -97,7 +98,8 @@ summary(fit1, fit.measures = TRUE, standardized = TRUE)
 #   SRMR: 0.076 (good, <0.1)
 #   Akaike (AIC): 1345.448
 
-modindices(fit1, sort = TRUE, minimum.value = 3.5)
+modindices(fit1, sort = TRUE, minimum.value = 3.5) # OM already covaries with soil microbiome
+#       latent variable; does not make sense to add paths for saptrotrophs or chemoheterotrophs.
 
 
 
@@ -131,7 +133,11 @@ summary(fit2, fit.measures = TRUE, standardized = TRUE)
 #   SRMR: 0.079 (good, <0.1)
 #   AIC: 1310.762
 
-modindices(fit2, sort = TRUE, minimum.value = 3.5)
+modindices(fit2, sort = TRUE, minimum.value = 3.5) # TN already covaries with soil microbiome
+#                                           latent variable; does not make sense to add path.
+#                                   Prior veg (notree.18) is too far removed to have a plausible
+#                                   connection to fungal richness.
+
 
 
 # 3 Herb, OM, SoMic, herb18, tree -----------------------------------------
@@ -165,7 +171,8 @@ summary(fit3, fit.measures = TRUE, standardized = TRUE)
 #   SRMR: 0.069 (good, <0.1)
 #   Akaike (AIC): 1351.278
 
-modindices(fit3, sort = TRUE, minimum.value = 3.5)
+modindices(fit3, sort = TRUE, minimum.value = 3.5) # OM already covaries with soil microbiome
+#                         latent variable; does not make sense to add path for saptrotrophs.
 
 
 # 4 Herb, OM, SoMic, herb18, tree -----------------------------------------
@@ -199,7 +206,10 @@ summary(fit4, fit.measures = TRUE, standardized = TRUE)
 #   SRMR: 0.066 (good, <0.1)
 #   Akaike (AIC): 1320.884
 
-modindices(fit4, sort = TRUE, minimum.value = 3.5)
+modindices(fit4, sort = TRUE, minimum.value = 3.5)  # TN already covaries with soil
+# microbiome latent variable; does not make sense to add path for chemoheterotrophs
+# or fungal richness. Effect of soil microbiome is modeled as a single latent variable,
+# so bacterial/archeal richness and N-cyclers do not need to covary.
 
 
 save.image("RData/Publish_SEM.RData")

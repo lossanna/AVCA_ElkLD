@@ -1230,6 +1230,7 @@ dev.off()
 ```
 
 
+\newpage
 # Appendix D: Structural equation modeling
 ## Setup
 ```{r, message=FALSE}
@@ -1239,16 +1240,155 @@ library(tidyverse)
 ```{r, eval=FALSE}
 # Load data ---------------------------------------------------------------
 
-dat.2021 <- read.csv("Veg-soil-elev_2021.csv") 
+dat.2021 <- read.csv("Veg-soil-elev_2021.csv")
+```
+```{r}
+# Data wrangling ----------------------------------------------------------
+
+# Add Control/Treated as binary variable and select only variables needed for SEM
+sem.dat.unscaled <- dat.2021 |> 
+  mutate(rocks = case_when(
+    Treatment == "Control" ~ 0,
+    Treatment == "Treated" ~ 1)) |>
+  select(Sample, rocks, notree, notree.18, herb, herb.18, tree, perveg.richness, perveg.shannon,
+         TN_log, TC_log, OM_log, barc.richness, fungi.richness,
+         chemoheterotrophy_log, n.cycler_log, saprotroph) 
+
+# Center and scale continuous variables
+sem.dat <- sem.dat.unscaled |> 
+  mutate(rocks = as.character(rocks),
+         Sample = as.character(Sample)) |> 
+  mutate_if(is.numeric, scale) |> 
+  mutate(rocks = as.numeric(rocks))
 ```
 
 
 ## Latent variables
+### Soil microbiome
+```{r}
+lvmod.soimic <- '
+  # latent variable model
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+'
+fit.soimic <- sem(lvmod.soimic, data = sem.dat)
+summary(fit.soimic, fit.measures = TRUE, standardized = TRUE)
+modindices(fit.soimic, sort = TRUE, minimum.value = 3.5) 
+# No paths to add.
+```
+
+### Soil chemistry
+- Soil chemistry does not do well as a latent variable because TN, TC, and OM are collinear and must be modeled separately.
+```{r}
+lvmod.soichem <- '
+  # latent variable model
+  soil_chem =~ TN_log + OM_log
+'
+fit.soichem <- sem(lvmod.soichem, data = sem.dat)
+summary(fit.soichem)
+```
+
 
 ## Model 1
+```{r}
+mod1 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + notree.18 + tree 
+  OM_log ~ rocks
+  soil_microbe ~ rocks
+  notree.18 ~ rocks
+  
+  # covariance
+  OM_log ~~ soil_microbe
+  OM_log ~~ notree
+  soil_microbe ~~ notree
+'
+fit1 <- sem(mod1, data = sem.dat) 
+summary(fit1, fit.measures = TRUE, standardized = TRUE)
+modindices(fit1, sort = TRUE, minimum.value = 3.5) 
+# OM already covaries with soil microbiome latent variable; 
+# does not make sense to add paths for saptrotrophs or chemoheterotrophs.
+```
+
 
 ## Model 2
+```{r}
+mod2 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + n.cycler_log + saprotroph
+  
+  # structure
+  notree ~ rocks + notree.18 + tree 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  notree.18 ~ rocks
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ notree
+  soil_microbe ~~ notree
+'
+fit2 <- sem(mod2, data = sem.dat) 
+summary(fit2, fit.measures = TRUE, standardized = TRUE)
+modindices(fit2, sort = TRUE, minimum.value = 3.5) 
+# TN already covaries with soil microbiome latent variable; 
+# does not make sense to add path.
+# Prior veg (notree.18) is too far removed to have a plausible                                       connection to fungal richness.
+```
+
 
 ## Model 3
+```{r}
+mod3 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + 
+  n.cycler_log + saprotroph
+  
+  # structure
+  herb ~ rocks + herb.18 + tree 
+  OM_log ~ rocks
+  soil_microbe ~ rocks
+  herb.18 ~ rocks
+  
+  # covariance
+  OM_log ~~ soil_microbe
+  OM_log ~~ herb
+  soil_microbe ~~ herb
+'
+fit3 <- sem(mod3, data = sem.dat) 
+summary(fit3, fit.measures = TRUE, standardized = TRUE)
+modindices(fit3, sort = TRUE, minimum.value = 3.5) 
+# OM already covaries with soil microbiome latent variable; 
+# does not make sense to add path for saptrotrophs.
+```
+
 
 ## Model 4
+```{r}
+mod4 <- '
+  # latent variables
+  soil_microbe =~ barc.richness + fungi.richness + chemoheterotrophy_log + 
+  n.cycler_log + saprotroph
+  
+  # structure
+  herb ~ rocks + herb.18 + tree 
+  TN_log ~ rocks
+  soil_microbe ~ rocks
+  herb.18 ~ rocks
+  
+  # covariance
+  TN_log ~~ soil_microbe
+  TN_log ~~ herb
+  soil_microbe ~~ herb
+'
+fit4 <- sem(mod4, data = sem.dat) 
+summary(fit4, fit.measures = TRUE, standardized = TRUE)
+modindices(fit4, sort = TRUE, minimum.value = 3.5) 
+# TN already covaries with soil microbiome latent variable; 
+# does not make sense to add path for chemoheterotrophs or fungal richness. 
+# Effect of soil microbiome is modeled as a single latent variable,
+# so bacterial/archeal richness and N-cyclers do not need to covary.
+```
+
