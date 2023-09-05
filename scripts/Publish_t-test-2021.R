@@ -4,7 +4,7 @@
 #   Code: t-test/Mann-Whitney and plot for soil chem & microbial (not elevation)
 
 # Created: 2023-08-28
-# Last updated: 2023-08-31
+# Last updated: 2023-09-05
 
 library(tidyverse)
 library(ggpubr)
@@ -21,7 +21,7 @@ elev <- dat.2021 |>
 # Mann-Whitney
 wilcox.test(filter(dat.2021, Treatment == "Control")$dElev_corrected,
             filter(dat.2021, Treatment == "Treated")$dElev_corrected,
-            paired = FALSE, exact = FALSE) # p-value = 0.0001022
+            paired = FALSE, exact = FALSE) # p-value = 6.48e-05
 
 # Plot
 letters <- data.frame(x = c(1, 2),

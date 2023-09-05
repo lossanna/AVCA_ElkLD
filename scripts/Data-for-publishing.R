@@ -6,7 +6,7 @@
 #     data/cleaned/sequencing/fungi_clean_asv.txt
 
 # Created: 2023-08-29
-# Last updated: 2023-08-30
+# Last updated: 2023-09-05
 
 
 library(tidyverse)
@@ -73,8 +73,9 @@ perdiv.pub <- per.div |>
 # 2021 data
 dat.2021.pub <- dat.2021 |> 
   select(-Name, -Channel, -Station, -CN_ratio, -barc.shannon, -barc.betadisp.3,
-         -fungi.shannon, -fungi.betadisp.3, -dElev) |> 
-  rename(Treatment = Treatment3)
+         -fungi.shannon, -fungi.betadisp.3, -dElev, -dElev_corrected) |> 
+  rename(Treatment = Treatment3,
+         dElev_corrected = dElev_corrected2)
 
 
 # Sequencing
