@@ -13,10 +13,19 @@ library(ggpubr)
 
 dat.2021 <- read.csv("data/publish/Veg-soil-elev_2021.csv")
 
+
 # Channel elevation change ------------------------------------------------
 
 elev <- dat.2021 |> 
   filter(!is.na(dElev_corrected))
+
+# Number of samples that increased
+count(filter(dat.2021, Treatment == "Control"), dElev_corrected) # 27 0s
+27/31
+
+count(filter(dat.2021, Treatment == "Treated"), dElev_corrected)
+7/19
+summary(filter(dat.2021, Treatment == "Treated")$dElev_corrected)
 
 # Mann-Whitney
 wilcox.test(filter(dat.2021, Treatment == "Control")$dElev_corrected,
