@@ -2,7 +2,7 @@
 #   Found minimum elevation (lowest point of channel), and averaged this with surrounding points,
 #     where the number of points depends on the channel (look at Excel graphs from Robert)
 # Created: 2023-05-24
-# Last updated: 2023-08-29
+# Last updated: 2023-09-05
 
 library(tidyverse)
 library(car)
@@ -149,57 +149,16 @@ elev <- elev |>
     between(dElev, -0.052, 0.052) ~ 0,
     TRUE ~ dElev))
 
+elev <- elev |> 
+  mutate(dElev_corrected2 = case_when(
+    between(dElev, -0.104, 0.104) ~ 0,
+    TRUE ~ dElev))
+
 
 # Write to csv ------------------------------------------------------------
 
 write_csv(elev,
           file = "data/cleaned/Cross-section-elevation_clean.csv")
-
-
-# Visualization and t-test ------------------------------------------------
-
-# By Channel
-elev |> 
-ggplot(aes(x = Channel, y = dElev)) +
-  geom_boxplot()
-
-elev |> 
-  ggplot(aes(Channel, dElev_corrected)) +
-  geom_boxplot()
-
-
-# By Treatment3
-# Uncorrected
-elev |> 
-  ggplot(aes(Treatment3, dElev)) +
-  geom_boxplot() +
-  geom_jitter()
-
-hist(elev$dElev, breaks = 10)
-
-t.test(filter(elev, Treatment3 == "Treated")$dElev,
-       filter(elev, Treatment3 == "Control")$dElev) # p-value = 0.001562
-
-# Corrected
-elev |> 
-  ggplot(aes(Treatment3, dElev_corrected)) +
-  geom_boxplot() +
-  geom_jitter()
-
-hist(elev$dElev_corrected, breaks = 10) # seems not normal
-qqPlot(elev$dElev_corrected)
-qqPlot(elev$dElev)
-
-kruskal.test(dElev_corrected ~ Treatment3, data = elev) # p-value = 9.793e-05
-
-elev.ctrl <- elev |> 
-  filter(Treatment3 == "Control") |> 
-  arrange(dElev_corrected)
-elev.trt <- elev |> 
-  filter(Treatment3 == "Treated") |> 
-  arrange(dElev_corrected)
-summary(elev.ctrl$dElev_corrected)
-summary(elev.trt$dElev_corrected)
 
 
 save.image("RData/Cross-section-elevation.RData")

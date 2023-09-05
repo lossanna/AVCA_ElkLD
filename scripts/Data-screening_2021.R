@@ -125,7 +125,7 @@ dat.2021 <- total.2021 %>%
          TN_perc, TC_perc, CN_ratio, OM_perc,
          barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
          fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
-         chemoheterotrophy, n.cycler, saprotroph, dElev, dElev_corrected)
+         chemoheterotrophy, n.cycler, saprotroph, dElev, dElev_corrected, dElev_corrected2)
 
 
 
@@ -154,6 +154,7 @@ hist(dat.2021$n.cycler, breaks = 10)
 hist(dat.2021$saprotroph)
 hist(elev$dElev, breaks = 10) # not normal - right tail skew?
 hist(elev$dElev_corrected, breaks = 10)
+hist(elev$dElev_corrected2, breaks = 10)
 
 
 # Boxplots ----------------------------------------------------------------
@@ -198,6 +199,7 @@ vis.boxplot(dat.2021, dat.2021$chemoheterotrophy, "Chemoheterotrophs (%)")
 vis.boxplot(dat.2021, dat.2021$n.cycler, "N-cycling bacteria & archea (%)") # appears to be an outlier
 vis.boxplot(dat.2021, dat.2021$saprotroph, "Fungi saprotrophs (%)")
 vis.boxplot(dat.2021, dat.2021$dElev_corrected, "Elevation difference, 2011-2019 (m)")
+vis.boxplot(dat.2021, dat.2021$dElev_corrected2, "Elevation difference, 2011-2019 (m)")
 
 
 # Quantile-quantile plots -------------------------------------------------
@@ -342,7 +344,7 @@ dat.2021 <- dat.2021 |>
          barc.richness, barc.shannon, barc.NMDS1, barc.NMDS2, barc.betadisp.3, 
          fungi.richness, fungi.shannon, fungi.NMDS1, fungi.NMDS2, fungi.betadisp.3, 
          chemoheterotrophy_perc, chemoheterotrophy_log, n.cycler_perc, n.cycler_log, 
-         saprotroph, dElev, dElev_corrected)
+         saprotroph, dElev, dElev_corrected, dElev_corrected2)
 
 
 

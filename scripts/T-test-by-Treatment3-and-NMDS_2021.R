@@ -20,6 +20,7 @@ dat.2021 <- read.csv("data/cleaned/Data-2021_clean.csv")
 elev <- dat.2021 |> 
   filter(!is.na(dElev_corrected))
 
+# As corrected by +/- 5.2 cm
 # Mann-Whitney
 wilcox.test(filter(dat.2021, Treatment3 == "Control")$dElev_corrected,
             filter(dat.2021, Treatment3 == "Treated")$dElev_corrected,
@@ -57,7 +58,49 @@ dElev.corrected.plot <- elev |>
 dElev.corrected.plot
 
 tiff("figures/2023-07_draft-figures/Change-in-elevation.tiff", width = 6, height = 4, units = "in", res = 150)
-dElev.corrected.plot
+dElev.corrected.plot2
+dev.off()
+
+
+# As corrected by +/- 10.4 cm
+# Mann-Whitney
+wilcox.test(filter(dat.2021, Treatment3 == "Control")$dElev_corrected2,
+            filter(dat.2021, Treatment3 == "Treated")$dElev_corrected2,
+            paired = FALSE, exact = FALSE) # p-value = 6.48e-05
+
+# Plot
+letters <- data.frame(x = c(1, 2),
+                      y = c(0.45, 0.45),
+                      label = c("b", "a"),
+                      Treatment3 = c("Control", "Treated"))
+dElev.corrected.plot2 <- elev |> 
+  ggplot(aes(x = Treatment3, y = dElev_corrected2)) +
+  geom_boxplot(aes(fill = Treatment3),
+               alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment3),
+              size = 2,
+              alpha = 0.8) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Change in channel elevation, 2011-2019",
+       x = NULL,
+       y = "Elevation change (m)") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 2.3, y = -0.05, label = "Mann-Whitney, p < 0.001"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = .75, linetype = "dashed")
+dElev.corrected.plot2
+
+tiff("figures/2023-07_draft-figures/Change-in-elevation2.tiff", width = 6, height = 4, units = "in", res = 150)
+dElev.corrected.plot2
 dev.off()
 
 
