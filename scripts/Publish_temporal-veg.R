@@ -193,6 +193,38 @@ herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
 herb.plot
 
 
+letters.herb2 <- data.frame(x = herb.avg$year.xaxis[1:6],
+                           y = c(9, 5.5, 12.5, 10, 29, 18),
+                           label = herb.trt.letters$groups)
+ptext.herb2 <- data.frame(x = as.Date("2019-09-01"),
+                         y = 8,
+                         label = "ANOVA, p < 0.001")
+herb.plot2 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                                  color = Treatment)) +
+  geom_line() +
+  geom_point() +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  geom_text(data = letters.herb2,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black",
+            size = 3.5)  +
+  geom_text(data = ptext.herb2,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) 
+herb.plot2
+
+tiff("figures/2023-09_publish-figures/Herb-cover.tiff", units = "in", height = 4.5, width = 7, res = 500)
+herb.plot2
+dev.off()
+
+
+
 # Shrub cover -------------------------------------------------------------
 
 # Find averages by year
