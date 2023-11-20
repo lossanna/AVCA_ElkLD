@@ -4,7 +4,7 @@
 #   Will go with nonparametric test because it is easier to interpret.
 
 # Created: 2023-02-02
-# Last updated: 2023-08-30
+# Last updated: 2023-11-20
 
 library(tidyverse)
 library(car)
@@ -280,6 +280,10 @@ dev.off()
 
 # Barc richness -----------------------------------------------------------
 
+# Values
+summary(filter(dat.2021, Treatment3 == "Control")$barc.richness)
+summary(filter(dat.2021, Treatment3 == "Treated")$barc.richness)
+
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$barc.richness,
        filter(dat.2021, Treatment3 == "Treated")$barc.richness) # NS, p = 0.686
@@ -312,6 +316,10 @@ barc.rich.plot.21
 
 
 # Fungi richness ----------------------------------------------------------
+
+# Values
+summary(filter(dat.2021, Treatment3 == "Control")$fungi.richness)
+summary(filter(dat.2021, Treatment3 == "Treated")$fungi.richness)
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$fungi.richness,
@@ -417,6 +425,10 @@ dev.off()
 
 # Chemoheterotrophs -------------------------------------------------------
 
+# Values
+summary(filter(dat.2021, Treatment3 == "Control")$chemoheterotrophy_perc)
+summary(filter(dat.2021, Treatment3 == "Treated")$chemoheterotrophy_perc)
+
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$chemoheterotrophy_log,
        filter(dat.2021, Treatment3 == "Treated")$chemoheterotrophy_log) # NS, p = 0.931
@@ -454,6 +466,10 @@ chemohet.plot.21
 
 # N-cyclers ---------------------------------------------------------------
 
+# Values
+summary(filter(dat.2021, Treatment3 == "Control")$n.cycler_perc)
+summary(filter(dat.2021, Treatment3 == "Treated")$n.cycler_perc)
+
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$n.cycler_log,
        filter(dat.2021, Treatment3 == "Treated")$n.cycler_log) # NS, p = 0.490
@@ -490,6 +506,10 @@ ncycler.plot.21
 
 
 # Saprotrophs -------------------------------------------------------------
+
+# Values
+summary(filter(dat.2021, Treatment3 == "Control")$saprotroph)
+summary(filter(dat.2021, Treatment3 == "Treated")$saprotroph)
 
 # T-test
 t.test(filter(dat.2021, Treatment3 == "Control")$saprotroph,

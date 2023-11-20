@@ -8,7 +8,7 @@
 #   downstream analysis/model output/plots.
 
 # Created: 2023-01-12
-# Last updated: 2023-07-14
+# Last updated: 2023-11-20
 
 library(metagenomeSeq)
 library(vegan)
@@ -403,6 +403,9 @@ meta %>%
   theme(legend.position = "none") +
   theme(axis.text.x = element_text(color = "#000000"))
 
+# Extract values
+summary(filter(meta, Treatment3 == "Control")$Richness)
+summary(filter(meta, Treatment3 == "Treated")$Richness)
 
 
 
