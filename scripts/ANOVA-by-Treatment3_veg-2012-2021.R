@@ -26,7 +26,7 @@
 #   herbaceous, invasive, and shrub.
 
 # Created: 2023-03-27
-# Last updated: 2023-08-28
+# Last updated: 2023-11-20
 
 library(tidyverse)
 library(agricolae)
@@ -291,6 +291,7 @@ hsd.notree.trt
 
 
 # Plot with one-way ANOVA letters
+# Plot in separate panels
 notree.ctrl.letters <- hsd.notree.ctrl$groups
 notree.ctrl.letters <- notree.ctrl.letters |> 
   mutate(Year = rownames(notree.ctrl.letters)) |> 
@@ -337,6 +338,46 @@ notree.plot
 tiff("figures/2023-07_draft-figures/temporal-ANOVA_notree-cover.tiff", width = 8, height = 4, units = "in", res = 150)
 notree.plot
 dev.off()
+
+# Plot in single panel
+letters.notree2t <- data.frame(x = notree.avg$year.xaxis[1:6],
+                               y = c(23, 18, 27, 26.5, 37, 32.5),
+                               label = notree.trt.letters$groups)
+letters.notree2c <- data.frame(x = notree.avg$year.xaxis[1:6],
+                               y = c(35.5, 31.5, 36, 24, 31.5, 47),
+                               label = notree.ctrl.letters$groups)
+
+ptext.notree2 <- data.frame(x = as.Date("2019-09-01"),
+                            y = 22,
+                            label = "ANOVA, p < 0.01")
+notree.plot2 <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
+                                       color = Treatment3)) +
+  geom_line() +
+  geom_point() +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Vegetation cover, 2012-2021") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  geom_text(data = letters.notree2t,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black",
+            size = 3) +
+  geom_text(data = letters.notree2c,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black",
+            size = 3,
+            fontface = "italic") +
+  geom_text(data = ptext.notree2,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.1, l = 0.1, "in")) +
+  theme(legend.position = "none")
+notree.plot2
 
 
 
@@ -472,6 +513,7 @@ hsd.herb.trt
 
 
 # Plot with one-way ANOVA letters
+# As separate panels
 herb.ctrl.letters <- hsd.herb.ctrl$groups
 herb.ctrl.letters <- herb.ctrl.letters |> 
   mutate(Year = rownames(herb.ctrl.letters)) |> 
@@ -514,6 +556,47 @@ herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
   theme(axis.text.x = element_text(color = "black")) +
   theme(plot.margin = margin(0.1, 0.1, 0.25, 0.1, "in")) 
 herb.plot
+
+
+# As single panel
+letters.herb2t <- data.frame(x = herb.avg$year.xaxis[1:6],
+                             y = c(9, 5.5, 12.5, 10, 17, 18),
+                             label = herb.trt.letters$groups)
+letters.herb2c <- data.frame(x = herb.avg$year.xaxis[1:6],
+                             y = c(23, 21, 26.5, 17, 28.5, 31),
+                             label = herb.ctrl.letters$groups)
+
+ptext.herb2 <- data.frame(x = as.Date("2019-09-01"),
+                          y = 8,
+                          label = "ANOVA, p < 0.001")
+herb.plot2 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                                   color = Treatment3)) +
+  geom_line() +
+  geom_point() +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Herbaceous cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  geom_text(data = letters.herb2t,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black",
+            size = 3) +
+  geom_text(data = letters.herb2c,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black",
+            size = 3,
+            fontface = "italic") +
+  geom_text(data = ptext.herb2,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.1, l = 0.1, "in")) +
+  theme(legend.position = "none")
+herb.plot2
 
 
 
@@ -596,6 +679,7 @@ summary(aov(Cover ~ Year, data = filter(shrub.all, Treatment3 == "Treated"))) # 
 
 
 # Plot with one-way ANOVA letters
+# Separate panels
 shrub.ctrl.letters <- hsd.shrub.ctrl$groups
 shrub.ctrl.letters <- shrub.ctrl.letters |> 
   mutate(Year = rownames(shrub.ctrl.letters)) |> 
@@ -634,6 +718,40 @@ shrub.plot <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean,
 shrub.plot
 #   Increase in Control notree from 2018-2021 is driven by shrubs
 
+# Single panel
+letters.shrub2 <- data.frame(x = shrub.avg$year.xaxis[1:6],
+                             y = c(9, 8, 7.4, 4.5, 5.5, 12),
+                             label = shrub.ctrl.letters$groups)
+
+ptext.shrub2 <- data.frame(x = as.Date("2019-09-01"),
+                           y = 6,
+                           label = "ANOVA, p = 0.982 \nANOVA, p = 0.011")
+shrub.plot2 <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
+                                     color = Treatment3)) +
+  geom_line() +
+  geom_point() +
+  geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
+  xlab(NULL) +
+  ylab("Cover (%)") +
+  ggtitle("Shrub cover") +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  geom_text(data = letters.shrub2,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black",
+            size = 3,
+            fontface = "italic") +
+  geom_text(data = ptext.shrub2,
+            aes(x = x, y = y, label = label),
+            color = "gray30",
+            size = 2.5) +
+  theme(axis.text.x = element_text(color = "black")) +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.1, l = 0.1, "in")) +
+  theme(legend.title = element_blank())
+shrub.plot2
+
+
 
 
 # Compare veg cover change ------------------------------------------------
@@ -654,6 +772,13 @@ ggarrange(notree.plot, herb.plot, shrub.plot,
 
 dev.off()
 
+
+tiff("figures/2023-11_draft-figures/temporal-ANOVA_notree-herb-shrub_single.tiff", units = "in", height = 12, width = 5, res = 150)
+ggarrange(notree.plot2, herb.plot2, shrub.plot2,
+          ncol = 1, nrow = 3,
+          labels = c("(A)", "(B)", "(C)"))
+
+dev.off()
 
 
 # Invasive cover ----------------------------------------------------------
