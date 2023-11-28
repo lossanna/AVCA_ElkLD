@@ -171,6 +171,7 @@ shrub.plot.cv
 
 # Combine notree, herb, shrub ---------------------------------------------
 
+# Initial submission
 tiff("figures/2023-09_publish-figures/Fig3_CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
 ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
           ncol = 3, nrow = 1,
@@ -178,6 +179,17 @@ ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
 
 dev.off()
 
+<<<<<<< Updated upstream
+=======
+# Revision 1
+tiff("figures/2023-12_publish-figures/Fig4_CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
+ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+
+>>>>>>> Stashed changes
 
 # Richness ----------------------------------------------------------------
 
@@ -271,6 +283,7 @@ shan.plot.cv
 # Combine richness & Shannon ----------------------------------------------
 
 # Supplemental figure
+# Initial submission
 tiff("figures/2023-09_publish-figures/FigS5_CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
 ggarrange(rich.plot.cv, shan.plot.cv,
           ncol = 2, nrow = 1,
@@ -278,6 +291,17 @@ ggarrange(rich.plot.cv, shan.plot.cv,
 
 dev.off()
 
+<<<<<<< Updated upstream
+=======
+# Revision 1
+tiff("figures/2023-12_publish-figures/FigS4_CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
+ggarrange(rich.plot.cv, shan.plot.cv,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)")) 
+
+dev.off()
+
+>>>>>>> Stashed changes
 
 
 save.image("RData/Publish_CV.RData")

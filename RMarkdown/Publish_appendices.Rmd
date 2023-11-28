@@ -145,41 +145,44 @@ notree.trt.letters <- notree.trt.letters |>
   mutate(Year = rownames(notree.trt.letters)) |> 
   arrange(Year)
 
-letters.notree <- data.frame(x = rep(notree.avg$year.xaxis[1:6], 2),
-                             y = rep(49, 12),
-                             label = c(notree.ctrl.letters$groups,
-                                       notree.trt.letters$groups),
-                             Treatment = c(rep("Control", 6),
-                                           rep("Treated", 6)))
-ptext.notree <- data.frame(x = rep(as.Date("2019-09-01"), 2),
-                           y = c(22, 22),
-                           label = c("ANOVA, p < 0.001", "ANOVA, p = 0.003"),
-                           Treatment = c("Control", "Treated"))
+letters.notree2t <- data.frame(x = notree.avg$year.xaxis[1:6],
+                               y = c(23, 18, 27, 26, 36.5, 32.5),
+                               label = notree.trt.letters$groups)
+letters.notree2c <- data.frame(x = notree.avg$year.xaxis[1:6],
+                               y = c(35.5, 31.5, 36, 24, 31.5, 47),
+                               label = notree.ctrl.letters$groups)
 
-notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean, 
-                                      group = Treatment, 
-                                      color = Treatment)) +
+ptext.notree2 <- data.frame(x = as.Date("2019-09-01"),
+                            y = 22,
+                            label = "ANOVA, p < 0.01")
+notree.plot2 <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
+                                       color = Treatment)) +
   geom_line() +
   geom_point() +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment) +
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Vegetation cover, 2012-2021") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
-  theme(legend.position = "none") +
-  geom_text(data = letters.notree,
+  theme(legend.position = "bottom") +
+  geom_text(data = letters.notree2t,
             mapping = aes(x = x, y = y, label = label),
-            color = "black",
-            size = 3.5)  +
-  geom_text(data = ptext.notree,
+            color = "#1F78B4",
+            size = 3) +
+  geom_text(data = letters.notree2c,
+            mapping = aes(x = x, y = y, label = label),
+            color = "red",
+            size = 3,
+            fontface = "italic") +
+  geom_text(data = ptext.notree2,
             aes(x = x, y = y, label = label),
             color = "gray30",
             size = 2.5) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) 
-notree.plot
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.3, l = 0.1, "in")) +
+  theme(legend.position = "none")
+notree.plot2
 ```
 
 ## Fig 2b: Herbaceous (grass & forb) cover
@@ -220,41 +223,44 @@ herb.trt.letters <-herb.trt.letters |>
   mutate(Year = rownames(herb.trt.letters)) |> 
   arrange(Year)
 
-letters.herb <- data.frame(x = rep(herb.avg$year.xaxis[1:6], 2),
-                           y = rep(32, 12),
-                           label = c(herb.ctrl.letters$groups,
-                                     herb.trt.letters$groups),
-                           Treatment = c(rep("Control", 6),
-                                         rep("Treated", 6)))
-ptext.herb <- data.frame(x = rep(as.Date("2019-09-01"), 2),
-                         y = c(8, 8),
-                         label = c("ANOVA, p = 0.004", "ANOVA, p < 0.001"),
-                         Treatment = c("Control", "Treated"))
+letters.herb3t <- data.frame(x = herb.avg$year.xaxis[1:6],
+                             y = c(9, 5.5, 12.5, 10, 28.5, 18.3),
+                             label = herb.trt.letters$groups)
+letters.herb3c <- data.frame(x = herb.avg$year.xaxis[1:6],
+                             y = c(23.5, 20.5, 26.5, 17, 17, 31),
+                             label = herb.ctrl.letters$groups)
 
-herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
-                                  group = Treatment, 
-                                  color = Treatment)) +
+ptext.herb3 <- data.frame(x = as.Date("2019-09-01"),
+                          y = 8,
+                          label = "ANOVA, p < 0.001")
+herb.plot3 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
+                                   color = Treatment)) +
   geom_line() +
   geom_point() +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment) +
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Herbaceous cover") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
-  theme(legend.position = "none") +
-  geom_text(data = letters.herb,
+  theme(legend.position = "bottom") +
+  geom_text(data = letters.herb3t,
             mapping = aes(x = x, y = y, label = label),
-            color = "black",
-            size = 3.5)  +
-  geom_text(data = ptext.herb,
+            color = "#1F78B4",
+            size = 3) +
+  geom_text(data = letters.herb3c,
+            mapping = aes(x = x, y = y, label = label),
+            color = "red",
+            size = 3,
+            fontface = "italic") +
+  geom_text(data = ptext.herb3,
             aes(x = x, y = y, label = label),
             color = "gray30",
             size = 2.5) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) 
-herb.plot
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.3, l = 0.1, "in")) +
+  theme(legend.position = "none")
+herb.plot3
 ```
 
 ## Fig 2c: Shrub cover
@@ -287,51 +293,55 @@ shrub.ctrl.letters <- shrub.ctrl.letters |>
   mutate(Year = rownames(shrub.ctrl.letters)) |> 
   arrange(Year)
 
-letters.shrub <- data.frame(x = shrub.avg$year.xaxis[1:6],
-                            y = rep(21, 6),
-                            label = shrub.ctrl.letters$groups,
-                            Treatment = rep("Control", 6))
-ptext.shrub <- data.frame(x = rep(as.Date("2019-09-01"), 2),
-                          y = c(6.5, 6.5),
-                          label = c("ANOVA, p = 0.011", "ANOVA, p = 0.982"),
-                          Treatment = c("Control", "Treated"))
+letters.shrub2 <- data.frame(x = shrub.avg$year.xaxis[1:6],
+                             y = c(9, 8, 7.4, 4.2, 5.5, 11.8),
+                             label = shrub.ctrl.letters$groups)
 
-shrub.plot <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
-                                    group = Treatment, 
-                                    color = Treatment)) +
+ptext.shrub2 <- data.frame(x = as.Date("2019-09-01"),
+                           y = 6,
+                           label = "ANOVA, p = 0.982 \nANOVA, p = 0.011")
+shrub.plot2 <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean, 
+                                     color = Treatment)) +
   geom_line() +
   geom_point() +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
-  facet_wrap(~Treatment) +
   xlab(NULL) +
   ylab("Cover (%)") +
   ggtitle("Shrub cover") +
   scale_color_manual(values = c("red", "#1F78B4")) +
   theme_bw() +
-  theme(legend.position = "none") +
-  geom_text(data = letters.shrub,
+  theme(legend.position = "bottom") +
+  geom_text(data = letters.shrub2,
             mapping = aes(x = x, y = y, label = label),
-            color = "black",
-            size = 3.5)  +
-  geom_text(data = ptext.shrub,
+            color = "red",
+            size = 3,
+            fontface = "italic") +
+  geom_text(data = ptext.shrub2,
             aes(x = x, y = y, label = label),
             color = "gray30",
             size = 2.5) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.2, l = 0.1, "in")) 
-shrub.plot
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0, l = 0.1, "in")) +
+  theme(legend.title = element_blank())
+shrub.plot2
 ```
 
 ## Combine plots for Fig 2
 ```{r, eval=FALSE}
 # Combine notree, herb & shrub --------------------------------------------
 
+<<<<<<< Updated upstream
 tiff("Fig2_temporal_notree-herb-shrub.tiff", units = "in", height = 8, width = 6, res = 1000)
 ggarrange(notree.plot, herb.plot, shrub.plot,
+=======
+tiff("figures/2023-12_publish-figures/Fig3_temporal_notree-herb-shrub.tiff", units = "in", height = 8.5, width = 4.5, res = 1000)
+ggarrange(notree.plot2, herb.plot3, shrub.plot2,
+>>>>>>> Stashed changes
           ncol = 1, nrow = 3,
           labels = c("(A)", "(B)", "(C)")) 
 
 dev.off()
+
 ```
 
 

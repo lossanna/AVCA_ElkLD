@@ -64,10 +64,19 @@ dElev.corrected.plot <- elev |>
                width = 0.75, linetype = "dashed")
 dElev.corrected.plot
 
+# Initial submission
 tiff("figures/2023-09_publish-figures/FigS3_Elevation.tiff", width = 6, height = 4, units = "in", res = 300)
 dElev.corrected.plot
 dev.off()
 
+<<<<<<< Updated upstream
+=======
+# Revision 1
+tiff("figures/2023-12_publish-figures/FigS2_Elevation.tiff", width = 5, height = 3.5, units = "in", res = 300)
+dElev.corrected.plot
+dev.off()
+
+>>>>>>> Stashed changes
 
 
 # Total N -----------------------------------------------------------------
@@ -176,6 +185,7 @@ om.plot.21
 # Combine soil chem -------------------------------------------------------
 
 # TN, TC, OM
+# Initial submission
 tiff("figures/2023-09_publish-figures/FigS6_Soil-chem.tiff", units = "in", height = 4, width = 7, res = 300)
 ggarrange(tn.plot.21, tc.plot.21, om.plot.21, 
           ncol = 3, nrow = 1,
@@ -183,6 +193,17 @@ ggarrange(tn.plot.21, tc.plot.21, om.plot.21,
 
 dev.off()
 
+<<<<<<< Updated upstream
+=======
+# Revision 1
+tiff("figures/2023-12_publish-figures/FigS5_Soil-chem.tiff", units = "in", height = 4, width = 7, res = 300)
+ggarrange(tn.plot.21, tc.plot.21, om.plot.21, 
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+
+>>>>>>> Stashed changes
 
 
 # Barc richness -----------------------------------------------------------
@@ -254,6 +275,7 @@ fungi.rich.plot.21
 
 # Combine soil richness ---------------------------------------------------
 
+# Initial submission
 tiff("figures/2023-09_publish-figures/FigS7_Soil-richness.tiff", units = "in", height = 4, width = 5.5, res = 300)
 ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
           ncol = 2, nrow = 1,
@@ -261,6 +283,19 @@ ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
 
 dev.off()
 
+<<<<<<< Updated upstream
+=======
+# Revision 1
+tiff("figures/2023-12_publish-figures//FigS6_Soil-richness.tiff", units = "in", height = 4, width = 5.5, res = 300)
+ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
+          ncol = 2, nrow = 1,
+          labels = c("(A)", "(B)"))
+
+dev.off()
+
+
+
+>>>>>>> Stashed changes
 
 # Chemoheterotrophs -------------------------------------------------------
 
@@ -366,6 +401,7 @@ sapro.plot.21
 
 # Combine FAPROTAX and FUNGuild -------------------------------------------
 
+# Initial submission
 tiff("figures/2023-09_publish-figures/FigS8_Soil-functional.tiff", units = "in", height = 4, width = 7, res = 300)
 ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21, 
           ncol = 3, nrow = 1,
@@ -373,5 +409,16 @@ ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21,
 
 dev.off()
 
+<<<<<<< Updated upstream
+=======
+# Revision 1
+tiff("figures/2023-12_publish-figures/FigS7_Soil-functional.tiff", units = "in", height = 4, width = 7, res = 300)
+ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21, 
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+
+>>>>>>> Stashed changes
 
 save.image("RData/Publish_t-test-2021.RData")
