@@ -3,7 +3,7 @@
 #   Code: normalization, richness, Shannon, NMDS, adonis2, plot
 
 # Created: 2023-08-30
-# Last updated: 2023-08-30
+# Last updated: 2023-11-28
 
 library(tidyverse)
 library(ggpubr)
@@ -15,7 +15,7 @@ library(vegan)
 barc.asv <- read.table("data/publish/bac-arc_clean_asv.txt", sep = "\t",
                        header = T, row.names = 1)
 fungi.asv <- read.table("data/publish/fungi_clean_asv.txt",
-                      sep = "\t", header = T, row.names = 1)
+                        sep = "\t", header = T, row.names = 1)
 meta <- read.csv("data/publish/sequencing_metadata.csv")
 
 # Use dat.2021 for "official" NMDS values from 16S_prelim-stats.R and ITS_prelim-stats.R
@@ -148,8 +148,6 @@ ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
           common.legend = TRUE, legend = "bottom")
 dev.off()
 
-<<<<<<< Updated upstream
-=======
 # Revision 1
 tiff("figures/2023-12_publish-figures/Fig5_Soil-NMDS.tiff", height = 4, width = 7, units = "in", res = 1000)
 ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
@@ -158,5 +156,4 @@ ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
           common.legend = TRUE, legend = "bottom")
 dev.off()
 
->>>>>>> Stashed changes
 save.image("RData/Publish_16S-ITS.RData")

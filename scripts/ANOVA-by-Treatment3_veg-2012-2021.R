@@ -26,7 +26,7 @@
 #   herbaceous, invasive, and shrub.
 
 # Created: 2023-03-27
-# Last updated: 2023-11-20
+# Last updated: 2023-11-21
 
 library(tidyverse)
 library(agricolae)
@@ -363,11 +363,11 @@ notree.plot2 <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
   theme(legend.position = "bottom") +
   geom_text(data = letters.notree2t,
             mapping = aes(x = x, y = y, label = label),
-            color = "black",
+            color = "#1F78B4",
             size = 3) +
   geom_text(data = letters.notree2c,
             mapping = aes(x = x, y = y, label = label),
-            color = "black",
+            color = "red",
             size = 3,
             fontface = "italic") +
   geom_text(data = ptext.notree2,
@@ -375,7 +375,7 @@ notree.plot2 <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
             color = "gray30",
             size = 2.5) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.1, l = 0.1, "in")) +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.3, l = 0.1, "in")) +
   theme(legend.position = "none")
 notree.plot2
 
@@ -560,10 +560,10 @@ herb.plot
 
 # As single panel
 letters.herb2t <- data.frame(x = herb.avg$year.xaxis[1:6],
-                             y = c(9, 5.5, 12.5, 10, 17, 18),
+                             y = c(9, 5.5, 12.5, 10, 28.5, 18),
                              label = herb.trt.letters$groups)
 letters.herb2c <- data.frame(x = herb.avg$year.xaxis[1:6],
-                             y = c(23, 21, 26.5, 17, 28.5, 31),
+                             y = c(23, 21, 26.5, 17, 17, 31),
                              label = herb.ctrl.letters$groups)
 
 ptext.herb2 <- data.frame(x = as.Date("2019-09-01"),
@@ -582,11 +582,11 @@ herb.plot2 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
   theme(legend.position = "bottom") +
   geom_text(data = letters.herb2t,
             mapping = aes(x = x, y = y, label = label),
-            color = "black",
+            color = "#1F78B4",
             size = 3) +
   geom_text(data = letters.herb2c,
             mapping = aes(x = x, y = y, label = label),
-            color = "black",
+            color = "red",
             size = 3,
             fontface = "italic") +
   geom_text(data = ptext.herb2,
@@ -594,7 +594,7 @@ herb.plot2 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
             color = "gray30",
             size = 2.5) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.1, l = 0.1, "in")) +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.3, l = 0.1, "in")) +
   theme(legend.position = "none")
 herb.plot2
 
@@ -739,7 +739,7 @@ shrub.plot2 <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean,
   theme(legend.position = "bottom") +
   geom_text(data = letters.shrub2,
             mapping = aes(x = x, y = y, label = label),
-            color = "black",
+            color = "red",
             size = 3,
             fontface = "italic") +
   geom_text(data = ptext.shrub2,
@@ -747,7 +747,7 @@ shrub.plot2 <- ggplot(shrub.avg, aes(x = year.xaxis, y = mean,
             color = "gray30",
             size = 2.5) +
   theme(axis.text.x = element_text(color = "black")) +
-  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0.1, l = 0.1, "in")) +
+  theme(plot.margin = margin(t = 0.1, r = 0.1, b = 0, l = 0.1, "in")) +
   theme(legend.title = element_blank())
 shrub.plot2
 
@@ -779,6 +779,7 @@ ggarrange(notree.plot2, herb.plot2, shrub.plot2,
           labels = c("(A)", "(B)", "(C)"))
 
 dev.off()
+
 
 
 # Invasive cover ----------------------------------------------------------

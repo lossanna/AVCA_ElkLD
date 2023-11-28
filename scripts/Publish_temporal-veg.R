@@ -5,11 +5,7 @@
 #     and list of most common invasive
 
 # Created: 2023-08-28
-<<<<<<< Updated upstream
-# Last updated: 2023-08-29
-=======
 # Last updated: 2023-11-28
->>>>>>> Stashed changes
 
 library(tidyverse)
 library(agricolae)
@@ -124,8 +120,6 @@ notree.plot <- ggplot(notree.avg, aes(x = year.xaxis, y = mean,
 notree.plot
 
 
-<<<<<<< Updated upstream
-=======
 # Single panel
 letters.notree2t <- data.frame(x = notree.avg$year.xaxis[1:6],
                                y = c(23, 18, 27, 26, 36.5, 32.5),
@@ -168,7 +162,6 @@ notree.plot2
 
 
 
->>>>>>> Stashed changes
 
 # Herbaceous cover --------------------------------------------------------
 
@@ -244,14 +237,15 @@ herb.plot <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
 herb.plot
 
 
+# Single panel with legend and no title (for graphical abstract)
 letters.herb2 <- data.frame(x = herb.avg$year.xaxis[1:6],
-                           y = c(9, 5.5, 12.5, 10, 29, 18),
-                           label = herb.trt.letters$groups)
+                            y = c(9, 5.5, 12.5, 10, 29, 18),
+                            label = herb.trt.letters$groups)
 ptext.herb2 <- data.frame(x = as.Date("2019-09-01"),
-                         y = 8,
-                         label = "ANOVA, p < 0.001")
+                          y = 8,
+                          label = "ANOVA, p < 0.001")
 herb.plot2.09 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
-                                  color = Treatment)) +
+                                      color = Treatment)) +
   geom_line() +
   geom_point() +
   geom_pointrange(aes(ymin = mean - SE, ymax = mean + SE)) +
@@ -268,10 +262,6 @@ herb.plot2.09 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
             aes(x = x, y = y, label = label),
             color = "gray30",
             size = 2.5) 
-<<<<<<< Updated upstream
-herb.plot2
-
-=======
 herb.plot2.09
 
 herb.plot2 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
@@ -336,19 +326,15 @@ herb.plot3 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean,
 herb.plot3
 
 # Initial submissions (graphical abstract)
->>>>>>> Stashed changes
 tiff("figures/2023-09_publish-figures/Herb-cover.tiff", units = "in", height = 4.5, width = 7, res = 500)
 herb.plot2.09
 dev.off()
 
-<<<<<<< Updated upstream
-=======
 # Revision 1 (graphical abstract)
 tiff("figures/2023-12_publish-figures/Herb-cover.tiff", units = "in", height = 4.5, width = 7, res = 500)
 herb.plot2
 dev.off()
 
->>>>>>> Stashed changes
 
 
 # Shrub cover -------------------------------------------------------------

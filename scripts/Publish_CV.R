@@ -7,7 +7,7 @@
 # Am including distribution and qq-plots here, but will not in R Markdown.
 
 # Created: 2023-08-28
-# Last updated: 2023-08-29
+# Last updated: 2023-11-28
 
 library(tidyverse)
 library(car) # version 3.1-2
@@ -179,8 +179,6 @@ ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
 
 dev.off()
 
-<<<<<<< Updated upstream
-=======
 # Revision 1
 tiff("figures/2023-12_publish-figures/Fig4_CV_shrub-herb-notree.tiff", units = "in", height = 4, width = 7, res = 1000)
 ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
@@ -189,7 +187,6 @@ ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
 
 dev.off()
 
->>>>>>> Stashed changes
 
 # Richness ----------------------------------------------------------------
 
@@ -291,8 +288,6 @@ ggarrange(rich.plot.cv, shan.plot.cv,
 
 dev.off()
 
-<<<<<<< Updated upstream
-=======
 # Revision 1
 tiff("figures/2023-12_publish-figures/FigS4_CV_rich-shan.tiff", units = "in", height = 4, width = 5.5, res = 300)
 ggarrange(rich.plot.cv, shan.plot.cv,
@@ -301,7 +296,6 @@ ggarrange(rich.plot.cv, shan.plot.cv,
 
 dev.off()
 
->>>>>>> Stashed changes
 
 
 save.image("RData/Publish_CV.RData")

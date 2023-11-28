@@ -4,7 +4,7 @@
 #   Code: t-test/Mann-Whitney and plot for soil chem & microbial (not elevation)
 
 # Created: 2023-08-28
-# Last updated: 2023-09-05
+# Last updated: 2023-11-28
 
 library(tidyverse)
 library(ggpubr)
@@ -69,14 +69,11 @@ tiff("figures/2023-09_publish-figures/FigS3_Elevation.tiff", width = 6, height =
 dElev.corrected.plot
 dev.off()
 
-<<<<<<< Updated upstream
-=======
 # Revision 1
 tiff("figures/2023-12_publish-figures/FigS2_Elevation.tiff", width = 5, height = 3.5, units = "in", res = 300)
 dElev.corrected.plot
 dev.off()
 
->>>>>>> Stashed changes
 
 
 # Total N -----------------------------------------------------------------
@@ -193,8 +190,6 @@ ggarrange(tn.plot.21, tc.plot.21, om.plot.21,
 
 dev.off()
 
-<<<<<<< Updated upstream
-=======
 # Revision 1
 tiff("figures/2023-12_publish-figures/FigS5_Soil-chem.tiff", units = "in", height = 4, width = 7, res = 300)
 ggarrange(tn.plot.21, tc.plot.21, om.plot.21, 
@@ -203,7 +198,6 @@ ggarrange(tn.plot.21, tc.plot.21, om.plot.21,
 
 dev.off()
 
->>>>>>> Stashed changes
 
 
 # Barc richness -----------------------------------------------------------
@@ -283,8 +277,6 @@ ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
 
 dev.off()
 
-<<<<<<< Updated upstream
-=======
 # Revision 1
 tiff("figures/2023-12_publish-figures//FigS6_Soil-richness.tiff", units = "in", height = 4, width = 5.5, res = 300)
 ggarrange(barc.rich.plot.21, fungi.rich.plot.21,
@@ -295,7 +287,6 @@ dev.off()
 
 
 
->>>>>>> Stashed changes
 
 # Chemoheterotrophs -------------------------------------------------------
 
@@ -409,8 +400,6 @@ ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21,
 
 dev.off()
 
-<<<<<<< Updated upstream
-=======
 # Revision 1
 tiff("figures/2023-12_publish-figures/FigS7_Soil-functional.tiff", units = "in", height = 4, width = 7, res = 300)
 ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21, 
@@ -419,6 +408,5 @@ ggarrange(chemohet.plot.21, ncycler.plot.21, sapro.plot.21,
 
 dev.off()
 
->>>>>>> Stashed changes
 
 save.image("RData/Publish_t-test-2021.RData")
