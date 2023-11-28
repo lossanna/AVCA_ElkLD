@@ -140,6 +140,7 @@ fungi.nmds.plot.21
 
 # Combine NMDS ------------------------------------------------------------
 
+# Initial submission
 tiff("figures/2023-09_publish-figures/Fig4_Soil-NMDS.tiff", height = 4, width = 7, units = "in", res = 1000)
 ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
           nrow = 1, ncol = 2,
@@ -147,4 +148,15 @@ ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
           common.legend = TRUE, legend = "bottom")
 dev.off()
 
+<<<<<<< Updated upstream
+=======
+# Revision 1
+tiff("figures/2023-12_publish-figures/Fig5_Soil-NMDS.tiff", height = 4, width = 7, units = "in", res = 1000)
+ggarrange(barc.nmds.plot.21, fungi.nmds.plot.21,
+          nrow = 1, ncol = 2,
+          labels = c("(A)", "(B)"),
+          common.legend = TRUE, legend = "bottom")
+dev.off()
+
+>>>>>>> Stashed changes
 save.image("RData/Publish_16S-ITS.RData")
