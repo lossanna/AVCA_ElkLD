@@ -24,7 +24,7 @@ dat.2021 <- read.csv("data/publish/Veg-soil-elev_2021.csv")
 
 # 16S ---------------------------------------------------------------------
 
-# Note:Calculating Bray-Curtis distance and NMDS changes a little every time, 
+# Note: Calculating Bray-Curtis distance and NMDS changes a little every time, 
 #   so NMDS values and stress and adonis2() output will vary.
 
 # "Official" output from 16S_prelim-stats:
@@ -82,7 +82,7 @@ barc.nmds.plot.21
 
 # ITS ---------------------------------------------------------------------
 
-# Note:Calculating Bray-Curtis distance and NMDS changes a little every time, 
+# Note: Calculating Bray-Curtis distance and NMDS changes a little every time, 
 #   so NMDS values and stress and adonis2() output will vary.
 
 # "Official" output from ITS_prelim-stats:
