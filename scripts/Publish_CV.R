@@ -7,7 +7,7 @@
 # Am including distribution and qq-plots here, but will not in R Markdown.
 
 # Created: 2023-08-28
-# Last updated: 2023-11-29
+# Last updated: 2023-11-28
 
 library(tidyverse)
 library(car) # version 3.1-2
@@ -188,7 +188,6 @@ ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
 dev.off()
 
 
-
 # Richness ----------------------------------------------------------------
 
 # Find CV for each sample over time
@@ -201,16 +200,9 @@ rich.sample <- per.div |>
 qqPlot(filter(rich.sample, Treatment == "Treated")$CV) # not quite normal
 qqPlot(filter(rich.sample, Treatment == "Control")$CV) # normal
 
-# Log transformation helps Treated 
-qqPlot(log(filter(rich.sample, Treatment == "Treated")$CV)) # normal now
-qqPlot(log(filter(rich.sample, Treatment == "Control")$CV)) # normal
-
-rich.sample <- rich.sample |> 
-  mutate(CV_log = log(CV))
-
 # Compare means
-t.test(filter(rich.sample, Treatment == "Treated")$CV_log,
-       filter(rich.sample, Treatment == "Control")$CV_log) # NS, p = 0.093
+wilcox.test(filter(rich.sample, Treatment == "Treated")$CV,
+            filter(rich.sample, Treatment == "Control")$CV) # NS, p = 0.093
 
 # Plot
 rich.plot.cv <- rich.sample |> 
@@ -230,7 +222,7 @@ rich.plot.cv <- rich.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.95, y = 0.65, label = "t-test, p = 0.093"),
+  geom_text(aes(x = 0.95, y = 0.65, label = "Mann-Whitney, \np = 0.062"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
@@ -238,7 +230,6 @@ rich.plot.cv <- rich.sample |>
                width = 0.75, linetype = "dashed") +
   theme(plot.title = element_text(size = 12))
 rich.plot.cv
-
 
 
 # Shannon -----------------------------------------------------------------
@@ -253,16 +244,9 @@ shan.sample <- per.div |>
 qqPlot(filter(shan.sample, Treatment == "Treated")$CV) # normal
 qqPlot(filter(shan.sample, Treatment == "Control")$CV) # almost normal
 
-# Log transformation helps Control
-qqPlot(log(filter(shan.sample, Treatment == "Control")$CV)) # normal now
-qqPlot(log(filter(shan.sample, Treatment == "Treated")$CV)) # normal
-
-shan.sample <- shan.sample |> 
-  mutate(CV_log = log(CV))
-
 # Compare
-t.test(filter(shan.sample, Treatment == "Treated")$CV_log,
-       filter(shan.sample, Treatment == "Control")$CV_log) # NS, p = 0.075
+t.test(filter(shan.sample, Treatment == "Treated")$CV,
+       filter(shan.sample, Treatment == "Control")$CV) # NS, p = 0.075
 
 # Plot
 shan.plot.cv <- shan.sample |> 
