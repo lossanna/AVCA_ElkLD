@@ -3,11 +3,13 @@
 
 # Tested normality distribution and log-transformed herb cover, richness & Shannon.
 #   Compared with t-test, using log-transformation if needed.
+#   Also did non-parametric test because some have 0s and can't be log-transformed, and
+#     nonparametric is easier to interpret.
 #   
 # Did not find any significant differences in CVs for total, herb, notree, richness, or Shannon.
 
 # Created: 2022-02-15
-# Last updated: 2023-08-24
+# Last updated: 2023-11-29
 
 library(tidyverse)
 library(car)
@@ -354,6 +356,10 @@ write_csv(rich.sample,
 t.test(filter(rich.sample, Treatment3 == "Treated")$CV_log,
        filter(rich.sample, Treatment3 == "Control")$CV_log) # NS, p = 0.093
 
+wilcox.test(filter(rich.sample, Treatment3 == "Treated")$CV,
+            filter(rich.sample, Treatment3 == "Control")$CV,
+            exact = FALSE) # NS, p = 0.138
+
 # Plot
 rich.plot.cv <- rich.sample |> 
   ggplot(aes(x = Treatment3, y = CV)) +
@@ -408,6 +414,10 @@ write_csv(shan.sample,
 # Compare
 t.test(filter(shan.sample, Treatment3 == "Treated")$CV_log,
        filter(shan.sample, Treatment3 == "Control")$CV_log) # NS, p = 0.075
+
+wilcox.test(filter(shan.sample, Treatment3 == "Treated")$CV,
+            filter(shan.sample, Treatment3 == "Control")$CV,
+            exact = FALSE) # NS, p = 0.100
 
 # Plot
 shan.plot.cv <- shan.sample |> 

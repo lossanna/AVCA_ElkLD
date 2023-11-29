@@ -605,7 +605,7 @@ herb.plot.cv <- herb.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.95, y = 1.18, label = "Mann-Whitney, \np = 0.122"),
+  geom_text(aes(x = 0.95, y = 1.18, label = "Mann-Whitney, \np = 0.148"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in")) +
@@ -669,6 +669,13 @@ ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
 
 dev.off()
 ```
+```{r}
+ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
+          ncol = 3, nrow = 1,
+          labels = c("(A)", "(B)", "(C)")) 
+
+dev.off()
+```
 
 
 ## Supp Fig 4a: CV of perennial richness
@@ -683,7 +690,7 @@ rich.sample <- per.div |>
 
 # Compare means
 wilcox.test(filter(rich.sample, Treatment == "Treated")$CV,
-            filter(rich.sample, Treatment == "Control")$CV) # NS, p = 0.093
+            filter(rich.sample, Treatment == "Control")$CV) # NS, p = 0.138
 
 # Plot
 rich.plot.cv <- rich.sample |> 
@@ -703,7 +710,7 @@ rich.plot.cv <- rich.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.95, y = 0.65, label = "Mann-Whitney, \np = 0.062"),
+  geom_text(aes(x = 0.95, y = 0.65, label = "Mann-Whitney, \np = 0.138"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
@@ -725,8 +732,9 @@ shan.sample <- per.div |>
             .groups = "keep")
 
 # Compare
-t.test(filter(shan.sample, Treatment == "Treated")$CV,
-       filter(shan.sample, Treatment == "Control")$CV) # NS, p = 0.075
+wilcox.test(filter(shan.sample, Treatment == "Treated")$CV,
+            filter(shan.sample, Treatment == "Control")$CV,
+            exact = FALSE) # NS, p = 0.100
 
 # Plot
 shan.plot.cv <- shan.sample |> 
@@ -746,7 +754,7 @@ shan.plot.cv <- shan.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.95, y = 0.83, label = "t-test, p = 0.075"),
+  geom_text(aes(x = 0.95, y = 0.83, label = "Mann-Whitney, \np = 0.100"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.15, "in")) +
@@ -757,7 +765,7 @@ shan.plot.cv
 ```
 
 
-## Combine plots for Supp Fig 5
+## Combine plots for Supp Fig 4
 ```{r, eval=FALSE}
 # Combine richness & Shannon ----------------------------------------------
 

@@ -101,7 +101,7 @@ herb.plot.cv <- herb.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent)  +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.95, y = 1.18, label = "Mann-Whitney, \np = 0.122"),
+  geom_text(aes(x = 0.95, y = 1.18, label = "Mann-Whitney, \np = 0.148"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.2, "in")) +
@@ -188,6 +188,7 @@ ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
 dev.off()
 
 
+
 # Richness ----------------------------------------------------------------
 
 # Find CV for each sample over time
@@ -202,7 +203,8 @@ qqPlot(filter(rich.sample, Treatment == "Control")$CV) # normal
 
 # Compare means
 wilcox.test(filter(rich.sample, Treatment == "Treated")$CV,
-            filter(rich.sample, Treatment == "Control")$CV) # NS, p = 0.093
+            filter(rich.sample, Treatment == "Control")$CV,
+            exact = FALSE) # NS, p = 0.138
 
 # Plot
 rich.plot.cv <- rich.sample |> 
@@ -222,7 +224,7 @@ rich.plot.cv <- rich.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.95, y = 0.65, label = "Mann-Whitney, \np = 0.062"),
+  geom_text(aes(x = 0.95, y = 0.65, label = "Mann-Whitney, \np = 0.138"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.1, "in")) +
@@ -230,6 +232,7 @@ rich.plot.cv <- rich.sample |>
                width = 0.75, linetype = "dashed") +
   theme(plot.title = element_text(size = 12))
 rich.plot.cv
+
 
 
 # Shannon -----------------------------------------------------------------
@@ -245,8 +248,9 @@ qqPlot(filter(shan.sample, Treatment == "Treated")$CV) # normal
 qqPlot(filter(shan.sample, Treatment == "Control")$CV) # almost normal
 
 # Compare
-t.test(filter(shan.sample, Treatment == "Treated")$CV,
-       filter(shan.sample, Treatment == "Control")$CV) # NS, p = 0.075
+wilcox.test(filter(shan.sample, Treatment == "Treated")$CV,
+            filter(shan.sample, Treatment == "Control")$CV,
+            exact = FALSE) # NS, p = 0.100
 
 # Plot
 shan.plot.cv <- shan.sample |> 
@@ -266,7 +270,7 @@ shan.plot.cv <- shan.sample |>
   theme(legend.position = "none") +
   scale_y_continuous(labels = percent) +
   theme(axis.text.x = element_text(color = "black")) +
-  geom_text(aes(x = 0.95, y = 0.83, label = "t-test, p = 0.075"),
+  geom_text(aes(x = 0.95, y = 0.83, label = "Mann-Whitney, \np = 0.100"),
             color = "gray30",
             size = 2.5) +
   theme(plot.margin = margin(0.1, 0.1, 0.1, 0.15, "in")) +
