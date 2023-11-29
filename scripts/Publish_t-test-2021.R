@@ -4,7 +4,7 @@
 #   Code: t-test/Mann-Whitney and plot for soil chem & microbial (not elevation)
 
 # Created: 2023-08-28
-# Last updated: 2023-11-28
+# Last updated: 2023-11-29
 
 library(tidyverse)
 library(ggpubr)
@@ -23,8 +23,9 @@ elev <- dat.2021 |>
 count(filter(dat.2021, Treatment == "Control"), dElev_corrected) # 27 0s
 27/31
 
-count(filter(dat.2021, Treatment == "Treated"), dElev_corrected)
+count(filter(dat.2021, Treatment == "Treated"), dElev_corrected) # 7 0s
 7/19
+
 summary(filter(dat.2021, Treatment == "Treated")$dElev_corrected)
 
 # Mann-Whitney
