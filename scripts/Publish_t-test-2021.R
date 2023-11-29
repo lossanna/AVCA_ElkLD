@@ -65,6 +65,32 @@ dElev.corrected.plot <- elev |>
                width = 0.75, linetype = "dashed")
 dElev.corrected.plot
 
+dElev.corrected.plot2 <- elev |> 
+  ggplot(aes(x = Treatment, y = dElev_corrected)) +
+  geom_boxplot(aes(fill = Treatment),
+               alpha = 0.3,
+               outlier.shape = NA) +
+  geom_jitter(aes(color = Treatment),
+              size = 1.5,
+              alpha = 0.8) +
+  scale_color_manual(values = c("red", "#1F78B4")) +
+  scale_fill_manual(values = c("red", "#1F78B4")) +
+  labs(title = "Change in channel elevation, 2011-2019",
+       x = NULL,
+       y = "Elevation change (m)") +
+  theme_bw() +
+  theme(legend.position = "none") +
+  geom_text(data = letters,
+            mapping = aes(x = x, y = y, label = label),
+            color = "black") +
+  theme(axis.text.x = element_text(color = "black")) +
+  geom_text(aes(x = 2.3, y = -0.05, label = "Mann-Whitney, p < 0.001"),
+            color = "gray30",
+            size = 2.5) +
+  stat_summary(fun = mean, geom = "errorbar", aes(ymax = after_stat(y), ymin = after_stat(y)),
+               width = 0.75, linetype = "dashed")
+dElev.corrected.plot2
+
 # Initial submission
 tiff("figures/2023-09_publish-figures/FigS3_Elevation.tiff", width = 6, height = 4, units = "in", res = 300)
 dElev.corrected.plot
@@ -72,7 +98,7 @@ dev.off()
 
 # Revision 1
 tiff("figures/2023-12_publish-figures/FigS2_Elevation.tiff", width = 5, height = 3.5, units = "in", res = 300)
-dElev.corrected.plot
+dElev.corrected.plot2
 dev.off()
 
 

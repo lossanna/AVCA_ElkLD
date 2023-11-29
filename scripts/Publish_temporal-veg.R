@@ -5,7 +5,7 @@
 #     and list of most common invasive
 
 # Created: 2023-08-28
-# Last updated: 2023-11-28
+# Last updated: 2023-11-29
 
 library(tidyverse)
 library(agricolae)
@@ -295,7 +295,7 @@ letters.herb3c <- data.frame(x = herb.avg$year.xaxis[1:6],
 
 ptext.herb3 <- data.frame(x = as.Date("2019-09-01"),
                           y = 8,
-                          label = "ANOVA, p < 0.001")
+                          label = "ANOVA, p < 0.001 \nANOVA, p < 0.001")
 herb.plot3 <- ggplot(herb.avg, aes(x = year.xaxis, y = mean, 
                                    color = Treatment)) +
   geom_line() +
@@ -590,7 +590,16 @@ shan.plot
 
 # Combine richness & Shannon ----------------------------------------------
 
+# Initial submission
 tiff("figures/2023-09_publish-figures/FigS4_temporal_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
+ggarrange( rich.plot, shan.plot,
+           ncol = 1, nrow = 2,
+           labels = c("(A)", "(B)")) 
+
+dev.off()
+
+# Revision 1
+tiff("figures/2023-12_publish-figures/FigS3_temporal_richness-Shannon.tiff", units = "in", height = 5.5, width = 6, res = 300)
 ggarrange( rich.plot, shan.plot,
            ncol = 1, nrow = 2,
            labels = c("(A)", "(B)")) 

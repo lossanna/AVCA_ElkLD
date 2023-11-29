@@ -27,7 +27,7 @@ fungi.asv <- read.table("../data/publish/fungi_clean_asv.txt",
 meta <- read.csv("../data/publish/sequencing_metadata.csv")
 ```
 
-Appendices for "Dryland rock detention structures increase herbaceous vegetation cover and stabilize shrub cover over ten years but do not directly affect soil fertility" by Ossanna et al. (2023). Included are code and analysis used to make figures and full model output. Data can be downloaded from the Zenodo archive under the DOI 10.5281/zenodo.8310363.
+Appendices for "Dryland rock detention structures increase herbaceous vegetation cover and stabilize shrub cover over 10 years but do not directly affect soil fertility" by Ossanna et al. (2023). Included are code and analysis used to make figures and full model output. Data can be downloaded from the Zenodo archive under the DOI 10.5281/zenodo.8310363.
   
 Contact: Lia Ossanna, <lossanna@arizona.edu>  
 Last updated: 2023-11-28  
@@ -669,13 +669,6 @@ ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
 
 dev.off()
 ```
-```{r}
-ggarrange(shrub.plot.cv, herb.plot.cv, notree.plot.cv,
-          ncol = 3, nrow = 1,
-          labels = c("(A)", "(B)", "(C)")) 
-
-dev.off()
-```
 
 
 ## Supp Fig 4a: CV of perennial richness
@@ -1302,6 +1295,7 @@ summary(fit.soichem)
 
 
 ## Model 1
+Model for Supp Fig 8.
 ```{r}
 mod1 <- '
   # latent variables
@@ -1327,6 +1321,7 @@ modindices(fit1, sort = TRUE, minimum.value = 3.5)
 
 
 ## Model 2
+Model for Supp Fig 9.
 ```{r}
 mod2 <- '
   # latent variables
@@ -1353,6 +1348,7 @@ modindices(fit2, sort = TRUE, minimum.value = 3.5)
 
 
 ## Model 3
+Model for Supp Fig 10.
 ```{r}
 mod3 <- '
   # latent variables
@@ -1379,6 +1375,7 @@ modindices(fit3, sort = TRUE, minimum.value = 3.5)
 
 
 ## Model 4
+Model for Fig 6.
 ```{r}
 mod4 <- '
   # latent variables
