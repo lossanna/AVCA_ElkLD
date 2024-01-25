@@ -75,4 +75,4 @@ The order scripts should be run in to recreate the current/most recent version o
 
 
 # Notes
-- GitHub repository created for project 2022-01-31. Project began Dec 2021.
+- GitHub repository created for project 2022-01-31. Project began Dec 2021, so version control for first 2-3 months is not available.

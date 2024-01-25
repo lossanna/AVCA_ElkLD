@@ -6,6 +6,7 @@ Updated: 2024-01-25
  # Directory
 
 - `cleaned/`
+- `cross-section_raw/`
 - `Excel_LO_edited/`
 - `Excel_raw/`
 - `PimaCounty_precip/`
