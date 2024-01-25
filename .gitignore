@@ -4,6 +4,5 @@
 *.RData
 hpc-amplicon-sequencing/
 AVCA_ElkLD.Rproj
-data/wc2.1_10m/
 figures/2023-09_publish-figures/
 figures/2023-12_publish-figures/
