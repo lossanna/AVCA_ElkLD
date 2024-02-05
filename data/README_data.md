@@ -10,94 +10,158 @@ Updated: 2024-02-05
     - Pre 2023-03-24, data created from scripts in `scripts/old_pre-2023-03-24/` folder.
     - Contains 24 files.
   - `sequencing/`
+    - Files that begin with `bac-arc` refer to 16S rRNA amplicon sequencing (bacteria and archaea), and files that begin with `fungi` refer to ITS amplicon sequencing.
+    - Treatment3 refers to grouping of Control/Treated, where Channels 13 & 21 are Treated, and Channels 12 & 19 are Control.
     - `bac-arc_clean_asv.txt`
-        - Cleaned ASV (amplicon sequence variant) table from 16S rRNA amplion sequencing. Each column (1-20766) is a unique ASV, each row (1-62) is a soil sample, and values are the number of ASV reads found in each sample. Cleaned table produced from DADA2 pipeline (`hpc-amplicon-sequencing/16S_dada2_HPC.R`) and contaminant removal (`scripts/sequencing_2021/16S_prelim-stats.R`).
+        - Cleaned ASV (amplicon sequence variant) table. Each column (1-20766) is a unique ASV, each row (1-62) is a soil sample, and values are the number of ASV reads found in each sample. Cleaned table produced from DADA2 pipeline (`hpc-amplicon-sequencing/16S_dada2_HPC.R`) and contaminant removal (`scripts/sequencing_2021/16S_prelim-stats.R`).
     - `bac-arc_clean_rep.txt`
-        - Table of each ASV and its corresponding nucleotide sequence from 16S rRNA sequencing.
+        - Table of each ASV and its corresponding nucleotide sequence.
     - `bac-arc_clean_tax.txt`
-        - Taxonomy of each ASV (kingdom, phylum, class, order, family, genus, species) from 16S rRNA sequencing.
+        - Taxonomy of each ASV (kingdom, phylum, class, order, family, genus, species).
     - `bac-arc_clean_tax_unique.txt`
-        - A list of the unique taxonomy identifications found from 16S rRNA sequencing.
+        - A list of the unique taxonomy identifications.
     - `bac-arc_diversity.txt`
-        - Richness, Shannon diversity, NMDS values, and beta dispersion by channel and Treatment3 for 16S rRNA sequencing.
+        - Richness, Shannon diversity, NMDS values, and beta dispersion by channel and Treatment3.
     - `bac-arc_family.txt`
-        - Relative abundance by family for each sample, for 16S rRNA sequencing.
+        - Relative abundance by family for each sample.
     - `bac-arc_family_avg-ch.txt`
-        - Relative abundance by family averaged by channel, for 16S rRNA sequencing.
+        - Relative abundance by family averaged by channel.
     - `bac-arc_family_avg-t3.txt`
+        - Relative abundance by family averaged by Treatment3.
     - `bac-arc_family-dominant_avg-ch.txt`
+        - Relative abundance of dominant families (>2%) averaged by channel.
     - `bac-arc_family-dominant_avg-ch_barplot.txt`
+        - Relative abundance of dominant families (>2%) averaged by channel and formatted for charting by barplot.
     - `bac-arc_family-dominant_avg-t3.txt`
+        - Relative abundance of dominant families (>2%) averaged by Treatment3.
     - `bac-arc_family-dominant_avg-t3_barplot.txt`
+        - Relative abundance of dominant families (>2%) averaged by Treatment3 and formatted for charting by barplot.
     - `bac-arc_family-dominant_sample.txt`
+        - Relative abundance of dominant families (>2%) for each sample.
     - `bac-arc_phylum.txt`
+        - Relative abundance by phylum for each sample.
     - `bac-arc_phylum-avg-ch.txt`
+        - Relative abundance by phylum averaged by channel.
     - `bac-arc_phylum-avg-t3.txt`
+        - Relative abundance by phylum averaged by Treatment3.
     - `bac-arc_phylum-dominant_avg-ch.txt`
+        - Relative abundance of dominant phyla (>1%) averaged by channel.
     - `bac-arc_phylum-dominant_avg-ch_barplot.txt`
+        - Relative abundance of dominant phyla (>1%) averaged by channel and formatted for charting by barplot.
     - `bac-arc_phylum-dominant_avg-t3.txt`
+        - Relative abundance of dominant phyla (>1%) averaged by Treatment 3.
     - `bac-arc_phylum-dominant_avg-t3_barplot.txt`
+        - Relative abundance of dominant phyla (>1%) averaged by Treatment 3 and formatted for charting by barplot.
     - `bac-arc_phylum-dominant_sample.txt`
+        - Relative abundance of dominant phyla (>1%) for each sample.
     - `faprotax-asv.xlsx`
+        - Table connecting taxonomy to FAPROTAX categories. Used to calculate how many reads were assigned a FAPROTAX category in `scripts/sequencing_2021/FAPROTAX-reads.R`.
     - `faprotax-categories.csv`
-    - `faprotax-input.tsv`
+        - A list of faprotax categories.
+    - `faprotax-input.csv`, `faprotax-input.tsv`
+        - An ASV table formatted for FAPROTAX analysis, created from `scripts/sequencing_2021/FAPROTAX-input.R`.
     - `faprotax-output.tsv`
+        - FAPROTAX output table.
     - `faprotax-proportions_clean.csv`
+        - Table of FAPROTAX proportions with metadata and summed proportion of N-cyclers, created from `scripts/sequencing_2021/FAPROTAX-stats.R`.
     - `fungi_clean_asv.txt`
         - Cleaned ASV table from ITS amplicon sequencing. Each column (1-6823) is a unique ASV, each row is a soil sample (1-62), and values are the number of ASV reads found in each sample. Cleaned table produced from DADA2 pipeline (`hpc-amplicon-sequencing/ITS_dada2_HPC.R`) and contaminant removal (`scripts/sequencing_2021/ITS_prelim-stats.R`).
     - `fungi_clean_rep.txt`
+        - Table of each ASV and its corresponding nucleotide sequence.
     - `fungi_clean_tax.txt`
+        - Taxonomy of each ASV (kingdom, phylum, class, order, family, genus, species).
     - `fungi_clean_tax_unique.txt`
+        - A list of the unique taxonomy identifications.
     - `fungi_diversity.txt`
+        - Richness, Shannon diversity, NMDS values, and beta dispersion by channel and Treatment3.
     - `fungi_phylum.txt`
+        - Relative abundance by phylum for each sample.
     - `fungi_phylum_avg-ch.txt`
+        - Relative abundance by phylum averaged by channel.
     - `fungi_phylum_avg-t3.txt`
+         - Relative abundance by phylum averaged by Treatment3.
     - `fungi_phylum-dominant_avg-ch.txt`
+        - Relative abundance of dominant phyla (>1%) averaged by channel.
     - `fungi_phylum-dominant_avg-ch_barplot.txt`
+        - Relative abundance of dominant phyla (>1%) averaged by channel and formatted for charting by barplot.
     - `fungi_phylum-dominant_avg-t3.txt`
+        - Relative abundance of dominant phyla (>1%) averaged by Treatment 3.
     - `fungi_phylum-dominant_avg-t3_barplot.txt`
+        - Relative abundance of dominant phyla (>1%) averaged by Treatment 3 and formatted for charting by barplot.
     - `fungi_phylum-dominant_sample.txt`
+        - Relative abundance of dominant phyla (>1%) for each sample.
     - `FUNGuild-guild-categories.csv`
+        - A table of counts (number of ASVs) for each guild, created from `scripts/sequencing_2021/FUNGuild-stats.R`.
     - `FUNGuild-input.tsv`
+         - An ASV table formatted for FUNGuild analysis, created from `scripts/sequencing_2021/FUNGuild-input.R`.
     - `FUNGuild-output.tsv`
+        - FUNGuild output table.
     - `FUNGuild-proportions-guild_clean.csv`
+        - Table of relative abundance for each guild, created from `scripts/sequencing_2021/FUNGuild-stats.R`.
     - `FUNGuild-proportions-trophic_clean.csv`
+        - Table of relative abundance for each trophic category, created from `scripts/sequencing_2021/FUNGuild-stats.R`.
     - `sequencing_metadata.txt`
+        - Metadata for all 62 soil samples: Sample number, Name, Channel, Station, Treatment1, Treatment2, Treatment3.
     - `sequencing_metadata_with-unsigned.txt`
+        - Metadata for all 62 soil samples plus "unsigned" sample (which was not used in further analysis).
   - `C12-cover.csv`, `C13-cover.csv`, `C19-cover.csv`, `C21-cover.csv`
+    - Cover by quadrat, created from `scripts/data-wrangling_veg-2012-2021/CXX-data-wrangling.R`.
   - `Cross-section-elevation_clean.csv`
+    - Change in channel bed elevation, corrected to account for measurement error, created from `scripts/Cross-section-elevation.R`.
   - `CV-2012-2021_X.csv`
     - Where "X" is: `herb-cover`, `notree-cover`, `richness`, `shannon`, `shrub-cover`, `total-cover`
+    - Coefficient of variation between all 6 sampling events at each sampling location.
   - `Data-2021_clean.csv`
+    - Cleaned 2021 data. Includes cover in 2021 and 2018, perennial diversity, soil chemistry, soil microbiology, and change in channel bed elevation.
   - `Log-change_X.csv`
     - Where "X" is: `first-last`, `herb-cover`, `notree-cover`, `rich`, `shan`, `total-cover`
+    - Change over time (calculated by the log response ratio per unit time), created from `scripts/other-analyses/Change-over-time_veg-2012-2021.R`. Ultimately analysis was discontinued in favor of CV.
   - `Summarised-all_X.csv`
     - Where "X" is: `annual-cover`, `herb-cover`, `invasive-cover`, `notree-cover`, `perennial-diversity`, `plant-species-cover`, `shrub-cover`, `total-plant-cover`, `tree-cover`
+    - Cover or diversity (richness and Shannon) values of each quadrat summarised (averaged) for each station/sampling point. Created from `scripts/data-wrangling_veg-2012-2021/Summarise-all-channels.R`
   - `Treatment3-average_X.csv`
     - Where "X" is: `annual-cover`, `herb-cover`, `invasive-cover`, `notree-cover`, `richness`, `shannon`, `shrub-cover`, `total-cover`
+    - Cover or diversity values averaged by Treated or Control for each sampling year; used for line graphs.
 - `cross-section_raw/`
+  - 52 files; one file for each station measured (50 in total; 12 stations had no 2011 measurement) plus two files of sample names. Used to calculate the change in channel bed elevation from the lowest point in the channel in `scripts/Cross-section-elevation.R`.
 - `Excel_LO_edited/`
-  - `AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
-  - `AVCA ElkLD Channel 13 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
-  - `AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
-  - `AVCA ElkLD Channel 21 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
+  - `AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`, `AVCA ElkLD Channel 13 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`, `AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`, `AVCA ElkLD Channel 21 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
+    - Excel files of original cover data, modified by me (LO). Each spreadsheet has a README tab that describes any changes made from original (raw) Excel files. Some changes may include cross-referencing with original hard-copy data sheets.
   - `Blankinship-soil-chemistry_TN-TC-OM_LO.xlsx`
+    - Total nitrogen, total carbon, and organic matter content as measured and analyzed by the Blankinship lab. LO edits consist of putting all three metrics together in one spreadsheet along with metadata in separate tab.
   - `Channel-elevation_LO.xlsx`
+    - My estimate of channel elevation change based on GIS portal. This data has been replaced by formal cross-section analysis done by Robert Davis for each station, and this data was used only in preliminary analysis.
   - `Channel-width_LiDAR-GIS.xlsx`
+    - My estimation of channel width based on GIS portal. These estimates are very rough, and were used only for preliminary analysis.
   - `Elk_LD Rain data_LO.xlsx`
+    - Rain gauge data from Elkhorn Ranch. Did not use this data because it began in 2014, which is after the study began. LO edits consist of putting data in R-friendly format in separate tab.
   - `Vegetation monitoring point elevation change data_LO.xlsx`
+    - Initial analysis from Robert Davis of change in channel bed elevation. Has since been replaced with cross-section analysis for every station. Data was only used for preliminary analysis. LO edits consist of adding channel and station names in separate tab.
 - `Excel_raw/`
-  - `AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS.xlsx`
-  - `AVCA ElkLD Channel 13 Data - USE FOR 2021 ANALYSIS.xlsx`
-  - `AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS.xlsx`
-  - `AVCA ElkLD Channel 21 Data - USE FOR 2021 ANALYSIS.xlsx`
-  - `Channel-width_LiDAR-GIS.xlsx`
+  - Raw data recieved from others. Files were not modified in any way.
+  - `AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS.xlsx`, `AVCA ElkLD Channel 13 Data - USE FOR 2021 ANALYSIS.xlsx`, `AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS.xlsx`, `AVCA ElkLD Channel 21 Data - USE FOR 2021 ANALYSIS.xlsx`
+    - Original spreadsheets received from Julia at Altar Valley Conservation Alliance.
   - `CN Luna AIR Project Spring 2022.xlsx`
+    - Total soil nitrogen and carbon data from Blankinship lab.
   - `Elk_LD Rain data .xlsx`
+    - Rain gauge data from Elkhorn Ranch. Did not use this data because it began in 2014, which is after the study began.
   - `Luna AIR Project LOI Spring 2022.xlsx`
+    - Organic matter content data from Blankinship lab (loss on ignition).
   - `Vegetation monitoring point elevation change data.xlsx`
+    - Initial analysis from Robert Davis of change in channel bed elevation. Has since been replaced with cross-section analysis for every station. Data was only used for preliminary analysis.
 - `PimaCounty_precip/`
-        - Precipitation data from Altar Valley wash, retrieved from Pima County ALERT, using gauge #6380. Access the portal here: https://webcms.pima.gov/government/flood_control/services/precipitation_and_streamflow_data/.
+  - Precipitation data from Altar Valley wash, retrieved from Pima County ALERT, using gauge #6380. Access the portal here: https://webcms.pima.gov/government/flood_control/services/precipitation_and_streamflow_data/.
 - `publish/`
-- `Channel-width-LiDAR-GIS.xlsx`
+  - Files published in Zenodo archive (https://zenodo.org/records/8310363) of cleaned data used in analysis for publication. Created from `scripts/Data-for-publishing.R`.
+  - `bac-arc_clean_asv.txt`
+  - `fungi_clean_asv.txt`
+  - `Herb-and-shrub-cover_2012-2021.csv`
+  - `Herb-cover_2012-2021.csv`
+  - `Invasive-cover_2012-2021.csv`
+  - `Perennial-plant-diversity_2012-2021.csv`
+  - `sequencing-metadata.csv`
+  - `Shrub-cover_2012-2021.csv`
+  - `Species-cover_2012-2021.csv`
+  - `Veg-soil-elev_2021.csv`
 - `station-metadata.csv`
+   - Metadata for all 62 stations (sampling locations): Sample number, Name, Channel, Station, Treatment1, Treatment2, Treatment3.
