@@ -1,14 +1,101 @@
 Created: 2024-01-25  
-Updated: 2024-01-25 
+Updated: 2024-02-05 
  
  Details about `data/` folder.
  
  # Directory
 
 - `cleaned/`
+  - `old-summarised/`
+    - Pre 2023-03-24, data created from scripts in `scripts/old_pre-2023-03-24/` folder.
+    - Contains 24 files.
+  - `sequencing/`
+    - `bac-arc_clean_asv.txt`
+        - Cleaned ASV (amplicon sequence variant) table from 16S rRNA amplion sequencing. Each column (1-20766) is a unique ASV, each row (1-62) is a soil sample, and values are the number of ASV reads found in each sample. Cleaned table produced from DADA2 pipeline (`hpc-amplicon-sequencing/16S_dada2_HPC.R`) and contaminant removal (`scripts/sequencing_2021/16S_prelim-stats.R`).
+    - `bac-arc_clean_rep.txt`
+        - Table of each ASV and its corresponding nucleotide sequence from 16S rRNA sequencing.
+    - `bac-arc_clean_tax.txt`
+        - Taxonomy of each ASV (kingdom, phylum, class, order, family, genus, species) from 16S rRNA sequencing.
+    - `bac-arc_clean_tax_unique.txt`
+        - A list of the unique taxonomy identifications found from 16S rRNA sequencing.
+    - `bac-arc_diversity.txt`
+        - Richness, Shannon diversity, NMDS values, and beta dispersion by channel and Treatment3 for 16S rRNA sequencing.
+    - `bac-arc_family.txt`
+        - Relative abundance by family for each sample, for 16S rRNA sequencing.
+    - `bac-arc_family_avg-ch.txt`
+        - Relative abundance by family averaged by channel, for 16S rRNA sequencing.
+    - `bac-arc_family_avg-t3.txt`
+    - `bac-arc_family-dominant_avg-ch.txt`
+    - `bac-arc_family-dominant_avg-ch_barplot.txt`
+    - `bac-arc_family-dominant_avg-t3.txt`
+    - `bac-arc_family-dominant_avg-t3_barplot.txt`
+    - `bac-arc_family-dominant_sample.txt`
+    - `bac-arc_phylum.txt`
+    - `bac-arc_phylum-avg-ch.txt`
+    - `bac-arc_phylum-avg-t3.txt`
+    - `bac-arc_phylum-dominant_avg-ch.txt`
+    - `bac-arc_phylum-dominant_avg-ch_barplot.txt`
+    - `bac-arc_phylum-dominant_avg-t3.txt`
+    - `bac-arc_phylum-dominant_avg-t3_barplot.txt`
+    - `bac-arc_phylum-dominant_sample.txt`
+    - `faprotax-asv.xlsx`
+    - `faprotax-categories.csv`
+    - `faprotax-input.tsv`
+    - `faprotax-output.tsv`
+    - `faprotax-proportions_clean.csv`
+    - `fungi_clean_asv.txt`
+        - Cleaned ASV table from ITS amplicon sequencing. Each column (1-6823) is a unique ASV, each row is a soil sample (1-62), and values are the number of ASV reads found in each sample. Cleaned table produced from DADA2 pipeline (`hpc-amplicon-sequencing/ITS_dada2_HPC.R`) and contaminant removal (`scripts/sequencing_2021/ITS_prelim-stats.R`).
+    - `fungi_clean_rep.txt`
+    - `fungi_clean_tax.txt`
+    - `fungi_clean_tax_unique.txt`
+    - `fungi_diversity.txt`
+    - `fungi_phylum.txt`
+    - `fungi_phylum_avg-ch.txt`
+    - `fungi_phylum_avg-t3.txt`
+    - `fungi_phylum-dominant_avg-ch.txt`
+    - `fungi_phylum-dominant_avg-ch_barplot.txt`
+    - `fungi_phylum-dominant_avg-t3.txt`
+    - `fungi_phylum-dominant_avg-t3_barplot.txt`
+    - `fungi_phylum-dominant_sample.txt`
+    - `FUNGuild-guild-categories.csv`
+    - `FUNGuild-input.tsv`
+    - `FUNGuild-output.tsv`
+    - `FUNGuild-proportions-guild_clean.csv`
+    - `FUNGuild-proportions-trophic_clean.csv`
+    - `sequencing_metadata.txt`
+    - `sequencing_metadata_with-unsigned.txt`
+  - `C12-cover.csv`, `C13-cover.csv`, `C19-cover.csv`, `C21-cover.csv`
+  - `Cross-section-elevation_clean.csv`
+  - `CV-2012-2021_X.csv`
+    - Where "X" is: `herb-cover`, `notree-cover`, `richness`, `shannon`, `shrub-cover`, `total-cover`
+  - `Data-2021_clean.csv`
+  - `Log-change_X.csv`
+    - Where "X" is: `first-last`, `herb-cover`, `notree-cover`, `rich`, `shan`, `total-cover`
+  - `Summarised-all_X.csv`
+    - Where "X" is: `annual-cover`, `herb-cover`, `invasive-cover`, `notree-cover`, `perennial-diversity`, `plant-species-cover`, `shrub-cover`, `total-plant-cover`, `tree-cover`
+  - `Treatment3-average_X.csv`
+    - Where "X" is: `annual-cover`, `herb-cover`, `invasive-cover`, `notree-cover`, `richness`, `shannon`, `shrub-cover`, `total-cover`
 - `cross-section_raw/`
 - `Excel_LO_edited/`
+  - `AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
+  - `AVCA ElkLD Channel 13 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
+  - `AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
+  - `AVCA ElkLD Channel 21 Data - USE FOR 2021 ANALYSIS_LO 220201.xlsx`
+  - `Blankinship-soil-chemistry_TN-TC-OM_LO.xlsx`
+  - `Channel-elevation_LO.xlsx`
+  - `Channel-width_LiDAR-GIS.xlsx`
+  - `Elk_LD Rain data_LO.xlsx`
+  - `Vegetation monitoring point elevation change data_LO.xlsx`
 - `Excel_raw/`
+  - `AVCA ElkLD Channel 12 Data - USE FOR 2021 ANALYSIS.xlsx`
+  - `AVCA ElkLD Channel 13 Data - USE FOR 2021 ANALYSIS.xlsx`
+  - `AVCA ElkLD Channel 19 Data - USE FOR 2021 ANALYSIS.xlsx`
+  - `AVCA ElkLD Channel 21 Data - USE FOR 2021 ANALYSIS.xlsx`
+  - `Channel-width_LiDAR-GIS.xlsx`
+  - `CN Luna AIR Project Spring 2022.xlsx`
+  - `Elk_LD Rain data .xlsx`
+  - `Luna AIR Project LOI Spring 2022.xlsx`
+  - `Vegetation monitoring point elevation change data.xlsx`
 - `PimaCounty_precip/`
         - Precipitation data from Altar Valley wash, retrieved from Pima County ALERT, using gauge #6380. Access the portal here: https://webcms.pima.gov/government/flood_control/services/precipitation_and_streamflow_data/.
 - `publish/`

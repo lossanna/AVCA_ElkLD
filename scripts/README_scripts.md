@@ -1,7 +1,7 @@
 Created: 2024-01-25  
-Updated: 2024-01-25 
+Updated: 2024-02-05 
  
- Details about `scripts/` folder. Scripts themselves have long description of purpose at the top in comments.
+ Details about `scripts/` folder. Scripts themselves have long description of their purpose at the top in comments.
  
  # Directory
 - `data-wrangling_veg-2012-2021/`
@@ -14,7 +14,7 @@ Updated: 2024-01-25
     - `Summarise-all-channels.R`
 - `other-analyses/`
     - Scripts will run, but these analyses are less important and sometimes not fully pursued.
-    - `ALVSCE-2023-figs.R`    - 
+    - `ALVSCE-2023-figs.R`    
     - `Change-over-time_veg-2012-2021.R`
     - `Correlation.R`
     - `PCA_2021.R`

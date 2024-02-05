@@ -1,11 +1,11 @@
 # AVCA_ElkLD
 Created: 2022-01-31  
-Last updated: 2024-01-25
+Last updated: 2024-02-05
   
 ## Description  
 Complete data analysis for Altar Valley Conservation Alliance Elkhorn-Las Delicias demonstration project, which was ten-year monitoring of stream channels with rock detention structures to control erosion. 
 
-This repository accompanies publication "Dryland rock detention structures increase herbaceous vegetation cover and stabilize shrub cover over 10 years but do not directly affect soil fertility" by Ossanna et al. (2024) in *Science of the Total Environment*.  
+This repository accompanies publication "Dryland rock detention structures increase herbaceous vegetation cover and stabilize shrub cover over 10 years but do not directly affect soil fertility" by Ossanna et al. (2024) in *Science of the Total Environment* <https://doi.org/10.1016/j.scitotenv.2024.170194>.  
 
 Each main folder has its own README that describes subfolders and files.
   
@@ -16,8 +16,8 @@ Contact: Lia Ossanna, lossanna@arizona.edu
 There are two main datasets, referred to in script names by `_veg-2012-2021` and `_2021`.
 - `_veg-2012-2021` is the temporal vegetation cover and density data.
 - `_2021` is the data collected in 2021, used for SEM, and includes:
-  - 2021 vegetation cover and density (same data from temporal dataset).
-  - soil chemical analysis (total nitrogen, total carbon, organic matter).
+  - 2021 vegetation cover and density (same data from temporal dataset)
+  - soil chemical analysis (total nitrogen, total carbon, organic matter)
   - soil microbial analysis (16S and ITS amplicon sequencing).
 
 # Workflow for current analysis
@@ -41,6 +41,7 @@ The order scripts should be run in to recreate the current/most recent version o
     - `Excel_raw/`
     - `PimaCounty_precip/`
     - `publish/`
+    - `README_data.md`
     - +2 files
 - `figures/`
   - `2022-01-28_Data-sharing_updated-2022-09/`
@@ -69,10 +70,12 @@ The order scripts should be run in to recreate the current/most recent version o
     - `data-wrangling/`
     - `old_pre-2023-03-24/`
       - Not intended to run - some paths may not work, as files and folders may have changed names.
+    - `other-analyses/`
     - `sequencing_2021/`
     - `README_scripts.md`
-    - +21 `.R` files
+    - +14 `.R` files
 
 
 # Notes
 - GitHub repository created for project 2022-01-31. Project began Dec 2021, so version control for first 2-3 months is not available.
+- I put analyses and data prior to 2023-03-24 in their own folders. After this date, I finalized grouping by Treatment3 (treated/control) and had better organization of scripts and file names.
