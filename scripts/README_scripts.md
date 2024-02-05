@@ -5,12 +5,12 @@ Updated: 2024-02-05
  
  # Directory
 - `data-wrangling_veg-2012-2021/`
-    - `C12-data-wrangling.R`
-    - `C13-data-wrangling.R`
-    - `C19-data-wrangling.R`
-    - `C21-data-wrangling.R`
+    - `C12-data-wrangling.R`, `C13-data-wrangling.R`, `C19-data-wrangling.R`, `C21-data-wrangling.R`
+        - Convert Excel spreadsheets into R-friendly format, standardize names, address trace values.
     - `Fixes-for-common-and-scientific-names.R`
+      - List of all names that were changed/standardized during data cleaning. Instances of each change are documented in `CXX-data-wrangling.R` scripts. Not intended to run as code.
     - `Plant-functional-groups-by-common-name.xlsx`
+      - A spreadsheet I created that categorizes plants by functional group and invasive/native status (using common names). Each cell has a comment of the scientific name. All species checked with USDA Plants.
     - `Summarise-all-channels.R`
 - `other-analyses/`
     - Scripts will run, but these analyses are less important and sometimes not fully pursued.
@@ -47,5 +47,5 @@ Updated: 2024-02-05
 - `Publish_SEM.R`
 - `Publish_temporal-veg.R`
 - `Publish_t-test_2021.R`
-- ` SEM-2.1_candidate-models.R`
+- `SEM-2.1_candidate-models.R`
 - `T-test-by-Treatment3-and-NMDS_2021.R`
