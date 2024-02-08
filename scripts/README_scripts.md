@@ -1,5 +1,5 @@
 Created: 2024-01-25  
-Updated: 2024-02-05 
+Updated: 2024-02-08 
  
  Details about `scripts/` folder. Scripts themselves have long description of their purpose at the top in comments.
  
@@ -27,25 +27,51 @@ Updated: 2024-02-05
     - Not intended to run - some paths may not work, as files and folders may have changed names.
 - `sequencing_2021/`
     - `16S_prelim-stats.R`
+        - Create clean ASV tables, look at NMDS and beta dispersion, calculate richness and diversity, create stacked bar charts of dominant phyla & families.
     - `FAPROTAX-input.R`
+        - Format tables for FAPROTAX input. See `RMarkdown/sequencing/Notes_AVCA-ElkLD_FAPROTAX_HPC.html` for more details.
     - `FAPROTAX-reads.R`
+        - Calculate how many reads were assigned FAPROTAX groups.
     - `FAPROTAX-stats.R`
+        -  Write clean table translating ASV reads into relative proportions for FAPROTAX categories, and explore groups of potential interest.
+        - Contains only preliminary analyses; later analyses in `T-test-by-Treatment3-and-NMDS_2021.R`.
     - `FUNGuild-input.R`
+        - Format tables for FUNGuild input. See `RMarkdown/sequencing/Notes_AVCA-ElkLD_FUNGuild_HPC.html` for more details.
     - `FUNGuild-reads.R`
+        - Calculate how many reads were assigned FUNGuild trophic groups.
     - `FUNGuild-stats.R`
+        - Write clean table translating ASV reads into relative proportions for FUNGuild categories, and explore groups of potential interest.
+        - Contains only preliminary analyses; later analyses in `T-test-by-Treatment3-and-NMDS_2021.R`.
     - `ITS_prelim-stats.R`
+        - Create clean ASV tables, look at NMDS and beta dispersion, calculate richness and diversity, create stacked bar charts of dominant phyla.
 
-- `ANOVA-by-Treatment3_veg-2012-2021.R`    
+- `ANOVA-by-Treatment3_veg-2012-2021.R`
+    - Temporal veg analysis with ANOVA in several ways (while I was figuring out which one should be final), long descriptions of ultimate decisions made.    
 - `Cross-section-elevation.R`
+    -  Wrangle raw cross section elevation data, and write out clean data.
 - `CV_veg-2021-2012.R`
+    - Calculate CV of each sample across all years, and compare CVs of Treated vs. Control.
 - `Data-for-publishing.R`
+    - Create cleaned data that can be published.
 - `Data-screening_2021.R`
+    - Data screening for 2021 plant and soil data, and write cleaned data table. Checked for normality and collinearity.
 - `Data-screening_veg-2012-2021.R`
+    - Data screening for temporal 2012-2021 plant data (cover & diversity). Checked for normality and outliers.
 - `PimaCounty_precip.R`
+    - Wrangle and graph precipitation data from Pima County ALERT system.
 - `Publish_16S-ITS.R`
+    - Create NMDS figure and code for publication.
 - `Publish_CV.R`
+    - Create veg CV figures for publication, and code for published R Markdown.
 - `Publish_SEM.R`
+    - Create code for SEM (figures were made in PowerPoint).
 - `Publish_temporal-veg.R`
+    - Create temporal veg figures for publication (line graphs), and code for published R Markdown.
 - `Publish_t-test_2021.R`
+    - Create 2021 figures for publication (boxplots that went in Supplemental), and code for published R Markdown.
 - `SEM-2.1_candidate-models.R`
+    - Test candidate models for SEM analysis.
+    - SEM 1.0 was initial attempt, documented in `RMarkdown/2022-06-09_Exploratory-SEM.html`.
+    - SEM 2.0 is from `old_pre-2023-03-24/Exploratory-SEM.R`. SEM 2.1 incorporates better assessment of model fit.
 - `T-test-by-Treatment3-and-NMDS_2021.R`
+    - Compare 2021 soil and plant data by Treatment3 (Treated/Control) and create figures.

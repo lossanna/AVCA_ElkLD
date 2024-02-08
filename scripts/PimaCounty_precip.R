@@ -1,4 +1,4 @@
-# Purpose: Graph precipitation data from Pima County ALERT system, sensor #6380,
+# Purpose: Wrangle and graph precipitation data from Pima County ALERT system, sensor #6380,
 #   sourced from https://webcms.pima.gov/government/flood_control/services/precipitation_and_streamflow_data/.
 # Create supp figure for publication (will not be publishing code)
 
